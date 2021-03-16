@@ -1,0 +1,75 @@
+{
+   "directoryName": "",
+   "english":"",
+   "japanese":"",
+   "thmbnailName":"",
+   "generalFormulas":[
+      {
+         "imageName":""
+      }
+   ],
+   "mechanisms":[
+      {
+         "imageName":""
+      }
+   ],
+   "examples":[
+      {
+         "imageName":""
+      }
+   ],
+   "supplements":[
+      {
+         "imageName":""
+      }
+   ]
+ }
+
+
+    {
+      "id":14,
+      "english":"Bechamp Reduction",
+      "japanese":"Bechamp Reduction",
+      "thmbnailName":"bamberger-reduction-general-expression-0.png",
+      "generalExpressions":[
+         {
+            "imageName":"bamberger-reduction-general-expression-0.png"
+         }
+      ],
+      "mechanisms":[
+         {
+            "imageName":"bamberger-reduction-mechanism-0.png"
+         }
+      ],
+      "examples":[],
+      "supplements":[]
+   },
+
+
+
+   {
+      "id":20,
+      "english":"Bouveault Blanc Reduction",
+      "japanese":"Bouveault Blanc Reduction",
+      "thmbnailName":"bouveault-blanc-reduction-general-expression-0.png",
+      "generalExpressions":[
+         {
+            "imageName":"bamberger-reduction-general-expression-0.png"
+         }
+      ],
+      "mechanisms":[
+         {
+            "imageName":"bamberger-reduction-general-mechanism-0.png"
+         }
+      ],
+      "examples":[
+         {
+            "imageName":"bamberger-reduction-general-example-0.png"
+         }
+      ],
+      "supplements":[
+         {
+            "imageName":"bamberger-reduction-general-supplement-0.png"
+         }
+      ]
+   },

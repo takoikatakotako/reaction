@@ -64,9 +64,6 @@ func main() {
     // jsonFile's content into 'reactions' which we defined above
     json.Unmarshal(byteValue, &reactions)
 
-    // we iterate through every user within our reactions array and
-    // print out the user Type, their name, and their facebook url
-    // as just an example
     for i := 0; i < len(reactions.Reactions); i++ {
         var directoryName string = reactions.Reactions[i].DirectoryName
         var thmbnailName string = reactions.Reactions[i].ThmbnailName

@@ -1392,6 +1392,50 @@
                "imageName":"ninhydrin-reaction-supplement-0.png"
             }
          ]
+       },
+       {
+         "directoryName": "bechamp-reduction",
+         "english":"BechampReduction",
+         "japanese":"BechampReduction",
+         "thmbnailName":"bechamp-reduction-general-formula-0.png",
+         "generalFormulas":[
+            {
+               "imageName":"bechamp-reduction-general-formula-0.png"
+            }
+         ],
+         "mechanisms":[
+            {
+               "imageName":"bechamp-reduction-mechanism-0.png"
+            }
+         ],
+         "examples":[],
+         "supplements":[]
+       },
+       {
+         "directoryName": "bouveault-blanc-reduction",
+         "english":"BouveaultBlancReduction",
+         "japanese":"BouveaultBlancReduction",
+         "thmbnailName":"bouveault-blanc-reduction-general-formula-0.png",
+         "generalFormulas":[
+            {
+               "imageName":"bouveault-blanc-reduction-general-formula-0.png"
+            }
+         ],
+         "mechanisms":[
+            {
+               "imageName":"bouveault-blanc-reduction-mechanism-0.png"
+            }
+         ],
+         "examples":[
+            {
+               "imageName":"bouveault-blanc-reduction-example-0.png"
+            }
+         ],
+         "supplements":[
+            {
+               "imageName":"bouveault-blanc-reduction-supplement-0.png"
+            }
+         ]
        }
     ]
  }

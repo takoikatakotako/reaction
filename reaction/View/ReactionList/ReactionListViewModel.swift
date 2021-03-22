@@ -1,11 +1,20 @@
 import SwiftUI
 import Combine
 
+enum ReactionListViewSheet: Identifiable {
+    var id: Int {
+        hashValue
+    }
+    case developer
+    case config
+}
+
 class ReactionListViewModel: ObservableObject {
     @Published var showingThmbnail = true
+    @Published var selectJapanese = true
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
-    @Published var showingDeveloperSheet = false
+    @Published var sheet: ReactionListViewSheet?
     private var subscriptions = Set<AnyCancellable>()
     
     func searchRepos() {
@@ -34,5 +43,9 @@ class ReactionListViewModel: ObservableObject {
                 self.reactionMechanisms = reactionMechanisms
             })
             .store(in: &self.subscriptions)
+    }
+    
+    func showxxx() {
+        self.sheet = .config
     }
 }

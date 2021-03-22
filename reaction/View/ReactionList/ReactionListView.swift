@@ -11,7 +11,7 @@ struct ReactionListView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(viewModel.reactionMechanisms) { (reactionMechanism: ReactionMechanism) in
-                            ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewModel.showingThmbnail)
+                            ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewModel.showingThmbnail, selectJapanese: $viewModel.selectJapanese)
                         }
                     }
                 }
@@ -28,21 +28,27 @@ struct ReactionListView: View {
             .onAppear {
                 viewModel.searchRepos()
             }
-            .sheet(isPresented: $viewModel.showingDeveloperSheet) {
-                DeveloperView()
+            .sheet(item: $viewModel.sheet) { (item: ReactionListViewSheet) in
+                switch item {
+                case .developer:
+                    DeveloperView()
+                case .config:
+                    ReactionListConfigView(showingThmbnail: $viewModel.showingThmbnail, selectJapanese: $viewModel.selectJapanese)
+                }
             }
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 leading: Button(action: {
-                    viewModel.showingDeveloperSheet = true
+                    viewModel.sheet = .developer
+                }, label: {
+                    Text("Info")
+                }),
+                trailing: Button(action: {
+                    viewModel.showxxx()
                 }, label: {
                     Image("icon-setting")
-                }),
-                
-                trailing: Button("Thmbnail") {
-                    viewModel.showingThmbnail.toggle()
-                }
+                })
             )
         }
     }

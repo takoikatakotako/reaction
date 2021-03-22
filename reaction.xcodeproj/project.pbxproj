@@ -21,6 +21,7 @@
 		8D8788B125FBC2A100677F73 /* ReactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8788B025FBC2A100677F73 /* ReactionListViewModel.swift */; };
 		8D8788B625FBC2CE00677F73 /* ReactionListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8788B525FBC2CE00677F73 /* ReactionListRow.swift */; };
 		8D8788BC25FBC87600677F73 /* DeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8788BB25FBC87600677F73 /* DeveloperView.swift */; };
+		8DB1E9AB2608F6F500FB2B85 /* ReactionListConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E9AA2608F6F500FB2B85 /* ReactionListConfigView.swift */; };
 		8DE0BF2225F7D27100EAE32A /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE0BF2125F7D27100EAE32A /* AppEnvironment.swift */; };
 		8DE0BF2D25F7D58300EAE32A /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE0BF2C25F7D58300EAE32A /* Mockable.swift */; };
 		8DF8A44C25FBCF4C009A4976 /* DeveloperRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF8A44B25FBCF4C009A4976 /* DeveloperRow.swift */; };
@@ -63,6 +64,7 @@
 		8D8788B025FBC2A100677F73 /* ReactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionListViewModel.swift; sourceTree = "<group>"; };
 		8D8788B525FBC2CE00677F73 /* ReactionListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionListRow.swift; sourceTree = "<group>"; };
 		8D8788BB25FBC87600677F73 /* DeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperView.swift; sourceTree = "<group>"; };
+		8DB1E9AA2608F6F500FB2B85 /* ReactionListConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionListConfigView.swift; sourceTree = "<group>"; };
 		8DE0BF2125F7D27100EAE32A /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		8DE0BF2C25F7D58300EAE32A /* Mockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockable.swift; sourceTree = "<group>"; };
 		8DF8A44B25FBCF4C009A4976 /* DeveloperRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperRow.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		8D7F2B1025F0D37F00660A5A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8DB1E9A92608F6E000FB2B85 /* ReactionListConfig */,
 				8D83D81D25FBCC3A00E8E306 /* ReactionDetailContent */,
 				8D8788BA25FBC86900677F73 /* Developer */,
 				8D0F04CA25F146DB00D836D9 /* ReactionDetailFullScreen */,
@@ -216,6 +219,14 @@
 				8DF8A44B25FBCF4C009A4976 /* DeveloperRow.swift */,
 			);
 			path = Developer;
+			sourceTree = "<group>";
+		};
+		8DB1E9A92608F6E000FB2B85 /* ReactionListConfig */ = {
+			isa = PBXGroup;
+			children = (
+				8DB1E9AA2608F6F500FB2B85 /* ReactionListConfigView.swift */,
+			);
+			path = ReactionListConfig;
 			sourceTree = "<group>";
 		};
 		8DE0BF2025F7D25D00EAE32A /* Enviroment */ = {
@@ -361,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DB1E9AB2608F6F500FB2B85 /* ReactionListConfigView.swift in Sources */,
 				8D7F2AD925F0D29600660A5A /* ReactionListView.swift in Sources */,
 				8D83D81F25FBCC5000E8E306 /* ReactionDetailContent.swift in Sources */,
 				8D0F04CC25F146F300D836D9 /* ReactionDetailFullScreenView.swift in Sources */,
@@ -530,7 +542,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"reaction/Preview Content\"";
 				DEVELOPMENT_TEAM = 5RH346BQ66;
 				ENABLE_PREVIEWS = YES;
@@ -554,7 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"reaction/Preview Content\"";
 				DEVELOPMENT_TEAM = 5RH346BQ66;
 				ENABLE_PREVIEWS = YES;

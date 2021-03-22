@@ -4,12 +4,13 @@ import SDWebImageSwiftUI
 struct ReactionListRow: View {
     let reactionMechanism: ReactionMechanism
     @Binding var showingThmbnail: Bool
+    @Binding var selectJapanese: Bool
     
     var body: some View {
         NavigationLink(
             destination: ReactionDetailView( reactionMechanism: reactionMechanism)) {
             VStack(alignment: .leading) {
-                Text(reactionMechanism.english)
+                Text(selectJapanese ? reactionMechanism.japanese : reactionMechanism.english)
                     .foregroundColor(Color.black)
                 if showingThmbnail {
                     WebImage(url: reactionMechanism.thmbnailUrl)

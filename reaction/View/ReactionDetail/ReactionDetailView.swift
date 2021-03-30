@@ -6,8 +6,11 @@ struct ReactionDetailView: View {
     @State var reactionMechanism: ReactionMechanism
     
     var body: some View {
-        ScrollView {
-            ReactionDetailContent(reactionMechanism: reactionMechanism)
+        ZStack(alignment: .bottom) {
+            ScrollView {
+                ReactionDetailContent(reactionMechanism: reactionMechanism)
+            }
+            AdmobBannerView(adUnitID: "ca-app-pub-3940256099942544/2934735716")
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)

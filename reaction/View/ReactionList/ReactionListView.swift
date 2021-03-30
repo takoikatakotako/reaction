@@ -24,6 +24,11 @@ struct ReactionListView: View {
                         .background(Color.black.opacity(0.5))
                         .cornerRadius(24)
                 }
+                
+                VStack {
+                    Spacer()
+                    AdmobBannerView(adUnitID: "ca-app-pub-3940256099942544/2934735716")
+                }
             }
             .onAppear {
                 viewModel.searchRepos()

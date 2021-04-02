@@ -2,8 +2,8 @@
     "reactions":[
       {
          "directoryName": "barton-reaction",
-         "english":"BartonReaction",
-         "japanese":"Barton反応",
+         "english":"Barton Reaction",
+         "japanese":"バートン反応",
          "thmbnailName":"barton-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -24,8 +24,8 @@
        },
        {
          "directoryName": "birch-reducion",
-         "english":"Birch Reducion",
-         "japanese":"Birch還元一般式",
+         "english":"Birch Reduction",
+         "japanese":"バーチ還元",
          "thmbnailName":"barton-reducion-general-formula-0.png",
          "generalFormulas":[
             {
@@ -56,7 +56,7 @@
        {
          "directoryName": "chan-rearrangement",
          "english":"Chan Rearrangement",
-         "japanese":"Chan転位",
+         "japanese":"チャン転位",
          "thmbnailName":"chan-rearrangement-general-formula-0.png",
          "generalFormulas":[
             {
@@ -78,7 +78,7 @@
        {
          "directoryName": "claisen-condensation",
          "english":"Claisen Condensation",
-         "japanese":"Claisen Condensation",
+         "japanese":"クライゼン転位",
          "thmbnailName":"claisen-condensation-general-formula-0.png",
          "generalFormulas":[
             {
@@ -103,7 +103,7 @@
        {
          "directoryName": "darzens-condensation",
          "english":"Darzens Condensation",
-         "japanese":"Darzens Condensation",
+         "japanese":"ダルツェンス縮合",
          "thmbnailName":"darzens-condensation-thumbnail.png",
          "generalFormulas":[
             {
@@ -125,7 +125,7 @@
        {
          "directoryName": "harries-ozonolysis",
          "english":"Harries Ozonolysis",
-         "japanese":"Harries Ozonolysis",
+         "japanese":"ハリースオゾン分解",
          "thmbnailName":"harries-ozonolysis-general-formula-0.png",
          "generalFormulas":[
             {
@@ -146,8 +146,8 @@
        },
        {
          "directoryName": "michael-addition",
-         "english":"Michael addition",
-         "japanese":"Michael付加",
+         "english":"Micharl Addition",
+         "japanese":"マイケル付加",
          "thmbnailName":"michael-addition-thumbnail.png",
          "generalFormulas":[
             {
@@ -169,7 +169,7 @@
        {
          "directoryName": "neber-rearrangement",
          "english":"Neber Rearrangement",
-         "japanese":"Neber転位",
+         "japanese":"ネバー転位",
          "thmbnailName":"neber-rearrangement-general-formula-0.png",
          "generalFormulas":[
             {
@@ -195,7 +195,7 @@
        {
          "directoryName": "perkow-reaction",
          "english":"Perkow Reaction",
-         "japanese":"Perkow反応",
+         "japanese":"パーコウ反応",
          "thmbnailName":"perkow-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -216,8 +216,8 @@
        },
        {
          "directoryName": "stork-enamine",
-         "english":"Stork Enamine",
-         "japanese":"Storkエナミン",
+         "english":"Stork Enamine Reaction",
+         "japanese":"ストークエナミン反応",
          "thmbnailName":"stork-enamine-general-formula-0.png",
          "generalFormulas":[
             {
@@ -239,7 +239,7 @@
        {
          "directoryName": "wittig-reaction",
          "english":"Wittig Reaction",
-         "japanese":"Wittig反応",
+         "japanese":"ウィッティヒ反応",
          "thmbnailName":"wittig-reaction-general-thmbnail.png",
          "generalFormulas":[
             {
@@ -260,8 +260,8 @@
        },
        {
          "directoryName": "wohl-ziegler-bromination",
-         "english":"Wohl-Ziegler Bromination",
-         "japanese":"Wohl-Ziegler臭素化",
+         "english":"Whol-Ziegler Bromination",
+         "japanese":"ウォール・チーグラー臭素化",
          "thmbnailName":"wohl-ziegler-bromination-general-formula-0.png",
          "generalFormulas":[
             {
@@ -285,8 +285,8 @@
        },
        {
          "directoryName": "balz-schimann-reaction",
-         "english":"Balz Schimann Reaction",
-         "japanese":"Balz Schimann Reaction",
+         "english":"Balz-Schimann Reaction",
+         "japanese":"バルツ・シーマン反応",
          "thmbnailName":"balz-schimann-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -304,7 +304,7 @@
        {
          "directoryName": "bamberger-rearrangement",
          "english":"Bamberger Rearrangement",
-         "japanese":"Bamberger Rearrangement",
+         "japanese":"バンバーガー転位",
          "thmbnailName":"bamberger-rearrangement-general-formula-0.png",
          "generalFormulas":[
             {
@@ -332,7 +332,7 @@
        {
          "directoryName": "acyloin-condensation",
          "english":"Acyloin Condensation",
-         "japanese":"Acyloin Condensation",
+         "japanese":"アシロイン縮合",
          "thmbnailName":"acyloin-condensation-general-formula-0.png",
          "generalFormulas":[
             {
@@ -358,7 +358,7 @@
        {
          "directoryName": "alpha-bromination-of-carbonyl",
          "english":"Alpha Bromination Of Carbonyl",
-         "japanese":"Alpha Bromination Of Carbonyl",
+         "japanese":"カルボニルのαｰブロモ化",
          "thmbnailName":"alpha-bromination-of-carbonyl-general-formula-0.png",
          "generalFormulas":[
             {
@@ -375,8 +375,8 @@
        },
        {
          "directoryName": "michaelis-arbuzov-reaction",
-         "english":"Michaelis Arbuzov Reaction",
-         "japanese":"Michaelis Arbuzov Reaction",
+         "english":"Michaelis-Arbuzov Reaction",
+         "japanese":"ミカエリス・アーブゾフ反応",
          "thmbnailName":"michaelis-arbuzov-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -401,8 +401,8 @@
        },
        {
          "directoryName": "meerwein-ponndorf-verley-reduction",
-         "english":"Meerwein Ponndorf Verley Reduction",
-         "japanese":"Meerwein Ponndorf Verley Reduction",
+         "english":"Meerwein-Ponndorf-Verley Reduction",
+         "japanese":"メーヤワイン・ポンドルフ・ヴァーレイ還元",
          "thmbnailName":"meerwein-ponndorf-verley-reduction-thmbnail.png",
          "generalFormulas":[
             {
@@ -427,7 +427,7 @@
        {
          "directoryName": "betti-reaction",
          "english":"Betti Reaction",
-         "japanese":"Betti Reaction",
+         "japanese":"ベティ反応",
          "thmbnailName":"betti-reaction-thumbnail.png",
          "generalFormulas":[
             {
@@ -449,7 +449,7 @@
        {
          "directoryName": "aldol-condensation",
          "english":"Aldol Condensation",
-         "japanese":"Aldol Condensation",
+         "japanese":"アルドール縮合",
          "thmbnailName":"aldol-condensation-thmbnail.png",
          "generalFormulas":[
             {
@@ -475,7 +475,7 @@
        {
          "directoryName": "appel-halogenation",
          "english":"Appel Halogenation",
-         "japanese":"Appel Halogenation",
+         "japanese":"アッペルハロゲン化",
          "thmbnailName":"appel-halogenation-thmbnail.png",
          "generalFormulas":[
             {
@@ -496,8 +496,8 @@
        },
        {
          "directoryName": "arndt-eistert-synthesis",
-         "english":"Arndt Eistert Synthesis",
-         "japanese":"Arndt Eistert Synthesis",
+         "english":"Arndt-Eistert Synthesis",
+         "japanese":"アーント・アイシュタート合成",
          "thmbnailName":"arndt-eistert-synthesis-thmbnail.png",
          "generalFormulas":[
             {
@@ -526,7 +526,7 @@
        {
          "directoryName": "criegee-oxidation",
          "english":"Criegee Oxidation",
-         "japanese":"Criegee Oxidation",
+         "japanese":"クリーギー酸化",
          "thmbnailName":"criegee-oxidation-general-formula-0.png",
          "generalFormulas":[
             {
@@ -554,8 +554,8 @@
        },
        {
          "directoryName": "eschenmoser-tabe-fragmentation",
-         "english":"Eschenmoser Tabe Fragmentation",
-         "japanese":"Eschenmoser Tabe Fragmentation",
+         "english":"Eschenmoser-Tanabe Fragmentation",
+         "japanese":"エッシェンモーザー・タナベ開裂",
          "thmbnailName":"eschenmoser-tabe-fragmentation-thmbnail.png",
          "generalFormulas":[
             {
@@ -577,7 +577,7 @@
        {
          "directoryName": "haloform-reaction",
          "english":"Haloform Reaction",
-         "japanese":"Haloform Reaction",
+         "japanese":"ハロホルム反応",
          "thmbnailName":"haloform-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -633,8 +633,8 @@
        },
        {
          "directoryName": "hell-volhard-zelinskii-reaction",
-         "english":"Hell Volhard Zelinskii Reaction",
-         "japanese":"Hell Volhard Zelinskii Reaction",
+         "english":"Hell-Volhard-Zelinskii Reaction",
+         "japanese":"ヘル・ヴォルハルト・ゼリンスキー反応",
          "thmbnailName":"hell-volhard-zelinskii-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -656,7 +656,7 @@
        {
          "directoryName": "malaprade-oxidation",
          "english":"Malaprade Oxidation",
-         "japanese":"Malaprade Oxidation",
+         "japanese":"マラプラード酸化",
          "thmbnailName":"malaprade-oxidation-general-formula-0.png",
          "generalFormulas":[
             {
@@ -685,7 +685,7 @@
        {
          "directoryName": "oppenauer-oxidation",
          "english":"Oppenauer Oxidation",
-         "japanese":"Oppenauer Oxidation",
+         "japanese":"オッペンアウワー酸化",
          "thmbnailName":"oppenauer-oxidation-thmbnail.png",
          "generalFormulas":[
             {
@@ -709,8 +709,8 @@
        },
        {
          "directoryName": "pcc-oxidation",
-         "english":"PccOxidation",
-         "japanese":"PccOxidation",
+         "english":"Pcc Oxidation",
+         "japanese":"PCC酸化",
          "thmbnailName":"pcc-oxidation-general-formula-0.png",
          "generalFormulas":[
             {
@@ -731,8 +731,8 @@
        },
        {
          "directoryName": "ramberg-backlund-rearrangement",
-         "english":"RambergBacklundRearrangement",
-         "japanese":"RambergBacklundRearrangement",
+         "english":"Ramberg-Backlund Rearrangement",
+         "japanese":"ランバーグ・バックランド転位",
          "thmbnailName":"ramberg-backlund-rearrangement-thmbnail.png",
          "generalFormulas":[
             {
@@ -753,8 +753,8 @@
        },
        {
          "directoryName": "sandmeyer-reaction",
-         "english":"SandmeyerReaction",
-         "japanese":"SandmeyerReaction",
+         "english":"Sandmeyer Reaction",
+         "japanese":"ザンドマイヤー反応",
          "thmbnailName":"sandmeyer-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -809,8 +809,8 @@
        },
        {
          "directoryName": "synthesis-of-diazo-compounds",
-         "english":"SynthesisOfDiazoCompounds",
-         "japanese":"SynthesisOfDiazoCompounds",
+         "english":"Synthesis Of Diazo Compounds",
+         "japanese":"ジアゾ化合物の合成",
          "thmbnailName":"synthesis-of-diazo-compounds-general-formula-0.png",
          "generalFormulas":[
             {
@@ -834,8 +834,8 @@
        },
        {
          "directoryName": "wolff-kishner-reduction",
-         "english":"WolffKishnerReduction",
-         "japanese":"WolffKishnerReduction",
+         "english":"Wolff-Kishner Reduction",
+         "japanese":"ウォルフ・キッシュナー還元",
          "thmbnailName":"wolff-kishner-reduction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -864,7 +864,7 @@
        {
          "directoryName": "wolff-rearrangement",
          "english":"Wolff Rearrangement",
-         "japanese":"Wolff Rearrangement",
+         "japanese":"ウォルフ転位",
          "thmbnailName":"wolff-rearrangement-general-formula-0.png",
          "generalFormulas":[
             {
@@ -892,8 +892,8 @@
        },
        {
          "directoryName": "chugaev-elimination",
-         "english":"ChugaevElimination",
-         "japanese":"ChugaevElimination",
+         "english":"Chugaev Elimination",
+         "japanese":"シュガフ脱離",
          "thmbnailName":"chugaev-elimination-general-formula.png",
          "generalFormulas":[
             {
@@ -914,8 +914,8 @@
        },
        {
          "directoryName": "jones-oxidation",
-         "english":"JonesOxidation",
-         "japanese":"JonesOxidation",
+         "english":"Jones Oxidation",
+         "japanese":"ジョーンズ酸化",
          "thmbnailName":"jones-oxidation-general-formula.png",
          "generalFormulas":[
             {
@@ -942,8 +942,8 @@
        },
        {
          "directoryName": "cannizzaro-reaction",
-         "english":"CannizzaroReaction",
-         "japanese":"CannizzaroReaction",
+         "english":"Cannizzaro Reaction",
+         "japanese":"カニッツァロ反応",
          "thmbnailName":"cannizzaro-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -967,8 +967,8 @@
        },
        {
          "directoryName": "corey-fuchs-alkynation",
-         "english":"CoreyFuchsAlkynation",
-         "japanese":"CoreyFuchsAlkynation",
+         "english":"Corey-Fuchs Alkynation",
+         "japanese":"コーリー・フックスアルキン合成",
          "thmbnailName":"corey-fuchs-alkynation-general-formula-0.png",
          "generalFormulas":[
             {
@@ -989,8 +989,8 @@
        },
        {
          "directoryName": "corey-kim-oxidation",
-         "english":"CoreyKimOxidation",
-         "japanese":"CoreyKimOxidation",
+         "english":"Corey-Kim Oxidation",
+         "japanese":"コーリー・キム酸化",
          "thmbnailName":"corey-kim-oxidation-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1011,8 +1011,8 @@
        },
        {
          "directoryName": "curtius-rearrangement",
-         "english":"CurtiusRearrangement",
-         "japanese":"CurtiusRearrangement",
+         "english":"Curtius Rearrangement",
+         "japanese":"クルチウス転位",
          "thmbnailName":"curtius-rearrangement-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1033,8 +1033,8 @@
        },
        {
          "directoryName": "dess-martin-oxiadation",
-         "english":"DessMartinOxiadation",
-         "japanese":"DessMartinOxiadation",
+         "english":"Dess-Martin Oxiadation",
+         "japanese":"デス・マーチン酸化",
          "thmbnailName":"dess-martin-oxiadation-thumbnail.png",
          "generalFormulas":[
             {
@@ -1055,8 +1055,8 @@
        },
        {
          "directoryName": "doebner-miller-quinoline-synthesis",
-         "english":"DoebnerMillerQuinolineSynthesis",
-         "japanese":"DoebnerMillerQuinolineSynthesis",
+         "english":"Doebner-Miller Quinoline Synthesis",
+         "japanese":"デーブナー・ミラーキノリン合成",
          "thmbnailName":"doebner-miller-quinoline-synthesis-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1081,8 +1081,8 @@
        },
        {
          "directoryName": "knoevenagel-condensation",
-         "english":"KnoevenagelCondensation",
-         "japanese":"KnoevenagelCondensation",
+         "english":"Knoevenagel Condensation",
+         "japanese":"クネフェナーゲル縮合",
          "thmbnailName":"knoevenagel-condensation-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1113,8 +1113,8 @@
        },
        {
          "directoryName": "kumada-tamao-corriu-crosscoupling",
-         "english":"KumadaTamaoCorriuCrosscoupling",
-         "japanese":"KumadaTamaoCorriuCrosscoupling",
+         "english":"Kumada-Tamao-Corriu Crosscoupling",
+         "japanese":"熊田・玉尾・コリューカップリング",
          "thmbnailName":"kumada-tamao-corriu-crosscoupling-thumbnail.png",
          "generalFormulas":[
             {
@@ -1135,8 +1135,8 @@
        },
        {
          "directoryName": "gabriel-amination",
-         "english":"GabrielAmination",
-         "japanese":"GabrielAmination",
+         "english":"Gabriel Amination",
+         "japanese":"ガブリエルアミン合成",
          "thmbnailName":"gabriel-amination-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1163,8 +1163,8 @@
        },
        {
          "directoryName": "parkin-reaction",
-         "english":"ParkinReaction",
-         "japanese":"ParkinReaction",
+         "english":"Parkin Reaction",
+         "japanese":"パーキン反応",
          "thmbnailName":"parkin-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1185,8 +1185,8 @@
        },
        {
          "directoryName": "swern-oxidation",
-         "english":"SwernOxidation",
-         "japanese":"SwernOxidation",
+         "english":"Swern Oxidation",
+         "japanese":"スワン酸化",
          "thmbnailName":"swern-oxidation-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1211,8 +1211,8 @@
        },
        {
          "directoryName": "fritsch-buttenberg-wiechel-rearrangement",
-         "english":"FritschButtenbergWiechelRearrangement",
-         "japanese":"FritschButtenbergWiechelRearrangement",
+         "english":"Fritsch-Buttenberg-Wiechel Rearrangement",
+         "japanese":"フリッチュ・ブッテンバーグ・ウィーチェル転位",
          "thmbnailName":"fritsch-buttenberg-wiechel-rearrangement-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1233,8 +1233,8 @@
        },
        {
          "directoryName": "mizoroki-heck-coupling",
-         "english":"MizorokiHeckCoupling",
-         "japanese":"MizorokiHeckCoupling",
+         "english":"Mizoroki-Heck Coupling",
+         "japanese":"溝呂木・ヘックカップリング",
          "thmbnailName":"mizoroki-heck-coupling-thumbnail.png",
          "generalFormulas":[
             {
@@ -1255,8 +1255,8 @@
        },
        {
          "directoryName": "nef-reaction",
-         "english":"NefReaction",
-         "japanese":"NefReaction",
+         "english":"Nef Reaction",
+         "japanese":"ネフ反応",
          "thmbnailName":"nef-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1277,8 +1277,8 @@
        },
        {
          "directoryName": "negishi-coupling",
-         "english":"NegishiCoupling",
-         "japanese":"NegishiCoupling",
+         "english":"Negishi Coupling",
+         "japanese":"根岸カップリング",
          "thmbnailName":"negishi-coupling-thumbnail.png",
          "generalFormulas":[
             {
@@ -1299,8 +1299,8 @@
        },
        {
          "directoryName": "simmons-smith-reaction",
-         "english":"SimmonsSmithReaction",
-         "japanese":"SimmonsSmithReaction",
+         "english":"Simmons-Smith Reaction",
+         "japanese":"シモンズ・スミス反応",
          "thmbnailName":"simmons-smith-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1325,8 +1325,8 @@
        },
        {
          "directoryName": "skraup-quinoline-synthesis",
-         "english":"SkraupQuinolineSynthesis",
-         "japanese":"SkraupQuinolineSynthesis",
+         "english":"Skraup Quinoline Synthesis",
+         "japanese":"スクラウプキノリン合成",
          "thmbnailName":"skraup-quinoline-synthesis-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1351,8 +1351,8 @@
        },
        {
          "directoryName": "suzuki-miyaura-coupling",
-         "english":"SuzukiMiyauraCoupling",
-         "japanese":"SuzukiMiyauraCoupling",
+         "english":"Suzuki-Miyaura Coupling",
+         "japanese":"鈴木・宮浦カップリング",
          "thmbnailName":"suzuki-miyaura-coupling-thumbnail.png",
          "generalFormulas":[
             {
@@ -1373,8 +1373,8 @@
        },
        {
          "directoryName": "ninhydrin-reaction",
-         "english":"NinhydrinReaction",
-         "japanese":"NinhydrinReaction",
+         "english":"Ninhydrin Reaction",
+         "japanese":"ニンヒドリン反応",
          "thmbnailName":"ninhydrin-reaction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1395,8 +1395,8 @@
        },
        {
          "directoryName": "bechamp-reduction",
-         "english":"BechampReduction",
-         "japanese":"BechampReduction",
+         "english":"Bechamp Reduction",
+         "japanese":"ベシャンプ還元",
          "thmbnailName":"bechamp-reduction-general-formula-0.png",
          "generalFormulas":[
             {
@@ -1413,8 +1413,8 @@
        },
        {
          "directoryName": "bouveault-blanc-reduction",
-         "english":"BouveaultBlancReduction",
-         "japanese":"BouveaultBlancReduction",
+         "english":"Bouveault-Blanc Reduction",
+         "japanese":"ブーボー・ブラン還元",
          "thmbnailName":"bouveault-blanc-reduction-general-formula-0.png",
          "generalFormulas":[
             {

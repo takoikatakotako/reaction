@@ -78,7 +78,7 @@
        {
          "directoryName": "claisen-condensation",
          "english":"Claisen Condensation",
-         "japanese":"クライゼン転位",
+         "japanese":"クライゼン縮合",
          "thmbnailName":"claisen-condensation-general-formula-0.png",
          "generalFormulas":[
             {
@@ -260,7 +260,7 @@
        },
        {
          "directoryName": "wohl-ziegler-bromination",
-         "english":"Whol-Ziegler Bromination",
+         "english":"Wohl-Ziegler Bromination",
          "japanese":"ウォール・チーグラー臭素化",
          "thmbnailName":"wohl-ziegler-bromination-general-formula-0.png",
          "generalFormulas":[
@@ -598,8 +598,8 @@
        },
        {
          "directoryName": "hwe-reaction",
-         "english":"HWE Reaction",
-         "japanese":"HWE Reaction",
+         "english":"Horner-Wadsworth-Emmons Reaction",
+         "japanese":"ホーナー・ワズワース・エモンス反応",
          "thmbnailName":"hwe-reaction-thmbnail.png",
          "generalFormulas":[
             {

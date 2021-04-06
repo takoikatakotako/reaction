@@ -12,7 +12,7 @@ struct ReactionDetailContent: View {
             
             if !reactionMechanism.generalFormulas.isEmpty {
                 VStack(spacing: 0) {
-                    Text("GeneralFormula")
+                    Text("General Formula")
                     ForEach(reactionMechanism.generalFormulas, id: \.self) { generalFormula in
                         WebImage(url: URL(string: reactionMechanism.reactionUrlString + generalFormula.imageName))
                             .resizable()

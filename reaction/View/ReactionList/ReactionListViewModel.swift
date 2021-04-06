@@ -10,23 +10,35 @@ enum ReactionListViewSheet: Identifiable {
 }
 
 class ReactionListViewModel: ObservableObject {
+    @Published var searchText: String = ""
     @Published var showingThmbnail = true
     @Published var selectJapanese = true
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
     @Published var sheet: ReactionListViewSheet?
+    
+    var showingReactions: [ReactionMechanism] {
+        if searchText.isEmpty {
+            return reactionMechanisms
+        } else {
+            return reactionMechanisms.filter { reactionMechanisms -> Bool in
+                for suggestion in reactionMechanisms.suggestions {
+                    if suggestion.uppercased().contains(searchText.uppercased()) {
+                        return true
+                    }
+                }
+                return false
+            }
+        }
+    }
+    
     private var subscriptions = Set<AnyCancellable>()
     
     func searchRepos() {
         let url = URL(string: "https://chemist.swiswiswift.com/reactions.json")!
-        
-        struct Json: Decodable {
-            let reactions: [ReactionMechanism]
-        }
-        
         URLSession.shared
             .dataTaskPublisher(for: url)
-            .tryMap { try JSONDecoder().decode(Json.self, from: $0.data).reactions }
+            .tryMap { try JSONDecoder().decode([ReactionMechanism].self, from: $0.data) }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
             .sink(receiveCompletion: { completion in
@@ -45,7 +57,7 @@ class ReactionListViewModel: ObservableObject {
             .store(in: &self.subscriptions)
     }
     
-    func showxxx() {
+    func showSetting() {
         self.sheet = .config
     }
 }

@@ -12,6 +12,7 @@ struct ReactionMechanism: Identifiable, Decodable {
     let mechanisms: [Mechanism]
     let examples: [Example]
     let supplements: [Supplement]
+    let suggestions: [String]
     
     var thmbnailUrl: URL {
         return URL(string: "\(appEnvironment.baseUrlString)/\(directoryName)/\(thmbnailName)")!
@@ -48,6 +49,7 @@ extension ReactionMechanism: Mockable {
             generalFormulas: [GeneralFormula(imageName: "barton-reaction-general-expression.png")],
             mechanisms: [Mechanism(imageName: "barton-reaction-mechanism.png")],
             examples: [Example(imageName: "barton-reaction-example.png")],
-            supplements: [Supplement(imageName: "barton-reaction-example.png")])
+            supplements: [Supplement(imageName: "barton-reaction-example.png")],
+            suggestions: [])
     }
 }

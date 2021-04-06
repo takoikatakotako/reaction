@@ -10,7 +10,10 @@ struct ReactionListView: View {
             ZStack {
                 ScrollView {
                     LazyVStack {
-                        ForEach(viewModel.reactionMechanisms) { (reactionMechanism: ReactionMechanism) in
+                        TextField("Type your search",text: $viewModel.searchText)
+                            .padding(8)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        ForEach(viewModel.showingReactions) { (reactionMechanism: ReactionMechanism) in
                             ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewModel.showingThmbnail, selectJapanese: $viewModel.selectJapanese)
                         }
                     }
@@ -50,7 +53,7 @@ struct ReactionListView: View {
                     Text("Info")
                 }),
                 trailing: Button(action: {
-                    viewModel.showxxx()
+                    viewModel.showSetting()
                 }, label: {
                     Image("icon-setting")
                 })

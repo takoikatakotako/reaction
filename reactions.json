@@ -142,7 +142,8 @@
   "supplements": [],
   "suggestions": [
    "Darzens Condensation",
-   "ダルツェンス縮合"
+   "ダルツェンス縮合",
+   "ダルツェン縮合"
   ],
   "tags": []
  },
@@ -169,7 +170,10 @@
   "supplements": [],
   "suggestions": [
    "Harries Ozonolysis",
-   "ハリースオゾン分解"
+   "ハリースオゾン分解",
+   "ハリースオゾン酸化",
+   "オゾン分解",
+   "オゾン酸化"
   ],
   "tags": []
  },
@@ -254,7 +258,8 @@
   "supplements": [],
   "suggestions": [
    "Perkow Reaction",
-   "パーコウ反応"
+   "パーコウ反応",
+   "パーコー反応"
   ],
   "tags": []
  },
@@ -308,7 +313,8 @@
   "supplements": [],
   "suggestions": [
    "Wittig Reaction",
-   "ウィッティヒ反応"
+   "ウィッティヒ反応",
+   "ウィティッヒ反応"
   ],
   "tags": []
  },
@@ -338,7 +344,9 @@
   "supplements": [],
   "suggestions": [
    "Wohl-Ziegler Bromination",
-   "ウォール・チーグラー臭素化"
+   "ウォール・チーグラー臭素化",
+   "ウォール・ジーグラー臭素化",
+   "ウォール・チーグラー反応"
   ],
   "tags": []
  },
@@ -509,7 +517,9 @@
   ],
   "suggestions": [
    "Meerwein-Ponndorf-Verley Reduction",
-   "メーヤワイン・ポンドルフ・ヴァーレイ還元"
+   "メーヤワイン・ポンドルフ・ヴァーレイ還元",
+   "メーヤワインｰポンドルフｰバーレイ還元",
+   "MPV還元"
   ],
   "tags": []
  },
@@ -536,7 +546,8 @@
   "supplements": [],
   "suggestions": [
    "Betti Reaction",
-   "ベティ反応"
+   "ベティ反応",
+   "ベッティ反応"
   ],
   "tags": []
  },
@@ -594,7 +605,8 @@
   "supplements": [],
   "suggestions": [
    "Appel Halogenation",
-   "アッペルハロゲン化"
+   "アッペルハロゲン化",
+   "アッペル反応"
   ],
   "tags": []
  },
@@ -628,7 +640,8 @@
   ],
   "suggestions": [
    "Arndt-Eistert Synthesis",
-   "アーント・アイシュタート合成"
+   "アーント・アイシュタート合成",
+   ""
   ],
   "tags": []
  },
@@ -716,7 +729,8 @@
   "supplements": [],
   "suggestions": [
    "Haloform Reaction",
-   "ハロホルム反応"
+   "ハロホルム反応",
+   "ヨードホルム反応"
   ],
   "tags": []
  },
@@ -756,7 +770,8 @@
   ],
   "suggestions": [
    "Horner-Wadsworth-Emmons Reaction",
-   "ホーナー・ワズワース・エモンス反応"
+   "ホーナー・ワズワース・エモンス反応",
+   "HWE反応"
   ],
   "tags": []
  },
@@ -783,7 +798,9 @@
   "supplements": [],
   "suggestions": [
    "Hell-Volhard-Zelinskii Reaction",
-   "ヘル・ヴォルハルト・ゼリンスキー反応"
+   "ヘル・ヴォルハルト・ゼリンスキー反応",
+   "ヘルｰボルハルトｰゼリンスキー反応",
+   "HVZ反応"
   ],
   "tags": []
  },
@@ -847,7 +864,9 @@
   ],
   "suggestions": [
    "Oppenauer Oxidation",
-   "オッペンアウワー酸化"
+   "オッペンアウワー酸化",
+   "オッペナウワー酸化",
+   "オッペンアワー酸化"
   ],
   "tags": []
  },
@@ -1031,7 +1050,8 @@
   ],
   "suggestions": [
    "Wolff-Kishner Reduction",
-   "ウォルフ・キッシュナー還元"
+   "ウォルフ・キッシュナー還元",
+   "ヴォルフｰキッシュナー還元"
   ],
   "tags": []
  },
@@ -1065,7 +1085,8 @@
   ],
   "suggestions": [
    "Wolff Rearrangement",
-   "ウォルフ転位"
+   "ウォルフ転位",
+   "ヴォルフ転位"
   ],
   "tags": []
  },
@@ -1182,7 +1203,8 @@
   ],
   "suggestions": [
    "Corey-Fuchs Alkynation",
-   "コーリー・フックスアルキン合成"
+   "コーリー・フックスアルキン合成",
+   "コーリー・フックス反応"
   ],
   "tags": []
  },
@@ -1294,7 +1316,8 @@
   ],
   "suggestions": [
    "Doebner-Miller Quinoline Synthesis",
-   "デーブナー・ミラーキノリン合成"
+   "デーブナー・ミラーキノリン合成",
+   "デーブナー・ミラー合成"
   ],
   "tags": []
  },
@@ -1331,7 +1354,9 @@
   ],
   "suggestions": [
    "Knoevenagel Condensation",
-   "クネフェナーゲル縮合"
+   "クネフェナーゲル縮合",
+   "クネベナゲル縮合",
+   "クネーフェナーゲル縮合"
   ],
   "tags": []
  },
@@ -1358,7 +1383,8 @@
   "supplements": [],
   "suggestions": [
    "Kumada-Tamao-Corriu Crosscoupling",
-   "熊田・玉尾・コリューカップリング"
+   "熊田・玉尾・コリューカップリング",
+   "熊田・玉尾・コリュークロスカップリング"
   ],
   "tags": []
  },
@@ -1391,7 +1417,9 @@
   "supplements": [],
   "suggestions": [
    "Gabriel Amination",
-   "ガブリエルアミン合成"
+   "ガブリエルアミン合成",
+   "ガブリエル反応",
+   "ガブリエル合成"
   ],
   "tags": []
  },
@@ -1449,7 +1477,8 @@
   ],
   "suggestions": [
    "Swern Oxidation",
-   "スワン酸化"
+   "スワン酸化",
+   "スワーン酸化"
   ],
   "tags": []
  },
@@ -1476,7 +1505,8 @@
   ],
   "suggestions": [
    "Fritsch-Buttenberg-Wiechel Rearrangement",
-   "フリッチュ・ブッテンバーグ・ウィーチェル転位"
+   "フリッチュ・ブッテンバーグ・ウィーチェル転位",
+   "FBW転位"
   ],
   "tags": []
  },
@@ -1503,7 +1533,8 @@
   "supplements": [],
   "suggestions": [
    "Mizoroki-Heck Coupling",
-   "溝呂木・ヘックカップリング"
+   "溝呂木・ヘックカップリング",
+   "溝呂木・ヘッククロスカップリング"
   ],
   "tags": []
  },
@@ -1557,7 +1588,8 @@
   "supplements": [],
   "suggestions": [
    "Negishi Coupling",
-   "根岸カップリング"
+   "根岸カップリング",
+   "根岸クロスカップリング"
   ],
   "tags": []
  },
@@ -1619,7 +1651,8 @@
   ],
   "suggestions": [
    "Skraup Quinoline Synthesis",
-   "スクラウプキノリン合成"
+   "スクラウプキノリン合成",
+   "スクラウプ合成"
   ],
   "tags": []
  },
@@ -1646,7 +1679,8 @@
   "supplements": [],
   "suggestions": [
    "Suzuki-Miyaura Coupling",
-   "鈴木・宮浦カップリング"
+   "鈴木・宮浦カップリング",
+   "鈴木・宮浦クロスカップリング"
   ],
   "tags": []
  },
@@ -1696,7 +1730,9 @@
   "supplements": [],
   "suggestions": [
    "Bechamp Reduction",
-   "ベシャンプ還元"
+   "ベシャンプ還元",
+   "ベシャン還元",
+   "ベチャンプ還元"
   ],
   "tags": []
  },

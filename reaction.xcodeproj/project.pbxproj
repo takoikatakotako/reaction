@@ -31,6 +31,7 @@
 		8DB1E9AB2608F6F500FB2B85 /* ReactionListConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E9AA2608F6F500FB2B85 /* ReactionListConfigView.swift */; };
 		8DE0BF2225F7D27100EAE32A /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE0BF2125F7D27100EAE32A /* AppEnvironment.swift */; };
 		8DE0BF2D25F7D58300EAE32A /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE0BF2C25F7D58300EAE32A /* Mockable.swift */; };
+		8DF526A0261EAEA50011CAEE /* UserDefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5269F261EAEA50011CAEE /* UserDefaultRepository.swift */; };
 		8DF8A44C25FBCF4C009A4976 /* DeveloperRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF8A44B25FBCF4C009A4976 /* DeveloperRow.swift */; };
 		9566AD5887932E963D7BFD89 /* Pods_reaction.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F683607A182F9C3DFC0568 /* Pods_reaction.framework */; };
 /* End PBXBuildFile section */
@@ -84,6 +85,7 @@
 		8DB1E9AA2608F6F500FB2B85 /* ReactionListConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionListConfigView.swift; sourceTree = "<group>"; };
 		8DE0BF2125F7D27100EAE32A /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		8DE0BF2C25F7D58300EAE32A /* Mockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockable.swift; sourceTree = "<group>"; };
+		8DF5269F261EAEA50011CAEE /* UserDefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultRepository.swift; sourceTree = "<group>"; };
 		8DF8A44B25FBCF4C009A4976 /* DeveloperRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperRow.swift; sourceTree = "<group>"; };
 		D974AF9E31EAE7372751057D /* Pods-reactionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactionTests.debug.xcconfig"; path = "Target Support Files/Pods-reactionTests/Pods-reactionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DDB4DC823FABAD1B8CB7BE68 /* Pods-reaction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reaction.release.xcconfig"; path = "Target Support Files/Pods-reaction/Pods-reaction.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		8D7F2AD525F0D29600660A5A /* reaction */ = {
 			isa = PBXGroup;
 			children = (
+				8DF5269E261EAE7C0011CAEE /* Repository */,
 				8D938E962613885800212D52 /* GoogleService-Info.plist */,
 				8DE0BF2025F7D25D00EAE32A /* Enviroment */,
 				8D7F2B0725F0D2FB00660A5A /* Entity */,
@@ -275,6 +278,14 @@
 				8DE0BF2125F7D27100EAE32A /* AppEnvironment.swift */,
 			);
 			path = Enviroment;
+			sourceTree = "<group>";
+		};
+		8DF5269E261EAE7C0011CAEE /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				8DF5269F261EAEA50011CAEE /* UserDefaultRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		AE535158243F24E3F458F0AE /* Pods */ = {
@@ -556,6 +567,7 @@
 				8D8788B125FBC2A100677F73 /* ReactionListViewModel.swift in Sources */,
 				8D51C2A025F0D57300B7E936 /* ReactionDetailView.swift in Sources */,
 				8D8788B625FBC2CE00677F73 /* ReactionListRow.swift in Sources */,
+				8DF526A0261EAEA50011CAEE /* UserDefaultRepository.swift in Sources */,
 				8DE0BF2225F7D27100EAE32A /* AppEnvironment.swift in Sources */,
 				8D8788BC25FBC87600677F73 /* DeveloperView.swift in Sources */,
 				8DE0BF2D25F7D58300EAE32A /* Mockable.swift in Sources */,
@@ -719,7 +731,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"reaction/Preview Content\"";
 				DEVELOPMENT_TEAM = 5RH346BQ66;
 				ENABLE_PREVIEWS = YES;
@@ -744,7 +756,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"reaction/Preview Content\"";
 				DEVELOPMENT_TEAM = 5RH346BQ66;
 				ENABLE_PREVIEWS = YES;

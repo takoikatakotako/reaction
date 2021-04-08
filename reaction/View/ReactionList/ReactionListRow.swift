@@ -8,7 +8,7 @@ struct ReactionListRow: View {
     
     var body: some View {
         NavigationLink(
-            destination: ReactionDetailView( reactionMechanism: reactionMechanism)) {
+            destination: ReactionDetailView(selectJapanese: selectJapanese, reactionMechanism: reactionMechanism)) {
             VStack(alignment: .leading) {
                 Text(selectJapanese ? reactionMechanism.japanese : reactionMechanism.english)
                     .foregroundColor(Color.black)

@@ -2,23 +2,30 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ReactionDetailView: View {
+    let selectJapanese: Bool
     @State var showingSheet = false
     @State var reactionMechanism: ReactionMechanism
     
     var body: some View {
         ZStack(alignment: .bottom) {
             ScrollView {
-                ReactionDetailContent(reactionMechanism: reactionMechanism)
+                ReactionDetailContent(selectJapanese: selectJapanese, reactionMechanism: reactionMechanism)
+                    .padding(.bottom, 62)
             }
             AdmobBannerView(adUnitID: "ca-app-pub-3940256099942544/2934735716")
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: Button("全画面") {
-            let value = UIInterfaceOrientation.landscapeRight.rawValue
-            UIDevice.current.setValue(value, forKey: "orientation")
-            showingSheet = true
-        })
+        .navigationBarItems(
+            trailing:
+                Button(action: {
+                    let value = UIInterfaceOrientation.landscapeRight.rawValue
+                    UIDevice.current.setValue(value, forKey: "orientation")
+                    showingSheet = true
+                }, label: {
+                    Image(systemName: "arrow.clockwise")
+                })
+        )
         .fullScreenCover(isPresented: $showingSheet) {
             ReactionDetailFullScreenView(reactionMechanism: reactionMechanism)
         }
@@ -28,7 +35,7 @@ struct ReactionDetailView: View {
 struct ReactionDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ReactionDetailView(reactionMechanism: ReactionMechanism.mock())
+            ReactionDetailView(selectJapanese: false, reactionMechanism: ReactionMechanism.mock())
         }
     }
 }

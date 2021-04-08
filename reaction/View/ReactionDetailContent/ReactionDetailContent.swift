@@ -2,17 +2,18 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ReactionDetailContent: View {
+    let selectJapanese: Bool
     @State var reactionMechanism: ReactionMechanism
     
     var body: some View {
         LazyVStack {
-            Text(reactionMechanism.english)
+            Text(selectJapanese ? reactionMechanism.japanese : reactionMechanism.english)
                 .font(Font.system(size: 24))
                 .padding(.bottom, 12)
             
             if !reactionMechanism.generalFormulas.isEmpty {
                 VStack(spacing: 0) {
-                    Text("General Formula")
+                    Text(selectJapanese ? "一般式" : "General Formula")
                     ForEach(reactionMechanism.generalFormulas, id: \.self) { generalFormula in
                         WebImage(url: URL(string: reactionMechanism.reactionUrlString + generalFormula.imageName))
                             .resizable()
@@ -24,7 +25,7 @@ struct ReactionDetailContent: View {
             
             if !reactionMechanism.mechanisms.isEmpty {
                 VStack(spacing: 0) {
-                    Text("Mechanism")
+                    Text(selectJapanese ? "反応機構" : "Mechanism")
                     ForEach(reactionMechanism.mechanisms, id: \.self) { mechanism in
                         WebImage(url: URL(string: reactionMechanism.reactionUrlString + mechanism.imageName))
                             .resizable()
@@ -36,7 +37,7 @@ struct ReactionDetailContent: View {
             
             if !reactionMechanism.examples.isEmpty {
                 VStack(spacing: 0) {
-                    Text("Example")
+                    Text(selectJapanese ?  "例" : "Example")
                     ForEach(reactionMechanism.examples, id: \.self) { example in
                         WebImage(url: URL(string: reactionMechanism.reactionUrlString + example.imageName))
                             .resizable()
@@ -48,7 +49,7 @@ struct ReactionDetailContent: View {
             
             if !reactionMechanism.supplements.isEmpty {
                 VStack(spacing: 0) {
-                    Text("Supplement")
+                    Text(selectJapanese ?  "補足" : "Supplement")
                     ForEach(reactionMechanism.supplements, id: \.self) { supplement in
                         WebImage(url: URL(string: reactionMechanism.reactionUrlString + supplement.imageName))
                             .resizable()
@@ -64,6 +65,6 @@ struct ReactionDetailContent: View {
 
 struct ReactionDetailContent_Previews: PreviewProvider {
     static var previews: some View {
-        ReactionDetailContent(reactionMechanism: ReactionMechanism.mock())
+        ReactionDetailContent(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
     }
 }

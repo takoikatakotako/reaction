@@ -7,15 +7,16 @@ struct ReactionListConfigView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("サムネイル")
+                Text(selectJapanese ? "サムネイル" : "Thumbnail")
                     .font(Font.system(size: 22))
                 HStack {
                     Button {
                         showingThmbnail = true
+                        UserDefaultRepository().setShowThmbnail(true)
                     } label: {
-                        Text("表示")
+                        Text(selectJapanese ? "表示" : "Show")
                             .font(Font.system(size: 28))
-                            .frame(width: 100)
+                            .frame(width: 120)
                             .foregroundColor(Color.black)
                             .padding(12)
                             .overlay(
@@ -29,10 +30,11 @@ struct ReactionListConfigView: View {
 
                     Button {
                         showingThmbnail = false
+                        UserDefaultRepository().setShowThmbnail(false)
                     } label: {
-                        Text("非表示")
+                        Text(selectJapanese ? "非表示" : "Hide")
                             .font(Font.system(size: 28))
-                            .frame(width: 100)
+                            .frame(width: 120)
                             .foregroundColor(Color.black)
                             .padding(12)
                             .overlay(
@@ -46,16 +48,17 @@ struct ReactionListConfigView: View {
                 }
                 .padding(.bottom, 16)
                 
-                Text("言語")
+                Text(selectJapanese ? "言語" : "Langage")
                     .font(Font.system(size: 22))
 
                 HStack {
                     Button {
                         selectJapanese = true
+                        UserDefaultRepository().setSelectedJapanese(true)
                     } label: {
-                        Text("日本語")
+                        Text(selectJapanese ? "日本語" : "Japanese")
                             .font(Font.system(size: 28))
-                            .frame(width: 100)
+                            .frame(width: 120)
                             .foregroundColor(Color.black)
                             .padding(12)
                             .overlay(
@@ -69,10 +72,11 @@ struct ReactionListConfigView: View {
 
                     Button {
                         selectJapanese = false
+                        UserDefaultRepository().setSelectedJapanese(false)
                     } label: {
-                        Text("英語")
+                        Text(selectJapanese ? "英語" : "English")
                             .font(Font.system(size: 28))
-                            .frame(width: 100)
+                            .frame(width: 120)
                             .foregroundColor(Color.black)
                             .padding(12)
                             .overlay(

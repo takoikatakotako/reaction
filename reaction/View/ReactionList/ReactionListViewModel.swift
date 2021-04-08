@@ -11,11 +11,16 @@ enum ReactionListViewSheet: Identifiable {
 
 class ReactionListViewModel: ObservableObject {
     @Published var searchText: String = ""
-    @Published var showingThmbnail = true
-    @Published var selectJapanese = true
+    @Published var showingThmbnail: Bool
+    @Published var selectJapanese: Bool
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
     @Published var sheet: ReactionListViewSheet?
+    
+    init(showingThmbnail: Bool, selectJapanese: Bool) {
+        self.showingThmbnail = showingThmbnail
+        self.selectJapanese = selectJapanese
+    }
     
     var showingReactions: [ReactionMechanism] {
         if searchText.isEmpty {

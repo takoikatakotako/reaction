@@ -3,7 +3,11 @@ import Combine
 import SDWebImageSwiftUI
 
 struct ReactionListView: View {
-    @StateObject var viewModel = ReactionListViewModel()
+    @StateObject var viewModel: ReactionListViewModel
+    
+    init(showingThmbnail: Bool, selectJapanese: Bool) {
+        _viewModel = StateObject(wrappedValue: ReactionListViewModel(showingThmbnail: showingThmbnail, selectJapanese: selectJapanese))
+    }
     
     var body: some View {
         NavigationView {
@@ -17,6 +21,7 @@ struct ReactionListView: View {
                             ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewModel.showingThmbnail, selectJapanese: $viewModel.selectJapanese)
                         }
                     }
+                    .padding(.bottom, 62)
                 }
                 
                 if viewModel.isFetching {
@@ -64,6 +69,6 @@ struct ReactionListView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ReactionListView()
+        ReactionListView(showingThmbnail: true, selectJapanese: false)
     }
 }

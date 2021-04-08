@@ -7,14 +7,19 @@ struct ReactionDetailFullScreenView: View {
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
-                ReactionDetailContent(reactionMechanism: reactionMechanism)
+                ReactionDetailContent(selectJapanese: true, reactionMechanism: reactionMechanism)
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading: Button("閉じる") {
-                let value = UIInterfaceOrientation.portrait.rawValue
-                UIDevice.current.setValue(value, forKey: "orientation")
-                self.presentationMode.wrappedValue.dismiss()
-            })
+            .navigationBarItems(
+                leading:
+                    Button(action: {
+                        let value = UIInterfaceOrientation.portrait.rawValue
+                        UIDevice.current.setValue(value, forKey: "orientation")
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "arrow.counterclockwise")
+                    })
+            )
         }
     }
 }

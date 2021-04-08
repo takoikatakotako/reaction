@@ -958,6 +958,33 @@
   "tags": []
  },
  {
+  "directoryName": "kolbe-schmitt-reaction",
+  "english": "Knoevenagel Condensation",
+  "japanese": "クネフェナーゲル縮合",
+  "thmbnailName": "kolbe-schmitt-reaction-general-formula.png",
+  "generalFormulas": [
+   {
+    "imageName": "kolbe-schmitt-reaction-general-formula.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "kolbe-schmitt-reaction-mechanism.png"
+   }
+  ],
+  "examples": [],
+  "supplements": [
+   {
+    "imageName": "kolbe-schmitt-reaction-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Knoevenagel Condensation",
+   "クネフェナーゲル縮合"
+  ],
+  "tags": []
+ },
+ {
   "directoryName": "kumada-tamao-corriu-crosscoupling",
   "english": "Kumada-Tamao-Corriu Crosscoupling",
   "japanese": "熊田・玉尾・コリューカップリング",
@@ -1514,36 +1541,6 @@
   "suggestions": [
    "Stork Enamine Reaction",
    "ストークエナミン反応"
-  ],
-  "tags": []
- },
- {
-  "directoryName": "stork-enamine-reaction",
-  "english": "StorkEnamineReaction",
-  "japanese": "StorkEnamineReaction",
-  "thmbnailName": "stork-enamine-reaction-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "stork-enamine-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "stork-enamine-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "stork-enamine-reaction-example-0.png"
-   },
-   {
-    "imageName": "stork-enamine-reaction-example-1.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "StorkEnamineReaction",
-   "StorkEnamineReaction"
   ],
   "tags": []
  },

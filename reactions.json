@@ -961,36 +961,6 @@
   "tags": []
  },
  {
-  "directoryName": "stork-enamine-reaction",
-  "english": "StorkEnamineReaction",
-  "japanese": "StorkEnamineReaction",
-  "thmbnailName": "stork-enamine-reaction-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "stork-enamine-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "stork-enamine-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "stork-enamine-reaction-example-0.png"
-   },
-   {
-    "imageName": "stork-enamine-reaction-example-1.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "StorkEnamineReaction",
-   "StorkEnamineReaction"
-  ],
-  "tags": []
- },
- {
   "directoryName": "synthesis-of-diazo-compounds",
   "english": "Synthesis Of Diazo Compounds",
   "japanese": "ジアゾ化合物の合成",
@@ -1150,6 +1120,33 @@
   ],
   "tags": []
  },
+ {
+    "directoryName": "kolbe-schmitt-reaction",
+    "english": "Knoevenagel Condensation",
+    "japanese": "クネフェナーゲル縮合",
+    "thmbnailName": "kolbe-schmitt-reaction-general-formula.png",
+    "generalFormulas": [
+     {
+      "imageName": "kolbe-schmitt-reaction-general-formula.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "kolbe-schmitt-reaction-mechanism.png"
+     }
+    ],
+    "examples": [],
+    "supplements": [
+        {
+            "imageName": "kolbe-schmitt-reaction-supplement-0.png"
+        }
+    ],
+    "suggestions": [
+     "Knoevenagel Condensation",
+     "クネフェナーゲル縮合"
+    ],
+    "tags": []
+   },
  {
   "directoryName": "cannizzaro-reaction",
   "english": "Cannizzaro Reaction",

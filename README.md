@@ -75,3 +75,12 @@ outputディレクトリを zip で圧縮し、小野に送ってください。
 ```
 $ ./checker
 ```
+
+
+## Buid
+
+for windows
+
+```
+$ GOOS=windows GOARCH=amd64 go build -o checker.exe checker.go 
+```

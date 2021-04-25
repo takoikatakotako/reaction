@@ -40,7 +40,7 @@ class ReactionListViewModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     
     func searchRepos() {
-        let url = URL(string: "https://chemist.swiswiswift.com/reactions.json")!
+        let url = URL(string: "https://chemist.swiswiswift.com/resource/reactions.json")!
         URLSession.shared
             .dataTaskPublisher(for: url)
             .tryMap { try JSONDecoder().decode([ReactionMechanism].self, from: $0.data) }

@@ -15,11 +15,13 @@ struct ReactionMechanism: Identifiable, Decodable {
     let suggestions: [String]
     
     var thmbnailUrl: URL {
-        return URL(string: "\(appEnvironment.baseUrlString)/\(directoryName)/\(thmbnailName)")!
+        let string = "\(appEnvironment.baseUrlString)/resource/images/\(directoryName)/\(thmbnailName)"
+        return URL(string: string)!
     }
     
     var reactionUrlString: String {
-        return "\(appEnvironment.baseUrlString)/\(directoryName)/"
+        let string = "\(appEnvironment.baseUrlString)/resource/images/\(directoryName)/"
+        return string
     }
 }
 

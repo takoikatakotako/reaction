@@ -64,6 +64,7 @@ struct ReactionListView: View {
                 })
             )
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

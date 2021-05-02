@@ -45,13 +45,13 @@ targets:
       - path: reaction
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.Reaction
+        PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.chemist
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 5RH346BQ66
         INFOPLIST_FILE: Reaction/Info.plist
-        MARKETING_VERSION: 2.1.0
+        MARKETING_VERSION: 4.0.0
         CURRENT_PROJECT_VERSION: 1
-        TARGETED_DEVICE_FAMILY: 1
+        TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Local
       configs:
         Debug:
@@ -80,13 +80,13 @@ targets:
       - path: reaction
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.Reaction.staging
+        PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.chemist
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 5RH346BQ66
         INFOPLIST_FILE: Reaction/Info.plist
-        MARKETING_VERSION: 2.1.0
+        MARKETING_VERSION: 4.0.0
         CURRENT_PROJECT_VERSION: 1
-        TARGETED_DEVICE_FAMILY: 1
+        TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Staging
       configs:
         Debug:
@@ -127,14 +127,13 @@ targets:
           - $SRCROOT/Reaction/Generated/R.generated.swift
     settings:
       base:
-        CODE_SIGN_ENTITLEMENTS: Reaction/ReactionRelease.entitlements
-        PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.Reaction
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.junpei.chemi
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 5RH346BQ66
         INFOPLIST_FILE: Reaction/Info.plist
-        MARKETING_VERSION: 2.1.0
+        MARKETING_VERSION: 4.0.0
         CURRENT_PROJECT_VERSION: 1
-        TARGETED_DEVICE_FAMILY: 1
+        TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Production
       configs:
         Debug:

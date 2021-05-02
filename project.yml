@@ -56,12 +56,10 @@ targets:
       configs:
         Debug:
           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
-          ADMOB_ALARM_LIST: ca-app-pub-3940256099942544/2934735716
-          ADMOB_CONFIG: ca-app-pub-3940256099942544/2934735716
+          ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
         Release:
           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
-          ADMOB_ALARM_LIST: ca-app-pub-3940256099942544/2934735716
-          ADMOB_CONFIG: ca-app-pub-3940256099942544/2934735716
+          ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
     dependencies:
       - package: R.swift.Library
         product: Rswift
@@ -93,12 +91,10 @@ targets:
       configs:
         Debug:
           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
-          ADMOB_ALARM_LIST: ca-app-pub-3940256099942544/2934735716
-          ADMOB_CONFIG: ca-app-pub-3940256099942544/2934735716
+          ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
         Release:
           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
-          ADMOB_ALARM_LIST: ca-app-pub-3940256099942544/2934735716
-          ADMOB_CONFIG: ca-app-pub-3940256099942544/2934735716
+          ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
     dependencies:
       - package: R.swift.Library
         product: Rswift
@@ -142,13 +138,11 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Production
       configs:
         Debug:
-          GAD_APPLICATION_IDENTIFER: ca-app-pub-5587141252700968~9053558907
-          ADMOB_ALARM_LIST: ca-app-pub-5587141252700968/8220227024
-          ADMOB_CONFIG: ca-app-pub-5587141252700968/1355204268
+          GAD_APPLICATION_IDENTIFER: ca-app-pub-5587141252700968~7266182338
+          ADMOB_UNIT_ID: ca-app-pub-5587141252700968/3350341396
         Release:
-          GAD_APPLICATION_IDENTIFER: ca-app-pub-5587141252700968~9053558907
-          ADMOB_ALARM_LIST: ca-app-pub-5587141252700968/8220227024
-          ADMOB_CONFIG: ca-app-pub-5587141252700968/1355204268
+          GAD_APPLICATION_IDENTIFER: ca-app-pub-5587141252700968~7266182338
+          ADMOB_UNIT_ID: ca-app-pub-5587141252700968/3350341396
   ReactionTests:
     type: bundle.unit-test
     platform: iOS

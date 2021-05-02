@@ -12,7 +12,7 @@ struct ReactionDetailView: View {
                 ReactionDetailContent(selectJapanese: selectJapanese, reactionMechanism: reactionMechanism)
                     .padding(.bottom, 62)
             }
-            AdmobBannerView(adUnitID: "ca-app-pub-3940256099942544/2934735716")
+            AdmobBannerView(adUnitID: adUnitID)
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)

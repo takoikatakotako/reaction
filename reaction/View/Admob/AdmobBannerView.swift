@@ -39,6 +39,6 @@ struct AdmobBannerView: View {
 struct BannerView_Previews: PreviewProvider {
     static var previews: some View {
         // TestUnitId
-        AdmobBannerView(adUnitID: "ca-app-pub-3940256099942544/2934735716")
+        AdmobBannerView(adUnitID: adUnitID)
     }
 }

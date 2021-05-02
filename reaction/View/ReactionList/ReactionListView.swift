@@ -35,7 +35,7 @@ struct ReactionListView: View {
                 
                 VStack {
                     Spacer()
-                    AdmobBannerView(adUnitID: "ca-app-pub-3940256099942544/2934735716")
+                    AdmobBannerView(adUnitID: adUnitID)
                 }
             }
             .onAppear {

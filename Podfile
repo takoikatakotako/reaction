@@ -1,21 +1,35 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'reaction' do
-  # Comment the next line if you don't want to use dynamic frameworks
+def install_pods
   use_frameworks!
+  inhibit_all_warnings!
 
-  # Pods for reaction
+  pod 'Firebase/Core'
   pod 'Firebase/Analytics'
+  pod 'Firebase/RemoteConfig'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'SwiftLint'
+  pod 'SDWebImageSwiftUI'
+  pod 'KeychainAccess'
+end
+
+target 'ReactionLocal' do
+  install_pods
   
-  target 'reactionTests' do
+  target 'ReactionTests' do
     inherit! :search_paths
-    # Pods for testing
   end
 
-  target 'reactionUITests' do
-    # Pods for testing
+  target 'ReactionUITests' do
+    inherit! :search_paths
   end
+end
 
+target 'ReactionStaging' do
+  install_pods
+end
+
+target 'ReactionProduction' do
+  install_pods
 end

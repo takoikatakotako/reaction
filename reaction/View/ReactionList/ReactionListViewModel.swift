@@ -1,5 +1,7 @@
 import SwiftUI
 import Combine
+import AdSupport
+import AppTrackingTransparency
 
 enum ReactionListViewSheet: Identifiable {
     var id: Int {
@@ -64,5 +66,20 @@ class ReactionListViewModel: ObservableObject {
     
     func showSetting() {
         self.sheet = .config
+    }
+    
+    func requestTrackingAuthorizationStatus() {
+        switch ATTrackingManager.trackingAuthorizationStatus {
+        case .authorized: break
+        case .denied: break
+        case .restricted: break
+        case .notDetermined:
+            showTrackingAuthorization()
+        @unknown default: break
+        }
+    }
+    
+    private func showTrackingAuthorization() {
+        ATTrackingManager.requestTrackingAuthorization { _ in }
     }
 }

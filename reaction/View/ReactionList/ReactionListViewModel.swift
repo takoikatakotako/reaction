@@ -64,6 +64,10 @@ class ReactionListViewModel: ObservableObject {
             .store(in: &self.subscriptions)
     }
     
+    func clearSearchText() {
+        searchText = ""
+    }
+    
     func showSetting() {
         self.sheet = .config
     }

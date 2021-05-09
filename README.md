@@ -14,6 +14,7 @@ $ cd reaction-go
 `resource-go` の中で以下のコマンドを実行してください。
 
 ```
+$ go run checker.go    // ビルドが必要な場合
 $ ./checker
 ```
 

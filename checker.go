@@ -1,13 +1,14 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"io"
+	"io/ioutil"
 	"os"
-	"sort"
 	"path/filepath"
+	"sort"
 	// "strconv"
 )
 
@@ -21,7 +22,7 @@ type Reaction struct {
 	Examples        []Example        `json:"examples"`
 	Supplements     []Supplement     `json:"supplements"`
 	Suggestions     []string         `json:"suggestions"`
-	Tags     []string                `json:"tags"`
+	Tags            []string         `json:"tags"`
 }
 
 type GeneralFormula struct {
@@ -45,7 +46,7 @@ func main() {
 	reactions := readReactionsFile("resource/reactions.json")
 	checkReactions(reactions)
 
-	// Sort 
+	// Sort
 	reactions = sortReactions(reactions)
 
 	// Clear
@@ -56,6 +57,9 @@ func main() {
 	exportReactions(reactions)
 	exportImages(reactions)
 	fmt.Println("Export Complete!!")
+
+	// Wait
+	waitEnter()
 }
 
 // 反応データを読み込む
@@ -69,7 +73,10 @@ func readReactionsFile(filePath string) []Reaction {
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 	var reactions []Reaction
-	json.Unmarshal(byteValue, &reactions)
+	if err := json.Unmarshal(byteValue, &reactions); err != nil {
+		fmt.Println(err)
+		panic("Fail to Decode reactions.json")
+	}
 	return reactions
 }
 
@@ -125,7 +132,7 @@ func checkReactions(reactions []Reaction) {
 }
 
 // reactionsをディレクトリ名でソート
-func sortReactions(reactions []Reaction) []Reaction{
+func sortReactions(reactions []Reaction) []Reaction {
 	sort.SliceStable(reactions, func(i, j int) bool {
 		return reactions[i].DirectoryName < reactions[j].DirectoryName
 	})
@@ -151,13 +158,19 @@ func exportReactions(reactions []Reaction) {
 func exportImages(reactions []Reaction) {
 	for i := 0; i < len(reactions); i++ {
 		var directoryName string = reactions[i].DirectoryName
-		err := CopyDir("resource/images/" + directoryName, "output/images/" + directoryName)
+		err := CopyDir("resource/images/"+directoryName, "output/images/"+directoryName)
 		if err != nil {
 			panic(err)
 		}
 	}
 }
 
+// 文字列入力を待つ
+func waitEnter() {
+	fmt.Println("Press Enter to Finish")
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+}
 
 // ------------------------------------
 // Library
@@ -201,7 +214,6 @@ func CopyFile(src, dst string) (err error) {
 
 	return
 }
-
 
 // 画像ファイルを出力
 func CopyDir(src string, dst string) (err error) {

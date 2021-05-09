@@ -66,16 +66,20 @@ func main() {
 func readReactionsFile(filePath string) []Reaction {
 	jsonFile, err := os.Open(filePath)
 	if err != nil {
+		fmt.Println("Fail to Opened reactions.json")
 		fmt.Println(err)
-		panic("Fail to Opened reactions.json")
+		waitEnter()
+		os.Exit(1)
 	}
 	defer jsonFile.Close()
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 	var reactions []Reaction
 	if err := json.Unmarshal(byteValue, &reactions); err != nil {
+		fmt.Println("Fail to Decode reactions.json")
 		fmt.Println(err)
-		panic("Fail to Decode reactions.json")
+		waitEnter()
+		os.Exit(1)
 	}
 	return reactions
 }
@@ -89,7 +93,10 @@ func checkReactions(reactions []Reaction) {
 
 		// Check Thmbnail
 		if _, err := os.Stat(thmbnailPath); os.IsNotExist(err) {
-			panic("Thmbnail Not Found, Path: " + thmbnailPath)
+			fmt.Println("Thmbnail Not Found, Path: " + thmbnailPath)
+			fmt.Println(err)
+			waitEnter()
+			os.Exit(1)
 		}
 
 		// Check General Formulas
@@ -97,7 +104,10 @@ func checkReactions(reactions []Reaction) {
 			var generalFormula string = reactions[i].GeneralFormulas[j].ImageName
 			var generalFormulaPath string = "resource/images/" + directoryName + "/" + generalFormula
 			if _, err := os.Stat(generalFormulaPath); os.IsNotExist(err) {
-				panic("GeneralFormula Not Found, Path: " + generalFormulaPath)
+				fmt.Println("GeneralFormula Not Found, Path: " + generalFormulaPath)
+				fmt.Println(err)
+				waitEnter()
+				os.Exit(1)
 			}
 		}
 
@@ -106,7 +116,10 @@ func checkReactions(reactions []Reaction) {
 			var mechanism string = reactions[i].Mechanisms[j].ImageName
 			var mechanismPath string = "resource/images/" + directoryName + "/" + mechanism
 			if _, err := os.Stat(mechanismPath); os.IsNotExist(err) {
-				panic("Mechanism Not Found, Path: " + mechanismPath)
+				fmt.Println("Mechanism Not Found, Path: " + mechanismPath)
+				fmt.Println(err)
+				waitEnter()
+				os.Exit(1)
 			}
 		}
 
@@ -115,7 +128,10 @@ func checkReactions(reactions []Reaction) {
 			var example string = reactions[i].Examples[j].ImageName
 			var examplePath string = "resource/images/" + directoryName + "/" + example
 			if _, err := os.Stat(examplePath); os.IsNotExist(err) {
-				panic("Example Not Found, Path: " + examplePath)
+				fmt.Println("Example Not Found, Path: " + examplePath)
+				fmt.Println(err)
+				waitEnter()
+				os.Exit(1)
 			}
 		}
 
@@ -124,7 +140,10 @@ func checkReactions(reactions []Reaction) {
 			var supplement string = reactions[i].Supplements[j].ImageName
 			var supplementPath string = "resource/images/" + directoryName + "/" + supplement
 			if _, err := os.Stat(supplementPath); os.IsNotExist(err) {
-				panic("Supplement Not Found, Path: " + supplementPath)
+				fmt.Println("Supplement Not Found, Path: " + supplementPath)
+				fmt.Println(err)
+				waitEnter()
+				os.Exit(1)
 			}
 		}
 	}
@@ -143,7 +162,10 @@ func sortReactions(reactions []Reaction) []Reaction {
 func clearOutputDirectory() {
 	err := os.RemoveAll("output")
 	if err != nil {
-		panic(err)
+		fmt.Println("Fail to Clear Directory")
+		fmt.Println(err)
+		waitEnter()
+		os.Exit(1)
 	}
 	os.MkdirAll("output", os.ModePerm)
 }
@@ -160,7 +182,10 @@ func exportImages(reactions []Reaction) {
 		var directoryName string = reactions[i].DirectoryName
 		err := CopyDir("resource/images/"+directoryName, "output/images/"+directoryName)
 		if err != nil {
-			panic(err)
+			fmt.Println("Fail to Export Images")
+			fmt.Println(err)
+			waitEnter()
+			os.Exit(1)
 		}
 	}
 }

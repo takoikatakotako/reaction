@@ -35,11 +35,12 @@ struct ReactionListView: View {
                 
                 VStack {
                     Spacer()
-                    AdmobBannerView(adUnitID: "ca-app-pub-3940256099942544/2934735716")
+                    AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
                 }
             }
             .onAppear {
                 viewModel.searchRepos()
+                viewModel.requestTrackingAuthorizationStatus()
             }
             .sheet(item: $viewModel.sheet) { (item: ReactionListViewSheet) in
                 switch item {
@@ -64,6 +65,7 @@ struct ReactionListView: View {
                 })
             )
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

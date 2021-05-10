@@ -14,9 +14,20 @@ struct ReactionListView: View {
             ZStack {
                 ScrollView {
                     LazyVStack {
-                        TextField("Type your search",text: $viewModel.searchText)
-                            .padding(8)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        ZStack(alignment: .trailing) {
+                            TextField("Type your search",text: $viewModel.searchText)
+                                .padding(8)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            if !viewModel.searchText.isEmpty {
+                                Button(action: {
+                                    viewModel.clearSearchText()
+                                }) {
+                                    Image(systemName: "delete.left")
+                                        .foregroundColor(Color(UIColor.opaqueSeparator))
+                                }
+                                .padding(.trailing, 12)
+                            }
+                        }
                         ForEach(viewModel.showingReactions) { (reactionMechanism: ReactionMechanism) in
                             ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewModel.showingThmbnail, selectJapanese: $viewModel.selectJapanese)
                         }

@@ -346,7 +346,8 @@
    "Wohl-Ziegler Bromination",
    "ウォール・チーグラー臭素化",
    "ウォール・ジーグラー臭素化",
-   "ウォール・チーグラー反応"
+   "ウォール・チーグラー反応",
+   "しゅうそか"
   ],
   "tags": []
  },
@@ -2546,5 +2547,513 @@
         "山口ラクトン化"
     ],
     "tags": []
+   },
+ {
+  "directoryName": "acetoacetic-ester-synthesis",
+  "english": "Acetoacetic Ester Synthesis",
+  "japanese": "アセト酢酸エステル合成",
+  "thmbnailName": "acetoacetic-ester-synthesis-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "acetoacetic-ester-synthesis-generalformula-0.png"
    }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "acetoacetic-ester-synthesis-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "acetoacetic-ester-synthesis-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "acetoacetic-ester-synthesis-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+"Acetoacetic Ester Synthesis",
+"アセト酢酸エステル合成",
+"アセト酢酸エチル合成"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "claisen-schmidt-reaction",
+  "english": "Claisen-Schmidt Reaction",
+  "japanese": "クライゼン・シュミット反応",
+  "thmbnailName": "claisen-schmidt-reaction-generalformula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "claisen-schmidt-reaction-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "claisen-schmidt-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "claisen-schmidt-reaction-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": ""
+   }
+  ],
+  "suggestions": ["Claisen-Schmidt Reaction","クライゼン・シュミット反応"],
+  "tags": []
+ },
+ {
+  "directoryName": "dieckmann-condensation",
+  "english": "Dieckmann Condensation",
+  "japanese": "ディークマン縮合",
+  "thmbnailName": "dieckmann-condensation-generalformula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "dieckmann-condensation-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "dieckmann-condensation-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "dieckmann-condensation-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "dieckmann-condensation-supplement-0.png"
+   },
+   {
+    "imageName": "dieckmann-condensation-supplement-2.png"
+   }
+  ],
+  "suggestions": ["Dieckmann Condensation","ディークマン縮合",
+        "ディックマン縮合",
+        "ディークマン環化",
+        "ディックマン環化"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "edman-degradation",
+  "english": "Edman Degradation",
+  "japanese": "エドマン分解",
+  "thmbnailName": "edman-degradation-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "edman-degradation-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "edman-degradation-mechanism-0.png"
+   },
+   {
+    "imageName": "edman-degradation-mechanism-2.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": ""
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": ""
+   }
+  ],
+  "suggestions": ["Edman Degradation","エドマン分解"],
+  "tags": []
+ },
+ {
+  "directoryName": "fukuyama-cross-coupling",
+  "english": "Fukuyama Cross Coupling",
+  "japanese": "福山クロスカップリング",
+  "thmbnailName": "fukuyama-cross-coupling-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "fukuyama-cross-coupling-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "fukuyama-cross-coupling-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": ""
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": ""
+   }
+  ],
+  "suggestions": ["Fukuyama Cross Coupling","福山クロスカップリング",
+        "フクヤマカップリング",
+        "hukuyama cross coupling"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "fukuyama-reduction",
+  "english": "Fukuyama Reduction",
+  "japanese": "福山還元反応",
+  "thmbnailName": "fukuyama-reduction-generalformula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "fukuyama-reduction-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "fukuyama-reduction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "fukuyama-reduction-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": ""
+   }
+  ],
+  "suggestions": ["Fukuyama Reduction","福山還元反応",
+        "フクヤマカンゲン",
+        "hukuyama reduction",
+        "フクヤマ還元"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "hofmann-elimination",
+  "english": "Hofmann Elimination",
+  "japanese": "ホフマン脱離",
+  "thmbnailName": "hoffmannelimination-generalformula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "hoffmannelimination-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "hofmann-elimination-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "hoffmannelimination-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "hofmann-elimination-supplement-0.png"
+   },
+   {
+    "imageName": "hofmann-elimination-supplement-2.png"
+   }
+  ],
+  "suggestions": ["Hofmann Elimination","ホフマン脱離",
+"Hofmann Degradation",
+"ホフマン分解"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "malonic-ester-synthesis",
+  "english": "Malonic Ester Synthesis",
+  "japanese": "マロン酸エステル合成",
+  "thmbnailName": "malonic-ester-synthesis-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "malonic-ester-synthesis-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "malonic-ester-synthesis-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "malonic-ester-synthesis-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "malonic-ester-synthesis-supplement-0.png"
+   }
+  ],
+  "suggestions": ["Malonic Ester Synthesis","マロン酸エステル合成","マロン酸エチル合成"],
+  "tags": []
+ },
+ {
+  "directoryName": "mcmurry-coupling",
+  "english": "McMurry Coupling",
+  "japanese": "マクマリーカップリング",
+  "thmbnailName": "",
+  "generalFormulas": [
+   {
+    "imageName": "mcmurry-coupling-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "mcmurry-coupling-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "mcmurry-coupling-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "mcmurry-coupling-supplement-0.png"
+   }
+  ],
+  "suggestions": ["McMurry Coupling","マクマリーカップリング","マックマリーカップリング","マクマリー反応","マックマリー反応"],
+  "tags": []
+ },
+ {
+  "directoryName": "olefin-metathesis",
+  "english": "Olefin Metathesis",
+  "japanese": "オレフィンメタセシス",
+  "thmbnailName": "olefin-metathesis-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "olefin-metathesis-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "olefin-metathesis-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "olefin-metathesis-example-0.png"
+   },
+   {
+    "imageName": "olefin-metathesis-example-2.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "olefin-metathesis-supplement-0.png"
+   },
+   {
+    "imageName": "olefin-metathesis-supplement-2.png"
+   }
+  ],
+  "suggestions": ["Olefin Metathesis","オレフィンメタセシス","メタセシス反応"],
+  "tags": []
+ },
+ {
+  "directoryName": "pinner-reaction",
+  "english": "Pinner Reaction",
+  "japanese": "ピナー反応",
+  "thmbnailName": "pinner-reaction-generalformula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "pinner-reaction-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "pinner-reaction-mechanism-0.png"
+   },
+   {
+    "imageName": "pinner-reaction-mechanism-2.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "pinner-reaction-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": ""
+   }
+  ],
+  "suggestions": [],
+  "tags": ["Pinner Reaction","ピナー反応","ピネー反応"]
+ },
+ {
+  "directoryName": "robinson-annulation",
+  "english": "Robinson Annulation",
+  "japanese": "ロビンソン環化",
+  "thmbnailName": "robinson-annulation-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "robinson-annulation-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "robinson-annulation-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "robinson-annulation-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "robinson-annulation-supplement-0.png"
+   },
+   {
+    "imageName": "robinson-annulation-supplement-2.png"
+   },
+   {
+    "imageName": "robinson-annulation-supplement-3.png"
+   }
+  ],
+  "suggestions": ["Robinson Annulation","ロビンソン環化","ロビンソン環形成反応","ロビンソン縮合"],
+  "tags": []
+ },
+ {
+  "directoryName": "vilsmeier-haack-reaction",
+  "english": "Vilsmeier-Haack Reaction",
+  "japanese": "ヴィルスマイヤー・ハック反応",
+  "thmbnailName": "",
+  "generalFormulas": [
+   {
+    "imageName": "vilsmeier-haack-reaction-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "vilsmeier-haack-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "vilsmeier-haack-reaction-example-0.png"
+   },
+   {
+    "imageName": "vilsmeier-haack-reaction-example-2.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": ""
+   }
+  ],
+  "suggestions": ["Vilsmeier-Haack Reaction","ヴィルスマイヤー・ハック反応","ビルスマイヤー","ヴィルスメイヤー","ハーック","ハーク"],
+  "tags": []
+ },
+ {
+  "directoryName": "wagner-meerwein-rearrangement",
+  "english": "Wagner-​Meerwein rearrangement",
+  "japanese": "ワーグナー・メーヤワイン転位",
+  "thmbnailName": "wagner-meerwein-rearrangement-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "wagner-meerwein-rearrangement-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "wagner-meerwein-rearrangement-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "wagner-meerwein-rearrangement-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": ""
+   }
+  ],
+  "suggestions": ["Wagner-​Meerwein rearrangement","ワーグナー・メーヤワイン転位","ヴァーグナー","メーヤヴァイン","メールワイン"],
+  "tags": []
+ },
+ {
+  "directoryName": "weinreb-ketone-synthesis",
+  "english": "Weinreb ketone synthesis",
+  "japanese": "ワインレブケトン合成",
+  "thmbnailName": "weinreb-ketone-synthesis-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "weinreb-ketone-synthesis-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "weinreb-ketone-synthesis-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "weinreb-ketone-synthesis-example-0.png"
+   },
+   {
+    "imageName": "weinreb-ketone-synthesis-example-2.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": ""
+   }
+  ],
+  "suggestions": ["Weinreb ketone synthesis","ワインレブケトン合成","ワインレブ合成","ワインレブアミド合成"],
+  "tags": []
+ },
+ {
+  "directoryName": "williamson-ether-synthesis",
+  "english": "Williamson Ether Synthesis",
+  "japanese": "ウィリアムソンエーテル合成",
+  "thmbnailName": "williamsonetersynthesis-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "williamson-ether-synthesis-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "williamson-ether-synthesis-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "williamson-ether-synthesis-example-0.png"
+   },
+   {
+    "imageName": "williamson-ether-synthesis-example-2.png"
+   },
+   {
+    "imageName": "williamson-ether-synthesis-example-3.png"
+   },
+   {
+    "imageName": "williamson-ether-synthesis-example-4.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "williamson-ether-synthesis-supplement-0.png"
+   },
+   {
+    "imageName": "williamson-ether-synthesis-supplement-2.png"
+   }
+  ],
+  "suggestions": ["Williamson Ether Synthesis","ウィリアムソンエーテル合成"],
+  "tags": []
+ }
 ]

@@ -55,7 +55,7 @@ func main() {
 	// Export
 	fmt.Println("Export Start")
 	exportReactions(reactions)
-	exportImages(reactions)
+	exportReactionAndImages(reactions)
 	fmt.Println("Export Complete!!")
 
 	// Wait
@@ -168,6 +168,8 @@ func clearOutputDirectory() {
 		os.Exit(1)
 	}
 	os.MkdirAll("output", os.ModePerm)
+	os.MkdirAll("output/reactions", os.ModePerm)
+	os.MkdirAll("output/images", os.ModePerm)
 }
 
 // reactions.jsonを出力
@@ -177,9 +179,11 @@ func exportReactions(reactions []Reaction) {
 }
 
 // 画像を出力
-func exportImages(reactions []Reaction) {
+func exportReactionAndImages(reactions []Reaction) {
 	for i := 0; i < len(reactions); i++ {
 		var directoryName string = reactions[i].DirectoryName
+		file, _ := json.MarshalIndent(reactions[i], "", " ")
+		_ = ioutil.WriteFile("output/reactions/" + directoryName + ".json", file, 0644)
 		err := CopyDir("resource/images/"+directoryName, "output/images/"+directoryName)
 		if err != nil {
 			fmt.Println("Fail to Export Images")

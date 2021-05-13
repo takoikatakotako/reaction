@@ -22,7 +22,9 @@
   "supplements": [],
   "suggestions": [
    "Barton Reaction",
-   "バートン反応"
+   "バートン反応",
+   "ばーとんはんのう"
+
   ],
   "tags": []
  },
@@ -58,7 +60,8 @@
   "supplements": [],
   "suggestions": [
    "Birch Reduction",
-   "バーチ還元"
+   "バーチ還元",
+   "ばーちかんげん"
   ],
   "tags": []
  },
@@ -66,7 +69,7 @@
   "directoryName": "chan-rearrangement",
   "english": "Chan Rearrangement",
   "japanese": "チャン転位",
-  "thmbnailName": "chan-rearrangement-general-formula-0.png",
+  "thmbnailName": "chan-rearrangement-thumbnail.png",
   "generalFormulas": [
    {
     "imageName": "chan-rearrangement-general-formula-0.png"
@@ -85,7 +88,8 @@
   "supplements": [],
   "suggestions": [
    "Chan Rearrangement",
-   "チャン転位"
+   "チャン転位",
+   "ちゃんてんい"
   ],
   "tags": []
  },
@@ -93,7 +97,7 @@
   "directoryName": "claisen-condensation",
   "english": "Claisen Condensation",
   "japanese": "クライゼン縮合",
-  "thmbnailName": "claisen-condensation-general-formula-0.png",
+  "thmbnailName": "claisen-condensation-thumbnail.png",
   "generalFormulas": [
    {
     "imageName": "claisen-condensation-general-formula-0.png"
@@ -109,13 +113,14 @@
     "imageName": "claisen-condensation-example-0.png"
    },
    {
-    "imageName": "claisen-condensation-example-1.png"
+    "imageName": "claisen-condensation-example-2.png"
    }
   ],
   "supplements": [],
   "suggestions": [
    "Claisen Condensation",
-   "クライゼン縮合"
+   "クライゼン縮合",
+   "くらいぜんしゅくごう"
   ],
   "tags": []
  },
@@ -143,7 +148,9 @@
   "suggestions": [
    "Darzens Condensation",
    "ダルツェンス縮合",
-   "ダルツェン縮合"
+   "ダルツェン縮合",
+   "だるつぇんすしゅくごう",
+   "だるつぇんしゅくごう"
   ],
   "tags": []
  },
@@ -173,7 +180,11 @@
    "ハリースオゾン分解",
    "ハリースオゾン酸化",
    "オゾン分解",
-   "オゾン酸化"
+   "オゾン酸化",
+   "はりーすおぞんぶんかい",
+   "はりーすおぞんさんか",
+   "おぞんぶんかい",
+   "おぞんさんか"
   ],
   "tags": []
  },
@@ -200,7 +211,11 @@
   "supplements": [],
   "suggestions": [
    "Micharl Addition",
-   "マイケル付加"
+   "マイケル付加",
+   "マイケル反応",
+   "まいけるふか",
+   "まいけるはんのう"
+
   ],
   "tags": []
  },
@@ -231,7 +246,8 @@
   ],
   "suggestions": [
    "Neber Rearrangement",
-   "ネバー転位"
+   "ネバー転位",
+   "ねばーてんい"
   ],
   "tags": []
  },
@@ -259,7 +275,9 @@
   "suggestions": [
    "Perkow Reaction",
    "パーコウ反応",
-   "パーコー反応"
+   "パーコー反応",
+   "ぱーこうはんのう",
+   "ぱーこーはんのう"
   ],
   "tags": []
  },
@@ -286,7 +304,8 @@
   "supplements": [],
   "suggestions": [
    "Stork Enamine Reaction",
-   "ストークエナミン反応"
+   "ストークエナミン反応",
+   "すとーくえなみんはんのう"
   ],
   "tags": []
  },
@@ -294,7 +313,7 @@
   "directoryName": "wittig-reaction",
   "english": "Wittig Reaction",
   "japanese": "ウィッティヒ反応",
-  "thmbnailName": "wittig-reaction-general-thmbnail.png",
+  "thmbnailName": "wittig-reaction-thmbnail.png",
   "generalFormulas": [
    {
     "imageName": "wittig-reaction-general-formula-0.png"
@@ -314,7 +333,10 @@
   "suggestions": [
    "Wittig Reaction",
    "ウィッティヒ反応",
-   "ウィティッヒ反応"
+   "ウィティッヒ反応",
+   "ういていっひはんのう",
+   "うぃてぃっひはんのう",
+   "うぃってぃひはんのう"
   ],
   "tags": []
  },
@@ -347,7 +369,9 @@
    "ウォール・チーグラー臭素化",
    "ウォール・ジーグラー臭素化",
    "ウォール・チーグラー反応",
-   "しゅうそか"
+   "しゅうそかはんのう",
+   "うぉーる・ちーぐらーしゅうそか",
+   "じーぐらー"
   ],
   "tags": []
  },
@@ -370,7 +394,8 @@
   ],
   "suggestions": [
    "Balz-Schimann Reaction",
-   "バルツ・シーマン反応"
+   "バルツ・シーマン反応",
+   "ばるつ・しーまんはんのう"
   ],
   "tags": []
  },
@@ -403,7 +428,8 @@
   "supplements": [],
   "suggestions": [
    "Bamberger Rearrangement",
-   "バンバーガー転位"
+   "バンバーガー転位",
+   "ばんばーがーてんい"
   ],
   "tags": []
  },
@@ -434,7 +460,8 @@
   ],
   "suggestions": [
    "Acyloin Condensation",
-   "アシロイン縮合"
+   "アシロイン縮合",
+   "あしろいんしゅくごう"
   ],
   "tags": []
  },
@@ -457,7 +484,8 @@
   "supplements": [],
   "suggestions": [
    "Alpha Bromination Of Carbonyl",
-   "カルボニルのαｰブロモ化"
+   "カルボニルのαｰブロモ化",
+   "かるぼにるのあるふぁぶろもか"
   ],
   "tags": []
  },
@@ -488,7 +516,10 @@
   ],
   "suggestions": [
    "Michaelis-Arbuzov Reaction",
-   "ミカエリス・アーブゾフ反応"
+   "ミカエリス・アーブゾフ反応",
+   "みかえりす・あーぶぞふはんのう",
+   "みかえりす・あるぶぞふはんのう",
+   "ミカエリス・アルブゾフ反応"
   ],
   "tags": []
  },
@@ -519,8 +550,10 @@
   "suggestions": [
    "Meerwein-Ponndorf-Verley Reduction",
    "メーヤワイン・ポンドルフ・ヴァーレイ還元",
-   "メーヤワインｰポンドルフｰバーレイ還元",
-   "MPV還元"
+   "メーヤワイン・ポンドルフ・バーレイ還元",
+   "MPV還元",
+   "めーやわいん・ぽんどるふ・ばーれいかんげん",
+   "めーやわいん・ぽんどるふ・ヴぁーれいかんげん"
   ],
   "tags": []
  },
@@ -548,7 +581,9 @@
   "suggestions": [
    "Betti Reaction",
    "ベティ反応",
-   "ベッティ反応"
+   "ベッティ反応",
+   "べてぃはんのう",
+   "べってぃはんのう"
   ],
   "tags": []
  },
@@ -579,7 +614,14 @@
   ],
   "suggestions": [
    "Aldol Condensation",
-   "アルドール縮合"
+   "アルドール縮合",
+   "アルドール付加",
+   "アルドール反応",
+   "Aldol Addition",
+   "Aldol Reaction",
+   "あるどーるしゅくごう",
+   "あるどーるふか",
+   "あるどーるはんのう"
   ],
   "tags": []
  },
@@ -607,7 +649,11 @@
   "suggestions": [
    "Appel Halogenation",
    "アッペルハロゲン化",
-   "アッペル反応"
+   "アッペル反応",
+   "あっぺるはろげんか",
+   "あっぺるはんのう",
+   "ぶろもか",
+   "ブロモ化"
   ],
   "tags": []
  },
@@ -642,7 +688,9 @@
   "suggestions": [
    "Arndt-Eistert Synthesis",
    "アーント・アイシュタート合成",
-   ""
+   "アルント・アイステルト合成",
+   "あーんと・あいしゅたーとごうせい",
+   "あるんと・あいすてると合成"
   ],
   "tags": []
  },
@@ -676,7 +724,10 @@
   ],
   "suggestions": [
    "Criegee Oxidation",
-   "クリーギー酸化"
+   "クリーギー酸化",
+   "クリージー酸化",
+   "くりーぎーさんか",
+   "くりーじーさんか"
   ],
   "tags": []
  },
@@ -703,7 +754,8 @@
   "supplements": [],
   "suggestions": [
    "Eschenmoser-Tanabe Fragmentation",
-   "エッシェンモーザー・タナベ開裂"
+   "エッシェンモーザー・タナベ開裂",
+   "えっしぇんもーざー・たなべかいれつ"
   ],
   "tags": []
  },
@@ -731,7 +783,10 @@
   "suggestions": [
    "Haloform Reaction",
    "ハロホルム反応",
-   "ヨードホルム反応"
+   "ヨードホルム反応",
+   "はろほるむはんのう",
+   "よーどほるむはんのう",
+   "Iodoform Reaction"
   ],
   "tags": []
  },
@@ -772,7 +827,8 @@
   "suggestions": [
    "Horner-Wadsworth-Emmons Reaction",
    "ホーナー・ワズワース・エモンス反応",
-   "HWE反応"
+   "HWE反応",
+   "ほーなー・わずわーす・えもんすはんのう"
   ],
   "tags": []
  },
@@ -799,9 +855,11 @@
   "supplements": [],
   "suggestions": [
    "Hell-Volhard-Zelinskii Reaction",
-   "ヘル・ヴォルハルト・ゼリンスキー反応",
-   "ヘルｰボルハルトｰゼリンスキー反応",
-   "HVZ反応"
+   "ヘル・ヴォルハルト・ジェリンスキー反応",
+   "ヘル・ボルハルト・ゼリンスキー反応",
+   "HVZ反応",
+   "へる・ぼるはると・ぜりんすきーはんのう",
+   "へる・ヴぉるはると・じぇりんすきーはんのう"
   ],
   "tags": []
  },
@@ -835,7 +893,8 @@
   ],
   "suggestions": [
    "Malaprade Oxidation",
-   "マラプラード酸化"
+   "マラプラード酸化",
+   "まらぷらーどさんか"
   ],
   "tags": []
  },
@@ -867,7 +926,10 @@
    "Oppenauer Oxidation",
    "オッペンアウワー酸化",
    "オッペナウワー酸化",
-   "オッペンアワー酸化"
+   "オッペンアワー酸化",
+   "おっぺんあうわーさんか",
+   "おっぺなうわーさんか",
+   "おっぺんあわーさんか"
   ],
   "tags": []
  },
@@ -894,7 +956,8 @@
   ],
   "suggestions": [
    "Pcc Oxidation",
-   "PCC酸化"
+   "PCC酸化",
+   "ぴーしーしーさんか"
   ],
   "tags": []
  },
@@ -921,7 +984,8 @@
   "supplements": [],
   "suggestions": [
    "Ramberg-Backlund Rearrangement",
-   "ランバーグ・バックランド転位"
+   "ランバーグ・バックランド転位",
+   "らんばーぐ・ばっくらんどてんい"
   ],
   "tags": []
  },
@@ -957,7 +1021,10 @@
   "supplements": [],
   "suggestions": [
    "Sandmeyer Reaction",
-   "ザンドマイヤー反応"
+   "ザンドマイヤー反応",
+   "ザンドメーヤー反応",
+   "ざんどまいやーはんのう",
+   "ざんどめーやーはんのう"
   ],
   "tags": []
  },
@@ -987,7 +1054,8 @@
   "supplements": [],
   "suggestions": [
    "Synthesis Of Diazo Compounds",
-   "ジアゾ化合物の合成"
+   "ジアゾ化合物の合成",
+   "じあぞかごうぶつのごうせい"
   ],
   "tags": []
  },
@@ -1022,7 +1090,9 @@
   "suggestions": [
    "Wolff-Kishner Reduction",
    "ウォルフ・キッシュナー還元",
-   "ヴォルフｰキッシュナー還元"
+   "ヴォルフｰキシュナー還元",
+   "うぉるふ・きっしゅなーかんげん",
+   "ヴぉるふ・きしゅなー還元"
   ],
   "tags": []
  },
@@ -1057,7 +1127,9 @@
   "suggestions": [
    "Wolff Rearrangement",
    "ウォルフ転位",
-   "ヴォルフ転位"
+   "ヴォルフ転位",
+   "うぉるふてんい",
+   "ヴぉるふてんい"
   ],
   "tags": []
  },
@@ -1084,7 +1156,14 @@
   "supplements": [],
   "suggestions": [
    "Chugaev Elimination",
-   "シュガフ脱離"
+   "シュガフ脱離",
+   "チューガフ脱離",
+   "チューゲフ脱離",
+   "シュガエフ脱離",
+   "しゅがふだつり",
+   "ちゅーがふだつり",
+   "ちゅーげふだつり",
+   "しゅがえふだつり"
   ],
   "tags": []
  },
@@ -1117,14 +1196,17 @@
   "supplements": [],
   "suggestions": [
    "Jones Oxidation",
-   "ジョーンズ酸化"
+   "ジョーンズ酸化",
+   "クロム酸酸化",
+   "じょーんずさんか",
+   "くろむさんさんか"
   ],
   "tags": []
  },
  {
     "directoryName": "kolbe-schmitt-reaction",
-    "english": "Knoevenagel Condensation",
-    "japanese": "クネフェナーゲル縮合",
+    "english": "Kolbe Schmitt Reaction",
+    "japanese": "コルベ・シュミット反応",
     "thmbnailName": "kolbe-schmitt-reaction-general-formula.png",
     "generalFormulas": [
      {
@@ -1143,8 +1225,11 @@
         }
     ],
     "suggestions": [
-     "Knoevenagel Condensation",
-     "クネフェナーゲル縮合"
+     "Kolbe Schmitt Reaction",
+     "コルベ・シュミット反応",
+     "コルベー・シュミット反応",
+   "こるべ・しゅみっとはんのう",
+   "こるべー・しゅみっとはんのう"
     ],
     "tags": []
    },
@@ -1174,7 +1259,8 @@
   ],
   "suggestions": [
    "Cannizzaro Reaction",
-   "カニッツァロ反応"
+   "カニッツァロ反応",
+   "かにっつぁろはんのう"
   ],
   "tags": []
  },
@@ -1202,7 +1288,9 @@
   "suggestions": [
    "Corey-Fuchs Alkynation",
    "コーリー・フックスアルキン合成",
-   "コーリー・フックス反応"
+   "コーリー・フックス反応",
+   "こーりー・ふっくすあるきんごうせい",
+   "こーりー・ふっくすはんのう"
   ],
   "tags": []
  },
@@ -1229,7 +1317,8 @@
   "supplements": [],
   "suggestions": [
    "Corey-Kim Oxidation",
-   "コーリー・キム酸化"
+   "コーリー・キム酸化",
+   "こーりー・きむさんか"
   ],
   "tags": []
  },
@@ -1256,34 +1345,40 @@
   "supplements": [],
   "suggestions": [
    "Curtius Rearrangement",
-   "クルチウス転位"
+   "クルチウス転位",
+   "くるちうすてんい"
   ],
   "tags": []
  },
  {
   "directoryName": "dess-martin-oxiadation",
-  "english": "Dess-Martin Oxiadation",
+  "english": "Dess-Martin Oxidation",
   "japanese": "デス・マーチン酸化",
-  "thmbnailName": "dess-martin-oxiadation-thumbnail.png",
+  "thmbnailName": "dess-martin-oxidation-thumbnail.png",
   "generalFormulas": [
    {
-    "imageName": "dess-martin-oxiadation-general-formula-0.png"
+    "imageName": "dess-martin-oxidation-general-formula-0.png"
    }
   ],
   "mechanisms": [
    {
-    "imageName": "dess-martin-oxiadation-mechanism-0.png"
+    "imageName": "dess-martin-oxidation-mechanism-0.png"
    }
   ],
-  "examples": [],
+  "examples": [
+   {
+    "imageName": "dess-martin-oxidation-example-0.png"
+   }
+],
   "supplements": [
    {
-    "imageName": "dess-martin-oxiadation-supplement-0.png"
+    "imageName": "dess-martin-oxidation-supplement-0.png"
    }
   ],
   "suggestions": [
    "Dess-Martin Oxiadation",
-   "デス・マーチン酸化"
+   "デス・マーチン酸化",
+   "です・まーちんさんか"
   ],
   "tags": []
  },
@@ -1315,7 +1410,8 @@
   "suggestions": [
    "Doebner-Miller Quinoline Synthesis",
    "デーブナー・ミラーキノリン合成",
-   "デーブナー・ミラー合成"
+   "デーブナー・ミラー合成",
+   "でーぶなー・みらーきのりんごうせい"
   ],
   "tags": []
  },
@@ -1354,7 +1450,10 @@
    "Knoevenagel Condensation",
    "クネフェナーゲル縮合",
    "クネベナゲル縮合",
-   "クネーフェナーゲル縮合"
+   "クネーフェナーゲル縮合",
+   "くねふぇなーげるしゅくごう",
+   "くねべなげるしゅくごう",
+   "くねーふぇなーげるしゅくごう"
   ],
   "tags": []
  },
@@ -1381,8 +1480,9 @@
   "supplements": [],
   "suggestions": [
    "Kumada-Tamao-Corriu Crosscoupling",
-   "熊田・玉尾・コリューカップリング",
-   "熊田・玉尾・コリュークロスカップリング"
+   "熊田・玉尾・コリュークロスカップリング",
+   "クマダ・タマオ・コリュークロスカップリング",
+   "くまだ・たまお・こりゅーくろすかっぷりんぐ"
   ],
   "tags": []
  },
@@ -1390,13 +1490,13 @@
   "directoryName": "gabriel-amination",
   "english": "Gabriel Amination",
   "japanese": "ガブリエルアミン合成",
-  "thmbnailName": "gabriel-amination-general-formula-0.png",
+  "thmbnailName": "gabriel-amination-general-formula-1.png",
   "generalFormulas": [
    {
-    "imageName": "gabriel-amination-general-formula-0.png"
+    "imageName": "gabriel-amination-general-formula-1.png"
    },
    {
-    "imageName": "gabriel-amination-general-formula-1.png"
+    "imageName": "gabriel-amination-general-formula-0.png"
    }
   ],
   "mechanisms": [
@@ -1417,7 +1517,12 @@
    "Gabriel Amination",
    "ガブリエルアミン合成",
    "ガブリエル反応",
-   "ガブリエル合成"
+   "ガブリエル合成",
+   "がぶりえるあみんごうせい",
+   "がぶりえるはんのう",
+   "がぶりえるごうせい",
+   "ガブリエル第一級アミノ化",
+   "がぶりえるだいいっきゅうあみのか"
   ],
   "tags": []
  },
@@ -1444,7 +1549,8 @@
   "supplements": [],
   "suggestions": [
    "Parkin Reaction",
-   "パーキン反応"
+   "パーキン反応",
+   "ぱーきんはんのう"
   ],
   "tags": []
  },
@@ -1476,7 +1582,9 @@
   "suggestions": [
    "Swern Oxidation",
    "スワン酸化",
-   "スワーン酸化"
+   "スワーン酸化",
+   "すわんさんか",
+   "すわーんさんか"
   ],
   "tags": []
  },
@@ -1504,7 +1612,8 @@
   "suggestions": [
    "Fritsch-Buttenberg-Wiechel Rearrangement",
    "フリッチュ・ブッテンバーグ・ウィーチェル転位",
-   "FBW転位"
+   "FBW転位",
+   "ふりっちゅ・ぶってんばーぐ・うぃーちぇるてんい"
   ],
   "tags": []
  },
@@ -1531,8 +1640,12 @@
   "supplements": [],
   "suggestions": [
    "Mizoroki-Heck Coupling",
-   "溝呂木・ヘックカップリング",
-   "溝呂木・ヘッククロスカップリング"
+   "Mizorogi-Heck Coupling",
+   "溝呂木・ヘッククロスカップリング",
+   "ミゾロギ・ヘッククロスカップリング",
+   "ミゾロキ・ヘッククロスカップリング",
+   "みぞろぎ・へっくくろすかっぷりんぐ",
+   "みぞろき・へっくくろすかっぷりんぐ"
   ],
   "tags": []
  },
@@ -1559,7 +1672,8 @@
   "supplements": [],
   "suggestions": [
    "Nef Reaction",
-   "ネフ反応"
+   "ネフ反応",
+   "ねふはんのう"
   ],
   "tags": []
  },
@@ -1586,8 +1700,11 @@
   "supplements": [],
   "suggestions": [
    "Negishi Coupling",
-   "根岸カップリング",
-   "根岸クロスカップリング"
+   "根岸クロスカップリング",
+   "ネギシクロスカップリング",
+   "ネキシクロスカップリング",
+   "ねぎしくろすかっぷりんぐ",
+   "ねきしくろすかっぷりんぐ"
   ],
   "tags": []
  },
@@ -1618,7 +1735,10 @@
   ],
   "suggestions": [
    "Simmons-Smith Reaction",
-   "シモンズ・スミス反応"
+   "シモンズ・スミス反応",
+   "サイモンズ・スミス反応",
+   "しもんず・すみすはんのう",
+   "さいもんず・すみすはんのう"
   ],
   "tags": []
  },
@@ -1650,7 +1770,8 @@
   "suggestions": [
    "Skraup Quinoline Synthesis",
    "スクラウプキノリン合成",
-   "スクラウプ合成"
+   "スクラウプ合成",
+   "すくらうぷきのりんごうせい"
   ],
   "tags": []
  },
@@ -1678,7 +1799,9 @@
   "suggestions": [
    "Suzuki-Miyaura Coupling",
    "鈴木・宮浦カップリング",
-   "鈴木・宮浦クロスカップリング"
+   "鈴木・宮浦クロスカップリング",
+   "スズキ・ミヤウラクロスカップリング",
+   "すずき・みやうらくろすかっぷりんぐ"
   ],
   "tags": []
  },
@@ -1705,6 +1828,7 @@
   ],
   "suggestions": [
    "Ninhydrin Reaction",
+   "ニンヒドリン反応",
    "ニンヒドリン反応"
   ],
   "tags": []
@@ -1730,7 +1854,10 @@
    "Bechamp Reduction",
    "ベシャンプ還元",
    "ベシャン還元",
-   "ベチャンプ還元"
+   "ベチャンプ還元",
+   "べしゃんぷかんげん",
+   "べしゃんかんげん",
+   "べちゃんぷかんげん"
   ],
   "tags": []
  },
@@ -1761,7 +1888,8 @@
   ],
   "suggestions": [
    "Bouveault-Blanc Reduction",
-   "ブーボー・ブラン還元"
+   "ブーボー・ブラン還元",
+   "ぶーぼー・ぶらんかんげん"
   ],
   "tags": []
  },
@@ -1788,7 +1916,8 @@
     "supplements": [],
     "suggestions": [
         "Baeyer-Villiger Oxidation",
-        "バイヤー・ビリガー酸化"
+        "バイヤー・ビリガー酸化",
+   "ばいやー・びりがーさんか"
     ],
     "tags": []
    },
@@ -1826,7 +1955,8 @@
     ],
     "suggestions": [
         "Beckmann Rearrangement",
-        "ベックマン転位"
+        "ベックマン転位",
+   "べっくまんてんい"
     ],
     "tags": []
    },
@@ -1851,7 +1981,11 @@
      }
     ],
     "supplements": [],
-    "suggestions": [],
+    "suggestions": [
+"Benzoin Condensation",
+"ベンゾイン縮合",
+"べんぞいんしゅくごう"
+],
     "tags": []
    },
    {
@@ -1886,7 +2020,10 @@
         "Borch Reductive Amination",
         "ボーチ還元的アミノ化",
         "ボーチ反応",
-        "ボーチ還元"
+        "ボーチ還元",
+   "ぼーちかんげんてきあみのか",
+   "ぼーちはんのう",
+   "ぼーちかんげん"
     ],
     "tags": []
    },
@@ -1920,7 +2057,8 @@
     ],
     "suggestions": [
         "Bouveault Aldehyde Synthesis",
-        "ブーボーアルデヒド合成"
+        "ブーボーアルデヒド合成",
+   "ぶーぼーあるでひどごうせい"
     ],
     "tags": []
    },
@@ -1935,16 +2073,18 @@
      }
     ],
     "mechanisms": [],
-    "examples": [
+    "examples": [],
+    "supplements": [
      {
       "imageName": "eschweiler-clarke-reaction-supplement-0.png"
      }
     ],
-    "supplements": [],
     "suggestions": [
         "Eschweiler-Clarke Reaction",
         "エシュバイラー・クラーク反応",
-        "エシュヴァイラー・クラーク反応"
+        "エシュヴァイラー・クラーク反応",
+   "えしゅばいらー・くらーくはんのう",
+   "えしゅヴぁいらー・くらーくはんのう"
     ],
     "tags": []
    },
@@ -1979,7 +2119,9 @@
     "suggestions": [
         "Favorskii Rearrangement",
         "ファボルスキー転位",
-        "ファヴォルスキー転位"
+        "ファヴォルスキー転位",
+   "ふぁぼるすきーてんい",
+   "ふぁヴぉるすきーてんい"
     ],
     "tags": []
    },
@@ -2007,7 +2149,9 @@
     "suggestions": [
         "Fischer-Speier Esterification",
         "フィッシャー・スペイアエステル合成",
-        "フィッシャーエステル合成"
+        "フィッシャーエステル合成",
+   "ふぃっしゃー・すぺいあえすてるごうせい",
+   "ふぃっしゃーえすてるごうせい"
     ],
     "tags": []
    },
@@ -2063,7 +2207,11 @@
     "suggestions": [
         "Grignard Reaction",
         "グリニャール反応",
-        "グリニャー反応"
+        "グリニャー反応",
+   "グリナード反応",
+   "ぐりにゃーるはんのう",
+   "ぐりにゃーはんのう",
+   "ぐりなーどはんのう"
     ],
     "tags": []
    },
@@ -2091,7 +2239,9 @@
     "suggestions": [
         "Henry Reaction",
         "ヘンリー反応",
-        "ニトロアルドール反応"
+        "ニトロアルドール反応",
+   "へんりーはんのう",
+   "にとろあるどーるはんのう"
     ],
     "tags": []
    },
@@ -2118,7 +2268,8 @@
     "supplements": [],
     "suggestions": [
         "Hofmann Rearrangement",
-        "ホフマン転位"
+        "ホフマン転位",
+   "ほふまんてんい"
     ],
     "tags": []
    },
@@ -2149,7 +2300,11 @@
     ],
     "suggestions": [
         "Keck Macrolactonization",
-        "ケックマクロラクトン化"
+        "ケックマクロラクトン化",
+   "けっくまくろらくとんか",
+"ケックエステル化",
+"けっくえすてるか",
+"Esterfication"
     ],
     "tags": []
    },
@@ -2158,18 +2313,24 @@
     "english": "Leuckart-Wallach Reaction",
     "japanese": "ロイカート・バラッハ反応",
     "thmbnailName": "leuckart-wallach-reaction-general-formula-0.png",
-    "generalFormulas": [],
+    "generalFormulas": [
+     {
+      "imageName": "leuckart-wallach-reaction-general-formula-0.png"
+     }
+],
     "mechanisms": [],
-    "examples": [
+    "examples": [],
+    "supplements": [
      {
       "imageName": "leuckart-wallach-reaction-example-0.png"
      }
     ],
-    "supplements": [],
     "suggestions": [
         "Leuckart-Wallach Reaction",
         "ロイカート・バラッハ反応",
-        "ロイカート・ヴァラッハ反応"
+        "ロイカート・ヴァラッハ反応",
+   "ろいかーと・ばらっははんのう",
+   "ろいかーと・ヴぁらっははんのう"
     ],
     "tags": []
    },
@@ -2202,7 +2363,8 @@
     "supplements": [],
     "suggestions": [
         "Mannich Reaction",
-        "マンニッヒ反応"
+        "マンニッヒ反応",
+   "まんにっひはんのう"
     ],
     "tags": []
    },
@@ -2229,7 +2391,9 @@
     "supplements": [],
     "suggestions": [
         "Mitsunobu Reaction",
-        "光延反応"
+        "光延反応",
+   "ミツノブ反応",
+   "みつのぶはんのう"
     ],
     "tags": []
    },
@@ -2253,7 +2417,8 @@
     "suggestions": [
         "Paal-Knorr Furan Synthesis",
         "パール・クノールフラン合成",
-        "パール・クノール合成"
+        "パール・クノール合成",
+   "ぱーる・くのーるふらんごうせい"
     ],
     "tags": []
    },
@@ -2281,7 +2446,8 @@
     "suggestions": [
         "Paal-Knorr Pyrrole Synthesis",
         "パール・クノールピロール合成",
-        "パール・クノール合成"
+        "パール・クノール合成",
+   "ぱーる・くのーるぴろーるごうせい"
     ],
     "tags": []
    },
@@ -2309,7 +2475,8 @@
     "suggestions": [
         "Paal-Knorr Thiophene Synthesis",
         "パール・クノールチオフェン合成",
-        "パール・クノール合成"
+        "パール・クノール合成",
+   "ぱーる・くのーるちおふぇんごうせい"
     ],
     "tags": []
    },
@@ -2336,7 +2503,8 @@
     "supplements": [],
     "suggestions": [
         "Pinacol Coupling",
-        "ピナコールカップリング"
+        "ピナコールカップリング",
+   "ぴなこーるかっぷりんぐ"
     ],
     "tags": []
    },
@@ -2368,7 +2536,9 @@
     "suggestions": [
         "Pinacol-Pinacolone Rearrangement",
         "ピナコール・ピナコロン転位",
-        "ピナコール転位"
+        "ピナコール転位",
+   "ぴなこーる・ぴなころんてんい",
+   "ぴなこーるてんい"
     ],
     "tags": []
    },
@@ -2399,7 +2569,10 @@
     ],
     "suggestions": [
         "Prilezhaev Epoxidation",
-        "プリリツェフエポキシ化"
+        "プリリツェフエポキシ化",
+   "プリリツェフ反応",
+   "ぷりりつぇふえぽきしか",
+   "ぷりりつぇふはんのう"
     ],
     "tags": []
    },
@@ -2426,7 +2599,8 @@
     "supplements": [],
     "suggestions": [
         "Pummerer Rearrangement",
-        "プメラー転位"
+        "プメラー転位",
+   "ぷめらーてんい"
     ],
     "tags": []
    },
@@ -2453,7 +2627,10 @@
     ],
     "suggestions": [
         "Reimer-Tiemann Reaction",
-        "ライマー・チーマン反応"
+        "ライマー・チーマン反応",
+   "ライマー・ティーマン反応",
+   "らいまー・ちーまんはんのう",
+   "らいまー・てぃーまんはんのう"
     ],
     "tags": []
    },
@@ -2479,7 +2656,11 @@
         "椎名マクロラクトン化",
         "シイナマクロラクトン化",
         "椎名エステル化",
-        "椎名ラクトン化"
+        "椎名ラクトン化",
+   "しいなまくろらくとんか",
+   "しいなえすてるか",
+   "しいならくとんか",
+"Esterfication"
     ],
     "tags": []
    },
@@ -2510,7 +2691,12 @@
     ],
     "suggestions": [
         "Steglich Esterfication",
-        "シュテークリヒエステル化"
+        "シュテークリヒエステル化",
+   "シュテークリヒ反応",
+   "ステグリッチ反応",
+   "しゅてーくりひえすてるか",
+   "しゅてーくりひはんのう",
+   "すてぐりっちはんのう"
     ],
     "tags": []
    },
@@ -2544,7 +2730,11 @@
         "山口マクロラクトン化",
         "ヤマグチマクロラクトン化",
         "山口エステル化",
-        "山口ラクトン化"
+        "山口ラクトン化",
+   "やまぐちまくろらくとんか",
+   "やまぐちえすてるか",
+   "やまぐちらくとんか",
+"Esterfication"
     ],
     "tags": []
    },
@@ -2576,7 +2766,9 @@
   "suggestions": [
 "Acetoacetic Ester Synthesis",
 "アセト酢酸エステル合成",
-"アセト酢酸エチル合成"
+"アセト酢酸エチル合成",
+   "あせとさくさんえすてるごうせい",
+   "あせとさくさんえちるごうせい"
 ],
   "tags": []
  },
@@ -2600,12 +2792,12 @@
     "imageName": "claisen-schmidt-reaction-example-0.png"
    }
   ],
-  "supplements": [
-   {
-    "imageName": ""
-   }
-  ],
-  "suggestions": ["Claisen-Schmidt Reaction","クライゼン・シュミット反応"],
+  "supplements": [],
+  "suggestions": [
+"Claisen-Schmidt Reaction",
+"クライゼン・シュミット反応",
+   "くらいぜん・しゅみっとはんのう"
+],
   "tags": []
  },
  {
@@ -2636,10 +2828,16 @@
     "imageName": "dieckmann-condensation-supplement-2.png"
    }
   ],
-  "suggestions": ["Dieckmann Condensation","ディークマン縮合",
+  "suggestions": [
+"Dieckmann Condensation",
+"ディークマン縮合",
         "ディックマン縮合",
         "ディークマン環化",
-        "ディックマン環化"
+        "ディックマン環化",
+   "でぃーくまんしゅくごう",
+   "でぃっくまんしゅくごう",
+   "でぃーくまんかんか",
+   "でぃっくまんかんか"
 ],
   "tags": []
  },
@@ -2671,7 +2869,11 @@
     "imageName": ""
    }
   ],
-  "suggestions": ["Edman Degradation","エドマン分解"],
+  "suggestions": [
+"Edman Degradation",
+"エドマン分解",
+   "えどまんぶんかい"
+],
   "tags": []
  },
  {
@@ -2689,19 +2891,15 @@
     "imageName": "fukuyama-cross-coupling-mechanism-0.png"
    }
   ],
-  "examples": [
-   {
-    "imageName": ""
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": ""
-   }
-  ],
-  "suggestions": ["Fukuyama Cross Coupling","福山クロスカップリング",
-        "フクヤマカップリング",
-        "hukuyama cross coupling"
+  "examples": [],
+  "supplements": [],
+  "suggestions": [
+"Fukuyama Cross Coupling",
+"福山クロスカップリング",
+"フクヤマカップリング",
+"hukuyama cross coupling",
+   "ふくやまくろすかっぷりんぐ",
+   "ふくやまかっぷりんぐ"
 ],
   "tags": []
  },
@@ -2725,15 +2923,15 @@
     "imageName": "fukuyama-reduction-example-0.png"
    }
   ],
-  "supplements": [
-   {
-    "imageName": ""
-   }
-  ],
-  "suggestions": ["Fukuyama Reduction","福山還元反応",
+  "supplements": [],
+  "suggestions": [
+"Fukuyama Reduction",
+"福山還元反応",
         "フクヤマカンゲン",
         "hukuyama reduction",
-        "フクヤマ還元"
+        "フクヤマ還元",
+   "ふくやまかんげんはんのう",
+   "ふくやまかんげん"
 ],
   "tags": []
  },
@@ -2765,9 +2963,13 @@
     "imageName": "hofmann-elimination-supplement-2.png"
    }
   ],
-  "suggestions": ["Hofmann Elimination","ホフマン脱離",
+  "suggestions": [
+"Hofmann Elimination",
+"ホフマン脱離",
 "Hofmann Degradation",
-"ホフマン分解"
+"ホフマン分解",
+   "ほふまんだつり",
+   "ほふまんぶんかい"
 ],
   "tags": []
  },
@@ -2796,14 +2998,20 @@
     "imageName": "malonic-ester-synthesis-supplement-0.png"
    }
   ],
-  "suggestions": ["Malonic Ester Synthesis","マロン酸エステル合成","マロン酸エチル合成"],
+  "suggestions": [
+"Malonic Ester Synthesis",
+"マロン酸エステル合成",
+"マロン酸エチル合成",
+   "まろんさんえすてるごうせい",
+   "まろんさんえちるごうせい"
+],
   "tags": []
  },
  {
   "directoryName": "mcmurry-coupling",
   "english": "McMurry Coupling",
   "japanese": "マクマリーカップリング",
-  "thmbnailName": "",
+  "thmbnailName": "mcmurry-coupling-generalformula-0.png",
   "generalFormulas": [
    {
     "imageName": "mcmurry-coupling-generalformula-0.png"
@@ -2824,7 +3032,17 @@
     "imageName": "mcmurry-coupling-supplement-0.png"
    }
   ],
-  "suggestions": ["McMurry Coupling","マクマリーカップリング","マックマリーカップリング","マクマリー反応","マックマリー反応"],
+  "suggestions": [
+"McMurry Coupling",
+"マクマリーカップリング",
+"マックマリーカップリング",
+"マクマリー反応",
+"マックマリー反応",
+   "まくまりーかっぷりんぐ",
+   "まっくまりーかっぷりんぐ",
+   "まくまりーはんのう",
+   "まっくまりーはんのう"
+],
   "tags": []
  },
  {
@@ -2858,7 +3076,13 @@
     "imageName": "olefin-metathesis-supplement-2.png"
    }
   ],
-  "suggestions": ["Olefin Metathesis","オレフィンメタセシス","メタセシス反応"],
+  "suggestions": [
+"Olefin Metathesis",
+"オレフィンメタセシス",
+"メタセシス反応",
+   "おれふぃんめたせしす",
+   "めたせしすはんのう"
+],
   "tags": []
  },
  {
@@ -2884,13 +3108,15 @@
     "imageName": "pinner-reaction-example-0.png"
    }
   ],
-  "supplements": [
-   {
-    "imageName": ""
-   }
-  ],
+  "supplements": [],
   "suggestions": [],
-  "tags": ["Pinner Reaction","ピナー反応","ピネー反応"]
+  "tags": [
+"Pinner Reaction",
+"ピナー反応",
+"ピネー反応",
+   "ぴなーはんのう",
+   "ぴねーはんのう"
+]
  },
  {
   "directoryName": "robinson-annulation",
@@ -2923,14 +3149,22 @@
     "imageName": "robinson-annulation-supplement-3.png"
    }
   ],
-  "suggestions": ["Robinson Annulation","ロビンソン環化","ロビンソン環形成反応","ロビンソン縮合"],
+  "suggestions": [
+"Robinson Annulation",
+"ロビンソン環化",
+"ロビンソン環形成反応",
+"ロビンソン縮合",
+   "ろびんそんかんか",
+   "ろびんそんかんけいせいはんのう",
+   "ろびんそんしゅくごう"
+],
   "tags": []
  },
  {
   "directoryName": "vilsmeier-haack-reaction",
   "english": "Vilsmeier-Haack Reaction",
   "japanese": "ヴィルスマイヤー・ハック反応",
-  "thmbnailName": "",
+  "thmbnailName": "vilsmeier-haack-reaction-generalformula-0.png",
   "generalFormulas": [
    {
     "imageName": "vilsmeier-haack-reaction-generalformula-0.png"
@@ -2949,12 +3183,22 @@
     "imageName": "vilsmeier-haack-reaction-example-2.png"
    }
   ],
-  "supplements": [
-   {
-    "imageName": ""
-   }
-  ],
-  "suggestions": ["Vilsmeier-Haack Reaction","ヴィルスマイヤー・ハック反応","ビルスマイヤー","ヴィルスメイヤー","ハーック","ハーク"],
+  "supplements": [],
+  "suggestions": [
+"Vilsmeier-Haack Reaction",
+"ヴィルスマイヤー・ハック反応",
+"ビルスマイヤー",
+"ヴィルスメイヤー",
+"ハーック",
+"ハーク",
+   "ヴぃるすまいやー・はっくはんのう",
+   "びるすまいやー",
+   "ヴぃるすめいやー",
+   "びるすめいやー",
+   "ビルスメイヤー",
+   "はーく",
+   "はーっく"
+],
   "tags": []
  },
  {
@@ -2977,12 +3221,18 @@
     "imageName": "wagner-meerwein-rearrangement-example-0.png"
    }
   ],
-  "supplements": [
-   {
-    "imageName": ""
-   }
-  ],
-  "suggestions": ["Wagner-​Meerwein rearrangement","ワーグナー・メーヤワイン転位","ヴァーグナー","メーヤヴァイン","メールワイン"],
+  "supplements": [],
+  "suggestions": [
+"Wagner-​Meerwein rearrangement",
+"ワーグナー・メーヤワイン転位",
+"ヴァーグナー",
+"メーヤヴァイン",
+"メールワイン",
+   "わーぐなー・めーやわいんてんい",
+   "ヴぁーぐなー",
+   "めーやヴぁいん",
+   "めーるわいん"
+],
   "tags": []
  },
  {
@@ -3008,12 +3258,16 @@
     "imageName": "weinreb-ketone-synthesis-example-2.png"
    }
   ],
-  "supplements": [
-   {
-    "imageName": ""
-   }
-  ],
-  "suggestions": ["Weinreb ketone synthesis","ワインレブケトン合成","ワインレブ合成","ワインレブアミド合成"],
+  "supplements": [],
+  "suggestions": [
+"Weinreb ketone synthesis",
+"ワインレブケトン合成",
+"ワインレブ合成",
+"ワインレブアミド合成",
+   "わいんれぶけとんごうせい",
+   "わいんれぶごうせい",
+   "わいんれぶあみどごうせい"
+],
   "tags": []
  },
  {
@@ -3053,7 +3307,11 @@
     "imageName": "williamson-ether-synthesis-supplement-2.png"
    }
   ],
-  "suggestions": ["Williamson Ether Synthesis","ウィリアムソンエーテル合成"],
+  "suggestions": [
+"Williamson Ether Synthesis",
+"ウィリアムソンエーテル合成",
+   "うぃりあむそんえーてるごうせい"
+],
   "tags": []
  }
 ]

@@ -27,7 +27,7 @@ struct ReactionDetailView: View {
                 })
         )
         .fullScreenCover(isPresented: $showingSheet) {
-            ReactionDetailFullScreenView(reactionMechanism: reactionMechanism)
+            ReactionDetailFullScreenView(selectJapanese: selectJapanese, reactionMechanism: reactionMechanism)
         }
     }
 }

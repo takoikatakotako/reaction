@@ -23,6 +23,9 @@ type Reaction struct {
 	Supplements     []Supplement     `json:"supplements"`
 	Suggestions     []string         `json:"suggestions"`
 	Tags            []string         `json:"tags"`
+	Reactants       []string         `json:"reactants"`
+	Products        []string         `json:"products"`
+	YoutubeLink     []string         `json:"youtubeLink"`
 }
 
 type GeneralFormula struct {
@@ -183,7 +186,7 @@ func exportReactionAndImages(reactions []Reaction) {
 	for i := 0; i < len(reactions); i++ {
 		var directoryName string = reactions[i].DirectoryName
 		file, _ := json.MarshalIndent(reactions[i], "", " ")
-		_ = ioutil.WriteFile("output/reactions/" + directoryName + ".json", file, 0644)
+		_ = ioutil.WriteFile("output/reactions/"+directoryName+".json", file, 0644)
 		err := CopyDir("resource/images/"+directoryName, "output/images/"+directoryName)
 		if err != nil {
 			fmt.Println("Fail to Export Images")

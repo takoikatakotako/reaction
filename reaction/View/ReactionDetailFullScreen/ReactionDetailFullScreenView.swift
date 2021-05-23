@@ -2,12 +2,13 @@ import SwiftUI
 
 struct ReactionDetailFullScreenView: View {
     @Environment(\.presentationMode) var presentationMode
+    let selectJapanese: Bool
     let reactionMechanism: ReactionMechanism
     
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
-                ReactionDetailContent(selectJapanese: true, reactionMechanism: reactionMechanism)
+                ReactionDetailContent(selectJapanese: selectJapanese, reactionMechanism: reactionMechanism)
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
@@ -15,7 +16,7 @@ struct ReactionDetailFullScreenView: View {
                     Button(action: {
                         let value = UIInterfaceOrientation.portrait.rawValue
                         UIDevice.current.setValue(value, forKey: "orientation")
-                        self.presentationMode.wrappedValue.dismiss()
+                        presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Image(systemName: "arrow.counterclockwise")
                     })
@@ -26,6 +27,6 @@ struct ReactionDetailFullScreenView: View {
 
 struct ReactionDetailFullScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        ReactionDetailFullScreenView(reactionMechanism: ReactionMechanism.mock())
+        ReactionDetailFullScreenView(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
     }
 }

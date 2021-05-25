@@ -1,42 +1,437 @@
 [
  {
-  "directoryName": "acetoacetic-ester-synthesis",
-  "english": "Acetoacetic Ester Synthesis",
-  "japanese": "アセト酢酸エステル合成",
-  "thmbnailName": "acetoacetic-ester-synthesis-thumbnail-0.png",
+  "directoryName": "barton-reaction",
+  "english": "Barton Reaction",
+  "japanese": "バートン反応",
+  "thmbnailName": "barton-reaction-general-formula-0.png",
   "generalFormulas": [
    {
-    "imageName": "acetoacetic-ester-synthesis-generalformula-0.png"
+    "imageName": "barton-reaction-general-formula-0.png"
    }
   ],
   "mechanisms": [
    {
-    "imageName": "acetoacetic-ester-synthesis-mechanism-0.png"
+    "imageName": "barton-reaction-mechanism-0.png"
    }
   ],
   "examples": [
    {
-    "imageName": "acetoacetic-ester-synthesis-example-0.png"
+    "imageName": "barton-reaction-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Barton Reaction",
+   "バートン反応",
+   "ばーとんはんのう"
+
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "birch-reducion",
+  "english": "Birch Reduction",
+  "japanese": "バーチ還元",
+  "thmbnailName": "barton-reducion-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "barton-reducion-general-formula-0.png"
+   },
+   {
+    "imageName": "barton-reducion-general-formula-1.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "barton-reducion-mechanism-0.png"
+   },
+   {
+    "imageName": "barton-reducion-mechanism-1.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "barton-reducion-example-0.png"
+   },
+   {
+    "imageName": "barton-reducion-example-1.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Birch Reduction",
+   "バーチ還元",
+   "ばーちかんげん"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "chan-rearrangement",
+  "english": "Chan Rearrangement",
+  "japanese": "チャン転位",
+  "thmbnailName": "chan-rearrangement-thumbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "chan-rearrangement-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "chan-rearrangement-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "chan-rearrangement-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Chan Rearrangement",
+   "チャン転位",
+   "ちゃんてんい"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "claisen-condensation",
+  "english": "Claisen Condensation",
+  "japanese": "クライゼン縮合",
+  "thmbnailName": "claisen-condensation-thumbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "claisen-condensation-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "claisen-condensation-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "claisen-condensation-example-0.png"
+   },
+   {
+    "imageName": "claisen-condensation-example-2.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Claisen Condensation",
+   "クライゼン縮合",
+   "くらいぜんしゅくごう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "darzens-condensation",
+  "english": "Darzens Condensation",
+  "japanese": "ダルツェンス縮合",
+  "thmbnailName": "darzens-condensation-thumbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "darzens-condensation-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "darzens-condensation-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "darzens-condensation-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Darzens Condensation",
+   "ダルツェンス縮合",
+   "ダルツェン縮合",
+   "だるつぇんすしゅくごう",
+   "だるつぇんしゅくごう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "harries-ozonolysis",
+  "english": "Harries Ozonolysis",
+  "japanese": "ハリースオゾン分解",
+  "thmbnailName": "harries-ozonolysis-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "harries-ozonolysis-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "harries-ozonolysis-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "harries-ozonolysis-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Harries Ozonolysis",
+   "ハリースオゾン分解",
+   "ハリースオゾン酸化",
+   "オゾン分解",
+   "オゾン酸化",
+   "はりーすおぞんぶんかい",
+   "はりーすおぞんさんか",
+   "おぞんぶんかい",
+   "おぞんさんか"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "michael-addition",
+  "english": "Michael Addition",
+  "japanese": "マイケル付加",
+  "thmbnailName": "michael-addition-thumbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "michael-addition-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "michael-addition-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "michael-addition-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Michael Addition",
+   "マイケル付加",
+   "マイケル反応",
+   "まいけるふか",
+   "まいけるはんのう"
+
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "neber-rearrangement",
+  "english": "Neber Rearrangement",
+  "japanese": "ネバー転位",
+  "thmbnailName": "neber-rearrangement-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "neber-rearrangement-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "neber-rearrangement-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "neber-rearrangement-example-0.png"
    }
   ],
   "supplements": [
    {
-    "imageName": "acetoacetic-ester-synthesis-supplement-0.png"
+    "imageName": "neber-rearrangement-supplement-0.png"
    }
   ],
   "suggestions": [
-   "Acetoacetic Ester Synthesis",
-   "アセト酢酸エステル合成",
-   "アセト酢酸エチル合成",
-   "あせとさくさんえすてるごうせい",
-   "あせとさくさんえちるごうせい"
+   "Neber Rearrangement",
+   "ネバー転位",
+   "ねばーてんい"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": [
-      "https://youtu.be/OSoVb07ZE1M"
-  ]
+  "tags": []
+ },
+ {
+  "directoryName": "perkow-reaction",
+  "english": "Perkow Reaction",
+  "japanese": "パーコウ反応",
+  "thmbnailName": "perkow-reaction-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "perkow-reaction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "perkow-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "perkow-reaction-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Perkow Reaction",
+   "パーコウ反応",
+   "パーコー反応",
+   "ぱーこうはんのう",
+   "ぱーこーはんのう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "stork-enamine",
+  "english": "Stork Enamine Reaction",
+  "japanese": "ストークエナミン反応",
+  "thmbnailName": "stork-enamine-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "stork-enamine-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "stork-enamine-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "stork-enamine-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Stork Enamine Reaction",
+   "ストークエナミン反応",
+   "すとーくえなみんはんのう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "wittig-reaction",
+  "english": "Wittig Reaction",
+  "japanese": "ウィッティヒ反応",
+  "thmbnailName": "wittig-reaction-thmbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "wittig-reaction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "wittig-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "wittig-reaction-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Wittig Reaction",
+   "ウィッティヒ反応",
+   "ウィティッヒ反応",
+   "ういていっひはんのう",
+   "うぃてぃっひはんのう",
+   "うぃってぃひはんのう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "wohl-ziegler-bromination",
+  "english": "Wohl-Ziegler Bromination",
+  "japanese": "ウォール・チーグラー臭素化",
+  "thmbnailName": "wohl-ziegler-bromination-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "wohl-ziegler-bromination-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "wohl-ziegler-bromination-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "wohl-ziegler-bromination-example-0.png"
+   },
+   {
+    "imageName": "wohl-ziegler-bromination-example-1.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Wohl-Ziegler Bromination",
+   "ウォール・チーグラー臭素化",
+   "ウォール・ジーグラー臭素化",
+   "ウォール・チーグラー反応",
+   "しゅうそかはんのう",
+   "うぉーる・ちーぐらーしゅうそか",
+   "じーぐらー"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "balz-schimann-reaction",
+  "english": "Balz-Schimann Reaction",
+  "japanese": "バルツ・シーマン反応",
+  "thmbnailName": "balz-schimann-reaction-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "balz-schimann-reaction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [],
+  "examples": [],
+  "supplements": [
+   {
+    "imageName": "balz-schimann-reaction-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Balz-Schimann Reaction",
+   "バルツ・シーマン反応",
+   "ばるつ・しーまんはんのう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "bamberger-rearrangement",
+  "english": "Bamberger Rearrangement",
+  "japanese": "バンバーガー転位",
+  "thmbnailName": "bamberger-rearrangement-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "bamberger-rearrangement-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "bamberger-rearrangement-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "bamberger-rearrangement-example-0.png"
+   },
+   {
+    "imageName": "bamberger-rearrangement-example-1.png"
+   },
+   {
+    "imageName": "bamberger-rearrangement-example-2.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Bamberger Rearrangement",
+   "バンバーガー転位",
+   "ばんばーがーてんい"
+  ],
+  "tags": []
  },
  {
   "directoryName": "acyloin-condensation",
@@ -68,12 +463,129 @@
    "アシロイン縮合",
    "あしろいんしゅくごう"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": [
-      "https://youtu.be/ofCpfp7ZSio"
-  ]
+  "tags": []
+ },
+ {
+  "directoryName": "alpha-bromination-of-carbonyl",
+  "english": "Alpha Bromination Of Carbonyl",
+  "japanese": "カルボニルのαｰブロモ化",
+  "thmbnailName": "alpha-bromination-of-carbonyl-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "alpha-bromination-of-carbonyl-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "alpha-bromination-of-carbonyl-mechanism-0.png"
+   }
+  ],
+  "examples": [],
+  "supplements": [],
+  "suggestions": [
+   "Alpha Bromination Of Carbonyl",
+   "カルボニルのαｰブロモ化",
+   "かるぼにるのあるふぁぶろもか"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "michaelis-arbuzov-reaction",
+  "english": "Michaelis-Arbuzov Reaction",
+  "japanese": "ミカエリス・アーブゾフ反応",
+  "thmbnailName": "michaelis-arbuzov-reaction-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "michaelis-arbuzov-reaction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "michaelis-arbuzov-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "michaelis-arbuzov-reaction-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "michaelis-arbuzov-reaction-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Michaelis-Arbuzov Reaction",
+   "ミカエリス・アーブゾフ反応",
+   "みかえりす・あーぶぞふはんのう",
+   "みかえりす・あるぶぞふはんのう",
+   "ミカエリス・アルブゾフ反応"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "meerwein-ponndorf-verley-reduction",
+  "english": "Meerwein-Ponndorf-Verley Reduction",
+  "japanese": "メーヤワイン・ポンドルフ・ヴァーレイ還元",
+  "thmbnailName": "meerwein-ponndorf-verley-reduction-thmbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "meerwein-ponndorf-verley-reduction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "meerwein-ponndorf-verley-reduction-mechanism-0.png"
+   }
+  ],
+  "examples": [],
+  "supplements": [
+   {
+    "imageName": "meerwein-ponndorf-verley-reduction-supplement-0.png"
+   },
+   {
+    "imageName": "meerwein-ponndorf-verley-reduction-supplement-1.png"
+   }
+  ],
+  "suggestions": [
+   "Meerwein-Ponndorf-Verley Reduction",
+   "メーヤワイン・ポンドルフ・ヴァーレイ還元",
+   "メーヤワイン・ポンドルフ・バーレイ還元",
+   "MPV還元",
+   "めーやわいん・ぽんどるふ・ばーれいかんげん",
+   "めーやわいん・ぽんどるふ・ヴぁーれいかんげん"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "betti-reaction",
+  "english": "Betti Reaction",
+  "japanese": "ベティ反応",
+  "thmbnailName": "betti-reaction-thumbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "betti-reaction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "betti-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "betti-reaction-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Betti Reaction",
+   "ベティ反応",
+   "ベッティ反応",
+   "べてぃはんのう",
+   "べってぃはんのう"
+  ],
+  "tags": []
  },
  {
   "directoryName": "aldol-condensation",
@@ -111,37 +623,7 @@
    "あるどーるふか",
    "あるどーるはんのう"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "alpha-bromination-of-carbonyl",
-  "english": "Alpha Bromination Of Carbonyl",
-  "japanese": "カルボニルのαｰブロモ化",
-  "thmbnailName": "alpha-bromination-of-carbonyl-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "alpha-bromination-of-carbonyl-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "alpha-bromination-of-carbonyl-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [],
-  "suggestions": [
-   "Alpha Bromination Of Carbonyl",
-   "カルボニルのαｰブロモ化",
-   "かるぼにるのあるふぁぶろもか"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
   "directoryName": "appel-halogenation",
@@ -173,10 +655,7 @@
    "ぶろもか",
    "ブロモ化"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
   "directoryName": "arndt-eistert-synthesis",
@@ -213,658 +692,7 @@
    "あーんと・あいしゅたーとごうせい",
    "あるんと・あいすてると合成"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "baeyer-villiger-oxidation",
-  "english": "Baeyer-Villiger Oxidation",
-  "japanese": "バイヤー・ビリガー酸化",
-  "thmbnailName": "baeyer-villiger-oxidation-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "baeyer-villiger-oxidation-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "baeyer-villiger-oxidation-general-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "baeyer-villiger-oxidation-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Baeyer-Villiger Oxidation",
-   "バイヤー・ビリガー酸化",
-   "ばいやー・びりがーさんか"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "balz-schimann-reaction",
-  "english": "Balz-Schimann Reaction",
-  "japanese": "バルツ・シーマン反応",
-  "thmbnailName": "balz-schimann-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "balz-schimann-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "balz-schimann-reaction-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Balz-Schimann Reaction",
-   "バルツ・シーマン反応",
-   "ばるつ・しーまんはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "bamberger-rearrangement",
-  "english": "Bamberger Rearrangement",
-  "japanese": "バンバーガー転位",
-  "thmbnailName": "bamberger-rearrangement-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "bamberger-rearrangement-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "bamberger-rearrangement-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "bamberger-rearrangement-example-0.png"
-   },
-   {
-    "imageName": "bamberger-rearrangement-example-1.png"
-   },
-   {
-    "imageName": "bamberger-rearrangement-example-2.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Bamberger Rearrangement",
-   "バンバーガー転位",
-   "ばんばーがーてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "barton-reaction",
-  "english": "Barton Reaction",
-  "japanese": "バートン反応",
-  "thmbnailName": "barton-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "barton-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "barton-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "barton-reaction-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Barton Reaction",
-   "バートン反応",
-   "ばーとんはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "bechamp-reduction",
-  "english": "Bechamp Reduction",
-  "japanese": "ベシャンプ還元",
-  "thmbnailName": "bechamp-reduction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "bechamp-reduction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "bechamp-reduction-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [],
-  "suggestions": [
-   "Bechamp Reduction",
-   "ベシャンプ還元",
-   "ベシャン還元",
-   "ベチャンプ還元",
-   "べしゃんぷかんげん",
-   "べしゃんかんげん",
-   "べちゃんぷかんげん"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "beckmann-rearrangement",
-  "english": "Beckmann Rearrangement",
-  "japanese": "ベックマン転位",
-  "thmbnailName": "beckmann-rearrangement-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "beckmann-rearrangement-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "beckmann-rearrangement-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "beckmann-rearrangement-example-0.png"
-   },
-   {
-    "imageName": "beckmann-rearrangement-example-1.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "beckmann-rearrangement-supplement-0.png"
-   },
-   {
-    "imageName": "beckmann-rearrangement-supplement-1.png"
-   }
-  ],
-  "suggestions": [
-   "Beckmann Rearrangement",
-   "ベックマン転位",
-   "べっくまんてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "benzoin-condensation",
-  "english": "Benzoin Condensation",
-  "japanese": "ベンゾイン縮合",
-  "thmbnailName": "benzoin-condensation-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "benzoin-condensation-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "benzoin-condensation-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "benzoin-condensation-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Benzoin Condensation",
-   "ベンゾイン縮合",
-   "べんぞいんしゅくごう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "betti-reaction",
-  "english": "Betti Reaction",
-  "japanese": "ベティ反応",
-  "thmbnailName": "betti-reaction-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "betti-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "betti-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "betti-reaction-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Betti Reaction",
-   "ベティ反応",
-   "ベッティ反応",
-   "べてぃはんのう",
-   "べってぃはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "birch-reducion",
-  "english": "Birch Reduction",
-  "japanese": "バーチ還元",
-  "thmbnailName": "barton-reducion-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "barton-reducion-general-formula-0.png"
-   },
-   {
-    "imageName": "barton-reducion-general-formula-1.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "barton-reducion-mechanism-0.png"
-   },
-   {
-    "imageName": "barton-reducion-mechanism-1.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "barton-reducion-example-0.png"
-   },
-   {
-    "imageName": "barton-reducion-example-1.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Birch Reduction",
-   "バーチ還元",
-   "ばーちかんげん"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "borch-reductive-amination",
-  "english": "Borch Reductive Amination",
-  "japanese": "ボーチ還元的アミノ化",
-  "thmbnailName": "borch-reductive-amination-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "borch-reductive-amination-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "borch-reductive-amination-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "borch-reductive-amination-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "borch-reductive-amination-supplement-0.png"
-   },
-   {
-    "imageName": "borch-reductive-amination-supplement-1.png"
-   }
-  ],
-  "suggestions": [
-   "Borch Reductive Amination",
-   "ボーチ還元的アミノ化",
-   "ボーチ反応",
-   "ボーチ還元",
-   "ぼーちかんげんてきあみのか",
-   "ぼーちはんのう",
-   "ぼーちかんげん"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "bouveault-aldehyde-synthesis",
-  "english": "Bouveault Aldehyde Synthesis",
-  "japanese": "ブーボーアルデヒド合成",
-  "thmbnailName": "bouveault-aldehyde-synthesis-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "bouveault-aldehyde-synthesis-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "bouveault-aldehyde-synthesis-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "bouveault-aldehyde-synthesis-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "bouveault-aldehyde-synthesis-supplement-0.png"
-   },
-   {
-    "imageName": "bouveault-aldehyde-synthesis-supplement-1.png"
-   }
-  ],
-  "suggestions": [
-   "Bouveault Aldehyde Synthesis",
-   "ブーボーアルデヒド合成",
-   "ぶーぼーあるでひどごうせい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "bouveault-blanc-reduction",
-  "english": "Bouveault-Blanc Reduction",
-  "japanese": "ブーボー・ブラン還元",
-  "thmbnailName": "bouveault-blanc-reduction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "bouveault-blanc-reduction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "bouveault-blanc-reduction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "bouveault-blanc-reduction-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "bouveault-blanc-reduction-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Bouveault-Blanc Reduction",
-   "ブーボー・ブラン還元",
-   "ぶーぼー・ぶらんかんげん"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "cannizzaro-reaction",
-  "english": "Cannizzaro Reaction",
-  "japanese": "カニッツァロ反応",
-  "thmbnailName": "cannizzaro-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "cannizzaro-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "cannizzaro-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "cannizzaro-reaction-supplement-0.png"
-   },
-   {
-    "imageName": "cannizzaro-reaction-supplement-1.png"
-   }
-  ],
-  "suggestions": [
-   "Cannizzaro Reaction",
-   "カニッツァロ反応",
-   "かにっつぁろはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "chan-rearrangement",
-  "english": "Chan Rearrangement",
-  "japanese": "チャン転位",
-  "thmbnailName": "chan-rearrangement-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "chan-rearrangement-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "chan-rearrangement-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "chan-rearrangement-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Chan Rearrangement",
-   "チャン転位",
-   "ちゃんてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "chugaev-elimination",
-  "english": "Chugaev Elimination",
-  "japanese": "シュガフ脱離",
-  "thmbnailName": "chugaev-elimination-general-formula.png",
-  "generalFormulas": [
-   {
-    "imageName": "chugaev-elimination-general-formula.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "chugaev-elimination-mechanism.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "chugaev-elimination-example.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Chugaev Elimination",
-   "シュガフ脱離",
-   "チューガフ脱離",
-   "チューゲフ脱離",
-   "シュガエフ脱離",
-   "しゅがふだつり",
-   "ちゅーがふだつり",
-   "ちゅーげふだつり",
-   "しゅがえふだつり"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "claisen-condensation",
-  "english": "Claisen Condensation",
-  "japanese": "クライゼン縮合",
-  "thmbnailName": "claisen-condensation-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "claisen-condensation-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "claisen-condensation-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "claisen-condensation-example-0.png"
-   },
-   {
-    "imageName": "claisen-condensation-example-2.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Claisen Condensation",
-   "クライゼン縮合",
-   "くらいぜんしゅくごう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "claisen-schmidt-reaction",
-  "english": "Claisen-Schmidt Reaction",
-  "japanese": "クライゼン・シュミット反応",
-  "thmbnailName": "claisen-schmidt-reaction-generalformula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "claisen-schmidt-reaction-generalformula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "claisen-schmidt-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "claisen-schmidt-reaction-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Claisen-Schmidt Reaction",
-   "クライゼン・シュミット反応",
-   "くらいぜん・しゅみっとはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "corey-fuchs-alkynation",
-  "english": "Corey-Fuchs Alkynation",
-  "japanese": "コーリー・フックスアルキン合成",
-  "thmbnailName": "corey-fuchs-alkynation-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "corey-fuchs-alkynation-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "corey-fuchs-alkynation-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "corey-fuchs-alkynation-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Corey-Fuchs Alkynation",
-   "コーリー・フックスアルキン合成",
-   "コーリー・フックス反応",
-   "こーりー・ふっくすあるきんごうせい",
-   "こーりー・ふっくすはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "corey-kim-oxidation",
-  "english": "Corey-Kim Oxidation",
-  "japanese": "コーリー・キム酸化",
-  "thmbnailName": "corey-kim-oxidation-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "corey-kim-oxidation-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "corey-kim-oxidation-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "corey-kim-oxidation-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Corey-Kim Oxidation",
-   "コーリー・キム酸化",
-   "こーりー・きむさんか"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
   "directoryName": "criegee-oxidation",
@@ -901,227 +729,7 @@
    "くりーぎーさんか",
    "くりーじーさんか"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "curtius-rearrangement",
-  "english": "Curtius Rearrangement",
-  "japanese": "クルチウス転位",
-  "thmbnailName": "curtius-rearrangement-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "curtius-rearrangement-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "curtius-rearrangement-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "curtius-rearrangement-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Curtius Rearrangement",
-   "クルチウス転位",
-   "くるちうすてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "darzens-condensation",
-  "english": "Darzens Condensation",
-  "japanese": "ダルツェンス縮合",
-  "thmbnailName": "darzens-condensation-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "darzens-condensation-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "darzens-condensation-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "darzens-condensation-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Darzens Condensation",
-   "ダルツェンス縮合",
-   "ダルツェン縮合",
-   "だるつぇんすしゅくごう",
-   "だるつぇんしゅくごう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "dess-martin-oxiadation",
-  "english": "Dess-Martin Oxidation",
-  "japanese": "デス・マーチン酸化",
-  "thmbnailName": "dess-martin-oxidation-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "dess-martin-oxidation-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "dess-martin-oxidation-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "dess-martin-oxidation-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "dess-martin-oxidation-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Dess-Martin Oxiadation",
-   "デス・マーチン酸化",
-   "です・まーちんさんか"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "dieckmann-condensation",
-  "english": "Dieckmann Condensation",
-  "japanese": "ディークマン縮合",
-  "thmbnailName": "dieckmann-condensation-generalformula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "dieckmann-condensation-generalformula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "dieckmann-condensation-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "dieckmann-condensation-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "dieckmann-condensation-supplement-0.png"
-   },
-   {
-    "imageName": "dieckmann-condensation-supplement-2.png"
-   }
-  ],
-  "suggestions": [
-   "Dieckmann Condensation",
-   "ディークマン縮合",
-   "ディックマン縮合",
-   "ディークマン環化",
-   "ディックマン環化",
-   "でぃーくまんしゅくごう",
-   "でぃっくまんしゅくごう",
-   "でぃーくまんかんか",
-   "でぃっくまんかんか"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "doebner-miller-quinoline-synthesis",
-  "english": "Doebner-Miller Quinoline Synthesis",
-  "japanese": "デーブナー・ミラーキノリン合成",
-  "thmbnailName": "doebner-miller-quinoline-synthesis-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "doebner-miller-quinoline-synthesis-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "doebner-miller-quinoline-synthesis-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "doebner-miller-quinoline-synthesis-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "doebner-miller-quinoline-synthesis-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Doebner-Miller Quinoline Synthesis",
-   "デーブナー・ミラーキノリン合成",
-   "デーブナー・ミラー合成",
-   "でーぶなー・みらーきのりんごうせい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "edman-degradation",
-  "english": "Edman Degradation",
-  "japanese": "エドマン分解",
-  "thmbnailName": "edman-degradation-thumbnail-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "edman-degradation-generalformula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "edman-degradation-mechanism-0.png"
-   },
-   {
-    "imageName": "edman-degradation-mechanism-2.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": ""
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": ""
-   }
-  ],
-  "suggestions": [
-   "Edman Degradation",
-   "エドマン分解",
-   "えどまんぶんかい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
   "directoryName": "eschenmoser-tabe-fragmentation",
@@ -1149,315 +757,7 @@
    "エッシェンモーザー・タナベ開裂",
    "えっしぇんもーざー・たなべかいれつ"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "eschweiler-clarke-reaction",
-  "english": "Eschweiler-Clarke Reaction",
-  "japanese": "エシュバイラー・クラーク反応",
-  "thmbnailName": "eschweiler-clarke-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "eschweiler-clarke-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "eschweiler-clarke-reaction-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Eschweiler-Clarke Reaction",
-   "エシュバイラー・クラーク反応",
-   "エシュヴァイラー・クラーク反応",
-   "えしゅばいらー・くらーくはんのう",
-   "えしゅヴぁいらー・くらーくはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "favorskii-rearrangement",
-  "english": "Favorskii Rearrangement",
-  "japanese": "ファボルスキー転位",
-  "thmbnailName": "favorskii-rearrangement-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "favorskii-rearrangement-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "favorskii-rearrangement-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "favorskii-rearrangement-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "favorskii-rearrangement-supplement-0.png"
-   },
-   {
-    "imageName": "favorskii-rearrangement-supplement-1.png"
-   }
-  ],
-  "suggestions": [
-   "Favorskii Rearrangement",
-   "ファボルスキー転位",
-   "ファヴォルスキー転位",
-   "ふぁぼるすきーてんい",
-   "ふぁヴぉるすきーてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "fischer-speier-esterification",
-  "english": "Fischer-Speier Esterification",
-  "japanese": "フィッシャー・スペイアエステル合成",
-  "thmbnailName": "fischer-speier-esterification-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "fischer-speier-esterification-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "fischer-speier-esterification-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "fischer-speier-esterification-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Fischer-Speier Esterification",
-   "フィッシャー・スペイアエステル合成",
-   "フィッシャーエステル合成",
-   "ふぃっしゃー・すぺいあえすてるごうせい",
-   "ふぃっしゃーえすてるごうせい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "fritsch-buttenberg-wiechel-rearrangement",
-  "english": "Fritsch-Buttenberg-Wiechel Rearrangement",
-  "japanese": "フリッチュ・ブッテンバーグ・ウィーチェル転位",
-  "thmbnailName": "fritsch-buttenberg-wiechel-rearrangement-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "fritsch-buttenberg-wiechel-rearrangement-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "fritsch-buttenberg-wiechel-rearrangement-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "fritsch-buttenberg-wiechel-rearrangement-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Fritsch-Buttenberg-Wiechel Rearrangement",
-   "フリッチュ・ブッテンバーグ・ウィーチェル転位",
-   "FBW転位",
-   "ふりっちゅ・ぶってんばーぐ・うぃーちぇるてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "fukuyama-cross-coupling",
-  "english": "Fukuyama Cross Coupling",
-  "japanese": "福山クロスカップリング",
-  "thmbnailName": "fukuyama-cross-coupling-thumbnail-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "fukuyama-cross-coupling-generalformula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "fukuyama-cross-coupling-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [],
-  "suggestions": [
-   "Fukuyama Cross Coupling",
-   "福山クロスカップリング",
-   "フクヤマカップリング",
-   "hukuyama cross coupling",
-   "ふくやまくろすかっぷりんぐ",
-   "ふくやまかっぷりんぐ"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "fukuyama-reduction",
-  "english": "Fukuyama Reduction",
-  "japanese": "福山還元反応",
-  "thmbnailName": "fukuyama-reduction-generalformula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "fukuyama-reduction-generalformula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "fukuyama-reduction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "fukuyama-reduction-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Fukuyama Reduction",
-   "福山還元反応",
-   "フクヤマカンゲン",
-   "hukuyama reduction",
-   "フクヤマ還元",
-   "ふくやまかんげんはんのう",
-   "ふくやまかんげん"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "gabriel-amination",
-  "english": "Gabriel Amination",
-  "japanese": "ガブリエルアミン合成",
-  "thmbnailName": "gabriel-amination-general-formula-1.png",
-  "generalFormulas": [
-   {
-    "imageName": "gabriel-amination-general-formula-1.png"
-   },
-   {
-    "imageName": "gabriel-amination-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "gabriel-amination-mechanism-0.png"
-   },
-   {
-    "imageName": "gabriel-amination-mechanism-1.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "gabriel-amination-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Gabriel Amination",
-   "ガブリエルアミン合成",
-   "ガブリエル反応",
-   "ガブリエル合成",
-   "がぶりえるあみんごうせい",
-   "がぶりえるはんのう",
-   "がぶりえるごうせい",
-   "ガブリエル第一級アミノ化",
-   "がぶりえるだいいっきゅうあみのか"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "grignard-reaction",
-  "english": "Grignard Reaction",
-  "japanese": "グリニャール反応",
-  "thmbnailName": "grignard-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "grignard-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "grignard-reaction-mechanism-0.png"
-   },
-   {
-    "imageName": "grignard-reaction-mechanism-1.png"
-   },
-   {
-    "imageName": "grignard-reaction-mechanism-2.png"
-   },
-   {
-    "imageName": "grignard-reaction-mechanism-3.png"
-   },
-   {
-    "imageName": "grignard-reaction-mechanism-4.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "grignard-reaction-example-0.png"
-   },
-   {
-    "imageName": "grignard-reaction-example-1.png"
-   },
-   {
-    "imageName": "grignard-reaction-example-2.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "grignard-reaction-supplement-0.png"
-   },
-   {
-    "imageName": "grignard-reaction-supplement-1.png"
-   },
-   {
-    "imageName": "grignard-reaction-supplement-2.png"
-   }
-  ],
-  "suggestions": [
-   "Grignard Reaction",
-   "グリニャール反応",
-   "グリニャー反応",
-   "グリナード反応",
-   "ぐりにゃーるはんのう",
-   "ぐりにゃーはんのう",
-   "ぐりなーどはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
   "directoryName": "haloform-reaction",
@@ -1488,186 +788,7 @@
    "よーどほるむはんのう",
    "Iodoform Reaction"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "harries-ozonolysis",
-  "english": "Harries Ozonolysis",
-  "japanese": "ハリースオゾン分解",
-  "thmbnailName": "harries-ozonolysis-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "harries-ozonolysis-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "harries-ozonolysis-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "harries-ozonolysis-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Harries Ozonolysis",
-   "ハリースオゾン分解",
-   "ハリースオゾン酸化",
-   "オゾン分解",
-   "オゾン酸化",
-   "はりーすおぞんぶんかい",
-   "はりーすおぞんさんか",
-   "おぞんぶんかい",
-   "おぞんさんか"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "hell-volhard-zelinskii-reaction",
-  "english": "Hell-Volhard-Zelinskii Reaction",
-  "japanese": "ヘル・ヴォルハルト・ゼリンスキー反応",
-  "thmbnailName": "hell-volhard-zelinskii-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "hell-volhard-zelinskii-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "hell-volhard-zelinskii-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "hell-volhard-zelinskii-reaction-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Hell-Volhard-Zelinskii Reaction",
-   "ヘル・ヴォルハルト・ジェリンスキー反応",
-   "ヘル・ボルハルト・ゼリンスキー反応",
-   "HVZ反応",
-   "へる・ぼるはると・ぜりんすきーはんのう",
-   "へる・ヴぉるはると・じぇりんすきーはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "henry-reaction",
-  "english": "Henry Reaction",
-  "japanese": "ヘンリー反応",
-  "thmbnailName": "henry-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "henry-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "henry-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "henry-reaction-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Henry Reaction",
-   "ヘンリー反応",
-   "ニトロアルドール反応",
-   "へんりーはんのう",
-   "にとろあるどーるはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "hofmann-elimination",
-  "english": "Hofmann Elimination",
-  "japanese": "ホフマン脱離",
-  "thmbnailName": "hoffmannelimination-generalformula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "hoffmannelimination-generalformula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "hofmann-elimination-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "hoffmannelimination-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "hofmann-elimination-supplement-0.png"
-   },
-   {
-    "imageName": "hofmann-elimination-supplement-2.png"
-   }
-  ],
-  "suggestions": [
-   "Hofmann Elimination",
-   "ホフマン脱離",
-   "Hofmann Degradation",
-   "ホフマン分解",
-   "ほふまんだつり",
-   "ほふまんぶんかい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "hofmann-rearrangement",
-  "english": "Hofmann Rearrangement",
-  "japanese": "ホフマン転位",
-  "thmbnailName": "hofmann-rearrangement-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "hofmann-rearrangement-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "hofmann-rearrangement-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "hofmann-rearrangement-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Hofmann Rearrangement",
-   "ホフマン転位",
-   "ほふまんてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
   "directoryName": "hwe-reaction",
@@ -1709,10 +830,342 @@
    "HWE反応",
    "ほーなー・わずわーす・えもんすはんのう"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
+ },
+ {
+  "directoryName": "hell-volhard-zelinskii-reaction",
+  "english": "Hell-Volhard-Zelinskii Reaction",
+  "japanese": "ヘル・ヴォルハルト・ゼリンスキー反応",
+  "thmbnailName": "hell-volhard-zelinskii-reaction-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "hell-volhard-zelinskii-reaction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "hell-volhard-zelinskii-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "hell-volhard-zelinskii-reaction-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Hell-Volhard-Zelinskii Reaction",
+   "ヘル・ヴォルハルト・ジェリンスキー反応",
+   "ヘル・ボルハルト・ゼリンスキー反応",
+   "HVZ反応",
+   "へる・ぼるはると・ぜりんすきーはんのう",
+   "へる・ヴぉるはると・じぇりんすきーはんのう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "malaprade-oxidation",
+  "english": "Malaprade Oxidation",
+  "japanese": "マラプラード酸化",
+  "thmbnailName": "malaprade-oxidation-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "malaprade-oxidation-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "malaprade-oxidation-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "malaprade-oxidation-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "malaprade-oxidation-supplement-0.png"
+   },
+   {
+    "imageName": "malaprade-oxidation-supplement-1.png"
+   }
+  ],
+  "suggestions": [
+   "Malaprade Oxidation",
+   "マラプラード酸化",
+   "まらぷらーどさんか"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "oppenauer-oxidation",
+  "english": "Oppenauer Oxidation",
+  "japanese": "オッペンアウワー酸化",
+  "thmbnailName": "oppenauer-oxidation-thmbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "oppenauer-oxidation-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "oppenauer-oxidation-mechanism-0.png"
+   }
+  ],
+  "examples": [],
+  "supplements": [
+   {
+    "imageName": "oppenauer-oxidation-supplement-0.png"
+   },
+   {
+    "imageName": "oppenauer-oxidation-supplement-1.png"
+   }
+  ],
+  "suggestions": [
+   "Oppenauer Oxidation",
+   "オッペンアウワー酸化",
+   "オッペナウワー酸化",
+   "オッペンアワー酸化",
+   "おっぺんあうわーさんか",
+   "おっぺなうわーさんか",
+   "おっぺんあわーさんか"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "pcc-oxidation",
+  "english": "Pcc Oxidation",
+  "japanese": "PCC酸化",
+  "thmbnailName": "pcc-oxidation-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "pcc-oxidation-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [],
+  "examples": [
+   {
+    "imageName": "pcc-oxidation-general-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "pcc-oxidation-general-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Pcc Oxidation",
+   "PCC酸化",
+   "ぴーしーしーさんか"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "ramberg-backlund-rearrangement",
+  "english": "Ramberg-Backlund Rearrangement",
+  "japanese": "ランバーグ・バックランド転位",
+  "thmbnailName": "ramberg-backlund-rearrangement-thmbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "ramberg-backlund-rearrangement-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "ramberg-backlund-rearrangement-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "ramberg-backlund-rearrangement-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Ramberg-Backlund Rearrangement",
+   "ランバーグ・バックランド転位",
+   "らんばーぐ・ばっくらんどてんい"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "sandmeyer-reaction",
+  "english": "Sandmeyer Reaction",
+  "japanese": "ザンドマイヤー反応",
+  "thmbnailName": "sandmeyer-reaction-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "sandmeyer-reaction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "sandmeyer-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "sandmeyer-reaction-example-0.png"
+   },
+   {
+    "imageName": "sandmeyer-reaction-example-1.png"
+   },
+   {
+    "imageName": "sandmeyer-reaction-example-2.png"
+   },
+   {
+    "imageName": "sandmeyer-reaction-example-3.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Sandmeyer Reaction",
+   "ザンドマイヤー反応",
+   "ザンドメーヤー反応",
+   "ざんどまいやーはんのう",
+   "ざんどめーやーはんのう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "synthesis-of-diazo-compounds",
+  "english": "Synthesis Of Diazo Compounds",
+  "japanese": "ジアゾ化合物の合成",
+  "thmbnailName": "synthesis-of-diazo-compounds-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "synthesis-of-diazo-compounds-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "synthesis-of-diazo-compounds-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "synthesis-of-diazo-compounds-example-0.png"
+   },
+   {
+    "imageName": "synthesis-of-diazo-compounds-example-1.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Synthesis Of Diazo Compounds",
+   "ジアゾ化合物の合成",
+   "じあぞかごうぶつのごうせい"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "wolff-kishner-reduction",
+  "english": "Wolff-Kishner Reduction",
+  "japanese": "ウォルフ・キッシュナー還元",
+  "thmbnailName": "wolff-kishner-reduction-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "wolff-kishner-reduction-general-formula-0.png"
+   },
+   {
+    "imageName": "wolff-kishner-reduction-general-formula-1.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "wolff-kishner-reduction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "wolff-kishner-reduction-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "wolff-kishner-reduction-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Wolff-Kishner Reduction",
+   "ウォルフ・キッシュナー還元",
+   "ヴォルフｰキシュナー還元",
+   "うぉるふ・きっしゅなーかんげん",
+   "ヴぉるふ・きしゅなー還元"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "wolff-rearrangement",
+  "english": "Wolff Rearrangement",
+  "japanese": "ウォルフ転位",
+  "thmbnailName": "wolff-rearrangement-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "wolff-rearrangement-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "wolff-rearrangement-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "wolff-rearrangement-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "wolff-rearrangement-supplement-0.png"
+   },
+   {
+    "imageName": "wolff-rearrangement-supplement-1.png"
+   }
+  ],
+  "suggestions": [
+   "Wolff Rearrangement",
+   "ウォルフ転位",
+   "ヴォルフ転位",
+   "うぉるふてんい",
+   "ヴぉるふてんい"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "chugaev-elimination",
+  "english": "Chugaev Elimination",
+  "japanese": "シュガフ脱離",
+  "thmbnailName": "chugaev-elimination-general-formula.png",
+  "generalFormulas": [
+   {
+    "imageName": "chugaev-elimination-general-formula.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "chugaev-elimination-mechanism.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "chugaev-elimination-example.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Chugaev Elimination",
+   "シュガフ脱離",
+   "チューガフ脱離",
+   "チューゲフ脱離",
+   "シュガエフ脱離",
+   "しゅがふだつり",
+   "ちゅーがふだつり",
+   "ちゅーげふだつり",
+   "しゅがえふだつり"
+  ],
+  "tags": []
  },
  {
   "directoryName": "jones-oxidation",
@@ -1748,48 +1201,219 @@
    "じょーんずさんか",
    "くろむさんさんか"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
-  "directoryName": "keck-macrolactonization",
-  "english": "Keck Macrolactonization",
-  "japanese": "ケックマクロラクトン化",
-  "thmbnailName": "keck-macrolactonization-thumbnail.png",
+    "directoryName": "kolbe-schmitt-reaction",
+    "english": "Kolbe Schmitt Reaction",
+    "japanese": "コルベ・シュミット反応",
+    "thmbnailName": "kolbe-schmitt-reaction-general-formula.png",
+    "generalFormulas": [
+     {
+      "imageName": "kolbe-schmitt-reaction-general-formula.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "kolbe-schmitt-reaction-mechanism.png"
+     }
+    ],
+    "examples": [],
+    "supplements": [
+        {
+            "imageName": "kolbe-schmitt-reaction-supplement-0.png"
+        }
+    ],
+    "suggestions": [
+     "Kolbe Schmitt Reaction",
+     "コルベ・シュミット反応",
+     "コルベー・シュミット反応",
+   "こるべ・しゅみっとはんのう",
+   "こるべー・しゅみっとはんのう"
+    ],
+    "tags": []
+   },
+ {
+  "directoryName": "cannizzaro-reaction",
+  "english": "Cannizzaro Reaction",
+  "japanese": "カニッツァロ反応",
+  "thmbnailName": "cannizzaro-reaction-general-formula-0.png",
   "generalFormulas": [
    {
-    "imageName": "keck-macrolactonization-general-formula-0.png"
+    "imageName": "cannizzaro-reaction-general-formula-0.png"
    }
   ],
   "mechanisms": [
    {
-    "imageName": "keck-macrolactonization-mechanism-0.png"
+    "imageName": "cannizzaro-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [],
+  "supplements": [
+   {
+    "imageName": "cannizzaro-reaction-supplement-0.png"
+   },
+   {
+    "imageName": "cannizzaro-reaction-supplement-1.png"
+   }
+  ],
+  "suggestions": [
+   "Cannizzaro Reaction",
+   "カニッツァロ反応",
+   "かにっつぁろはんのう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "corey-fuchs-alkynation",
+  "english": "Corey-Fuchs Alkynation",
+  "japanese": "コーリー・フックスアルキン合成",
+  "thmbnailName": "corey-fuchs-alkynation-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "corey-fuchs-alkynation-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "corey-fuchs-alkynation-mechanism-0.png"
+   }
+  ],
+  "examples": [],
+  "supplements": [
+   {
+    "imageName": "corey-fuchs-alkynation-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Corey-Fuchs Alkynation",
+   "コーリー・フックスアルキン合成",
+   "コーリー・フックス反応",
+   "こーりー・ふっくすあるきんごうせい",
+   "こーりー・ふっくすはんのう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "corey-kim-oxidation",
+  "english": "Corey-Kim Oxidation",
+  "japanese": "コーリー・キム酸化",
+  "thmbnailName": "corey-kim-oxidation-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "corey-kim-oxidation-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "corey-kim-oxidation-mechanism-0.png"
    }
   ],
   "examples": [
    {
-    "imageName": "keck-macrolactonization-example-0.png"
+    "imageName": "corey-kim-oxidation-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Corey-Kim Oxidation",
+   "コーリー・キム酸化",
+   "こーりー・きむさんか"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "curtius-rearrangement",
+  "english": "Curtius Rearrangement",
+  "japanese": "クルチウス転位",
+  "thmbnailName": "curtius-rearrangement-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "curtius-rearrangement-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "curtius-rearrangement-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "curtius-rearrangement-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Curtius Rearrangement",
+   "クルチウス転位",
+   "くるちうすてんい"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "dess-martin-oxiadation",
+  "english": "Dess-Martin Oxidation",
+  "japanese": "デス・マーチン酸化",
+  "thmbnailName": "dess-martin-oxidation-thumbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "dess-martin-oxidation-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "dess-martin-oxidation-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "dess-martin-oxidation-example-0.png"
+   }
+],
+  "supplements": [
+   {
+    "imageName": "dess-martin-oxidation-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Dess-Martin Oxiadation",
+   "デス・マーチン酸化",
+   "です・まーちんさんか"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "doebner-miller-quinoline-synthesis",
+  "english": "Doebner-Miller Quinoline Synthesis",
+  "japanese": "デーブナー・ミラーキノリン合成",
+  "thmbnailName": "doebner-miller-quinoline-synthesis-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "doebner-miller-quinoline-synthesis-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "doebner-miller-quinoline-synthesis-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "doebner-miller-quinoline-synthesis-example-0.png"
    }
   ],
   "supplements": [
    {
-    "imageName": "keck-macrolactonization-supplement-0.png"
+    "imageName": "doebner-miller-quinoline-synthesis-supplement-0.png"
    }
   ],
   "suggestions": [
-   "Keck Macrolactonization",
-   "ケックマクロラクトン化",
-   "けっくまくろらくとんか",
-   "ケックエステル化",
-   "けっくえすてるか",
-   "Esterfication"
+   "Doebner-Miller Quinoline Synthesis",
+   "デーブナー・ミラーキノリン合成",
+   "デーブナー・ミラー合成",
+   "でーぶなー・みらーきのりんごうせい"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
   "directoryName": "knoevenagel-condensation",
@@ -1831,43 +1455,7 @@
    "くねべなげるしゅくごう",
    "くねーふぇなーげるしゅくごう"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "kolbe-schmitt-reaction",
-  "english": "Kolbe Schmitt Reaction",
-  "japanese": "コルベ・シュミット反応",
-  "thmbnailName": "kolbe-schmitt-reaction-general-formula.png",
-  "generalFormulas": [
-   {
-    "imageName": "kolbe-schmitt-reaction-general-formula.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "kolbe-schmitt-reaction-mechanism.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "kolbe-schmitt-reaction-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Kolbe Schmitt Reaction",
-   "コルベ・シュミット反応",
-   "コルベー・シュミット反応",
-   "こるべ・しゅみっとはんのう",
-   "こるべー・しゅみっとはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
   "directoryName": "kumada-tamao-corriu-crosscoupling",
@@ -1896,670 +1484,47 @@
    "クマダ・タマオ・コリュークロスカップリング",
    "くまだ・たまお・こりゅーくろすかっぷりんぐ"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
-  "directoryName": "leuckart-wallach-reaction",
-  "english": "Leuckart-Wallach Reaction",
-  "japanese": "ロイカート・バラッハ反応",
-  "thmbnailName": "leuckart-wallach-reaction-general-formula-0.png",
+  "directoryName": "gabriel-amination",
+  "english": "Gabriel Amination",
+  "japanese": "ガブリエルアミン合成",
+  "thmbnailName": "gabriel-amination-general-formula-1.png",
   "generalFormulas": [
    {
-    "imageName": "leuckart-wallach-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "leuckart-wallach-reaction-example-0.png"
-   }
-  ],
-  "suggestions": [
-   "Leuckart-Wallach Reaction",
-   "ロイカート・バラッハ反応",
-   "ロイカート・ヴァラッハ反応",
-   "ろいかーと・ばらっははんのう",
-   "ろいかーと・ヴぁらっははんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "malaprade-oxidation",
-  "english": "Malaprade Oxidation",
-  "japanese": "マラプラード酸化",
-  "thmbnailName": "malaprade-oxidation-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "malaprade-oxidation-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "malaprade-oxidation-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "malaprade-oxidation-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "malaprade-oxidation-supplement-0.png"
+    "imageName": "gabriel-amination-general-formula-1.png"
    },
    {
-    "imageName": "malaprade-oxidation-supplement-1.png"
-   }
-  ],
-  "suggestions": [
-   "Malaprade Oxidation",
-   "マラプラード酸化",
-   "まらぷらーどさんか"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "malonic-ester-synthesis",
-  "english": "Malonic Ester Synthesis",
-  "japanese": "マロン酸エステル合成",
-  "thmbnailName": "malonic-ester-synthesis-thumbnail-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "malonic-ester-synthesis-generalformula-0.png"
+    "imageName": "gabriel-amination-general-formula-0.png"
    }
   ],
   "mechanisms": [
    {
-    "imageName": "malonic-ester-synthesis-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "malonic-ester-synthesis-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "malonic-ester-synthesis-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Malonic Ester Synthesis",
-   "マロン酸エステル合成",
-   "マロン酸エチル合成",
-   "まろんさんえすてるごうせい",
-   "まろんさんえちるごうせい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "mannich-reaction",
-  "english": "Mannich Reaction",
-  "japanese": "マンニッヒ反応",
-  "thmbnailName": "mannich-reaction-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "mannich-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "mannich-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "mannich-reaction-example-0.png"
+    "imageName": "gabriel-amination-mechanism-0.png"
    },
    {
-    "imageName": "mannich-reaction-example-1.png"
-   },
+    "imageName": "gabriel-amination-mechanism-1.png"
+   }
+  ],
+  "examples": [
    {
-    "imageName": "mannich-reaction-example-2.png"
+    "imageName": "gabriel-amination-example-0.png"
    }
   ],
   "supplements": [],
   "suggestions": [
-   "Mannich Reaction",
-   "マンニッヒ反応",
-   "まんにっひはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "mcmurry-coupling",
-  "english": "McMurry Coupling",
-  "japanese": "マクマリーカップリング",
-  "thmbnailName": "mcmurry-coupling-generalformula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "mcmurry-coupling-generalformula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "mcmurry-coupling-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "mcmurry-coupling-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "mcmurry-coupling-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "McMurry Coupling",
-   "マクマリーカップリング",
-   "マックマリーカップリング",
-   "マクマリー反応",
-   "マックマリー反応",
-   "まくまりーかっぷりんぐ",
-   "まっくまりーかっぷりんぐ",
-   "まくまりーはんのう",
-   "まっくまりーはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "meerwein-ponndorf-verley-reduction",
-  "english": "Meerwein-Ponndorf-Verley Reduction",
-  "japanese": "メーヤワイン・ポンドルフ・ヴァーレイ還元",
-  "thmbnailName": "meerwein-ponndorf-verley-reduction-thmbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "meerwein-ponndorf-verley-reduction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "meerwein-ponndorf-verley-reduction-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "meerwein-ponndorf-verley-reduction-supplement-0.png"
-   },
-   {
-    "imageName": "meerwein-ponndorf-verley-reduction-supplement-1.png"
-   }
-  ],
-  "suggestions": [
-   "Meerwein-Ponndorf-Verley Reduction",
-   "メーヤワイン・ポンドルフ・ヴァーレイ還元",
-   "メーヤワイン・ポンドルフ・バーレイ還元",
-   "MPV還元",
-   "めーやわいん・ぽんどるふ・ばーれいかんげん",
-   "めーやわいん・ぽんどるふ・ヴぁーれいかんげん"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "michael-addition",
-  "english": "Micharl Addition",
-  "japanese": "マイケル付加",
-  "thmbnailName": "michael-addition-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "michael-addition-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "michael-addition-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "michael-addition-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Micharl Addition",
-   "マイケル付加",
-   "マイケル反応",
-   "まいけるふか",
-   "まいけるはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "michaelis-arbuzov-reaction",
-  "english": "Michaelis-Arbuzov Reaction",
-  "japanese": "ミカエリス・アーブゾフ反応",
-  "thmbnailName": "michaelis-arbuzov-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "michaelis-arbuzov-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "michaelis-arbuzov-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "michaelis-arbuzov-reaction-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "michaelis-arbuzov-reaction-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Michaelis-Arbuzov Reaction",
-   "ミカエリス・アーブゾフ反応",
-   "みかえりす・あーぶぞふはんのう",
-   "みかえりす・あるぶぞふはんのう",
-   "ミカエリス・アルブゾフ反応"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "mitsunobu-reaction",
-  "english": "Mitsunobu Reaction",
-  "japanese": "光延反応",
-  "thmbnailName": "mitsunobu-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "mitsunobu-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "mitsunobu-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "mitsunobu-reaction-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Mitsunobu Reaction",
-   "光延反応",
-   "ミツノブ反応",
-   "みつのぶはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "mizoroki-heck-coupling",
-  "english": "Mizoroki-Heck Coupling",
-  "japanese": "溝呂木・ヘックカップリング",
-  "thmbnailName": "mizoroki-heck-coupling-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "mizoroki-heck-coupling-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "mizoroki-heck-coupling-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "mizoroki-heck-coupling-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Mizoroki-Heck Coupling",
-   "Mizorogi-Heck Coupling",
-   "溝呂木・ヘッククロスカップリング",
-   "ミゾロギ・ヘッククロスカップリング",
-   "ミゾロキ・ヘッククロスカップリング",
-   "みぞろぎ・へっくくろすかっぷりんぐ",
-   "みぞろき・へっくくろすかっぷりんぐ"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "neber-rearrangement",
-  "english": "Neber Rearrangement",
-  "japanese": "ネバー転位",
-  "thmbnailName": "neber-rearrangement-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "neber-rearrangement-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "neber-rearrangement-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "neber-rearrangement-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "neber-rearrangement-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Neber Rearrangement",
-   "ネバー転位",
-   "ねばーてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "nef-reaction",
-  "english": "Nef Reaction",
-  "japanese": "ネフ反応",
-  "thmbnailName": "nef-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "nef-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "nef-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "nef-reaction-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Nef Reaction",
-   "ネフ反応",
-   "ねふはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "negishi-coupling",
-  "english": "Negishi Coupling",
-  "japanese": "根岸カップリング",
-  "thmbnailName": "negishi-coupling-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "negishi-coupling-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "negishi-coupling-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "negishi-coupling-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Negishi Coupling",
-   "根岸クロスカップリング",
-   "ネギシクロスカップリング",
-   "ネキシクロスカップリング",
-   "ねぎしくろすかっぷりんぐ",
-   "ねきしくろすかっぷりんぐ"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "ninhydrin-reaction",
-  "english": "Ninhydrin Reaction",
-  "japanese": "ニンヒドリン反応",
-  "thmbnailName": "ninhydrin-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "ninhydrin-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "ninhydrin-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "ninhydrin-reaction-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Ninhydrin Reaction",
-   "ニンヒドリン反応",
-   "ニンヒドリン反応"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "olefin-metathesis",
-  "english": "Olefin Metathesis",
-  "japanese": "オレフィンメタセシス",
-  "thmbnailName": "olefin-metathesis-thumbnail-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "olefin-metathesis-generalformula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "olefin-metathesis-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "olefin-metathesis-example-0.png"
-   },
-   {
-    "imageName": "olefin-metathesis-example-2.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "olefin-metathesis-supplement-0.png"
-   },
-   {
-    "imageName": "olefin-metathesis-supplement-2.png"
-   }
-  ],
-  "suggestions": [
-   "Olefin Metathesis",
-   "オレフィンメタセシス",
-   "メタセシス反応",
-   "おれふぃんめたせしす",
-   "めたせしすはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "oppenauer-oxidation",
-  "english": "Oppenauer Oxidation",
-  "japanese": "オッペンアウワー酸化",
-  "thmbnailName": "oppenauer-oxidation-thmbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "oppenauer-oxidation-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "oppenauer-oxidation-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "oppenauer-oxidation-supplement-0.png"
-   },
-   {
-    "imageName": "oppenauer-oxidation-supplement-1.png"
-   }
-  ],
-  "suggestions": [
-   "Oppenauer Oxidation",
-   "オッペンアウワー酸化",
-   "オッペナウワー酸化",
-   "オッペンアワー酸化",
-   "おっぺんあうわーさんか",
-   "おっぺなうわーさんか",
-   "おっぺんあわーさんか"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "paal-knorr-pyrrole-synthesis",
-  "english": "Paal-Knorr Pyrrole Synthesis",
-  "japanese": "パール・クノールピロール合成",
-  "thmbnailName": "paal-knorr-pyrrole-synthesis-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "paal-knorr-pyrrole-synthesis-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "paal-knorr-pyrrole-synthesis-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "paal-knorr-pyrrole-synthesis-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Paal-Knorr Pyrrole Synthesis",
-   "パール・クノールピロール合成",
-   "パール・クノール合成",
-   "ぱーる・くのーるぴろーるごうせい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "paal-knorr-thiophene-synthesis",
-  "english": "Paal-Knorr Thiophene Synthesis",
-  "japanese": "パール・クノールチオフェン合成",
-  "thmbnailName": "paal-knorr-thiophene-synthesis-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "paal-knorr-thiophene-synthesis-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "paal-knorr-thiophene-synthesis-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "paal-knorr-thiophene-synthesis-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Paal-Knorr Thiophene Synthesis",
-   "パール・クノールチオフェン合成",
-   "パール・クノール合成",
-   "ぱーる・くのーるちおふぇんごうせい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "paal-knorrfuran-synthesis",
-  "english": "Paal-Knorr Furan Synthesis",
-  "japanese": "パール・クノールフラン合成",
-  "thmbnailName": "paal-knorrfuran-synthesis-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "paal-knorrfuran-synthesis-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "paal-knorrfuran-synthesis-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [],
-  "suggestions": [
-   "Paal-Knorr Furan Synthesis",
-   "パール・クノールフラン合成",
-   "パール・クノール合成",
-   "ぱーる・くのーるふらんごうせい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+   "Gabriel Amination",
+   "ガブリエルアミン合成",
+   "ガブリエル反応",
+   "ガブリエル合成",
+   "がぶりえるあみんごうせい",
+   "がぶりえるはんのう",
+   "がぶりえるごうせい",
+   "ガブリエル第一級アミノ化",
+   "がぶりえるだいいっきゅうあみのか"
+  ],
+  "tags": []
  },
  {
   "directoryName": "parkin-reaction",
@@ -2587,606 +1552,7 @@
    "パーキン反応",
    "ぱーきんはんのう"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "pcc-oxidation",
-  "english": "Pcc Oxidation",
-  "japanese": "PCC酸化",
-  "thmbnailName": "pcc-oxidation-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "pcc-oxidation-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [],
-  "examples": [
-   {
-    "imageName": "pcc-oxidation-general-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "pcc-oxidation-general-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Pcc Oxidation",
-   "PCC酸化",
-   "ぴーしーしーさんか"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "perkow-reaction",
-  "english": "Perkow Reaction",
-  "japanese": "パーコウ反応",
-  "thmbnailName": "perkow-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "perkow-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "perkow-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "perkow-reaction-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Perkow Reaction",
-   "パーコウ反応",
-   "パーコー反応",
-   "ぱーこうはんのう",
-   "ぱーこーはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "pinacol-coupling",
-  "english": "Pinacol Coupling",
-  "japanese": "ピナコールカップリング",
-  "thmbnailName": "pinacol-coupling-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "pinacol-coupling-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "pinacol-coupling-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "pinacol-coupling-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Pinacol Coupling",
-   "ピナコールカップリング",
-   "ぴなこーるかっぷりんぐ"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "pinacol-pinacolone-rearrangement",
-  "english": "Pinacol-Pinacolone Rearrangement",
-  "japanese": "ピナコール・ピナコロン転位",
-  "thmbnailName": "pinacol-pinacolone-rearrangement-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "pinacol-pinacolone-rearrangement-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "pinacol-pinacolone-rearrangement-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "pinacol-pinacolone-rearrangement-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "pinacol-pinacolone-rearrangement-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Pinacol-Pinacolone Rearrangement",
-   "ピナコール・ピナコロン転位",
-   "ピナコール転位",
-   "ぴなこーる・ぴなころんてんい",
-   "ぴなこーるてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "pinner-reaction",
-  "english": "Pinner Reaction",
-  "japanese": "ピナー反応",
-  "thmbnailName": "pinner-reaction-generalformula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "pinner-reaction-generalformula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "pinner-reaction-mechanism-0.png"
-   },
-   {
-    "imageName": "pinner-reaction-mechanism-2.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "pinner-reaction-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [],
-  "tags": [
-   "Pinner Reaction",
-   "ピナー反応",
-   "ピネー反応",
-   "ぴなーはんのう",
-   "ぴねーはんのう"
-  ],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "prilezhaev-epoxidation",
-  "english": "Prilezhaev Epoxidation",
-  "japanese": "プリリツェフエポキシ化",
-  "thmbnailName": "prilezhaev-epoxidation-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "prilezhaev-epoxidation-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "prilezhaev-epoxidation-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "prilezhaev-epoxidation-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "prilezhaev-epoxidation-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Prilezhaev Epoxidation",
-   "プリリツェフエポキシ化",
-   "プリリツェフ反応",
-   "ぷりりつぇふえぽきしか",
-   "ぷりりつぇふはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "pummerer-rearrangement",
-  "english": "Pummerer Rearrangement",
-  "japanese": "プメラー転位",
-  "thmbnailName": "pummerer-rearrangement-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "pummerer-rearrangement-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "pummerer-rearrangement-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "pummerer-rearrangement-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Pummerer Rearrangement",
-   "プメラー転位",
-   "ぷめらーてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "ramberg-backlund-rearrangement",
-  "english": "Ramberg-Backlund Rearrangement",
-  "japanese": "ランバーグ・バックランド転位",
-  "thmbnailName": "ramberg-backlund-rearrangement-thmbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "ramberg-backlund-rearrangement-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "ramberg-backlund-rearrangement-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "ramberg-backlund-rearrangement-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Ramberg-Backlund Rearrangement",
-   "ランバーグ・バックランド転位",
-   "らんばーぐ・ばっくらんどてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "reimer-tiemann-reaction",
-  "english": "Reimer-Tiemann Reaction",
-  "japanese": "ライマー・チーマン反応",
-  "thmbnailName": "reimer-tiemann-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "reimer-tiemann-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "reimer-tiemann-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "reimer-tiemann-reaction-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Reimer-Tiemann Reaction",
-   "ライマー・チーマン反応",
-   "ライマー・ティーマン反応",
-   "らいまー・ちーまんはんのう",
-   "らいまー・てぃーまんはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "robinson-annulation",
-  "english": "Robinson Annulation",
-  "japanese": "ロビンソン環化",
-  "thmbnailName": "robinson-annulation-thumbnail-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "robinson-annulation-generalformula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "robinson-annulation-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "robinson-annulation-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "robinson-annulation-supplement-0.png"
-   },
-   {
-    "imageName": "robinson-annulation-supplement-2.png"
-   },
-   {
-    "imageName": "robinson-annulation-supplement-3.png"
-   }
-  ],
-  "suggestions": [
-   "Robinson Annulation",
-   "ロビンソン環化",
-   "ロビンソン環形成反応",
-   "ロビンソン縮合",
-   "ろびんそんかんか",
-   "ろびんそんかんけいせいはんのう",
-   "ろびんそんしゅくごう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "sandmeyer-reaction",
-  "english": "Sandmeyer Reaction",
-  "japanese": "ザンドマイヤー反応",
-  "thmbnailName": "sandmeyer-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "sandmeyer-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "sandmeyer-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "sandmeyer-reaction-example-0.png"
-   },
-   {
-    "imageName": "sandmeyer-reaction-example-1.png"
-   },
-   {
-    "imageName": "sandmeyer-reaction-example-2.png"
-   },
-   {
-    "imageName": "sandmeyer-reaction-example-3.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Sandmeyer Reaction",
-   "ザンドマイヤー反応",
-   "ザンドメーヤー反応",
-   "ざんどまいやーはんのう",
-   "ざんどめーやーはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "shiina-macrolactonization",
-  "english": "Shiina Macrolactonization",
-  "japanese": "椎名マクロラクトン化",
-  "thmbnailName": "shiina-macrolactonization-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "shiina-macrolactonization-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [],
-  "examples": [],
-  "supplements": [
-   {
-    "imageName": "shiina-macrolactonization-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Shiina Macrolactonization",
-   "椎名マクロラクトン化",
-   "シイナマクロラクトン化",
-   "椎名エステル化",
-   "椎名ラクトン化",
-   "しいなまくろらくとんか",
-   "しいなえすてるか",
-   "しいならくとんか",
-   "Esterfication"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "simmons-smith-reaction",
-  "english": "Simmons-Smith Reaction",
-  "japanese": "シモンズ・スミス反応",
-  "thmbnailName": "simmons-smith-reaction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "simmons-smith-reaction-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "simmons-smith-reaction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "simmons-smith-reaction-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "simmons-smith-reaction-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Simmons-Smith Reaction",
-   "シモンズ・スミス反応",
-   "サイモンズ・スミス反応",
-   "しもんず・すみすはんのう",
-   "さいもんず・すみすはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "skraup-quinoline-synthesis",
-  "english": "Skraup Quinoline Synthesis",
-  "japanese": "スクラウプキノリン合成",
-  "thmbnailName": "skraup-quinoline-synthesis-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "skraup-quinoline-synthesis-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "skraup-quinoline-synthesis-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "skraup-quinoline-synthesis-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "skraup-quinoline-synthesis-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Skraup Quinoline Synthesis",
-   "スクラウプキノリン合成",
-   "スクラウプ合成",
-   "すくらうぷきのりんごうせい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "steglich-esterfication",
-  "english": "Steglich Esterfication",
-  "japanese": "シュテークリヒエステル化",
-  "thmbnailName": "steglich-esterfication-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "steglich-esterfication-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "steglich-esterfication-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "steglich-esterfication-example-0.png"
-   }
-  ],
-  "supplements": [
-   {
-    "imageName": "steglich-esterfication-supplement-0.png"
-   }
-  ],
-  "suggestions": [
-   "Steglich Esterfication",
-   "シュテークリヒエステル化",
-   "シュテークリヒ反応",
-   "ステグリッチ反応",
-   "しゅてーくりひえすてるか",
-   "しゅてーくりひはんのう",
-   "すてぐりっちはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "stork-enamine",
-  "english": "Stork Enamine Reaction",
-  "japanese": "ストークエナミン反応",
-  "thmbnailName": "stork-enamine-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "stork-enamine-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "stork-enamine-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "stork-enamine-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Stork Enamine Reaction",
-   "ストークエナミン反応",
-   "すとーくえなみんはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "suzuki-miyaura-coupling",
-  "english": "Suzuki-Miyaura Coupling",
-  "japanese": "鈴木・宮浦カップリング",
-  "thmbnailName": "suzuki-miyaura-coupling-thumbnail.png",
-  "generalFormulas": [
-   {
-    "imageName": "suzuki-miyaura-coupling-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "suzuki-miyaura-coupling-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "suzuki-miyaura-coupling-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Suzuki-Miyaura Coupling",
-   "鈴木・宮浦カップリング",
-   "鈴木・宮浦クロスカップリング",
-   "スズキ・ミヤウラクロスカップリング",
-   "すずき・みやうらくろすかっぷりんぐ"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
   "directoryName": "swern-oxidation",
@@ -3220,44 +1586,1579 @@
    "すわんさんか",
    "すわーんさんか"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
  },
  {
-  "directoryName": "synthesis-of-diazo-compounds",
-  "english": "Synthesis Of Diazo Compounds",
-  "japanese": "ジアゾ化合物の合成",
-  "thmbnailName": "synthesis-of-diazo-compounds-general-formula-0.png",
+  "directoryName": "fritsch-buttenberg-wiechel-rearrangement",
+  "english": "Fritsch-Buttenberg-Wiechel Rearrangement",
+  "japanese": "フリッチュ・ブッテンバーグ・ウィーチェル転位",
+  "thmbnailName": "fritsch-buttenberg-wiechel-rearrangement-general-formula-0.png",
   "generalFormulas": [
    {
-    "imageName": "synthesis-of-diazo-compounds-general-formula-0.png"
+    "imageName": "fritsch-buttenberg-wiechel-rearrangement-general-formula-0.png"
    }
   ],
   "mechanisms": [
    {
-    "imageName": "synthesis-of-diazo-compounds-mechanism-0.png"
+    "imageName": "fritsch-buttenberg-wiechel-rearrangement-mechanism-0.png"
+   }
+  ],
+  "examples": [],
+  "supplements": [
+   {
+    "imageName": "fritsch-buttenberg-wiechel-rearrangement-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Fritsch-Buttenberg-Wiechel Rearrangement",
+   "フリッチュ・ブッテンバーグ・ウィーチェル転位",
+   "FBW転位",
+   "ふりっちゅ・ぶってんばーぐ・うぃーちぇるてんい"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "mizoroki-heck-coupling",
+  "english": "Mizoroki-Heck Coupling",
+  "japanese": "溝呂木・ヘックカップリング",
+  "thmbnailName": "mizoroki-heck-coupling-thumbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "mizoroki-heck-coupling-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "mizoroki-heck-coupling-mechanism-0.png"
    }
   ],
   "examples": [
    {
-    "imageName": "synthesis-of-diazo-compounds-example-0.png"
-   },
-   {
-    "imageName": "synthesis-of-diazo-compounds-example-1.png"
+    "imageName": "mizoroki-heck-coupling-example-0.png"
    }
   ],
   "supplements": [],
   "suggestions": [
-   "Synthesis Of Diazo Compounds",
-   "ジアゾ化合物の合成",
-   "じあぞかごうぶつのごうせい"
+   "Mizoroki-Heck Coupling",
+   "Mizorogi-Heck Coupling",
+   "溝呂木・ヘッククロスカップリング",
+   "ミゾロギ・ヘッククロスカップリング",
+   "ミゾロキ・ヘッククロスカップリング",
+   "みぞろぎ・へっくくろすかっぷりんぐ",
+   "みぞろき・へっくくろすかっぷりんぐ"
   ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+  "tags": []
+ },
+ {
+  "directoryName": "nef-reaction",
+  "english": "Nef Reaction",
+  "japanese": "ネフ反応",
+  "thmbnailName": "nef-reaction-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "nef-reaction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "nef-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "nef-reaction-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Nef Reaction",
+   "ネフ反応",
+   "ねふはんのう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "negishi-coupling",
+  "english": "Negishi Coupling",
+  "japanese": "根岸カップリング",
+  "thmbnailName": "negishi-coupling-thumbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "negishi-coupling-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "negishi-coupling-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "negishi-coupling-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Negishi Coupling",
+   "根岸クロスカップリング",
+   "ネギシクロスカップリング",
+   "ネキシクロスカップリング",
+   "ねぎしくろすかっぷりんぐ",
+   "ねきしくろすかっぷりんぐ"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "simmons-smith-reaction",
+  "english": "Simmons-Smith Reaction",
+  "japanese": "シモンズ・スミス反応",
+  "thmbnailName": "simmons-smith-reaction-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "simmons-smith-reaction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "simmons-smith-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "simmons-smith-reaction-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "simmons-smith-reaction-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Simmons-Smith Reaction",
+   "シモンズ・スミス反応",
+   "サイモンズ・スミス反応",
+   "しもんず・すみすはんのう",
+   "さいもんず・すみすはんのう"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "skraup-quinoline-synthesis",
+  "english": "Skraup Quinoline Synthesis",
+  "japanese": "スクラウプキノリン合成",
+  "thmbnailName": "skraup-quinoline-synthesis-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "skraup-quinoline-synthesis-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "skraup-quinoline-synthesis-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "skraup-quinoline-synthesis-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "skraup-quinoline-synthesis-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Skraup Quinoline Synthesis",
+   "スクラウプキノリン合成",
+   "スクラウプ合成",
+   "すくらうぷきのりんごうせい"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "suzuki-miyaura-coupling",
+  "english": "Suzuki-Miyaura Coupling",
+  "japanese": "鈴木・宮浦カップリング",
+  "thmbnailName": "suzuki-miyaura-coupling-thumbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "suzuki-miyaura-coupling-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "suzuki-miyaura-coupling-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "suzuki-miyaura-coupling-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+   "Suzuki-Miyaura Coupling",
+   "鈴木・宮浦カップリング",
+   "鈴木・宮浦クロスカップリング",
+   "スズキ・ミヤウラクロスカップリング",
+   "すずき・みやうらくろすかっぷりんぐ"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "ninhydrin-reaction",
+  "english": "Ninhydrin Reaction",
+  "japanese": "ニンヒドリン反応",
+  "thmbnailName": "ninhydrin-reaction-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "ninhydrin-reaction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "ninhydrin-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [],
+  "supplements": [
+   {
+    "imageName": "ninhydrin-reaction-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Ninhydrin Reaction",
+   "ニンヒドリン反応",
+   "ニンヒドリン反応"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "bechamp-reduction",
+  "english": "Bechamp Reduction",
+  "japanese": "ベシャンプ還元",
+  "thmbnailName": "bechamp-reduction-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "bechamp-reduction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "bechamp-reduction-mechanism-0.png"
+   }
+  ],
+  "examples": [],
+  "supplements": [],
+  "suggestions": [
+   "Bechamp Reduction",
+   "ベシャンプ還元",
+   "ベシャン還元",
+   "ベチャンプ還元",
+   "べしゃんぷかんげん",
+   "べしゃんかんげん",
+   "べちゃんぷかんげん"
+  ],
+  "tags": []
+ },
+ {
+  "directoryName": "bouveault-blanc-reduction",
+  "english": "Bouveault-Blanc Reduction",
+  "japanese": "ブーボー・ブラン還元",
+  "thmbnailName": "bouveault-blanc-reduction-general-formula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "bouveault-blanc-reduction-general-formula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "bouveault-blanc-reduction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "bouveault-blanc-reduction-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "bouveault-blanc-reduction-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+   "Bouveault-Blanc Reduction",
+   "ブーボー・ブラン還元",
+   "ぶーぼー・ぶらんかんげん"
+  ],
+  "tags": []
+ },
+ {
+    "directoryName": "baeyer-villiger-oxidation",
+    "english": "Baeyer-Villiger Oxidation",
+    "japanese": "バイヤー・ビリガー酸化",
+    "thmbnailName": "baeyer-villiger-oxidation-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "baeyer-villiger-oxidation-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "baeyer-villiger-oxidation-general-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "baeyer-villiger-oxidation-example-0.png"
+     }
+    ],
+    "supplements": [],
+    "suggestions": [
+        "Baeyer-Villiger Oxidation",
+        "バイヤー・ビリガー酸化",
+   "ばいやー・びりがーさんか"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "beckmann-rearrangement",
+    "english": "Beckmann Rearrangement",
+    "japanese": "ベックマン転位",
+    "thmbnailName": "beckmann-rearrangement-thumbnail.png",
+    "generalFormulas": [
+     {
+      "imageName": "beckmann-rearrangement-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+        "imageName": "beckmann-rearrangement-mechanism-0.png"
+       }
+     
+    ],
+    "examples": [
+        {
+            "imageName": "beckmann-rearrangement-example-0.png"
+           },
+           {
+              "imageName": "beckmann-rearrangement-example-1.png"
+           }
+    ],
+    "supplements": [
+     {
+      "imageName": "beckmann-rearrangement-supplement-0.png"
+     },
+     {
+        "imageName": "beckmann-rearrangement-supplement-1.png"
+       }
+    ],
+    "suggestions": [
+        "Beckmann Rearrangement",
+        "ベックマン転位",
+   "べっくまんてんい"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "benzoin-condensation",
+    "english": "Benzoin Condensation",
+    "japanese": "ベンゾイン縮合",
+    "thmbnailName": "benzoin-condensation-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "benzoin-condensation-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "benzoin-condensation-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "benzoin-condensation-example-0.png"
+     }
+    ],
+    "supplements": [],
+    "suggestions": [
+"Benzoin Condensation",
+"ベンゾイン縮合",
+"べんぞいんしゅくごう"
+],
+    "tags": []
+   },
+   {
+    "directoryName": "borch-reductive-amination",
+    "english": "Borch Reductive Amination",
+    "japanese": "ボーチ還元的アミノ化",
+    "thmbnailName": "borch-reductive-amination-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "borch-reductive-amination-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "borch-reductive-amination-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "borch-reductive-amination-example-0.png"
+     }
+    ],
+    "supplements": [
+     {
+      "imageName": "borch-reductive-amination-supplement-0.png"
+     },
+     {
+        "imageName": "borch-reductive-amination-supplement-1.png"
+       }
+    ],
+    "suggestions": [
+        "Borch Reductive Amination",
+        "ボーチ還元的アミノ化",
+        "ボーチ反応",
+        "ボーチ還元",
+   "ぼーちかんげんてきあみのか",
+   "ぼーちはんのう",
+   "ぼーちかんげん"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "bouveault-aldehyde-synthesis",
+    "english": "Bouveault Aldehyde Synthesis",
+    "japanese": "ブーボーアルデヒド合成",
+    "thmbnailName": "bouveault-aldehyde-synthesis-thumbnail.png",
+    "generalFormulas": [
+     {
+      "imageName": "bouveault-aldehyde-synthesis-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "bouveault-aldehyde-synthesis-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "bouveault-aldehyde-synthesis-example-0.png"
+     }
+    ],
+    "supplements": [
+     {
+      "imageName": "bouveault-aldehyde-synthesis-supplement-0.png"
+     },
+     {
+        "imageName": "bouveault-aldehyde-synthesis-supplement-1.png"
+    }
+    ],
+    "suggestions": [
+        "Bouveault Aldehyde Synthesis",
+        "ブーボーアルデヒド合成",
+   "ぶーぼーあるでひどごうせい"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "eschweiler-clarke-reaction",
+    "english": "Eschweiler-Clarke Reaction",
+    "japanese": "エシュバイラー・クラーク反応",
+    "thmbnailName": "eschweiler-clarke-reaction-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "eschweiler-clarke-reaction-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [],
+    "examples": [],
+    "supplements": [
+     {
+      "imageName": "eschweiler-clarke-reaction-supplement-0.png"
+     }
+    ],
+    "suggestions": [
+        "Eschweiler-Clarke Reaction",
+        "エシュバイラー・クラーク反応",
+        "エシュヴァイラー・クラーク反応",
+   "えしゅばいらー・くらーくはんのう",
+   "えしゅヴぁいらー・くらーくはんのう"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "favorskii-rearrangement",
+    "english": "Favorskii Rearrangement",
+    "japanese": "ファボルスキー転位",
+    "thmbnailName": "favorskii-rearrangement-thumbnail.png",
+    "generalFormulas": [
+     {
+      "imageName": "favorskii-rearrangement-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "favorskii-rearrangement-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "favorskii-rearrangement-example-0.png"
+     }
+    ],
+    "supplements": [
+     {
+      "imageName": "favorskii-rearrangement-supplement-0.png"
+     },
+     {
+        "imageName": "favorskii-rearrangement-supplement-1.png"
+       }
+    ],
+    "suggestions": [
+        "Favorskii Rearrangement",
+        "ファボルスキー転位",
+        "ファヴォルスキー転位",
+   "ふぁぼるすきーてんい",
+   "ふぁヴぉるすきーてんい"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "fischer-speier-esterification",
+    "english": "Fischer-Speier Esterification",
+    "japanese": "フィッシャー・スペイアエステル合成",
+    "thmbnailName": "fischer-speier-esterification-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "fischer-speier-esterification-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "fischer-speier-esterification-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "fischer-speier-esterification-example-0.png"
+     }
+    ],
+    "supplements": [],
+    "suggestions": [
+        "Fischer-Speier Esterification",
+        "フィッシャー・スペイアエステル合成",
+        "フィッシャーエステル合成",
+   "ふぃっしゃー・すぺいあえすてるごうせい",
+   "ふぃっしゃーえすてるごうせい"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "grignard-reaction",
+    "english": "Grignard Reaction",
+    "japanese": "グリニャール反応",
+    "thmbnailName": "grignard-reaction-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "grignard-reaction-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "grignard-reaction-mechanism-0.png"
+     },
+     {
+        "imageName": "grignard-reaction-mechanism-1.png"
+       },
+       {
+        "imageName": "grignard-reaction-mechanism-2.png"
+       },
+       {
+        "imageName": "grignard-reaction-mechanism-3.png"
+       },
+       {
+        "imageName": "grignard-reaction-mechanism-4.png"
+       }
+    ],
+    "examples": [
+     {
+      "imageName": "grignard-reaction-example-0.png"
+     },
+     {
+        "imageName": "grignard-reaction-example-1.png"
+       },
+       {
+        "imageName": "grignard-reaction-example-2.png"
+       }
+    ],
+    "supplements": [
+     {
+      "imageName": "grignard-reaction-supplement-0.png"
+     },
+     {
+        "imageName": "grignard-reaction-supplement-1.png"
+       },
+       {
+        "imageName": "grignard-reaction-supplement-2.png"
+       }
+    ],
+    "suggestions": [
+        "Grignard Reaction",
+        "グリニャール反応",
+        "グリニャー反応",
+   "グリナード反応",
+   "ぐりにゃーるはんのう",
+   "ぐりにゃーはんのう",
+   "ぐりなーどはんのう"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "henry-reaction",
+    "english": "Henry Reaction",
+    "japanese": "ヘンリー反応",
+    "thmbnailName": "henry-reaction-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "henry-reaction-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "henry-reaction-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "henry-reaction-example-0.png"
+     }
+    ],
+    "supplements": [],
+    "suggestions": [
+        "Henry Reaction",
+        "ヘンリー反応",
+        "ニトロアルドール反応",
+   "へんりーはんのう",
+   "にとろあるどーるはんのう"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "hofmann-rearrangement",
+    "english": "Hofmann Rearrangement",
+    "japanese": "ホフマン転位",
+    "thmbnailName": "hofmann-rearrangement-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "hofmann-rearrangement-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "hofmann-rearrangement-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "hofmann-rearrangement-example-0.png"
+     }
+    ],
+    "supplements": [],
+    "suggestions": [
+        "Hofmann Rearrangement",
+        "ホフマン転位",
+   "ほふまんてんい"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "keck-macrolactonization",
+    "english": "Keck Macrolactonization",
+    "japanese": "ケックマクロラクトン化",
+    "thmbnailName": "keck-macrolactonization-thumbnail.png",
+    "generalFormulas": [
+     {
+      "imageName": "keck-macrolactonization-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "keck-macrolactonization-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "keck-macrolactonization-example-0.png"
+     }
+    ],
+    "supplements": [
+     {
+      "imageName": "keck-macrolactonization-supplement-0.png"
+     }
+    ],
+    "suggestions": [
+        "Keck Macrolactonization",
+        "ケックマクロラクトン化",
+   "けっくまくろらくとんか",
+"ケックエステル化",
+"けっくえすてるか",
+"Esterfication"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "leuckart-wallach-reaction",
+    "english": "Leuckart-Wallach Reaction",
+    "japanese": "ロイカート・バラッハ反応",
+    "thmbnailName": "leuckart-wallach-reaction-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "leuckart-wallach-reaction-general-formula-0.png"
+     }
+],
+    "mechanisms": [],
+    "examples": [],
+    "supplements": [
+     {
+      "imageName": "leuckart-wallach-reaction-example-0.png"
+     }
+    ],
+    "suggestions": [
+        "Leuckart-Wallach Reaction",
+        "ロイカート・バラッハ反応",
+        "ロイカート・ヴァラッハ反応",
+   "ろいかーと・ばらっははんのう",
+   "ろいかーと・ヴぁらっははんのう"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "mannich-reaction",
+    "english": "Mannich Reaction",
+    "japanese": "マンニッヒ反応",
+    "thmbnailName": "mannich-reaction-thumbnail.png",
+    "generalFormulas": [
+     {
+      "imageName": "mannich-reaction-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "mannich-reaction-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "mannich-reaction-example-0.png"
+     },
+     {
+        "imageName": "mannich-reaction-example-1.png"
+       },
+       {
+        "imageName": "mannich-reaction-example-2.png"
+       }
+    ],
+    "supplements": [],
+    "suggestions": [
+        "Mannich Reaction",
+        "マンニッヒ反応",
+   "まんにっひはんのう"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "mitsunobu-reaction",
+    "english": "Mitsunobu Reaction",
+    "japanese": "光延反応",
+    "thmbnailName": "mitsunobu-reaction-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "mitsunobu-reaction-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "mitsunobu-reaction-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "mitsunobu-reaction-example-0.png"
+     }
+    ],
+    "supplements": [],
+    "suggestions": [
+        "Mitsunobu Reaction",
+        "光延反応",
+   "ミツノブ反応",
+   "みつのぶはんのう"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "paal-knorrfuran-synthesis",
+    "english": "Paal-Knorr Furan Synthesis",
+    "japanese": "パール・クノールフラン合成",
+    "thmbnailName": "paal-knorrfuran-synthesis-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "paal-knorrfuran-synthesis-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "paal-knorrfuran-synthesis-mechanism-0.png"
+     }
+    ],
+    "examples": [],
+    "supplements": [],
+    "suggestions": [
+        "Paal-Knorr Furan Synthesis",
+        "パール・クノールフラン合成",
+        "パール・クノール合成",
+   "ぱーる・くのーるふらんごうせい"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "paal-knorr-pyrrole-synthesis",
+    "english": "Paal-Knorr Pyrrole Synthesis",
+    "japanese": "パール・クノールピロール合成",
+    "thmbnailName": "paal-knorr-pyrrole-synthesis-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "paal-knorr-pyrrole-synthesis-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "paal-knorr-pyrrole-synthesis-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "paal-knorr-pyrrole-synthesis-example-0.png"
+     }
+    ],
+    "supplements": [],
+    "suggestions": [
+        "Paal-Knorr Pyrrole Synthesis",
+        "パール・クノールピロール合成",
+        "パール・クノール合成",
+   "ぱーる・くのーるぴろーるごうせい"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "paal-knorr-thiophene-synthesis",
+    "english": "Paal-Knorr Thiophene Synthesis",
+    "japanese": "パール・クノールチオフェン合成",
+    "thmbnailName": "paal-knorr-thiophene-synthesis-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "paal-knorr-thiophene-synthesis-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "paal-knorr-thiophene-synthesis-mechanism-0.png"
+     }
+    ],
+    "examples": [],
+    "supplements": [
+     {
+      "imageName": "paal-knorr-thiophene-synthesis-supplement-0.png"
+     }
+    ],
+    "suggestions": [
+        "Paal-Knorr Thiophene Synthesis",
+        "パール・クノールチオフェン合成",
+        "パール・クノール合成",
+   "ぱーる・くのーるちおふぇんごうせい"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "pinacol-coupling",
+    "english": "Pinacol Coupling",
+    "japanese": "ピナコールカップリング",
+    "thmbnailName": "pinacol-coupling-thumbnail.png",
+    "generalFormulas": [
+     {
+      "imageName": "pinacol-coupling-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "pinacol-coupling-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "pinacol-coupling-example-0.png"
+     }
+    ],
+    "supplements": [],
+    "suggestions": [
+        "Pinacol Coupling",
+        "ピナコールカップリング",
+   "ぴなこーるかっぷりんぐ"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "pinacol-pinacolone-rearrangement",
+    "english": "Pinacol-Pinacolone Rearrangement",
+    "japanese": "ピナコール・ピナコロン転位",
+    "thmbnailName": "pinacol-pinacolone-rearrangement-thumbnail.png",
+    "generalFormulas": [
+     {
+      "imageName": "pinacol-pinacolone-rearrangement-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "pinacol-pinacolone-rearrangement-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "pinacol-pinacolone-rearrangement-example-0.png"
+     }
+    ],
+    "supplements": [
+     {
+      "imageName": "pinacol-pinacolone-rearrangement-supplement-0.png"
+     }
+    ],
+    "suggestions": [
+        "Pinacol-Pinacolone Rearrangement",
+        "ピナコール・ピナコロン転位",
+        "ピナコール転位",
+   "ぴなこーる・ぴなころんてんい",
+   "ぴなこーるてんい"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "prilezhaev-epoxidation",
+    "english": "Prilezhaev Epoxidation",
+    "japanese": "プリリツェフエポキシ化",
+    "thmbnailName": "prilezhaev-epoxidation-thumbnail.png",
+    "generalFormulas": [
+     {
+      "imageName": "prilezhaev-epoxidation-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "prilezhaev-epoxidation-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "prilezhaev-epoxidation-example-0.png"
+     }
+    ],
+    "supplements": [
+     {
+      "imageName": "prilezhaev-epoxidation-supplement-0.png"
+     }
+    ],
+    "suggestions": [
+        "Prilezhaev Epoxidation",
+        "プリリツェフエポキシ化",
+   "プリリツェフ反応",
+   "ぷりりつぇふえぽきしか",
+   "ぷりりつぇふはんのう"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "pummerer-rearrangement",
+    "english": "Pummerer Rearrangement",
+    "japanese": "プメラー転位",
+    "thmbnailName": "pummerer-rearrangement-thumbnail.png",
+    "generalFormulas": [
+     {
+      "imageName": "pummerer-rearrangement-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "pummerer-rearrangement-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "pummerer-rearrangement-example-0.png"
+     }
+    ],
+    "supplements": [],
+    "suggestions": [
+        "Pummerer Rearrangement",
+        "プメラー転位",
+   "ぷめらーてんい"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "reimer-tiemann-reaction",
+    "english": "Reimer-Tiemann Reaction",
+    "japanese": "ライマー・チーマン反応",
+    "thmbnailName": "reimer-tiemann-reaction-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "reimer-tiemann-reaction-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "reimer-tiemann-reaction-mechanism-0.png"
+     }
+    ],
+    "examples": [],
+    "supplements": [
+     {
+      "imageName": "reimer-tiemann-reaction-supplement-0.png"
+     }
+    ],
+    "suggestions": [
+        "Reimer-Tiemann Reaction",
+        "ライマー・チーマン反応",
+   "ライマー・ティーマン反応",
+   "らいまー・ちーまんはんのう",
+   "らいまー・てぃーまんはんのう"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "shiina-macrolactonization",
+    "english": "Shiina Macrolactonization",
+    "japanese": "椎名マクロラクトン化",
+    "thmbnailName": "shiina-macrolactonization-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "shiina-macrolactonization-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [],
+    "examples": [],
+    "supplements": [
+     {
+      "imageName": "shiina-macrolactonization-supplement-0.png"
+     }
+    ],
+    "suggestions": [
+        "Shiina Macrolactonization",
+        "椎名マクロラクトン化",
+        "シイナマクロラクトン化",
+        "椎名エステル化",
+        "椎名ラクトン化",
+   "しいなまくろらくとんか",
+   "しいなえすてるか",
+   "しいならくとんか",
+"Esterfication"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "steglich-esterfication",
+    "english": "Steglich Esterfication",
+    "japanese": "シュテークリヒエステル化",
+    "thmbnailName": "steglich-esterfication-thumbnail.png",
+    "generalFormulas": [
+     {
+      "imageName": "steglich-esterfication-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "steglich-esterfication-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "steglich-esterfication-example-0.png"
+     }
+    ],
+    "supplements": [
+     {
+      "imageName": "steglich-esterfication-supplement-0.png"
+     }
+    ],
+    "suggestions": [
+        "Steglich Esterfication",
+        "シュテークリヒエステル化",
+   "シュテークリヒ反応",
+   "ステグリッチ反応",
+   "しゅてーくりひえすてるか",
+   "しゅてーくりひはんのう",
+   "すてぐりっちはんのう"
+    ],
+    "tags": []
+   },
+   {
+    "directoryName": "yamaguchi-macrolactonization",
+    "english": "Yamaguchi Macrolactonization",
+    "japanese": "山口マクロラクトン化",
+    "thmbnailName": "yamaguchi-macrolactonization-general-formula-0.png",
+    "generalFormulas": [
+     {
+      "imageName": "yamaguchi-macrolactonization-general-formula-0.png"
+     }
+    ],
+    "mechanisms": [
+     {
+      "imageName": "yamaguchi-macrolactonization-mechanism-0.png"
+     }
+    ],
+    "examples": [
+     {
+      "imageName": "yamaguchi-macrolactonization-example-0.png"
+     }
+    ],
+    "supplements": [
+     {
+      "imageName": "yamaguchi-macrolactonization-supplement-0.png"
+     }
+    ],
+    "suggestions": [
+        "Yamaguchi Macrolactonization",
+        "山口マクロラクトン化",
+        "ヤマグチマクロラクトン化",
+        "山口エステル化",
+        "山口ラクトン化",
+   "やまぐちまくろらくとんか",
+   "やまぐちえすてるか",
+   "やまぐちらくとんか",
+"Esterfication"
+    ],
+    "tags": []
+   },
+ {
+  "directoryName": "acetoacetic-ester-synthesis",
+  "english": "Acetoacetic Ester Synthesis",
+  "japanese": "アセト酢酸エステル合成",
+  "thmbnailName": "acetoacetic-ester-synthesis-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "acetoacetic-ester-synthesis-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "acetoacetic-ester-synthesis-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "acetoacetic-ester-synthesis-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "acetoacetic-ester-synthesis-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+"Acetoacetic Ester Synthesis",
+"アセト酢酸エステル合成",
+"アセト酢酸エチル合成",
+   "あせとさくさんえすてるごうせい",
+   "あせとさくさんえちるごうせい"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "claisen-schmidt-reaction",
+  "english": "Claisen-Schmidt Reaction",
+  "japanese": "クライゼン・シュミット反応",
+  "thmbnailName": "claisen-schmidt-reaction-generalformula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "claisen-schmidt-reaction-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "claisen-schmidt-reaction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "claisen-schmidt-reaction-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+"Claisen-Schmidt Reaction",
+"クライゼン・シュミット反応",
+   "くらいぜん・しゅみっとはんのう"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "dieckmann-condensation",
+  "english": "Dieckmann Condensation",
+  "japanese": "ディークマン縮合",
+  "thmbnailName": "dieckmann-condensation-generalformula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "dieckmann-condensation-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "dieckmann-condensation-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "dieckmann-condensation-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "dieckmann-condensation-supplement-0.png"
+   },
+   {
+    "imageName": "dieckmann-condensation-supplement-2.png"
+   }
+  ],
+  "suggestions": [
+"Dieckmann Condensation",
+"ディークマン縮合",
+        "ディックマン縮合",
+        "ディークマン環化",
+        "ディックマン環化",
+   "でぃーくまんしゅくごう",
+   "でぃっくまんしゅくごう",
+   "でぃーくまんかんか",
+   "でぃっくまんかんか"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "edman-degradation",
+  "english": "Edman Degradation",
+  "japanese": "エドマン分解",
+  "thmbnailName": "edman-degradation-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "edman-degradation-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "edman-degradation-mechanism-0.png"
+   },
+   {
+    "imageName": "edman-degradation-mechanism-2.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": ""
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": ""
+   }
+  ],
+  "suggestions": [
+"Edman Degradation",
+"エドマン分解",
+   "えどまんぶんかい"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "fukuyama-cross-coupling",
+  "english": "Fukuyama Cross Coupling",
+  "japanese": "福山クロスカップリング",
+  "thmbnailName": "fukuyama-cross-coupling-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "fukuyama-cross-coupling-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "fukuyama-cross-coupling-mechanism-0.png"
+   }
+  ],
+  "examples": [],
+  "supplements": [],
+  "suggestions": [
+"Fukuyama Cross Coupling",
+"福山クロスカップリング",
+"フクヤマカップリング",
+"hukuyama cross coupling",
+   "ふくやまくろすかっぷりんぐ",
+   "ふくやまかっぷりんぐ"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "fukuyama-reduction",
+  "english": "Fukuyama Reduction",
+  "japanese": "福山還元反応",
+  "thmbnailName": "fukuyama-reduction-generalformula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "fukuyama-reduction-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "fukuyama-reduction-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "fukuyama-reduction-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [
+"Fukuyama Reduction",
+"福山還元反応",
+        "フクヤマカンゲン",
+        "hukuyama reduction",
+        "フクヤマ還元",
+   "ふくやまかんげんはんのう",
+   "ふくやまかんげん"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "hofmann-elimination",
+  "english": "Hofmann Elimination",
+  "japanese": "ホフマン脱離",
+  "thmbnailName": "hoffmannelimination-generalformula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "hoffmannelimination-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "hofmann-elimination-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "hoffmannelimination-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "hofmann-elimination-supplement-0.png"
+   },
+   {
+    "imageName": "hofmann-elimination-supplement-2.png"
+   }
+  ],
+  "suggestions": [
+"Hofmann Elimination",
+"ホフマン脱離",
+"Hofmann Degradation",
+"ホフマン分解",
+   "ほふまんだつり",
+   "ほふまんぶんかい"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "malonic-ester-synthesis",
+  "english": "Malonic Ester Synthesis",
+  "japanese": "マロン酸エステル合成",
+  "thmbnailName": "malonic-ester-synthesis-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "malonic-ester-synthesis-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "malonic-ester-synthesis-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "malonic-ester-synthesis-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "malonic-ester-synthesis-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+"Malonic Ester Synthesis",
+"マロン酸エステル合成",
+"マロン酸エチル合成",
+   "まろんさんえすてるごうせい",
+   "まろんさんえちるごうせい"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "mcmurry-coupling",
+  "english": "McMurry Coupling",
+  "japanese": "マクマリーカップリング",
+  "thmbnailName": "mcmurry-coupling-generalformula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "mcmurry-coupling-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "mcmurry-coupling-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "mcmurry-coupling-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "mcmurry-coupling-supplement-0.png"
+   }
+  ],
+  "suggestions": [
+"McMurry Coupling",
+"マクマリーカップリング",
+"マックマリーカップリング",
+"マクマリー反応",
+"マックマリー反応",
+   "まくまりーかっぷりんぐ",
+   "まっくまりーかっぷりんぐ",
+   "まくまりーはんのう",
+   "まっくまりーはんのう"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "olefin-metathesis",
+  "english": "Olefin Metathesis",
+  "japanese": "オレフィンメタセシス",
+  "thmbnailName": "olefin-metathesis-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "olefin-metathesis-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "olefin-metathesis-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "olefin-metathesis-example-0.png"
+   },
+   {
+    "imageName": "olefin-metathesis-example-2.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "olefin-metathesis-supplement-0.png"
+   },
+   {
+    "imageName": "olefin-metathesis-supplement-2.png"
+   }
+  ],
+  "suggestions": [
+"Olefin Metathesis",
+"オレフィンメタセシス",
+"メタセシス反応",
+   "おれふぃんめたせしす",
+   "めたせしすはんのう"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "pinner-reaction",
+  "english": "Pinner Reaction",
+  "japanese": "ピナー反応",
+  "thmbnailName": "pinner-reaction-generalformula-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "pinner-reaction-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "pinner-reaction-mechanism-0.png"
+   },
+   {
+    "imageName": "pinner-reaction-mechanism-2.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "pinner-reaction-example-0.png"
+   }
+  ],
+  "supplements": [],
+  "suggestions": [],
+  "tags": [
+"Pinner Reaction",
+"ピナー反応",
+"ピネー反応",
+   "ぴなーはんのう",
+   "ぴねーはんのう"
+]
+ },
+ {
+  "directoryName": "robinson-annulation",
+  "english": "Robinson Annulation",
+  "japanese": "ロビンソン環化",
+  "thmbnailName": "robinson-annulation-thumbnail-0.png",
+  "generalFormulas": [
+   {
+    "imageName": "robinson-annulation-generalformula-0.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "robinson-annulation-mechanism-0.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "robinson-annulation-example-0.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "robinson-annulation-supplement-0.png"
+   },
+   {
+    "imageName": "robinson-annulation-supplement-2.png"
+   },
+   {
+    "imageName": "robinson-annulation-supplement-3.png"
+   }
+  ],
+  "suggestions": [
+"Robinson Annulation",
+"ロビンソン環化",
+"ロビンソン環形成反応",
+"ロビンソン縮合",
+   "ろびんそんかんか",
+   "ろびんそんかんけいせいはんのう",
+   "ろびんそんしゅくごう"
+],
+  "tags": []
  },
  {
   "directoryName": "vilsmeier-haack-reaction",
@@ -3284,12 +3185,12 @@
   ],
   "supplements": [],
   "suggestions": [
-   "Vilsmeier-Haack Reaction",
-   "ヴィルスマイヤー・ハック反応",
-   "ビルスマイヤー",
-   "ヴィルスメイヤー",
-   "ハーック",
-   "ハーク",
+"Vilsmeier-Haack Reaction",
+"ヴィルスマイヤー・ハック反応",
+"ビルスマイヤー",
+"ヴィルスメイヤー",
+"ハーック",
+"ハーク",
    "ヴぃるすまいやー・はっくはんのう",
    "びるすまいやー",
    "ヴぃるすめいやー",
@@ -3297,15 +3198,12 @@
    "ビルスメイヤー",
    "はーく",
    "はーっく"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+],
+  "tags": []
  },
  {
   "directoryName": "wagner-meerwein-rearrangement",
-  "english": "Wagner-​Meerwein rearrangement",
+  "english": "Wagner-​Meerwein Rearrangement",
   "japanese": "ワーグナー・メーヤワイン転位",
   "thmbnailName": "wagner-meerwein-rearrangement-thumbnail-0.png",
   "generalFormulas": [
@@ -3325,24 +3223,21 @@
   ],
   "supplements": [],
   "suggestions": [
-   "Wagner-​Meerwein rearrangement",
-   "ワーグナー・メーヤワイン転位",
-   "ヴァーグナー",
-   "メーヤヴァイン",
-   "メールワイン",
+"Wagner-​Meerwein Rearrangement",
+"ワーグナー・メーヤワイン転位",
+"ヴァーグナー",
+"メーヤヴァイン",
+"メールワイン",
    "わーぐなー・めーやわいんてんい",
    "ヴぁーぐなー",
    "めーやヴぁいん",
    "めーるわいん"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+],
+  "tags": []
  },
  {
   "directoryName": "weinreb-ketone-synthesis",
-  "english": "Weinreb ketone synthesis",
+  "english": "Weinreb Ketone Synthesis",
   "japanese": "ワインレブケトン合成",
   "thmbnailName": "weinreb-ketone-synthesis-thumbnail-0.png",
   "generalFormulas": [
@@ -3365,18 +3260,15 @@
   ],
   "supplements": [],
   "suggestions": [
-   "Weinreb ketone synthesis",
-   "ワインレブケトン合成",
-   "ワインレブ合成",
-   "ワインレブアミド合成",
+"Weinreb Ketone Synthesis",
+"ワインレブケトン合成",
+"ワインレブ合成",
+"ワインレブアミド合成",
    "わいんれぶけとんごうせい",
    "わいんれぶごうせい",
    "わいんれぶあみどごうせい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+],
+  "tags": []
  },
  {
   "directoryName": "williamson-ether-synthesis",
@@ -3416,206 +3308,186 @@
    }
   ],
   "suggestions": [
-   "Williamson Ether Synthesis",
-   "ウィリアムソンエーテル合成",
+"Williamson Ether Synthesis",
+"ウィリアムソンエーテル合成",
    "うぃりあむそんえーてるごうせい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+],
+  "tags": []
  },
  {
-  "directoryName": "wittig-reaction",
-  "english": "Wittig Reaction",
-  "japanese": "ウィッティヒ反応",
-  "thmbnailName": "wittig-reaction-thmbnail.png",
+  "directoryName": "diels-alder-reaction",
+  "english": "Diels-Alder Reaction",
+  "japanese": "ディールス・アルダー反応",
+  "thmbnailName": "diels-alder-reaction-thumbnail.png",
   "generalFormulas": [
    {
-    "imageName": "wittig-reaction-general-formula-0.png"
+    "imageName": "diels-alder-reaction-generalformula.png"
    }
   ],
   "mechanisms": [
    {
-    "imageName": "wittig-reaction-mechanism-0.png"
+    "imageName": "diels-alder-reaction-mechanism.png"
    }
   ],
   "examples": [
    {
-    "imageName": "wittig-reaction-example-0.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Wittig Reaction",
-   "ウィッティヒ反応",
-   "ウィティッヒ反応",
-   "ういていっひはんのう",
-   "うぃてぃっひはんのう",
-   "うぃってぃひはんのう"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "wohl-ziegler-bromination",
-  "english": "Wohl-Ziegler Bromination",
-  "japanese": "ウォール・チーグラー臭素化",
-  "thmbnailName": "wohl-ziegler-bromination-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "wohl-ziegler-bromination-general-formula-0.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "wohl-ziegler-bromination-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "wohl-ziegler-bromination-example-0.png"
+    "imageName": "diels-alder-reaction-example1.png"
    },
    {
-    "imageName": "wohl-ziegler-bromination-example-1.png"
-   }
-  ],
-  "supplements": [],
-  "suggestions": [
-   "Wohl-Ziegler Bromination",
-   "ウォール・チーグラー臭素化",
-   "ウォール・ジーグラー臭素化",
-   "ウォール・チーグラー反応",
-   "しゅうそかはんのう",
-   "うぉーる・ちーぐらーしゅうそか",
-   "じーぐらー"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
- },
- {
-  "directoryName": "wolff-kishner-reduction",
-  "english": "Wolff-Kishner Reduction",
-  "japanese": "ウォルフ・キッシュナー還元",
-  "thmbnailName": "wolff-kishner-reduction-general-formula-0.png",
-  "generalFormulas": [
-   {
-    "imageName": "wolff-kishner-reduction-general-formula-0.png"
-   },
-   {
-    "imageName": "wolff-kishner-reduction-general-formula-1.png"
-   }
-  ],
-  "mechanisms": [
-   {
-    "imageName": "wolff-kishner-reduction-mechanism-0.png"
-   }
-  ],
-  "examples": [
-   {
-    "imageName": "wolff-kishner-reduction-example-0.png"
+    "imageName": "diels-alder-reaction-example2.png"
    }
   ],
   "supplements": [
    {
-    "imageName": "wolff-kishner-reduction-supplement-0.png"
+    "imageName": "diels-alder-reaction-supplement.png"
    }
   ],
   "suggestions": [
-   "Wolff-Kishner Reduction",
-   "ウォルフ・キッシュナー還元",
-   "ヴォルフｰキシュナー還元",
-   "うぉるふ・きっしゅなーかんげん",
-   "ヴぉるふ・きしゅなー還元"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+"Diels-Alder Reaction",
+"ディールス・アルダー反応",
+   "でぃーるす・あるだーはんのう"
+],
+  "tags": []
  },
  {
-  "directoryName": "wolff-rearrangement",
-  "english": "Wolff Rearrangement",
-  "japanese": "ウォルフ転位",
-  "thmbnailName": "wolff-rearrangement-general-formula-0.png",
+  "directoryName": "claisen-rearrangement",
+  "english": "Claisen Rearrangement",
+  "japanese": "クライゼン転位",
+  "thmbnailName": "claisen-rearrangement-thumbnail.png",
   "generalFormulas": [
    {
-    "imageName": "wolff-rearrangement-general-formula-0.png"
+    "imageName": "claisen-rearrangement-generalformula.png"
    }
   ],
   "mechanisms": [
    {
-    "imageName": "wolff-rearrangement-mechanism-0.png"
+    "imageName": "claisen-rearrangement-mechanism.png"
    }
   ],
   "examples": [
    {
-    "imageName": "wolff-rearrangement-example-0.png"
+    "imageName": "claisen-rearrangement-example.png"
    }
   ],
   "supplements": [
    {
-    "imageName": "wolff-rearrangement-supplement-0.png"
+    "imageName": "claisen-rearrangement-supplement.png"
+   }
+  ],
+  "suggestions": [
+"Claisen Rearrangement",
+"クライゼン転位",
+   "くらいぜんてんい"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "cope-rearrangement",
+  "english": "Cope Rearrangement",
+  "japanese": "コープ転位",
+  "thmbnailName": "cope-rearrangement-thumbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "cope-rearrangement-generalformula.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "cope-rearrangement-mechanism.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "cope-rearrangement-example.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "cope-rearrangement-supplement.png"
+   }
+  ],
+  "suggestions": [
+"Cope Rearrangement",
+"コープ転位",
+   "こーぷてんい"
+],
+  "tags": []
+ },
+ {
+  "directoryName": "friedel-crafts-alkylation",
+  "english": "Friedel-Crafts Alkylation",
+  "japanese": "フリーデル・クラフツアルキル化",
+  "thmbnailName": "friedel-crafts-alkylation-thumbnail.png",
+  "generalFormulas": [
+   {
+    "imageName": "friedel-crafts-alkylation-generalformula.png"
+   }
+  ],
+  "mechanisms": [
+   {
+    "imageName": "friedel-crafts-alkylation-mechanism.png"
+   }
+  ],
+  "examples": [
+   {
+    "imageName": "friedel-crafts-alkylation-example.png"
+   }
+  ],
+  "supplements": [
+   {
+    "imageName": "friedel-crafts-alkylation-supplement1.png"
    },
    {
-    "imageName": "wolff-rearrangement-supplement-1.png"
+    "imageName": "friedel-crafts-alkylation-supplement2.png"
+   },
+   {
+    "imageName": "friedel-crafts-alkylation-supplement3.png"
    }
   ],
   "suggestions": [
-   "Wolff Rearrangement",
-   "ウォルフ転位",
-   "ヴォルフ転位",
-   "うぉるふてんい",
-   "ヴぉるふてんい"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+"Friedel-Crafts Alkylation",
+"フリーデル・クラフツアルキル化",
+"ふりーでる・くらふつあるきるか",
+"ふりーでる・くらふつはんのう",
+"フリーデル・クラフツ反応"
+],
+  "tags": []
  },
  {
-  "directoryName": "yamaguchi-macrolactonization",
-  "english": "Yamaguchi Macrolactonization",
-  "japanese": "山口マクロラクトン化",
-  "thmbnailName": "yamaguchi-macrolactonization-general-formula-0.png",
+  "directoryName": "friedel-crafts-acylation",
+  "english": "Friedel-Crafts Acylation",
+  "japanese": "フリーデル・クラフツアシル化",
+  "thmbnailName": "friedel-crafts-acylation-thumbnail.png",
   "generalFormulas": [
    {
-    "imageName": "yamaguchi-macrolactonization-general-formula-0.png"
+    "imageName": "friedel-crafts-acylation-generalformula.png"
    }
   ],
   "mechanisms": [
    {
-    "imageName": "yamaguchi-macrolactonization-mechanism-0.png"
+    "imageName": "friedel-crafts-acylation-mechanism.png"
    }
   ],
   "examples": [
    {
-    "imageName": "yamaguchi-macrolactonization-example-0.png"
+    "imageName": "friedel-crafts-acylation-example.png"
    }
   ],
   "supplements": [
    {
-    "imageName": "yamaguchi-macrolactonization-supplement-0.png"
+    "imageName": "friedel-crafts-acylation-supplement1.png"
+   },
+   {
+    "imageName": "friedel-crafts-acylation-supplement2.png"
    }
   ],
   "suggestions": [
-   "Yamaguchi Macrolactonization",
-   "山口マクロラクトン化",
-   "ヤマグチマクロラクトン化",
-   "山口エステル化",
-   "山口ラクトン化",
-   "やまぐちまくろらくとんか",
-   "やまぐちえすてるか",
-   "やまぐちらくとんか",
-   "Esterfication"
-  ],
-  "tags": [],
-  "reactants": [],
-  "products": [],
-  "youtubeLink": []
+"Friedel-Crafts Acylation",
+"フリーデル・クラフツアシル化",
+"ふりーでる・くらふつあしるか",
+"ふりーでる・くらふつはんのう",
+"フリーデル・クラフツ反応"
+],
+  "tags": []
  }
 ]

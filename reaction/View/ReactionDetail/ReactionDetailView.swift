@@ -13,33 +13,39 @@ struct ReactionDetailView: View {
                 ReactionDetailContent(selectJapanese: selectJapanese, reactionMechanism: reactionMechanism)
                     .padding(.bottom, 62)
             }
-            AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
+            
+            VStack(alignment: .trailing) {
+                Button(action: {
+                    showingSheet = true
+                }, label: {
+                    Image(systemName: "square.and.arrow.up")
+                        .renderingMode(.template)
+                        .colorMultiply(.black)
+                        .padding(16)
+                        .background(Color.gray)
+                        .cornerRadius(16)
+                        .padding(.trailing, 16)
+                })
+                AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
+            }
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(
             trailing:
-                HStack {
-                    Button(action: {
-                        let value = UIInterfaceOrientation.landscapeRight.rawValue
-                        UIDevice.current.setValue(value, forKey: "orientation")
-                        showingFullScreen = true
-                    }, label: {
-                        Image(systemName: "arrow.clockwise")
-                    })
-
-                    Button(action: {
-                        showingSheet = true
-                    }, label: {
-                        Image(systemName: "square.and.arrow.up")
-                    })
-                }
+                Button(action: {
+                    let value = UIInterfaceOrientation.landscapeRight.rawValue
+                    UIDevice.current.setValue(value, forKey: "orientation")
+                    showingFullScreen = true
+                }, label: {
+                    Image(systemName: "arrow.clockwise")
+                })
         )
         .fullScreenCover(isPresented: $showingFullScreen) {
             ReactionDetailFullScreenView(selectJapanese: selectJapanese, reactionMechanism: reactionMechanism)
         }
         .sheet(isPresented: $showingSheet, content: {
-             ActivityViewController(activityItems: [URL(string: "https://chemist.swiswiswift.com/reaction/\(reactionMechanism.directoryName)")!])
+            ActivityViewController(activityItems: [URL(string: "https://chemist.swiswiswift.com/reaction/\(reactionMechanism.directoryName)")!])
         })
     }
 }

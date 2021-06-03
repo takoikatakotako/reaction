@@ -58,8 +58,36 @@ struct ReactionDetailContent: View {
                     }
                 }
             }
+            
+            if !reactionMechanism.youtubeLink.isEmpty {
+                VStack(spacing: 0) {
+                    Text("YoutubeLink")
+                    ForEach(reactionMechanism.youtubeLink, id: \.self) { youtubeLink in
+                        if let youtubeUrl = URL(string: youtubeLink),
+                           let youtubeThmbnailUrl = getYoutubeThmbnailUrlString(youtubeUrl: youtubeUrl) {
+                            Button {
+                                openUrl(url: youtubeUrl)
+                            } label: {
+                                WebImage(url: youtubeThmbnailUrl)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .padding()
+                            }
+                        }
+                    }
+                }
+            }
         }
         .padding(.vertical, 18)
+    }
+    
+    private func getYoutubeThmbnailUrlString(youtubeUrl: URL) -> URL {
+        let youtubePath = youtubeUrl.path
+        return URL(string: "https://img.youtube.com/vi\(youtubePath)/0.jpg")!
+    }
+    
+    private func openUrl(url: URL) {
+        UIApplication.shared.open(url)
     }
 }
 

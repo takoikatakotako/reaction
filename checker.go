@@ -25,7 +25,7 @@ type Reaction struct {
 	Tags            []string         `json:"tags"`
 	Reactants       []string         `json:"reactants"`
 	Products        []string         `json:"products"`
-	YoutubeLink     []string         `json:"youtubeLink"`
+	YoutubeLinks     []string         `json:"youtubeLinks"`
 }
 
 type GeneralFormula struct {

@@ -59,10 +59,10 @@ struct ReactionDetailContent: View {
                 }
             }
             
-            if !reactionMechanism.youtubeLink.isEmpty {
+            if !reactionMechanism.youtubeLinks.isEmpty {
                 VStack(spacing: 0) {
                     Text("YoutubeLink")
-                    ForEach(reactionMechanism.youtubeLink, id: \.self) { youtubeLink in
+                    ForEach(reactionMechanism.youtubeLinks, id: \.self) { youtubeLink in
                         if let youtubeUrl = URL(string: youtubeLink),
                            let youtubeThmbnailUrl = getYoutubeThmbnailUrlString(youtubeUrl: youtubeUrl) {
                             Button {

@@ -61,7 +61,7 @@ struct ReactionDetailContent: View {
             
             if !reactionMechanism.youtubeLinks.isEmpty {
                 VStack(spacing: 0) {
-                    Text("YoutubeLink")
+                    Text(selectJapanese ?  "動画" : "Movie")
                     ForEach(reactionMechanism.youtubeLinks, id: \.self) { youtubeLink in
                         if let youtubeUrl = URL(string: youtubeLink),
                            let youtubeThmbnailUrl = getYoutubeThmbnailUrlString(youtubeUrl: youtubeUrl) {

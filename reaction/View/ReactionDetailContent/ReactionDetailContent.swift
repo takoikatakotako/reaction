@@ -78,7 +78,8 @@ struct ReactionDetailContent: View {
                 }
             }
         }
-        .padding(.vertical, 18)
+        .padding(.vertical, 16)
+        .padding(.bottom, 16)
     }
     
     private func getYoutubeThmbnailUrlString(youtubeUrl: URL) -> URL {

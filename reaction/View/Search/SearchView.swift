@@ -117,7 +117,7 @@ struct SearchView: View {
                     LazyVStack {
                         ForEach(firstCategories) { topCategory in
                             Button(action: {
-                                topCategorySelected(topCategoryId: topCategory.id)
+                                firstCategorySelected(topCategoryId: topCategory.id)
                             }, label: {
                                 VStack(alignment: .leading) {
                                     HStack {
@@ -190,7 +190,7 @@ struct SearchView: View {
         }
     }
     
-    func topCategorySelected(topCategoryId: String) {
+    func firstCategorySelected(topCategoryId: String) {
         guard let firstIndex = firstCategories.firstIndex(where: { $0.id == topCategoryId}) else {
             return
         }
@@ -204,6 +204,9 @@ struct SearchView: View {
             // セカンドカテゴリ、サードカテゴリにチェックを外す
             checkFirstCategory(firstIndex: firstIndex, check: true)
         }
+        
+        
+         confirmStatus()
     }
     
     func secondCategorySelected(topCategoryId: String, secondCategoryId: String) {
@@ -219,6 +222,7 @@ struct SearchView: View {
             // セカンドカテゴリにチェックが入っていない場合
             checkSecondCategory(firstIndex: topIndex, secondIndex: secondIndex, check: true)
         }
+         confirmStatus()
     }
     
     func thirdCategorySelected(topCategoryId: String, secondCategoryId: String, thirdCategoryId: String) {
@@ -227,6 +231,7 @@ struct SearchView: View {
            let thirdIndex = firstCategories[topIndex].secondCategories[secondIndex].thirdCategories.firstIndex(where: { $0.id == thirdCategoryId}) {
             firstCategories[topIndex].secondCategories[secondIndex].thirdCategories[thirdIndex].check.toggle()
         }
+         confirmStatus()
     }
     
     private func checkFirstCategory(firstIndex: Int, check: Bool) {
@@ -243,6 +248,43 @@ struct SearchView: View {
         firstCategories[firstIndex].secondCategories[secondIndex].check = check
         for thirdIndex in 0..<firstCategories[firstIndex].secondCategories[secondIndex].thirdCategories.count {
             firstCategories[firstIndex].secondCategories[secondIndex].thirdCategories[thirdIndex].check = check
+        }
+    }
+    
+    private func confirmStatus() {
+        for firstIndex in 0..<firstCategories.count {
+            // サードカテゴリーを確認し、セカンドカテゴリーを更新
+            for secondIndex in 0..<firstCategories[firstIndex].secondCategories.count {
+                let thirdCategories = firstCategories[firstIndex].secondCategories[secondIndex].thirdCategories
+                // サードカテゴリがない場合は次に
+                if thirdCategories.isEmpty {
+                    continue
+                }
+                // 全てのサードカテゴリがチェックOnの場合はサブカテゴリーをチェックOnにする
+                if thirdCategories.filter({ $0.check == true }).count == thirdCategories.count {
+                    firstCategories[firstIndex].secondCategories[secondIndex].check = true
+                }
+                // 全てのサードカテゴリがチェックOffの場合はサブカテゴリーをチェックOffにする
+                if thirdCategories.filter({ $0.check == false }).count == thirdCategories.count {
+                    firstCategories[firstIndex].secondCategories[secondIndex].check = false
+                }
+            }
+            
+            // セカンドカテゴリーを確認し、トップカテゴリーを更新
+            let secondCategories = firstCategories[firstIndex].secondCategories
+            // セカンドカテゴリーがない場合は次に
+            if secondCategories.isEmpty {
+                continue
+            }
+            
+            // 全てのセカンドカテゴリがチェックOnの場合はファーストカテゴリーをチェックOnにする
+            if secondCategories.filter({ $0.check == true }).count == secondCategories.count {
+                firstCategories[firstIndex].check = true
+            }
+            // 全てのセカンドカテゴリがチェックOffの場合はファーストカテゴリーをチェックOffにする
+            if secondCategories.filter({ $0.check == false }).count == secondCategories.count {
+                firstCategories[firstIndex].check = false
+            }
         }
     }
 }

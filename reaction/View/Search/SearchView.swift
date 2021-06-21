@@ -1,7 +1,7 @@
 import SwiftUI
 
 
-struct TopCategory: Identifiable {
+struct FirstCategory: Identifiable {
     var id: String {
         return name
     }
@@ -30,9 +30,8 @@ struct ThirdCategory: Identifiable {
 struct SearchView: View {
     @State private var favoriteColor = 0
     
-    
-    @State private var topCategories: [TopCategory] = [
-        TopCategory(
+    @State private var firstCategories: [FirstCategory] = [
+        FirstCategory(
             name: "カルボニル",
             check: true,
             secondCategories: [
@@ -58,7 +57,7 @@ struct SearchView: View {
                 ),
             ]
         ),
-        TopCategory(
+        FirstCategory(
             name: "ハロゲン",
             check: true,
             secondCategories: [
@@ -74,17 +73,17 @@ struct SearchView: View {
                 ),
             ]
         ),
-        TopCategory(
+        FirstCategory(
             name: "アルケン",
             check: true,
             secondCategories: []
         ),
-        TopCategory(
+        FirstCategory(
             name: "アミン",
             check: true,
             secondCategories: []
         ),
-        TopCategory(
+        FirstCategory(
             name: "芳香環",
             check: true,
             secondCategories: [
@@ -116,16 +115,16 @@ struct SearchView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     
                     LazyVStack {
-                        ForEach(topCategories) { topCategory in
+                        ForEach(firstCategories) { topCategory in
                             Button(action: {
                                 topCategorySelected(topCategoryId: topCategory.id)
                             }, label: {
                                 VStack(alignment: .leading) {
                                     HStack {
                                         if topCategory.check {
-                                            Text("■")
+                                            Image(R.image.searchCheckBox.name)
                                         } else {
-                                            Text("□")
+                                            Image(R.image.searchCheckBoxOutline.name)
                                         }
                                         Text(topCategory.name)
                                     }
@@ -140,10 +139,10 @@ struct SearchView: View {
                                     VStack(alignment: .leading) {
                                         HStack {
                                             if secondCategory.check {
-                                                Text("■")
+                                                Image(R.image.searchCheckBox.name)
                                                     .padding(.leading, 24)
                                             } else {
-                                                Text("□")
+                                                Image(R.image.searchCheckBoxOutline.name)
                                                     .padding(.leading, 24)
                                             }
                                             Text(secondCategory.name)
@@ -160,10 +159,10 @@ struct SearchView: View {
                                         VStack(alignment: .leading) {
                                             HStack {
                                                 if thirdCategory.check {
-                                                    Text("■")
+                                                    Image(R.image.searchCheckBox.name)
                                                         .padding(.leading, 48)
                                                 } else {
-                                                    Text("□")
+                                                    Image(R.image.searchCheckBoxOutline.name)
                                                         .padding(.leading, 48)
                                                 }
                                                 Text(thirdCategory.name)
@@ -192,23 +191,58 @@ struct SearchView: View {
     }
     
     func topCategorySelected(topCategoryId: String) {
-        if let index = topCategories.firstIndex(where: { $0.id == topCategoryId}) {
-            topCategories[index].check.toggle()
+        guard let firstIndex = firstCategories.firstIndex(where: { $0.id == topCategoryId}) else {
+            return
+        }
+        if firstCategories[firstIndex].check {
+            // ファーストカテゴリにチェックが入っている場合
+            // セカンドカテゴリ、サードカテゴリにチェックを入れる
+            checkFirstCategory(firstIndex: firstIndex, check: false)
+            
+        } else {
+            // ファーストカテゴリにチェックが入っていない場合
+            // セカンドカテゴリ、サードカテゴリにチェックを外す
+            checkFirstCategory(firstIndex: firstIndex, check: true)
         }
     }
     
     func secondCategorySelected(topCategoryId: String, secondCategoryId: String) {
-        if let topIndex = topCategories.firstIndex(where: { $0.id == topCategoryId}),
-           let secondIndex = topCategories[topIndex].secondCategories.firstIndex(where: { $0.id == secondCategoryId}) {
-            topCategories[topIndex].secondCategories[secondIndex].check.toggle()
+        guard let topIndex = firstCategories.firstIndex(where: { $0.id == topCategoryId}),
+           let secondIndex = firstCategories[topIndex].secondCategories.firstIndex(where: { $0.id == secondCategoryId}) else {
+            return
+        }
+        
+        if firstCategories[topIndex].secondCategories[secondIndex].check {
+            // セカンドカテゴリにチェックが入っている場合
+            checkSecondCategory(firstIndex: topIndex, secondIndex: secondIndex, check: false)
+        } else {
+            // セカンドカテゴリにチェックが入っていない場合
+            checkSecondCategory(firstIndex: topIndex, secondIndex: secondIndex, check: true)
         }
     }
     
     func thirdCategorySelected(topCategoryId: String, secondCategoryId: String, thirdCategoryId: String) {
-        if let topIndex = topCategories.firstIndex(where: { $0.id == topCategoryId}),
-           let secondIndex = topCategories[topIndex].secondCategories.firstIndex(where: { $0.id == secondCategoryId}),
-           let thirdIndex = topCategories[topIndex].secondCategories[secondIndex].thirdCategories.firstIndex(where: { $0.id == thirdCategoryId}) {
-            topCategories[topIndex].secondCategories[secondIndex].thirdCategories[thirdIndex].check.toggle()
+        if let topIndex = firstCategories.firstIndex(where: { $0.id == topCategoryId}),
+           let secondIndex = firstCategories[topIndex].secondCategories.firstIndex(where: { $0.id == secondCategoryId}),
+           let thirdIndex = firstCategories[topIndex].secondCategories[secondIndex].thirdCategories.firstIndex(where: { $0.id == thirdCategoryId}) {
+            firstCategories[topIndex].secondCategories[secondIndex].thirdCategories[thirdIndex].check.toggle()
+        }
+    }
+    
+    private func checkFirstCategory(firstIndex: Int, check: Bool) {
+        // ファーストカテゴリ以下のチェックをOn, Offする
+        firstCategories[firstIndex].check = check
+        // セカンドカテゴリ、サードカテゴリにチェックを外す
+        for secondIndex in 0..<firstCategories[firstIndex].secondCategories.count {
+            checkSecondCategory(firstIndex: firstIndex, secondIndex: secondIndex, check: check)
+        }
+    }
+    
+    private func checkSecondCategory(firstIndex: Int, secondIndex: Int, check: Bool) {
+        // サードカテゴリ以下のチェックをOn, Offする
+        firstCategories[firstIndex].secondCategories[secondIndex].check = check
+        for thirdIndex in 0..<firstCategories[firstIndex].secondCategories[secondIndex].thirdCategories.count {
+            firstCategories[firstIndex].secondCategories[secondIndex].thirdCategories[thirdIndex].check = check
         }
     }
 }

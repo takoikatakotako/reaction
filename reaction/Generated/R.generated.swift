@@ -141,7 +141,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 6 images.
+  /// This `R.image` struct is generated, and contains static references to 8 images.
   struct image {
     /// Image `icon-open`.
     static let iconOpen = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon-open")
@@ -155,6 +155,10 @@ struct R: Rswift.Validatable {
     static let placeholderDetail = Rswift.ImageResource(bundle: R.hostingBundle, name: "placeholder-detail")
     /// Image `placeholder-list`.
     static let placeholderList = Rswift.ImageResource(bundle: R.hostingBundle, name: "placeholder-list")
+    /// Image `search-check-box-outline`.
+    static let searchCheckBoxOutline = Rswift.ImageResource(bundle: R.hostingBundle, name: "search-check-box-outline")
+    /// Image `search-check-box`.
+    static let searchCheckBox = Rswift.ImageResource(bundle: R.hostingBundle, name: "search-check-box")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "icon-open", bundle: ..., traitCollection: ...)`
@@ -195,6 +199,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "placeholder-list", bundle: ..., traitCollection: ...)`
     static func placeholderList(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.placeholderList, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "search-check-box", bundle: ..., traitCollection: ...)`
+    static func searchCheckBox(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.searchCheckBox, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "search-check-box-outline", bundle: ..., traitCollection: ...)`
+    static func searchCheckBoxOutline(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.searchCheckBoxOutline, compatibleWith: traitCollection)
     }
     #endif
 

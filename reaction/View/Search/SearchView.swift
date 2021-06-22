@@ -1,32 +1,5 @@
 import SwiftUI
 
-
-struct FirstCategory: Identifiable {
-    var id: String {
-        return name
-    }
-    let name: String
-    var check: Bool
-    var secondCategories: [SecondCategory]
-}
-
-struct SecondCategory: Identifiable {
-    var id: String {
-        return name
-    }
-    let name: String
-    var check: Bool
-    var thirdCategories: [ThirdCategory]
-}
-
-struct ThirdCategory: Identifiable {
-    var id: String {
-        return name
-    }
-    let name: String
-    var check: Bool
-}
-
 struct SearchView: View {
     @State private var favoriteColor = 0
     
@@ -142,13 +115,17 @@ struct SearchView: View {
                     .padding(.bottom, 64)
                 }
                 
-                NavigationLink(
-                    destination: Text("XXXXX"),
-                    label: {
-                        Text("検索")
-                            .padding()
-                            .background(Color.red)
-                    })
+                NavigationLink(destination: Text("XXXXX")) {
+                    Text("検索")
+                        .font(Font.system(size: 18).bold())
+                        .foregroundColor(.white)
+                        .frame(height: 44)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .background(Color.gray)
+                        .padding(.horizontal, 16)
+                        .cornerRadius(16)
+                }
+                .padding(.bottom, 8)
                 
             }
             .padding(.horizontal, 8)

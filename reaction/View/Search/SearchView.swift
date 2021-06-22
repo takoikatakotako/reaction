@@ -32,68 +32,68 @@ struct SearchView: View {
     
     @State private var firstCategories: [FirstCategory] = [
         FirstCategory(
-            name: "カルボニル",
+            name: "Carbonyl",
             check: true,
             secondCategories: [
                 SecondCategory(
-                    name: "アルデヒド",
+                    name: "Aldehyde",
                     check: true,
                     thirdCategories: []
                 ),
                 SecondCategory(
-                    name: "ケトン",
+                    name: "Ketone",
                     check: true,
                     thirdCategories: []
                 ),
                 SecondCategory(
-                    name: "カルボン酸誘導体",
+                    name: "Carboxylic Acid Derivative",
                     check: true,
                     thirdCategories: [
-                        ThirdCategory(name: "エステル", check: true),
-                        ThirdCategory(name: "酸無水物", check: true),
-                        ThirdCategory(name: "酸ハロゲン化物", check: true),
-                        ThirdCategory(name: "アミド", check: true),
+                        ThirdCategory(name: "Ester", check: true),
+                        ThirdCategory(name: "Acid Anhydride", check: true),
+                        ThirdCategory(name: "Acid Halide", check: true),
+                        ThirdCategory(name: "Amide", check: true),
                     ]
                 ),
             ]
         ),
         FirstCategory(
-            name: "ハロゲン",
+            name: "Halogen",
             check: true,
             secondCategories: [
                 SecondCategory(
-                    name: "ハロゲン化アルキル",
+                    name: "Alkyl Halide",
                     check: true,
                     thirdCategories: []
                 ),
                 SecondCategory(
-                    name: "その他",
+                    name: "Other",
                     check: true,
                     thirdCategories: []
                 ),
             ]
         ),
         FirstCategory(
-            name: "アルケン",
+            name: "Alkene",
             check: true,
             secondCategories: []
         ),
         FirstCategory(
-            name: "アミン",
+            name: "Amine",
             check: true,
             secondCategories: []
         ),
         FirstCategory(
-            name: "芳香環",
+            name: "Aromatic Ring",
             check: true,
             secondCategories: [
                 SecondCategory(
-                    name: "ベンゼン",
+                    name: "Benzene",
                     check: true,
                     thirdCategories: []
                 ),
                 SecondCategory(
-                    name: "ヘテロ環",
+                    name: "Heterocyclic Compound",
                     check: true,
                     thirdCategories: []
                 ),
@@ -107,7 +107,7 @@ struct SearchView: View {
         
         NavigationView {
             ZStack(alignment: .bottom) {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     Picker(selection: $favoriteColor, label: Text("")) {
                         Text("Reactant").tag(0)
                         Text("Product").tag(1)
@@ -119,70 +119,36 @@ struct SearchView: View {
                             Button(action: {
                                 firstCategorySelected(topCategoryId: topCategory.id)
                             }, label: {
-                                VStack(alignment: .leading) {
-                                    HStack {
-                                        if topCategory.check {
-                                            Image(R.image.searchCheckBox.name)
-                                        } else {
-                                            Image(R.image.searchCheckBoxOutline.name)
-                                        }
-                                        Text(topCategory.name)
-                                    }
-                                    Divider()
-                                }
+                                SearchFirstCategoryRow(check: topCategory.check, name: topCategory.name)
                             })
                             
                             ForEach(topCategory.secondCategories) { secondCategory in
                                 Button(action: {
                                     secondCategorySelected(topCategoryId: topCategory.id, secondCategoryId: secondCategory.id)
                                 }, label: {
-                                    VStack(alignment: .leading) {
-                                        HStack {
-                                            if secondCategory.check {
-                                                Image(R.image.searchCheckBox.name)
-                                                    .padding(.leading, 24)
-                                            } else {
-                                                Image(R.image.searchCheckBoxOutline.name)
-                                                    .padding(.leading, 24)
-                                            }
-                                            Text(secondCategory.name)
-                                        }
-                                        Divider()
-                                    }
+                                    SearchSecondCategoryRow(check: secondCategory.check, name: secondCategory.name)
                                 })
                                 
                                 ForEach(secondCategory.thirdCategories) { thirdCategory in
-                                    
                                     Button(action: {
                                         thirdCategorySelected(topCategoryId: topCategory.id, secondCategoryId: secondCategory.id, thirdCategoryId: thirdCategory.id)
                                     }, label: {
-                                        VStack(alignment: .leading) {
-                                            HStack {
-                                                if thirdCategory.check {
-                                                    Image(R.image.searchCheckBox.name)
-                                                        .padding(.leading, 48)
-                                                } else {
-                                                    Image(R.image.searchCheckBoxOutline.name)
-                                                        .padding(.leading, 48)
-                                                }
-                                                Text(thirdCategory.name)
-                                            }
-                                            Divider()
-                                        }
+                                        SearchThirdCategoryRow(check: thirdCategory.check, name: thirdCategory.name)
                                     })
                                 }
                             }
                         }
                     }
+                    .padding(.bottom, 64)
                 }
                 
-                Button(action: {
-                    
-                }, label: {
-                    Text("検索")
-                        .padding()
-                        .background(Color.red)
-                })
+                NavigationLink(
+                    destination: Text("XXXXX"),
+                    label: {
+                        Text("検索")
+                            .padding()
+                            .background(Color.red)
+                    })
                 
             }
             .padding(.horizontal, 8)
@@ -206,12 +172,12 @@ struct SearchView: View {
         }
         
         
-         confirmStatus()
+        confirmStatus()
     }
     
     func secondCategorySelected(topCategoryId: String, secondCategoryId: String) {
         guard let topIndex = firstCategories.firstIndex(where: { $0.id == topCategoryId}),
-           let secondIndex = firstCategories[topIndex].secondCategories.firstIndex(where: { $0.id == secondCategoryId}) else {
+              let secondIndex = firstCategories[topIndex].secondCategories.firstIndex(where: { $0.id == secondCategoryId}) else {
             return
         }
         
@@ -222,7 +188,7 @@ struct SearchView: View {
             // セカンドカテゴリにチェックが入っていない場合
             checkSecondCategory(firstIndex: topIndex, secondIndex: secondIndex, check: true)
         }
-         confirmStatus()
+        confirmStatus()
     }
     
     func thirdCategorySelected(topCategoryId: String, secondCategoryId: String, thirdCategoryId: String) {
@@ -231,7 +197,7 @@ struct SearchView: View {
            let thirdIndex = firstCategories[topIndex].secondCategories[secondIndex].thirdCategories.firstIndex(where: { $0.id == thirdCategoryId}) {
             firstCategories[topIndex].secondCategories[secondIndex].thirdCategories[thirdIndex].check.toggle()
         }
-         confirmStatus()
+        confirmStatus()
     }
     
     private func checkFirstCategory(firstIndex: Int, check: Bool) {
@@ -263,9 +229,7 @@ struct SearchView: View {
                 // 全てのサードカテゴリがチェックOnの場合はサブカテゴリーをチェックOnにする
                 if thirdCategories.filter({ $0.check == true }).count == thirdCategories.count {
                     firstCategories[firstIndex].secondCategories[secondIndex].check = true
-                }
-                // 全てのサードカテゴリがチェックOffの場合はサブカテゴリーをチェックOffにする
-                if thirdCategories.filter({ $0.check == false }).count == thirdCategories.count {
+                } else {
                     firstCategories[firstIndex].secondCategories[secondIndex].check = false
                 }
             }
@@ -280,10 +244,9 @@ struct SearchView: View {
             // 全てのセカンドカテゴリがチェックOnの場合はファーストカテゴリーをチェックOnにする
             if secondCategories.filter({ $0.check == true }).count == secondCategories.count {
                 firstCategories[firstIndex].check = true
-            }
-            // 全てのセカンドカテゴリがチェックOffの場合はファーストカテゴリーをチェックOffにする
-            if secondCategories.filter({ $0.check == false }).count == secondCategories.count {
+            } else {
                 firstCategories[firstIndex].check = false
+                
             }
         }
     }

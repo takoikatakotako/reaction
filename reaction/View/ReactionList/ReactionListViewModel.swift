@@ -19,6 +19,9 @@ class ReactionListViewModel: ObservableObject {
     @Published var reactionMechanisms: [ReactionMechanism] = []
     @Published var sheet: ReactionListViewSheet?
     
+    private let reactionRepository = ReactionMechanismRepository()
+    private var subscriptions = Set<AnyCancellable>()
+
     init(showingThmbnail: Bool, selectJapanese: Bool) {
         self.showingThmbnail = showingThmbnail
         self.selectJapanese = selectJapanese
@@ -38,16 +41,10 @@ class ReactionListViewModel: ObservableObject {
             }
         }
     }
-    
-    private var subscriptions = Set<AnyCancellable>()
-    
-    func searchRepos() {
-        let url = URL(string: "https://chemist.swiswiswift.com/resource/reactions.json")!
-        URLSession.shared
-            .dataTaskPublisher(for: url)
-            .tryMap { try JSONDecoder().decode([ReactionMechanism].self, from: $0.data) }
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+        
+    func fetchMechanisms() {
+        reactionRepository
+            .fetchMechanisms()
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:

@@ -135,7 +135,7 @@ struct SearchView: View {
                 }
                 
                 VStack(spacing: 12) {
-                    NavigationLink(destination: SearchResult(searchResultType: getSearchTargetType(), withoutCheck: true, firstCategories: firstCategories)) {
+                    NavigationLink(destination: SearchResultView(searchResultType: getSearchTargetType(), withoutCheck: true, firstCategories: firstCategories)) {
                         Text("チェックしたものを除外")
                             .font(Font.system(size: 18).bold())
                             .foregroundColor(.white)
@@ -146,7 +146,7 @@ struct SearchView: View {
                             .cornerRadius(16)
                     }
                     
-                    NavigationLink(destination: SearchResult(searchResultType: getSearchTargetType(), withoutCheck: false, firstCategories: firstCategories)) {
+                    NavigationLink(destination: SearchResultView(searchResultType: getSearchTargetType(), withoutCheck: false, firstCategories: firstCategories)) {
                         Text("チェックしたものを検索")
                             .font(Font.system(size: 18).bold())
                             .foregroundColor(.white)

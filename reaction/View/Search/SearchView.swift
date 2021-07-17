@@ -6,67 +6,86 @@ struct SearchView: View {
     @State private var firstCategories: [FirstCategory] = [
         FirstCategory(
             name: "Carbonyl",
+            tag: "Carbonyl",
             check: true,
             secondCategories: [
                 SecondCategory(
                     name: "Aldehyde",
+                    tag: "Carbonyl-Aldehyde",
                     check: true,
                     thirdCategories: []
                 ),
                 SecondCategory(
                     name: "Ketone",
+                    tag: "Carbonyl-Ketone",
                     check: true,
                     thirdCategories: []
                 ),
                 SecondCategory(
                     name: "Carboxylic Acid Derivative",
+                    tag: "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
                     check: true,
                     thirdCategories: [
-                        ThirdCategory(name: "Ester", check: true),
-                        ThirdCategory(name: "Acid Anhydride", check: true),
-                        ThirdCategory(name: "Acid Halide", check: true),
-                        ThirdCategory(name: "Amide", check: true),
+                        ThirdCategory(name: "Ester", tag: "Carbonyl-Carboxylic_Acid_Drivative-Ester", check: true),
+                        ThirdCategory(name: "Acid Anhydride", tag: "Carbonyl-Carboxylic_Acid_Drivative-Acid_Anhydride", check: true),
+                        ThirdCategory(name: "Acid Halide", tag: "Carbonyl-Carboxylic_Acid_Drivative-Acid_Halide", check: true),
+                        ThirdCategory(name: "Amide", tag: "Carbonyl-Carboxylic_Acid_Drivative-Amide", check: true),
+                        ThirdCategory(name: "Acid Drivative", tag: "Carbonyl-Carboxylic_Acid_Drivative", check: true),
                     ]
                 ),
             ]
         ),
         FirstCategory(
             name: "Halogen",
+            tag: "Halogene",
             check: true,
             secondCategories: [
                 SecondCategory(
                     name: "Alkyl Halide",
+                    tag: "Halogene-AlkylHalide",
                     check: true,
                     thirdCategories: []
                 ),
                 SecondCategory(
                     name: "Other",
+                    tag: "Halogene-Other",
                     check: true,
                     thirdCategories: []
                 ),
             ]
         ),
         FirstCategory(
-            name: "Alkene",
+            name: "Alkene/Alkyne",
+            tag: "Alkene/Alkyne",
             check: true,
             secondCategories: []
         ),
         FirstCategory(
             name: "Amine",
+            tag: "Amine",
+            check: true,
+            secondCategories: []
+        ),
+        FirstCategory(
+            name: "Alcohol",
+            tag: "Alcohol",
             check: true,
             secondCategories: []
         ),
         FirstCategory(
             name: "Aromatic Ring",
+            tag: "Aromtic_Ring",
             check: true,
             secondCategories: [
                 SecondCategory(
                     name: "Benzene",
+                    tag: "Aromtic_Ring-Benzene",
                     check: true,
                     thirdCategories: []
                 ),
                 SecondCategory(
                     name: "Heterocyclic Compound",
+                    tag: "Aromatic_Ring-Hetroaromatic_Ring",
                     check: true,
                     thirdCategories: []
                 ),
@@ -112,24 +131,45 @@ struct SearchView: View {
                             }
                         }
                     }
-                    .padding(.bottom, 64)
+                    .padding(.bottom, 120)
                 }
                 
-                NavigationLink(destination: Text("XXXXX")) {
-                    Text("検索")
-                        .font(Font.system(size: 18).bold())
-                        .foregroundColor(.white)
-                        .frame(height: 44)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .background(Color.gray)
-                        .padding(.horizontal, 16)
-                        .cornerRadius(16)
+                VStack(spacing: 12) {
+                    NavigationLink(destination: SearchResult(searchResultType: getSearchTargetType(), withoutCheck: true, firstCategories: firstCategories)) {
+                        Text("チェックしたものを除外")
+                            .font(Font.system(size: 18).bold())
+                            .foregroundColor(.white)
+                            .frame(height: 44)
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .background(Color.gray)
+                            .padding(.horizontal, 16)
+                            .cornerRadius(16)
+                    }
+                    
+                    NavigationLink(destination: SearchResult(searchResultType: getSearchTargetType(), withoutCheck: false, firstCategories: firstCategories)) {
+                        Text("チェックしたものを検索")
+                            .font(Font.system(size: 18).bold())
+                            .foregroundColor(.white)
+                            .frame(height: 44)
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .background(Color.gray)
+                            .padding(.horizontal, 16)
+                            .cornerRadius(16)
+                    }
                 }
                 .padding(.bottom, 8)
                 
             }
             .padding(.horizontal, 8)
             .navigationTitle("Search")
+        }
+    }
+    
+    func getSearchTargetType() -> SearchTargetType {
+        if favoriteColor == 0 {
+            return .reactant
+        } else {
+            return .product
         }
     }
     
@@ -147,7 +187,6 @@ struct SearchView: View {
             // セカンドカテゴリ、サードカテゴリにチェックを外す
             checkFirstCategory(firstIndex: firstIndex, check: true)
         }
-        
         
         confirmStatus()
     }

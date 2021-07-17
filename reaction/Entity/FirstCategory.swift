@@ -5,6 +5,7 @@ struct FirstCategory: Identifiable {
         return name
     }
     let name: String
+    let tag: String
     var check: Bool
     var secondCategories: [SecondCategory]
 }

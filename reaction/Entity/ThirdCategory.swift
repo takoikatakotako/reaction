@@ -5,5 +5,6 @@ struct ThirdCategory: Identifiable {
         return name
     }
     let name: String
+    let tag: String
     var check: Bool
 }

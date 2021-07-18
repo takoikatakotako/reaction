@@ -13,6 +13,8 @@ struct ReactionMechanism: Identifiable, Decodable {
     let examples: [Example]
     let supplements: [Supplement]
     let suggestions: [String]
+    let reactants: [String]
+    let products: [String]
     let youtubeLinks: [String]
     
     var thmbnailUrl: URL {
@@ -53,6 +55,9 @@ extension ReactionMechanism: Mockable {
             mechanisms: [Mechanism(imageName: "barton-reaction-mechanism.png")],
             examples: [Example(imageName: "barton-reaction-example.png")],
             supplements: [Supplement(imageName: "barton-reaction-example.png")],
-            suggestions: [], youtubeLinks: [])
+            suggestions: [],
+            reactants: [],
+            products: [],
+            youtubeLinks: [])
     }
 }

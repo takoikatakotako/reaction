@@ -1,11 +1,12 @@
 import SwiftUI
 
 struct SearchResultView: View {
-    let searchResultType: SearchTargetType
-    let withoutCheck: Bool
-    let firstCategories: [FirstCategory]
-    @StateObject var viewModel = SearchResultViewModel()
+    @StateObject var viewModel: SearchResultViewModel
 
+    init(searchResultType: SearchTargetType, withoutCheck: Bool, firstCategories: [FirstCategory]) {
+        _viewModel = StateObject(wrappedValue: SearchResultViewModel(searchResultType: searchResultType, withoutCheck: withoutCheck, firstCategories: firstCategories))
+    }
+    
     var body: some View {
         
 //        VStack {

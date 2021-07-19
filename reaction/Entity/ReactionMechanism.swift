@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ReactionMechanism: Identifiable, Decodable {
+struct ReactionMechanism: Identifiable, Decodable, Hashable {
     var id: String {
         directoryName
     }

@@ -11,21 +11,20 @@ struct RootView: View {
         TabView {
             ReactionListView(showingThmbnail: showThmbnail, selectJapanese: selectedJapanese)
                 .tabItem {
-                    Image(systemName: "1.square.fill")
-                    Text("いちらん")
+                    Image(systemName: "list.dash")
+                    Text("List")
                 }
             SearchView()
                 .tabItem {
-                    Image(systemName: "2.square.fill")
-                    Text("けんさく")
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
                 }
-            Text("The Last Tab")
+            ConfigView()
                 .tabItem {
-                    Image(systemName: "3.square.fill")
-                    Text("設定")
+                    Image(systemName: "gearshape")
+                    Text("Config")
                 }
         }
-        
     }
 }
 

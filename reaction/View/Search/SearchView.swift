@@ -162,7 +162,9 @@ struct SearchView: View {
             }
             .padding(.horizontal, 8)
             .navigationTitle("Search")
+            .navigationBarTitleDisplayMode(.inline)
         }
+        
     }
     
     func getSearchTargetType() -> SearchTargetType {

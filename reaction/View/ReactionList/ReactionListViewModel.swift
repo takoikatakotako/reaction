@@ -19,6 +19,7 @@ class ReactionListViewModel: ObservableObject {
     @Published var reactionMechanisms: [ReactionMechanism] = []
     @Published var sheet: ReactionListViewSheet?
     
+    private let userDefaultsRepository = UserDefaultRepository()
     private let reactionRepository = ReactionMechanismRepository()
     private var subscriptions = Set<AnyCancellable>()
 
@@ -41,8 +42,40 @@ class ReactionListViewModel: ObservableObject {
             }
         }
     }
+    
+    func onAppear() {
+        setting()
+        if reactionMechanisms.isEmpty {
+            fetchMechanisms()
+        }
+        requestTrackingAuthorizationStatus()
+    }
         
-    func fetchMechanisms() {
+    func clearSearchText() {
+        searchText = ""
+    }
+    
+    func showSetting() {
+        self.sheet = .config
+    }
+    
+    private func setting() {
+        selectJapanese = userDefaultsRepository.selectedJapanese
+        showingThmbnail = userDefaultsRepository.showThmbnail
+    }
+    
+    private func requestTrackingAuthorizationStatus() {
+        switch ATTrackingManager.trackingAuthorizationStatus {
+        case .authorized: break
+        case .denied: break
+        case .restricted: break
+        case .notDetermined:
+            showTrackingAuthorization()
+        @unknown default: break
+        }
+    }
+    
+    private func fetchMechanisms() {
         reactionRepository
             .fetchMechanisms()
             .sink(receiveCompletion: { completion in
@@ -59,25 +92,6 @@ class ReactionListViewModel: ObservableObject {
                 self.reactionMechanisms = reactionMechanisms
             })
             .store(in: &self.subscriptions)
-    }
-    
-    func clearSearchText() {
-        searchText = ""
-    }
-    
-    func showSetting() {
-        self.sheet = .config
-    }
-    
-    func requestTrackingAuthorizationStatus() {
-        switch ATTrackingManager.trackingAuthorizationStatus {
-        case .authorized: break
-        case .denied: break
-        case .restricted: break
-        case .notDetermined:
-            showTrackingAuthorization()
-        @unknown default: break
-        }
     }
     
     private func showTrackingAuthorization() {

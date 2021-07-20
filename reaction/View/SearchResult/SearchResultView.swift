@@ -33,7 +33,7 @@ struct SearchResultView: View {
             }
         }
         .onAppear {
-            viewModel.fetchMechanisms()
+            viewModel.onAppear()
         }
         .navigationTitle(viewModel.navigationTitle)
     }

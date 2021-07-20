@@ -8,7 +8,7 @@ class SearchResultViewModel: ObservableObject {
     @Published var reactionMechanisms: [ReactionMechanism] = []
     private let reactionRepository = ReactionMechanismRepository()
     private var subscriptions = Set<AnyCancellable>()
-    
+    private let userDefaultsRepository = UserDefaultRepository()
     private let searchResultType: SearchTargetType
     private let withoutCheck: Bool
     private let firstCategories: [FirstCategory]
@@ -28,7 +28,19 @@ class SearchResultViewModel: ObservableObject {
         self.firstCategories = firstCategories
     }
     
-    func fetchMechanisms() {
+    func onAppear() {
+        setting()
+        if reactionMechanisms.isEmpty {
+            fetchMechanisms()
+        }
+    }
+    
+    private func setting() {
+        selectJapanese = userDefaultsRepository.selectedJapanese
+        showingThmbnail = userDefaultsRepository.showThmbnail
+    }
+    
+    private func fetchMechanisms() {
         reactionRepository
             .fetchMechanisms()
             .sink(receiveCompletion: { completion in

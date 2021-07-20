@@ -50,8 +50,7 @@ struct ReactionListView: View {
                 }
             }
             .onAppear {
-                viewModel.fetchMechanisms()
-                viewModel.requestTrackingAuthorizationStatus()
+                viewModel.onAppear()
             }
             .sheet(item: $viewModel.sheet) { (item: ReactionListViewSheet) in
                 switch item {

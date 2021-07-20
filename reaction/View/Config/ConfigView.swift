@@ -14,6 +14,7 @@ struct ConfigView: View {
                         Text(langage)
                             .padding(.trailing, 8)
                     }
+                    .frame(height: 44)
                 }
                 Divider()
                 NavigationLink(destination: ConfigThmbnailView()) {
@@ -26,8 +27,16 @@ struct ConfigView: View {
                                 .padding(.trailing, 8)
                         }
                     }
+                    .frame(height: 44)
                 }
                 Divider()
+                Button(action: {
+                    
+                }, label: {
+                    Text("GitHub")
+                })
+                .frame(height: 44)
+                
                 Spacer()
             }
             .onAppear {

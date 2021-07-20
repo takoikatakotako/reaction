@@ -31,12 +31,20 @@ struct ConfigView: View {
                 }
                 Divider()
                 Button(action: {
-                    
+                    if let url = URL(string: GITHUB_REPOSITORY_URL) {
+                        UIApplication.shared.open(url)
+                    }
                 }, label: {
-                    Text("GitHub")
+                    HStack {
+                        Text("GitHub")
+                            .padding(8)
+                        Spacer()
+                        Image(systemName: "square.and.arrow.up")
+                            .padding(.trailing, 8)
+                    }
+                    .frame(height: 44)
                 })
-                .frame(height: 44)
-                
+                Divider()
                 Spacer()
             }
             .onAppear {

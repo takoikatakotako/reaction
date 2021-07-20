@@ -1,5 +1,6 @@
 import SwiftUI
 import Firebase
+import GoogleMobileAds
 
 @main
 struct reactionApp: App {

@@ -136,25 +136,37 @@ struct SearchView: View {
                 
                 VStack(spacing: 12) {
                     NavigationLink(destination: SearchResultView(searchResultType: getSearchTargetType(), withoutCheck: true, firstCategories: firstCategories)) {
-                        Text("チェックしたものを除外")
-                            .font(Font.system(size: 18).bold())
-                            .foregroundColor(.white)
-                            .frame(height: 44)
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .background(Color.gray)
-                            .padding(.horizontal, 16)
-                            .cornerRadius(16)
+                        HStack {
+                            Spacer()
+                            Text("Exclude checked items")
+                                .font(Font.system(size: 18).bold())
+                                .foregroundColor(Color.gray)
+                            Spacer()
+                        }
+                        .frame(height: 44)
+                        .padding(.horizontal, 32)
+                        .background(Color.white)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
                     }
                     
                     NavigationLink(destination: SearchResultView(searchResultType: getSearchTargetType(), withoutCheck: false, firstCategories: firstCategories)) {
-                        Text("チェックしたものを検索")
-                            .font(Font.system(size: 18).bold())
-                            .foregroundColor(.white)
-                            .frame(height: 44)
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .background(Color.gray)
-                            .padding(.horizontal, 16)
-                            .cornerRadius(16)
+                        HStack {
+                            Spacer()
+                            Text("Search for checked items")
+                                .font(Font.system(size: 18).bold())
+                                .foregroundColor(Color.gray)
+                            Spacer()
+                        }
+                        .frame(height: 44)
+                        .padding(.horizontal, 32)
+                        .background(Color.white)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
                     }
                 }
                 .padding(.bottom, 8)

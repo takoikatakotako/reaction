@@ -3,21 +3,36 @@ import SwiftUI
 struct ConfigThmbnailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
-        VStack {
-            Text("サムネイル表示する？")
-            
+        VStack(spacing: 12) {
+            Text("Do you want to display thumbnails?")
+                .padding(.bottom, 32)
+
             Button(action: {
                 UserDefaultRepository().setShowThmbnail(true)
                 presentationMode.wrappedValue.dismiss()
             }, label: {
-                Text("サムネイル表示")
+                Text("Show")
+                    .foregroundColor(.gray)
+                    .padding()
+                    .frame(width: 140)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
             })
             
             Button(action: {
                 UserDefaultRepository().setShowThmbnail(false)
                 presentationMode.wrappedValue.dismiss()
             }, label: {
-                Text("サムネイル非表示")
+                Text("Hidden")
+                    .foregroundColor(.gray)
+                    .padding()
+                    .frame(width: 140)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
             })
         }
     }

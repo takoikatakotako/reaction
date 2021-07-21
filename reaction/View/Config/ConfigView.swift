@@ -8,7 +8,7 @@ struct ConfigView: View {
             VStack(spacing: 0) {
                 NavigationLink(destination: ConfigLangageView()) {
                     HStack {
-                        Text("反応機構の言語")
+                        Text("Language")
                             .padding(8)
                         Spacer()
                         Text(langage)
@@ -19,11 +19,11 @@ struct ConfigView: View {
                 Divider()
                 NavigationLink(destination: ConfigThmbnailView()) {
                     HStack {
-                        Text("サムネイル")
+                        Text("Thmbnail")
                             .padding(8)
                         Spacer()
                         if let thmbnail = thmbnail {
-                            Text(thmbnail ? "表示" : "非表示")
+                            Text(thmbnail ? "Show" : "Hidden")
                                 .padding(.trailing, 8)
                         }
                     }

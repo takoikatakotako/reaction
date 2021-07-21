@@ -11,7 +11,7 @@ struct DeveloperRow: View {
                 .resizable()
                 .frame(width: 60, height: 60)
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(role)
                     .font(Font.system(size: 16).bold())
                     .foregroundColor(Color.black)
@@ -21,7 +21,7 @@ struct DeveloperRow: View {
             }
             Spacer()
             
-            Image("icon-open")
+            Image(R.image.iconOpen.name)
                 .resizable()
                 .frame(width: 24, height: 24)
                 .opacity(0.8)

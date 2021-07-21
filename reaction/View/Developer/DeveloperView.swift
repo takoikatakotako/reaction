@@ -7,7 +7,7 @@ struct DeveloperView: View {
                 Button {
                     openUrl(urlString: "https://www.youtube.com/channel/UCdm3TnC8CqXMft7S5fIf_Jg")
                 } label: {
-                    DeveloperRow(imageName: "icon-sin", role: "監督", name: "sin有機化学")
+                    DeveloperRow(imageName: R.image.iconSin.name, role: "General Manager", name: "sin有機化学")
                         .padding(.horizontal, 8)
                 }
                 
@@ -16,18 +16,18 @@ struct DeveloperView: View {
                 Button {
                     openUrl(urlString: "https://twitter.com/takoikatakotako")
                 } label: {
-                    DeveloperRow(imageName: "icon-takoika", role: "プログラマー", name: "かびごん小野")
+                    DeveloperRow(imageName: R.image.iconTakoika.name, role: "Programmer", name: "かびごん小野")
                         .padding(.horizontal, 8)
                 }
                       
                 Divider()
                 
-                Text("バージョン: \(getAppVersion())(\(getBuildVersion()))")
+                Text("Version: \(getAppVersion())(\(getBuildVersion()))")
                     .padding(.top, 16)
                 
                 Spacer()
             }
-            .navigationTitle("開発者")
+            .navigationTitle("Developer")
         }
     }
     

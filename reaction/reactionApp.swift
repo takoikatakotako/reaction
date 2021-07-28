@@ -1,10 +1,9 @@
 import SwiftUI
 import Firebase
+import GoogleMobileAds
 
 @main
 struct reactionApp: App {
-    let showThmbnail: Bool
-    let selectedJapanese: Bool
     init() {
         // Use Firebase library to configure APIs.
         FirebaseApp.configure()
@@ -19,13 +18,10 @@ struct reactionApp: App {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
 
         UserDefaultRepository().initilize()
-        
-        showThmbnail = UserDefaultRepository().showThmbnail
-        selectedJapanese = UserDefaultRepository().selectedJapanese
     }
     var body: some Scene {
         WindowGroup {
-            ReactionListView(showingThmbnail: showThmbnail, selectJapanese: selectedJapanese)
+            RootView()
         }
     }
 }

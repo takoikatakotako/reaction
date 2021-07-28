@@ -14,7 +14,7 @@ struct ReactionDetailView: View {
                     .padding(.bottom, 62)
             }
             
-            VStack(alignment: .trailing) {
+            VStack(alignment: .trailing, spacing: 16) {
                 Button(action: {
                     showingSheet = true
                 }, label: {

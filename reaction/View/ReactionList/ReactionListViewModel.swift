@@ -19,6 +19,10 @@ class ReactionListViewModel: ObservableObject {
     @Published var reactionMechanisms: [ReactionMechanism] = []
     @Published var sheet: ReactionListViewSheet?
     
+    private let userDefaultsRepository = UserDefaultRepository()
+    private let reactionRepository = ReactionMechanismRepository()
+    private var subscriptions = Set<AnyCancellable>()
+
     init(showingThmbnail: Bool, selectJapanese: Bool) {
         self.showingThmbnail = showingThmbnail
         self.selectJapanese = selectJapanese
@@ -39,15 +43,41 @@ class ReactionListViewModel: ObservableObject {
         }
     }
     
-    private var subscriptions = Set<AnyCancellable>()
+    func onAppear() {
+        setting()
+        if reactionMechanisms.isEmpty {
+            fetchMechanisms()
+        }
+        requestTrackingAuthorizationStatus()
+    }
+        
+    func clearSearchText() {
+        searchText = ""
+    }
     
-    func searchRepos() {
-        let url = URL(string: "https://chemist.swiswiswift.com/resource/reactions.json")!
-        URLSession.shared
-            .dataTaskPublisher(for: url)
-            .tryMap { try JSONDecoder().decode([ReactionMechanism].self, from: $0.data) }
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+    func showSetting() {
+        self.sheet = .config
+    }
+    
+    private func setting() {
+        selectJapanese = userDefaultsRepository.selectedJapanese
+        showingThmbnail = userDefaultsRepository.showThmbnail
+    }
+    
+    private func requestTrackingAuthorizationStatus() {
+        switch ATTrackingManager.trackingAuthorizationStatus {
+        case .authorized: break
+        case .denied: break
+        case .restricted: break
+        case .notDetermined:
+            showTrackingAuthorization()
+        @unknown default: break
+        }
+    }
+    
+    private func fetchMechanisms() {
+        reactionRepository
+            .fetchMechanisms()
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -62,25 +92,6 @@ class ReactionListViewModel: ObservableObject {
                 self.reactionMechanisms = reactionMechanisms
             })
             .store(in: &self.subscriptions)
-    }
-    
-    func clearSearchText() {
-        searchText = ""
-    }
-    
-    func showSetting() {
-        self.sheet = .config
-    }
-    
-    func requestTrackingAuthorizationStatus() {
-        switch ATTrackingManager.trackingAuthorizationStatus {
-        case .authorized: break
-        case .denied: break
-        case .restricted: break
-        case .notDetermined:
-            showTrackingAuthorization()
-        @unknown default: break
-        }
     }
     
     private func showTrackingAuthorization() {

@@ -50,8 +50,7 @@ struct ReactionListView: View {
                 }
             }
             .onAppear {
-                viewModel.searchRepos()
-                viewModel.requestTrackingAuthorizationStatus()
+                viewModel.onAppear()
             }
             .sheet(item: $viewModel.sheet) { (item: ReactionListViewSheet) in
                 switch item {
@@ -61,18 +60,13 @@ struct ReactionListView: View {
                     ReactionListConfigView(showingThmbnail: $viewModel.showingThmbnail, selectJapanese: $viewModel.selectJapanese)
                 }
             }
-            .navigationTitle("")
+            .navigationTitle("List")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 leading: Button(action: {
                     viewModel.sheet = .developer
                 }, label: {
                     Text("Info")
-                }),
-                trailing: Button(action: {
-                    viewModel.showSetting()
-                }, label: {
-                    Image("icon-setting")
                 })
             )
         }

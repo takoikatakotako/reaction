@@ -61,7 +61,6 @@ class SearchResultViewModel: ObservableObject {
                 } else {
                     // チェックしたものを検索
                     self.reactionMechanisms = self.searchReactionsWithCheck(originalReactionMechanism: reactionMechanisms)
-
                 }
             })
             .store(in: &self.subscriptions)
@@ -106,7 +105,7 @@ class SearchResultViewModel: ObservableObject {
                 }
             }
         }
-        return Array(filterdReactionMechanisms)
+        return sorted(Array(filterdReactionMechanisms))
     }
     
     // 反応機構検索。チェックしたものを除外
@@ -120,6 +119,12 @@ class SearchResultViewModel: ObservableObject {
                 filterdReactionMechanisms.remove(at: index)
             }
         }
-        return filterdReactionMechanisms
+        return sorted(filterdReactionMechanisms)
+    }
+    
+    private func sorted(_ originalReactionMechanism: [ReactionMechanism]) -> [ReactionMechanism] {
+        return originalReactionMechanism.sorted(by: { lhs, rhs in
+            lhs.directoryName < rhs.directoryName
+        })
     }
 }

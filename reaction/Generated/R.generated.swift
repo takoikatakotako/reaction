@@ -124,6 +124,30 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(watchOS)
+    /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func accentColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.accentColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "selectedGray", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func selectedGray(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.selectedGray.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "unselectedGray", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func unselectedGray(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.unselectedGray.name)
+    }
+    #endif
+
     fileprivate init() {}
   }
 

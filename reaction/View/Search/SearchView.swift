@@ -30,7 +30,7 @@ struct SearchView: View {
                         ThirdCategory(name: "Acid Anhydride", tag: "Carbonyl-Carboxylic_Acid_Drivative-Acid_Anhydride", check: true),
                         ThirdCategory(name: "Acid Halide", tag: "Carbonyl-Carboxylic_Acid_Drivative-Acid_Halide", check: true),
                         ThirdCategory(name: "Amide", tag: "Carbonyl-Carboxylic_Acid_Drivative-Amide", check: true),
-                        ThirdCategory(name: "Acid Drivative", tag: "Carbonyl-Carboxylic_Acid_Drivative", check: true),
+                        ThirdCategory(name: "Acid Derivative", tag: "Carbonyl-Carboxylic_Acid_Derivative", check: true),
                     ]
                 ),
             ]

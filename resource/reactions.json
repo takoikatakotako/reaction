@@ -595,7 +595,9 @@
          }
       ],
       "supplements":[
-         
+         {
+            "imageName":"benzoin-condensation-supplement.png"
+         }
       ],
       "suggestions":[
          "Benzoin Condensation",
@@ -5119,7 +5121,7 @@
          
       ],
       "youtubeLinks":[
-         "https://youtu.be/QBnh9jnhLBg"
+         "https://youtu.be/EAHDZMkDlrg"
       ]
    },
    {
@@ -5536,7 +5538,7 @@
    {
       "directoryName":"oxymercuration-demercuration",
       "english":"Oxymercuration-Demercuration",
-      "japanese":"オキシ水銀化･脱水銀化",
+      "japanese":"オキシ水銀化・脱水銀化",
       "thmbnailName":"oxymercuration-demercuration-thumbnail.png",
       "generalFormulas":[
          {
@@ -5560,7 +5562,7 @@
       ],
       "suggestions":[
          "Oximercuration-Demercuration",
-         "オキシ水銀化･脱水銀化",
+         "オキシ水銀化・脱水銀化",
          "おきしすいぎんか・だつすいぎんか"
       ],
       "tags":[
@@ -5648,7 +5650,7 @@
    {
       "directoryName":"gattermann-koch-reaction",
       "english":"Gattermann-Kock-reaction",
-      "japanese":"ガッターマン･コッホ反応",
+      "japanese":"ガッターマン・コッホ反応",
       "thmbnailName":"gattermann-koch-reaction-generalformula.png",
       "generalFormulas":[
          {
@@ -5672,8 +5674,8 @@
       ],
       "suggestions":[
          "Gattermann-Kock-reaction",
-         "ガッターマン･コッホ反応",
-         "がったーまん･コッホ反応"
+         "ガッターマン・コッホ反応",
+         "がったーまん・コッホ反応"
       ],
       "tags":[
          
@@ -5688,7 +5690,7 @@
    },
    {
       "directoryName":"gattermann-reaction",
-      "english":"Gattermann-reaction",
+      "english":"Gattermann reaction",
       "japanese":"ガッターマン反応",
       "thmbnailName":"gattermann-reaction-generalformula.png",
       "generalFormulas":[
@@ -5713,7 +5715,7 @@
       ],
       "suggestions":[
          "Gattermann-reaction",
-         "ガッターマンホ反応",
+         "ガッターマン反応",
          "がったーまん反応"
       ],
       "tags":[
@@ -5725,6 +5727,278 @@
 ],
       "youtubeLinks":[
          "https://youtu.be/voR23ykBM-I"
+      ]
+   },
+   {
+      "directoryName":"benzilic-acid-rearrangement",
+      "english":"Benzilic Acid Rearrangement",
+      "japanese":"ベンジル酸転位",
+      "thmbnailName":"benzilic-acid-rearrangement-generalformula.png",
+      "generalFormulas":[
+         {
+            "imageName":"benzilic-acid-rearrangement-generalformula.png"
+         }
+      ],
+      "mechanisms":[
+         {
+            "imageName":"benzilic-acid-rearrangement-mechanism.png"
+         }
+      ],
+      "examples":[],
+      "supplements":[
+         {
+            "imageName":"benzilic-acid-rearrangement-supplement.png"
+         }
+      ],
+      "suggestions":[
+         "Benzilic Acid Rearrangement",
+         "ベンジル酸転位",
+         "べんじるさんてんい",
+         "べんじるべんじるさんてんい",
+         "ベンジルベンジル酸転位"
+      ],
+      "tags":[
+         
+      ],
+      "reactants":["Carbonyl-Ketone","Carbonyl","Aromtic_Ring-Benzene","Aromatic_Ring"
+],
+      "products":["Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid","Carbonyl","Alcohol","Aromtic_Ring-Benzene","Aromatic_Ring"
+
+],
+      "youtubeLinks":[
+         ","
+      ]
+   },
+   {
+      "directoryName":"clemmensen-reduction",
+      "english":"Clemmensen reduction",
+      "japanese":"クレメンゼン還元",
+      "thmbnailName":"clemmensen-reduction-generalformula.png",
+      "generalFormulas":[
+         {
+            "imageName":"clemmensen-reduction-generalformula.png"
+         }
+      ],
+      "mechanisms":[
+         {
+            "imageName":"clemmensen-reduction-mechanism.png"
+         }
+      ],
+      "examples":[         {
+            "imageName":"clemmensen-reduction-example.png"
+         },
+{
+            "imageName":"clemmensen-reduction-example2.png"
+         },
+{
+            "imageName":"clemmensen-reduction-example3.png"
+         }
+],
+      "supplements":[
+         {
+            "imageName":"clemmensen-reduction-supplement.png"
+         }
+      ],
+      "suggestions":[
+         "Clemmensen reduction",
+         "クレメンゼン還元",
+         "くれめんぜんかんげん"
+      ],
+      "tags":[
+         
+      ],
+      "reactants":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl"],
+      "products":[],
+      "youtubeLinks":[
+         "https://youtu.be/mnNNZKuxf_E"
+      ]
+   },
+   {
+      "directoryName":"fischer-indole-synthesis",
+      "english":"Fischer indole synthesis",
+      "japanese":"フィッシャーインドール合成",
+      "thmbnailName":"fischer-indole-synthesis-generalformula.png",
+      "generalFormulas":[
+         {
+            "imageName":"fischer-indole-synthesis-generalformula.png"
+         }
+      ],
+      "mechanisms":[
+         {
+            "imageName":"fischer-indole-synthesis-mechanism.png"
+         }
+      ],
+      "examples":[],
+      "supplements":[
+         {
+            "imageName":"fischer-indole-synthesis-supplement.png"
+         }
+      ],
+      "suggestions":[
+         "Fischer indole synthesis",
+         "フィッシャーインドール合成",
+         "ふぃっしゃーいんどーるごうせい"
+      ],
+      "tags":[
+         
+      ],
+      "reactants":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl","Amine","Aromtic_Ring-Benzene","Aromatic_Ring"
+],
+      "products":["Aromtic_Ring-Benzene","Aromatic_Ring-Hetroaromatic_Ring","Aromatic_Ring"
+],
+      "youtubeLinks":[
+         "https://youtu.be/0gT7S5Um8Zk"
+      ]
+   },
+   {
+      "directoryName":"rothemund-porphyrin-synthesis",
+      "english":"Rothemund Porphyrin Synthesis",
+      "japanese":"ローゼムントポルフィリン合成",
+      "thmbnailName":"rothemund-porphyrin-synthesis-generalformula.png",
+      "generalFormulas":[
+         {
+            "imageName":"rothemund-porphyrin-synthesis-generalformula.png"
+         }
+      ],
+      "mechanisms":[
+         {
+            "imageName":"rothemund-porphyrin-synthesis-mechanism.png"
+         }
+      ],
+      "examples":[],
+      "supplements":[      ],
+      "suggestions":[
+         "Rothemund Porphyrin Synthesis",
+         "ローゼムントポルフィリン合成",
+         "ろーぜむんとぽるふぃりんごうせい",
+         "ロゼムントポルフィリン合成",
+         "ろぜむんとぽるふぃりんごうせい",
+         "ローゼムンドポルフィリン合成",
+         "ろーぜむんどぽるふぃりんごうせい"
+      ],
+      "tags":[
+         
+      ],
+      "reactants":["Carbonyl-Aldehyde","Carbonyl","Aromatic_Ring-Hetroaromatic_Ring","Aromatic_Ring"
+],
+      "products":["Aromatic_Ring-Hetroaromatic_Ring","Aromatic_Ring"
+],
+      "youtubeLinks":[
+         "https://youtu.be/MfbjDEBeYYw"
+      ]
+   },
+   {
+      "directoryName":"barton-zard-pyrrole-synthesis",
+      "english":"Barton-Zard Pyrrole Synthesis",
+      "japanese":"バートン・ザードピロール合成",
+      "thmbnailName":"barton-zard-pyrrole-synthesis-thumbnail.png",
+      "generalFormulas":[
+         {
+            "imageName":"barton-zard-pyrrole-synthesis-generalformula.png"
+         }
+      ],
+      "mechanisms":[
+         {
+            "imageName":"barton-zard-pyrrole-synthesis-mechanism.png"
+         }
+      ],
+      "examples":[
+         {
+            "imageName":"barton-zard-pyrrole-synthesis-example.png"
+         }
+],
+      "supplements":[      ],
+      "suggestions":[
+         "Barton-Zard Pyrrole Synthesis",
+         "バートン・ザードピロール合成",
+         "ばーとん・ざーどぴろーるごうせい"
+      ],
+      "tags":[
+         
+      ],
+      "reactants":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl"
+],
+      "products":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl","Aromatic_Ring-Hetroaromatic_Ring","Aromatic_Ring"
+],
+      "youtubeLinks":[
+         ","
+      ]
+   },
+   {
+      "directoryName":"strecker-reaction",
+      "english":"Strecker Reaction",
+      "japanese":"ストレッカー反応",
+      "thmbnailName":"strecker-reaction-thumbnail.png",
+      "generalFormulas":[
+         {
+            "imageName":"strecker-reaction-generalformula.png"
+         }
+      ],
+      "mechanisms":[
+         {
+            "imageName":"strecker-reaction-mechanism.png"
+         }
+      ],
+      "examples":[
+         {
+            "imageName":"strecker-reaction-example.png"
+         }
+],
+      "supplements":[      ],
+      "suggestions":[
+         "Strecker Reaction",
+         "ストレッカー反応",
+         "すとれっかーはんのう"
+      ],
+      "tags":[
+         
+      ],
+      "reactants":["Carbonyl-Aldehyde","Carbonyl","Amine"
+],
+      "products":["Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid","Carbonyl","Amine"
+],
+      "youtubeLinks":[
+         "https://youtu.be/duhM_WZEaB8"
+      ]
+   },
+   {
+      "directoryName":"tishchenko-reaction",
+      "english":"Tishchenko Reaction",
+      "japanese":"ティシチェンコ反応",
+      "thmbnailName":"tishchenko-reaction-generalformula.png",
+      "generalFormulas":[
+         {
+            "imageName":"tishchenko-reaction-generalformula.png"
+         }
+      ],
+      "mechanisms":[
+         {
+            "imageName":"tishchenko-reaction-mechanism.png"
+         }
+      ],
+      "examples":[
+         {
+            "imageName":"tishchenko-reaction-example.png"
+         }
+],
+      "supplements":[
+         {
+            "imageName":"tishchenko-reaction-supplement.png"
+         }],
+      "suggestions":[
+         "tishchenko-reaction",
+         "ティシチェンコ反応",
+         "てぃしちぇんこはんのう"
+      ],
+      "tags":[
+         
+      ],
+      "reactants":["Carbonyl-Aldehyde","Carbonyl"
+],
+      "products":["Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl"
+],
+      "youtubeLinks":[
+         ","
       ]
    }
 ]

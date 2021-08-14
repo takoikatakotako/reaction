@@ -23,14 +23,14 @@ struct SearchView: View {
                 ),
                 SecondCategory(
                     name: "Carboxylic Acid Derivative",
-                    tag: "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+                    tag: "Carbonyl-Carboxylic_Acid_Derivative",
                     check: true,
                     thirdCategories: [
-                        ThirdCategory(name: "Ester", tag: "Carbonyl-Carboxylic_Acid_Drivative-Ester", check: true),
-                        ThirdCategory(name: "Acid Anhydride", tag: "Carbonyl-Carboxylic_Acid_Drivative-Acid_Anhydride", check: true),
-                        ThirdCategory(name: "Acid Halide", tag: "Carbonyl-Carboxylic_Acid_Drivative-Acid_Halide", check: true),
-                        ThirdCategory(name: "Amide", tag: "Carbonyl-Carboxylic_Acid_Drivative-Amide", check: true),
-                        ThirdCategory(name: "Acid Derivative", tag: "Carbonyl-Carboxylic_Acid_Derivative", check: true),
+                        ThirdCategory(name: "Ester", tag: "Carbonyl-Carboxylic_Acid_Derivative-Ester", check: true),
+                        ThirdCategory(name: "Acid Anhydride", tag: "Carbonyl-Carboxylic_Acid_Derivative-Acid_Anhydride", check: true),
+                        ThirdCategory(name: "Acid Halide", tag: "Carbonyl-Carboxylic_Acid_Derivative-Acid_Halide", check: true),
+                        ThirdCategory(name: "Amide", tag: "Carbonyl-Carboxylic_Acid_Derivative-Amide", check: true),
+                        ThirdCategory(name: "Acid Derivative", tag: "Carbonyl-Carboxylic_Acid_Derivative-Acid_Derivative", check: true),
                     ]
                 ),
             ]
@@ -42,7 +42,7 @@ struct SearchView: View {
             secondCategories: [
                 SecondCategory(
                     name: "Alkyl Halide",
-                    tag: "Halogene-AlkylHalide",
+                    tag: "Halogene-Alkyl_Halide",
                     check: true,
                     thirdCategories: []
                 ),

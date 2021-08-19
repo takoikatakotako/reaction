@@ -26,6 +26,7 @@ struct SearchView: View {
                     tag: "Carbonyl-Carboxylic_Acid_Derivative",
                     check: true,
                     thirdCategories: [
+                        ThirdCategory(name: "Carboxilic Acid", tag: "Carbonyl-Carboxylic_Carboxilic-Acid", check: true),
                         ThirdCategory(name: "Ester", tag: "Carbonyl-Carboxylic_Acid_Derivative-Ester", check: true),
                         ThirdCategory(name: "Acid Anhydride", tag: "Carbonyl-Carboxylic_Acid_Derivative-Acid_Anhydride", check: true),
                         ThirdCategory(name: "Acid Halide", tag: "Carbonyl-Carboxylic_Acid_Derivative-Acid_Halide", check: true),

@@ -36,10 +36,10 @@
       ],
       "reactants":[
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl",
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
@@ -84,8 +84,8 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
@@ -235,7 +235,7 @@
          "Alcohol"
       ],
       "products":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "youtubeLinks":[
@@ -282,14 +282,14 @@
       ],
       "reactants":[
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Acid_Halide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Acid_Halide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative-Acid_Halide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative-Acid_Halide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -332,8 +332,8 @@
          "Carbonyl"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -566,8 +566,8 @@
          "Carbonyl"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Amide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Amide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -814,7 +814,7 @@
          
       ],
       "reactants":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
@@ -859,8 +859,8 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
@@ -909,7 +909,7 @@
          "Carbonyl"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Alcohol"
       ],
@@ -949,15 +949,15 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
          "Carbonyl-Aldehyde",
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl",
          "Alcohol"
       ],
@@ -1047,14 +1047,14 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -1374,8 +1374,8 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Acid_Halide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Acid_Halide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
@@ -1421,15 +1421,15 @@
       "reactants":[
          "Carbonyl-Aldehyde",
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl",
          "Halogene-Other",
          "Halogene"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -1524,14 +1524,14 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -1669,13 +1669,13 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Amide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Amide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Amide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Amide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -1815,10 +1815,10 @@
          "Halogene"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative-Acid_Halide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative-Acid_Halide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -1859,13 +1859,13 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Alcohol"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -1911,8 +1911,8 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Acid_Halide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Acid_Halide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl",
          "Aromtic_Ring-Benzene",
          "Aromatic_Ring"
@@ -1969,7 +1969,7 @@
          
       ],
       "reactants":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene",
          "Aromtic_Ring-Benzene",
          "Aromatic_Ring"
@@ -2059,7 +2059,7 @@
          
       ],
       "reactants":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
@@ -2160,7 +2160,7 @@
          
       ],
       "reactants":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
@@ -2234,14 +2234,14 @@
       "reactants":[
          "Carbonyl-Aldehyde",
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl",
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Alcohol"
       ],
@@ -2288,7 +2288,7 @@
          "Carbonyl"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -2338,13 +2338,13 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Alkene/Alkyne"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl",
          "Halogene-Other",
          "Halogene"
@@ -2437,11 +2437,11 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Halogene-Other",
          "Halogene"
@@ -2534,7 +2534,7 @@
          
       ],
       "reactants":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene",
          "Amine"
       ],
@@ -2577,8 +2577,8 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Amide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Amide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
@@ -2634,8 +2634,8 @@
       ],
       "reactants":[
          "Carbonyl-Aldehyde",
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
@@ -2689,7 +2689,7 @@
       ],
       "products":[
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -2733,13 +2733,13 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Alcohol"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -2792,14 +2792,14 @@
       "reactants":[
          "Carbonyl-Aldehyde",
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl",
          "Alkene/Alkyne"
       ],
@@ -2846,7 +2846,7 @@
          "Aromatic_Ring"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Alcohol",
          "Aromtic_Ring-Benzene",
@@ -2889,7 +2889,7 @@
          
       ],
       "reactants":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
@@ -3027,10 +3027,10 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl",
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
@@ -3278,11 +3278,11 @@
          
       ],
       "reactants":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "youtubeLinks":[
@@ -3367,7 +3367,7 @@
          
       ],
       "reactants":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene",
          "Alkene/Alkyne"
       ],
@@ -3504,7 +3504,7 @@
          
       ],
       "reactants":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
@@ -3546,7 +3546,7 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Amine",
          "Aromtic_Ring-Benzene",
@@ -3845,13 +3845,13 @@
       ],
       "reactants":[
          "Carbonyl-Aldehyde",
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
-         "Carbonyl-Carboxylic_Acid_Drivative-Acid_Anhydride",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Acid_Anhydride",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Alkene/Alkyne"
       ],
@@ -3945,7 +3945,7 @@
          "Halogene"
       ],
       "products":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "youtubeLinks":[
@@ -4082,9 +4082,9 @@
          "Alcohol"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative-Amide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative-Amide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -4420,13 +4420,13 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Alcohol"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -4565,13 +4565,13 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Alcohol"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -4613,7 +4613,7 @@
          "Carbonyl-Aldehyde",
          "Carbonyl-Ketone",
          "Carbonyl",
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene",
          "Amine"
       ],
@@ -4660,7 +4660,7 @@
          
       ],
       "reactants":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
@@ -4905,10 +4905,10 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl",
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
@@ -4965,7 +4965,7 @@
          
       ],
       "reactants":[
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene",
          "Alcohol"
       ],
@@ -5014,7 +5014,7 @@
          "Carbonyl-Aldehyde",
          "Carbonyl-Ketone",
          "Carbonyl",
-         "Halogene-AlkylHalide",
+         "Halogene-Alkyl_Halide",
          "Halogene"
       ],
       "products":[
@@ -5168,8 +5168,8 @@
          "Alcohol"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -5216,13 +5216,13 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
          "Carbonyl",
          "Alcohol"
       ],
       "products":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Ester",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -5267,8 +5267,8 @@
       "reactants":[
          "Carbonyl-Aldehyde",
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Amide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Amide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
@@ -5317,8 +5317,8 @@
       "reactants":[
          "Carbonyl-Aldehyde",
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Amide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Amide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "products":[
@@ -5367,8 +5367,8 @@
       "reactants":[
          "Carbonyl-Aldehyde",
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Amide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Amide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl",
          "Amine"
       ],
@@ -5471,16 +5471,16 @@
          
       ],
       "reactants":[
-         "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
-         "Carbonyl-Carboxylic_Acid_Drivative-Acid_Anhydride",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
+         "Carbonyl-Carboxylic_Acid_Derivative-Acid_Anhydride",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl",
          "Amine"
       ],
       "products":[
          "Carbonyl-Ketone",
-         "Carbonyl-Carboxylic_Acid_Drivative-Amide",
-         "Carbonyl-Carboxylic_Acid_Drivative",
+         "Carbonyl-Carboxylic_Acid_Derivative-Amide",
+         "Carbonyl-Carboxylic_Acid_Derivative",
          "Carbonyl"
       ],
       "youtubeLinks":[
@@ -5762,7 +5762,7 @@
       ],
       "reactants":["Carbonyl-Ketone","Carbonyl","Aromtic_Ring-Benzene","Aromatic_Ring"
 ],
-      "products":["Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid","Carbonyl","Alcohol","Aromtic_Ring-Benzene","Aromatic_Ring"
+      "products":["Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid","Carbonyl","Alcohol","Aromtic_Ring-Benzene","Aromatic_Ring"
 
 ],
       "youtubeLinks":[
@@ -5916,9 +5916,9 @@
       "tags":[
          
       ],
-      "reactants":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl"
+      "reactants":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl-Carboxylic_Acid_Derivative-Ester","Carbonyl-Carboxylic_Acid_Derivative","Carbonyl"
 ],
-      "products":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl","Aromatic_Ring-Hetroaromatic_Ring","Aromatic_Ring"
+      "products":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl-Carboxylic_Acid_Derivative-Ester","Carbonyl-Carboxylic_Acid_Derivative","Carbonyl","Aromatic_Ring-Hetroaromatic_Ring","Aromatic_Ring"
 ],
       "youtubeLinks":[
          ","
@@ -5955,7 +5955,7 @@
       ],
       "reactants":["Carbonyl-Aldehyde","Carbonyl","Amine"
 ],
-      "products":["Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid","Carbonyl","Amine"
+      "products":["Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid","Carbonyl","Amine"
 ],
       "youtubeLinks":[
          "https://youtu.be/duhM_WZEaB8"
@@ -5995,7 +5995,7 @@
       ],
       "reactants":["Carbonyl-Aldehyde","Carbonyl"
 ],
-      "products":["Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl"
+      "products":["Carbonyl-Carboxylic_Acid_Derivative-Ester","Carbonyl-Carboxylic_Acid_Derivative","Carbonyl"
 ],
       "youtubeLinks":[
          ","

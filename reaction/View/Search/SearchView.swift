@@ -106,6 +106,7 @@ struct SearchView: View {
                         Text("Product").tag(1)
                     }
                     .pickerStyle(SegmentedPickerStyle())
+                    .padding(8)
                     
                     LazyVStack {
                         ForEach(firstCategories) { topCategory in

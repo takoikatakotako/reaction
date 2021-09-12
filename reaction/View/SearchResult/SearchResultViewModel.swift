@@ -78,7 +78,7 @@ class SearchResultViewModel: ObservableObject {
                 }
                 for thirdCategory in secondCategory.thirdCategories {
                     if thirdCategory.check {
-                        tags.append(thirdCategory.name)
+                        tags.append(thirdCategory.tag)
                     }
                 }
             }

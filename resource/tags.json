@@ -1,0 +1,106 @@
+[
+    {
+       "name":"Carbonyl",
+       "tag":"Carbonyl",
+       "secondCategories":[
+          {
+             "name":"Aldehyde",
+             "tag":"Carbonyl-Aldehyde",
+             "thirdCategories":[
+                
+             ]
+          },
+          {
+             "name":"Ketone",
+             "tag":"Carbonyl-Ketone",
+             "thirdCategories":[
+                
+             ]
+          },
+          {
+             "name":"Carboxylic Acid Derivative",
+             "tag":"Carbonyl-Carboxylic_Acid_Derivative",
+             "thirdCategories":[
+                {
+                   "name":"Carboxilic Acid",
+                   "tag":"Carbonyl-Carboxylic_Carboxilic-Acid"
+                },
+                {
+                   "name":"Ester",
+                   "tag":"Carbonyl-Carboxylic_Acid_Derivative-Ester"
+                },
+                {
+                   "name":"Acid Anhydride",
+                   "tag":"Carbonyl-Carboxylic_Acid_Derivative-Acid_Anhydride"
+                },
+                {
+                   "name":"Acid Halide",
+                   "tag":"Carbonyl-Carboxylic_Acid_Derivative-Acid_Halide"
+                },
+                {
+                   "name":"Amide",
+                   "tag":"Carbonyl-Carboxylic_Acid_Derivative-Amide"
+                },
+                {
+                   "name":"Acid Derivative",
+                   "tag":"Carbonyl-Carboxylic_Acid_Derivative-Acid_Derivative"
+                }
+             ]
+          }
+       ]
+    },
+    {
+       "name":"Halogen",
+       "tag":"Halogene",
+       "secondCategories":[
+          {
+             "name":"Alkyl Halide",
+             "tag":"Halogene-Alkyl_Halide",
+             "thirdCategories":[
+                
+             ]
+          },
+          {
+             "name":"Other",
+             "tag":"Halogene-Other",
+             "thirdCategories":[
+                
+             ]
+          }
+       ]
+    },
+    {
+       "name":"Alkene/Alkyne",
+       "tag":"Alkene/Alkyne",
+       "secondCategories":[
+          
+       ]
+    },
+    {
+       "name":"Amine",
+       "tag":"Amine",
+       "secondCategories":[
+          
+       ]
+    },
+    {
+       "name":"Aromatic Ring",
+       "tag":"Aromtic_Ring",
+       "secondCategories":[
+          {
+             "name":"Benzene",
+             "tag":"Aromtic_Ring-Benzene",
+             "thirdCategories":[
+                
+             ]
+          },
+          {
+             "name":"Heterocyclic Compound",
+             "tag":"Aromatic_Ring-Hetroaromatic_Ring",
+             "thirdCategories":[
+                
+             ]
+          }
+       ]
+    }
+ ]

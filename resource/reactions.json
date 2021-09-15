@@ -1346,24 +1346,27 @@
      "directoryName":"curtius-rearrangement",
      "english":"Curtius Rearrangement",
      "japanese":"クルチウス転位",
-     "thmbnailName":"curtius-rearrangement-general-formula-0.png",
+     "thmbnailName":"curtius-rearrangement-generalformula.png",
      "generalFormulas":[
        {
-         "imageName":"curtius-rearrangement-general-formula-0.png"
+         "imageName":"curtius-rearrangement-generalformula.png"
        }
      ],
      "mechanisms":[
        {
-         "imageName":"curtius-rearrangement-mechanism-0.png"
+         "imageName":"curtius-rearrangement-mechanism.png",
+         "imageName":"curtius-rearrangement-mechanism2.png"
        }
      ],
      "examples":[
        {
-         "imageName":"curtius-rearrangement-example-0.png"
+         "imageName":"curtius-rearrangement-example.png"
        }
      ],
      "supplements":[
-       
+       {
+         "imageName":"curtius-rearrangement-supplement.png"
+       }
      ],
      "suggestions":[
        "Curtius Rearrangement",
@@ -1382,7 +1385,8 @@
        "Amine"
      ],
      "youtubeLinks":[
-       "https://youtu.be/z-9WVYASrNE"
+       "https://youtu.be/z-9WVYASrNE",
+       "https://youtu.be/7Vn6S4HdgC0"
      ]
    },
    {
@@ -2549,24 +2553,27 @@
      "directoryName":"hofmann-rearrangement",
      "english":"Hofmann Rearrangement",
      "japanese":"ホフマン転位",
-     "thmbnailName":"hofmann-rearrangement-general-formula-0.png",
+     "thmbnailName":"hofmann-rearrangement-generalformula.png",
      "generalFormulas":[
        {
-         "imageName":"hofmann-rearrangement-general-formula-0.png"
+         "imageName":"hofmann-rearrangement-generalformula.png"
        }
      ],
      "mechanisms":[
        {
-         "imageName":"hofmann-rearrangement-mechanism-0.png"
+         "imageName":"hofmann-rearrangement-mechanism.png",
+         "imageName":"hofmann-rearrangement-mechanism2.png"
        }
      ],
      "examples":[
        {
-         "imageName":"hofmann-rearrangement-example-0.png"
+         "imageName":"hofmann-rearrangement-example.png"
        }
      ],
      "supplements":[
-       
+       {
+         "imageName":"hofmann-rearrangement-supplement.png"
+       }
      ],
      "suggestions":[
        "Hofmann Rearrangement",
@@ -2585,7 +2592,8 @@
        "Amine"
      ],
      "youtubeLinks":[
-       "https://youtu.be/CePpBbkBj3k"
+       "https://youtu.be/CePpBbkBj3k",
+       "https://youtu.be/7Vn6S4HdgC0"
      ]
    },
    {
@@ -5879,7 +5887,7 @@
      "directoryName":"fischer-indole-synthesis",
      "english":"Fischer indole synthesis",
      "japanese":"フィッシャーインドール合成",
-     "thmbnailName":"fischer-indole-synthesis-generalformula.png",
+     "thmbnailName":"fischer-indole-synthesis-thumbnail.png",
      "generalFormulas":[
        {
          "imageName":"fischer-indole-synthesis-generalformula.png"
@@ -6018,7 +6026,7 @@
        "Aromatic_Ring"
      ],
      "youtubeLinks":[
-       ","
+       "https://youtu.be/bhudQQvIW8I"
      ]
    },
    {
@@ -6109,7 +6117,349 @@
        "Carbonyl"
      ],
      "youtubeLinks":[
-       ","
+       "https://youtu.be/U-KVx1yHyjM"
+     ]
+   },
+   {
+     "directoryName":"hantzsch-dihydropyridine-synthesis",
+     "english":"Hantzsch Dihydropyridine Synthesys",
+     "japanese":"ハンチュジヒドロピリジン合成",
+     "thmbnailName":"hantzsch-dihydropyridine-synthesis-thumbnail.png",
+     "generalFormulas":[
+       {
+         "imageName":"hantzsch-dihydropyridine-synthesis-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"hantzsch-dihydropyridine-synthesis-mechanism1.png"
+       },
+       {
+         "imageName":"hantzsch-dihydropyridine-synthesis-mechanism2.png"
+       }
+     ],
+     "examples":[
+       {
+         "imageName":"hantzsch-dihydropyridine-synthesis-example.png"
+       }
+     ],
+     "supplements":[
+       {
+         "imageName":"hantzsch-dihydropyridine-synthesis-supplement1.png"
+       },
+       {
+         "imageName":"hantzsch-dihydropyridine-synthesis-supplement2.png"
+       }
+     ],
+     "suggestions":[
+       "Hantzsch Dihydropyridine Synthesys",
+       "ハンチュジヒドロピリジン合成",
+       "はんちゅじひどろぴりじんごうせい",
+       "Hantzsch Pyridine Synthesys",
+       "ハンチュピリジン合成",
+       "はんちゅぴりじんごうせい"
+     ],
+     "tags":[
+       
+     ],
+     "reactants":[
+       "Carbonyl-Aldehyde",
+       "Carbonyl-Ketone",
+       "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+       "Carbonyl-Carboxylic_Acid_Derivative",
+       "Carbonyl",
+       "Amine"
+     ],
+     "products":[
+       "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+       "Carbonyl-Carboxylic_Acid_Derivative",
+       "Carbonyl",
+       "Aromatic_Ring-Hetroaromatic_Ring",
+       "Aromatic_Ring"
+     ],
+     "youtubeLinks":[
+       "https://youtu.be/FHsD7QPVbJ8"
+     ]
+   },
+   {
+     "directoryName":"lossen-rearrangement",
+     "english":"Lossen Rearrangement",
+     "japanese":"ロッセン転位",
+     "thmbnailName":"lossen-rearrangement-generalformula.png",
+     "generalFormulas":[
+       {
+         "imageName":"lossen-rearrangement-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"lossen-rearrangement-mechanism.png"
+       },
+       {
+         "imageName":"lossen-rearrangement-mechanism2.png"
+       }
+     ],
+     "examples":[
+       
+     ],
+     "supplements":[
+       {
+         "imageName":"lossen-rearrangement-supplement.png"
+       }
+     ],
+     "suggestions":[
+       "Lossen Rearrangement",
+       "ロッセン転位",
+       "ろっせんてんい"
+     ],
+     "tags":[
+       
+     ],
+     "reactants":[
+       "Carbonyl-Carboxylic_Acid_Derivative-Acid_Halide",
+       "Carbonyl-Carboxylic_Acid_Derivative-Amide",
+       "Carbonyl-Carboxylic_Acid_Derivative",
+       "Carbonyl"
+     ],
+     "products":[
+       "Amine"
+     ],
+     "youtubeLinks":[
+       "https://youtu.be/7Vn6S4HdgC0"
+     ]
+   },
+   {
+     "directoryName":"schmidt-rearrangement",
+     "english":"Schmidt Rearrangement",
+     "japanese":"シュミット転位",
+     "thmbnailName":"schmidt-rearrangement-generalformula.png",
+     "generalFormulas":[
+       {
+         "imageName":"schmidt-rearrangement-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"schmidt-rearrangement-mechanism.png"
+       }
+     ],
+     "examples":[
+       
+     ],
+     "supplements":[
+       {
+         "imageName":"schmidt-rearrangement-supplement.png"
+       }
+     ],
+     "suggestions":[
+       "Schmidt Rearrangement",
+       "シュミット転位",
+       "しゅみっとてんい"
+     ],
+     "tags":[
+       
+     ],
+     "reactants":[
+       "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
+       "Carbonyl"
+     ],
+     "products":[
+       "Amine"
+     ],
+     "youtubeLinks":[
+       "https://youtu.be/7Vn6S4HdgC0"
+     ]
+   },
+   {
+     "directoryName":"hydrolysis-of-isocyanate",
+     "english":"Hydrolysis of Isocyanate",
+     "japanese":"イソシアネートの加水分解",
+     "thmbnailName":"hydrolysis-of-isocyanate-generalformula.png",
+     "generalFormulas":[
+       {
+         "imageName":"hydrolysis-of-isocyanate-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"hydrolysis-of-isocyanate-mechanism.png"
+       }
+     ],
+     "examples":[
+       
+     ],
+     "supplements":[
+       
+     ],
+     "suggestions":[
+       "Hydrolysis of Isocyanate",
+       "イソシアネートの加水分解",
+       "いそしあねーとのかすいぶんかい"
+     ],
+     "tags":[
+       
+     ],
+     "reactants":[
+       "Carbonyl-Carboxylic_Acid_Derivative-Caboxylic_Acid",
+       "Carbonyl"
+     ],
+     "products":[
+       "Amine"
+     ],
+     "youtubeLinks":[
+       
+     ]
+   },
+   {
+     "directoryName":"knoevenagel-pyridine-synthesis",
+     "english":"Knoevenagel Pyridine Synthesis",
+     "japanese":"クネフェナーゲルピリジン合成",
+     "thmbnailName":"knoevenagel-pyridine-synthesis-thumbnail.png",
+     "generalFormulas":[
+       {
+         "imageName":"knoevenagel-pyridine-synthesis-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"knoevenagel-pyridine-synthesis-mechanism.png"
+       }
+     ],
+     "examples":[
+       
+     ],
+     "supplements":[
+       {
+         "imageName":"knoevenagel-pyridine-synthesis-supplement.png"
+       }
+     ],
+     "suggestions":[
+       "Knoevenagel Pyridine Synthesis",
+       "クネフェナーゲルピリジン合成",
+       "クネベナゲルピリジン合成",
+       "クネーフェナーゲルピリジン合成",
+       "くねふぇなーげるぴりじんごうせい",
+       "くねべなげるぴりじんごうせい",
+       "くねーふぇなーげるぴりじんごうせい"
+     ],
+     "tags":[
+       
+     ],
+     "reactants":[
+       "Carbonyl-Aldehyde",
+       "Carbonyl-Ketone",
+       "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+       "Carbonyl-Carboxylic_Acid_Derivative",
+       "Carbonyl",
+       "Amine"
+     ],
+     "products":[
+       "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+       "Carbonyl-Carboxylic_Acid_Derivative",
+       "Carbonyl",
+       "Aromatic_Ring-Hetroaromatic_Ring",
+       "Aromatic_Ring"
+     ],
+     "youtubeLinks":[
+       
+     ]
+   },
+   {
+     "directoryName":"krapcho-decarboxylation",
+     "english":"Krapcho Decarboxylation",
+     "japanese":"クラプコ脱炭酸",
+     "thmbnailName":"krapcho-decarboxylation-generalformula.png",
+     "generalFormulas":[
+       {
+         "imageName":"krapcho-decarboxylation-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"krapcho-decarboxylation-mechanism.png"
+       }
+     ],
+     "examples":[
+       
+     ],
+     "supplements":[
+       {
+         "imageName":"krapcho-decarboxylation-supplement.png"
+       }
+     ],
+     "suggestions":[
+       "Krapcho Decarboxylation",
+       "クラプコ脱炭酸",
+       "くらぷこだつたんさん",
+       "クラプコ反応",
+       "くらぷこはんのう"
+     ],
+     "tags":[
+       
+     ],
+     "reactants":[
+       "Carbonyl-Aldehyde",
+       "Carbonyl-Ketone",
+       "Carbonyl-Carboxylic_Acid_Derivative-Ester",
+       "Carbonyl-Carboxylic_Acid_Derivative",
+       "Carbonyl"
+     ],
+     "products":[
+       "Carbonyl-Aldehyde",
+       "Carbonyl-Ketone",
+       "Carbonyl"
+     ],
+     "youtubeLinks":[
+       
+     ]
+   },
+   {
+     "directoryName":"bergman-masamune-cyclization",
+     "english":"Bergman Masamune Cyclization",
+     "japanese":"正宗・バーグマン環化",
+     "thmbnailName":"bergman-masamune-cyclization-thumbnail.png",
+     "generalFormulas":[
+       {
+         "imageName":"bergman-masamune-cyclization-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"bergman-masamune-cyclization-mechanism.png"
+       }
+     ],
+     "examples":[
+       {
+         "imageName":"bergman-masamune-cyclization-example.png"
+       },
+       {
+         "imageName":"bergman-masamune-cyclization-example2.png"
+       }
+     ],
+     "supplements":[
+       {
+         "imageName":"bergman-masamune-cyclization-supplement.png"
+       }
+     ],
+     "suggestions":[
+       "Bergman Masamune Cyclization",
+       "正宗・バーグマン環化",
+       "マサムネ・バーグマン環化",
+       "まさむね・ばーぐまんかんか",
+       "Masamune Bergman Cyclization"
+     ],
+     "tags":[
+       
+     ],
+     "reactants":[
+       "Alkene/Alkyne"
+     ],
+     "products":[
+       "Aromtic_Ring-Benzene",
+       "Aromatic_Ring"
+     ],
+     "youtubeLinks":[
+       "https://youtu.be/kHOf_P-UkFs"
      ]
    }
  ]

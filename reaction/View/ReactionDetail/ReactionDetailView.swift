@@ -11,10 +11,11 @@ struct ReactionDetailView: View {
         ZStack(alignment: .bottom) {
             ScrollView {
                 ReactionDetailContent(selectJapanese: selectJapanese, reactionMechanism: reactionMechanism)
-                    .padding(.bottom, 62)
+                    .padding(.bottom, 40)
             }
             
-            VStack(alignment: .trailing, spacing: 16) {
+            HStack() {
+                Spacer()
                 Button(action: {
                     showingSheet = true
                 }, label: {
@@ -26,7 +27,8 @@ struct ReactionDetailView: View {
                         .cornerRadius(16)
                         .padding(.trailing, 16)
                 })
-                AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
+                .padding(.bottom, 8)
+                // AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
             }
         }
         .navigationTitle("")

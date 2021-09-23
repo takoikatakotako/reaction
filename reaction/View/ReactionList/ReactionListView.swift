@@ -44,10 +44,10 @@ struct ReactionListView: View {
                         .cornerRadius(24)
                 }
                 
-                VStack {
-                    Spacer()
-                    AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
-                }
+//                VStack {
+//                    Spacer()
+//                    AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
+//                }
             }
             .onAppear {
                 viewModel.onAppear()

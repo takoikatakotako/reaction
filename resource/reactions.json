@@ -5829,7 +5829,7 @@
          "Aromatic_Ring"
       ],
       "youtubeLinks":[
-         ","
+         "https://youtu.be/bXPWxGAltgE"
       ]
    },
    {
@@ -6409,7 +6409,7 @@
          "Carbonyl"
       ],
       "youtubeLinks":[
-         
+         "https://youtu.be/gSx3LWfT_Vc"
       ]
    },
    {
@@ -6494,7 +6494,7 @@
      "products":["Carbonyl-Ketone","Carbonyl","Alkene/Alkyne","Alcohol"
 ],
      "youtubeLinks":[
-       ""
+       "https://youtu.be/u-5j1qBsdtw"
      ]
    },
    {
@@ -6625,6 +6625,181 @@
 ],
      "youtubeLinks":[
        "https://youtu.be/u-5j1qBsdtw","https://youtu.be/Zjxy6m8NdUQ"
+     ]
+   },
+   {
+     "directoryName":"bigineri-reaction",
+     "english":"Bigineri Reaction",
+     "japanese":"ビギネリ反応",
+     "thmbnailName":"bigineri-reaction-thumbnail.png",
+     "generalFormulas":[
+       {
+         "imageName":"bigineri-reaction-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"bigineri-reaction-mechanism.png"
+       }
+     ],
+     "examples":[
+       {
+         "imageName":"bigineri-reaction-example.png"
+       },
+       {
+         "imageName":"bigineri-reaction-example2.png"
+       }
+     
+     ],
+     "supplements":[],
+     "suggestions":[
+       "Bigineri Reaction",
+       "ビギネリ反応",
+       "びぎねりはんのう",
+       "ビジネリ反応",
+       "びじねりはんのう"
+     ],
+     "tags":[
+     ],
+     "reactants":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative-Amide","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl"
+],
+     "products":["Carbonyl-Ketone","Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative-Amide","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl"
+],
+     "youtubeLinks":[
+       "https://youtu.be/CrDS7fp_u7g"
+     ]
+   },
+   {
+     "directoryName":"morita-baylis-hillmann-reaction",
+     "english":"Morita-Baylis-Hillmann reaction",
+     "japanese":"森田・ベイリス・ヒルマン反応",
+     "thmbnailName":"morita-baylis-hillmann-reaction-thumbnail.png",
+     "generalFormulas":[
+       {
+         "imageName":"morita-baylis-hillmann-reaction-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"morita-baylis-hillmann-reaction-mechanism.png"
+       }
+     ],
+     "examples":[
+       {
+         "imageName":"morita-baylis-hillmann-reaction-example.png"
+       }
+     ],
+     "supplements":[
+       {
+         "imageName":"morita-baylis-hillmann-reaction-supplement.png"
+       }
+     ],
+     "suggestions":[
+       "Morita-Baylis-Hillmann Reaction",
+       "森田・ベイリス・ヒルマン反応",
+       "もりた・べいりす・ひるまんはんのう",
+       "モリタ・ベイリス・ヒルマン反応",
+       "ベイリス・ヒルマン反応",
+       "べいりす・ひるまんはんのう"
+     ],
+     "tags":[
+     ],
+     "reactants":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl","Alkene/Alkyne"
+],
+     "products":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl","Alkene/Alkyne","Alcohol"
+],
+     "youtubeLinks":[
+       "https://youtu.be/g5VI08JRLkI"
+     ]
+   },
+   {
+     "directoryName":"luche-reduction",
+     "english":"Luche Reduction",
+     "japanese":"ルシェ還元",
+     "thmbnailName":"luche-reduction-thumbnail.png",
+     "generalFormulas":[
+       {
+         "imageName":"luche-reduction-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"luche-reduction-mechanism.png"
+       }
+     ],
+     "examples":[
+       {
+         "imageName":"luche-reduction-example.png"
+       },
+       {
+         "imageName":"luche-reduction-example2.png"
+       }
+     
+     ],
+     "supplements":[
+       {
+         "imageName":"luche-reduction-supplement.png"
+       }
+     ],
+     "suggestions":[
+       "Luche Reduction",
+       "ルシェ還元",
+       "るしぇかんげん",
+       "ルーシェ還元",
+       "るーしぇかんげん"
+     ],
+     "tags":[
+     ],
+     "reactants":["Carbonyl-Ketone","Carbonyl","Alkene/Alkyne"
+],
+     "products":["Alkene/Alkyne","Alcohol"
+],
+     "youtubeLinks":[
+       ""
+     ]
+   },
+   {
+     "directoryName":"fries-rearrangement",
+     "english":"Fries Rearrangement",
+     "japanese":"フリース転位",
+     "thmbnailName":"fries-rearrangement-thumbnail.png",
+     "generalFormulas":[
+       {
+         "imageName":"fries-rearrangement-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"fries-rearrangement-mechanism.png"
+       },
+       {
+         "imageName":"fries-rearrangement-mechanism2.png"
+       } 
+     ],
+     "examples":[
+       {
+         "imageName":"fries-rearrangement-example.png"
+       }
+     ],
+     "supplements":[],
+     "suggestions":[
+       "Fries Rearrangement",
+       "フリース転位",
+       "ふりーすてんい",
+       "Photo Fries Rearrangement",
+       "光フリース転位",
+       "ひかりふりーすてんい",
+       "フォトフリース転位",
+       "ふぉとふりーすてんい"
+     ],
+     "tags":[
+     ],
+     "reactants":["Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl","Aromtic_Ring-Benzene","Aromatic_Ring"
+],
+     "products":["Carbonyl-Ketone","Carbonyl","Alcohol","Aromtic_Ring-Benzene","Aromatic_Ring"
+],
+     "youtubeLinks":[
+       ""
      ]
    }
 ]

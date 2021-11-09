@@ -6766,6 +6766,9 @@
      "generalFormulas":[
        {
          "imageName":"fries-rearrangement-generalformula.png"
+       },
+       {
+         "imageName":"fries-rearrangement-generalformula2.png"
        }
      ],
      "mechanisms":[
@@ -6781,7 +6784,10 @@
          "imageName":"fries-rearrangement-example.png"
        }
      ],
-     "supplements":[],
+     "supplements":[
+       {
+         "imageName":"fries-rearrangement-supplement.png"
+       }],
      "suggestions":[
        "Fries Rearrangement",
        "フリース転位",
@@ -6794,9 +6800,59 @@
      ],
      "tags":[
      ],
-     "reactants":["Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl","Aromtic_Ring-Benzene","Aromatic_Ring"
+     "reactants":["Carbonyl-Carboxylic_Acid_Drivative-Ester","Carbonyl-Carboxylic_Acid_Drivative-Amide","Carbonyl-Carboxylic_Acid_Drivative","Carbonyl","Aromtic_Ring-Benzene","Aromatic_Ring"
 ],
-     "products":["Carbonyl-Ketone","Carbonyl","Alcohol","Aromtic_Ring-Benzene","Aromatic_Ring"
+     "products":["Carbonyl-Ketone","Carbonyl","Amine","Alcohol","Aromtic_Ring-Benzene","Aromatic_Ring"
+],
+     "youtubeLinks":[
+       ""
+     ]
+   },
+   {
+     "directoryName":"dakin-oxidation",
+     "english":"Dakin Oxidation",
+     "japanese":"デーキン酸化",
+     "thmbnailName":"dakin-oxidation-generalformula.png",
+     "generalFormulas":[
+       {
+         "imageName":"dakin-oxidation-generalformula.png"
+       }
+     ],
+     "mechanisms":[
+       {
+         "imageName":"dakin-oxidation-mechanism.png"
+       }
+     ],
+     "examples":[
+       {
+         "imageName":"dakin-oxidation-example.png"
+       }
+     ],
+     "supplements":[
+       {
+         "imageName":"dakin-oxidation-supplement.png"
+       },
+       {
+         "imageName":"dakin-oxidation-supplement2.png"
+       } 
+],
+     "suggestions":[
+       "Dakin Oxidation",
+       "デーキン酸化",
+       "でーきんさんか",
+       "Dakin Reaction",
+       "デーキン反応",
+       "でーきんはんのう",
+       "ダキン酸化",
+       "だきんさんか",
+       "ダキン反応",
+       "だきんはんのう"
+     ],
+     "tags":[
+     ],
+     "reactants":["Carbonyl-Aldehyde","Carbonyl-Ketone","Carbonyl","Aromtic_Ring-Benzene","Aromatic_Ring"
+],
+     "products":["Alcohol","Aromtic_Ring-Benzene","Aromatic_Ring"
 ],
      "youtubeLinks":[
        ""

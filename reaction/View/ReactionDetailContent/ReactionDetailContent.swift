@@ -15,8 +15,7 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     Text(selectJapanese ? "一般式" : "General Formula")
                     ForEach(reactionMechanism.generalFormulas, id: \.self) { generalFormula in
-                        WebImage(url: URL(string: reactionMechanism.reactionUrlString + generalFormula.imageName))
-                            .resizable()
+                        CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + generalFormula.imageName))
                             .scaledToFit()
                             .padding()
                     }
@@ -29,8 +28,7 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     Text(selectJapanese ? "反応機構" : "Mechanism")
                     ForEach(reactionMechanism.mechanisms, id: \.self) { mechanism in
-                        WebImage(url: URL(string: reactionMechanism.reactionUrlString + mechanism.imageName))
-                            .resizable()
+                        CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + mechanism.imageName))
                             .scaledToFit()
                             .padding()
                     }
@@ -41,8 +39,7 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     Text(selectJapanese ?  "例" : "Example")
                     ForEach(reactionMechanism.examples, id: \.self) { example in
-                        WebImage(url: URL(string: reactionMechanism.reactionUrlString + example.imageName))
-                            .resizable()
+                        CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + example.imageName))
                             .scaledToFit()
                             .padding()
                     }
@@ -55,8 +52,7 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     Text(selectJapanese ?  "補足" : "Supplement")
                     ForEach(reactionMechanism.supplements, id: \.self) { supplement in
-                        WebImage(url: URL(string: reactionMechanism.reactionUrlString + supplement.imageName))
-                            .resizable()
+                        CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + supplement.imageName))
                             .scaledToFit()
                             .padding()
                     }

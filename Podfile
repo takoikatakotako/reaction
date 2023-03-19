@@ -5,9 +5,10 @@ def install_pods
   use_frameworks!
   inhibit_all_warnings!
 
-  pod 'Firebase/Core'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/RemoteConfig'
+  pod 'Firebase'
+	pod 'FirebaseAnalytics'
+  pod 'FirebaseRemoteConfig'
+  pod 'FirebaseMessaging'	
   pod 'Google-Mobile-Ads-SDK'
   pod 'SwiftLint'
   pod 'SDWebImageSwiftUI'

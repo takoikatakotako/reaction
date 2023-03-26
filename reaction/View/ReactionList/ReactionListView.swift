@@ -1,6 +1,7 @@
 import SwiftUI
 import Combine
 import SDWebImageSwiftUI
+import FirebaseMessaging
 
 struct ReactionListView: View {
     @StateObject var viewModel: ReactionListViewModel
@@ -51,6 +52,17 @@ struct ReactionListView: View {
             }
             .onAppear {
                 viewModel.onAppear()
+                
+                
+                
+                Messaging.messaging().token { token, error in
+                  if let error = error {
+                    print("Error fetching FCM registration token: \(error)")
+                  } else if let token = token {
+                    print("FCM registration token: \(token)")
+                  }
+                }
+                
             }
             .sheet(item: $viewModel.sheet) { (item: ReactionListViewSheet) in
                 switch item {

@@ -80,6 +80,7 @@ targets:
       - path: reaction
     settings:
       base:
+        CODE_SIGN_ENTITLEMENTS: ReactionStaging.entitlements
         PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.chemist
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 5RH346BQ66
@@ -127,6 +128,7 @@ targets:
           - $SRCROOT/Reaction/Generated/R.generated.swift
     settings:
       base:
+        CODE_SIGN_ENTITLEMENTS: ReactionProduction.entitlements
         PRODUCT_BUNDLE_IDENTIFIER: com.example.junpei.chemi
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 5RH346BQ66

@@ -50,6 +50,14 @@ jobs:
     - name: Generate Project
       run: mint run xcodegen xcodegen generate
 
+    # R.generated.swift作成（BuildToolPluginがうまく動かないため）
+    - name: Generate R.generated.swift
+      run: mint run R.swift rswift generate --xcodeproj Reaction.xcodeproj --target ReactionDevelopment Reaction/R.generated.swift
+
+    # プロジェクト生成（BuildToolPluginがうまく動かないため）
+    - name: Generate Project
+      run: mint run xcodegen xcodegen generate
+
     # シミュレーター一覧
     - name: Show Simulator List
       run: xcrun simctl list

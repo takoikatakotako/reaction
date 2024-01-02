@@ -46,6 +46,10 @@ jobs:
     - name: Swiftlint 
       run: mint run swiftlint swiftlint --strict
 
+    # プロジェクト生成
+    - name: Generate Project
+      run: mint run xcodegen xcodegen generate
+
     # シミュレーター一覧
     - name: Show Simulator List
       run: xcrun simctl list

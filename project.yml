@@ -14,6 +14,9 @@ packages:
   GoogleMobileAds:
     url: https://github.com/googleads/swift-package-manager-google-mobile-ads
     from: 10.14.0
+  SDWebImageSwiftUI:
+    url: https://github.com/SDWebImage/SDWebImageSwiftUI
+    from: 2.2.6
 schemes:
   Local:
     build:
@@ -28,18 +31,18 @@ schemes:
         - name: ReactionTests
           parallelizable: true
           randomExecutionOrder: true
-  Staging:
-    build:
-      targets:
-        ReactionStaging: all
-    run:
-      config: Debug
-  Production:
-    build:
-      targets:
-        ReactionProduction: all
-    run:
-      config: Debug
+  # Staging:
+  #   build:
+  #     targets:
+  #       ReactionStaging: all
+  #   run:
+  #     config: Debug
+  # Production:
+  #   build:
+  #     targets:
+  #       ReactionProduction: all
+  #   run:
+  #     config: Debug
 
 targets:
   ReactionLocal:
@@ -47,7 +50,7 @@ targets:
     platform: iOS
     deploymentTarget: "14.0"
     sources:
-      - path: reaction
+      - path: Reaction
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.chemist
@@ -58,6 +61,7 @@ targets:
         CURRENT_PROJECT_VERSION: 1
         TARGETED_DEVICE_FAMILY: 1,2
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Local
+        OTHER_LDFLAGS: $(inherited) $(OTHER_LDFLAGS) -ObjC
       configs:
         Debug:
           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
@@ -71,16 +75,16 @@ targets:
       - sdk: StoreKit.framework
       - package: Rswift
         product: RswiftLibrary
-      - package: DataCompression
-        product: DataCompression
-      - package: Datadog
-        product: Datadog
       - package: Firebase
         product: FirebaseAnalytics
       - package: Firebase
         product: FirebaseCrashlytics
+      - package: Firebase
+        product: FirebaseMessaging
       - package: GoogleMobileAds
         product: GoogleMobileAds
+      - package: SDWebImageSwiftUI
+        product: SDWebImageSwiftUI
     buildToolPlugins:
       - plugin: RswiftGenerateInternalResources
         package: Rswift
@@ -90,78 +94,78 @@ targets:
         inputFiles:
           - ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
           - $(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
-  ReactionStaging:
-    type: application
-    platform: iOS
-    deploymentTarget: "14.0"
-    sources:
-      - path: reaction
-    settings:
-      base:
-        CODE_SIGN_ENTITLEMENTS: ReactionStaging.entitlements
-        PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.chemist
-        CODE_SIGN_STYLE: Automatic
-        DEVELOPMENT_TEAM: 5RH346BQ66
-        INFOPLIST_FILE: Reaction/Info.plist
-        MARKETING_VERSION: 4.3.0
-        CURRENT_PROJECT_VERSION: 1
-        TARGETED_DEVICE_FAMILY: 1,2
-        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Staging
-      configs:
-        Debug:
-          GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
-          ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
-        Release:
-          GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
-          ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
-    dependencies:
-      - package: R.swift.Library
-        product: Rswift
-      - sdk: AdSupport.framework
-      - sdk: AppTrackingTransparency.framework
-    preBuildScripts:
-      - script: ./Scripts/BuildPhases/rswift.sh
-        name: R.swift
-        inputFiles:
-          - $TEMP_DIR/rswift-lastrun
-        outputFiles:
-          - $SRCROOT/Reaction/Generated/R.generated.swift
-  ReactionProduction:
-    type: application
-    platform: iOS
-    deploymentTarget: "14.0"
-    sources:
-      - path: reaction
-    dependencies:
-      - package: R.swift.Library
-        product: Rswift
-      - sdk: AdSupport.framework
-      - sdk: AppTrackingTransparency.framework
-    preBuildScripts:
-      - script: ./Scripts/BuildPhases/rswift.sh
-        name: R.swift
-        inputFiles:
-          - $TEMP_DIR/rswift-lastrun
-        outputFiles:
-          - $SRCROOT/Reaction/Generated/R.generated.swift
-    settings:
-      base:
-        CODE_SIGN_ENTITLEMENTS: ReactionProduction.entitlements
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.junpei.chemi
-        CODE_SIGN_STYLE: Automatic
-        DEVELOPMENT_TEAM: 5RH346BQ66
-        INFOPLIST_FILE: Reaction/Info.plist
-        MARKETING_VERSION: 4.3.0
-        CURRENT_PROJECT_VERSION: 1
-        TARGETED_DEVICE_FAMILY: 1,2
-        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Production
-      configs:
-        Debug:
-          GAD_APPLICATION_IDENTIFER: ca-app-pub-5587141252700968~7266182338
-          ADMOB_UNIT_ID: ca-app-pub-5587141252700968/3350341396
-        Release:
-          GAD_APPLICATION_IDENTIFER: ca-app-pub-5587141252700968~7266182338
-          ADMOB_UNIT_ID: ca-app-pub-5587141252700968/3350341396
+  # ReactionStaging:
+  #   type: application
+  #   platform: iOS
+  #   deploymentTarget: "14.0"
+  #   sources:
+  #     - path: reaction
+  #   settings:
+  #     base:
+  #       CODE_SIGN_ENTITLEMENTS: ReactionStaging.entitlements
+  #       PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.chemist
+  #       CODE_SIGN_STYLE: Automatic
+  #       DEVELOPMENT_TEAM: 5RH346BQ66
+  #       INFOPLIST_FILE: Reaction/Info.plist
+  #       MARKETING_VERSION: 4.3.0
+  #       CURRENT_PROJECT_VERSION: 1
+  #       TARGETED_DEVICE_FAMILY: 1,2
+  #       ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Staging
+  #     configs:
+  #       Debug:
+  #         GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
+  #         ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
+  #       Release:
+  #         GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
+  #         ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
+  #   dependencies:
+  #     - package: Rswift
+  #       product: RswiftLibrary
+  #     - sdk: AdSupport.framework
+  #     - sdk: AppTrackingTransparency.framework
+  #   preBuildScripts:
+  #     - script: ./Scripts/BuildPhases/rswift.sh
+  #       name: R.swift
+  #       inputFiles:
+  #         - $TEMP_DIR/rswift-lastrun
+  #       outputFiles:
+  #         - $SRCROOT/Reaction/Generated/R.generated.swift
+  # ReactionProduction:
+  #   type: application
+  #   platform: iOS
+  #   deploymentTarget: "14.0"
+  #   sources:
+  #     - path: reaction
+  #   dependencies:
+  #     - package: Rswift
+  #       product: RswiftLibrary
+  #     - sdk: AdSupport.framework
+  #     - sdk: AppTrackingTransparency.framework
+  #   preBuildScripts:
+  #     - script: ./Scripts/BuildPhases/rswift.sh
+  #       name: R.swift
+  #       inputFiles:
+  #         - $TEMP_DIR/rswift-lastrun
+  #       outputFiles:
+  #         - $SRCROOT/Reaction/Generated/R.generated.swift
+  #   settings:
+  #     base:
+  #       CODE_SIGN_ENTITLEMENTS: ReactionProduction.entitlements
+  #       PRODUCT_BUNDLE_IDENTIFIER: com.example.junpei.chemi
+  #       CODE_SIGN_STYLE: Automatic
+  #       DEVELOPMENT_TEAM: 5RH346BQ66
+  #       INFOPLIST_FILE: Reaction/Info.plist
+  #       MARKETING_VERSION: 4.3.0
+  #       CURRENT_PROJECT_VERSION: 1
+  #       TARGETED_DEVICE_FAMILY: 1,2
+  #       ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Production
+  #     configs:
+  #       Debug:
+  #         GAD_APPLICATION_IDENTIFER: ca-app-pub-5587141252700968~7266182338
+  #         ADMOB_UNIT_ID: ca-app-pub-5587141252700968/3350341396
+  #       Release:
+  #         GAD_APPLICATION_IDENTIFER: ca-app-pub-5587141252700968~7266182338
+  #         ADMOB_UNIT_ID: ca-app-pub-5587141252700968/3350341396
   ReactionTests:
     type: bundle.unit-test
     platform: iOS

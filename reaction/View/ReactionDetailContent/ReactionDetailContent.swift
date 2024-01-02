@@ -63,12 +63,11 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     Text(selectJapanese ?  "動画" : "Movie")
                     ForEach(reactionMechanism.youtubeLinks, id: \.self) { youtubeLink in
-                        if let youtubeUrl = URL(string: youtubeLink),
-                           let youtubeThmbnailUrl = getYoutubeThmbnailUrlString(youtubeUrl: youtubeUrl) {
+                        if let youtubeUrl = URL(string: youtubeLink) {
                             Button {
                                 openUrl(url: youtubeUrl)
                             } label: {
-                                WebImage(url: youtubeThmbnailUrl)
+                                WebImage(url: getYoutubeThmbnailUrlString(youtubeUrl: youtubeUrl))
                                     .resizable()
                                     .scaledToFit()
                                     .padding()

@@ -4,7 +4,7 @@ struct ReactionDetailFullScreenView: View {
     @Environment(\.presentationMode) var presentationMode
     let selectJapanese: Bool
     let reactionMechanism: ReactionMechanism
-    
+
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {

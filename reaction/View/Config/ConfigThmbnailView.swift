@@ -20,7 +20,7 @@ struct ConfigThmbnailView: View {
                             .stroke(Color.gray, lineWidth: 1)
                     )
             })
-            
+
             Button(action: {
                 UserDefaultRepository().setShowThmbnail(false)
                 presentationMode.wrappedValue.dismiss()

@@ -6,7 +6,7 @@ struct SearchResultView: View {
     init(searchResultType: SearchTargetType, withoutCheck: Bool, firstCategories: [FirstCategory]) {
         _viewModel = StateObject(wrappedValue: SearchResultViewModel(searchResultType: searchResultType, withoutCheck: withoutCheck, firstCategories: firstCategories))
     }
-    
+
     var body: some View {
         ZStack {
             ScrollView {
@@ -26,7 +26,7 @@ struct SearchResultView: View {
                     .background(Color("mainTextColor").opacity(0.5))
                     .cornerRadius(24)
             }
-            
+
             VStack {
                 Spacer()
                 AdmobBannerView(adUnitID: ADMOB_UNIT_ID)

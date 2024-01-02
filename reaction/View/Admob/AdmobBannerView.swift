@@ -4,14 +4,14 @@ import UIKit
 
 private struct AdmobBannerViewController: UIViewControllerRepresentable {
     let adUnitId: String
-    
+
     init(adUnitID: String) {
         adUnitId = adUnitID
     }
-    
+
     func makeUIViewController(context: Context) -> UIViewController {
         let view = GADBannerView(adSize: GADAdSizeBanner)
-        
+
         let viewController = UIViewController()
         view.adUnitID = adUnitId
         view.rootViewController = viewController
@@ -20,14 +20,14 @@ private struct AdmobBannerViewController: UIViewControllerRepresentable {
         view.load(GADRequest())
         return viewController
     }
-    
+
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
 struct AdmobBannerView: View {
     let adUnitID: String
-    var body: some View{
-        HStack{
+    var body: some View {
+        HStack {
             Spacer()
             AdmobBannerViewController(adUnitID: adUnitID)
                 .frame(width: GADAdSizeBanner.size.width, height: GADAdSizeBanner.size.height, alignment: .center)

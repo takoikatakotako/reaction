@@ -16,12 +16,12 @@ struct ReactionMechanism: Identifiable, Decodable, Hashable {
     let reactants: [String]
     let products: [String]
     let youtubeLinks: [String]
-    
+
     var thmbnailUrl: URL {
         let string = "\(appEnvironment.baseUrlString)/resource/images/\(directoryName)/\(thmbnailName)"
         return URL(string: string)!
     }
-    
+
     var reactionUrlString: String {
         let string = "\(appEnvironment.baseUrlString)/resource/images/\(directoryName)/"
         return string

@@ -4,13 +4,13 @@ struct ReactionListRow: View {
     let reactionMechanism: ReactionMechanism
     @Binding var showingThmbnail: Bool
     @Binding var selectJapanese: Bool
-    
+
     @Environment(\.colorScheme) var colorScheme
 
     var isDarkMode: Bool {
         return colorScheme == .dark
     }
-    
+
     var body: some View {
         NavigationLink(
             destination: ReactionDetailView(selectJapanese: selectJapanese, reactionMechanism: reactionMechanism)) {
@@ -28,8 +28,8 @@ struct ReactionListRow: View {
     }
 }
 
-//struct ReactionListRow_Previews: PreviewProvider {
+// struct ReactionListRow_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ReactionListRow(reactionMechanism: ReactionMechanism.mock(), showingThmbnail: true)
 //    }
-//}
+// }

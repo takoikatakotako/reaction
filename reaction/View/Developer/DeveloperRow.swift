@@ -4,13 +4,13 @@ struct DeveloperRow: View {
     let imageName: String
     let role: String
     let name: String
-    
+
     var body: some View {
         HStack {
             Image(imageName)
                 .resizable()
                 .frame(width: 60, height: 60)
-            
+
             VStack(alignment: .leading, spacing: 8) {
                 Text(role)
                     .font(Font.system(size: 16).bold())
@@ -20,7 +20,7 @@ struct DeveloperRow: View {
                     .foregroundColor(Color("mainTextColor"))
             }
             Spacer()
-            
+
             Image(R.image.iconOpen.name)
                 .resizable()
                 .frame(width: 24, height: 24)

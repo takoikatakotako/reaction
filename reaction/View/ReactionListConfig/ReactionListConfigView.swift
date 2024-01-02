@@ -3,7 +3,7 @@ import SwiftUI
 struct ReactionListConfigView: View {
     @Binding var showingThmbnail: Bool
     @Binding var selectJapanese: Bool
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -47,7 +47,7 @@ struct ReactionListConfigView: View {
                     }
                 }
                 .padding(.bottom, 16)
-                
+
                 Text(selectJapanese ? "言語" : "Langage")
                     .font(Font.system(size: 22))
 
@@ -88,7 +88,7 @@ struct ReactionListConfigView: View {
                             .opacity(!selectJapanese ? 1.0 : 0.4)
                     }
                 }
-                
+
                 Spacer()
             }
         }
@@ -96,7 +96,7 @@ struct ReactionListConfigView: View {
 }
 
 struct ReactionListConfigView_Previews: PreviewProvider {
-    
+
     struct PreviewWrapper: View {
         @State var showingThmbnail = true
         @State var selectJapanese = true
@@ -104,7 +104,7 @@ struct ReactionListConfigView_Previews: PreviewProvider {
             ReactionListConfigView(showingThmbnail: $showingThmbnail, selectJapanese: $selectJapanese)
         }
     }
-    
+
     static var previews: some View {
         PreviewWrapper()
     }

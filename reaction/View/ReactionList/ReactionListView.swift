@@ -5,18 +5,18 @@ import FirebaseMessaging
 
 struct ReactionListView: View {
     @StateObject var viewModel: ReactionListViewModel
-    
+
     init(showingThmbnail: Bool, selectJapanese: Bool) {
         _viewModel = StateObject(wrappedValue: ReactionListViewModel(showingThmbnail: showingThmbnail, selectJapanese: selectJapanese))
     }
-    
+
     var body: some View {
         NavigationView {
             ZStack {
                 ScrollView {
                     LazyVStack {
                         ZStack(alignment: .trailing) {
-                            TextField("Type your search",text: $viewModel.searchText)
+                            TextField("Type your search", text: $viewModel.searchText)
                                 .padding(8)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                             if !viewModel.searchText.isEmpty {
@@ -35,7 +35,7 @@ struct ReactionListView: View {
                     }
                     .padding(.bottom, 62)
                 }
-                
+
                 if viewModel.isFetching {
                     ProgressView()
                         .scaleEffect(1.5, anchor: .center)
@@ -44,7 +44,7 @@ struct ReactionListView: View {
                         .background(Color("mainTextColor").opacity(0.5))
                         .cornerRadius(24)
                 }
-                
+
 //                VStack {
 //                    Spacer()
 //                    AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
@@ -52,9 +52,7 @@ struct ReactionListView: View {
             }
             .onAppear {
                 viewModel.onAppear()
-                
-                
-                
+
                 Messaging.messaging().token { token, error in
                   if let error = error {
                     print("Error fetching FCM registration token: \(error)")
@@ -62,7 +60,7 @@ struct ReactionListView: View {
                     print("FCM registration token: \(token)")
                   }
                 }
-                
+
             }
             .sheet(item: $viewModel.sheet) { (item: ReactionListViewSheet) in
                 switch item {

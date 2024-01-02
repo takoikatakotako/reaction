@@ -54,7 +54,7 @@ struct ConfigView: View {
                 } else {
                     langage = "English"
                 }
-                
+
                 if userDefaultRepository.showThmbnail {
                     thmbnail = true
                 } else {

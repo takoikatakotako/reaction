@@ -2,13 +2,18 @@ name: Reaction
 options:
   deploymentTarget:
     iOS: 14.0
-  postGenCommand: bundle exec pod install
+  # postGenCommand: bundle exec pod install
 
 packages:
-  R.swift.Library:
-    url: https://github.com/mac-cain13/R.swift.Library
-    from: 5.4.0
-
+  Rswift:
+    url: https://github.com/mac-cain13/R.swift
+    from: 7.4.0
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk
+    from: 10.19.0
+  GoogleMobileAds:
+    url: https://github.com/googleads/swift-package-manager-google-mobile-ads
+    from: 10.14.0
 schemes:
   Local:
     build:
@@ -61,17 +66,30 @@ targets:
           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
           ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
     dependencies:
-      - package: R.swift.Library
-        product: Rswift
       - sdk: AdSupport.framework
       - sdk: AppTrackingTransparency.framework
-    preBuildScripts:
-      - script: ./Scripts/BuildPhases/rswift.sh
-        name: R.swift
+      - sdk: StoreKit.framework
+      - package: Rswift
+        product: RswiftLibrary
+      - package: DataCompression
+        product: DataCompression
+      - package: Datadog
+        product: Datadog
+      - package: Firebase
+        product: FirebaseAnalytics
+      - package: Firebase
+        product: FirebaseCrashlytics
+      - package: GoogleMobileAds
+        product: GoogleMobileAds
+    buildToolPlugins:
+      - plugin: RswiftGenerateInternalResources
+        package: Rswift
+    postBuildScripts:
+      - script: "${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run"
+        name: Run Firebase Crashlytics
         inputFiles:
-          - $TEMP_DIR/rswift-lastrun
-        outputFiles:
-          - $SRCROOT/Reaction/Generated/R.generated.swift
+          - ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
+          - $(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
   ReactionStaging:
     type: application
     platform: iOS

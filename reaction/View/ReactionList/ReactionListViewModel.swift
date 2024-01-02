@@ -18,7 +18,7 @@ class ReactionListViewModel: ObservableObject {
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
     @Published var sheet: ReactionListViewSheet?
-    
+
     private let userDefaultsRepository = UserDefaultRepository()
     private let reactionRepository = ReactionMechanismRepository()
     private var subscriptions = Set<AnyCancellable>()
@@ -27,7 +27,7 @@ class ReactionListViewModel: ObservableObject {
         self.showingThmbnail = showingThmbnail
         self.selectJapanese = selectJapanese
     }
-    
+
     var showingReactions: [ReactionMechanism] {
         if searchText.isEmpty {
             return reactionMechanisms
@@ -42,7 +42,7 @@ class ReactionListViewModel: ObservableObject {
             }
         }
     }
-    
+
     func onAppear() {
         setting()
         if reactionMechanisms.isEmpty {
@@ -50,20 +50,20 @@ class ReactionListViewModel: ObservableObject {
         }
         requestTrackingAuthorizationStatus()
     }
-        
+
     func clearSearchText() {
         searchText = ""
     }
-    
+
     func showSetting() {
         self.sheet = .config
     }
-    
+
     private func setting() {
         selectJapanese = userDefaultsRepository.selectedJapanese
         showingThmbnail = userDefaultsRepository.showThmbnail
     }
-    
+
     private func requestTrackingAuthorizationStatus() {
         switch ATTrackingManager.trackingAuthorizationStatus {
         case .authorized: break
@@ -74,7 +74,7 @@ class ReactionListViewModel: ObservableObject {
         @unknown default: break
         }
     }
-    
+
     private func fetchMechanisms() {
         reactionRepository
             .fetchMechanisms()
@@ -93,7 +93,7 @@ class ReactionListViewModel: ObservableObject {
             })
             .store(in: &self.subscriptions)
     }
-    
+
     private func showTrackingAuthorization() {
         ATTrackingManager.requestTrackingAuthorization { _ in }
     }

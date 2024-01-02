@@ -19,7 +19,7 @@ struct ConfigLangageView: View {
                             .stroke(Color.gray, lineWidth: 1)
                     )
             })
-            
+
             Button(action: {
                 UserDefaultRepository().setSelectedJapanese(true)
                 presentationMode.wrappedValue.dismiss()

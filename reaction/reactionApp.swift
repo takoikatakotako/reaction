@@ -15,11 +15,10 @@ struct reactionApp: App {
     }
 }
 
-
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct ContentView: View {
+// struct ContentView: View {
 //     let publisher = NotificationCenter.default.publisher(for: .deviceToken)
 //    @State var deviceToken: String = ""
 //    
@@ -35,4 +34,4 @@ struct reactionApp: App {
 //            }
 //        }
 //    }
-//}
+// }

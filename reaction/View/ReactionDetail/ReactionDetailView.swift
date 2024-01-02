@@ -6,14 +6,14 @@ struct ReactionDetailView: View {
     @State var showingSheet = false
     @State var showingFullScreen = false
     @State var reactionMechanism: ReactionMechanism
-    
+
     var body: some View {
         ZStack(alignment: .bottom) {
             ScrollView {
                 ReactionDetailContent(selectJapanese: selectJapanese, reactionMechanism: reactionMechanism)
                     .padding(.bottom, 40)
             }
-            
+
             HStack() {
                 Spacer()
                 Button(action: {

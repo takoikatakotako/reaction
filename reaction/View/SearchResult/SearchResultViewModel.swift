@@ -12,7 +12,7 @@ class SearchResultViewModel: ObservableObject {
     private let searchResultType: SearchTargetType
     private let withoutCheck: Bool
     private let firstCategories: [FirstCategory]
-    
+
     var navigationTitle: String {
         switch searchResultType {
         case .reactant:
@@ -21,25 +21,25 @@ class SearchResultViewModel: ObservableObject {
             return "Search Product"
         }
     }
-    
+
     init(searchResultType: SearchTargetType, withoutCheck: Bool, firstCategories: [FirstCategory]) {
         self.searchResultType = searchResultType
         self.withoutCheck = withoutCheck
         self.firstCategories = firstCategories
     }
-    
+
     func onAppear() {
         setting()
         if reactionMechanisms.isEmpty {
             fetchMechanisms()
         }
     }
-    
+
     private func setting() {
         selectJapanese = userDefaultsRepository.selectedJapanese
         showingThmbnail = userDefaultsRepository.showThmbnail
     }
-    
+
     private func fetchMechanisms() {
         reactionRepository
             .fetchMechanisms()
@@ -65,7 +65,7 @@ class SearchResultViewModel: ObservableObject {
             })
             .store(in: &self.subscriptions)
     }
-    
+
     private func getTags() -> [String] {
         var tags: [String] = []
         for firstCategory in firstCategories {
@@ -85,7 +85,7 @@ class SearchResultViewModel: ObservableObject {
         }
         return tags
     }
-    
+
     // 反応機構検索。チェックしたものを検索
     private func searchReactionsWithCheck(originalReactionMechanism: [ReactionMechanism]) -> [ReactionMechanism] {
         var filterdReactionMechanisms: Set<ReactionMechanism> = []
@@ -107,7 +107,7 @@ class SearchResultViewModel: ObservableObject {
         }
         return sorted(Array(filterdReactionMechanisms))
     }
-    
+
     // 反応機構検索。チェックしたものを除外
     private func searchReactionsWithoutCheck(originalReactionMechanism: [ReactionMechanism]) -> [ReactionMechanism] {
         var filterdReactionMechanisms: [ReactionMechanism] = originalReactionMechanism
@@ -121,7 +121,7 @@ class SearchResultViewModel: ObservableObject {
         }
         return sorted(filterdReactionMechanisms)
     }
-    
+
     private func sorted(_ originalReactionMechanism: [ReactionMechanism]) -> [ReactionMechanism] {
         return originalReactionMechanism.sorted(by: { lhs, rhs in
             lhs.directoryName < rhs.directoryName

@@ -18,10 +18,10 @@ packages:
     url: https://github.com/SDWebImage/SDWebImageSwiftUI
     from: 2.2.6
 schemes:
-  Local:
+  Development:
     build:
       targets:
-        ReactionLocal: all
+        ReactionDevelopment: all
     run:
       config: Debug
     test:
@@ -45,7 +45,7 @@ schemes:
       config: Debug
 
 targets:
-  ReactionLocal:
+  ReactionDevelopment:
     type: application
     platform: iOS
     deploymentTarget: "14.0"
@@ -60,7 +60,7 @@ targets:
         MARKETING_VERSION: 4.3.0
         CURRENT_PROJECT_VERSION: 1
         TARGETED_DEVICE_FAMILY: 1,2
-        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Local
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Development
         OTHER_LDFLAGS: $(inherited) $(OTHER_LDFLAGS) -ObjC
       configs:
         Debug:
@@ -149,7 +149,7 @@ targets:
     platform: iOS
     deploymentTarget: "14.0"
     sources:
-      - path: reaction
+      - path: Reaction
     dependencies:
       - package: Rswift
         product: RswiftLibrary
@@ -215,7 +215,7 @@ targets:
       base:
         INFOPLIST_FILE: ReactionTests/Info.plist
     dependencies:
-      - target: ReactionLocal
+      - target: ReactionDevelopment
   ReactionUITests:
     type: bundle.ui-testing
     platform: iOS
@@ -225,4 +225,4 @@ targets:
       base:
         INFOPLIST_FILE: ReactionUITests/Info.plist
     dependencies:
-      - target: ReactionLocal
+      - target: ReactionDevelopment

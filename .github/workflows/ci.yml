@@ -46,3 +46,10 @@ jobs:
     - name: Swiftlint 
       run: mint run swiftlint swiftlint --strict
 
+    # シミュレーター一覧
+    - name: Show Simulator List
+      run: xcrun simctl list
+
+    # テスト実行
+    - name: Run Tests
+      run: xcodebuild -project Reaction.xcodeproj -scheme "Development" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.2' -skipPackagePluginValidation test

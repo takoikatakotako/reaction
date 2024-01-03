@@ -3,13 +3,13 @@ import SwiftUI
 struct ReactionDetailContent: View {
     let selectJapanese: Bool
     @State var reactionMechanism: ReactionMechanism
-    
+
     var body: some View {
         LazyVStack {
             Text(selectJapanese ? reactionMechanism.japanese : reactionMechanism.english)
                 .font(Font.system(size: 24))
                 .padding(.bottom, 12)
-            
+
             if !reactionMechanism.generalFormulas.isEmpty {
                 VStack(spacing: 0) {
                     Text(selectJapanese ? "一般式" : "General Formula")
@@ -20,9 +20,9 @@ struct ReactionDetailContent: View {
                     }
                 }
             }
-            
+
             AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
-            
+
             if !reactionMechanism.mechanisms.isEmpty {
                 VStack(spacing: 0) {
                     Text(selectJapanese ? "反応機構" : "Mechanism")
@@ -33,7 +33,7 @@ struct ReactionDetailContent: View {
                     }
                 }
             }
-            
+
             if !reactionMechanism.examples.isEmpty {
                 VStack(spacing: 0) {
                     Text(selectJapanese ?  "例" : "Example")
@@ -44,9 +44,9 @@ struct ReactionDetailContent: View {
                     }
                 }
             }
-            
+
             AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
-            
+
             if !reactionMechanism.supplements.isEmpty {
                 VStack(spacing: 0) {
                     Text(selectJapanese ?  "補足" : "Supplement")
@@ -57,7 +57,7 @@ struct ReactionDetailContent: View {
                     }
                 }
             }
-            
+
             if !reactionMechanism.youtubeLinks.isEmpty {
                 VStack(spacing: 0) {
                     Text(selectJapanese ?  "動画" : "Movie")
@@ -84,12 +84,12 @@ struct ReactionDetailContent: View {
         .padding(.vertical, 16)
         .padding(.bottom, 16)
     }
-    
+
     private func getYoutubeThmbnailUrlString(youtubeUrl: URL) -> URL {
         let youtubePath = youtubeUrl.path
         return URL(string: "https://img.youtube.com/vi\(youtubePath)/0.jpg")!
     }
-    
+
     private func openUrl(url: URL) {
         UIApplication.shared.open(url)
     }

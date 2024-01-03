@@ -1,5 +1,4 @@
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct CommonWebImage: View {
     let url: URL?
@@ -12,12 +11,22 @@ struct CommonWebImage: View {
 
     var body: some View {
         if isDarkMode {
-            WebImage(url: url)
-                .resizable()
-                .colorInvert()
+            AsyncImage(url: url) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .colorInvert()
+            } placeholder: {
+                ProgressView()
+            }
         } else {
-            WebImage(url: url)
-                .resizable()
+            AsyncImage(url: url) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                ProgressView()
+            }
         }
     }
 }

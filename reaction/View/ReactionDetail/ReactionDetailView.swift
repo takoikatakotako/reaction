@@ -1,5 +1,4 @@
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct ReactionDetailView: View {
     let selectJapanese: Bool

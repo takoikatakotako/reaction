@@ -1,5 +1,4 @@
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct ReactionListRowImage: View {
     let imageUrl: URL
@@ -13,16 +12,27 @@ struct ReactionListRowImage: View {
 
     var body: some View {
         if isDarkMode {
-            WebImage(url: imageUrl)
-                .resizable()
-                .placeholder(Image(placeHolderName))
-                .scaledToFit()
-                .colorInvert()
+            AsyncImage(url: imageUrl) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .colorInvert()
+            } placeholder: {
+                Image(placeHolderName)
+                    .resizable()
+                    .scaledToFit()
+                    .colorInvert()
+            }
         } else {
-            WebImage(url: imageUrl)
-                .resizable()
-                .placeholder(Image(placeHolderName))
-                .scaledToFit()
+            AsyncImage(url: imageUrl) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                Image(placeHolderName)
+                    .resizable()
+                    .scaledToFit()
+            }
         }
     }
 }

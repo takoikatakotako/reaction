@@ -1,12 +1,4 @@
-//
-//  reactionTests.swift
-//  reactionTests
-//
-//  Created by junpei ono on 2021/03/04.
-//
-
 import XCTest
-@testable import reaction
 
 class reactionTests: XCTestCase {
 

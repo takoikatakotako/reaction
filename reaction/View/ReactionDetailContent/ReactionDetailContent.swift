@@ -1,5 +1,4 @@
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct ReactionDetailContent: View {
     let selectJapanese: Bool
@@ -67,10 +66,15 @@ struct ReactionDetailContent: View {
                             Button {
                                 openUrl(url: youtubeUrl)
                             } label: {
-                                WebImage(url: getYoutubeThmbnailUrlString(youtubeUrl: youtubeUrl))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .padding()
+                                AsyncImage(url: getYoutubeThmbnailUrlString(youtubeUrl: youtubeUrl)) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        .padding()
+                                } placeholder: {
+                                    ProgressView()
+                                        .padding()
+                                }
                             }
                         }
                     }

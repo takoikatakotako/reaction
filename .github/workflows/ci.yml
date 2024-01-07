@@ -9,6 +9,7 @@ env:
   DEVELOPER_DIR: /Applications/Xcode_14.3.1.app
   MINT_PATH: .mint/lib
   MINT_LINK_PATH: .mint/bin
+  GOOGLE_SERVICE_INFO_PLIST: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST_FOR_DEVELOPMENT }}
 
 jobs:
   build:
@@ -45,6 +46,10 @@ jobs:
     # Lintによるチェック
     - name: Swiftlint 
       run: mint run swiftlint swiftlint --strict
+
+    # GoogleService-Info.plistを作成
+    - name: Create GoogleService-Info.plist
+      run: echo $GOOGLE_SERVICE_INFO_PLIST > Config/Development/GoogleService-Info.plist
 
     # プロジェクト生成
     - name: Generate Project

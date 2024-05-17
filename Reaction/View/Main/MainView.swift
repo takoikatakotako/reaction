@@ -8,19 +8,19 @@ struct MainView: View {
                     Label("学習", systemImage: "pencil.and.scribble")
                 }
                 .tag(1)
-            
+
             ChatView()
                 .tabItem {
                     Label("チャット", systemImage: "message")
                 }
                 .tag(2)
-            
+
             ListenView()
                 .tabItem {
                     Label("聴いて勉強", systemImage: "headphones")
                 }
                 .tag(3)
-            
+
             SettingView()
                 .tabItem {
                     Label("設定", systemImage: "gearshape")

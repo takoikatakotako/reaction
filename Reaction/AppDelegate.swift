@@ -1,7 +1,7 @@
 import SwiftUI
-//import Firebase
-//import FirebaseMessaging
-//import GoogleMobileAds
+// import Firebase
+// import FirebaseMessaging
+// import GoogleMobileAds
 import UserNotifications
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-//extension AppDelegate: UNUserNotificationCenterDelegate {
+// extension AppDelegate: UNUserNotificationCenterDelegate {
 //    func userNotificationCenter(_ center: UNUserNotificationCenter,
 //                                willPresent notification: UNNotification,
 //                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -122,6 +122,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //        completionHandler()
 //    }
-//}
+// }
 
-//extension AppDelegate: MessagingDelegate {}
+// extension AppDelegate: MessagingDelegate {}

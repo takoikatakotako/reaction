@@ -3,9 +3,9 @@ import SwiftUI
 struct StudyCategoryListView: View {
     @State var favoriteColor = 0
     @State var goStudyView = false
-    
+
     @State var path: [StudyViewPath] = []
-    
+
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
@@ -20,66 +20,66 @@ struct StudyCategoryListView: View {
                         .padding(.top, 16)
                         .padding(.horizontal, 16)
                         .padding(.bottom, 16)
-                        
+
                         NavigationLink {
                             StudyCategoryDetailView()
                         } label: {
                             StudyCategoryListViewRow()
                         }
-                        
+
                         NavigationLink {
                             Text("XX")
                         } label: {
                             StudyCategoryListViewRow()
                         }
-                        
+
                         NavigationLink {
                             Text("XX")
                         } label: {
                             StudyCategoryListViewRow()
                         }
-                        
+
                         NavigationLink {
                             Text("XX")
                         } label: {
                             StudyCategoryListViewRow()
                         }
-                        
+
                         NavigationLink {
                             Text("XX")
                         } label: {
                             StudyCategoryListViewRow()
                         }
-                        
+
                         NavigationLink {
                             Text("XX")
                         } label: {
                             StudyCategoryListViewRow()
                         }
-                        
+
                         NavigationLink {
                             Text("XX")
                         } label: {
                             StudyCategoryListViewRow()
                         }
-                        
+
                         NavigationLink {
                             Text("XX")
                         } label: {
                             StudyCategoryListViewRow()
                         }
-                        
+
                         NavigationLink {
                             Text("XX")
                         } label: {
                             StudyCategoryListViewRow()
                         }
-                        
+
                         Spacer()
                             .frame(height: 160)
                     }
                 }
-                
+
                 VStack(spacing: 8) {
                     HStack(spacing: 8) {
                         NavigationLink(value: StudyViewPath.study) {
@@ -91,7 +91,7 @@ struct StudyCategoryListView: View {
                                 .background(Color(.appBlueBackground))
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
                         }
-                        
+
                         NavigationLink(value: StudyViewPath.study) {
                             Text("チェックから出題")
                                 .font(.system(size: 18).bold())
@@ -103,7 +103,6 @@ struct StudyCategoryListView: View {
                         }
                     }
                     .padding(.horizontal, 16)
-                    
 
                     NavigationLink(value: StudyViewPath.study) {
                         Text("ランダムに出題")
@@ -116,7 +115,7 @@ struct StudyCategoryListView: View {
                             .padding(.horizontal, 16)
                             .padding(.bottom, 8)
                     }
-                    
+
                 }
                 .clipped()
             }
@@ -133,7 +132,7 @@ struct StudyCategoryListView: View {
                 case .studyResult:
                     Text("studyResult")
                 }
-                
+
             }
             .scrollIndicators(.hidden)
             .navigationBarTitleDisplayMode(.inline)
@@ -144,7 +143,7 @@ struct StudyCategoryListView: View {
                         .foregroundStyle(Color.white)
                 }
             }
-            .toolbarBackground(Color(.appMain),for: .navigationBar)
+            .toolbarBackground(Color(.appMain), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
         }
     }

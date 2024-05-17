@@ -13,7 +13,7 @@ struct ReactionDetailView: View {
                     .padding(.bottom, 40)
             }
 
-            HStack() {
+            HStack {
                 Spacer()
                 Button(action: {
                     showingSheet = true

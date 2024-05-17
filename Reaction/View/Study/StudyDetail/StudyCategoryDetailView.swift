@@ -2,7 +2,7 @@ import SwiftUI
 
 struct StudyCategoryDetailView: View {
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         ZStack(alignment: .bottom) {
             ScrollView {
@@ -12,64 +12,64 @@ struct StudyCategoryDetailView: View {
                     } label: {
                         StudyCategoryListViewRow()
                     }
-                    
+
                     NavigationLink {
                         Text("XX")
                     } label: {
                         StudyCategoryListViewRow()
                     }
-                    
+
                     NavigationLink {
                         Text("XX")
                     } label: {
                         StudyCategoryListViewRow()
                     }
-                    
+
                     NavigationLink {
                         Text("XX")
                     } label: {
                         StudyCategoryListViewRow()
                     }
-                    
+
                     NavigationLink {
                         Text("XX")
                     } label: {
                         StudyCategoryListViewRow()
                     }
-                    
+
                     NavigationLink {
                         Text("XX")
                     } label: {
                         StudyCategoryListViewRow()
                     }
-                    
+
                     NavigationLink {
                         Text("XX")
                     } label: {
                         StudyCategoryListViewRow()
                     }
-                    
+
                     NavigationLink {
                         Text("XX")
                     } label: {
                         StudyCategoryListViewRow()
                     }
-                    
+
                     NavigationLink {
                         Text("XX")
                     } label: {
                         StudyCategoryListViewRow()
                     }
-                    
+
                     Spacer()
                         .frame(height: 160)
                 }
             }
-            
+
             VStack(spacing: 8) {
                 HStack(spacing: 8) {
                     Button {
-                        
+
                     } label: {
                         Text("間違えた問題")
                             .font(.system(size: 18).bold())
@@ -79,9 +79,9 @@ struct StudyCategoryDetailView: View {
                             .background(Color(.appBlueBackground))
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                     }
-                    
+
                     Button {
-                        
+
                     } label: {
                         Text("チェックから出題")
                             .font(.system(size: 18).bold())
@@ -93,9 +93,9 @@ struct StudyCategoryDetailView: View {
                     }
                 }
                 .padding(.horizontal, 16)
-                
+
                 Button {
-                    
+
                 } label: {
                     Text("ランダムに出題")
                         .font(.system(size: 18).bold())
@@ -115,7 +115,7 @@ struct StudyCategoryDetailView: View {
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                
+
                 Button {
                     dismiss()
                 } label: {
@@ -126,16 +126,16 @@ struct StudyCategoryDetailView: View {
                 }
 
             }
-            
+
             ToolbarItem(placement: .principal) {
                 Text("基本情報技術者")
                     .font(.system(size: 16).bold())
                     .foregroundStyle(Color.white)
             }
-            
+
         }
         .toolbar(.hidden, for: .tabBar)
-        .toolbarBackground(Color(.appMain),for: .navigationBar)
+        .toolbarBackground(Color(.appMain), for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }
 }

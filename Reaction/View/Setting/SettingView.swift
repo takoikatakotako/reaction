@@ -13,47 +13,46 @@ struct SettingView: View {
                             .foregroundStyle(Color(.appMainText))
                     }
                 }
-                
+
                 Section("ユーザー情報") {
                     NavigationLink {
-                        
+
                     } label: {
                         Text("ユーザー情報")
                             .foregroundStyle(Color(.appMainText))
                     }
-                    
+
                     NavigationLink {
-                        
+
                     } label: {
                         Text("プレミアムプランについて")
                     }
                 }
-                
+
                 Section("お問い合わせ") {
                     NavigationLink {
-                        
+
                     } label: {
                         Text("お問い合わせ")
                     }
                 }
-                
+
                 Section("開発者情報") {
                     Button {
-                        
+
                     } label: {
                         Text("公式Discord")
                             .foregroundStyle(Color(.appMainText))
                     }
 
                     Button {
-                        
+
                     } label: {
                         Text("開発者のXアカウント")
                             .foregroundStyle(Color(.appMainText))
                     }
                 }
-                
-                
+
                 Section("アプリケーション情報") {
                     HStack {
                         Text("バージョン情報")
@@ -77,12 +76,11 @@ struct SettingView: View {
                         .foregroundStyle(Color.white)
                 }
             }
-            .toolbarBackground(Color(.appMain),for: .navigationBar)
+            .toolbarBackground(Color(.appMain), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
         }
     }
 }
-
 
 #Preview {
     SettingView()

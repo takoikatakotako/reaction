@@ -14,19 +14,19 @@ struct StudyCategoryListViewRow: View {
                             .font(.system(size: 14))
                             .foregroundStyle(Color(.appMainText))
                     }
-                    
+
                     GeometryReader { geometry in
                         ZStack(alignment: .leading) {
                             RoundedRectangle(cornerRadius: 4.0)
                                 .foregroundStyle(Color(.appBackground))
                                 .frame(height: 8)
                                 .frame(width: geometry.size.width)
-                        
+
                             RoundedRectangle(cornerRadius: 4.0)
                                 .foregroundStyle(Color(.appBlueBackground))
                                 .frame(height: 8)
                                 .frame(width: geometry.size.width * 0.6)
-                            
+
                             RoundedRectangle(cornerRadius: 4.0)
                                 .foregroundStyle(Color(.appGreenBackground))
                                 .frame(height: 8)
@@ -35,7 +35,7 @@ struct StudyCategoryListViewRow: View {
                         .frame(minWidth: 0, maxWidth: .infinity)
                     }
                 }
-                
+
                 Image(systemName: "chevron.forward")
                     .resizable()
                     .scaledToFit()
@@ -44,7 +44,7 @@ struct StudyCategoryListViewRow: View {
             .padding(.top, 16)
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
-            
+
             Divider()
         }
     }

@@ -6,27 +6,27 @@ struct StudyView: View {
             ScrollView {
                 VStack {
                     Text("P, Q, Rはいずれも命題である。命題Pの真理値は真であり,命題（not P）or Q 及び命題（not Q）or R のいずれの真理値はどれか。ここで, X or Y は X と Y の論理和, not X は X の否定を表す。")
-                    
+
                     Image(.studySample)
                         .resizable()
-                    
+
                     VStack {
                         Text("ア: 16進数表記 00 ビット列と排他的論理和をとる。")
                         Text("ア: 16進数表記 00 ビット列と排他的論理和をとる。16進数表記 00 ビット列と排他的論理和をとる。")
                         Text("ア: 16進数表記 00 ビット列と排他的論理和をとる。")
                         Text("ア: 16進数表記 00 ビット列と排他的論理和をとる。")
                     }
-                    
+
                     HStack {
                         Spacer()
                         Text("出典: 平成31年度春季本試験 問1")
                     }
                 }
             }
-            
+
             HStack(spacing: 12) {
                 Button {
-                    
+
                 } label: {
                     HStack {
                         Image(systemName: "pencil.line")
@@ -39,9 +39,9 @@ struct StudyView: View {
                     .background(Color(.appGreenBackground))
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
-                
+
                 Button {
-                    
+
                 } label: {
                     Text("ア")
                         .foregroundStyle(Color.white)
@@ -50,9 +50,9 @@ struct StudyView: View {
                         .background(Color(.appGreenBackground))
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
-                
+
                 Button {
-                    
+
                 } label: {
                     Text("イ")
                         .foregroundStyle(Color.white)
@@ -61,9 +61,9 @@ struct StudyView: View {
                         .background(Color(.appGreenBackground))
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
-                
+
                 Button {
-                    
+
                 } label: {
                     Text("ウ")
                         .foregroundStyle(Color.white)
@@ -72,9 +72,9 @@ struct StudyView: View {
                         .background(Color(.appGreenBackground))
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
-                
+
                 Button {
-                    
+
                 } label: {
                     Text("エ")
                         .foregroundStyle(Color.white)
@@ -94,7 +94,7 @@ struct StudyView: View {
                     .foregroundStyle(Color.white)
             }
         }
-        .toolbarBackground(Color(.appMain),for: .navigationBar)
+        .toolbarBackground(Color(.appMain), for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbar(.hidden, for: .tabBar)
     }

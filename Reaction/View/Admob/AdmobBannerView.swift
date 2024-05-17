@@ -1,8 +1,8 @@
-//import SwiftUI
-//import GoogleMobileAds
-//import UIKit
+// import SwiftUI
+// import GoogleMobileAds
+// import UIKit
 //
-//private struct AdmobBannerViewController: UIViewControllerRepresentable {
+// private struct AdmobBannerViewController: UIViewControllerRepresentable {
 //    let adUnitId: String
 //
 //    init(adUnitID: String) {
@@ -22,9 +22,9 @@
 //    }
 //
 //    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
-//}
+// }
 //
-//struct AdmobBannerView: View {
+// struct AdmobBannerView: View {
 //    let adUnitID: String
 //    var body: some View {
 //        HStack {
@@ -34,11 +34,11 @@
 //            Spacer()
 //        }
 //    }
-//}
+// }
 //
-//struct BannerView_Previews: PreviewProvider {
+// struct BannerView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        // TestUnitId
 //        AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
 //    }
-//}
+// }

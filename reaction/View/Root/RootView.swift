@@ -1,17 +1,14 @@
-//import SwiftUI
+// import SwiftUI
 //
-//struct RootView: View {
+// struct RootView: View {
 //    var body: some View {
 //        MainView()
 //    }
-//}
+// }
 //
-//#Preview {
+// #Preview {
 //    RootView()
-//}
-
-
-
+// }
 
 import SwiftUI
 

@@ -1,7 +1,7 @@
 import SwiftUI
-import Firebase
-import FirebaseMessaging
-import GoogleMobileAds
+//import Firebase
+// import FirebaseMessaging
+// import GoogleMobileAds
 import UserNotifications
 
 @main

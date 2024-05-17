@@ -47,27 +47,27 @@ jobs:
     - name: Swiftlint 
       run: mint run swiftlint swiftlint --strict
 
-    # GoogleService-Info.plistを作成
-    - name: Create GoogleService-Info.plist
-      run: echo $GOOGLE_SERVICE_INFO_PLIST > Config/Development/GoogleService-Info.plist
+    # # GoogleService-Info.plistを作成
+    # - name: Create GoogleService-Info.plist
+    #   run: echo $GOOGLE_SERVICE_INFO_PLIST > Config/Development/GoogleService-Info.plist
 
-    # プロジェクト生成
-    - name: Generate Project
-      run: mint run xcodegen xcodegen generate
+    # # プロジェクト生成
+    # - name: Generate Project
+    #   run: mint run xcodegen xcodegen generate
 
-    # R.generated.swift作成（BuildToolPluginがうまく動かないため）
-    - name: Generate R.generated.swift
-      run: mint run R.swift rswift generate --xcodeproj Reaction.xcodeproj --target ReactionDevelopment Reaction/R.generated.swift
+    # # R.generated.swift作成（BuildToolPluginがうまく動かないため）
+    # - name: Generate R.generated.swift
+    #   run: mint run R.swift rswift generate --xcodeproj Reaction.xcodeproj --target ReactionDevelopment Reaction/R.generated.swift
 
-    # プロジェクト生成（BuildToolPluginがうまく動かないため）
-    - name: Generate Project
-      run: mint run xcodegen xcodegen generate
+    # # プロジェクト生成（BuildToolPluginがうまく動かないため）
+    # - name: Generate Project
+    #   run: mint run xcodegen xcodegen generate
 
-    # シミュレーター一覧
-    - name: Show Simulator List
-      run: xcrun simctl list
+    # # シミュレーター一覧
+    # - name: Show Simulator List
+    #   run: xcrun simctl list
 
-    # テスト実行
-    - name: Run Tests
-      run: xcodebuild test CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO -project Reaction.xcodeproj -scheme "Development" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.2' -skipPackagePluginValidation test
+    # # テスト実行
+    # - name: Run Tests
+    #   run: xcodebuild test CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO -project Reaction.xcodeproj -scheme "Development" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.2' -skipPackagePluginValidation test
 

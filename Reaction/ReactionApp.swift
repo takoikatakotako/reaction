@@ -10,7 +10,7 @@ struct reactionApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
+            RootView(viewState: RootViewState())
         }
     }
 }

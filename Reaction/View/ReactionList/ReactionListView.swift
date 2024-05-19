@@ -1,16 +1,10 @@
 import SwiftUI
-import Combine
-// import FirebaseMessaging
 
 struct ReactionListView: View {
     @StateObject var viewState: ReactionListViewState
-//
-//    init(showingThmbnail: Bool, selectJapanese: Bool) {
-//        _viewState = StateObject(wrappedValue: ReactionListViewState(showingThmbnail: showingThmbnail, selectJapanese: selectJapanese))
-//    }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 ScrollView {
                     LazyVStack {
@@ -43,23 +37,9 @@ struct ReactionListView: View {
                         .background(Color(.appMainText).opacity(0.5))
                         .cornerRadius(24)
                 }
-
-//                VStack {
-//                    Spacer()
-//                    AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
-//                }
             }
             .onAppear {
                 viewState.onAppear()
-
-//                Messaging.messaging().token { token, error in
-//                  if let error = error {
-//                    print("Error fetching FCM registration token: \(error)")
-//                  } else if let token = token {
-//                    print("FCM registration token: \(token)")
-//                  }
-//                }
-
             }
             .sheet(item: $viewState.sheet) { (item: ReactionListViewSheet) in
                 switch item {

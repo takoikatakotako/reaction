@@ -1,7 +1,5 @@
 import SwiftUI
 import Combine
-// import AdSupport
-// import AppTrackingTransparency
 
 class ReactionListViewState: ObservableObject {
     @Published var searchText: String = ""
@@ -36,32 +34,16 @@ class ReactionListViewState: ObservableObject {
     }
 
     func onAppear() {
-        setting()
+        selectJapanese = userDefaultsRepository.selectedJapanese
+        showingThmbnail = userDefaultsRepository.showThmbnail
         if reactionMechanisms.isEmpty {
             fetchMechanisms()
         }
-        // requestTrackingAuthorizationStatus()
     }
 
     func clearSearchText() {
         searchText = ""
     }
-
-    private func setting() {
-        selectJapanese = userDefaultsRepository.selectedJapanese
-        showingThmbnail = userDefaultsRepository.showThmbnail
-    }
-
-//    private func requestTrackingAuthorizationStatus() {
-//        switch ATTrackingManager.trackingAuthorizationStatus {
-//        case .authorized: break
-//        case .denied: break
-//        case .restricted: break
-//        case .notDetermined:
-//            showTrackingAuthorization()
-//        @unknown default: break
-//        }
-//    }
 
     private func fetchMechanisms() {
         reactionRepository
@@ -81,8 +63,4 @@ class ReactionListViewState: ObservableObject {
             })
             .store(in: &self.subscriptions)
     }
-
-//    private func showTrackingAuthorization() {
-//        ATTrackingManager.requestTrackingAuthorization { _ in }
-//    }
 }

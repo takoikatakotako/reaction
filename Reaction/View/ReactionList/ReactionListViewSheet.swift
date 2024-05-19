@@ -5,5 +5,4 @@ enum ReactionListViewSheet: Identifiable {
         hashValue
     }
     case developer
-    case config
 }

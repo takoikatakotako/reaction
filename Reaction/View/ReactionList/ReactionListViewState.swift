@@ -47,10 +47,6 @@ class ReactionListViewState: ObservableObject {
         searchText = ""
     }
 
-    func showSetting() {
-        self.sheet = .config
-    }
-
     private func setting() {
         selectJapanese = userDefaultsRepository.selectedJapanese
         showingThmbnail = userDefaultsRepository.showThmbnail

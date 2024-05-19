@@ -65,8 +65,6 @@ struct ReactionListView: View {
                 switch item {
                 case .developer:
                     DeveloperView()
-                case .config:
-                    ReactionListConfigView(showingThmbnail: $viewState.showingThmbnail, selectJapanese: $viewState.selectJapanese)
                 }
             }
             .navigationTitle("List")

@@ -3,15 +3,7 @@ import Combine
 // import AdSupport
 // import AppTrackingTransparency
 
-enum ReactionListViewSheet: Identifiable {
-    var id: Int {
-        hashValue
-    }
-    case developer
-    case config
-}
-
-class ReactionListViewModel: ObservableObject {
+class ReactionListViewState: ObservableObject {
     @Published var searchText: String = ""
     @Published var showingThmbnail: Bool
     @Published var selectJapanese: Bool

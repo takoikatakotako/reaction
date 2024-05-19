@@ -3,6 +3,9 @@ import SwiftUI
 struct ConfigView: View {
     @State var langage: String = ""
     @State var thmbnail: Bool?
+    
+    @StateObject var viewState: ConfigViewState
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -67,8 +70,7 @@ struct ConfigView: View {
     }
 }
 
-struct ConfigView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConfigView()
-    }
+
+#Preview {
+    ConfigView(viewState: ConfigViewState())
 }

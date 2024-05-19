@@ -3,11 +3,11 @@ import Combine
 // import FirebaseMessaging
 
 struct ReactionListView: View {
-    @StateObject var viewModel: ReactionListViewModel
-
-    init(showingThmbnail: Bool, selectJapanese: Bool) {
-        _viewModel = StateObject(wrappedValue: ReactionListViewModel(showingThmbnail: showingThmbnail, selectJapanese: selectJapanese))
-    }
+    @StateObject var viewState: ReactionListViewState
+//
+//    init(showingThmbnail: Bool, selectJapanese: Bool) {
+//        _viewState = StateObject(wrappedValue: ReactionListViewState(showingThmbnail: showingThmbnail, selectJapanese: selectJapanese))
+//    }
 
     var body: some View {
         NavigationView {
@@ -15,12 +15,12 @@ struct ReactionListView: View {
                 ScrollView {
                     LazyVStack {
                         ZStack(alignment: .trailing) {
-                            TextField("Type your search", text: $viewModel.searchText)
+                            TextField("Type your search", text: $viewState.searchText)
                                 .padding(8)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                            if !viewModel.searchText.isEmpty {
+                            if !viewState.searchText.isEmpty {
                                 Button(action: {
-                                    viewModel.clearSearchText()
+                                    viewState.clearSearchText()
                                 }) {
                                     Image(systemName: "delete.left")
                                         .foregroundColor(Color(UIColor.opaqueSeparator))
@@ -28,14 +28,14 @@ struct ReactionListView: View {
                                 .padding(.trailing, 12)
                             }
                         }
-                        ForEach(viewModel.showingReactions) { (reactionMechanism: ReactionMechanism) in
-                            ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewModel.showingThmbnail, selectJapanese: $viewModel.selectJapanese)
+                        ForEach(viewState.showingReactions) { (reactionMechanism: ReactionMechanism) in
+                            ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewState.showingThmbnail, selectJapanese: $viewState.selectJapanese)
                         }
                     }
                     .padding(.bottom, 62)
                 }
 
-                if viewModel.isFetching {
+                if viewState.isFetching {
                     ProgressView()
                         .scaleEffect(1.5, anchor: .center)
                         .progressViewStyle(CircularProgressViewStyle(tint: Color.white))
@@ -50,7 +50,7 @@ struct ReactionListView: View {
 //                }
             }
             .onAppear {
-                viewModel.onAppear()
+                viewState.onAppear()
 
 //                Messaging.messaging().token { token, error in
 //                  if let error = error {
@@ -61,19 +61,19 @@ struct ReactionListView: View {
 //                }
 
             }
-            .sheet(item: $viewModel.sheet) { (item: ReactionListViewSheet) in
+            .sheet(item: $viewState.sheet) { (item: ReactionListViewSheet) in
                 switch item {
                 case .developer:
                     DeveloperView()
                 case .config:
-                    ReactionListConfigView(showingThmbnail: $viewModel.showingThmbnail, selectJapanese: $viewModel.selectJapanese)
+                    ReactionListConfigView(showingThmbnail: $viewState.showingThmbnail, selectJapanese: $viewState.selectJapanese)
                 }
             }
             .navigationTitle("List")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 leading: Button(action: {
-                    viewModel.sheet = .developer
+                    viewState.sheet = .developer
                 }, label: {
                     Text("Info")
                 })
@@ -83,8 +83,6 @@ struct ReactionListView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReactionListView(showingThmbnail: true, selectJapanese: false)
-    }
+#Preview {
+    ReactionListView(viewState: ReactionListViewState(showingThmbnail: true, selectJapanese: false))
 }

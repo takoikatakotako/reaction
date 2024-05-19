@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SearchView: View {
+    @StateObject var viewState: SearchViewState
+    
     @State private var favoriteColor = 0
 
     @State private var firstCategories: [FirstCategory] = [
@@ -282,8 +284,6 @@ struct SearchView: View {
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
-    }
+#Preview {
+    SearchView(viewState: SearchViewState())
 }

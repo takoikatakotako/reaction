@@ -23,7 +23,7 @@ struct SearchResultView: View {
                     .scaleEffect(1.5, anchor: .center)
                     .progressViewStyle(CircularProgressViewStyle(tint: Color.white))
                     .padding(36)
-                    .background(Color("mainTextColor").opacity(0.5))
+                    .background(Color(.appMainText).opacity(0.5))
                     .cornerRadius(24)
             }
 

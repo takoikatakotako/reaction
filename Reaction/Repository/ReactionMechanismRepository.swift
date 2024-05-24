@@ -10,4 +10,17 @@ class ReactionMechanismRepository {
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
+    
+    func fetchMechanisms() async throws -> [ReactionMechanism]  {
+        
+        URLCache.shared.removeAllCachedResponses()
+
+        
+        let url = URL(string: "https://chemist.swiswiswift.com/resource/reactions.json")!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        print(String(data: data, encoding: .utf8)!)
+        
+        return try JSONDecoder().decode([ReactionMechanism].self, from: data)
+    }
 }

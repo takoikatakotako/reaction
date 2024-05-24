@@ -7,32 +7,31 @@ struct ConfigView: View {
     @StateObject var viewState: ConfigViewState
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                NavigationLink(destination: ConfigLangageView()) {
-                    HStack {
-                        Text("Language")
-                            .padding(8)
-                        Spacer()
-                        Text(langage)
-                            .padding(.trailing, 8)
-                    }
-                    .frame(height: 44)
-                }
-                Divider()
-                NavigationLink(destination: ConfigThmbnailView()) {
-                    HStack {
-                        Text("Thmbnail")
-                            .padding(8)
-                        Spacer()
-                        if let thmbnail = thmbnail {
-                            Text(thmbnail ? "Show" : "Hidden")
-                                .padding(.trailing, 8)
+        NavigationStack {
+            List {
+                
+                
+                Section("App Setting") {
+                    NavigationLink(destination: ConfigLangageView()) {
+                        HStack {
+                            Text("Language")
+                            Spacer()
+                            Text(langage)
                         }
                     }
-                    .frame(height: 44)
+                    
+                    NavigationLink(destination: ConfigThmbnailView()) {
+                        HStack {
+                            Text("Thmbnail")
+                            Spacer()
+                            if let thmbnail = thmbnail {
+                                Text(thmbnail ? "Show" : "Hidden")
+                            }
+                        }
+                    }
                 }
-                Divider()
+                
+                
                 Button(action: {
                     if let url = URL(string: GITHUB_REPOSITORY_URL) {
                         UIApplication.shared.open(url)
@@ -45,10 +44,48 @@ struct ConfigView: View {
                         Image(systemName: "square.and.arrow.up")
                             .padding(.trailing, 8)
                     }
-                    .frame(height: 44)
                 })
-                Divider()
-                Spacer()
+                
+                
+                Section("開発者情報") {
+                    Button {
+                        
+                    } label: {
+                        Text("公式Discord")
+                            .foregroundStyle(Color(.appMainText))
+                    }
+
+                    Button {
+                        
+                    } label: {
+                        Text("開発者のXアカウント")
+                            .foregroundStyle(Color(.appMainText))
+                    }
+                }
+                
+                Section("アプリケーション情報") {
+                    HStack {
+                        Text("バージョン情報")
+                        Spacer()
+                        Text("1.0.0(3)")
+                    }
+                    NavigationLink {
+                        // LicenseListView()
+                        Text("XXX")
+                    } label: {
+                        Text("ライセンス")
+                    }
+                }
+                
+                Section("キャッシュ削除") {
+                    NavigationLink {
+                        // LicenseListView()
+                        Text("XXX")
+                    } label: {
+                        Text("ライセンス")
+                    }
+                }
+                
             }
             .onAppear {
                 let userDefaultRepository = UserDefaultRepository()
@@ -64,6 +101,7 @@ struct ConfigView: View {
                     thmbnail = false
                 }
             }
+            .listStyle(.grouped)
             .navigationTitle("Config")
             .navigationBarTitleDisplayMode(.inline)
         }

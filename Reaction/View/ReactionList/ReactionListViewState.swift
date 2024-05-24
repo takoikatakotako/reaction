@@ -23,7 +23,10 @@ class ReactionListViewState: ObservableObject {
             return reactionMechanisms
         } else {
             return reactionMechanisms.filter { reactionMechanisms -> Bool in
+                
+                            
                 for suggestion in reactionMechanisms.suggestions {
+                    
                     if suggestion.uppercased().contains(searchText.uppercased()) {
                         return true
                     }
@@ -36,31 +39,25 @@ class ReactionListViewState: ObservableObject {
     func onAppear() {
         selectJapanese = userDefaultsRepository.selectedJapanese
         showingThmbnail = userDefaultsRepository.showThmbnail
-        if reactionMechanisms.isEmpty {
-            fetchMechanisms()
+        guard reactionMechanisms.isEmpty else {
+            return
+        }
+        Task { @MainActor in
+            do {
+                let reactionMechanisms = try await reactionRepository.fetchMechanisms()
+                self.reactionMechanisms = reactionMechanisms
+                
+                print(self.reactionMechanisms.count)
+                
+                
+                self.isFetching = false
+            } catch {
+                self.isFetching = false
+            }
         }
     }
 
     func clearSearchText() {
         searchText = ""
-    }
-
-    private func fetchMechanisms() {
-        reactionRepository
-            .fetchMechanisms()
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    self.isFetching = false
-                    break
-                case let .failure(error):
-                    self.isFetching = false
-                    print(error.localizedDescription)
-                    break
-                }
-            }, receiveValue: { reactionMechanisms in
-                self.reactionMechanisms = reactionMechanisms
-            })
-            .store(in: &self.subscriptions)
     }
 }

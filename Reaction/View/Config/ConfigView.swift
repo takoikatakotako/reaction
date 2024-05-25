@@ -78,12 +78,13 @@ struct ConfigView: View {
                 }
                 
                 Section("キャッシュ削除") {
-                    NavigationLink {
-                        // LicenseListView()
-                        Text("XXX")
+                    Button {
+                        URLCache.shared.removeAllCachedResponses()
+
                     } label: {
-                        Text("ライセンス")
+                        Text("キャッシュ削除")
                     }
+
                 }
                 
             }

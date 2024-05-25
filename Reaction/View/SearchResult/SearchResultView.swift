@@ -26,11 +26,6 @@ struct SearchResultView: View {
                     .background(Color(.appMainText).opacity(0.5))
                     .cornerRadius(24)
             }
-
-//            VStack {
-//                Spacer()
-//                AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
-//            }
         }
         .onAppear {
             viewModel.onAppear()

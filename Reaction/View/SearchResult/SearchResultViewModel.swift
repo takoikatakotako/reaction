@@ -7,12 +7,11 @@ class SearchResultViewModel: ObservableObject {
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
     private let reactionRepository = ReactionMechanismRepository()
-    private var subscriptions = Set<AnyCancellable>()
     private let userDefaultsRepository = UserDefaultRepository()
     private let searchResultType: SearchTargetType
     private let withoutCheck: Bool
     private let firstCategories: [FirstCategory]
-
+    
     var navigationTitle: String {
         switch searchResultType {
         case .reactant:
@@ -21,39 +20,23 @@ class SearchResultViewModel: ObservableObject {
             return "Search Product"
         }
     }
-
+    
     init(searchResultType: SearchTargetType, withoutCheck: Bool, firstCategories: [FirstCategory]) {
         self.searchResultType = searchResultType
         self.withoutCheck = withoutCheck
         self.firstCategories = firstCategories
     }
-
+    
     func onAppear() {
-        setting()
-        if reactionMechanisms.isEmpty {
-            fetchMechanisms()
-        }
-    }
-
-    private func setting() {
         selectJapanese = userDefaultsRepository.selectedJapanese
         showingThmbnail = userDefaultsRepository.showThmbnail
-    }
-
-    private func fetchMechanisms() {
-        reactionRepository
-            .fetchMechanisms()
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    self.isFetching = false
-                    break
-                case let .failure(error):
-                    self.isFetching = false
-                    print(error.localizedDescription)
-                    break
-                }
-            }, receiveValue: { reactionMechanisms in
+        
+        guard reactionMechanisms.isEmpty else {
+            return
+        }
+        Task { @MainActor in
+            do {
+                let reactionMechanisms = try await reactionRepository.fetchMechanisms()
                 // 検索結果を取得
                 if self.withoutCheck {
                     // チェックしたもの以外を検索
@@ -62,10 +45,13 @@ class SearchResultViewModel: ObservableObject {
                     // チェックしたものを検索
                     self.reactionMechanisms = self.searchReactionsWithCheck(originalReactionMechanism: reactionMechanisms)
                 }
-            })
-            .store(in: &self.subscriptions)
+                self.isFetching = false
+            } catch {
+                self.isFetching = false
+            }
+        }
     }
-
+    
     private func getTags() -> [String] {
         var tags: [String] = []
         for firstCategory in firstCategories {
@@ -85,7 +71,7 @@ class SearchResultViewModel: ObservableObject {
         }
         return tags
     }
-
+    
     // 反応機構検索。チェックしたものを検索
     private func searchReactionsWithCheck(originalReactionMechanism: [ReactionMechanism]) -> [ReactionMechanism] {
         var filterdReactionMechanisms: Set<ReactionMechanism> = []
@@ -107,7 +93,7 @@ class SearchResultViewModel: ObservableObject {
         }
         return sorted(Array(filterdReactionMechanisms))
     }
-
+    
     // 反応機構検索。チェックしたものを除外
     private func searchReactionsWithoutCheck(originalReactionMechanism: [ReactionMechanism]) -> [ReactionMechanism] {
         var filterdReactionMechanisms: [ReactionMechanism] = originalReactionMechanism
@@ -121,7 +107,7 @@ class SearchResultViewModel: ObservableObject {
         }
         return sorted(filterdReactionMechanisms)
     }
-
+    
     private func sorted(_ originalReactionMechanism: [ReactionMechanism]) -> [ReactionMechanism] {
         return originalReactionMechanism.sorted(by: { lhs, rhs in
             lhs.directoryName < rhs.directoryName

@@ -1,22 +1,18 @@
 import SwiftUI
+import LicenseList
 
 struct ConfigView: View {
-    @State var langage: String = ""
-    @State var thmbnail: Bool?
-    
     @StateObject var viewState: ConfigViewState
     
     var body: some View {
         NavigationStack {
             List {
-                
-                
                 Section("App Setting") {
                     NavigationLink(destination: ConfigLangageView()) {
                         HStack {
                             Text("Language")
                             Spacer()
-                            Text(langage)
+                            Text(viewState.langage)
                         }
                     }
                     
@@ -24,84 +20,57 @@ struct ConfigView: View {
                         HStack {
                             Text("Thmbnail")
                             Spacer()
-                            if let thmbnail = thmbnail {
+                            if let thmbnail = viewState.thmbnail {
                                 Text(thmbnail ? "Show" : "Hidden")
                             }
                         }
                     }
                 }
-                
-                
-                Button(action: {
-                    if let url = URL(string: GITHUB_REPOSITORY_URL) {
-                        UIApplication.shared.open(url)
-                    }
-                }, label: {
-                    HStack {
-                        Text("GitHub")
-                            .padding(8)
-                        Spacer()
-                        Image(systemName: "square.and.arrow.up")
-                            .padding(.trailing, 8)
-                    }
-                })
-                
-                
-                Section("開発者情報") {
-                    Button {
-                        
-                    } label: {
-                        Text("公式Discord")
-                            .foregroundStyle(Color(.appMainText))
-                    }
 
-                    Button {
-                        
-                    } label: {
-                        Text("開発者のXアカウント")
-                            .foregroundStyle(Color(.appMainText))
-                    }
+                Section("Developer Info") {
+                    Button(action: {
+                        if let url = URL(string: GITHUB_REPOSITORY_URL) {
+                            UIApplication.shared.open(url)
+                        }
+                    }, label: {
+                        HStack {
+                            Text("GitHub")
+                            Spacer()
+                            Image(systemName: "square.and.arrow.up")
+                                .padding(.trailing, 8)
+                        }
+                    })
                 }
                 
-                Section("アプリケーション情報") {
+                Section("App Info") {
                     HStack {
-                        Text("バージョン情報")
+                        Text("Version")
                         Spacer()
-                        Text("1.0.0(3)")
+                        Text(viewState.appVersion)
                     }
                     NavigationLink {
-                        // LicenseListView()
-                        Text("XXX")
+                        LicenseListView()
                     } label: {
-                        Text("ライセンス")
+                        Text("License")
                     }
                 }
                 
-                Section("キャッシュ削除") {
+                Section("Reset") {
                     Button {
-                        URLCache.shared.removeAllCachedResponses()
-
+                        viewState.reset()
                     } label: {
-                        Text("キャッシュ削除")
+                        Text("Remove Cache")
                     }
-
                 }
-                
             }
             .onAppear {
-                let userDefaultRepository = UserDefaultRepository()
-                if userDefaultRepository.selectedJapanese {
-                    langage = "Japanese"
-                } else {
-                    langage = "English"
-                }
-
-                if userDefaultRepository.showThmbnail {
-                    thmbnail = true
-                } else {
-                    thmbnail = false
-                }
+                viewState.onAppear()
             }
+            .alert("", isPresented: $viewState.showingAlert, actions: {
+                
+            }, message: {
+                Text("Cache Removed!")
+            })
             .listStyle(.grouped)
             .navigationTitle("Config")
             .navigationBarTitleDisplayMode(.inline)

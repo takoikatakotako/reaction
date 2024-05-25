@@ -23,10 +23,7 @@ class ReactionListViewState: ObservableObject {
             return reactionMechanisms
         } else {
             return reactionMechanisms.filter { reactionMechanisms -> Bool in
-                
-                            
                 for suggestion in reactionMechanisms.suggestions {
-                    
                     if suggestion.uppercased().contains(searchText.uppercased()) {
                         return true
                     }
@@ -46,10 +43,6 @@ class ReactionListViewState: ObservableObject {
             do {
                 let reactionMechanisms = try await reactionRepository.fetchMechanisms()
                 self.reactionMechanisms = reactionMechanisms
-                
-                print(self.reactionMechanisms.count)
-                
-                
                 self.isFetching = false
             } catch {
                 self.isFetching = false

@@ -1,6 +1,6 @@
 import SwiftUI
 
-class ConfigViewState: ObservableObject {
+class SettingViewState: ObservableObject {
     @Published var langage: String = ""
     @Published var thmbnail: Bool?
     @Published var showingAlert = false

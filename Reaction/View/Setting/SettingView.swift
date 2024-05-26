@@ -1,14 +1,14 @@
 import SwiftUI
 import LicenseList
 
-struct ConfigView: View {
-    @StateObject var viewState: ConfigViewState
+struct SettingView: View {
+    @StateObject var viewState: SettingViewState
 
     var body: some View {
         NavigationStack {
             List {
                 Section("App Setting") {
-                    NavigationLink(destination: ConfigLangageView()) {
+                    NavigationLink(destination: SettingLangageView()) {
                         HStack {
                             Text("Language")
                             Spacer()
@@ -16,7 +16,7 @@ struct ConfigView: View {
                         }
                     }
 
-                    NavigationLink(destination: ConfigThmbnailView()) {
+                    NavigationLink(destination: SettingThmbnailView()) {
                         HStack {
                             Text("Thmbnail")
                             Spacer()
@@ -79,5 +79,5 @@ struct ConfigView: View {
 }
 
 #Preview {
-    ConfigView(viewState: ConfigViewState())
+    SettingView(viewState: SettingViewState())
 }

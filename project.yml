@@ -30,26 +30,20 @@ settings:
   base:
     CODE_SIGN_STYLE: Automatic
     DEVELOPMENT_TEAM: 5RH346BQ66
-    MARKETING_VERSION: 4.0.0
+    MARKETING_VERSION: 4.1.0
     CURRENT_PROJECT_VERSION: 1
     TARGETED_DEVICE_FAMILY: 1
     ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: YES
 packages:
   Rswift:
     url: https://github.com/mac-cain13/R.swift
-    from: 7.4.0
+    from: 7.5.0
   LicenseList:
     url: https://github.com/cybozu/LicenseList
-    from: 0.4.0
+    from: 0.7.0
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk
-    from: 10.24.0
-  Markdown:
-    url: https://github.com/apple/swift-markdown
-    from: 0.3.0
-  # SwiftLint:
-  #   url: https://github.com/realm/SwiftLint
-  #   from: 0.54.0
+    from: 10.26.0
 
 targets:
   ReactionDevelop:
@@ -57,11 +51,11 @@ targets:
     platform: iOS
     sources:
       - path: Reaction
-      # - path: Config/Develop
+      - path: Config/Development
     settings:
       base:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Develop
-        # CODE_SIGN_ENTITLEMENTS: Config/Develop/ReactionDevelop.entitlements
+        CODE_SIGN_ENTITLEMENTS: Config/Development/ReactionDevelopment.entitlements
         DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
         PRODUCT_BUNDLE_IDENTIFIER: com.glico.compass.development
     info:
@@ -83,20 +77,20 @@ targets:
         product: RswiftLibrary
       - package: LicenseList
         product: LicenseList
-      # - package: Firebase
-      #   product: FirebaseAnalytics
-      # - package: Firebase
-      #   product: FirebaseAuth
-      # - package: Firebase
-      #   product: FirebaseCrashlytics
-      # - package: Firebase
-      #   product: FirebaseStorage
-      # - package: Firebase
-      #   product: FirebaseMessaging
+      - package: Firebase
+        product: FirebaseAnalytics
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseCrashlytics
+      - package: Firebase
+        product: FirebaseStorage
+      - package: Firebase
+        product: FirebaseMessaging
       # - package: Firebase
       #   product: FirebaseFirestore
-      - package: Markdown
-        product: Markdown
+      # - package: Markdown
+      #   product: Markdown
     buildToolPlugins:
       - plugin: RswiftGenerateInternalResources
         package: Rswift

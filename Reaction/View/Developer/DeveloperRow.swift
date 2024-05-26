@@ -14,10 +14,10 @@ struct DeveloperRow: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(role)
                     .font(Font.system(size: 16).bold())
-                    .foregroundColor(Color("mainTextColor"))
+                    .foregroundColor(Color(.appMainText))
                 Text(name)
                     .font(Font.system(size: 20).bold())
-                    .foregroundColor(Color("mainTextColor"))
+                    .foregroundColor(Color(.appMainText))
             }
             Spacer()
 

@@ -1,37 +1,24 @@
-// import SwiftUI
-//
-// struct RootView: View {
-//    var body: some View {
-//        MainView()
-//    }
-// }
-//
-// #Preview {
-//    RootView()
-// }
-
 import SwiftUI
 
 struct RootView: View {
-    let showThmbnail: Bool
-    let selectedJapanese: Bool
-    init() {
-        showThmbnail = UserDefaultRepository().showThmbnail
-        selectedJapanese = UserDefaultRepository().selectedJapanese
-    }
+    @StateObject var viewState: RootViewState
+
     var body: some View {
         TabView {
-            ReactionListView(showingThmbnail: showThmbnail, selectJapanese: selectedJapanese)
-                .tabItem {
-                    Image(systemName: "list.dash")
-                    Text("List")
-                }
-            SearchView()
+            ReactionListView(viewState: ReactionListViewState(
+                showingThmbnail: viewState.showThmbnail,
+                selectJapanese: viewState.selectedJapanese)
+            )
+            .tabItem {
+                Image(systemName: "list.dash")
+                Text("List")
+            }
+            SearchView(viewState: SearchViewState())
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
-            ConfigView()
+            ConfigView(viewState: ConfigViewState())
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text("Config")
@@ -40,8 +27,6 @@ struct RootView: View {
     }
 }
 
-struct RootView_Previews: PreviewProvider {
-    static var previews: some View {
-        RootView()
-    }
+#Preview {
+    RootView(viewState: RootViewState())
 }

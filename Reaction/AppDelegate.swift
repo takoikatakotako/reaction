@@ -9,38 +9,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Use Firebase library to configure APIs.
         FirebaseApp.configure()
-//        Messaging.messaging().delegate = self
+        Messaging.messaging().delegate = self
 
-        // For iOS 10 display notification (sent via APNS)
-//        UNUserNotificationCenter.current().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { _, _ in }
+        )
 
-//        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-//        UNUserNotificationCenter.current().requestAuthorization(
-//            options: authOptions,
-//            completionHandler: { _, _ in }
-//        )
-//
-//        application.registerForRemoteNotifications()
-
-        // Admob周りの処理
-//        guard let admobUnitId = Bundle.main.infoDictionary?["ADMOB_UNIT_ID"] as? String else {
-//            fatalError("AdmobのUnitIdが見つかりません")
-//        }
-//        ADMOB_UNIT_ID = admobUnitId
-
-//        // Initialize the Google Mobile Ads SDK.
-//        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        application.registerForRemoteNotifications()
 
         UserDefaultRepository().initilize()
 
-//        Messaging.messaging().token { token, error in
-//            if let error = error {
-//                print("Error fetching FCM registration token: \(error)")
-//            } else if let token = token {
-//                print("FCM registration token: \(token)")
-//                // self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
-//            }
-//        }
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("Error fetching FCM registration token: \(error)")
+            } else if let token = token {
+                print("FCM registration token: \(token)")
+                // self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
+            }
+        }
 
         return true
     }
@@ -91,37 +79,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
         print(token)
         //　メソッド実装入れ替えをしない場合、APNs発行のデバイストークンとFCM発行デバイストークンを明示的にマッピングする必要があります。
-//        Messaging.messaging().apnsToken = deviceToken
+        Messaging.messaging().apnsToken = deviceToken
     }
 }
 
-// extension AppDelegate: UNUserNotificationCenterDelegate {
-//    func userNotificationCenter(_ center: UNUserNotificationCenter,
-//                                willPresent notification: UNNotification,
-//                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//        let userInfo = notification.request.content.userInfo
-//
-//        if let messageID = userInfo["gcm.message_id"] {
-//            print("Message ID: \(messageID)")
-//        }
-//
-//        print(userInfo)
-//
-//        completionHandler([])
-//    }
-//
-//    func userNotificationCenter(_ center: UNUserNotificationCenter,
-//                                didReceive response: UNNotificationResponse,
-//                                withCompletionHandler completionHandler: @escaping () -> Void) {
-//        let userInfo = response.notification.request.content.userInfo
-//        if let messageID = userInfo["gcm.message_id"] {
-//            print("Message ID: \(messageID)")
-//        }
-//
-//        print(userInfo)
-//
-//        completionHandler()
-//    }
-// }
+ extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
 
-// extension AppDelegate: MessagingDelegate {}
+        if let messageID = userInfo["gcm.message_id"] {
+            print("Message ID: \(messageID)")
+        }
+
+        print(userInfo)
+
+        completionHandler([])
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        if let messageID = userInfo["gcm.message_id"] {
+            print("Message ID: \(messageID)")
+        }
+
+        print(userInfo)
+
+        completionHandler()
+    }
+ }
+
+ extension AppDelegate: MessagingDelegate {}

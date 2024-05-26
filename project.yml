@@ -54,10 +54,10 @@ targets:
       - path: Config/Development
     settings:
       base:
-        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Develop
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Development
         CODE_SIGN_ENTITLEMENTS: Config/Development/ReactionDevelopment.entitlements
         DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
-        PRODUCT_BUNDLE_IDENTIFIER: com.glico.compass.development
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.junpei.chemi
     info:
       path: Reaction/Info/Info-Develop.plist
       properties:

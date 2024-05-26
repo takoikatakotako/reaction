@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SearchView: View {
     @StateObject var viewState: SearchViewState
-    
+
     @State private var favoriteColor = 0
 
     @State private var firstCategories: [FirstCategory] = [

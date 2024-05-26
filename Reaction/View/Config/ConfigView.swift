@@ -3,7 +3,7 @@ import LicenseList
 
 struct ConfigView: View {
     @StateObject var viewState: ConfigViewState
-    
+
     var body: some View {
         NavigationStack {
             List {
@@ -15,7 +15,7 @@ struct ConfigView: View {
                             Text(viewState.langage)
                         }
                     }
-                    
+
                     NavigationLink(destination: ConfigThmbnailView()) {
                         HStack {
                             Text("Thmbnail")
@@ -41,7 +41,7 @@ struct ConfigView: View {
                         }
                     })
                 }
-                
+
                 Section("App Info") {
                     HStack {
                         Text("Version")
@@ -54,7 +54,7 @@ struct ConfigView: View {
                         Text("License")
                     }
                 }
-                
+
                 Section("Reset") {
                     Button {
                         viewState.reset()
@@ -67,7 +67,7 @@ struct ConfigView: View {
                 viewState.onAppear()
             }
             .alert("", isPresented: $viewState.showingAlert, actions: {
-                
+
             }, message: {
                 Text("Cache Removed!")
             })
@@ -77,7 +77,6 @@ struct ConfigView: View {
         }
     }
 }
-
 
 #Preview {
     ConfigView(viewState: ConfigViewState())

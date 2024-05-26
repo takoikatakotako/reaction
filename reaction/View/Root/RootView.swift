@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject var viewState: RootViewState
-    
+
     var body: some View {
         TabView {
             ReactionListView(viewState: ReactionListViewState(

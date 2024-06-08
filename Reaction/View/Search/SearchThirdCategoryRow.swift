@@ -7,10 +7,10 @@ struct SearchThirdCategoryRow: View {
         VStack(alignment: .leading) {
             HStack {
                 if check {
-                    Image(R.image.searchCheckBox.name)
+                    Image(systemName: "checkmark.square")
                         .padding(.leading, 48)
                 } else {
-                    Image(R.image.searchCheckBoxOutline.name)
+                    Image(systemName: "square")
                         .padding(.leading, 48)
                 }
                 Text(name)

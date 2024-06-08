@@ -1,17 +1,16 @@
 import SwiftUI
 
-struct ConfigThmbnailView: View {
+struct SettingLangageView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         VStack(spacing: 12) {
-            Text("Do you want to display thumbnails?")
+            Text("Which reaction mechanism is displayed in Japanese or English?")
                 .padding(.bottom, 32)
-
             Button(action: {
-                UserDefaultRepository().setShowThmbnail(true)
+                UserDefaultRepository().setSelectedJapanese(false)
                 presentationMode.wrappedValue.dismiss()
             }, label: {
-                Text("Show")
+                Text("English")
                     .foregroundColor(.gray)
                     .padding()
                     .frame(width: 140)
@@ -22,10 +21,10 @@ struct ConfigThmbnailView: View {
             })
 
             Button(action: {
-                UserDefaultRepository().setShowThmbnail(false)
+                UserDefaultRepository().setSelectedJapanese(true)
                 presentationMode.wrappedValue.dismiss()
             }, label: {
-                Text("Hidden")
+                Text("Japanese")
                     .foregroundColor(.gray)
                     .padding()
                     .frame(width: 140)
@@ -38,8 +37,8 @@ struct ConfigThmbnailView: View {
     }
 }
 
-struct ConfigThmbnailView_Previews: PreviewProvider {
+struct ConfigLangageView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigThmbnailView()
+        SettingLangageView()
     }
 }

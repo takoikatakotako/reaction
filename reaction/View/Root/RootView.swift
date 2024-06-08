@@ -18,7 +18,7 @@ struct RootView: View {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
-            ConfigView(viewState: ConfigViewState())
+            SettingView(viewState: SettingViewState())
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text("Config")

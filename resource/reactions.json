@@ -4591,23 +4591,26 @@
       ]
    },
    {
-      "directoryName":"stork-enamine",
+      "directoryName":"stork-enamine-reaction",
       "english":"Stork Enamine Reaction",
       "japanese":"ストークエナミン反応",
-      "thmbnailName":"stork-enamine-general-formula-0.png",
+      "thmbnailName":"stork-enamine-reaction-thumbnail.png",
       "generalFormulas":[
          {
-            "imageName":"stork-enamine-general-formula-0.png"
+            "imageName":"stork-enamine-reaction-general-formula-0.png"
          }
       ],
       "mechanisms":[
          {
-            "imageName":"stork-enamine-mechanism-0.png"
+            "imageName":"stork-enamine-reaction-mechanism-0.png"
          }
       ],
       "examples":[
          {
-            "imageName":"stork-enamine-example-0.png"
+            "imageName":"stork-enamine-reaction-example-0.png"
+         },
+         {
+            "imageName":"stork-enamine-reaction-example-1.png"
          }
       ],
       "supplements":[
@@ -7502,5 +7505,1043 @@
      "youtubeLinks":[
        "https://youtu.be/wHWpTM63vtg"
      ]
-   }
+   },
+{
+    "directoryName": "barbier-reaction",
+    "english": "Barbier Reaction",
+    "japanese": "バルビエール反応",
+    "thmbnailName": "barbier-reaction-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "barbier-reaction-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "barbier-reaction-mechanism.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "barbier-reaction-example1.png"
+        },
+        {
+            "imageName": "barbier-reaction-example2.png"
+        },
+        {
+            "imageName": "barbier-reaction-example3.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "barbier-reaction-supplement.png"
+        },
+        {
+            "imageName": "barbier-reaction-supplement1.png"
+        },
+        {
+            "imageName": "barbier-reaction-supplement2.png"
+        }
+    ],
+    "suggestions": [
+        "Barbier Reaction",
+        "バルビエール反応",
+        "バルビエ反応",
+        "バルビエル反応",
+        "ばるびえーるはんのう",
+        "ばるびえはんのう",
+        "ばるびえるはんのう"
+    ],
+    "tags": [],
+    "reactants": [
+        "Carbonyl-Aldehyde",
+        "Carbonyl-Ketone",
+        "Carbonyl",
+        "Halogene-AlkylHalide",
+        "Halogene"
+    ],
+    "products": [
+        "Alcohol"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/LscocYcsJUY"
+    ]
+},
+{
+    "directoryName": "chan-lam-evans-coupling",
+    "english": "Chan-Lam-Evans Coupling",
+    "japanese": "チャン・ラム・エヴァンスカップリング",
+    "thmbnailName": "chan-lam-evans-coupling-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "chan-lam-evans-coupling-generalformula.png"
+        }
+    ],
+    "mechanisms": [],
+    "examples": [],
+    "supplements": [
+        {
+            "imageName": "chan-lam-evans-coupling-supplement.png"
+        }
+    ],
+    "suggestions": [
+        "Chan-Lam-Evans Coupling",
+        "チャン・ラム・エヴァンスカップリング",
+        "Chan-Lam-Evans Reaction",
+        "チャン・ラム・エヴァンス反応",
+        "チャン・ラム・エバンス反応",
+        "ちゃん・らむ・えばんすはんのう",
+        "ちゃん・らむ・えヴぁんすはんのう",
+        "ちゃんらむえばんす",
+        "ちゃんらむえヴぁんす"
+    ],
+    "tags": [],
+    "reactants": [
+        "Amine",
+        "Alcohol",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "products": [
+        "Amine",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/YplBBkoDwxk"
+    ]
+},
+{
+    "directoryName": "chichibabin-amination",
+    "english": "Chichibabin Amination",
+    "japanese": "チチバビンアミノ化",
+    "thmbnailName": "chichibabin-amination-generalformula.png",
+    "generalFormulas": [
+        {
+            "imageName": "chichibabin-amination-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "chichibabin-amination-mechanism1.png"
+        },
+        {
+            "imageName": "chichibabin-amination-mechanism2.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "chichibabin-amination-example1.png"
+        },
+        {
+            "imageName": "chichibabin-amination-example2.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "chichibabin-amination-supplement.png"
+        }
+    ],
+    "suggestions": [
+        "Chichibabin Amination",
+        "チチバビンアミノ化",
+        "チチバビン反応",
+        "ちちばびんはんのう",
+        "ちちばびんあみのか"
+    ],
+    "tags": [],
+    "reactants": [
+        "Amine",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "products": [
+        "Amine",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/P9s0WuskWI4"
+    ]
+},
+{
+    "directoryName": "ciamician-dennstedt-rearrangement",
+    "english": "Ciamician-Dennstedt Rearrangement",
+    "japanese": "シャミシャン・デンステッド転位",
+    "thmbnailName": "ciamician-dennstedt-rearrangement-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "ciamician-dennstedt-rearrangement-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "ciamician-dennstedt-rearrangement-mechanism.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "ciamician-dennstedt-rearrangement-example.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "ciamician-dennstedt-rearrangement-supplement1.png"
+        },
+        {
+            "imageName": "ciamician-dennstedt-rearrangement-supplement2.png"
+        },
+        {
+            "imageName": "ciamician-dennstedt-rearrangement-supplement3.png"
+        }
+    ],
+    "suggestions": [
+        "Ciamician-Dennstedt Rearrangement",
+        "シャミシャン・デンステッド転位",
+        "シャミシアン・デンステッド転位",
+        "しゃみしゃんでんすてっどてんい",
+        "しゃみしあんでんすてっどてんい"
+    ],
+    "tags": [],
+    "reactants": [
+        "Halogene-AlkylHalide",
+        "Halogene-Other",
+        "Halogene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "products": [
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/kDI1yMpnZGA"
+    ]
+},
+{
+    "directoryName": "combes-quinoline-synthesis",
+    "english": "Combes Quinoline Synthesis",
+    "japanese": "コンベスキノリン合成",
+    "thmbnailName": "combes-quinoline-synthesis-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "combes-quinoline-synthesis-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "combes-quinoline-synthesis-mechanism.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "combes-quinoline-synthesis-example.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "combes-quinoline-synthesis-supplement.png"
+        }
+    ],
+    "suggestions": [
+        "Combes-Quinoline Synthesis",
+        "コンベスキノリン合成",
+        "こんべすきのりんごうせい",
+        "こんべすはんのう",
+        "コンベス反応"
+    ],
+    "tags": [],
+    "reactants": [
+        "Carbonyl-Aldehyde",
+        "Carbonyl-Ketone",
+        "Carbonyl",
+        "Amine",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring"
+    ],
+    "products": [
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/3k0_2u6mi4Y"
+    ]
+},
+{
+    "directoryName": "conrad-limpach-quinoline-synthesis",
+    "english": "Conrad-Limpach Quinoline Synthesis",
+    "japanese": "コンラッド・リンパッハキノリン合成",
+    "thmbnailName": "conrad-limpach-quinoline-synthesis-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "conrad-limpach-quinoline-synthesis-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "conrad-limpach-quinoline-synthesis-mechanism.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "conrad-limpach-quinoline-synthesis-example.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "conrad-limpach-quinoline-synthesis-supplement1.png"
+        },
+        {
+            "imageName": "conrad-limpach-quinoline-synthesis-supplement2.png"
+        },
+        {
+            "imageName": "conrad-limpach-quinoline-synthesis-supplement3.png"
+        }
+    ],
+    "suggestions": [
+        "Conrad-Limpach Quinoline Synthesis",
+        "コンラッド・リンパッハキノリン合成",
+        "コンラードリンパックキノリン合成",
+        "こんらっどりんぱっはきのりんごうせい",
+        "こんらーどりんぱっくきのりんごうせい",
+        "こんらっどりんぱっははんのう",
+        "コンラッド・リンパッハ反応"
+    ],
+    "tags": [],
+    "reactants": [
+        "Carbonyl-Aldehyde",
+        "Carbonyl-Ketone",
+        "Carbonyl-Carboxylic_Acid_Drivative-Ester",
+        "Carbonyl-Carboxylic_Acid_Drivative",
+        "Carbonyl",
+        "Amine",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring"
+    ],
+    "products": [
+        "Alcohol",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/3k0_2u6mi4Y"
+    ]
+},
+{
+    "directoryName": "doering-laflamme-allene-synthesis",
+    "english": "Doering-LaFlamme Allene Synthesis",
+    "japanese": "デーリン・ラフラムアレン合成",
+    "thmbnailName": "doering-laflamme-allene-synthesis-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "doering-laflamme-allene-synthesis-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "doering-laflamme-allene-synthesis-mechanism.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "doering-laflamme-allene-synthesis-example.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "doering-laflamme-allene-synthesis-supplement1.png"
+        },
+        {
+            "imageName": "doering-laflamme-allene-synthesis-supplement2.png"
+        }
+    ],
+    "suggestions": [
+        "Doering-LaFlamme Allene Synthesis",
+        "デーリン・ラフラムアレン合成",
+        "デーリング・ラフラムアレン合成",
+        "でーりんらふらむあれんごうせい",
+        "でーりんぐらふれーむあれんごうせい",
+        "デーリング・ラフレームアレン合成",
+        "デーリンラフラム反応",
+        "デーリングラフラム反応"
+    ],
+    "tags": [],
+    "reactants": [
+        "Halogene-AlkylHalide",
+        "Halogene-Other",
+        "Halogene",
+        "Alkene/Alkyne"
+    ],
+    "products": [
+        "Alkene/Alkyne"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/g3H2d8rQEuQ"
+    ]
+},
+{
+    "directoryName": "vinylcyclopropane-rearrangement",
+    "english": "Vinylcyclopropane Rearrangement",
+    "japanese": "ビニルシクロプロパン転位",
+    "thmbnailName": "vinylcyclopropane-rearrangement-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "vinylcyclopropane-rearrangement-generalformula1.png"
+        },
+        {
+            "imageName": "vinylcyclopropane-rearrangement-generalformula2.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "vinylcyclopropane-rearrangement-mechanism1.png"
+        },
+        {
+            "imageName": "vinylcyclopropane-rearrangement-mechanism2.png"
+        },
+        {
+            "imageName": "vinylcyclopropane-rearrangement-mechanism3.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "vinylcyclopropane-rearrangement-example1.png"
+        },
+        {
+            "imageName": "vinylcyclopropane-rearrangement-example2.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "vinylcyclopropane-rearrangement-supplement1.png"
+        },
+        {
+            "imageName": "vinylcyclopropane-rearrangement-supplement2.png"
+        }
+    ],
+    "suggestions": [
+        "Vinylcyclopropane Rearrangement",
+        "ビニルシクロプロパン転位",
+        "びにるしくろぷろぱんてんい",
+        "シクロヘキセン転位",
+        "しくろへきせんてんい"
+    ],
+    "tags": [],
+    "reactants": [
+        "Alkene/Alkyne"
+    ],
+    "products": [
+        "Alkene/Alkyne"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/33ayvdbTinQ"
+    ]
+},
+{
+    "directoryName": "pinnick-kraus-oxidation",
+    "english": "Pinnick-Kraus Oxidation",
+    "japanese": "ピニック・クラウス酸化",
+    "thmbnailName": "pinnick-kraus-oxidation-generalformula.png",
+    "generalFormulas": [
+        {
+            "imageName": "pinnick-kraus-oxidation-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "pinnick-kraus-oxidation-mechanism.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "pinnick-kraus-oxidation-example1.png"
+        },
+        {
+            "imageName": "pinnick-kraus-oxidation-example2.png"
+        },
+        {
+            "imageName": "pinnick-kraus-oxidation-example3.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "pinnick-kraus-oxidation-supplement1.png"
+        },
+        {
+            "imageName": "pinnick-kraus-oxidation-supplement2.png"
+        }
+    ],
+    "suggestions": [
+        "Pinnick-Kraus Oxidation",
+        "ピニック・クラウス酸化",
+        "ピニック酸化",
+        "ぴにっくくらうすさんか",
+        "くらうすさんか",
+        "ぴにっくさんか",
+        "クラウス酸化"
+    ],
+    "tags": [],
+    "reactants": [
+        "Carbonyl-Aldehyde",
+        "Carbonyl",
+        "Alkene/Alkyne"
+    ],
+    "products": [
+        "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+        "Carbonyl",
+        "Alkene/Alkyne"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/vGcpufaodLE"
+    ]
+},
+{
+    "directoryName": "goldberg-amination",
+    "english": "Goldberg Amination",
+    "japanese": "ゴールドバーグアミノ化",
+    "thmbnailName": "goldberg-amination-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "goldberg-amination-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "goldberg-amination-mechanism.png"
+        }
+    ],
+    "examples": [],
+    "supplements": [
+        {
+            "imageName": "goldberg-amination-supplement.png"
+        }
+    ],
+    "suggestions": [
+        "Goldberg Amination",
+        "ゴールドバーグアミノ化",
+        "ごーるどばーぐ",
+        "ごーるどばーぐはんのう",
+        "ゴールドバーグ反応",
+        "ゴールドベルグ",
+        "ごーるどべるぐ"
+    ],
+    "tags": [],
+    "reactants": [
+        "Carbonyl-Carboxylic_Acid_Drivative-Amide",
+        "Carbonyl-Carboxylic_Acid_Drivative",
+        "Carbonyl",
+        "Halogene-AlkylHalide",
+        "Halogene",
+        "Amine",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "products": [
+        "Carbonyl-Carboxylic_Acid_Drivative-Amide",
+        "Carbonyl-Carboxylic_Acid_Drivative",
+        "Carbonyl",
+        "Amine",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/YplBBkoDwxk"
+    ]
+},
+{
+    "directoryName": "hurtley-reaction",
+    "english": "Hurtley Reaction",
+    "japanese": "ハートレー反応",
+    "thmbnailName": "hurtley-reaction-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "hurtley-reaction-generalformula.png"
+        }
+    ],
+    "mechanisms": [],
+    "examples": [],
+    "supplements": [
+        {
+            "imageName": "hurtley-reaction-supplement.png"
+        }
+    ],
+    "suggestions": [
+        "Hurtley Reaction",
+        "ハートレー反応",
+        "ハートリー反応",
+        "はーとれーはんのう",
+        "はーとりーはんのう"
+    ],
+    "tags": [],
+    "reactants": [
+        "Carbonyl-Aldehyde",
+        "Carbonyl-Ketone",
+        "Carbonyl",
+        "Halogene-AlkylHalide",
+        "Halogene",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "products": [
+        "Carbonyl-Aldehyde",
+        "Carbonyl-Ketone",
+        "Carbonyl",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/YplBBkoDwxk"
+    ]
+},
+{
+    "directoryName": "knorr-quinoline-synthesis",
+    "english": "Knorr Quinoline Synthesis",
+    "japanese": "クノールキノリン合成",
+    "thmbnailName": "knorr-quinoline-synthesis-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "knorr-quinoline-synthesis-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "knorr-quinoline-synthesis-mechanism.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "knorr-quinoline-synthesis-example.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "knorr-quinoline-synthesis-supplement1.png"
+        },
+        {
+            "imageName": "knorr-quinoline-synthesis-supplement2.png"
+        },
+        {
+            "imageName": "knorr-quinoline-synthesis-supplement3.png"
+        }
+    ],
+    "suggestions": [
+        "Knorr Quinoline Synthesis",
+        "クノールキノリン合成",
+        "ノールキノリン合成",
+        "くのーるきのりんごうせい",
+        "くのーるはんのう",
+        "くのーるしゅくごう",
+        "クノール反応",
+        "クノール縮合"
+    ],
+    "tags": [],
+    "reactants": [
+        "Carbonyl-Aldehyde",
+        "Carbonyl-Ketone",
+        "Carbonyl-Carboxylic_Acid_Drivative-Ester",
+        "Carbonyl-Carboxylic_Acid_Drivative",
+        "Carbonyl",
+        "Amine",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "products": [
+        "Alcohol",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/3k0_2u6mi4Y"
+    ]
+},
+{
+    "directoryName": "lindgren-oxidation",
+    "english": "Lindgren Oxidation",
+    "japanese": "リンドグレーン酸化",
+    "thmbnailName": "lindgren-oxidation-generalformula.png",
+    "generalFormulas": [
+        {
+            "imageName": "lindgren-oxidation-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "lindgren-oxidation-mechanism.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "lindgren-oxidation-example.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "lindgren-oxidation-supplement.png"
+        }
+    ],
+    "suggestions": [
+        "Lindgren Oxidation",
+        "リンドグレーン酸化",
+        "りんどぐれーんさんか",
+        "りんどぐれーんはんのう",
+        "リンドグレン",
+        "りんどぐれん"
+    ],
+    "tags": [],
+    "reactants": [
+        "Carbonyl-Aldehyde",
+        "Carbonyl",
+        "Alkene/Alkyne"
+    ],
+    "products": [
+        "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+        "Carbonyl",
+        "Alkene/Alkyne"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/vGcpufaodLE"
+    ]
+},
+{
+    "directoryName": "migita-kosugi-stille-crosscoupling",
+    "english": "Migita-Kosugi-Stille Crosscoupling",
+    "japanese": "右田・小杉・スティルクロスカップリング",
+    "thmbnailName": "migita-kosugi-stille-crosscoupling-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "migita-kosugi-stille-crosscoupling-generalformula1.png"
+        },
+        {
+            "imageName": "migita-kosugi-stille-crosscoupling-generalformula2.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "migita-kosugi-stille-crosscoupling-mechanism1.png"
+        },
+        {
+            "imageName": "migita-kosugi-stille-crosscoupling-mechanism2.png"
+        },
+        {
+            "imageName": "migita-kosugi-stille-crosscoupling-mechanism3.png"
+        },
+        {
+            "imageName": "migita-kosugi-stille-crosscoupling-mechanism4.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "migita-kosugi-stille-crosscoupling-example1.png"
+        },
+        {
+            "imageName": "migita-kosugi-stille-crosscoupling-example2.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "migita-kosugi-stille-crosscoupling-supplement1.png"
+        },
+        {
+            "imageName": "migita-kosugi-stille-crosscoupling-supplement2.png"
+        }
+    ],
+    "suggestions": [
+        "Migita-Kosugi-Stille Crosscoupling",
+        "右田・小杉・スティルクロスカップリング",
+        "みぎた・こすぎ・すてぃるくろすかっぷりんぐ",
+        "ミギタ・コスギ・スティルクロスカップリング",
+        "スティルカップリング",
+        "すてぃるかっぷりんぐ"
+    ],
+    "tags": [],
+    "reactants": [
+        "Halogene-AlkylHalide",
+        "Halogene",
+        "Alkene/Alkyne"
+    ],
+    "products": [
+        "Alkene/Alkyne"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/xfNPigBBovU"
+    ]
+},
+{
+    "directoryName": "rosenmund-von-braun-synthesis",
+    "english": "Rosenmund-von-Braun Synthesis",
+    "japanese": "ローゼンムント・フォン・ブラウン合成",
+    "thmbnailName": "rosenmund-von-braun-synthesis-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "rosenmund-von-braun-synthesis-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "rosenmund-von-braun-synthesis-mechanism1.png"
+        },
+        {
+            "imageName": "rosenmund-von-braun-synthesis-mechanism2.png"
+        }
+    ],
+    "examples": [],
+    "supplements": [
+        {
+            "imageName": "rosenmund-von-braun-synthesis-supplement1.png"
+        },
+        {
+            "imageName": "rosenmund-von-braun-synthesis-supplement2.png"
+        },
+        {
+            "imageName": "rosenmund-von-braun-synthesis-supplement3.png"
+        }
+    ],
+    "suggestions": [
+        "Rosenmund-von-Braun Synthesis",
+        "ローゼンムント・フォン・ブラウン合成",
+        "ろーぜむんと・ふぉん・ぶらうんごうせい",
+        "ろーぜんむんと・ふぉん・ぶらうん",
+        "ローゼンムント・ボン・ブラウン"
+    ],
+    "tags": [],
+    "reactants": [
+        "Halogene-AlkylHalide",
+        "Halogene",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring"
+    ],
+    "products": [
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/4R8vCMIyNj8"
+    ]
+},
+{
+    "directoryName": "stobbe-condensation",
+    "english": "Stobbe Condensation",
+    "japanese": "シュトッベ縮合",
+    "thmbnailName": "stobbe-condensation-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "stobbe-condensation-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "stobbe-condensation-mechanism.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "stobbe-condensation-example1.png"
+        },
+        {
+            "imageName": "stobbe-condensation-example2.png"
+        }
+    ],
+    "supplements": [],
+    "suggestions": [
+        "Stobbe Condensation",
+        "シュトッベ縮合",
+        "しゅとっべしゅくごう",
+        "ストッベ縮合",
+        "すとっべしゅくごう",
+        "シュトッベハンノウ"
+    ],
+    "tags": [],
+    "reactants": [
+        "Carbonyl-Aldehyde",
+        "Carbonyl-Ketone",
+        "Carbonyl-Carboxylic_Acid_Drivative-Ester",
+        "Carbonyl-Carboxylic_Acid_Drivative",
+        "Carbonyl"
+    ],
+    "products": [
+        "Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid",
+        "Carbonyl-Carboxylic_Acid_Drivative-Ester",
+        "Carbonyl-Carboxylic_Acid_Drivative",
+        "Carbonyl",
+        "Alkene/Alkyne"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/YoodKfA6A0A"
+    ]
+},
+{
+    "directoryName": "ullmann-coupling",
+    "english": "Ullmann Coupling",
+    "japanese": "ウルマンカップリング",
+    "thmbnailName": "ullmann-coupling-generalformula.png",
+    "generalFormulas": [
+        {
+            "imageName": "ullmann-coupling-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "ullmann-coupling-mechanism1.png"
+        },
+        {
+            "imageName": "ullmann-coupling-mechanism2.png"
+        },
+        {
+            "imageName": "ullmann-coupling-mechanism3.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "ullmann-coupling-example1.png"
+        },
+        {
+            "imageName": "ullmann-coupling-example2.png"
+        },
+        {
+            "imageName": "ullmann-coupling-example3.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "ullmann-coupling-supplement.png"
+        }
+    ],
+    "suggestions": [
+        "Ullmann Coupling",
+        "ウルマンカップリング",
+        "うるまんかっぷりんぐ",
+        "ウルマン反応",
+        "うるまんはんのう",
+        "うるまんしゅくごう",
+        "ウルマン縮合"
+    ],
+    "tags": [],
+    "reactants": [
+        "Halogene-AlkylHalide",
+        "Halogene",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "products": [
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/YplBBkoDwxk"
+    ]
+},
+{
+    "directoryName": "ullmann-ether-synthesis",
+    "english": "Ullmann Ether Synthesis",
+    "japanese": "ウルマンエーテル合成",
+    "thmbnailName": "ullmann-ether-synthesis-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "ullmann-ether-synthesis-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "ullmann-ether-synthesis-mechanism.png"
+        }
+    ],
+    "examples": [],
+    "supplements": [
+        {
+            "imageName": "ullmann-ether-synthesis-supplement.png"
+        }
+    ],
+    "suggestions": [
+        "Ullmann Ether Synthesis",
+        "ウルマンエーテル合成",
+        "うるまんかっぷりんぐ",
+        "ウルマン反応",
+        "うるまんはんのう",
+        "うるまんしゅくごう",
+        "ウルマン縮合",
+        "うるまんえーてるごうせい"
+    ],
+    "tags": [],
+    "reactants": [
+        "Halogene-AlkylHalide",
+        "Halogene",
+        "Alcohol",
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "products": [
+        "Aromtic_Ring-Benzene",
+        "Aromatic_Ring-Hetroaromatic_Ring",
+        "Aromatic_Ring"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/YplBBkoDwxk"
+    ]
+},
+{
+    "directoryName": "doering-moore-skatteboel-allene-synthesis",
+    "english": "Doering-Moore-Skatteboel Allene Synthesis",
+    "japanese": "デーリン・ムーア・スカッテボールアレン合成",
+    "thmbnailName": "doering-moore-skatteboel-allene-synthesis-thumbnail.png",
+    "generalFormulas": [
+        {
+            "imageName": "doering-moore-skatteboel-allene-synthesis-generalformula.png"
+        }
+    ],
+    "mechanisms": [
+        {
+            "imageName": "doering-moore-skatteboel-allene-synthesis-mechanism.png"
+        }
+    ],
+    "examples": [
+        {
+            "imageName": "doering-moore-skatteboel-allene-synthesis-example.png"
+        }
+    ],
+    "supplements": [
+        {
+            "imageName": "doering-moore-skatteboel-allene-synthesis-supplement1.png"
+        },
+        {
+            "imageName": "doering-moore-skatteboel-allene-synthesis-supplement2.png"
+        },
+        {
+            "imageName": "doering-moore-skatteboel-allene-synthesis-supplement3.png"
+        }
+    ],
+    "suggestions": [
+        "Doering-Moore-Skatteboel Allene Synthesis",
+        "デーリン・ムーア・スカッテボールアレン合成",
+        "でーりんむーあすかってぼーる",
+        "デーリングムーアスケッタボール"
+    ],
+    "tags": [],
+    "reactants": [
+        "Halogene-AlkylHalide",
+        "Halogene-Other",
+        "Halogene",
+        "Alkene/Alkyne"
+    ],
+    "products": [
+        "Alkene/Alkyne"
+    ],
+    "youtubeLinks": [
+        "https://youtu.be/g3H2d8rQEuQ"
+    ]
+}
 ]

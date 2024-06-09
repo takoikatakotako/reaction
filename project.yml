@@ -67,7 +67,7 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         UILaunchScreen:
           UIColorName: app-background-color
-        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeRight]
         UIRequiresFullScreen: YES
         UIAppFonts:
           - MPLUS2-VariableFont.ttf
@@ -113,7 +113,7 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         UILaunchScreen:
           UIColorName: app-background-color
-        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeRight]
         UIRequiresFullScreen: YES
         UIAppFonts:
           - MPLUS2-VariableFont.ttf

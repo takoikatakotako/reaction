@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct ReactionDetailFullScreenView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
+
     let selectJapanese: Bool
     let reactionMechanism: ReactionMechanism
 
@@ -14,9 +15,9 @@ struct ReactionDetailFullScreenView: View {
             .navigationBarItems(
                 leading:
                     Button(action: {
-                        let value = UIInterfaceOrientation.portrait.rawValue
-                        UIDevice.current.setValue(value, forKey: "orientation")
-                        presentationMode.wrappedValue.dismiss()
+                        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                        windowScene?.requestGeometryUpdate(.iOS(interfaceOrientations: .portrait))
+                        dismiss()
                     }, label: {
                         Image(systemName: "arrow.counterclockwise")
                     })

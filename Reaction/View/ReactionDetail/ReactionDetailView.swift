@@ -27,7 +27,6 @@ struct ReactionDetailView: View {
                         .padding(.trailing, 16)
                 })
                 .padding(.bottom, 8)
-                // AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
             }
         }
         .navigationTitle("")
@@ -35,8 +34,9 @@ struct ReactionDetailView: View {
         .navigationBarItems(
             trailing:
                 Button(action: {
-                    let value = UIInterfaceOrientation.landscapeRight.rawValue
-                    UIDevice.current.setValue(value, forKey: "orientation")
+                    let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                    windowScene?.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeRight))
+
                     showingFullScreen = true
                 }, label: {
                     Image(systemName: "arrow.clockwise")

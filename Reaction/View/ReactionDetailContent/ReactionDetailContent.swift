@@ -21,8 +21,6 @@ struct ReactionDetailContent: View {
                 }
             }
 
-//            AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
-
             if !reactionMechanism.mechanisms.isEmpty {
                 VStack(spacing: 0) {
                     Text(selectJapanese ? "反応機構" : "Mechanism")
@@ -44,8 +42,6 @@ struct ReactionDetailContent: View {
                     }
                 }
             }
-
-//            AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
 
             if !reactionMechanism.supplements.isEmpty {
                 VStack(spacing: 0) {

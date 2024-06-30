@@ -8,6 +8,7 @@ class ReactionListViewState: ObservableObject {
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
     @Published var sheet: ReactionListViewSheet?
+    @Published var destination: ReactionMechanism?
 
     private let userDefaultsRepository = UserDefaultRepository()
     private let reactionRepository = ReactionMechanismRepository()
@@ -49,8 +50,14 @@ class ReactionListViewState: ObservableObject {
             }
         }
     }
-
+    
     func clearSearchText() {
         searchText = ""
+    }
+    
+    func tapped(reactionMechanism: ReactionMechanism) {
+        
+        
+        destination = reactionMechanism
     }
 }

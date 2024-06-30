@@ -20,10 +20,11 @@ struct ReactionListView: View {
                     }
                     
                     ForEach(viewState.showingReactions) { (reactionMechanism: ReactionMechanism) in
-                        NavigationLink(
-                            destination: ReactionDetailView(selectJapanese: viewState.selectJapanese, reactionMechanism: reactionMechanism)) {
-                                ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewState.showingThmbnail, selectJapanese: $viewState.selectJapanese)
-                            }
+                        Button {
+                            viewState.tapped(reactionMechanism: reactionMechanism)
+                        } label: {
+                            ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewState.showingThmbnail, selectJapanese: $viewState.selectJapanese)
+                        }
                     }
                 }
                 .listStyle(.plain)
@@ -39,6 +40,9 @@ struct ReactionListView: View {
             }
             .onAppear {
                 viewState.onAppear()
+            }
+            .navigationDestination(item: $viewState.destination) { item in
+                ReactionDetailView(selectJapanese: viewState.selectJapanese, reactionMechanism: item)
             }
             .sheet(item: $viewState.sheet) { (item: ReactionListViewSheet) in
                 switch item {

@@ -56,6 +56,17 @@ struct ReactionListView: View {
             }, message: {
                 Text("詳細な反応機構を確認するためには有料プランの購入が必要です。")
             })
+            .alert("購入完了", isPresented: $viewState.completeAlert, actions: {
+                Button("とじる", role: .cancel) {}
+            }, message: {
+                Text("購入完了しました、ありがとうございました。")
+            })
+            .alert("エラー", isPresented: $viewState.errorAlert, actions: {
+                Button("とじる", role: .cancel) {}
+            }, message: {
+                Text("有料プランの購入、復元に失敗しました。")
+            })
+            
             .sheet(item: $viewState.sheet) { (item: ReactionListViewSheet) in
                 switch item {
                 case .developer:

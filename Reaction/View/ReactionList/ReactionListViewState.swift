@@ -9,6 +9,8 @@ class ReactionListViewState: ObservableObject {
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
     @Published var billingAlert = false
+    @Published var completeAlert = false
+    @Published var errorAlert = false
     @Published var sheet: ReactionListViewSheet?
     @Published var destination: ReactionMechanism?
     
@@ -75,15 +77,17 @@ class ReactionListViewState: ObservableObject {
                 let products: [Product] = try await Product.products(for: productIdList)
                 guard let product = products.first else {
                     isFetching = false
+                    errorAlert = true
                     return
                 }
                 let transaction = try await purchase(product: product)
                 userDefaultsRepository.setEnableDetaileAbility(true)
                 await transaction.finish()
                 isFetching = false
+                completeAlert = true
             } catch {
-                print(error)
                 isFetching = false
+                errorAlert = true
             }
         }
     }
@@ -104,17 +108,17 @@ class ReactionListViewState: ObservableObject {
                 
                 guard validSubscription?.productID == nil else {
                     // リストア対象じゃない場合
-                    // view.hideFullScreenIndicator()
-                    // view.showErrorAlert(title: "", message: R.string.localizable.subscriptionFailToFindPurchaseHistory())
+                    errorAlert = true
                     return
                 }
                 
                 // 特典を付与
                 userDefaultsRepository.setEnableDetaileAbility(true)
                 isFetching = false
+                completeAlert = true
             } catch {
                 isFetching = false
-                // view.showErrorAlert(title: "", message: R.string.localizable.homeSubscriptionInterruptRestore())
+                errorAlert = true
             }
         }
     }

@@ -5,7 +5,7 @@ import StoreKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     private let userDefaultRepository = UserDefaultRepository()
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
 
         // Use Firebase library to configure APIs.
@@ -30,21 +30,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
             }
         }
-        
+
         // 課金周りの監視
         observeTransactionUpdates()
 
         return true
     }
 
-    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         Task {
             await updateSubscriptionStatus()
         }
     }
-    
+
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -93,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //　メソッド実装入れ替えをしない場合、APNs発行のデバイストークンとFCM発行デバイストークンを明示的にマッピングする必要があります。
         Messaging.messaging().apnsToken = deviceToken
     }
-    
+
     // 課金
     private func observeTransactionUpdates() {
         Task(priority: .background) {

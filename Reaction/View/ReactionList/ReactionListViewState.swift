@@ -13,16 +13,16 @@ class ReactionListViewState: ObservableObject {
     @Published var errorAlert = false
     @Published var sheet: ReactionListViewSheet?
     @Published var destination: ReactionMechanism?
-    
+
     private let userDefaultsRepository = UserDefaultRepository()
     private let reactionRepository = ReactionMechanismRepository()
     private var subscriptions = Set<AnyCancellable>()
-    
+
     init(showingThmbnail: Bool, selectJapanese: Bool) {
         self.showingThmbnail = showingThmbnail
         self.selectJapanese = selectJapanese
     }
-    
+
     var showingReactions: [ReactionMechanism] {
         if searchText.isEmpty {
             return reactionMechanisms
@@ -37,7 +37,7 @@ class ReactionListViewState: ObservableObject {
             }
         }
     }
-    
+
     func onAppear() {
         selectJapanese = userDefaultsRepository.selectedJapanese
         showingThmbnail = userDefaultsRepository.showThmbnail
@@ -54,21 +54,21 @@ class ReactionListViewState: ObservableObject {
             }
         }
     }
-    
+
     func clearSearchText() {
         searchText = ""
     }
-    
+
     func tapped(reactionMechanism: ReactionMechanism) {
         guard userDefaultsRepository.enableDetaileAbility else {
             // 未課金なのでアラートを表示
             billingAlert = true
             return
         }
-        
+
         destination = reactionMechanism
     }
-    
+
     func purchase() {
         isFetching = true
         Task { @MainActor in
@@ -91,13 +91,13 @@ class ReactionListViewState: ObservableObject {
             }
         }
     }
-    
+
     func restore() {
         isFetching = true
         Task { @MainActor in
             do {
                 try await AppStore.sync()
-                
+
                 var validSubscription: StoreKit.Transaction?
                 for await verificationResult in Transaction.currentEntitlements {
                     if case .verified(let transaction) = verificationResult,
@@ -105,13 +105,13 @@ class ReactionListViewState: ObservableObject {
                         validSubscription = transaction
                     }
                 }
-                
+
                 guard validSubscription?.productID == nil else {
                     // リストア対象じゃない場合
                     errorAlert = true
                     return
                 }
-                
+
                 // 特典を付与
                 userDefaultsRepository.setEnableDetaileAbility(true)
                 isFetching = false
@@ -122,7 +122,7 @@ class ReactionListViewState: ObservableObject {
             }
         }
     }
-    
+
     //    private func fetchProducts() async throws -> Product? {
     //        let productIdList = ["detail_available"]
     //        let products: [Product] = try await Product.products(for: productIdList)
@@ -131,7 +131,7 @@ class ReactionListViewState: ObservableObject {
     //        }
     //        return product
     //    }
-    
+
     private func purchase(product: Product) async throws -> StoreKit.Transaction {
         // Product.PurchaseResultの取得
         let purchaseResult: Product.PurchaseResult
@@ -144,7 +144,7 @@ class ReactionListViewState: ObservableObject {
         } catch {
             throw SubscribeError.otherError
         }
-        
+
         // VerificationResultの取得
         let verificationResult: VerificationResult<StoreKit.Transaction>
         switch purchaseResult {
@@ -157,7 +157,7 @@ class ReactionListViewState: ObservableObject {
         @unknown default:
             throw SubscribeError.otherError
         }
-        
+
         // Transactionの取得
         switch verificationResult {
         case .verified(let transaction):

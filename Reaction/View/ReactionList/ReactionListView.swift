@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ReactionListView: View {
     @StateObject var viewState: ReactionListViewState
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -18,7 +18,7 @@ struct ReactionListView: View {
                             }
                         }
                     }
-                    
+
                     ForEach(viewState.showingReactions) { (reactionMechanism: ReactionMechanism) in
                         Button {
                             viewState.tapped(reactionMechanism: reactionMechanism)
@@ -29,7 +29,7 @@ struct ReactionListView: View {
                     }
                 }
                 .listStyle(.plain)
-                
+
                 if viewState.isFetching {
                     ProgressView()
                         .scaleEffect(1.5, anchor: .center)
@@ -66,7 +66,7 @@ struct ReactionListView: View {
             }, message: {
                 Text("有料プランの購入、復元に失敗しました。")
             })
-            
+
             .sheet(item: $viewState.sheet) { (item: ReactionListViewSheet) in
                 switch item {
                 case .developer:

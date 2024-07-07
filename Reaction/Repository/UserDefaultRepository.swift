@@ -13,7 +13,7 @@ class UserDefaultRepository {
     var selectedJapanese: Bool {
         UserDefaults.standard.object(forKey: KEY_SELECTED_JAPANESE) as? Bool ?? false
     }
-    
+
     var enableDetaileAbility: Bool {
         UserDefaults.standard.object(forKey: KEY_ENABLE_DETAILE_ABILITY) as? Bool ?? false
     }
@@ -23,7 +23,7 @@ class UserDefaultRepository {
             defaults: [
                 KEY_SHOW_THUMBNAIL: true,
                 KEY_SELECTED_JAPANESE: false,
-                KEY_ENABLE_DETAILE_ABILITY: false,
+                KEY_ENABLE_DETAILE_ABILITY: false
             ]
         )
     }
@@ -35,7 +35,7 @@ class UserDefaultRepository {
     func setSelectedJapanese(_ selectedJapanese: Bool) {
         UserDefaults.standard.setValue(selectedJapanese, forKey: KEY_SELECTED_JAPANESE)
     }
-    
+
     func setEnableDetaileAbility(_ enableDetaileAbility: Bool) {
         UserDefaults.standard.setValue(enableDetaileAbility, forKey: KEY_ENABLE_DETAILE_ABILITY)
     }

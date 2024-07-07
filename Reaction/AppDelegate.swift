@@ -1,10 +1,11 @@
 import SwiftUI
- import Firebase
-// import FirebaseMessaging
-// import GoogleMobileAds
+import Firebase
 import UserNotifications
+import StoreKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    private let userDefaultRepository = UserDefaultRepository()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
 
         // Use Firebase library to configure APIs.
@@ -29,10 +30,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
             }
         }
+        
+        // 課金周りの監視
+        observeTransactionUpdates()
 
         return true
     }
 
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        Task {
+            await updateSubscriptionStatus()
+        }
+    }
+    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -80,6 +92,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(token)
         //　メソッド実装入れ替えをしない場合、APNs発行のデバイストークンとFCM発行デバイストークンを明示的にマッピングする必要があります。
         Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    // 課金
+    private func observeTransactionUpdates() {
+        Task(priority: .background) {
+            for await verificationResult in Transaction.updates {
+                guard case .verified(let transaction) = verificationResult else {
+                    continue
+                }
+
+                if transaction.revocationDate != nil {
+                    // 払い戻しされてるので特典削除
+                    userDefaultRepository.setEnableDetaileAbility(false)
+                } else if let expirationDate = transaction.expirationDate,
+                          Date() < expirationDate // 有効期限内
+                          && !transaction.isUpgraded // アップグレードされていない
+                {
+                    // 有効なサブスクリプションなのでproductIdに対応した特典を有効にする
+                    userDefaultRepository.setEnableDetaileAbility(true)
+                }
+
+                await transaction.finish()
+            }
+        }
+    }
+
+    private func updateSubscriptionStatus() async {
+        var validSubscription: StoreKit.Transaction?
+        for await verificationResult in Transaction.currentEntitlements {
+            if case .verified(let transaction) = verificationResult,
+               transaction.productType == .autoRenewable && !transaction.isUpgraded {
+                validSubscription = transaction
+            }
+        }
+
+        if validSubscription?.productID != nil {
+            // 特典を付与
+            userDefaultRepository.setEnableDetaileAbility(true)
+        } else {
+            // 特典を削除
+            userDefaultRepository.setEnableDetaileAbility(false)
+        }
     }
 }
 

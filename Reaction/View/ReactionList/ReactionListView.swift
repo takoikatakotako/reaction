@@ -25,6 +25,7 @@ struct ReactionListView: View {
                         } label: {
                             ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewState.showingThmbnail, selectJapanese: $viewState.selectJapanese)
                         }
+                        .disabled(viewState.isFetching)
                     }
                 }
                 .listStyle(.plain)
@@ -44,6 +45,17 @@ struct ReactionListView: View {
             .navigationDestination(item: $viewState.destination) { item in
                 ReactionDetailView(selectJapanese: viewState.selectJapanese, reactionMechanism: item)
             }
+            .alert("有料プラン", isPresented: $viewState.billingAlert, actions: {
+                Button("有料プランを購入", role: .none) {
+                    viewState.purchase()
+                }
+                Button("購入を復元", role: .none) {
+                    viewState.restore()
+                }
+                Button("キャンセル", role: .cancel) {}
+            }, message: {
+                Text("詳細な反応機構を確認するためには有料プランの購入が必要です。")
+            })
             .sheet(item: $viewState.sheet) { (item: ReactionListViewSheet) in
                 switch item {
                 case .developer:

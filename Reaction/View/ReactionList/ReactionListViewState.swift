@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import StoreKit
 
 class ReactionListViewState: ObservableObject {
     @Published var searchText: String = ""
@@ -7,18 +8,19 @@ class ReactionListViewState: ObservableObject {
     @Published var selectJapanese: Bool
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
+    @Published var billingAlert = false
     @Published var sheet: ReactionListViewSheet?
     @Published var destination: ReactionMechanism?
-
+    
     private let userDefaultsRepository = UserDefaultRepository()
     private let reactionRepository = ReactionMechanismRepository()
     private var subscriptions = Set<AnyCancellable>()
-
+    
     init(showingThmbnail: Bool, selectJapanese: Bool) {
         self.showingThmbnail = showingThmbnail
         self.selectJapanese = selectJapanese
     }
-
+    
     var showingReactions: [ReactionMechanism] {
         if searchText.isEmpty {
             return reactionMechanisms
@@ -33,7 +35,7 @@ class ReactionListViewState: ObservableObject {
             }
         }
     }
-
+    
     func onAppear() {
         selectJapanese = userDefaultsRepository.selectedJapanese
         showingThmbnail = userDefaultsRepository.showThmbnail
@@ -56,8 +58,108 @@ class ReactionListViewState: ObservableObject {
     }
     
     func tapped(reactionMechanism: ReactionMechanism) {
-        
+        guard userDefaultsRepository.enableDetaileAbility else {
+            // 未課金なのでアラートを表示
+            billingAlert = true
+            return
+        }
         
         destination = reactionMechanism
+    }
+    
+    func purchase() {
+        isFetching = true
+        Task { @MainActor in
+            do {
+                let productIdList = ["detail_available"]
+                let products: [Product] = try await Product.products(for: productIdList)
+                guard let product = products.first else {
+                    isFetching = false
+                    return
+                }
+                let transaction = try await purchase(product: product)
+                userDefaultsRepository.setEnableDetaileAbility(true)
+                await transaction.finish()
+                isFetching = false
+            } catch {
+                print(error)
+                isFetching = false
+            }
+        }
+    }
+    
+    func restore() {
+        isFetching = true
+        Task { @MainActor in
+            do {
+                try await AppStore.sync()
+                
+                var validSubscription: StoreKit.Transaction?
+                for await verificationResult in Transaction.currentEntitlements {
+                    if case .verified(let transaction) = verificationResult,
+                       transaction.productType == .autoRenewable && !transaction.isUpgraded {
+                        validSubscription = transaction
+                    }
+                }
+                
+                guard validSubscription?.productID == nil else {
+                    // リストア対象じゃない場合
+                    // view.hideFullScreenIndicator()
+                    // view.showErrorAlert(title: "", message: R.string.localizable.subscriptionFailToFindPurchaseHistory())
+                    return
+                }
+                
+                // 特典を付与
+                userDefaultsRepository.setEnableDetaileAbility(true)
+                isFetching = false
+            } catch {
+                isFetching = false
+                // view.showErrorAlert(title: "", message: R.string.localizable.homeSubscriptionInterruptRestore())
+            }
+        }
+    }
+    
+    //    private func fetchProducts() async throws -> Product? {
+    //        let productIdList = ["detail_available"]
+    //        let products: [Product] = try await Product.products(for: productIdList)
+    //        guard let product = products.first else {
+    //            return nil
+    //        }
+    //        return product
+    //    }
+    
+    private func purchase(product: Product) async throws -> StoreKit.Transaction {
+        // Product.PurchaseResultの取得
+        let purchaseResult: Product.PurchaseResult
+        do {
+            purchaseResult = try await product.purchase()
+        } catch Product.PurchaseError.productUnavailable {
+            throw SubscribeError.productUnavailable
+        } catch Product.PurchaseError.purchaseNotAllowed {
+            throw SubscribeError.purchaseNotAllowed
+        } catch {
+            throw SubscribeError.otherError
+        }
+        
+        // VerificationResultの取得
+        let verificationResult: VerificationResult<StoreKit.Transaction>
+        switch purchaseResult {
+        case .success(let result):
+            verificationResult = result
+        case .userCancelled:
+            throw SubscribeError.userCancelled
+        case .pending:
+            throw SubscribeError.pending
+        @unknown default:
+            throw SubscribeError.otherError
+        }
+        
+        // Transactionの取得
+        switch verificationResult {
+        case .verified(let transaction):
+            return transaction
+        case .unverified:
+            throw SubscribeError.failedVerification
+        }
     }
 }

@@ -11,17 +11,17 @@ struct RootView: View {
             )
             .tabItem {
                 Image(systemName: "list.dash")
-                Text("List")
+                Text(String(localized: "common-list"))
             }
             SearchView(viewState: SearchViewState())
                 .tabItem {
                     Image(systemName: "magnifyingglass")
-                    Text("Search")
+                    Text(String(localized: "common-search"))
                 }
             SettingView(viewState: SettingViewState())
                 .tabItem {
                     Image(systemName: "gearshape")
-                    Text("Config")
+                    Text(String(localized: "common-setting"))
                 }
         }
     }

@@ -1,0 +1,145 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Cache Removed!" : {
+
+    },
+    "common-list" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "List"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一覧"
+          }
+        }
+      }
+    },
+    "common-search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索"
+          }
+        }
+      }
+    },
+    "common-setting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setting"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "設定"
+          }
+        }
+      }
+    },
+    "Config" : {
+
+    },
+    "DeviceToken" : {
+
+    },
+    "Do you want to display thumbnails?" : {
+
+    },
+    "English" : {
+
+    },
+    "Exclude checked items" : {
+
+    },
+    "GitHub" : {
+
+    },
+    "Hello, world!" : {
+
+    },
+    "Hello, World!" : {
+
+    },
+    "Hidden" : {
+
+    },
+    "Info" : {
+
+    },
+    "Japanese" : {
+
+    },
+    "Language" : {
+
+    },
+    "License" : {
+
+    },
+    "Product" : {
+
+    },
+    "Reactant" : {
+
+    },
+    "Remove Cache" : {
+
+    },
+    "Search" : {
+
+    },
+    "Search for checked items" : {
+
+    },
+    "Show" : {
+
+    },
+    "Thmbnail" : {
+
+    },
+    "Version" : {
+
+    },
+    "Version: %@(%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Version: %1$@(%2$@)"
+          }
+        }
+      }
+    },
+    "Which reaction mechanism is displayed in Japanese or English?" : {
+
+    },
+    "有料プランの購入、復元に失敗しました。" : {
+
+    },
+    "詳細な反応機構を確認するためには有料プランの購入が必要です。" : {
+
+    },
+    "購入完了しました、ありがとうございました。" : {
+
+    }
+  },
+  "version" : "1.0"
+}

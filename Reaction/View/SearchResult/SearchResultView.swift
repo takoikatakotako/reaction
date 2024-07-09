@@ -2,22 +2,28 @@ import SwiftUI
 
 struct SearchResultView: View {
     @StateObject var viewModel: SearchResultViewModel
-
+    
     init(searchResultType: SearchTargetType, withoutCheck: Bool, firstCategories: [FirstCategory]) {
         _viewModel = StateObject(wrappedValue: SearchResultViewModel(searchResultType: searchResultType, withoutCheck: withoutCheck, firstCategories: firstCategories))
     }
-
+    
     var body: some View {
         ZStack {
-            ScrollView {
-                LazyVStack {
-                    ForEach(viewModel.reactionMechanisms) { (reactionMechanism: ReactionMechanism) in
-                        ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewModel.showingThmbnail, selectJapanese: $viewModel.selectJapanese)
+            List {
+                ForEach(viewModel.reactionMechanisms) { (reactionMechanism: ReactionMechanism) in
+                    NavigationLink {
+                        //ReactionDetailView(selectJapanese: viewState.selectJapanese, reactionMechanism: item)
+                    } label: {
+                        ReactionListRow(
+                            reactionMechanism: reactionMechanism,
+                            showingThmbnail: $viewModel.showingThmbnail,
+                            localeIdentifier: Locale.current.identifier
+                        )
                     }
                 }
-                .padding(.bottom, 62)
             }
-
+            .listStyle(.plain)
+            
             if viewModel.isFetching {
                 ProgressView()
                     .scaleEffect(1.5, anchor: .center)

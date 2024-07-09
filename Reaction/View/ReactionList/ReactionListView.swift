@@ -23,7 +23,11 @@ struct ReactionListView: View {
                         Button {
                             viewState.tapped(reactionMechanism: reactionMechanism)
                         } label: {
-                            ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewState.showingThmbnail, selectJapanese: $viewState.selectJapanese)
+                            ReactionListRow(
+                                reactionMechanism: reactionMechanism,
+                                showingThmbnail: $viewState.showingThmbnail,
+                                localeIdentifier: viewState.localeIdentifier
+                            )
                         }
                         .disabled(viewState.isFetching)
                     }
@@ -43,7 +47,7 @@ struct ReactionListView: View {
                 viewState.onAppear()
             }
             .navigationDestination(item: $viewState.destination) { item in
-                ReactionDetailView(selectJapanese: viewState.selectJapanese, reactionMechanism: item)
+                ReactionDetailView(reactionMechanism: item)
             }
             .alert("有料プラン", isPresented: $viewState.billingAlert, actions: {
                 Button("有料プランを購入", role: .none) {
@@ -66,14 +70,13 @@ struct ReactionListView: View {
             }, message: {
                 Text("有料プランの購入、復元に失敗しました。")
             })
-
             .sheet(item: $viewState.sheet) { (item: ReactionListViewSheet) in
                 switch item {
                 case .developer:
                     DeveloperView()
                 }
             }
-            .navigationTitle("List")
+            .navigationTitle(String(localized: "list-title"))
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 leading: Button(action: {

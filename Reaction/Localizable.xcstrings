@@ -4,6 +4,40 @@
     "Cache Removed!" : {
 
     },
+    "common-example" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "example"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例"
+          }
+        }
+      }
+    },
+    "common-general-formula" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General Formula"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般式"
+          }
+        }
+      }
+    },
     "common-list" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -17,6 +51,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "一覧"
+          }
+        }
+      }
+    },
+    "common-movie" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "動画"
+          }
+        }
+      }
+    },
+    "common-reaction-mechanism" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reaction Mechanism"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反応機構"
           }
         }
       }
@@ -55,8 +123,70 @@
         }
       }
     },
+    "common-supplement" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supplement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "補足"
+          }
+        }
+      }
+    },
     "Config" : {
 
+    },
+    "developer-general-manager" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "総監督"
+          }
+        }
+      }
+    },
+    "developer-programmer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programmer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "プログラマー"
+          }
+        }
+      }
+    },
+    "developer-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発者"
+          }
+        }
+      }
     },
     "DeviceToken" : {
 
@@ -94,6 +224,23 @@
     "License" : {
 
     },
+    "list-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reaction Mechanism"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "反応機構一覧"
+          }
+        }
+      }
+    },
     "Product" : {
 
     },
@@ -103,11 +250,25 @@
     "Remove Cache" : {
 
     },
-    "Search" : {
-
-    },
     "Search for checked items" : {
 
+    },
+    "search-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索"
+          }
+        }
+      }
     },
     "Show" : {
 
@@ -117,16 +278,6 @@
     },
     "Version" : {
 
-    },
-    "Version: %@(%@)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Version: %1$@(%2$@)"
-          }
-        }
-      }
     },
     "Which reaction mechanism is displayed in Japanese or English?" : {
 

@@ -3,19 +3,32 @@ import LicenseList
 
 struct SettingView: View {
     @StateObject var viewState: SettingViewState
-
+    
     var body: some View {
         NavigationStack {
             List {
                 Section("App Setting") {
-                    NavigationLink(destination: SettingLangageView()) {
+//                    NavigationLink(destination: SettingLangageView()) {
+//                        HStack {
+//                            Text("Language")
+//                            Spacer()
+//                            Text(viewState.langage)
+//                        }
+//                    }
+                    
+                    Button {
+                        if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url)
+                        }
+                    } label: {
                         HStack {
                             Text("Language")
                             Spacer()
                             Text(viewState.langage)
                         }
                     }
-
+                    
+                    
                     NavigationLink(destination: SettingThmbnailView()) {
                         HStack {
                             Text("Thmbnail")
@@ -26,7 +39,7 @@ struct SettingView: View {
                         }
                     }
                 }
-
+                
                 Section("Developer Info") {
                     Button(action: {
                         if let url = URL(string: GITHUB_REPOSITORY_URL) {
@@ -41,7 +54,7 @@ struct SettingView: View {
                         }
                     })
                 }
-
+                
                 Section("App Info") {
                     HStack {
                         Text("Version")
@@ -54,7 +67,7 @@ struct SettingView: View {
                         Text("License")
                     }
                 }
-
+                
                 Section("Reset") {
                     Button {
                         viewState.reset()
@@ -67,7 +80,7 @@ struct SettingView: View {
                 viewState.onAppear()
             }
             .alert("", isPresented: $viewState.showingAlert, actions: {
-
+                
             }, message: {
                 Text("Cache Removed!")
             })

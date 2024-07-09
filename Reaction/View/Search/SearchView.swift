@@ -82,7 +82,7 @@ struct SearchView: View {
 
             }
             .padding(.horizontal, 8)
-            .navigationTitle("Search")
+            .navigationTitle(String(localized: "search-title"))
             .navigationBarTitleDisplayMode(.inline)
         }
 

@@ -3,13 +3,13 @@ import SwiftUI
 struct ReactionDetailFullScreenView: View {
     @Environment(\.dismiss) var dismiss
 
-    let selectJapanese: Bool
+    let localeIdentifier: String
     let reactionMechanism: ReactionMechanism
 
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
-                ReactionDetailContent(selectJapanese: selectJapanese, reactionMechanism: reactionMechanism)
+                ReactionDetailContent(localeIdentifier: localeIdentifier, reactionMechanism: reactionMechanism)
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
@@ -26,8 +26,8 @@ struct ReactionDetailFullScreenView: View {
     }
 }
 
-struct ReactionDetailFullScreenView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReactionDetailFullScreenView(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
-    }
-}
+//struct ReactionDetailFullScreenView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReactionDetailFullScreenView(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
+//    }
+//}

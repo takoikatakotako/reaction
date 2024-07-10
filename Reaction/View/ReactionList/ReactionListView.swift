@@ -65,8 +65,8 @@ struct ReactionListView: View {
             }, message: {
                 Text("購入完了しました、ありがとうございました。")
             })
-            .alert("エラー", isPresented: $viewState.errorAlert, actions: {
-                Button("とじる", role: .cancel) {}
+            .alert(String(localized: "common-error"), isPresented: $viewState.errorAlert, actions: {
+                Button(String(localized: "common-close"), role: .cancel) {}
             }, message: {
                 Text("有料プランの購入、復元に失敗しました。")
             })

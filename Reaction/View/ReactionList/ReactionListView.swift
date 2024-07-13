@@ -91,5 +91,5 @@ struct ReactionListView: View {
 }
 
 #Preview {
-    ReactionListView(viewState: ReactionListViewState(showingThmbnail: true, selectJapanese: false))
+    ReactionListView(viewState: ReactionListViewState(showingThmbnail: true))
 }

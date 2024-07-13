@@ -28,7 +28,6 @@ class SearchResultViewModel: ObservableObject {
     }
 
     func onAppear() {
-        selectJapanese = userDefaultsRepository.selectedJapanese
         showingThmbnail = userDefaultsRepository.showThmbnail
 
         guard reactionMechanisms.isEmpty else {

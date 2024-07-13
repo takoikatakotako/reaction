@@ -228,12 +228,6 @@
     "Do you want to display thumbnails?" : {
 
     },
-    "English" : {
-
-    },
-    "Exclude checked items" : {
-
-    },
     "GitHub" : {
 
     },
@@ -247,9 +241,6 @@
 
     },
     "Info" : {
-
-    },
-    "Japanese" : {
 
     },
     "Language" : {
@@ -284,8 +275,27 @@
     "Remove Cache" : {
 
     },
-    "Search for checked items" : {
-
+    "search-search-for-checked-items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for checked items"
+          }
+        }
+      }
+    },
+    "search-search-for-exclude-checked-items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for exclude checked items"
+          }
+        }
+      }
     },
     "search-title" : {
       "extractionState" : "manual",
@@ -311,9 +321,6 @@
 
     },
     "Version" : {
-
-    },
-    "Which reaction mechanism is displayed in Japanese or English?" : {
 
     },
     "有料プランの購入、復元に失敗しました。" : {

@@ -11,11 +11,11 @@ class SettingViewState: ObservableObject {
 
     func onAppear() {
         let userDefaultRepository = UserDefaultRepository()
-        if userDefaultRepository.selectedJapanese {
-            langage = "Japanese"
-        } else {
-            langage = "English"
-        }
+//        if userDefaultRepository.selectedJapanese {
+//            langage = "Japanese"
+//        } else {
+//            langage = "English"
+//        }
 
         if userDefaultRepository.showThmbnail {
             thmbnail = true

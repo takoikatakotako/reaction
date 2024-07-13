@@ -47,7 +47,7 @@ struct SearchView: View {
                     NavigationLink(destination: SearchResultView(searchResultType: getSearchTargetType(), withoutCheck: true, firstCategories: viewState.firstCategories)) {
                         HStack {
                             Spacer()
-                            Text("Exclude checked items")
+                            Text(String(localized: "search-search-for-exclude-checked-items"))
                                 .font(Font.system(size: 18).bold())
                                 .foregroundColor(Color.gray)
                             Spacer()
@@ -64,7 +64,7 @@ struct SearchView: View {
                     NavigationLink(destination: SearchResultView(searchResultType: getSearchTargetType(), withoutCheck: false, firstCategories: viewState.firstCategories)) {
                         HStack {
                             Spacer()
-                            Text("Search for checked items")
+                            Text(String(localized: "search-search-fo-checked-items"))
                                 .font(Font.system(size: 18).bold())
                                 .foregroundColor(Color.gray)
                             Spacer()

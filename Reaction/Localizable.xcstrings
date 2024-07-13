@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Cache Removed!" : {
-
-    },
     "common-close" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -68,6 +65,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "一般式"
+          }
+        }
+      }
+    },
+    "common-info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
           }
         }
       }
@@ -174,9 +188,6 @@
         }
       }
     },
-    "Config" : {
-
-    },
     "developer-general-manager" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -228,25 +239,7 @@
     "Do you want to display thumbnails?" : {
 
     },
-    "GitHub" : {
-
-    },
-    "Hello, world!" : {
-
-    },
-    "Hello, World!" : {
-
-    },
     "Hidden" : {
-
-    },
-    "Info" : {
-
-    },
-    "Language" : {
-
-    },
-    "License" : {
 
     },
     "list-title" : {
@@ -266,14 +259,22 @@
         }
       }
     },
-    "Product" : {
-
-    },
-    "Reactant" : {
-
-    },
-    "Remove Cache" : {
-
+    "search-product" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Product"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "生成物"
+          }
+        }
+      }
     },
     "search-search-for-checked-items" : {
       "extractionState" : "manual",
@@ -282,6 +283,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search for checked items"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チェックした項目を検索"
           }
         }
       }
@@ -293,6 +300,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search for exclude checked items"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チェックした項目を除いて検索"
           }
         }
       }
@@ -314,13 +327,211 @@
         }
       }
     },
+    "setting-app-info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Info"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリ情報"
+          }
+        }
+      }
+    },
+    "setting-app-setting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Setting"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリ設定"
+          }
+        }
+      }
+    },
+    "setting-clear-cache" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Cache"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャッシュ削除"
+          }
+        }
+      }
+    },
+    "setting-clear-cache-complete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Cache Complete!"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "キャッシュ削除完了！"
+          }
+        }
+      }
+    },
+    "setting-developer-info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer Info"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発情報"
+          }
+        }
+      }
+    },
+    "setting-github" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        }
+      }
+    },
+    "setting-language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Language"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "言語"
+          }
+        }
+      }
+    },
+    "setting-license" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "License"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ライセンス"
+          }
+        }
+      }
+    },
+    "setting-reactant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reactant"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反応物"
+          }
+        }
+      }
+    },
+    "setting-reset" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リセット"
+          }
+        }
+      }
+    },
+    "setting-thmbnail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thmbnail"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サムネイル"
+          }
+        }
+      }
+    },
+    "setting-version" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バージョン"
+          }
+        }
+      }
+    },
     "Show" : {
-
-    },
-    "Thmbnail" : {
-
-    },
-    "Version" : {
 
     },
     "有料プランの購入、復元に失敗しました。" : {

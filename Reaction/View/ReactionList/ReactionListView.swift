@@ -82,7 +82,7 @@ struct ReactionListView: View {
                 leading: Button(action: {
                     viewState.sheet = .developer
                 }, label: {
-                    Text("Info")
+                    Text(String(localized: "common-info"))
                 })
             )
         }

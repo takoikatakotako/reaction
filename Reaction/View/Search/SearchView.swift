@@ -4,13 +4,12 @@ struct SearchView: View {
     @StateObject var viewState: SearchViewState
 
     var body: some View {
-
         NavigationStack {
             ZStack(alignment: .bottom) {
                 ScrollView(showsIndicators: false) {
                     Picker(selection: $viewState.favoriteColor, label: Text("")) {
-                        Text("Reactant").tag(0)
-                        Text("Product").tag(1)
+                        Text(String(localized: "setting-reactant")).tag(0)
+                        Text(String(localized: "search-product")).tag(1)
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(8)
@@ -64,7 +63,7 @@ struct SearchView: View {
                     NavigationLink(destination: SearchResultView(searchResultType: getSearchTargetType(), withoutCheck: false, firstCategories: viewState.firstCategories)) {
                         HStack {
                             Spacer()
-                            Text(String(localized: "search-search-fo-checked-items"))
+                            Text(String(localized: "search-search-for-checked-items"))
                                 .font(Font.system(size: 18).bold())
                                 .foregroundColor(Color.gray)
                             Spacer()

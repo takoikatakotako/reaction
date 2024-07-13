@@ -7,31 +7,23 @@ struct SettingView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("App Setting") {
-//                    NavigationLink(destination: SettingLangageView()) {
-//                        HStack {
-//                            Text("Language")
-//                            Spacer()
-//                            Text(viewState.langage)
-//                        }
-//                    }
-                    
+                Section(String(localized: "setting-app-setting")) {
+
                     Button {
                         if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
                             UIApplication.shared.open(url)
                         }
                     } label: {
                         HStack {
-                            Text("Language")
+                            Text(String(localized: "setting-language"))
                             Spacer()
                             Text(viewState.langage)
                         }
                     }
                     
-                    
                     NavigationLink(destination: SettingThmbnailView()) {
                         HStack {
-                            Text("Thmbnail")
+                            Text(String(localized: "setting-thmbnail"))
                             Spacer()
                             if let thmbnail = viewState.thmbnail {
                                 Text(thmbnail ? "Show" : "Hidden")
@@ -40,14 +32,14 @@ struct SettingView: View {
                     }
                 }
                 
-                Section("Developer Info") {
+                Section(String(localized: "setting-developer-info")) {
                     Button(action: {
                         if let url = URL(string: GITHUB_REPOSITORY_URL) {
                             UIApplication.shared.open(url)
                         }
                     }, label: {
                         HStack {
-                            Text("GitHub")
+                            Text(String(localized: "setting-github"))
                             Spacer()
                             Image(systemName: "square.and.arrow.up")
                                 .padding(.trailing, 8)
@@ -55,24 +47,24 @@ struct SettingView: View {
                     })
                 }
                 
-                Section("App Info") {
+                Section(String(localized: "setting-app-info")) {
                     HStack {
-                        Text("Version")
+                        Text(String(localized: "setting-version"))
                         Spacer()
                         Text(viewState.appVersion)
                     }
                     NavigationLink {
                         LicenseListView()
                     } label: {
-                        Text("License")
+                        Text(String(localized: "setting-license"))
                     }
                 }
                 
-                Section("Reset") {
+                Section(String(localized: "setting-reset")) {
                     Button {
                         viewState.reset()
                     } label: {
-                        Text("Remove Cache")
+                        Text(String(localized: "setting-clear-cache"))
                     }
                 }
             }
@@ -82,10 +74,10 @@ struct SettingView: View {
             .alert("", isPresented: $viewState.showingAlert, actions: {
                 
             }, message: {
-                Text("Cache Removed!")
+                Text(String(localized: "setting-clear-cache-complete"))
             })
             .listStyle(.grouped)
-            .navigationTitle("Config")
+            .navigationTitle(String(localized: "common-setting"))
             .navigationBarTitleDisplayMode(.inline)
         }
     }

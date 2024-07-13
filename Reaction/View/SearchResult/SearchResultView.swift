@@ -12,7 +12,7 @@ struct SearchResultView: View {
             List {
                 ForEach(viewModel.reactionMechanisms) { (reactionMechanism: ReactionMechanism) in
                     NavigationLink {
-                        //ReactionDetailView(selectJapanese: viewState.selectJapanese, reactionMechanism: item)
+                        ReactionDetailView(reactionMechanism: reactionMechanism)
                     } label: {
                         ReactionListRow(
                             reactionMechanism: reactionMechanism,

@@ -21,12 +21,14 @@ struct SettingView: View {
                         }
                     }
                     
-                    NavigationLink(destination: SettingThmbnailView()) {
+                    Button {
+                        viewState.showThumbnailAlert()
+                    } label: {
                         HStack {
                             Text(String(localized: "setting-thmbnail"))
                             Spacer()
                             if let thmbnail = viewState.thmbnail {
-                                Text(thmbnail ? "Show" : "Hidden")
+                                Text(thmbnail ? String(localized: "setting-show") : String(localized: "setting-hidden"))
                             }
                         }
                     }
@@ -71,7 +73,21 @@ struct SettingView: View {
             .onAppear {
                 viewState.onAppear()
             }
-            .alert("", isPresented: $viewState.showingAlert, actions: {
+            
+            .alert("", isPresented: $viewState.showingThmbnailAlert, actions: {
+                Button(String(localized: "setting-show-thmbnail")) {
+                    viewState.setShowThumbnail()
+                }
+                
+                Button(String(localized: "setting-hidden-thmbnail")) {
+                    viewState.setHiddenThumbnail()
+                }
+                
+                Button(String(localized: "common-close")) {}
+            }, message: {
+                Text(String(localized: "setting-do-you-want-to-display-thumbnails?"))
+            })
+            .alert("", isPresented: $viewState.showingResetAlert, actions: {
                 
             }, message: {
                 Text(String(localized: "setting-clear-cache-complete"))

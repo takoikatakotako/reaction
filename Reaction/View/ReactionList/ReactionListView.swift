@@ -61,9 +61,9 @@ struct ReactionListView: View {
                 Text("詳細な反応機構を確認するためには有料プランの購入が必要です。")
             })
             .alert("購入完了", isPresented: $viewState.completeAlert, actions: {
-                Button("とじる", role: .cancel) {}
+                Button(String(localized: "common-close"), role: .cancel) {}
             }, message: {
-                Text("購入完了しました、ありがとうございました。")
+                Text(String(localized: "subscription-complete"))
             })
             .alert(String(localized: "common-error"), isPresented: $viewState.errorAlert, actions: {
                 Button(String(localized: "common-close"), role: .cancel) {}

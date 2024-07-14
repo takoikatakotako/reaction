@@ -18,6 +18,23 @@
         }
       }
     },
+    "common-english" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英語"
+          }
+        }
+      }
+    },
     "common-error" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -86,6 +103,23 @@
         }
       }
     },
+    "common-japanese" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Japanese"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語"
+          }
+        }
+      }
+    },
     "common-list" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -116,6 +150,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "動画"
+          }
+        }
+      }
+    },
+    "common-no" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "いいえ"
           }
         }
       }
@@ -188,12 +239,35 @@
         }
       }
     },
-    "developer-general-manager" : {
+    "common-yes" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "はい"
+          }
+        }
+      }
+    },
+    "developer-general-manager" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General Manager"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "総監督"
           }
         }
@@ -232,12 +306,6 @@
           }
         }
       }
-    },
-    "Do you want to display thumbnails?" : {
-
-    },
-    "Hidden" : {
-
     },
     "list-title" : {
       "extractionState" : "manual",
@@ -409,6 +477,23 @@
         }
       }
     },
+    "setting-do-you-want-to-display-thumbnails?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to display thumbnails?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サムネイルを表示しますか？"
+          }
+        }
+      }
+    },
     "setting-github" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -422,6 +507,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitHub"
+          }
+        }
+      }
+    },
+    "setting-hidden" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "非表示"
+          }
+        }
+      }
+    },
+    "setting-hidden-thmbnail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden thmbnail"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サムネイル非表示"
           }
         }
       }
@@ -494,6 +613,40 @@
         }
       }
     },
+    "setting-show" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示"
+          }
+        }
+      }
+    },
+    "setting-show-thmbnail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show thmbnail"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サムネイル表示"
+          }
+        }
+      }
+    },
     "setting-thmbnail" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -528,8 +681,56 @@
         }
       }
     },
-    "Show" : {
-
+    "subscription-complete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your purchase has been completed. Thank you very much."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入完了しました、ありがとうございました。"
+          }
+        }
+      }
+    },
+    "subscription-failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase or restoration of a paid plan failed."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "有料プランの購入、復元に失敗しました。"
+          }
+        }
+      }
+    },
+    "subscription-need-subscription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To check the detailed reaction mechanism, you need to purchase a paid plan."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "詳細な反応機構を確認するためには有料プランの購入が必要です。"
+          }
+        }
+      }
     },
     "有料プランの購入、復元に失敗しました。" : {
 

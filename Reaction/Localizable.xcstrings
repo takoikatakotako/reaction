@@ -1,6 +1,23 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "common-cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
+          }
+        }
+      }
+    },
     "common-close" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -681,23 +698,6 @@
         }
       }
     },
-    "subscription-complete" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your purchase has been completed. Thank you very much."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "購入完了しました、ありがとうございました。"
-          }
-        }
-      }
-    },
     "subscription-failed" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -728,6 +728,57 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "詳細な反応機構を確認するためには有料プランの購入が必要です。"
+          }
+        }
+      }
+    },
+    "subscription-paid-plan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paid Plan"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "有料プラン"
+          }
+        }
+      }
+    },
+    "subscription-purchase-complete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase Complete"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入完了"
+          }
+        }
+      }
+    },
+    "subscription-purchase-complete-thank-you" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your purchase has been completed. Thank you very much."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入完了しました、ありがとうございました。"
           }
         }
       }

@@ -49,18 +49,18 @@ struct ReactionListView: View {
             .navigationDestination(item: $viewState.destination) { item in
                 ReactionDetailView(reactionMechanism: item)
             }
-            .alert("有料プラン", isPresented: $viewState.billingAlert, actions: {
+            .alert(String(localized: "subscription-paid-plan"), isPresented: $viewState.billingAlert, actions: {
                 Button("有料プランを購入", role: .none) {
                     viewState.purchase()
                 }
                 Button("購入を復元", role: .none) {
                     viewState.restore()
                 }
-                Button("キャンセル", role: .cancel) {}
+                Button(String(localized: "common-cancel"), role: .cancel) {}
             }, message: {
                 Text("詳細な反応機構を確認するためには有料プランの購入が必要です。")
             })
-            .alert("購入完了", isPresented: $viewState.completeAlert, actions: {
+            .alert(String(localized: "subscription-purchase-complete"), isPresented: $viewState.completeAlert, actions: {
                 Button(String(localized: "common-close"), role: .cancel) {}
             }, message: {
                 Text(String(localized: "subscription-complete"))

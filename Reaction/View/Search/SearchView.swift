@@ -7,7 +7,7 @@ struct SearchView: View {
         NavigationStack {
             ZStack(alignment: .bottom) {
                 ScrollView(showsIndicators: false) {
-                    Picker(selection: $viewState.favoriteColor, label: Text("")) {
+                    Picker(selection: $viewState.searchType, label: Text("")) {
                         Text(String(localized: "setting-reactant")).tag(0)
                         Text(String(localized: "search-product")).tag(1)
                     }
@@ -43,7 +43,7 @@ struct SearchView: View {
                 }
 
                 VStack(spacing: 12) {
-                    NavigationLink(destination: SearchResultView(searchResultType: getSearchTargetType(), withoutCheck: true, firstCategories: viewState.firstCategories)) {
+                    NavigationLink(destination: SearchResultView(viewModel: SearchResultViewState(searchResultType: getSearchTargetType(), withoutCheck: true, firstCategories: viewState.firstCategories))) {
                         HStack {
                             Spacer()
                             Text(String(localized: "search-search-for-exclude-checked-items"))
@@ -60,7 +60,7 @@ struct SearchView: View {
                         )
                     }
 
-                    NavigationLink(destination: SearchResultView(searchResultType: getSearchTargetType(), withoutCheck: false, firstCategories: viewState.firstCategories)) {
+                    NavigationLink(destination: SearchResultView(viewModel: SearchResultViewState(searchResultType: getSearchTargetType(), withoutCheck: false, firstCategories: viewState.firstCategories))) {
                         HStack {
                             Spacer()
                             Text(String(localized: "search-search-for-checked-items"))
@@ -88,7 +88,7 @@ struct SearchView: View {
     }
 
     func getSearchTargetType() -> SearchTargetType {
-        if viewState.favoriteColor == 0 {
+        if viewState.searchType == 0 {
             return .reactant
         } else {
             return .product

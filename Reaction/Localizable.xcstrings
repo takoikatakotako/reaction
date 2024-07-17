@@ -324,6 +324,9 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "list-title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -354,6 +357,28 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "生成物"
+          }
+        }
+      }
+    },
+    "search-result-search-product" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Product"
+          }
+        }
+      }
+    },
+    "search-result-search-reactant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Reactant"
           }
         }
       }
@@ -698,6 +723,23 @@
         }
       }
     },
+    "subscription-buy-paid-plan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy a paid plan"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "有料プランを購入"
+          }
+        }
+      }
+    },
     "subscription-failed" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -783,14 +825,22 @@
         }
       }
     },
-    "有料プランの購入、復元に失敗しました。" : {
-
-    },
-    "詳細な反応機構を確認するためには有料プランの購入が必要です。" : {
-
-    },
-    "購入完了しました、ありがとうございました。" : {
-
+    "subscription-restore-purchase" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore purchase"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入を復元"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

@@ -2,13 +2,15 @@ import SwiftUI
 
 struct ReactionListView: View {
     @StateObject var viewState: ReactionListViewState
-
+    
     var body: some View {
         NavigationStack {
             ZStack {
-                List {
+                VStack(spacing: 0) {
+                    Divider()
+                    
                     ZStack(alignment: .trailing) {
-                        TextField("Type your search", text: $viewState.searchText)
+                        TextField(String(localized: "common-search"), text: $viewState.searchText)
                         if !viewState.searchText.isEmpty {
                             Button(action: {
                                 viewState.clearSearchText()
@@ -18,8 +20,11 @@ struct ReactionListView: View {
                             }
                         }
                     }
-
-                    ForEach(viewState.showingReactions) { (reactionMechanism: ReactionMechanism) in
+                    .padding(8)
+                    
+                    Divider()
+                    
+                    List(viewState.showingReactions) { (reactionMechanism: ReactionMechanism) in
                         Button {
                             viewState.tapped(reactionMechanism: reactionMechanism)
                         } label: {
@@ -31,9 +36,9 @@ struct ReactionListView: View {
                         }
                         .disabled(viewState.isFetching)
                     }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
-
+                
                 if viewState.isFetching {
                     ProgressView()
                         .scaleEffect(1.5, anchor: .center)
@@ -50,15 +55,15 @@ struct ReactionListView: View {
                 ReactionDetailView(reactionMechanism: item)
             }
             .alert(String(localized: "subscription-paid-plan"), isPresented: $viewState.billingAlert, actions: {
-                Button("有料プランを購入", role: .none) {
+                Button(String(localized: "subscription-buy-paid-plan"), role: .none) {
                     viewState.purchase()
                 }
-                Button("購入を復元", role: .none) {
+                Button(String(localized: "subscription-restore-purchase"), role: .none) {
                     viewState.restore()
                 }
                 Button(String(localized: "common-cancel"), role: .cancel) {}
             }, message: {
-                Text("詳細な反応機構を確認するためには有料プランの購入が必要です。")
+                Text(String(localized: "subscription-need-subscription"))
             })
             .alert(String(localized: "subscription-purchase-complete"), isPresented: $viewState.completeAlert, actions: {
                 Button(String(localized: "common-close"), role: .cancel) {}
@@ -68,7 +73,7 @@ struct ReactionListView: View {
             .alert(String(localized: "common-error"), isPresented: $viewState.errorAlert, actions: {
                 Button(String(localized: "common-close"), role: .cancel) {}
             }, message: {
-                Text("有料プランの購入、復元に失敗しました。")
+                Text(String(localized: "subscription-failed"))
             })
             .sheet(item: $viewState.sheet) { (item: ReactionListViewSheet) in
                 switch item {

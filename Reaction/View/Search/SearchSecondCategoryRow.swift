@@ -13,7 +13,7 @@ struct SearchSecondCategoryRow: View {
                     Image(systemName: "square")
                         .padding(.leading, 24)
                 }
-                Text(name)
+                CommonText(text: name, font: Font.system(size: 12))
             }
             Divider()
         }

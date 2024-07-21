@@ -13,8 +13,7 @@ struct ReactionListRow: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(reactionMechanism.getDisplayTitle(identifier: localeIdentifier))
-                .foregroundColor(Color(.appMainText))
+            CommonText(text: reactionMechanism.getDisplayTitle(identifier: localeIdentifier), font: Font.system(size: 12))
             if showingThmbnail {
                 ReactionListRowImage(imageUrl: reactionMechanism.thmbnailUrl, placeHolderName: "placeholder-list")
             }

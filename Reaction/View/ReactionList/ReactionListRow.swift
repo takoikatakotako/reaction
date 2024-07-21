@@ -3,7 +3,7 @@ import SwiftUI
 struct ReactionListRow: View {
     let reactionMechanism: ReactionMechanism
     @Binding var showingThmbnail: Bool
-    @Binding var selectJapanese: Bool
+    @State var localeIdentifier: String
 
     @Environment(\.colorScheme) var colorScheme
 
@@ -13,7 +13,7 @@ struct ReactionListRow: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(selectJapanese ? reactionMechanism.japanese : reactionMechanism.english)
+            Text(reactionMechanism.getDisplayTitle(identifier: localeIdentifier))
                 .foregroundColor(Color(.appMainText))
             if showingThmbnail {
                 ReactionListRowImage(imageUrl: reactionMechanism.thmbnailUrl, placeHolderName: "placeholder-list")

@@ -4,6 +4,7 @@ struct ReactionMechanism: Identifiable, Decodable, Hashable {
     var id: String {
         directoryName
     }
+
     let directoryName: String
     let english: String
     let japanese: String
@@ -25,6 +26,16 @@ struct ReactionMechanism: Identifiable, Decodable, Hashable {
     var reactionUrlString: String {
         let string = "\(appEnvironment.baseUrlString)/resource/images/\(directoryName)/"
         return string
+    }
+
+    func getDisplayTitle(identifier: String) -> String {
+        if identifier.starts(with: "en") {
+            return english
+        } else if identifier.starts(with: "ja") {
+            return japanese
+        } else {
+            return english
+        }
     }
 }
 

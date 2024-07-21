@@ -5,7 +5,6 @@ import StoreKit
 class ReactionListViewState: ObservableObject {
     @Published var searchText: String = ""
     @Published var showingThmbnail: Bool
-    @Published var selectJapanese: Bool
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
     @Published var billingAlert = false
@@ -13,14 +12,14 @@ class ReactionListViewState: ObservableObject {
     @Published var errorAlert = false
     @Published var sheet: ReactionListViewSheet?
     @Published var destination: ReactionMechanism?
+    @Published var localeIdentifier: String = Locale.current.identifier
 
     private let userDefaultsRepository = UserDefaultRepository()
     private let reactionRepository = ReactionMechanismRepository()
     private var subscriptions = Set<AnyCancellable>()
 
-    init(showingThmbnail: Bool, selectJapanese: Bool) {
+    init(showingThmbnail: Bool) {
         self.showingThmbnail = showingThmbnail
-        self.selectJapanese = selectJapanese
     }
 
     var showingReactions: [ReactionMechanism] {
@@ -39,8 +38,9 @@ class ReactionListViewState: ObservableObject {
     }
 
     func onAppear() {
-        selectJapanese = userDefaultsRepository.selectedJapanese
         showingThmbnail = userDefaultsRepository.showThmbnail
+        localeIdentifier = Locale.current.identifier
+
         guard reactionMechanisms.isEmpty else {
             return
         }

@@ -6,9 +6,11 @@ struct ReactionListView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                List {
+                VStack(spacing: 0) {
+                    Divider()
+
                     ZStack(alignment: .trailing) {
-                        TextField("Type your search", text: $viewState.searchText)
+                        TextField(String(localized: "common-search"), text: $viewState.searchText)
                         if !viewState.searchText.isEmpty {
                             Button(action: {
                                 viewState.clearSearchText()
@@ -18,17 +20,24 @@ struct ReactionListView: View {
                             }
                         }
                     }
+                    .padding(8)
 
-                    ForEach(viewState.showingReactions) { (reactionMechanism: ReactionMechanism) in
+                    Divider()
+
+                    List(viewState.showingReactions) { (reactionMechanism: ReactionMechanism) in
                         Button {
                             viewState.tapped(reactionMechanism: reactionMechanism)
                         } label: {
-                            ReactionListRow(reactionMechanism: reactionMechanism, showingThmbnail: $viewState.showingThmbnail, selectJapanese: $viewState.selectJapanese)
+                            ReactionListRow(
+                                reactionMechanism: reactionMechanism,
+                                showingThmbnail: $viewState.showingThmbnail,
+                                localeIdentifier: viewState.localeIdentifier
+                            )
                         }
                         .disabled(viewState.isFetching)
                     }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
 
                 if viewState.isFetching {
                     ProgressView()
@@ -43,43 +52,42 @@ struct ReactionListView: View {
                 viewState.onAppear()
             }
             .navigationDestination(item: $viewState.destination) { item in
-                ReactionDetailView(selectJapanese: viewState.selectJapanese, reactionMechanism: item)
+                ReactionDetailView(reactionMechanism: item)
             }
-            .alert("有料プラン", isPresented: $viewState.billingAlert, actions: {
-                Button("有料プランを購入", role: .none) {
+            .alert(String(localized: "subscription-paid-plan"), isPresented: $viewState.billingAlert, actions: {
+                Button(String(localized: "subscription-buy-paid-plan"), role: .none) {
                     viewState.purchase()
                 }
-                Button("購入を復元", role: .none) {
+                Button(String(localized: "subscription-restore-purchase"), role: .none) {
                     viewState.restore()
                 }
-                Button("キャンセル", role: .cancel) {}
+                Button(String(localized: "common-cancel"), role: .cancel) {}
             }, message: {
-                Text("詳細な反応機構を確認するためには有料プランの購入が必要です。")
+                Text(String(localized: "subscription-need-subscription"))
             })
-            .alert("購入完了", isPresented: $viewState.completeAlert, actions: {
-                Button("とじる", role: .cancel) {}
+            .alert(String(localized: "subscription-purchase-complete"), isPresented: $viewState.completeAlert, actions: {
+                Button(String(localized: "common-close"), role: .cancel) {}
             }, message: {
-                Text("購入完了しました、ありがとうございました。")
+                Text(String(localized: "subscription-complete"))
             })
-            .alert("エラー", isPresented: $viewState.errorAlert, actions: {
-                Button("とじる", role: .cancel) {}
+            .alert(String(localized: "common-error"), isPresented: $viewState.errorAlert, actions: {
+                Button(String(localized: "common-close"), role: .cancel) {}
             }, message: {
-                Text("有料プランの購入、復元に失敗しました。")
+                Text(String(localized: "subscription-failed"))
             })
-
             .sheet(item: $viewState.sheet) { (item: ReactionListViewSheet) in
                 switch item {
                 case .developer:
                     DeveloperView()
                 }
             }
-            .navigationTitle("List")
+            .navigationTitle(String(localized: "list-title"))
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 leading: Button(action: {
                     viewState.sheet = .developer
                 }, label: {
-                    Text("Info")
+                    Text(String(localized: "common-info"))
                 })
             )
         }
@@ -88,5 +96,5 @@ struct ReactionListView: View {
 }
 
 #Preview {
-    ReactionListView(viewState: ReactionListViewState(showingThmbnail: true, selectJapanese: false))
+    ReactionListView(viewState: ReactionListViewState(showingThmbnail: true))
 }

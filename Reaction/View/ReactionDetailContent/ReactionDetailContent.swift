@@ -1,18 +1,18 @@
 import SwiftUI
 
 struct ReactionDetailContent: View {
-    let selectJapanese: Bool
+    let localeIdentifier: String
     @State var reactionMechanism: ReactionMechanism
 
     var body: some View {
         LazyVStack {
-            Text(selectJapanese ? reactionMechanism.japanese : reactionMechanism.english)
+            Text(reactionMechanism.getDisplayTitle(identifier: localeIdentifier))
                 .font(Font.system(size: 24))
                 .padding(.bottom, 12)
 
             if !reactionMechanism.generalFormulas.isEmpty {
                 VStack(spacing: 0) {
-                    Text(selectJapanese ? "一般式" : "General Formula")
+                    Text(String(localized: "common-general-formula"))
                     ForEach(reactionMechanism.generalFormulas, id: \.self) { generalFormula in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + generalFormula.imageName))
                             .scaledToFit()
@@ -23,7 +23,7 @@ struct ReactionDetailContent: View {
 
             if !reactionMechanism.mechanisms.isEmpty {
                 VStack(spacing: 0) {
-                    Text(selectJapanese ? "反応機構" : "Mechanism")
+                    Text(String(localized: "common-reaction-mechanism"))
                     ForEach(reactionMechanism.mechanisms, id: \.self) { mechanism in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + mechanism.imageName))
                             .scaledToFit()
@@ -34,7 +34,7 @@ struct ReactionDetailContent: View {
 
             if !reactionMechanism.examples.isEmpty {
                 VStack(spacing: 0) {
-                    Text(selectJapanese ?  "例" : "Example")
+                    Text(String(localized: "common-example"))
                     ForEach(reactionMechanism.examples, id: \.self) { example in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + example.imageName))
                             .scaledToFit()
@@ -45,7 +45,7 @@ struct ReactionDetailContent: View {
 
             if !reactionMechanism.supplements.isEmpty {
                 VStack(spacing: 0) {
-                    Text(selectJapanese ?  "補足" : "Supplement")
+                    Text(String(localized: "common-supplement"))
                     ForEach(reactionMechanism.supplements, id: \.self) { supplement in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + supplement.imageName))
                             .scaledToFit()
@@ -56,7 +56,7 @@ struct ReactionDetailContent: View {
 
             if !reactionMechanism.youtubeLinks.isEmpty {
                 VStack(spacing: 0) {
-                    Text(selectJapanese ?  "動画" : "Movie")
+                    Text(String(localized: "common-movie"))
                     ForEach(reactionMechanism.youtubeLinks, id: \.self) { youtubeLink in
                         if let youtubeUrl = URL(string: youtubeLink) {
                             Button {
@@ -91,8 +91,8 @@ struct ReactionDetailContent: View {
     }
 }
 
-struct ReactionDetailContent_Previews: PreviewProvider {
-    static var previews: some View {
-        ReactionDetailContent(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
-    }
-}
+// struct ReactionDetailContent_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReactionDetailContent(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
+//    }
+// }

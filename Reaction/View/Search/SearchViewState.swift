@@ -1,7 +1,7 @@
 import Foundation
 
 class SearchViewState: ObservableObject {
-    @Published var favoriteColor = 0
+    @Published var searchType = 0
     @Published var firstCategories: [FirstCategory] = [
         FirstCategory(
             name: "Carbonyl",

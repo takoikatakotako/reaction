@@ -55,8 +55,7 @@ class SearchResultViewState: ObservableObject {
             }
         }
     }
-    
-    
+
     func tapped(reactionMechanism: ReactionMechanism) {
         guard userDefaultsRepository.enableDetaileAbility else {
             // 未課金なのでアラートを表示
@@ -66,9 +65,7 @@ class SearchResultViewState: ObservableObject {
 
         destination = reactionMechanism
     }
-    
-    
-    
+
     func purchase() {
         isFetching = true
         Task { @MainActor in
@@ -166,17 +163,6 @@ class SearchResultViewState: ObservableObject {
             throw SubscribeError.failedVerification
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     private func getTags() -> [String] {
         var tags: [String] = []

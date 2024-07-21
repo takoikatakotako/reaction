@@ -4,7 +4,6 @@ struct ReactionDetailView: View {
     @State var showingSheet = false
     @State var showingFullScreen = false
     @State var reactionMechanism: ReactionMechanism
-    
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -51,10 +50,10 @@ struct ReactionDetailView: View {
     }
 }
 
-//struct ReactionDetailView_Previews: PreviewProvider {
+// struct ReactionDetailView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NavigationView {
 //            ReactionDetailView(selectJapanese: false, reactionMechanism: ReactionMechanism.mock())
 //        }
 //    }
-//}
+// }

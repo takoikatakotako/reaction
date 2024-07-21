@@ -14,10 +14,10 @@ struct SearchResultView: View {
                         showingThmbnail: $viewModel.showingThmbnail,
                         localeIdentifier: Locale.current.identifier
                     )
-                }                
+                }
             }
             .listStyle(.plain)
-            
+
             if viewModel.isFetching {
                 ProgressView()
                     .scaleEffect(1.5, anchor: .center)
@@ -58,8 +58,8 @@ struct SearchResultView: View {
     }
 }
 
-//struct SearchResult_Previews: PreviewProvider {
+// struct SearchResult_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SearchResultView(searchResultType: .reactant, withoutCheck: true, firstCategories: [])
 //    }
-//}
+// }

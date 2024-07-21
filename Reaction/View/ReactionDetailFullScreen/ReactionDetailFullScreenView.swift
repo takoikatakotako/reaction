@@ -26,8 +26,8 @@ struct ReactionDetailFullScreenView: View {
     }
 }
 
-//struct ReactionDetailFullScreenView_Previews: PreviewProvider {
+// struct ReactionDetailFullScreenView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ReactionDetailFullScreenView(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
 //    }
-//}
+// }

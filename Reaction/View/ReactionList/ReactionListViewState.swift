@@ -40,7 +40,7 @@ class ReactionListViewState: ObservableObject {
     func onAppear() {
         showingThmbnail = userDefaultsRepository.showThmbnail
         localeIdentifier = Locale.current.identifier
-        
+
         guard reactionMechanisms.isEmpty else {
             return
         }

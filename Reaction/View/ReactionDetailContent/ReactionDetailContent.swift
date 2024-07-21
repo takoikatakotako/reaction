@@ -91,8 +91,8 @@ struct ReactionDetailContent: View {
     }
 }
 
-//struct ReactionDetailContent_Previews: PreviewProvider {
+// struct ReactionDetailContent_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ReactionDetailContent(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
 //    }
-//}
+// }

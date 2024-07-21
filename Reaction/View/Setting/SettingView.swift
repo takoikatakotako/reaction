@@ -3,7 +3,7 @@ import LicenseList
 
 struct SettingView: View {
     @StateObject var viewState: SettingViewState
-    
+
     var body: some View {
         NavigationStack {
             List {
@@ -20,7 +20,7 @@ struct SettingView: View {
                             Text(viewState.langage)
                         }
                     }
-                    
+
                     Button {
                         viewState.showThumbnailAlert()
                     } label: {
@@ -33,7 +33,7 @@ struct SettingView: View {
                         }
                     }
                 }
-                
+
                 Section(String(localized: "setting-developer-info")) {
                     Button(action: {
                         if let url = URL(string: GITHUB_REPOSITORY_URL) {
@@ -48,7 +48,7 @@ struct SettingView: View {
                         }
                     })
                 }
-                
+
                 Section(String(localized: "setting-app-info")) {
                     HStack {
                         Text(String(localized: "setting-version"))
@@ -61,7 +61,7 @@ struct SettingView: View {
                         Text(String(localized: "setting-license"))
                     }
                 }
-                
+
                 Section(String(localized: "setting-reset")) {
                     Button {
                         viewState.reset()
@@ -73,22 +73,22 @@ struct SettingView: View {
             .onAppear {
                 viewState.onAppear()
             }
-            
+
             .alert("", isPresented: $viewState.showingThmbnailAlert, actions: {
                 Button(String(localized: "setting-show-thmbnail")) {
                     viewState.setShowThumbnail()
                 }
-                
+
                 Button(String(localized: "setting-hidden-thmbnail")) {
                     viewState.setHiddenThumbnail()
                 }
-                
+
                 Button(String(localized: "common-close")) {}
             }, message: {
                 Text(String(localized: "setting-do-you-want-to-display-thumbnails?"))
             })
             .alert("", isPresented: $viewState.showingResetAlert, actions: {
-                
+
             }, message: {
                 Text(String(localized: "setting-clear-cache-complete"))
             })

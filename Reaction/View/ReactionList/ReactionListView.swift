@@ -2,13 +2,13 @@ import SwiftUI
 
 struct ReactionListView: View {
     @StateObject var viewState: ReactionListViewState
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack(spacing: 0) {
                     Divider()
-                    
+
                     ZStack(alignment: .trailing) {
                         TextField(String(localized: "common-search"), text: $viewState.searchText)
                         if !viewState.searchText.isEmpty {
@@ -21,9 +21,9 @@ struct ReactionListView: View {
                         }
                     }
                     .padding(8)
-                    
+
                     Divider()
-                    
+
                     List(viewState.showingReactions) { (reactionMechanism: ReactionMechanism) in
                         Button {
                             viewState.tapped(reactionMechanism: reactionMechanism)
@@ -38,7 +38,7 @@ struct ReactionListView: View {
                     }
                     .listStyle(.plain)
                 }
-                
+
                 if viewState.isFetching {
                     ProgressView()
                         .scaleEffect(1.5, anchor: .center)

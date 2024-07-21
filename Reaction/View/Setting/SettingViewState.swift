@@ -5,7 +5,7 @@ class SettingViewState: ObservableObject {
     @Published var thmbnail: Bool?
     @Published var showingThmbnailAlert = false
     @Published var showingResetAlert = false
-    
+
     private let userDefaultRepository = UserDefaultRepository()
 
     var appVersion: String {
@@ -19,19 +19,19 @@ class SettingViewState: ObservableObject {
         } else if identifier.starts(with: "ja") {
             langage = String(localized: "common-japanese")
         }
-        
+
         thmbnail = userDefaultRepository.showThmbnail
     }
-    
+
     func showThumbnailAlert() {
         showingThmbnailAlert = true
     }
-    
+
     func setShowThumbnail() {
         userDefaultRepository.setShowThmbnail(true)
         thmbnail = true
     }
-    
+
     func setHiddenThumbnail() {
         userDefaultRepository.setShowThmbnail(false)
         thmbnail = false

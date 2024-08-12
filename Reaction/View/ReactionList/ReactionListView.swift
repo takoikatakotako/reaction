@@ -31,7 +31,7 @@ struct ReactionListView: View {
                             ReactionListRow(
                                 reactionMechanism: reactionMechanism,
                                 showingThmbnail: $viewState.showingThmbnail,
-                                localeIdentifier: viewState.localeIdentifier
+                                localeIdentifier: viewState.reactionMechanismIdentifier
                             )
                         }
                         .disabled(viewState.isFetching)

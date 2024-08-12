@@ -3,42 +3,45 @@ package com.swiswiswift.chemist
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.*
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import com.swiswiswift.chemist.ui.theme.ReactionTheme
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.swiswiswift.chemist.ui.theme.ReactionandroidTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val reactionListiewModel = ReactionListViewModel()
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
-            ReactionTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    val navController = rememberNavController()
-                    NavHost(navController, startDestination = "list") {
-                        composable("list") {
-                            ReactionList(navController, reactionListiewModel)
-                        }
-
-                        composable(
-                            "detail/{reactionName}",
-                            arguments = listOf(navArgument("reactionName") {
-                                type = NavType.StringType
-                            })
-                        ) { backStackEntry ->
-                            val reactionName = backStackEntry.arguments?.getString("reactionName")!!
-                            ReactionDetail(
-                                navController = navController,
-                                directoryName = reactionName,
-                            )
-                        }
-                    }
+            ReactionandroidTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Greeting(
+                        name = "Android",
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
+    }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    ReactionandroidTheme {
+        Greeting("Android")
     }
 }

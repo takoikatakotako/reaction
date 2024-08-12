@@ -3,6 +3,7 @@ import SwiftUI
 class SettingViewState: ObservableObject {
     @Published var langage: String = ""
     @Published var thmbnail: Bool?
+    @Published var showingReactionMechanismAlert = false
     @Published var showingThmbnailAlert = false
     @Published var showingResetAlert = false
 
@@ -21,6 +22,10 @@ class SettingViewState: ObservableObject {
         }
 
         thmbnail = userDefaultRepository.showThmbnail
+    }
+    
+    func showReactionMechanismLanguageAlert() {
+        showingReactionMechanismAlert = true
     }
 
     func showThumbnailAlert() {

@@ -9,12 +9,22 @@ struct SettingView: View {
             List {
                 Section(String(localized: "setting-app-setting")) {
                     Button {
+                        viewState.showReactionMechanismLanguageAlert()
+                    } label: {
+                        HStack {
+                            Text(String(localized: "setting-reaction-mechanism-language"))
+                            Spacer()
+                            CommonText(text: viewState.langage, font: Font.system(size: 14))
+                        }
+                    }
+
+                    Button {
                         if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
                             UIApplication.shared.open(url)
                         }
                     } label: {
                         HStack {
-                            Text(String(localized: "setting-language"))
+                            Text(String(localized: "setting-app-language"))
                             Spacer()
                             CommonText(text: viewState.langage, font: Font.system(size: 14))
                         }
@@ -73,19 +83,18 @@ struct SettingView: View {
             .onAppear {
                 viewState.onAppear()
             }
-
-            .alert("", isPresented: $viewState.showingThmbnailAlert, actions: {
-                Button(String(localized: "setting-show-thmbnail")) {
-                    viewState.setShowThumbnail()
+            .alert("", isPresented: $viewState.showingReactionMechanismAlert, actions: {
+                Button(String(localized: "common-english")) {
+                    // viewState.setShowThumbnail()
                 }
 
-                Button(String(localized: "setting-hidden-thmbnail")) {
-                    viewState.setHiddenThumbnail()
+                Button(String(localized: "common-japanese")) {
+                    // viewState.setHiddenThumbnail()
                 }
 
                 Button(String(localized: "common-close")) {}
             }, message: {
-                CommonText(text: String(localized: "setting-do-you-want-to-display-thumbnails?"), font: Font.system(size: 14))
+                CommonText(text: String(localized: "setting-select-reaction-mechanism-language"), font: Font.system(size: 14))
             })
             .alert("", isPresented: $viewState.showingResetAlert, actions: {
 

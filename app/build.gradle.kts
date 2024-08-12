@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    namespace = "com.swiswiswift.rchemist"
+    namespace = "com.swiswiswift.chemist"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.swiswiswift.rchemist"
+        applicationId = "com.swiswiswift.chemist"
         minSdk = 29
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -59,6 +59,11 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // API通信
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

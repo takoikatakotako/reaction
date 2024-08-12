@@ -60,9 +60,17 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    // API通信
+    // API
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+
+
+    implementation(libs.material)
+    implementation("io.coil-kt:coil-compose:1.4.0")
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -12,7 +12,7 @@ class ReactionListViewState: ObservableObject {
     @Published var errorAlert = false
     @Published var sheet: ReactionListViewSheet?
     @Published var destination: ReactionMechanism?
-    
+
     // 反応機構の言語
     @Published var reactionMechanismIdentifier: String
 
@@ -43,7 +43,7 @@ class ReactionListViewState: ObservableObject {
     func onAppear() {
         showingThmbnail = userDefaultsRepository.showThmbnail
         reactionMechanismIdentifier = userDefaultsRepository.reactionMechanismLanguage
-        
+
         guard reactionMechanisms.isEmpty else {
             return
         }

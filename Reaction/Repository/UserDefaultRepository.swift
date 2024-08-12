@@ -9,7 +9,7 @@ class UserDefaultRepository {
     var reactionMechanismLanguage: String {
         UserDefaults.standard.object(forKey: KEY_REACTION_MECHANISM_LANGUAGE) as? String ?? "en"
     }
-    
+
     var showThmbnail: Bool {
         UserDefaults.standard.object(forKey: KEY_SHOW_THUMBNAIL) as? Bool ?? true
     }
@@ -31,7 +31,7 @@ class UserDefaultRepository {
     func setReactionMechanismLanguage(_ language: String) {
         UserDefaults.standard.setValue(language, forKey: KEY_REACTION_MECHANISM_LANGUAGE)
     }
-    
+
     func setShowThmbnail(_ showThmbnail: Bool) {
         UserDefaults.standard.setValue(showThmbnail, forKey: KEY_SHOW_THUMBNAIL)
     }

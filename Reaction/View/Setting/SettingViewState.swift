@@ -18,7 +18,7 @@ class SettingViewState: ObservableObject {
         // 反応機構の言語
         let reactionMechanismLanguage = userDefaultRepository.reactionMechanismLanguage
         setReactionMechanismLanguage(language: reactionMechanismLanguage)
-        
+
         // アプリの言語
         let appLangageidentifier = Locale.current.identifier
         if appLangageidentifier.starts(with: "en") {
@@ -29,7 +29,7 @@ class SettingViewState: ObservableObject {
 
         thmbnail = userDefaultRepository.showThmbnail
     }
-    
+
     func showReactionMechanismLanguageAlert() {
         showingReactionMechanismAlert = true
     }
@@ -37,7 +37,7 @@ class SettingViewState: ObservableObject {
     func showThumbnailAlert() {
         showingThmbnailAlert = true
     }
-    
+
     func updateReactionMechanismLanguage(language: String) {
         // 反応機構の言語を更新
         userDefaultRepository.setReactionMechanismLanguage(language)
@@ -58,8 +58,7 @@ class SettingViewState: ObservableObject {
         URLCache.shared.removeAllCachedResponses()
         showingResetAlert = true
     }
-    
-    
+
     private func setReactionMechanismLanguage(language: String) {
         // 反応機構の言語を更新
         if language.starts(with: "en") {

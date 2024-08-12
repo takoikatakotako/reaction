@@ -3,9 +3,6 @@ package com.swiswiswift.chemist
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-// import androidx.compose.material.Card
-// import androidx.compose.material.MaterialTheme
-// import androidx.compose.material.Text
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -17,16 +14,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import coil.size.OriginalSize
-import coil.size.Scale
 import coil.size.SizeResolver
-import coil.transform.CircleCropTransformation
-import java.nio.file.Files
-import java.nio.file.Files.size
-//
-//
-//
-//
-//
+
 @Composable
 fun ReactionCard(navController: NavController, reaction: Reaction) {
     Card(
@@ -38,7 +27,7 @@ fun ReactionCard(navController: NavController, reaction: Reaction) {
                 navController.navigate("detail/${reaction.directoryName}")
             },
         shape = MaterialTheme.shapes.medium,
-        // elevation = 4.dp,
+        //elevation = 4.dp,
         // backgroundColor = MaterialTheme.colors.surface
     ) {
         Row(
@@ -67,7 +56,6 @@ fun ReactionCard(navController: NavController, reaction: Reaction) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(4.dp),
-
                     )
             }
         }

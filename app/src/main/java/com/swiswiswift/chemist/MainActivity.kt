@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,20 +15,20 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.swiswiswift.chemist.ui.theme.ReactionandroidTheme
+import com.swiswiswift.chemist.ui.theme.ReactionTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val reactionListiewModel = ReactionListViewModel()
+        val reactionListViewModel = ReactionListViewModel()
         enableEdgeToEdge()
         setContent {
-            ReactionandroidTheme {
+            ReactionTheme {
                 val navController = rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavHost(navController, startDestination = "list") {
                         composable("list") {
-                            ReactionList(navController, reactionListiewModel)
+                            ReactionList(navController, reactionListViewModel)
                         }
 
                         composable(
@@ -62,7 +61,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    ReactionandroidTheme {
+    ReactionTheme {
         Greeting("Android")
     }
 }

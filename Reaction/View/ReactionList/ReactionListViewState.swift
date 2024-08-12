@@ -18,7 +18,6 @@ class ReactionListViewState: ObservableObject {
 
     private let userDefaultsRepository = UserDefaultRepository()
     private let reactionRepository = ReactionMechanismRepository()
-    private var subscriptions = Set<AnyCancellable>()
 
     init(showingThmbnail: Bool) {
         self.reactionMechanismIdentifier = userDefaultsRepository.reactionMechanismLanguage
@@ -41,8 +40,8 @@ class ReactionListViewState: ObservableObject {
     }
 
     func onAppear() {
-        showingThmbnail = userDefaultsRepository.showThmbnail
         reactionMechanismIdentifier = userDefaultsRepository.reactionMechanismLanguage
+        showingThmbnail = userDefaultsRepository.showThmbnail
 
         guard reactionMechanisms.isEmpty else {
             return

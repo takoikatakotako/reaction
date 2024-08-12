@@ -24,19 +24,34 @@ struct ReactionListView: View {
 
                     Divider()
 
-                    List(viewState.showingReactions) { (reactionMechanism: ReactionMechanism) in
-                        Button {
-                            viewState.tapped(reactionMechanism: reactionMechanism)
-                        } label: {
-                            ReactionListRow(
-                                reactionMechanism: reactionMechanism,
-                                showingThmbnail: $viewState.showingThmbnail,
-                                localeIdentifier: viewState.reactionMechanismIdentifier
-                            )
+                        List(viewState.showingReactions) { (reactionMechanism: ReactionMechanism) in
+                            // 言語が変わったタイミングでリロードするため
+                            if viewState.reactionMechanismIdentifier == "ja"{
+                                Button {
+                                    viewState.tapped(reactionMechanism: reactionMechanism)
+                                } label: {
+                                    ReactionListRow(
+                                        reactionMechanism: reactionMechanism,
+                                        showingThmbnail: $viewState.showingThmbnail,
+                                        localeIdentifier: viewState.reactionMechanismIdentifier
+                                    )
+                                }
+                                .disabled(viewState.isFetching)
+                            } else {
+                                Button {
+                                    viewState.tapped(reactionMechanism: reactionMechanism)
+                                } label: {
+                                    ReactionListRow(
+                                        reactionMechanism: reactionMechanism,
+                                        showingThmbnail: $viewState.showingThmbnail,
+                                        localeIdentifier: viewState.reactionMechanismIdentifier
+                                    )
+                                }
+                                .disabled(viewState.isFetching)
+                            }
                         }
-                        .disabled(viewState.isFetching)
-                    }
-                    .listStyle(.plain)
+                        .listStyle(.plain)
+
                 }
 
                 if viewState.isFetching {

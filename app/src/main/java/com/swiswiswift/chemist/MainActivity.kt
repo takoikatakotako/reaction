@@ -26,28 +26,24 @@ class MainActivity : ComponentActivity() {
         setContent {
             ReactionandroidTheme {
                 val navController = rememberNavController()
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    Greeting(
-//                        name = "Android",
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-//                }
-                NavHost(navController, startDestination = "list") {
-                    composable("list") {
-                        ReactionList(navController, reactionListiewModel)
-                    }
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    NavHost(navController, startDestination = "list") {
+                        composable("list") {
+                            ReactionList(navController, reactionListiewModel)
+                        }
 
-                    composable(
-                        "detail/{reactionName}",
-                        arguments = listOf(navArgument("reactionName") {
-                            type = NavType.StringType
-                        })
-                    ) { backStackEntry ->
-                        val reactionName = backStackEntry.arguments?.getString("reactionName")!!
-                        ReactionDetail(
-                            navController = navController,
-                            directoryName = reactionName,
-                        )
+                        composable(
+                            "detail/{reactionName}",
+                            arguments = listOf(navArgument("reactionName") {
+                                type = NavType.StringType
+                            })
+                        ) { backStackEntry ->
+                            val reactionName = backStackEntry.arguments?.getString("reactionName")!!
+                            ReactionDetail(
+                                navController = navController,
+                                directoryName = reactionName,
+                            )
+                        }
                     }
                 }
             }

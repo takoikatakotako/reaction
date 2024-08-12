@@ -3,6 +3,7 @@ package com.swiswiswift.chemist
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -20,32 +21,21 @@ import androidx.navigation.NavController
 
 @Composable
 fun ReactionList(navController: NavController, reactionListViewModel: ReactionListViewModel) {
-//    LaunchedEffect(Unit, block = {
-//        reactionListViewModel.getReactions()
-//    })
-//
-//    Scaffold(
-//        topBar = {
-//            TopAppBar(
-//                title = {
-//                    Row {
-//                        Text("Shin Reaction Mechanism")
-//                    }
-//                },
-//            )
-//        },
-//        content = {
-//            if (reactionListViewModel.errorMessage.isEmpty()) {
-//                Column(modifier = Modifier.padding(16.dp)) {
-//                    LazyColumn(modifier = Modifier.fillMaxHeight()) {
-//                        items(reactionListViewModel.reactionList) { todo ->
-//                            ReactionCard(navController = navController, todo)
-//                        }
-//                    }
-//                }
-//            } else {
-//                Text(reactionListViewModel.errorMessage)
-//            }
-//        }
-//    )
+    LaunchedEffect(Unit, block = {
+        reactionListViewModel.getReactions()
+    })
+
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        if (reactionListViewModel.errorMessage.isEmpty()) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                LazyColumn(modifier = Modifier.fillMaxHeight()) {
+                    items(reactionListViewModel.reactionList) { todo ->
+                        ReactionCard(navController = navController, todo)
+                    }
+                }
+            }
+        } else {
+            Text(reactionListViewModel.errorMessage)
+        }
+    }
 }

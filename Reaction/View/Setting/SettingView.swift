@@ -14,7 +14,7 @@ struct SettingView: View {
                         HStack {
                             Text(String(localized: "setting-reaction-mechanism-language"))
                             Spacer()
-                            CommonText(text: viewState.langage, font: Font.system(size: 14))
+                            CommonText(text: viewState.reactionMechanismLangage, font: Font.system(size: 14))
                         }
                     }
 
@@ -26,7 +26,7 @@ struct SettingView: View {
                         HStack {
                             Text(String(localized: "setting-app-language"))
                             Spacer()
-                            CommonText(text: viewState.langage, font: Font.system(size: 14))
+                            CommonText(text: viewState.appLangage, font: Font.system(size: 14))
                         }
                     }
 
@@ -85,11 +85,11 @@ struct SettingView: View {
             }
             .alert("", isPresented: $viewState.showingReactionMechanismAlert, actions: {
                 Button(String(localized: "common-english")) {
-                    // viewState.setShowThumbnail()
+                    viewState.updateReactionMechanismLanguage(language: "en")
                 }
 
                 Button(String(localized: "common-japanese")) {
-                    // viewState.setHiddenThumbnail()
+                    viewState.updateReactionMechanismLanguage(language: "ja")
                 }
 
                 Button(String(localized: "common-close")) {}

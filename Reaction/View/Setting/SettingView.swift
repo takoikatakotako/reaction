@@ -8,6 +8,15 @@ struct SettingView: View {
         NavigationStack {
             List {
                 Section(String(localized: "setting-app-setting")) {
+                    Button {
+                        viewState.showReactionMechanismLanguageAlert()
+                    } label: {
+                        HStack {
+                            Text(String(localized: "setting-reaction-mechanism-language"))
+                            Spacer()
+                            CommonText(text: viewState.reactionMechanismLangage, font: Font.system(size: 14))
+                        }
+                    }
 
                     Button {
                         if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
@@ -15,9 +24,9 @@ struct SettingView: View {
                         }
                     } label: {
                         HStack {
-                            Text(String(localized: "setting-language"))
+                            Text(String(localized: "setting-app-language"))
                             Spacer()
-                            Text(viewState.langage)
+                            CommonText(text: viewState.appLangage, font: Font.system(size: 14))
                         }
                     }
 
@@ -41,7 +50,8 @@ struct SettingView: View {
                         }
                     }, label: {
                         HStack {
-                            Text(String(localized: "setting-github"))
+                            CommonText(text: String(localized: "setting-github"), font: Font.system(size: 14))
+
                             Spacer()
                             Image(systemName: "square.and.arrow.up")
                                 .padding(.trailing, 8)
@@ -51,14 +61,14 @@ struct SettingView: View {
 
                 Section(String(localized: "setting-app-info")) {
                     HStack {
-                        Text(String(localized: "setting-version"))
+                        CommonText(text: String(localized: "setting-version"), font: Font.system(size: 14))
                         Spacer()
                         Text(viewState.appVersion)
                     }
                     NavigationLink {
                         LicenseListView()
                     } label: {
-                        Text(String(localized: "setting-license"))
+                        CommonText(text: String(localized: "setting-license"), font: Font.system(size: 14))
                     }
                 }
 
@@ -66,31 +76,30 @@ struct SettingView: View {
                     Button {
                         viewState.reset()
                     } label: {
-                        Text(String(localized: "setting-clear-cache"))
+                        CommonText(text: String(localized: "setting-clear-cache"), font: Font.system(size: 14))
                     }
                 }
             }
             .onAppear {
                 viewState.onAppear()
             }
-
-            .alert("", isPresented: $viewState.showingThmbnailAlert, actions: {
-                Button(String(localized: "setting-show-thmbnail")) {
-                    viewState.setShowThumbnail()
+            .alert("", isPresented: $viewState.showingReactionMechanismAlert, actions: {
+                Button(String(localized: "common-english")) {
+                    viewState.updateReactionMechanismLanguage(language: "en")
                 }
 
-                Button(String(localized: "setting-hidden-thmbnail")) {
-                    viewState.setHiddenThumbnail()
+                Button(String(localized: "common-japanese")) {
+                    viewState.updateReactionMechanismLanguage(language: "ja")
                 }
 
                 Button(String(localized: "common-close")) {}
             }, message: {
-                Text(String(localized: "setting-do-you-want-to-display-thumbnails?"))
+                CommonText(text: String(localized: "setting-select-reaction-mechanism-language"), font: Font.system(size: 14))
             })
             .alert("", isPresented: $viewState.showingResetAlert, actions: {
 
             }, message: {
-                Text(String(localized: "setting-clear-cache-complete"))
+                CommonText(text: String(localized: "setting-clear-cache-complete"), font: Font.system(size: 14))
             })
             .listStyle(.grouped)
             .navigationTitle(String(localized: "common-setting"))

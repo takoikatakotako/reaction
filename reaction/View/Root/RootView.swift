@@ -10,19 +10,20 @@ struct RootView: View {
             )
             .tabItem {
                 Image(systemName: "list.dash")
-                Text(String(localized: "common-list"))
+                CommonText(text: String(localized: "common-list"), font: Font.system(size: 12))
             }
             SearchView(viewState: SearchViewState())
                 .tabItem {
                     Image(systemName: "magnifyingglass")
-                    Text(String(localized: "common-search"))
+                    CommonText(text: String(localized: "common-search"), font: Font.system(size: 12))
                 }
             SettingView(viewState: SettingViewState())
                 .tabItem {
                     Image(systemName: "gearshape")
-                    Text(String(localized: "common-setting"))
+                    CommonText(text: String(localized: "common-setting"), font: Font.system(size: 12))
                 }
         }
+        .tint(Color(.appMainText))
     }
 }
 

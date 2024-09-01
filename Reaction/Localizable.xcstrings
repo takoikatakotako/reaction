@@ -451,6 +451,23 @@
         }
       }
     },
+    "setting-app-language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Language"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリの言語"
+          }
+        }
+      }
+    },
     "setting-app-setting" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -587,23 +604,6 @@
         }
       }
     },
-    "setting-language" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Language"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "言語"
-          }
-        }
-      }
-    },
     "setting-license" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -638,6 +638,23 @@
         }
       }
     },
+    "setting-reaction-mechanism-language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reaction Mechanism Language"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反応機構の言語"
+          }
+        }
+      }
+    },
     "setting-reset" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -651,6 +668,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "リセット"
+          }
+        }
+      }
+    },
+    "setting-select-reaction-mechanism-language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Reaction Mechanism Language"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反応機構の言語を選択してください。"
           }
         }
       }

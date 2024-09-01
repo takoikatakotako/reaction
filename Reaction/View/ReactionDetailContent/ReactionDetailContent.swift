@@ -6,13 +6,12 @@ struct ReactionDetailContent: View {
 
     var body: some View {
         LazyVStack {
-            Text(reactionMechanism.getDisplayTitle(identifier: localeIdentifier))
-                .font(Font.system(size: 24))
+            CommonText(text: reactionMechanism.getDisplayTitle(identifier: localeIdentifier), font: Font.system(size: 24))
                 .padding(.bottom, 12)
 
             if !reactionMechanism.generalFormulas.isEmpty {
                 VStack(spacing: 0) {
-                    Text(String(localized: "common-general-formula"))
+                    CommonText(text: String(localized: "common-general-formula"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.generalFormulas, id: \.self) { generalFormula in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + generalFormula.imageName))
                             .scaledToFit()
@@ -23,7 +22,7 @@ struct ReactionDetailContent: View {
 
             if !reactionMechanism.mechanisms.isEmpty {
                 VStack(spacing: 0) {
-                    Text(String(localized: "common-reaction-mechanism"))
+                    CommonText(text: String(localized: "common-reaction-mechanism"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.mechanisms, id: \.self) { mechanism in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + mechanism.imageName))
                             .scaledToFit()
@@ -34,7 +33,7 @@ struct ReactionDetailContent: View {
 
             if !reactionMechanism.examples.isEmpty {
                 VStack(spacing: 0) {
-                    Text(String(localized: "common-example"))
+                    CommonText(text: String(localized: "common-example"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.examples, id: \.self) { example in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + example.imageName))
                             .scaledToFit()
@@ -45,7 +44,7 @@ struct ReactionDetailContent: View {
 
             if !reactionMechanism.supplements.isEmpty {
                 VStack(spacing: 0) {
-                    Text(String(localized: "common-supplement"))
+                    CommonText(text: String(localized: "common-supplement"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.supplements, id: \.self) { supplement in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + supplement.imageName))
                             .scaledToFit()
@@ -56,7 +55,7 @@ struct ReactionDetailContent: View {
 
             if !reactionMechanism.youtubeLinks.isEmpty {
                 VStack(spacing: 0) {
-                    Text(String(localized: "common-movie"))
+                    CommonText(text: String(localized: "common-movie"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.youtubeLinks, id: \.self) { youtubeLink in
                         if let youtubeUrl = URL(string: youtubeLink) {
                             Button {

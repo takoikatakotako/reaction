@@ -12,13 +12,15 @@ class ReactionListViewState: ObservableObject {
     @Published var errorAlert = false
     @Published var sheet: ReactionListViewSheet?
     @Published var destination: ReactionMechanism?
-    @Published var localeIdentifier: String = Locale.current.identifier
+
+    // 反応機構の言語
+    @Published var reactionMechanismIdentifier: String
 
     private let userDefaultsRepository = UserDefaultRepository()
     private let reactionRepository = ReactionMechanismRepository()
-    private var subscriptions = Set<AnyCancellable>()
 
     init(showingThmbnail: Bool) {
+        self.reactionMechanismIdentifier = userDefaultsRepository.reactionMechanismLanguage
         self.showingThmbnail = showingThmbnail
     }
 
@@ -38,8 +40,8 @@ class ReactionListViewState: ObservableObject {
     }
 
     func onAppear() {
+        reactionMechanismIdentifier = userDefaultsRepository.reactionMechanismLanguage
         showingThmbnail = userDefaultsRepository.showThmbnail
-        localeIdentifier = Locale.current.identifier
 
         guard reactionMechanisms.isEmpty else {
             return

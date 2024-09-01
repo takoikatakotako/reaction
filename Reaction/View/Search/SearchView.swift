@@ -19,21 +19,33 @@ struct SearchView: View {
                             Button(action: {
                                 firstCategorySelected(topCategoryId: topCategory.id)
                             }, label: {
-                                SearchFirstCategoryRow(check: topCategory.check, name: topCategory.name)
+                                SearchFirstCategoryRow(
+                                    check: topCategory.check,
+                                    name: topCategory.getDisplayName(laungageIdentifier: viewState.reactionMechanismIdentifier)
+                                )
                             })
 
                             ForEach(topCategory.secondCategories) { secondCategory in
                                 Button(action: {
-                                    secondCategorySelected(topCategoryId: topCategory.id, secondCategoryId: secondCategory.id)
+                                    secondCategorySelected(
+                                        topCategoryId: topCategory.id,
+                                        secondCategoryId: secondCategory.id
+                                    )
                                 }, label: {
-                                    SearchSecondCategoryRow(check: secondCategory.check, name: secondCategory.name)
+                                    SearchSecondCategoryRow(
+                                        check: secondCategory.check,
+                                        name: secondCategory.getDisplayName(laungageIdentifier: viewState.reactionMechanismIdentifier)
+                                    )
                                 })
 
                                 ForEach(secondCategory.thirdCategories) { thirdCategory in
                                     Button(action: {
                                         thirdCategorySelected(topCategoryId: topCategory.id, secondCategoryId: secondCategory.id, thirdCategoryId: thirdCategory.id)
                                     }, label: {
-                                        SearchThirdCategoryRow(check: thirdCategory.check, name: thirdCategory.name)
+                                        SearchThirdCategoryRow(
+                                            check: thirdCategory.check,
+                                            name: thirdCategory.getDisplayName(laungageIdentifier: viewState.reactionMechanismIdentifier)
+                                        )
                                     })
                                 }
                             }
@@ -78,7 +90,9 @@ struct SearchView: View {
                     }
                 }
                 .padding(.bottom, 8)
-
+            }
+            .onAppear {
+                viewState.onAppear()
             }
             .padding(.horizontal, 8)
             .navigationTitle(String(localized: "search-title"))

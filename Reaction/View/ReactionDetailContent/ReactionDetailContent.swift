@@ -1,18 +1,17 @@
 import SwiftUI
 
 struct ReactionDetailContent: View {
-    let selectJapanese: Bool
+    let localeIdentifier: String
     @State var reactionMechanism: ReactionMechanism
 
     var body: some View {
         LazyVStack {
-            Text(selectJapanese ? reactionMechanism.japanese : reactionMechanism.english)
-                .font(Font.system(size: 24))
+            CommonText(text: reactionMechanism.getDisplayTitle(identifier: localeIdentifier), font: Font.system(size: 24))
                 .padding(.bottom, 12)
 
             if !reactionMechanism.generalFormulas.isEmpty {
                 VStack(spacing: 0) {
-                    Text(selectJapanese ? "一般式" : "General Formula")
+                    CommonText(text: String(localized: "common-general-formula"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.generalFormulas, id: \.self) { generalFormula in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + generalFormula.imageName))
                             .scaledToFit()
@@ -21,11 +20,9 @@ struct ReactionDetailContent: View {
                 }
             }
 
-//            AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
-
             if !reactionMechanism.mechanisms.isEmpty {
                 VStack(spacing: 0) {
-                    Text(selectJapanese ? "反応機構" : "Mechanism")
+                    CommonText(text: String(localized: "common-reaction-mechanism"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.mechanisms, id: \.self) { mechanism in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + mechanism.imageName))
                             .scaledToFit()
@@ -36,7 +33,7 @@ struct ReactionDetailContent: View {
 
             if !reactionMechanism.examples.isEmpty {
                 VStack(spacing: 0) {
-                    Text(selectJapanese ?  "例" : "Example")
+                    CommonText(text: String(localized: "common-example"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.examples, id: \.self) { example in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + example.imageName))
                             .scaledToFit()
@@ -45,11 +42,9 @@ struct ReactionDetailContent: View {
                 }
             }
 
-//            AdmobBannerView(adUnitID: ADMOB_UNIT_ID)
-
             if !reactionMechanism.supplements.isEmpty {
                 VStack(spacing: 0) {
-                    Text(selectJapanese ?  "補足" : "Supplement")
+                    CommonText(text: String(localized: "common-supplement"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.supplements, id: \.self) { supplement in
                         CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + supplement.imageName))
                             .scaledToFit()
@@ -60,7 +55,7 @@ struct ReactionDetailContent: View {
 
             if !reactionMechanism.youtubeLinks.isEmpty {
                 VStack(spacing: 0) {
-                    Text(selectJapanese ?  "動画" : "Movie")
+                    CommonText(text: String(localized: "common-movie"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.youtubeLinks, id: \.self) { youtubeLink in
                         if let youtubeUrl = URL(string: youtubeLink) {
                             Button {
@@ -95,8 +90,8 @@ struct ReactionDetailContent: View {
     }
 }
 
-struct ReactionDetailContent_Previews: PreviewProvider {
-    static var previews: some View {
-        ReactionDetailContent(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
-    }
-}
+// struct ReactionDetailContent_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReactionDetailContent(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
+//    }
+// }

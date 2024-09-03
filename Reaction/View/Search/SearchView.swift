@@ -4,13 +4,12 @@ struct SearchView: View {
     @StateObject var viewState: SearchViewState
 
     var body: some View {
-
         NavigationStack {
             ZStack(alignment: .bottom) {
                 ScrollView(showsIndicators: false) {
-                    Picker(selection: $viewState.favoriteColor, label: Text("")) {
-                        Text("Reactant").tag(0)
-                        Text("Product").tag(1)
+                    Picker(selection: $viewState.searchType, label: Text("")) {
+                        Text(String(localized: "setting-reactant")).tag(0)
+                        Text(String(localized: "search-product")).tag(1)
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(8)
@@ -20,21 +19,33 @@ struct SearchView: View {
                             Button(action: {
                                 firstCategorySelected(topCategoryId: topCategory.id)
                             }, label: {
-                                SearchFirstCategoryRow(check: topCategory.check, name: topCategory.name)
+                                SearchFirstCategoryRow(
+                                    check: topCategory.check,
+                                    name: topCategory.getDisplayName(laungageIdentifier: viewState.reactionMechanismIdentifier)
+                                )
                             })
 
                             ForEach(topCategory.secondCategories) { secondCategory in
                                 Button(action: {
-                                    secondCategorySelected(topCategoryId: topCategory.id, secondCategoryId: secondCategory.id)
+                                    secondCategorySelected(
+                                        topCategoryId: topCategory.id,
+                                        secondCategoryId: secondCategory.id
+                                    )
                                 }, label: {
-                                    SearchSecondCategoryRow(check: secondCategory.check, name: secondCategory.name)
+                                    SearchSecondCategoryRow(
+                                        check: secondCategory.check,
+                                        name: secondCategory.getDisplayName(laungageIdentifier: viewState.reactionMechanismIdentifier)
+                                    )
                                 })
 
                                 ForEach(secondCategory.thirdCategories) { thirdCategory in
                                     Button(action: {
                                         thirdCategorySelected(topCategoryId: topCategory.id, secondCategoryId: secondCategory.id, thirdCategoryId: thirdCategory.id)
                                     }, label: {
-                                        SearchThirdCategoryRow(check: thirdCategory.check, name: thirdCategory.name)
+                                        SearchThirdCategoryRow(
+                                            check: thirdCategory.check,
+                                            name: thirdCategory.getDisplayName(laungageIdentifier: viewState.reactionMechanismIdentifier)
+                                        )
                                     })
                                 }
                             }
@@ -44,10 +55,10 @@ struct SearchView: View {
                 }
 
                 VStack(spacing: 12) {
-                    NavigationLink(destination: SearchResultView(searchResultType: getSearchTargetType(), withoutCheck: true, firstCategories: viewState.firstCategories)) {
+                    NavigationLink(destination: SearchResultView(viewModel: SearchResultViewState(searchResultType: getSearchTargetType(), withoutCheck: true, firstCategories: viewState.firstCategories))) {
                         HStack {
                             Spacer()
-                            Text("Exclude checked items")
+                            Text(String(localized: "search-search-for-exclude-checked-items"))
                                 .font(Font.system(size: 18).bold())
                                 .foregroundColor(Color.gray)
                             Spacer()
@@ -61,10 +72,10 @@ struct SearchView: View {
                         )
                     }
 
-                    NavigationLink(destination: SearchResultView(searchResultType: getSearchTargetType(), withoutCheck: false, firstCategories: viewState.firstCategories)) {
+                    NavigationLink(destination: SearchResultView(viewModel: SearchResultViewState(searchResultType: getSearchTargetType(), withoutCheck: false, firstCategories: viewState.firstCategories))) {
                         HStack {
                             Spacer()
-                            Text("Search for checked items")
+                            Text(String(localized: "search-search-for-checked-items"))
                                 .font(Font.system(size: 18).bold())
                                 .foregroundColor(Color.gray)
                             Spacer()
@@ -79,17 +90,19 @@ struct SearchView: View {
                     }
                 }
                 .padding(.bottom, 8)
-
+            }
+            .onAppear {
+                viewState.onAppear()
             }
             .padding(.horizontal, 8)
-            .navigationTitle("Search")
+            .navigationTitle(String(localized: "search-title"))
             .navigationBarTitleDisplayMode(.inline)
         }
 
     }
 
     func getSearchTargetType() -> SearchTargetType {
-        if viewState.favoriteColor == 0 {
+        if viewState.searchType == 0 {
             return .reactant
         } else {
             return .product

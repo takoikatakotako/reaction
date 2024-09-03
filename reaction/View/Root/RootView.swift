@@ -6,24 +6,24 @@ struct RootView: View {
     var body: some View {
         TabView {
             ReactionListView(viewState: ReactionListViewState(
-                showingThmbnail: viewState.showThmbnail,
-                selectJapanese: viewState.selectedJapanese)
+                showingThmbnail: viewState.showThmbnail)
             )
             .tabItem {
                 Image(systemName: "list.dash")
-                Text("List")
+                CommonText(text: String(localized: "common-list"), font: Font.system(size: 12))
             }
             SearchView(viewState: SearchViewState())
                 .tabItem {
                     Image(systemName: "magnifyingglass")
-                    Text("Search")
+                    CommonText(text: String(localized: "common-search"), font: Font.system(size: 12))
                 }
             SettingView(viewState: SettingViewState())
                 .tabItem {
                     Image(systemName: "gearshape")
-                    Text("Config")
+                    CommonText(text: String(localized: "common-setting"), font: Font.system(size: 12))
                 }
         }
+        .tint(Color(.appMainText))
     }
 }
 

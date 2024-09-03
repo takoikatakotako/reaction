@@ -12,12 +12,8 @@ struct DeveloperRow: View {
                 .frame(width: 60, height: 60)
 
             VStack(alignment: .leading, spacing: 8) {
-                Text(role)
-                    .font(Font.system(size: 16).bold())
-                    .foregroundColor(Color(.appMainText))
-                Text(name)
-                    .font(Font.system(size: 20).bold())
-                    .foregroundColor(Color(.appMainText))
+                CommonText(text: role, font: Font.system(size: 16).bold())
+                CommonText(text: name, font: Font.system(size: 20).bold())
             }
             Spacer()
 

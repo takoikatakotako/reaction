@@ -96,6 +96,19 @@ struct SettingView: View {
             }, message: {
                 CommonText(text: String(localized: "setting-select-reaction-mechanism-language"), font: Font.system(size: 14))
             })
+            .alert("", isPresented: $viewState.showingThmbnailAlert, actions: {
+                Button(String(localized: "common-visible")) {
+                    viewState.setShowThumbnail()
+                }
+
+                Button(String(localized: "common-hidden")) {
+                    viewState.setHiddenThumbnail()
+                }
+
+                Button(String(localized: "common-close")) {}
+            }, message: {
+                CommonText(text: String(localized: "setting-select-reaction-mechanism-language"), font: Font.system(size: 14))
+            })
             .alert("", isPresented: $viewState.showingResetAlert, actions: {
 
             }, message: {

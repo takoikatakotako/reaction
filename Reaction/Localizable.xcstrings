@@ -103,6 +103,23 @@
         }
       }
     },
+    "common-hidden" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "非表示"
+          }
+        }
+      }
+    },
     "common-info" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -252,6 +269,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "補足"
+          }
+        }
+      }
+    },
+    "common-visible" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visible"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示"
           }
         }
       }

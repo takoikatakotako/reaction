@@ -83,7 +83,7 @@ struct ReactionListView: View {
             .alert(String(localized: "subscription-purchase-complete"), isPresented: $viewState.completeAlert, actions: {
                 Button(String(localized: "common-close"), role: .cancel) {}
             }, message: {
-                Text(String(localized: "subscription-complete"))
+                Text(String(localized: "subscription-purchase-complete"))
             })
             .alert(String(localized: "common-error"), isPresented: $viewState.errorAlert, actions: {
                 Button(String(localized: "common-close"), role: .cancel) {}

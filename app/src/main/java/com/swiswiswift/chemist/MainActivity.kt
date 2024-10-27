@@ -3,7 +3,13 @@ package com.swiswiswift.chemist
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.*
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -13,15 +19,16 @@ import com.swiswiswift.chemist.ui.theme.ReactionTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val reactionListiewModel = ReactionListViewModel()
         super.onCreate(savedInstanceState)
+        val reactionListViewModel = ReactionListViewModel()
+        enableEdgeToEdge()
         setContent {
             ReactionTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    val navController = rememberNavController()
+                val navController = rememberNavController()
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavHost(navController, startDestination = "list") {
                         composable("list") {
-                            ReactionList(navController, reactionListiewModel)
+                            ReactionList(navController, reactionListViewModel)
                         }
 
                         composable(
@@ -40,5 +47,21 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    ReactionTheme {
+        Greeting("Android")
     }
 }

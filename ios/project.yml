@@ -1,0 +1,350 @@
+name: Reaction
+
+options:
+  deploymentTarget:
+    iOS: 17.0
+schemes:
+  Develop:
+    build:
+      targets:
+        ReactionDevelop: all
+    run:
+      config: Debug
+    # test:
+    #   config: Debug
+    #   gatherCoverageData: false
+    #   targets:
+    #     - name: ReactionTests
+    #       parallelizable: true
+    #       randomExecutionOrder: true
+    #     - name: ReactionUITests
+    #       parallelizable: true
+    #       randomExecutionOrder: true
+  Production:
+    build:
+      targets:
+        ReactionProduction: all
+    run:
+      config: Debug
+settings:
+  base:
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: 5RH346BQ66
+    MARKETING_VERSION: 5.0.3
+    CURRENT_PROJECT_VERSION: 1
+    TARGETED_DEVICE_FAMILY: 1
+    ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: YES
+packages:
+  Rswift:
+    url: https://github.com/mac-cain13/R.swift
+    from: 7.5.0
+  LicenseList:
+    url: https://github.com/cybozu/LicenseList
+    from: 0.7.0
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk
+    from: 10.26.0
+
+targets:
+  ReactionDevelop:
+    type: application
+    platform: iOS
+    sources:
+      - path: Reaction
+      - path: Config/Production
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Development
+        CODE_SIGN_ENTITLEMENTS: Config/Development/ReactionDevelopment.entitlements
+        DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.junpei.chemi
+    info:
+      path: Reaction/Info/Info-Develop.plist
+      properties:
+        Appearance: Light
+        CFBundleDisplayName: Reaction
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        UILaunchScreen:
+          UIColorName: app-background-color
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeRight]
+        UIRequiresFullScreen: YES
+        UIAppFonts:
+          - MPLUS2-VariableFont.ttf
+        MinimumOSVersion: "17.0"
+    dependencies:
+      - package: Rswift
+        product: RswiftLibrary
+      - package: LicenseList
+        product: LicenseList
+      - package: Firebase
+        product: FirebaseAnalytics
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseCrashlytics
+      - package: Firebase
+        product: FirebaseStorage
+      - package: Firebase
+        product: FirebaseMessaging
+    buildToolPlugins:
+      - plugin: RswiftGenerateInternalResources
+        package: Rswift
+      - plugin: PrepareLicenseList
+        package: LicenseList
+  ReactionProduction:
+    type: application
+    platform: iOS
+    sources:
+      - path: Reaction
+      - path: Config/Production
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Production
+        CODE_SIGN_ENTITLEMENTS: Config/Production/ReactionProduction.entitlements
+        DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.junpei.chemi
+    info:
+      path: Reaction/Info/Info-Production.plist
+      properties:
+        Appearance: Light
+        CFBundleDisplayName: Reaction
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        UILaunchScreen:
+          UIColorName: app-background-color
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeRight]
+        UIRequiresFullScreen: YES
+        UIAppFonts:
+          - MPLUS2-VariableFont.ttf
+        MinimumOSVersion: "17.0"
+    dependencies:
+      - package: Rswift
+        product: RswiftLibrary
+      - package: LicenseList
+        product: LicenseList
+      - package: Firebase
+        product: FirebaseAnalytics
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseCrashlytics
+      - package: Firebase
+        product: FirebaseStorage
+      - package: Firebase
+        product: FirebaseMessaging
+    buildToolPlugins:
+      - plugin: RswiftGenerateInternalResources
+        package: Rswift
+      - plugin: PrepareLicenseList
+        package: LicenseList
+  # ReactionTests:
+  #   type: bundle.unit-test
+  #   platform: iOS
+  #   sources:
+  #     - ReactionTests
+  #   dependencies:
+  #     - target: ReactionDevelop
+  # ReactionUITests:
+  #   type: bundle.ui-testing
+  #   platform: iOS
+  #   sources:
+  #     - ReactionUITests
+  #   dependencies:
+  #     - target: ReactionDevelop
+
+
+
+
+
+# name: rikako
+# options:
+#   deploymentTarget:
+#     iOS: 17.0
+#   postGenCommand: bundle exec pod install
+
+# packages:
+#   R.swift:
+#     url: https://github.com/mac-cain13/R.swift
+#     from: 5.4.0
+#   SDWebImageSwiftUI:
+#     url: https://github.com/SDWebImage/SDWebImageSwiftUI.git
+#     from: 2.0.2
+
+# settings:
+#   base:
+#     CODE_SIGN_STYLE: Automatic
+#     DEVELOPMENT_TEAM: 5RH346BQ66
+#     MARKETING_VERSION: 3.0.0
+
+
+# schemes:
+#   RikakoDevelop:
+#     type: application
+#     sources:
+#       - path: Rikako
+#       - path: Config/Develop
+#     settings:
+#       base:
+#         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Develop
+#         CODE_SIGN_ENTITLEMENTS: CharacterAlarm/CharacterAlarmRelease.entitlements
+#         DEBUG_INFORMATION_FORMAT: dwarf-with-dsymm
+#         PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.sandbox.charalarm
+#       info:
+#         path: Rikako/Info/Info-Develop.plist
+#         CFBundleDisplayName: Rikako
+
+
+
+
+
+#     build:
+#       targets:
+#         rikako-local: all
+#     run:
+#       config: Debug
+#     test:
+#       config: Debug
+#       gatherCoverageData: false
+#       targets:
+#         - name: RikakoTests
+#           parallelizable: true
+#           randomExecutionOrder: true
+#   fp-production:
+#     build:
+#       targets:
+#         fp-production: all
+#     run:
+#       config: Debug
+#   chemist-production:
+#     build:
+#       targets:
+#         chemist-production: all
+#     run:
+#       config: Debug
+
+# targets:
+#   rikako-local:
+#     type: application
+#     platform: iOS
+#     deploymentTarget: "14.0"
+#     sources:
+#       - path: rikako
+#     settings:
+#       base:
+#         PRODUCT_BUNDLE_IDENTIFIER: jp.rikako.local
+#         INFOPLIST_FILE: rikako/Info.plist
+#         CURRENT_PROJECT_VERSION: 1
+#         TARGETED_DEVICE_FAMILY: 1
+#         ASSETCATALOG_COMPILER_APPICON_NAME: icon-local
+#         SWIFT_OPTIMIZATION_LEVEL: -Onone
+#       configs:
+#         Debug:
+#           DISPLAY_NAME: 理科子Local
+#           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
+#           ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
+#         Release:
+#           DISPLAY_NAME: 理科子Local
+#           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
+#           ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
+#     dependencies:
+#       - package: R.swift.Library
+#         product: Rswift
+#       - package: SDWebImageSwiftUI
+#         product: SDWebImageSwiftUI
+#   fp-production:
+#     type: application
+#     platform: iOS
+#     deploymentTarget: "14.0"
+#     sources:
+#       - path: rikako
+#     dependencies:
+#       - package: R.swift.Library
+#         product: Rswift
+#     preBuildScripts:
+#       - script: ./Scripts/BuildPhases/rswift.sh
+#         name: R.swift
+#         inputFiles:
+#           - $TEMP_DIR/rswift-lastrun
+#         outputFiles:
+#           - $SRCROOT/rikako/Generated/R.generated.swift
+#     settings:
+#       base:
+#         PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.fp
+#         INFOPLIST_FILE: rikako/Info.plist
+#         CURRENT_PROJECT_VERSION: 1
+#         TARGETED_DEVICE_FAMILY: 1
+#         ASSETCATALOG_COMPILER_APPICON_NAME: icon-fp-production
+#         SWIFT_OPTIMIZATION_LEVEL: -Onone
+#       configs:
+#         Debug:
+#           DISPLAY_NAME: FPアプリ
+#           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
+#           ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
+#         Release:
+#           DISPLAY_NAME: FPアプリ
+#           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
+#           ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
+#     dependencies:
+#       - package: R.swift.Library
+#         product: Rswift
+#       - package: SDWebImageSwiftUI
+#         product: SDWebImageSwiftUI
+#   chemist-production:
+#     type: application
+#     platform: iOS
+#     deploymentTarget: "14.0"
+#     sources:
+#       - path: rikako
+#     dependencies:
+#       - package: R.swift.Library
+#         product: Rswift
+#     preBuildScripts:
+#       - script: ./Scripts/BuildPhases/rswift.sh
+#         name: R.swift
+#         inputFiles:
+#           - $TEMP_DIR/rswift-lastrun
+#         outputFiles:
+#           - $SRCROOT/rikako/Generated/R.generated.swift
+#     settings:
+#       base:
+#         PRODUCT_BUNDLE_IDENTIFIER: jp.conol.chemist
+#         INFOPLIST_FILE: rikako/Info.plist
+#         CURRENT_PROJECT_VERSION: 1
+#         TARGETED_DEVICE_FAMILY: 1
+#         ASSETCATALOG_COMPILER_APPICON_NAME: icon-chemist-production
+#         SWIFT_OPTIMIZATION_LEVEL: -Onone
+#       configs:
+#         Debug:
+#           DISPLAY_NAME: ４択化学
+#           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
+#           ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
+#         Release:
+#           DISPLAY_NAME: ４択化学
+#           GAD_APPLICATION_IDENTIFER: ca-app-pub-3940256099942544~1458002511
+#           ADMOB_UNIT_ID: ca-app-pub-3940256099942544/2934735716
+#     dependencies:
+#       - package: R.swift.Library
+#         product: Rswift
+#       - package: SDWebImageSwiftUI
+#         product: SDWebImageSwiftUI
+#   RikakoTests:
+#     type: bundle.unit-test
+#     platform: iOS
+#     sources:
+#       - rikakoTests
+#     settings:
+#       base:
+#         INFOPLIST_FILE: rikakoTests/Info.plist
+#     dependencies:
+#       - target: rikako-local
+#   RikakoUITests:
+#     type: bundle.ui-testing
+#     platform: iOS
+#     sources:
+#       - rikakoUITests
+#     settings:
+#       base:
+#         INFOPLIST_FILE: rikakoUITests/Info.plist
+#     dependencies:
+#       - target: rikako-local

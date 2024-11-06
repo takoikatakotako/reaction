@@ -19,13 +19,8 @@ import java.net.URI
 
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 
@@ -43,7 +38,11 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
         }
     })
 
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+    Scaffold(
+        topBar = {
+            TopBar("")
+        },
+    ) { padding ->
         when {
             exception.value != null -> {
                 Text("Error: ${exception.value!!}")
@@ -54,7 +53,12 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
             }
 
             else -> {
-                Column(modifier = Modifier.padding(16.dp)) {
+                Column(
+                    modifier = Modifier
+                        .padding(padding)
+                        .padding(8.dp)
+                        .fillMaxSize()
+                ) {
                     LazyColumn(modifier = Modifier.fillMaxHeight()) {
                         item {
                             Text(

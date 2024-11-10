@@ -10,9 +10,10 @@ android {
     defaultConfig {
         applicationId = "com.swiswiswift.chemist"
         minSdk = 29
+        //noinspection OldTargetApi
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.1.0"
+        versionCode = 3
+        versionName = "1.1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -63,6 +64,8 @@ dependencies {
     // API
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation(libs.coil3.coil.compose)
+    implementation(libs.coil.network.okhttp)
 
     // Navigation
     implementation(libs.androidx.navigation.compose)

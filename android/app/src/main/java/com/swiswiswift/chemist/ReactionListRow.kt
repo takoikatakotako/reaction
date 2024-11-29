@@ -1,6 +1,5 @@
 package com.swiswiswift.chemist
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.HorizontalDivider
@@ -10,16 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import coil.compose.rememberImagePainter
-import coil.size.OriginalSize
-import coil.size.SizeResolver
 import coil3.compose.AsyncImage
 
 @Composable
 fun ReactionListRow(navController: NavController, reaction: Reaction) {
     Column(
         modifier = Modifier
-            .padding(8.dp)
             .fillMaxWidth()
             .wrapContentHeight()
             .clickable {
@@ -28,6 +23,9 @@ fun ReactionListRow(navController: NavController, reaction: Reaction) {
     ) {
         Text(
             text = reaction.english,
+            modifier = Modifier
+                .padding(top = 8.dp)
+                .padding(start = 8.dp)
         )
 
         val imageUrl = "${IMAGE_URL}${reaction.directoryName}/${reaction.thmbnailName}"

@@ -125,15 +125,6 @@ class ReactionListViewState: ObservableObject {
         }
     }
 
-    //    private func fetchProducts() async throws -> Product? {
-    //        let productIdList = ["detail_available"]
-    //        let products: [Product] = try await Product.products(for: productIdList)
-    //        guard let product = products.first else {
-    //            return nil
-    //        }
-    //        return product
-    //    }
-
     private func purchase(product: Product) async throws -> StoreKit.Transaction {
         // Product.PurchaseResultの取得
         let purchaseResult: Product.PurchaseResult

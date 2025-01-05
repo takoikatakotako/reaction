@@ -25,34 +25,14 @@ import androidx.compose.ui.platform.LocalContext
 
 
 @Composable
-fun ReactionDetail(navController: NavController, directoryName: String) {
-    val exception: MutableState<Exception?> = remember { mutableStateOf(null) }
-    val reaction: MutableState<Reaction?> = remember { mutableStateOf(null) }
-
-    LaunchedEffect(Unit, block = {
-        try {
-            val apiService = APIService.getInstance()
-            reaction.value = apiService.getReaction(directoryName)
-        } catch (e: Exception) {
-            exception.value = e
-        }
-    })
-
+fun ReactionDetail(navController: NavController, reaction: Reaction?) {
     Scaffold(
         topBar = {
-            TopBar("")
+            TopBar(reaction?.english ?: "")
         },
     ) { padding ->
         when {
-            exception.value != null -> {
-                Text("Error: ${exception.value!!}")
-            }
-
-            reaction.value == null -> {
-                Text("Loading")
-            }
-
-            else -> {
+            reaction != null -> {
                 Column(
                     modifier = Modifier
                         .padding(padding)
@@ -62,13 +42,13 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
                     LazyColumn(modifier = Modifier.fillMaxHeight()) {
                         item {
                             Text(
-                                reaction.value!!.english,
+                                reaction.english,
                                 fontSize = 24.sp,
                                 fontWeight = FontWeight.Bold
                             )
                         }
 
-                        if (reaction.value!!.generalFormulas.isNotEmpty()) {
+                        if (reaction.generalFormulas.isNotEmpty()) {
                             item {
                                 Text(
                                     "General Formula",
@@ -77,10 +57,10 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
                                 )
                             }
 
-                            items(reaction.value!!.generalFormulas) { generalFormula ->
+                            items(reaction.generalFormulas) { generalFormula ->
                                 Image(
                                     painter = rememberImagePainter(
-                                        "${IMAGE_URL}${reaction.value!!.directoryName}/${generalFormula.imageName}",
+                                        "${IMAGE_URL}${reaction.directoryName}/${generalFormula.imageName}",
                                         builder = {
                                             this.placeholder(R.drawable.placeholder)
                                                 .size(SizeResolver(OriginalSize))
@@ -95,7 +75,7 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
                             }
                         }
 
-                        if (reaction.value!!.mechanisms.isNotEmpty()) {
+                        if (reaction.mechanisms.isNotEmpty()) {
                             item {
                                 Text(
                                     "Mechanism",
@@ -104,10 +84,10 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
                                 )
                             }
 
-                            items(reaction.value!!.mechanisms) { mechanism ->
+                            items(reaction.mechanisms) { mechanism ->
                                 Image(
                                     painter = rememberImagePainter(
-                                        "${IMAGE_URL}${reaction.value!!.directoryName}/${mechanism.imageName}",
+                                        "${IMAGE_URL}${reaction.directoryName}/${mechanism.imageName}",
                                         builder = {
                                             this.placeholder(R.drawable.placeholder)
                                                 .size(SizeResolver(OriginalSize))
@@ -122,7 +102,7 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
                             }
                         }
 
-                        if (reaction.value!!.examples.isNotEmpty()) {
+                        if (reaction.examples.isNotEmpty()) {
                             item {
                                 Text(
                                     "Example",
@@ -131,10 +111,10 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
                                 )
                             }
 
-                            items(reaction.value!!.examples) { example ->
+                            items(reaction.examples) { example ->
                                 Image(
                                     painter = rememberImagePainter(
-                                        "${IMAGE_URL}${reaction.value!!.directoryName}/${example.imageName}",
+                                        "${IMAGE_URL}${reaction.directoryName}/${example.imageName}",
                                         builder = {
                                             this.placeholder(R.drawable.placeholder)
                                                 .size(SizeResolver(OriginalSize))
@@ -149,7 +129,7 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
                             }
                         }
 
-                        if (reaction.value!!.supplements.isNotEmpty()) {
+                        if (reaction.supplements.isNotEmpty()) {
                             item {
                                 Text(
                                     "Supplements",
@@ -158,10 +138,10 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
                                 )
                             }
 
-                            items(reaction.value!!.supplements) { supplement ->
+                            items(reaction.supplements) { supplement ->
                                 Image(
                                     painter = rememberImagePainter(
-                                        "${IMAGE_URL}${reaction.value!!.directoryName}/${supplement.imageName}",
+                                        "${IMAGE_URL}${reaction.directoryName}/${supplement.imageName}",
                                         builder = {
                                             this.placeholder(R.drawable.placeholder)
                                                 .size(SizeResolver(OriginalSize))
@@ -176,7 +156,7 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
                             }
                         }
 
-                        if (reaction.value!!.youtubeLinks.isNotEmpty()) {
+                        if (reaction.youtubeLinks.isNotEmpty()) {
                             item {
                                 Text(
                                     "Youtube",
@@ -185,7 +165,7 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
                                 )
                             }
 
-                            items(reaction.value!!.youtubeLinks) { youtubeLink ->
+                            items(reaction.youtubeLinks) { youtubeLink ->
                                 val uri = URI(youtubeLink)
                                 val path: String = uri.path
                                 val context = LocalContext.current
@@ -218,33 +198,17 @@ fun ReactionDetail(navController: NavController, directoryName: String) {
                     }
                 }
             }
+
+            else -> {
+                Column(
+                    modifier = Modifier
+                        .padding(padding)
+                        .padding(8.dp)
+                        .fillMaxSize()
+                ) {
+                    Text("Loading")
+                }
+            }
         }
     }
-
-//    Scaffold(
-//        topBar = {
-//            TopAppBar(
-//                title = {
-//                    Row {
-//                        Text(reaction.value?.english ?: "")
-//                    }
-//                },
-//                navigationIcon = if (navController.previousBackStackEntry != null) {
-//                    {
-//                        IconButton(onClick = { navController.navigateUp() }) {
-//                            Icon(
-//                                imageVector = Icons.Filled.ArrowBack,
-//                                contentDescription = "Back"
-//                            )
-//                        }
-//                    }
-//                } else {
-//                    null
-//                }
-//            )
-//        },
-//        content = {
-
-//        }
-//    )
 }

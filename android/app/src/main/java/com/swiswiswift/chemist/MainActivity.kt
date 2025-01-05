@@ -39,9 +39,10 @@ class MainActivity : ComponentActivity() {
                             })
                         ) { backStackEntry ->
                             val reactionName = backStackEntry.arguments?.getString("reactionName")!!
+                            val reaction: Reaction? = reactionListViewModel.getReaction(reactionName)
                             ReactionDetail(
                                 navController = navController,
-                                directoryName = reactionName,
+                                reaction = reaction,
                             )
                         }
                     }

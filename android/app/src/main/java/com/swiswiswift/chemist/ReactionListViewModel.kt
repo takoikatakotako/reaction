@@ -23,4 +23,8 @@ class ReactionListViewModel : ViewModel() {
             }
         }
     }
+
+    fun getReaction(directoryName: String): Reaction? {
+        return _reactionList.find { it.directoryName == directoryName }
+    }
 }

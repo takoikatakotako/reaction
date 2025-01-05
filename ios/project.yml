@@ -30,20 +30,20 @@ settings:
   base:
     CODE_SIGN_STYLE: Automatic
     DEVELOPMENT_TEAM: 5RH346BQ66
-    MARKETING_VERSION: 5.0.3
+    MARKETING_VERSION: 5.1.0
     CURRENT_PROJECT_VERSION: 1
     TARGETED_DEVICE_FAMILY: 1
     ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: YES
 packages:
   Rswift:
     url: https://github.com/mac-cain13/R.swift
-    from: 7.5.0
+    from: 7.8.0
   LicenseList:
     url: https://github.com/cybozu/LicenseList
-    from: 0.7.0
+    from: 2.0.0
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk
-    from: 10.26.0
+    from: 11.6.0
 
 targets:
   ReactionDevelop:

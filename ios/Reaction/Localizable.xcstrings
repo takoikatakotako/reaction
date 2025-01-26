@@ -381,6 +381,9 @@
         }
       }
     },
+    "Problem" : {
+
+    },
     "search-product" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -793,6 +796,12 @@
           }
         }
       }
+    },
+    "Show Solution" : {
+
+    },
+    "Solution" : {
+
     },
     "subscription-buy-paid-plan" : {
       "extractionState" : "manual",

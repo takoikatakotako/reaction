@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject var viewState: RootViewState
-
+    
     var body: some View {
         TabView {
             ReactionListView(viewState: ReactionListViewState(
@@ -13,6 +13,11 @@ struct RootView: View {
                 CommonText(text: String(localized: "common-list"), font: Font.system(size: 12))
             }
             SearchView(viewState: SearchViewState())
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    CommonText(text: String(localized: "common-search"), font: Font.system(size: 12))
+                }
+            QuestionListView(viewState: QuestionViewState())
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     CommonText(text: String(localized: "common-search"), font: Font.system(size: 12))

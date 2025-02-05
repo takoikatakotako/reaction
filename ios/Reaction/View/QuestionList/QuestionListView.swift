@@ -6,15 +6,19 @@ struct QuestionListView: View {
     var body: some View {
         NavigationStack {
             List(viewState.questions){ question in
-                NavigationLink {
-                    QuestionDetailView(viewState: QuestionDetailViewState(question: question))
-                } label: {
-                    Image(question.problemImageName)
-                        .resizable()
-                        .scaledToFit()
+                if let problemName = question.problemImageNames.first {
+                    NavigationLink {
+                        QuestionDetailView(viewState: QuestionDetailViewState(question: question))
+                    } label: {
+                        Image(problemName)
+                            .resizable()
+                            .scaledToFit()
+                    }
                 }
             }
             .listStyle(.plain)
+            .navigationTitle(String(localized: "common-study"))
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

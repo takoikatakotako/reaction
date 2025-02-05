@@ -19,8 +19,8 @@ struct RootView: View {
                 }
             QuestionListView(viewState: QuestionViewState())
                 .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    CommonText(text: String(localized: "common-search"), font: Font.system(size: 12))
+                    Image(systemName: "pencil.and.scribble")
+                    CommonText(text: String(localized: "common-study"), font: Font.system(size: 12))
                 }
             SettingView(viewState: SettingViewState())
                 .tabItem {

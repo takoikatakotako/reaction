@@ -14,9 +14,7 @@ struct QuestionDetailView: View {
                         Button {
                             viewState.imageTapped(imageName: imageName)
                         } label: {
-                            Image(imageName)
-                                .resizable()
-                                .scaledToFit()
+                            CommonImage(imageName: imageName)
                         }
                     }
                     
@@ -28,22 +26,22 @@ struct QuestionDetailView: View {
                             Button {
                                 viewState.imageTapped(imageName: imageName)
                             } label: {
-                                Image(imageName)
-                                    .resizable()
-                                    .scaledToFit()
+                                CommonImage(imageName: imageName)
                             }
                         }
                         
-                        // Refarence
-                        Text("Refarence")
-                            .font(Font.system(size: 16).bold())
-                        
-                        ForEach(viewState.question.references, id: \.self) { refarence in
-                            if let refarenceUrl = URL(string: refarence) {
-                                Button {
-                                    UIApplication.shared.open(refarenceUrl)
-                                } label: {
-                                    Text(refarence)
+                        if !viewState.question.references.isEmpty {
+                            // Refarence
+                            Text("Refarence")
+                                .font(Font.system(size: 16).bold())
+                            
+                            ForEach(viewState.question.references, id: \.self) { refarence in
+                                if let refarenceUrl = URL(string: refarence) {
+                                    Button {
+                                        UIApplication.shared.open(refarenceUrl)
+                                    } label: {
+                                        Text(refarence)
+                                    }
                                 }
                             }
                         }

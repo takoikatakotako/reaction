@@ -6,13 +6,11 @@ struct QuestionListView: View {
     var body: some View {
         NavigationStack {
             List(viewState.questions){ question in
-                if let problemName = question.problemImageNames.first {
+                if let imageName = question.problemImageNames.first {
                     NavigationLink {
                         QuestionDetailView(viewState: QuestionDetailViewState(question: question))
                     } label: {
-                        Image(problemName)
-                            .resizable()
-                            .scaledToFit()
+                        CommonImage(imageName: imageName)
                     }
                 }
             }

@@ -67,7 +67,7 @@ struct QuestionDetailView: View {
             .sheet(item: $viewState.sheet) { item in
                 switch item {
                 case .imageViewer(imageName: let imageName):
-                    ImageViewer(imageName: imageName)
+                    CommonImageViewer(imageName: imageName)
                 }
             }
         }

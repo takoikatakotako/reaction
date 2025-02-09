@@ -259,6 +259,23 @@
         }
       }
     },
+    "common-study" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Study"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学習"
+          }
+        }
+      }
+    },
     "common-supplement" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -361,9 +378,6 @@
         }
       }
     },
-    "Key" : {
-      "extractionState" : "manual"
-    },
     "list-title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -380,6 +394,12 @@
           }
         }
       }
+    },
+    "Problem" : {
+
+    },
+    "Refarence" : {
+
     },
     "search-product" : {
       "extractionState" : "manual",
@@ -793,6 +813,12 @@
           }
         }
       }
+    },
+    "Show Solution" : {
+
+    },
+    "Solution" : {
+
     },
     "subscription-buy-paid-plan" : {
       "extractionState" : "manual",

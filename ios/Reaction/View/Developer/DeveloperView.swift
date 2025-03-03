@@ -12,9 +12,18 @@ struct DeveloperView: View {
                 }
 
                 Divider()
-
+                
                 Button {
-                    openUrl(urlString: "https://twitter.com/takoikatakotako")
+                    openUrl(urlString: "https://x.com/_M26Pershing")
+                } label: {
+                    DeveloperRow(imageName: R.image.iconTomi.name, role: String(localized: "developer-supervisor"), name: "🌸とみ⌬")
+                        .padding(.horizontal, 8)
+                }
+
+                Divider()
+                
+                Button {
+                    openUrl(urlString: "https://x.com/takoikatakotako")
                 } label: {
                     DeveloperRow(imageName: R.image.iconTakoika.name, role: String(localized: "developer-programmer"), name: "かびごん小野")
                         .padding(.horizontal, 8)

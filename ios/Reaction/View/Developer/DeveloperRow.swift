@@ -15,6 +15,7 @@ struct DeveloperRow: View {
                 CommonText(text: role, font: Font.system(size: 16).bold())
                 CommonText(text: name, font: Font.system(size: 20).bold())
             }
+        
             Spacer()
 
             Image(R.image.iconOpen.name)

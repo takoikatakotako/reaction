@@ -208,6 +208,20 @@ img {
     margin: 0.5rem auto;
 }
 
+.reaction-edit-add-reaction-button {
+    /* position: absolute;
+    right: 0;
+    cursor: pointer; */
+    display: block;
+    margin: 0.5rem auto;
+}
+
+/* .reaction-edit-multi-input-delete-button img {
+    width: 20px;
+    height: 20px;
+} */
+
+
 /* .user-detail-content p {
     color: #432;
     font-size: 1rem;

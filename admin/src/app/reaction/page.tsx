@@ -1,6 +1,7 @@
 // import Image from 'next/image';
+import Link from 'next/link';
+// import React, { useState, ChangeEvent, FormEvent } from 'react';
 
-// app/about/page.tsx
 export default function AboutPage() {
   return (
       <main className="wrapper">
@@ -45,7 +46,7 @@ export default function AboutPage() {
         <div>
           <ul className="pagination">
             <li className="pagination-active">
-              <a href="user.html">+</a>
+            <Link href="/reaction/new">+</Link>
             </li>
             <li className="pagination-active">
               <a href="user.html">1</a>

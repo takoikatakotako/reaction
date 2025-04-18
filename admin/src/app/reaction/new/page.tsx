@@ -2,22 +2,13 @@
 
 import React, { useState, useRef, ChangeEvent, FormEvent } from 'react';
 
-interface MyFormData {
-  englishName: string;
-  japaneseName: string;
-  youtubeUrls: string[];
-}
-
 export default function AboutPage() {
-  const [formData, setFormData] = useState<MyFormData>({
-    englishName: '',
-    japaneseName: '',
-    youtubeUrls: [''],
-  });
-
   const [englishName, setEnglishName] = useState<string>('');
   const [japaneseName, setJapaneseName] = useState<string>('');
   const [thumbnailImage, setThumbnailImage] = useState<string>('');
+  const [generalFormulaImages, setGeneralFormulaImages] = useState<string[]>(
+    []
+  );
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -51,6 +42,39 @@ export default function AboutPage() {
     }
   };
 
+  // Thumbnail Delete
+  const thumbnailDeleteHandleChange = () => {
+    setThumbnailImage('');
+  };
+
+  // General Formulas
+  const generalFormulasHandleChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const files = e.target.files;
+
+    if (files && files.length > 0) {
+      const file = files[0];
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setGeneralFormulaImages([...generalFormulaImages, base64String]);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    if (inputRef.current) {
+      inputRef.current.value = '';
+    }
+  };
+
+  // General Formulas Delete
+  const generalFormulasDeleteHandleChange =  (index: number) => {
+    setGeneralFormulaImages((prev) => prev.filter((_, idx) => idx !== index));
+  };
+
+
   // フォーム送信時のイベントハンドラ
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // ページのリロードを防ぐ
@@ -63,6 +87,7 @@ export default function AboutPage() {
       <h1>反応機構追加</h1>
 
       <form>
+        {/* English Name */}
         <div className="reaction-edit-content">
           <label htmlFor="englishName">EnglishName</label>
           <input
@@ -75,6 +100,7 @@ export default function AboutPage() {
           <hr />
         </div>
 
+        {/* Japanese Name */}
         <div className="reaction-edit-content">
           <label htmlFor="japanseeName">JapaneseName</label>
           <input
@@ -87,12 +113,12 @@ export default function AboutPage() {
           <hr />
         </div>
 
+        {/* Thumbnail */}
         <div className="reaction-edit-content">
           <label htmlFor="thumbnail">Thumbnail</label>
           <input
             type="file"
-            multiple // 画像を複数選択できるようにする
-            accept="image/jpeg, image/png"
+            accept="image/png"
             onChange={thumbnailHandleChange}
             ref={inputRef}
           />
@@ -107,22 +133,51 @@ export default function AboutPage() {
           ) : (
             <div className="reaction-edit-image-container">
               <img className="reaction-edit-image" src={thumbnailImage} />
-              <button className="reaction-edit-image-delete-button">
+              <button
+                type="button"
+                className="reaction-edit-image-delete-button"
+                onClick={thumbnailDeleteHandleChange}
+              >
                 <img src="/image-delete.svg" />
               </button>
             </div>
           )}
-
           <hr />
         </div>
 
+        {/* General Formulas */}
         <div className="reaction-edit-content">
           <label htmlFor="thumbnail">General Formulas</label>
+          <input
+            type="file"
+            accept="image/png"
+            onChange={generalFormulasHandleChange}
+            ref={inputRef}
+          />
 
-          <div className="reaction-edit-image-container">
-            <img className="reaction-edit-image" src="/image-placeholder.png" />
-            {/*  <button class="reaction-edit-image-delete-button"><img src="/image-delete.svg"/></button> */}
-          </div>
+          {generalFormulaImages.length === 0 && (
+            <div className="reaction-edit-image-container">
+              <img
+                className="reaction-edit-image"
+                src="/image-placeholder.png"
+              />
+            </div>
+          )}
+
+          {generalFormulaImages.length !== 0 &&
+            generalFormulaImages.map((image, idx) => (
+              <div className="reaction-edit-image-container">
+                <img className="reaction-edit-image" src={image} />
+                <button
+                  type="button"
+                  className="reaction-edit-image-delete-button"
+                  onClick={() => generalFormulasDeleteHandleChange(idx)}
+                >
+                  <img src="/image-delete.svg" />
+                </button>
+              </div>
+            ))}
+
           <hr />
         </div>
 

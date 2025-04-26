@@ -12,6 +12,7 @@ export default function AboutPage() {
   const [mechanismasImages, setMechanismasImages] = useState<string[]>([]);
   const [exampleImages, setExampleImages] = useState<string[]>([]);
   const [supplementsImages, setSupplementsImages] = useState<string[]>([]);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -152,6 +153,15 @@ export default function AboutPage() {
   const supplementsDeleteHandleChange = (index: number) => {
     setSupplementsImages((prev) => prev.filter((_, idx) => idx !== index));
   };
+
+
+  // Suggestions
+  const xxx = () => {
+    setSuggestions([...suggestions, "sss"])
+  };
+
+
+
 
 
   // フォーム送信時のイベントハンドラ
@@ -369,19 +379,34 @@ export default function AboutPage() {
         {/* Suggestions */}
         <div className="reaction-edit-content">
           <label htmlFor="englishName">Suggestions</label>
-          <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value="Acetoacetic Ester Synthesis"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="/image-delete.svg" />
-            </button>
-          </div>
-          <hr />
 
-          <div className="reaction-edit-multi-input-container">
+
+
+            {suggestions.length !== 0 &&
+            suggestions.map((xxx, idx) => (
+              <div>
+              <div className="reaction-edit-multi-input-container">
+              <input
+                type="text"
+                name="englishName"
+                value={xxx}
+              />
+              <button className="reaction-edit-image-delete-button">
+                <img src="/image-delete.svg" />
+              </button>
+            </div>
+            <hr />
+              </div>
+            ))}
+
+
+
+
+
+
+
+
+          {/* <div className="reaction-edit-multi-input-container">
             <input
               type="text"
               name="englishName"
@@ -404,12 +429,20 @@ export default function AboutPage() {
               <img src="/image-delete.svg" />
             </button>
           </div>
-          <hr />
+          <hr /> */}
 
-          <button className="reaction-edit-multi-input-plus-button">
+          <button 
+          type="button"
+          className="reaction-edit-multi-input-plus-button"
+          onClick={() => xxx()}
+          >
             <img src="/plus.svg" />
           </button>
         </div>
+
+
+
+
 
         <div className="reaction-edit-content">
           <label htmlFor="englishName">Reactants</label>

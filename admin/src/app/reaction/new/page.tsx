@@ -128,7 +128,6 @@ export default function AboutPage() {
     setExampleImages((prev) => prev.filter((_, idx) => idx !== index));
   };
 
-
   // Supplements
   const supplementsHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -154,10 +153,19 @@ export default function AboutPage() {
     setSupplementsImages((prev) => prev.filter((_, idx) => idx !== index));
   };
 
-
   // Suggestions
-  const xxx = () => {
-    setSuggestions([...suggestions, "sss"])
+  const suggestionsUpdateHandleChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const newSuggestions = [...suggestions];
+    newSuggestions[index] = e.target.value;;
+    setSuggestions(newSuggestions);
+  };
+
+  const suggestionsDeleteHandleChange = (index: number) => {
+    setSuggestions((prev) => prev.filter((_, idx) => idx !== index));
+  };
+
+  const suggestionsAddHandleChange = () => {
+    setSuggestions([...suggestions, '']);
   };
 
 
@@ -380,69 +388,37 @@ export default function AboutPage() {
         <div className="reaction-edit-content">
           <label htmlFor="englishName">Suggestions</label>
 
-
-
-            {suggestions.length !== 0 &&
-            suggestions.map((xxx, idx) => (
-              <div>
-              <div className="reaction-edit-multi-input-container">
-              <input
-                type="text"
-                name="englishName"
-                value={xxx}
-              />
-              <button className="reaction-edit-image-delete-button">
-                <img src="/image-delete.svg" />
-              </button>
-            </div>
-            <hr />
+          {suggestions.length !== 0 &&
+            suggestions.map((suggestion, idx) => (
+              <div key={idx}>
+                <div className="reaction-edit-multi-input-container">
+                  <input 
+                  type="text" 
+                  name="englishName" 
+                  value={suggestion} 
+                  placeholder="サジェスチョンの単語を入力"
+                  onChange={(e) => suggestionsUpdateHandleChange(e, idx)}
+                  />
+                  <button
+                    type="button"
+                    className="reaction-edit-image-delete-button"
+                    onClick={() => suggestionsDeleteHandleChange(idx)}
+                  >
+                    <img src="/image-delete.svg" />
+                  </button>
+                </div>
+                <hr />
               </div>
             ))}
 
-
-
-
-
-
-
-
-          {/* <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value="アセト酢酸エステル合成"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="/image-delete.svg" />
-            </button>
-          </div>
-          <hr />
-
-          <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value=""
-              placeholder="サジェスチョンの単語を入力"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="/image-delete.svg" />
-            </button>
-          </div>
-          <hr /> */}
-
-          <button 
-          type="button"
-          className="reaction-edit-multi-input-plus-button"
-          onClick={() => xxx()}
+          <button
+            type="button"
+            className="reaction-edit-multi-input-plus-button"
+            onClick={() => suggestionsAddHandleChange()}
           >
             <img src="/plus.svg" />
           </button>
         </div>
-
-
-
-
 
         <div className="reaction-edit-content">
           <label htmlFor="englishName">Reactants</label>

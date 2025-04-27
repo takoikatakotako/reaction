@@ -13,6 +13,9 @@ export default function AboutPage() {
   const [exampleImages, setExampleImages] = useState<string[]>([]);
   const [supplementsImages, setSupplementsImages] = useState<string[]>([]);
   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [reactants, setReactants] = useState<string[]>([]);
+  const [products, setProducts] = useState<string[]>([]);
+  const [youtubes, setYoutubes] = useState<string[]>([]);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -46,7 +49,6 @@ export default function AboutPage() {
     }
   };
 
-  // Thumbnail Delete
   const thumbnailDeleteHandleChange = () => {
     setThumbnailImage('');
   };
@@ -73,7 +75,6 @@ export default function AboutPage() {
     }
   };
 
-  // General Formulas Delete
   const generalFormulasDeleteHandleChange = (index: number) => {
     setGeneralFormulaImages((prev) => prev.filter((_, idx) => idx !== index));
   };
@@ -98,7 +99,6 @@ export default function AboutPage() {
     }
   };
 
-  // Mechanisms Delete
   const mechanismsDeleteHandleChange = (index: number) => {
     setMechanismasImages((prev) => prev.filter((_, idx) => idx !== index));
   };
@@ -123,7 +123,6 @@ export default function AboutPage() {
     }
   };
 
-  // Examples Delete
   const examplessDeleteHandleChange = (index: number) => {
     setExampleImages((prev) => prev.filter((_, idx) => idx !== index));
   };
@@ -148,15 +147,17 @@ export default function AboutPage() {
     }
   };
 
-  // Supplements Delete
   const supplementsDeleteHandleChange = (index: number) => {
     setSupplementsImages((prev) => prev.filter((_, idx) => idx !== index));
   };
 
   // Suggestions
-  const suggestionsUpdateHandleChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+  const suggestionsUpdateHandleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
     const newSuggestions = [...suggestions];
-    newSuggestions[index] = e.target.value;;
+    newSuggestions[index] = e.target.value;
     setSuggestions(newSuggestions);
   };
 
@@ -168,9 +169,59 @@ export default function AboutPage() {
     setSuggestions([...suggestions, '']);
   };
 
+  // Reactants
+  const reactantsUpdateHandleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const newReactants = [...reactants];
+    newReactants[index] = e.target.value;
+    setReactants(newReactants);
+  };
 
+  const reactantsDeleteHandleChange = (index: number) => {
+    setReactants((prev) => prev.filter((_, idx) => idx !== index));
+  };
 
+  const reactantsAddHandleChange = () => {
+    setReactants([...reactants, '']);
+  };
 
+  // Products
+  const productsUpdateHandleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const newProducts = [...products];
+    newProducts[index] = e.target.value;
+    setProducts(newProducts);
+  };
+
+  const productsDeleteHandleChange = (index: number) => {
+    setProducts((prev) => prev.filter((_, idx) => idx !== index));
+  };
+
+  const productsAddHandleChange = () => {
+    setProducts([...products, '']);
+  };
+
+  // Youtube
+  const youtubesUpdateHandleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const newYoutubes = [...youtubes];
+    newYoutubes[index] = e.target.value;
+    setYoutubes(newYoutubes);
+  };
+
+  const youtubesDeleteHandleChange = (index: number) => {
+    setYoutubes((prev) => prev.filter((_, idx) => idx !== index));
+  };
+
+  const youtubesAddHandleChange = () => {
+    setYoutubes([...youtubes, '']);
+  };
 
   // フォーム送信時のイベントハンドラ
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -392,12 +443,12 @@ export default function AboutPage() {
             suggestions.map((suggestion, idx) => (
               <div key={idx}>
                 <div className="reaction-edit-multi-input-container">
-                  <input 
-                  type="text" 
-                  name="englishName" 
-                  value={suggestion} 
-                  placeholder="サジェスチョンの単語を入力"
-                  onChange={(e) => suggestionsUpdateHandleChange(e, idx)}
+                  <input
+                    type="text"
+                    name="englishName"
+                    value={suggestion}
+                    placeholder="サジェスチョンの単語を入力"
+                    onChange={(e) => suggestionsUpdateHandleChange(e, idx)}
                   />
                   <button
                     type="button"
@@ -420,134 +471,110 @@ export default function AboutPage() {
           </button>
         </div>
 
+        {/* Reactants */}
         <div className="reaction-edit-content">
           <label htmlFor="englishName">Reactants</label>
-          <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value="Acetoacetic Ester Synthesis"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="/image-delete.svg" />
-            </button>
-          </div>
-          <hr />
 
-          <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value="アセト酢酸エステル合成"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="/image-delete.svg" />
-            </button>
-          </div>
-          <hr />
+          {reactants.length !== 0 &&
+            reactants.map((reactant, idx) => (
+              <div key={idx}>
+                <div className="reaction-edit-multi-input-container">
+                  <input
+                    type="text"
+                    name="englishName"
+                    value={reactant}
+                    placeholder="反応物の単語を入力"
+                    onChange={(e) => reactantsUpdateHandleChange(e, idx)}
+                  />
+                  <button
+                    type="button"
+                    className="reaction-edit-image-delete-button"
+                    onClick={() => reactantsDeleteHandleChange(idx)}
+                  >
+                    <img src="/image-delete.svg" />
+                  </button>
+                </div>
+                <hr />
+              </div>
+            ))}
 
-          <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value=""
-              placeholder="サジェスチョンの単語を入力"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="/image-delete.svg" />
-            </button>
-          </div>
-          <hr />
-
-          <button className="reaction-edit-multi-input-plus-button">
+          <button
+            type="button"
+            className="reaction-edit-multi-input-plus-button"
+            onClick={() => reactantsAddHandleChange()}
+          >
             <img src="/plus.svg" />
           </button>
         </div>
 
+        {/* Products */}
         <div className="reaction-edit-content">
           <label htmlFor="englishName">Products</label>
-          <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value="Acetoacetic Ester Synthesis"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="/image-delete.svg" />
-            </button>
-          </div>
-          <hr />
 
-          <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value="アセト酢酸エステル合成"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="/image-delete.svg" />
-            </button>
-          </div>
-          <hr />
+          {products.length !== 0 &&
+            products.map((product, idx) => (
+              <div key={idx}>
+                <div className="reaction-edit-multi-input-container">
+                  <input
+                    type="text"
+                    name="englishName"
+                    value={product}
+                    placeholder="精製物の単語を入力"
+                    onChange={(e) => productsUpdateHandleChange(e, idx)}
+                  />
+                  <button
+                    type="button"
+                    className="reaction-edit-image-delete-button"
+                    onClick={() => productsDeleteHandleChange(idx)}
+                  >
+                    <img src="/image-delete.svg" />
+                  </button>
+                </div>
+                <hr />
+              </div>
+            ))}
 
-          <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value=""
-              placeholder="サジェスチョンの単語を入力"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="/image-delete.svg" />
-            </button>
-          </div>
-          <hr />
-
-          <button className="reaction-edit-multi-input-plus-button">
+          <button
+            type="button"
+            className="reaction-edit-multi-input-plus-button"
+            onClick={() => productsAddHandleChange()}
+          >
             <img src="/plus.svg" />
           </button>
         </div>
 
+        {/* Youtube */}
         <div className="reaction-edit-content">
           <label htmlFor="englishName">Youtube</label>
-          <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value="Acetoacetic Ester Synthesis"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="image/image-delete.svg" />
-            </button>
-          </div>
-          <hr />
 
-          <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value="アセト酢酸エステル合成"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="image/image-delete.svg" />
-            </button>
-          </div>
-          <hr />
+          {youtubes.length !== 0 &&
+            youtubes.map((youtube, idx) => (
+              <div key={idx}>
+                <div className="reaction-edit-multi-input-container">
+                  <input
+                    type="text"
+                    name="englishName"
+                    value={youtube}
+                    placeholder="Youtubeのリンクを入力"
+                    onChange={(e) => youtubesUpdateHandleChange(e, idx)}
+                  />
+                  <button
+                    type="button"
+                    className="reaction-edit-image-delete-button"
+                    onClick={() => youtubesDeleteHandleChange(idx)}
+                  >
+                    <img src="/image-delete.svg" />
+                  </button>
+                </div>
+                <hr />
+              </div>
+            ))}
 
-          <div className="reaction-edit-multi-input-container">
-            <input
-              type="text"
-              name="englishName"
-              value=""
-              placeholder="サジェスチョンの単語を入力"
-            />
-            <button className="reaction-edit-image-delete-button">
-              <img src="image/image-delete.svg" />
-            </button>
-          </div>
-          <hr />
-
-          <button className="reaction-edit-multi-input-plus-button">
+          <button
+            type="button"
+            className="reaction-edit-multi-input-plus-button"
+            onClick={() => youtubesAddHandleChange()}
+          >
             <img src="/plus.svg" />
           </button>
 

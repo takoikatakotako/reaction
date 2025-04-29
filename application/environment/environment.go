@@ -7,7 +7,7 @@ type Environment struct {
 	ResourceBaseURL string
 }
 
-func (e *Environment) SetCharalarmAWSProfile(defaultValue string) {
+func (e *Environment) SetReactionAWSProfile(defaultValue string) {
 	e.Profile = defaultValue
 	if val, exists := os.LookupEnv("CHARALARM_AWS_PROFILE"); exists {
 		e.Profile = val

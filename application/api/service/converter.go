@@ -6,6 +6,32 @@ import (
 	"github.com/takoikatakotako/reaction/infrastructure/database"
 )
 
+func convertToOutputReactions(reactions []database.Reaction) []output.Reaction {
+	reactionOutputs := make([]output.Reaction, 0)
+	for i := 0; i < len(reactions); i++ {
+		reactionOutput := convertToOutputReaction(reactions[i])
+		reactionOutputs = append(reactionOutputs, reactionOutput)
+	}
+	return reactionOutputs
+}
+
+func convertToOutputReaction(reaction database.Reaction) output.Reaction {
+	return output.Reaction{
+		ID:                       reaction.ID,
+		EnglishName:              reaction.EnglishName,
+		JapaneseName:             reaction.JapaneseName,
+		ThumbnailImageName:       reaction.ThumbnailImageName,
+		GeneralFormulaImageNames: reaction.GeneralFormulaImageNames,
+		MechanismsImageNames:     reaction.MechanismsImageNames,
+		ExampleImageNames:        reaction.ExampleImageNames,
+		SupplementsImageNames:    reaction.SupplementsImageNames,
+		Suggestions:              reaction.Suggestions,
+		Reactants:                reaction.Reactants,
+		Products:                 reaction.Products,
+		YoutubeUrls:              reaction.YoutubeUrls,
+	}
+}
+
 func convertTooUserInfoOutput(user database.User) output.UserInfoResponse {
 	return output.UserInfoResponse{
 		UserID:          user.UserID,

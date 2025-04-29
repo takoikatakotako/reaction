@@ -4,7 +4,9 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/takoikatakotako/reaction/api/handler"
+	"github.com/takoikatakotako/reaction/api/service"
 	"github.com/takoikatakotako/reaction/environment"
+	"github.com/takoikatakotako/reaction/infrastructure"
 	"os"
 )
 
@@ -24,9 +26,9 @@ func main() {
 	env.SetResourceBaseURL("http://localhost:4566")
 
 	// infrastructure
-	//awsRepository := infrastructure.AWS{
-	//	Profile: env.Profile,
-	//}
+	awsRepository := infrastructure.AWS{
+		Profile: env.Profile,
+	}
 
 	// service
 	//userService := service.User{
@@ -43,9 +45,15 @@ func main() {
 	//	AWS: awsRepository,
 	//}
 
+	reactionService := service.Reaction{
+		AWS: awsRepository,
+	}
+
 	// handler
 	healthcheckHandler := handler.Healthcheck{}
-	reactionHandler := handler.Reaction{}
+	reactionHandler := handler.Reaction{
+		Service: reactionService,
+	}
 	//requireHandler := handler.Require{}
 	//userHandler := handler.User{
 	//	Service: userService,

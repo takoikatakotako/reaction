@@ -2,6 +2,7 @@ package handler
 
 import (
 	"github.com/labstack/echo/v4"
+	request2 "github.com/takoikatakotako/reaction/api/handler/request"
 	"github.com/takoikatakotako/reaction/api/handler/response"
 	"github.com/takoikatakotako/reaction/api/service"
 	"github.com/takoikatakotako/reaction/api/service/input"
@@ -36,7 +37,26 @@ func (a *Reaction) GetReactionGet(c echo.Context) error {
 }
 
 func (a *Reaction) AddReactionPost(c echo.Context) error {
-	in := input.AddReaction{}
+	// parse request
+	req := new(request2.AddReaction)
+	if err := c.Bind(&req); err != nil {
+		res := response.Message{Message: "Failed to parse request"}
+		return c.JSON(http.StatusInternalServerError, res)
+	}
+
+	in := input.AddReaction{
+		EnglishName:              req.EnglishName,
+		JapaneseName:             req.JapaneseName,
+		ThumbnailImageName:       req.ThumbnailImageName,
+		GeneralFormulaImageNames: req.GeneralFormulaImageNames,
+		MechanismsImageNames:     req.MechanismsImageNames,
+		ExampleImageNames:        req.ExampleImageNames,
+		SupplementsImageNames:    req.SupplementsImageNames,
+		Suggestions:              req.Suggestions,
+		Reactants:                req.Reactants,
+		Products:                 req.Products,
+		YoutubeUrls:              req.YoutubeUrls,
+	}
 	err := a.Service.AddReaction(in)
 	if err != nil {
 		res := response.Message{Message: "Error!"}

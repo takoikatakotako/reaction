@@ -50,7 +50,7 @@ func (a *Reaction) AddReaction(input input.AddReaction) error {
 	reaction.SetCreatedAt(currentTime)
 	reaction.SetUpdatedAt(currentTime)
 
-	err := a.AWS.InsertReaction(database.Reaction{})
+	err := a.AWS.InsertReaction(reaction)
 	if err != nil {
 		return err
 	}

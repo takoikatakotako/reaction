@@ -10,7 +10,8 @@ import (
 )
 
 type Reaction struct {
-	AWS infrastructure.AWS
+	AWS             infrastructure.AWS
+	ResourceBaseURL string
 }
 
 func (a *Reaction) GetReactions() ([]output.Reaction, error) {

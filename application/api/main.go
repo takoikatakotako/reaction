@@ -24,10 +24,12 @@ func main() {
 	env := environment.Environment{}
 	env.SetReactionAWSProfile("local")
 	env.SetResourceBaseURL("http://localhost:4566")
+	env.SetResourceBucketName("xxxx")
 
 	// infrastructure
 	awsRepository := infrastructure.AWS{
-		Profile: env.Profile,
+		Profile:            env.Profile,
+		ResourceBucketName: env.ResourceBucketName,
 	}
 
 	// service

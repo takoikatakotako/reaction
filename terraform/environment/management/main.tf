@@ -53,6 +53,6 @@ module "admin_repository" {
 #   ]
 # }
 
-# module "github" {
-#   source = "../../modules/github"
-# }
+module "github" {
+  source = "../../modules/github"
+}

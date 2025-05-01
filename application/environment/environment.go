@@ -10,7 +10,7 @@ type Environment struct {
 
 func (e *Environment) SetReactionAWSProfile(defaultValue string) {
 	e.Profile = defaultValue
-	if val, exists := os.LookupEnv("CHARALARM_AWS_PROFILE"); exists {
+	if val, exists := os.LookupEnv("REACTION_AWS_PROFILE"); exists {
 		e.Profile = val
 	}
 }

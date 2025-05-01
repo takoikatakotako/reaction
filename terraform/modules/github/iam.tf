@@ -1,11 +1,11 @@
 
 # GitHub Action Role
-resource "aws_iam_role" "charalarm_github_action_role" {
-  name               = "charalarm-github-action-role"
-  assume_role_policy = data.aws_iam_policy_document.charalarm_github_action_role_assume_policy_document.json
+resource "aws_iam_role" "github_action_role" {
+  name               = "reaction-github-action-role"
+  assume_role_policy = data.aws_iam_policy_document.github_action_role_assume_policy_document.json
 }
 
-data "aws_iam_policy_document" "charalarm_github_action_role_assume_policy_document" {
+data "aws_iam_policy_document" "github_action_role_assume_policy_document" {
   statement {
     actions = [
       "sts:AssumeRoleWithWebIdentity",
@@ -22,19 +22,19 @@ data "aws_iam_policy_document" "charalarm_github_action_role_assume_policy_docum
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
       values = [
-        "repo:takoikatakotako/charalarm:*"
+        "repo:takoikatakotako/reaction:*"
       ]
     }
   }
 }
 
 # GitHub Action Role Policy
-resource "aws_iam_policy" "charalarm_github_action_role_policy" {
-  name   = "charalarm-github-action-role-policy"
-  policy = data.aws_iam_policy_document.charalarm_github_action_role_policy_document.json
+resource "aws_iam_policy" "github_action_role_policy" {
+  name   = "reaction-github-action-role-policy"
+  policy = data.aws_iam_policy_document.github_action_role_policy_document.json
 }
 
-data "aws_iam_policy_document" "charalarm_github_action_role_policy_document" {
+data "aws_iam_policy_document" "github_action_role_policy_document" {
   statement {
     effect = "Allow"
     actions = [
@@ -44,9 +44,9 @@ data "aws_iam_policy_document" "charalarm_github_action_role_policy_document" {
   }
 }
 
-resource "aws_iam_role_policy_attachment" "charalarm_github_action_role_policy_attachment" {
-  role       = aws_iam_role.charalarm_github_action_role.name
-  policy_arn = aws_iam_policy.charalarm_github_action_role_policy.arn
+resource "aws_iam_role_policy_attachment" "github_action_role_policy_attachment" {
+  role       = aws_iam_role.github_action_role.name
+  policy_arn = aws_iam_policy.github_action_role_policy.arn
 }
 
 
@@ -65,7 +65,7 @@ data "aws_iam_policy_document" "management_ci_role_assume_policy_document" {
     principals {
       type = "AWS"
       identifiers = [
-        aws_iam_role.charalarm_github_action_role.arn
+        aws_iam_role.github_action_role.arn
       ]
     }
   }

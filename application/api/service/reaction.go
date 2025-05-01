@@ -6,6 +6,7 @@ import (
 	"github.com/takoikatakotako/reaction/api/service/output"
 	"github.com/takoikatakotako/reaction/infrastructure"
 	"github.com/takoikatakotako/reaction/infrastructure/database"
+	"log/slog"
 	"time"
 )
 
@@ -17,7 +18,8 @@ type Reaction struct {
 func (a *Reaction) GetReactions() ([]output.Reaction, error) {
 	reactions, err := a.AWS.GetReactions()
 	if err != nil {
-		return []output.Reaction{}, nil
+		slog.Error(err.Error())
+		return []output.Reaction{}, err
 	}
 	outputReactions := convertToOutputReactions(reactions)
 	return outputReactions, nil

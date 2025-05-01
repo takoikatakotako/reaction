@@ -7,17 +7,7 @@ import (
 	"github.com/takoikatakotako/reaction/api/service"
 	"github.com/takoikatakotako/reaction/environment"
 	"github.com/takoikatakotako/reaction/infrastructure"
-	"os"
 )
-
-func getEnvironment(key string, defaultValue string) string {
-	// 環境変数の値を取得
-	val, exists := os.LookupEnv(key)
-	if !exists {
-		return defaultValue
-	}
-	return val
-}
 
 func main() {
 	// environment
@@ -75,14 +65,14 @@ func main() {
 	e.Use(middleware.Logger())
 
 	// healthcheck
-	e.GET("/healthcheck", healthcheckHandler.HealthcheckGet)
+	e.GET("/api/healthcheck", healthcheckHandler.HealthcheckGet)
 
 	// reaction
-	e.GET("/reaction/list", reactionHandler.ListReactionGet)
-	e.GET("/reaction/detail/:id", reactionHandler.GetReactionGet)
-	e.POST("/reaction/add", reactionHandler.AddReactionPost)
-	e.POST("/reaction/edit/:id", reactionHandler.EditReactionPost)
-	e.DELETE("/reaction/edit/:id", reactionHandler.DeleteReactionDelete)
+	e.GET("/api/reaction/list", reactionHandler.ListReactionGet)
+	e.GET("/api/reaction/detail/:id", reactionHandler.GetReactionGet)
+	e.POST("/api/reaction/add", reactionHandler.AddReactionPost)
+	e.POST("/api/reaction/edit/:id", reactionHandler.EditReactionPost)
+	e.DELETE("/api/reaction/edit/:id", reactionHandler.DeleteReactionDelete)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }

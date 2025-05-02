@@ -11,8 +11,9 @@ import (
 )
 
 type Reaction struct {
-	AWS             infrastructure.AWS
-	ResourceBaseURL string
+	AWS                infrastructure.AWS
+	ResourceBucketName string
+	ResourceBaseURL    string
 }
 
 func (a *Reaction) GetReactions() ([]output.Reaction, error) {
@@ -21,7 +22,7 @@ func (a *Reaction) GetReactions() ([]output.Reaction, error) {
 		slog.Error(err.Error())
 		return []output.Reaction{}, err
 	}
-	outputReactions := convertToOutputReactions(reactions)
+	outputReactions := convertToOutputReactions(reactions, a.ResourceBaseURL)
 	return outputReactions, nil
 }
 
@@ -30,7 +31,7 @@ func (a *Reaction) GetReaction(input input.GetReaction) (output.Reaction, error)
 	if err != nil {
 		return output.Reaction{}, err
 	}
-	outputReaction := convertToOutputReaction(reaction)
+	outputReaction := convertToOutputReaction(reaction, a.ResourceBaseURL)
 	return outputReaction, nil
 }
 

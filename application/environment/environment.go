@@ -23,7 +23,7 @@ func (e *Environment) SetResourceBaseURL(defaultValue string) {
 }
 
 func (e *Environment) SetResourceBucketName(defaultValue string) {
-	e.ResourceBaseURL = defaultValue
+	e.ResourceBucketName = defaultValue
 	if val, exists := os.LookupEnv("RESOURCE_BUCKET_NAME"); exists {
 		e.ResourceBucketName = val
 	}

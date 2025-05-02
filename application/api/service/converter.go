@@ -5,29 +5,55 @@ import (
 	"github.com/takoikatakotako/reaction/infrastructure/database"
 )
 
-func convertToOutputReactions(reactions []database.Reaction) []output.Reaction {
+func convertToOutputReactions(reactions []database.Reaction, resourceBaseURL string) []output.Reaction {
 	reactionOutputs := make([]output.Reaction, 0)
 	for i := 0; i < len(reactions); i++ {
-		reactionOutput := convertToOutputReaction(reactions[i])
+		reactionOutput := convertToOutputReaction(reactions[i], resourceBaseURL)
 		reactionOutputs = append(reactionOutputs, reactionOutput)
 	}
 	return reactionOutputs
 }
 
-func convertToOutputReaction(reaction database.Reaction) output.Reaction {
+func convertToOutputReaction(reaction database.Reaction, resourceBaseURL string) output.Reaction {
+	thumbnailImageURL := resourceBaseURL + "/" + reaction.ThumbnailImageName
+
+	generalFormulaImageURLs := make([]string, 0)
+	for i := 0; i < len(reaction.GeneralFormulaImageNames); i++ {
+		generalFormulaImageURL := resourceBaseURL + "/" + reaction.GeneralFormulaImageNames[i]
+		generalFormulaImageURLs = append(generalFormulaImageURLs, generalFormulaImageURL)
+	}
+
+	mechanismsImageURLs := make([]string, 0)
+	for i := 0; i < len(reaction.GeneralFormulaImageNames); i++ {
+		mechanismsImageURL := resourceBaseURL + "/" + reaction.MechanismsImageNames[i]
+		mechanismsImageURLs = append(mechanismsImageURLs, mechanismsImageURL)
+	}
+
+	exampleImageURLs := make([]string, 0)
+	for i := 0; i < len(reaction.GeneralFormulaImageNames); i++ {
+		exampleImageURL := resourceBaseURL + "/" + reaction.ExampleImageNames[i]
+		exampleImageURLs = append(exampleImageURLs, exampleImageURL)
+	}
+
+	supplementsImageURLs := make([]string, 0)
+	for i := 0; i < len(reaction.GeneralFormulaImageNames); i++ {
+		supplementsImageURL := resourceBaseURL + "/" + reaction.SupplementsImageNames[i]
+		supplementsImageURLs = append(supplementsImageURLs, supplementsImageURL)
+	}
+
 	return output.Reaction{
-		ID:                       reaction.ID,
-		EnglishName:              reaction.EnglishName,
-		JapaneseName:             reaction.JapaneseName,
-		ThumbnailImageName:       reaction.ThumbnailImageName,
-		GeneralFormulaImageNames: reaction.GeneralFormulaImageNames,
-		MechanismsImageNames:     reaction.MechanismsImageNames,
-		ExampleImageNames:        reaction.ExampleImageNames,
-		SupplementsImageNames:    reaction.SupplementsImageNames,
-		Suggestions:              reaction.Suggestions,
-		Reactants:                reaction.Reactants,
-		Products:                 reaction.Products,
-		YoutubeUrls:              reaction.YoutubeUrls,
+		ID:                      reaction.ID,
+		EnglishName:             reaction.EnglishName,
+		JapaneseName:            reaction.JapaneseName,
+		ThumbnailImageURL:       thumbnailImageURL,
+		GeneralFormulaImageURLs: generalFormulaImageURLs,
+		MechanismsImageURLs:     mechanismsImageURLs,
+		ExampleImageURLs:        exampleImageURLs,
+		SupplementsImageURLs:    supplementsImageURLs,
+		Suggestions:             reaction.Suggestions,
+		Reactants:               reaction.Reactants,
+		Products:                reaction.Products,
+		YoutubeUrls:             reaction.YoutubeUrls,
 	}
 }
 

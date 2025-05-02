@@ -1,6 +1,6 @@
 package handler
 
-//curl -X POST http://localhost:8080/reaction/add \
+//curl -X POST http://localhost:8080/api/reaction/add \
 //	-H "Content-Type: application/json" \
 //	-d '{
 //		"englishName": "EnglishName",

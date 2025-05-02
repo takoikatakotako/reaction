@@ -54,9 +54,9 @@ func (r *Reaction) Validate() error {
 		return errors.New(common.ErrorInvalidValue + ": JapaneseName")
 	}
 
-	// ThumbnailImageName
+	// ThumbnailImageURL
 	if !IsValidUUIDImageName(r.ThumbnailImageName) {
-		return errors.New(common.ErrorInvalidValue + ": ThumbnailImageName")
+		return errors.New(common.ErrorInvalidValue + ": ThumbnailImageURL")
 	}
 
 	// CreatedAt

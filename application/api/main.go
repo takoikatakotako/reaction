@@ -18,13 +18,14 @@ func main() {
 
 	// infrastructure
 	awsRepository := infrastructure.AWS{
-		Profile:            env.Profile,
-		ResourceBucketName: env.ResourceBucketName,
+		Profile: env.Profile,
 	}
 
 	// service
 	reactionService := service.Reaction{
-		AWS: awsRepository,
+		AWS:                awsRepository,
+		ResourceBucketName: env.ResourceBucketName,
+		ResourceBaseURL:    env.ResourceBaseURL,
 	}
 
 	// handler

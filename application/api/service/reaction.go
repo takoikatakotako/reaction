@@ -11,9 +11,8 @@ import (
 )
 
 type Reaction struct {
-	AWS                infrastructure.AWS
-	ResourceBucketName string
-	ResourceBaseURL    string
+	AWS             infrastructure.AWS
+	ResourceBaseURL string
 }
 
 func (a *Reaction) GetReactions() ([]output.Reaction, error) {

@@ -7,8 +7,7 @@ import (
 )
 
 type AWS struct {
-	Profile            string
-	ResourceBucketName string
+	Profile string
 }
 
 // Private Methods

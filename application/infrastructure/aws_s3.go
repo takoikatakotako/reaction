@@ -25,7 +25,7 @@ func (a *AWS) createS3Client() (*s3.Client, error) {
 	return s3.NewFromConfig(cfg), nil
 }
 
-func (a *AWS) GeneratePresignedURL(objectKey string) (string, error) {
+func (a *AWS) GeneratePresignedURL(bucketName string, objectKey string) (string, error) {
 	client, err := a.createS3Client()
 	if err != nil {
 		return "", err
@@ -33,7 +33,7 @@ func (a *AWS) GeneratePresignedURL(objectKey string) (string, error) {
 
 	presign := s3.NewPresignClient(client)
 	resp, err := presign.PresignPutObject(context.TODO(), &s3.PutObjectInput{
-		Bucket: aws.String(a.ResourceBucketName),
+		Bucket: aws.String(bucketName),
 		Key:    aws.String(objectKey),
 	}, s3.WithPresignExpires(15*time.Minute)) // 有効期限15分
 	if err != nil {

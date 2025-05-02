@@ -7,11 +7,12 @@ import (
 )
 
 type Upload struct {
-	AWS infrastructure.AWS
+	AWS                infrastructure.AWS
+	ResourceBucketName string
 }
 
 func (a *Upload) GenerateUploadURLPost(in input.GenerateUploadURL) (output.UploadURL, error) {
-	url, err := a.AWS.GeneratePresignedURL(in.ImageName)
+	url, err := a.AWS.GeneratePresignedURL(a.ResourceBucketName, in.ImageName)
 	if err != nil {
 		return output.UploadURL{}, nil
 	}

@@ -23,15 +23,22 @@ func main() {
 
 	// service
 	reactionService := service.Reaction{
+		AWS:             awsRepository,
+		ResourceBaseURL: env.ResourceBaseURL,
+	}
+
+	uploadService := service.Upload{
 		AWS:                awsRepository,
 		ResourceBucketName: env.ResourceBucketName,
-		ResourceBaseURL:    env.ResourceBaseURL,
 	}
 
 	// handler
 	healthcheckHandler := handler.Healthcheck{}
 	reactionHandler := handler.Reaction{
 		Service: reactionService,
+	}
+	uploadHandler := handler.Upload{
+		Service: uploadService,
 	}
 
 	e := echo.New()
@@ -46,6 +53,9 @@ func main() {
 	e.POST("/api/reaction/add", reactionHandler.AddReactionPost)
 	e.POST("/api/reaction/edit/:id", reactionHandler.EditReactionPost)
 	e.DELETE("/api/reaction/edit/:id", reactionHandler.DeleteReactionDelete)
+
+	// upload
+	e.POST("/api/generate-upload-url", uploadHandler.GenerateUploadURLPost)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }

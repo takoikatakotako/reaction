@@ -5,6 +5,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
 
+const LocalstackEndpoint = "http://localhost:4566"
+
 // Private Methods
 func (a *AWS) createDynamoDBClient() (*dynamodb.Client, error) {
 	cfg, err := a.createAWSConfig()

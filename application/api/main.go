@@ -23,20 +23,6 @@ func main() {
 	}
 
 	// service
-	//userService := service.User{
-	//	AWS: awsRepository,
-	//}
-	//alarmService := service.Alarm{
-	//	AWS: awsRepository,
-	//}
-	//charaService := service.Chara{
-	//	AWS:         awsRepository,
-	//	Environment: env,
-	//}
-	//pushTokenService := service.PushToken{
-	//	AWS: awsRepository,
-	//}
-
 	reactionService := service.Reaction{
 		AWS: awsRepository,
 	}
@@ -46,20 +32,6 @@ func main() {
 	reactionHandler := handler.Reaction{
 		Service: reactionService,
 	}
-	//requireHandler := handler.Require{}
-	//userHandler := handler.User{
-	//	Service: userService,
-	//}
-	//alarmHandler := handler.Alarm{
-	//	Service: alarmService,
-	//}
-	//charaHandler := handler.Chara{
-	//	Service: charaService,
-	//}
-	//pushTokenHandler := handler.PushToken{
-	//	Service: pushTokenService,
-	//}
-	//newsHandler := handler.News{}
 
 	e := echo.New()
 	e.Use(middleware.Logger())

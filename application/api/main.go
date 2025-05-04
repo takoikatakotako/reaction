@@ -14,7 +14,7 @@ func main() {
 	env := environment.Environment{}
 	env.SetReactionAWSProfile("local")
 	env.SetResourceBaseURL("http://localhost:4566")
-	env.SetResourceBucketName("xxxx")
+	env.SetResourceBucketName("resource.reaction-local.swiswiswift.com")
 
 	// infrastructure
 	awsRepository := infrastructure.AWS{
@@ -26,7 +26,6 @@ func main() {
 		AWS:             awsRepository,
 		ResourceBaseURL: env.ResourceBaseURL,
 	}
-
 	uploadService := service.Upload{
 		AWS:                awsRepository,
 		ResourceBucketName: env.ResourceBucketName,

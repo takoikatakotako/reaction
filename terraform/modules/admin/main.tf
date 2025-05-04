@@ -40,12 +40,62 @@ data "aws_iam_policy_document" "iam_policy_document" {
 
 
 ##############################################################
+# API Lambda Function
+##############################################################
+resource "aws_lambda_function" "api_lambda_function" {
+  function_name = "reaction-api"
+  timeout       = 30
+  role          = aws_iam_role.api_lambda_function_role.arn
+  image_uri     = var.api_lambda_function_image_uri
+  package_type  = "Image"
+  architectures = ["arm64"]
+
+  environment {
+    variables = {
+      "REACTION_AWS_PROFILE" = "",
+      "RESOURCE_BASE_URL"     = "https://resource.charalarm-development.swiswiswift.com"
+      "RESOURCE_BUCKET_NAME" = "admin-storage.reaction-development.swiswiswift.com"
+    }
+  }
+}
+
+resource "aws_lambda_function_url" "api_lambda_function_url" {
+  function_name      = aws_lambda_function.api_lambda_function.function_name
+  authorization_type = "NONE"
+}
+
+resource "aws_lambda_permission" "api_lambda_permission" {
+  statement_id           = "AllowCloudFrontServicePrincipal"
+  function_url_auth_type = "NONE"
+  action                 = "lambda:InvokeFunctionUrl"
+  function_name          = aws_lambda_function.api_lambda_function.function_name
+  principal              = "cloudfront.amazonaws.com"
+}
+
+
+##############################################################
 # CloudFront
 ##############################################################
 resource "aws_cloudfront_distribution" "charalarm_cloudfront_distribution" {
   origin {
     domain_name = "${var.bucket_name}.s3.amazonaws.com"
     origin_id   = "S3-${var.bucket_name}"
+  }
+
+    origin {
+    domain_name = "${aws_lambda_function_url.api_lambda_function_url.url_id}.lambda-url.ap-northeast-1.on.aws"
+    origin_id   = "${aws_lambda_function_url.api_lambda_function_url.url_id}.lambda-url.ap-northeast-1.on.aws"
+
+    custom_origin_config {
+      http_port                = 80
+      https_port               = 443
+      origin_keepalive_timeout = 5
+      origin_protocol_policy   = "https-only"
+      origin_read_timeout      = 30
+      origin_ssl_protocols = [
+        "TLSv1.2",
+      ]
+    }
   }
 
   aliases = [
@@ -75,6 +125,21 @@ resource "aws_cloudfront_distribution" "charalarm_cloudfront_distribution" {
     min_ttl     = 0
     default_ttl = 86400
     max_ttl     = 31536000
+  }
+
+    ordered_cache_behavior {
+      path_pattern = "/api/*"
+    cache_policy_id          = local.cache_policy_id
+    compress                 = true
+    allowed_methods          = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods           = ["GET", "HEAD"]
+    target_origin_id         = "${aws_lambda_function_url.api_lambda_function_url.url_id}.lambda-url.ap-northeast-1.on.aws"
+    origin_request_policy_id = local.origin_request_policy_id
+
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 0
+    max_ttl                = 0
   }
 
   viewer_certificate {

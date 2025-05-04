@@ -4,9 +4,9 @@ locals {
 
 
   // admin
-  admin_domain               = "admin.reaction-development.swiswiswift.com"
-  admin_front_bucket_name = "admin.reaction-development.swiswiswift.com"
-  admin_front_domain      = "admin.reaction-development.swiswiswift.com"
+  admin_domain      = "admin.reaction-development.swiswiswift.com"
+  admin_bucket_name = "admin.reaction-development.swiswiswift.com"
+  # admin_front_domain      = "admin.reaction-development.swiswiswift.com"
 
   // admin api
   admin_api_record_name = "api.admin"

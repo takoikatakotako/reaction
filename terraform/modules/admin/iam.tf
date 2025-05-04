@@ -1,4 +1,3 @@
-
 resource "aws_iam_role" "api_lambda_function_role" {
   name               = "charalarm-api-role"
   assume_role_policy = data.aws_iam_policy_document.api_lambda_function_role_assume_policy_document.json

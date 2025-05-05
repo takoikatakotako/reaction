@@ -223,12 +223,45 @@ export default function AboutPage() {
     setYoutubes([...youtubes, '']);
   };
 
-  // フォーム送信時のイベントハンドラ
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // ページのリロードを防ぐ
-    alert(`送信された名前: ${name}`);
-    // ここでAPI通信や他の処理ができる
+  // Submit
+  const submitHandleChange = async () => {
+    try {
+      const response = await fetch("https://admin.reaction-development.swiswiswift.com/api/reaction/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          englishName: "EnglishName",
+          japaneseName: "JapaneseName",
+          thumbnailImageName: "47ecee67-5e4c-4396-8ec4-c495b22d90f2.png",
+          generalFormulaImageNames: ["generalFormulaImageName.png"],
+          mechanismsImageNames: ["generalFormulaImageName.png"],
+          exampleImageNames: ["generalFormulaImageName.png"],
+          supplementsImageNames: ["generalFormulaImageName.png"],
+          suggestions: ["suggestions"],
+          reactants: ["reactants"],
+          products: ["products"],
+          youtubeUrls: ["youtubeUrls"]
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("POST failed:", errorText);
+        alert("送信に失敗しました");
+      } else {
+        const result = await response.json();
+        console.log("Success:", result);
+        alert("送信成功！");
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+      alert("エラーが発生しました");
+    }
   };
+
+
 
   return (
     <main className="wrapper">
@@ -578,7 +611,13 @@ export default function AboutPage() {
             <img src="/plus.svg" />
           </button>
 
-          <button className="reaction-edit-add-reaction-button">
+
+        {/* Submit */}
+          <button 
+          type="button"
+          className="reaction-edit-add-reaction-button"
+          onClick={() => submitHandleChange()}
+          >
             <img src="/add-reaction.svg" />
           </button>
         </div>

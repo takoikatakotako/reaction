@@ -1,6 +1,11 @@
 'use client';
 
 import React, { useState, useRef, ChangeEvent, FormEvent } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
+type UploadUrlResponse = {
+  uploadUrl: string;
+};
 
 export default function AboutPage() {
   const [englishName, setEnglishName] = useState<string>('');
@@ -226,27 +231,61 @@ export default function AboutPage() {
   // Submit
   const submitHandleChange = async () => {
     try {
-      // Thmbnail
-      const thumbnailImageResponse = await fetch("https://admin.reaction-development.swiswiswift.com/api/generate-upload-url", {
+      // Upload Thumbnail
+      const thumbnailImageName = `${uuidv4()}.png`
+      const thumbnailUploadUrlResponse = await fetch("https://admin.reaction-development.swiswiswift.com/api/generate-upload-url", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          imageName: "b83d3bcb-ecfc-483b-95b8-e3c83cf3a386.png",
+          imageName: thumbnailImageName,
         }),
       });
 
-      if (!thumbnailImageResponse.ok) {
-        const errorText = await thumbnailImageResponse.text();
+      if (!thumbnailUploadUrlResponse.ok) {
+        const errorText = await thumbnailUploadUrlResponse.text();
         console.error("POST failed:", errorText);
         alert("送信に失敗しました");
-      } else {
-        const result = await thumbnailImageResponse.json();
-        console.log("Success:", result);
-        alert("送信成功！");
+      } 
+
+      const thumbnailUploadUrlResponseJson: UploadUrlResponse = await thumbnailUploadUrlResponse.json();
+      const thumbnailUploadUrl = thumbnailUploadUrlResponseJson.uploadUrl;
+      
+
+      // base64文字列をバイナリに変換
+      const matches = thumbnailImage.match(/^data:(.+);base64,(.*)$/);
+      if (!matches || matches.length !== 3) {
+        alert('Invalid base64 image string format.');
+        return;
+      }
+    
+      const thumbnailImageContentType = matches[1]; // 例: image/png
+      const thumbnailImageBase64Data = matches[2];
+      const thumbnailImageBuffer = new Uint8Array(thumbnailImageBase64Data.length);
+      for (let i = 0; i < thumbnailImageBase64Data.length; i++) {
+        thumbnailImageBuffer[i] = thumbnailImageBase64Data.charCodeAt(i);
       }
 
+      const thumbnailUploadResponse = await fetch(thumbnailUploadUrl, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': thumbnailImageContentType,
+        },
+        body: thumbnailImageBuffer,
+      });
+
+      if (!thumbnailUploadResponse.ok) {
+        console.log(thumbnailUploadResponse);
+        const errorText = await thumbnailUploadUrlResponse.text();
+        console.error("POST failed:", errorText);
+        alert("送信に失敗しました");
+      }
+
+      alert("送信成功！");
+
+ 
+      
 
       return;
 

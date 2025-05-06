@@ -53,7 +53,7 @@ resource "aws_lambda_function" "api_lambda_function" {
   environment {
     variables = {
       "REACTION_AWS_PROFILE" = "",
-      "RESOURCE_BASE_URL"     = "https://resource.charalarm-development.swiswiswift.com"
+      "RESOURCE_BASE_URL"    = "https://resource.charalarm-development.swiswiswift.com"
       "RESOURCE_BUCKET_NAME" = "admin-storage.reaction-development.swiswiswift.com"
     }
   }
@@ -82,7 +82,7 @@ resource "aws_cloudfront_distribution" "charalarm_cloudfront_distribution" {
     origin_id   = "S3-${var.bucket_name}"
   }
 
-    origin {
+  origin {
     domain_name = "${aws_lambda_function_url.api_lambda_function_url.url_id}.lambda-url.ap-northeast-1.on.aws"
     origin_id   = "${aws_lambda_function_url.api_lambda_function_url.url_id}.lambda-url.ap-northeast-1.on.aws"
 
@@ -127,8 +127,8 @@ resource "aws_cloudfront_distribution" "charalarm_cloudfront_distribution" {
     max_ttl     = 31536000
   }
 
-    ordered_cache_behavior {
-      path_pattern = "/api/*"
+  ordered_cache_behavior {
+    path_pattern             = "/api/*"
     cache_policy_id          = local.cache_policy_id
     compress                 = true
     allowed_methods          = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]

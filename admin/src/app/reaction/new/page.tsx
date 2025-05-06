@@ -226,23 +226,47 @@ export default function AboutPage() {
   // Submit
   const submitHandleChange = async () => {
     try {
+      // Thmbnail
+      const thumbnailImageResponse = await fetch("https://admin.reaction-development.swiswiswift.com/api/generate-upload-url", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          imageName: "b83d3bcb-ecfc-483b-95b8-e3c83cf3a386.png",
+        }),
+      });
+
+      if (!thumbnailImageResponse.ok) {
+        const errorText = await thumbnailImageResponse.text();
+        console.error("POST failed:", errorText);
+        alert("送信に失敗しました");
+      } else {
+        const result = await thumbnailImageResponse.json();
+        console.log("Success:", result);
+        alert("送信成功！");
+      }
+
+
+      return;
+
       const response = await fetch("https://admin.reaction-development.swiswiswift.com/api/reaction/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          englishName: "EnglishName",
-          japaneseName: "JapaneseName",
+          englishName: englishName,
+          japaneseName: japaneseName,
           thumbnailImageName: "47ecee67-5e4c-4396-8ec4-c495b22d90f2.png",
           generalFormulaImageNames: ["generalFormulaImageName.png"],
           mechanismsImageNames: ["generalFormulaImageName.png"],
           exampleImageNames: ["generalFormulaImageName.png"],
           supplementsImageNames: ["generalFormulaImageName.png"],
-          suggestions: ["suggestions"],
-          reactants: ["reactants"],
-          products: ["products"],
-          youtubeUrls: ["youtubeUrls"]
+          suggestions: suggestions,
+          reactants: reactants,
+          products: products,
+          youtubeUrls: youtubes
         }),
       });
   

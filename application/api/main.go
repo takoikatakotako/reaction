@@ -42,6 +42,7 @@ func main() {
 
 	e := echo.New()
 	e.Use(middleware.Logger())
+	e.Use(middleware.CORS())
 
 	// healthcheck
 	e.GET("/api/healthcheck", healthcheckHandler.HealthcheckGet)

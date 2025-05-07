@@ -27,7 +27,10 @@ func (a *Reaction) ListReactionGet(c echo.Context) error {
 }
 
 func (a *Reaction) GetReactionGet(c echo.Context) error {
-	in := input.GetReaction{}
+	id := c.Param("id")
+	in := input.GetReaction{
+		ID: id,
+	}
 	res, err := a.Service.GetReaction(in)
 	if err != nil {
 		res := response.Message{Message: "Error!"}

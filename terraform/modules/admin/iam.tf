@@ -1,5 +1,5 @@
 resource "aws_iam_role" "api_lambda_function_role" {
-  name               = "charalarm-api-role"
+  name               = "reaction-api-role"
   assume_role_policy = data.aws_iam_policy_document.api_lambda_function_role_assume_policy_document.json
 }
 
@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "api_lambda_function_role_assume_policy_document"
 }
 
 resource "aws_iam_policy" "api_lambda_function_role_policy" {
-  name   = "charalarm-api-role-policy"
+  name   = "reaction-api-role-policy"
   policy = data.aws_iam_policy_document.api_lambda_function_role_policy_document.json
 }
 

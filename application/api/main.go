@@ -13,6 +13,8 @@ func main() {
 	// environment
 	env := environment.Environment{}
 	env.SetReactionAWSProfile("local")
+	//env.SetReactionAWSProfile("reaction-development")
+
 	env.SetResourceBaseURL("http://localhost:4566")
 	env.SetResourceBucketName("resource.reaction-local.swiswiswift.com")
 

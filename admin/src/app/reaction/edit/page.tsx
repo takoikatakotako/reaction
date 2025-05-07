@@ -1,10 +1,20 @@
 'use client';
 
-import React, { useState, useRef, ChangeEvent, FormEvent } from 'react';
+import React, {
+  useState,
+  useRef,
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+} from 'react';
+import { useSearchParams } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 import { uploadImage, AddReaction, addReaction } from '@/lib/api';
 
-export default function AboutPage() {
+export default function EditUser() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
+
   const [englishName, setEnglishName] = useState<string>('');
   const [japaneseName, setJapaneseName] = useState<string>('');
   const [thumbnailImage, setThumbnailImage] = useState<string>('');
@@ -20,6 +30,19 @@ export default function AboutPage() {
   const [youtubes, setYoutubes] = useState<string[]>([]);
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const loadReaction = async () => {
+      try {
+        const reactions = await fetchReaction();
+        setReactions(reactions);
+      } catch (err) {
+        // setError((err as Error).message);
+      }
+    };
+
+    loadReaction();
+  }, []);
 
   // EnglishName
   const englishNameHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -289,9 +312,22 @@ export default function AboutPage() {
 
   return (
     <main className="wrapper">
-      <h1>反応機構追加</h1>
+      <h1>反応機構編集</h1>
 
       <form>
+        {/* ID */}
+        <div className="reaction-edit-content">
+          <label htmlFor="id">ID</label>
+          <input
+            type="text"
+            name="id"
+            placeholder="反応機構の英語名を入力"
+            value={id ?? ''}
+            readOnly
+          />
+          <hr />
+        </div>
+
         {/* English Name */}
         <div className="reaction-edit-content">
           <label htmlFor="englishName">EnglishName</label>

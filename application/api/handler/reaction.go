@@ -31,11 +31,13 @@ func (a *Reaction) GetReactionGet(c echo.Context) error {
 	in := input.GetReaction{
 		ID: id,
 	}
-	res, err := a.Service.GetReaction(in)
+	reaction, err := a.Service.GetReaction(in)
 	if err != nil {
 		res := response.Message{Message: "Error!"}
 		return c.JSON(http.StatusInternalServerError, res)
 	}
+
+	res := convertToResponseReaction(reaction)
 	return c.JSON(http.StatusOK, res)
 }
 
@@ -71,7 +73,27 @@ func (a *Reaction) AddReactionPost(c echo.Context) error {
 }
 
 func (a *Reaction) EditReactionPost(c echo.Context) error {
-	in := input.EditReaction{}
+	// parse request
+	req := new(request.EditReaction)
+	if err := c.Bind(&req); err != nil {
+		res := response.Message{Message: "Failed to parse request"}
+		return c.JSON(http.StatusInternalServerError, res)
+	}
+
+	in := input.EditReaction{
+		ID:                       req.ID,
+		EnglishName:              req.EnglishName,
+		JapaneseName:             req.JapaneseName,
+		ThumbnailImageName:       req.ThumbnailImageName,
+		GeneralFormulaImageNames: req.GeneralFormulaImageNames,
+		MechanismsImageNames:     req.MechanismsImageNames,
+		ExampleImageNames:        req.ExampleImageNames,
+		SupplementsImageNames:    req.SupplementsImageNames,
+		Suggestions:              req.Suggestions,
+		Reactants:                req.Reactants,
+		Products:                 req.Products,
+		YoutubeUrls:              req.YoutubeUrls,
+	}
 	err := a.Service.EditReaction(in)
 	if err != nil {
 		res := response.Message{Message: "Error!"}
@@ -83,7 +105,16 @@ func (a *Reaction) EditReactionPost(c echo.Context) error {
 }
 
 func (a *Reaction) DeleteReactionDelete(c echo.Context) error {
-	in := input.DeleteReaction{}
+	// parse request
+	req := new(request.DeleteReaction)
+	if err := c.Bind(&req); err != nil {
+		res := response.Message{Message: "Failed to parse request"}
+		return c.JSON(http.StatusInternalServerError, res)
+	}
+
+	in := input.DeleteReaction{
+		ID: req.ID,
+	}
 	err := a.Service.DeleteReaction(in)
 	if err != nil {
 		res := response.Message{Message: "Error!"}

@@ -53,8 +53,8 @@ func main() {
 	e.GET("/api/reaction/list", reactionHandler.ListReactionGet)
 	e.GET("/api/reaction/detail/:id", reactionHandler.GetReactionGet)
 	e.POST("/api/reaction/add", reactionHandler.AddReactionPost)
-	e.POST("/api/reaction/edit/:id", reactionHandler.EditReactionPost)
-	e.DELETE("/api/reaction/edit/:id", reactionHandler.DeleteReactionDelete)
+	e.POST("/api/reaction/edit", reactionHandler.EditReactionPost)
+	e.DELETE("/api/reaction/delete", reactionHandler.DeleteReactionDelete)
 
 	// upload
 	e.POST("/api/generate-upload-url", uploadHandler.GenerateUploadURLPost)

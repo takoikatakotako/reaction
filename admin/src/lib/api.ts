@@ -47,11 +47,10 @@ export type AddReaction = {
     return reactions;
 }
 
-export async function fetchReaction2(id: string): Promise<Reaction[]> {
-    const response = await fetch("https://admin.reaction-development.swiswiswift.com/api/reaction/list") 
-    const reactionList: ReactionList = await response.json();
-    const reactions = reactionList.reactions
-    return reactions;
+export async function fetchReaction2(id: string): Promise<Reaction> {
+    const response = await fetch(`https://admin.reaction-development.swiswiswift.com/api/reaction/detail/${id}`) 
+    const reaction: Reaction = await response.json();
+    return reaction;
 }
 
 

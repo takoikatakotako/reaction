@@ -53,7 +53,7 @@ resource "aws_lambda_function" "api_lambda_function" {
   environment {
     variables = {
       "REACTION_AWS_PROFILE" = "",
-      "RESOURCE_BASE_URL"    = "https://resource.charalarm-development.swiswiswift.com"
+      "RESOURCE_BASE_URL"    = "https://s3.ap-northeast-1.amazonaws.com/admin-storage.reaction-development.swiswiswift.com"
       "RESOURCE_BUCKET_NAME" = "admin-storage.reaction-development.swiswiswift.com"
     }
   }

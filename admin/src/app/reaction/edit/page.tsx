@@ -9,11 +9,11 @@ import React, {
 } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
-import { uploadImage, AddReaction, addReaction } from '@/lib/api';
+import { uploadImage, AddReaction, addReaction, fetchReaction2, Reaction, fetchImage, deleteReaction } from '@/lib/api';
 
 export default function EditUser() {
   const searchParams = useSearchParams();
-  const id = searchParams.get('id');
+  const id : string = searchParams.get('id') ?? "";
 
   const [englishName, setEnglishName] = useState<string>('');
   const [japaneseName, setJapaneseName] = useState<string>('');
@@ -34,10 +34,23 @@ export default function EditUser() {
   useEffect(() => {
     const loadReaction = async () => {
       try {
-        const reactions = await fetchReaction();
-        setReactions(reactions);
+        const reaction: Reaction = await fetchReaction2(id);
+
+        const thumbnail: string = await fetchImage(reaction.thumbnailImageUrl);
+
+        setThumbnailImage(thumbnail);
+
+
+
+        setEnglishName(reaction.englishName);
+        setJapaneseName(reaction.japaneseName);
+        setSuggestions(reaction.suggestions);
+        setReactants(reaction.reactants);
+        setProducts(reaction.products);
+        setYoutubes(reaction.youtubeUrls);
       } catch (err) {
         // setError((err as Error).message);
+        alert('エラーが発生しました');
       }
     };
 
@@ -248,8 +261,8 @@ export default function EditUser() {
     setYoutubes([...youtubes, '']);
   };
 
-  // Submit
-  const submitHandleChange = async () => {
+  // Edit Submit
+  const editHandleChange = async () => {
     try {
       // Upload Thumbnail
       const thumbnailImageName = `${uuidv4()}.png`;
@@ -309,6 +322,18 @@ export default function EditUser() {
       alert('エラーが発生しました');
     }
   };
+
+
+  // Delete Submit
+  const deleteHandleChange = async () => {
+    try {
+      await deleteReaction(id);
+
+      alert('送信成功！');
+    } catch (error) {
+      alert('エラーが発生しました');
+    }
+  }
 
   return (
     <main className="wrapper">
@@ -671,13 +696,22 @@ export default function EditUser() {
             <img src="/plus.svg" />
           </button>
 
-          {/* Submit */}
+          {/* Edit Submit */}
           <button
             type="button"
             className="reaction-edit-add-reaction-button"
-            onClick={() => submitHandleChange()}
+            onClick={() => editHandleChange()}
           >
-            <img src="/add-reaction.svg" />
+            <img src="/edit-reaction.svg" />
+          </button>
+
+          {/* Delete Submit */}
+          <button
+            type="button"
+            className="reaction-edit-add-reaction-button"
+            onClick={() => deleteHandleChange()}
+          >
+            <img src="/delete-reaction.svg" />
           </button>
         </div>
       </form>

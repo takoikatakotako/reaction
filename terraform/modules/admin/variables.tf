@@ -18,6 +18,17 @@ variable "domain" {
   type = string
 }
 
+variable "resource_bucket_name" {
+  type = string
+}
+
+variable "resource_base_url" {
+  type = string
+}
+
+
+
+
 data "aws_caller_identity" "current" {}
 
 locals {

@@ -54,6 +54,8 @@ module "admin" {
   acm_certificate_arn           = module.cloudfront_admin_certificate.certificate_arn
   domain                        = local.admin_domain
   zone_id                       = module.root_domain.zone_id
+  resource_bucket_name          = "admin-storage.reaction-development.swiswiswift.com"
+  resource_base_url             = "https://s3.ap-northeast-1.amazonaws.com/admin-storage.reaction-development.swiswiswift.com"
 }
 
 

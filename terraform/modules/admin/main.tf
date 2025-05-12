@@ -1,5 +1,5 @@
 ##############################################################
-# S3バケット
+# S3 Bucket
 ##############################################################
 resource "aws_s3_bucket" "s3_bucket" {
   bucket = var.bucket_name
@@ -53,8 +53,8 @@ resource "aws_lambda_function" "api_lambda_function" {
   environment {
     variables = {
       "REACTION_AWS_PROFILE" = "",
-      "RESOURCE_BASE_URL"    = "https://s3.ap-northeast-1.amazonaws.com/admin-storage.reaction-development.swiswiswift.com"
-      "RESOURCE_BUCKET_NAME" = "admin-storage.reaction-development.swiswiswift.com"
+      "RESOURCE_BUCKET_NAME" =  var.resource_bucket_name
+        "RESOURCE_BASE_URL"    = var.resource_base_url
     }
   }
 }

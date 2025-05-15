@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"github.com/takoikatakotako/reaction/api/service/output"
 	"github.com/takoikatakotako/reaction/infrastructure/database"
 )
@@ -18,26 +19,26 @@ func convertToOutputReaction(reaction database.Reaction, resourceBaseURL string)
 	thumbnailImageURL := resourceBaseURL + "/" + reaction.ThumbnailImageName
 
 	generalFormulaImageURLs := make([]string, 0)
-	for i := 0; i < len(reaction.GeneralFormulaImageNames); i++ {
-		generalFormulaImageURL := resourceBaseURL + "/" + reaction.GeneralFormulaImageNames[i]
+	for _, generalFormulaImageName := range reaction.GeneralFormulaImageNames {
+		generalFormulaImageURL := fmt.Sprintf("%s/%s", resourceBaseURL, generalFormulaImageName)
 		generalFormulaImageURLs = append(generalFormulaImageURLs, generalFormulaImageURL)
 	}
 
 	mechanismsImageURLs := make([]string, 0)
-	for i := 0; i < len(reaction.GeneralFormulaImageNames); i++ {
-		mechanismsImageURL := resourceBaseURL + "/" + reaction.MechanismsImageNames[i]
+	for _, mechanismsImageName := range reaction.MechanismsImageNames {
+		mechanismsImageURL := fmt.Sprintf("%s/%s", resourceBaseURL, mechanismsImageName)
 		mechanismsImageURLs = append(mechanismsImageURLs, mechanismsImageURL)
 	}
 
 	exampleImageURLs := make([]string, 0)
-	for i := 0; i < len(reaction.GeneralFormulaImageNames); i++ {
-		exampleImageURL := resourceBaseURL + "/" + reaction.ExampleImageNames[i]
-		exampleImageURLs = append(exampleImageURLs, exampleImageURL)
+	for _, exampleImageName := range reaction.ExampleImageNames {
+		exampleImagURL := fmt.Sprintf("%s/%s", resourceBaseURL, exampleImageName)
+		exampleImageURLs = append(exampleImageURLs, exampleImagURL)
 	}
 
 	supplementsImageURLs := make([]string, 0)
-	for i := 0; i < len(reaction.GeneralFormulaImageNames); i++ {
-		supplementsImageURL := resourceBaseURL + "/" + reaction.SupplementsImageNames[i]
+	for _, supplementsImageName := range reaction.SupplementsImageNames {
+		supplementsImageURL := fmt.Sprintf("%s/%s", resourceBaseURL, supplementsImageName)
 		supplementsImageURLs = append(supplementsImageURLs, supplementsImageURL)
 	}
 

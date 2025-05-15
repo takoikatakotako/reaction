@@ -34,7 +34,7 @@ export default function AboutPage() {
             <h2>ID: {reaction.id}</h2>
           </Link>
           <p>Name: {reaction.englishName}</p>
-          <img src="acetoacetic-ester-synthesis-thumbnail.png" />
+          <img src={`${reaction.thumbnailImageUrl}`}/>
           <hr />
         </div>
       ))}

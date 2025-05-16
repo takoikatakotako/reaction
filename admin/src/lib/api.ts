@@ -10,7 +10,7 @@ export type Reaction = {
     englishName: string;
     japaneseName: string;
     thumbnailImageUrl: string;
-    generalFormulaImageNames: string[];
+    generalFormulaImageUrls: string[];
     mechanismsImageUrls: string[];
     exampleImageUrls: string[];
     supplementsImageUrls: string[];
@@ -69,7 +69,7 @@ export async function fetchReaction2(id: string): Promise<Reaction> {
 }
 
 export async function fetchImage(url: string): Promise<string>  {
-  const response = await fetch(url);
+  const response = await fetch(url, {mode: "cors"});
   if (!response.ok) {
     throw new Error(`画像の取得に失敗しました（ステータス: ${response.status}）`);
   }
@@ -89,6 +89,21 @@ export async function fetchImage(url: string): Promise<string>  {
     };
     reader.readAsDataURL(blob);
   });
+}
+
+export async function fetchImages(urls: string[]): Promise<string[]>  {
+  const results = await Promise.all(
+    urls.map(async (url) => {
+      try {
+        return await fetchImage(url);
+      } catch (error) {
+        console.error(`URL: ${url} の処理中にエラーが発生しました`, error);
+        return ''; // または null や undefined にしてもOK
+      }
+    })
+  );
+
+  return results;
 }
 
 export async function addReaction(addReaction: AddReaction) {

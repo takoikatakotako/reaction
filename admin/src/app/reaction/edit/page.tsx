@@ -37,7 +37,6 @@ export default function EditUser() {
     const loadReaction = async () => {
       try {
         const reaction: Reaction = await fetchReaction2(id);
-
         setEnglishName(reaction.englishName);
         setJapaneseName(reaction.japaneseName);
         setThumbnailImageUrl(reaction.thumbnailImageUrl);
@@ -50,12 +49,9 @@ export default function EditUser() {
         setProducts(reaction.products);
         setYoutubes(reaction.youtubeUrls);
       } catch (err) {
-        // setError((err as Error).message);
-        console.log(err);
         alert('エラーが発生しました');
       }
     };
-
     loadReaction();
   }, []);
 
@@ -83,9 +79,9 @@ export default function EditUser() {
           const imageName = `${uuidv4()}.png`;
           await uploadImage(imageName, base64String);          
           setThumbnailImageUrl('http://admin-storage.reaction-development.swiswiswift.com.s3-website-ap-northeast-1.amazonaws.com/' + imageName)
-      } catch (err) {
-        alert("アップロードに失敗しました");
-      }
+        } catch (err) {
+          alert("アップロードに失敗しました");
+        }
       };
       reader.readAsDataURL(file); // Base64に変換開始
     }
@@ -109,9 +105,15 @@ export default function EditUser() {
       const file = files[0];
       const reader = new FileReader();
 
-      reader.onloadend = () => {
+      reader.onloadend = async () => {
         const base64String = reader.result as string;
-        setGeneralFormulaImages([...generalFormulaImages, base64String]);
+        try {
+          const imageName = `${uuidv4()}.png`;
+          await uploadImage(imageName, base64String);          
+          setGeneralFormulaImageUrls([...generalFormulaImageUrls, 'http://admin-storage.reaction-development.swiswiswift.com.s3-website-ap-northeast-1.amazonaws.com/' + imageName]);
+        } catch (err) {
+          alert("アップロードに失敗しました");
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -122,7 +124,7 @@ export default function EditUser() {
   };
 
   const generalFormulasDeleteHandleChange = (index: number) => {
-    setGeneralFormulaImages((prev) => prev.filter((_, idx) => idx !== index));
+    setGeneralFormulaImageUrls((prev) => prev.filter((_, idx) => idx !== index));
   };
 
   // Mechanisms
@@ -133,9 +135,15 @@ export default function EditUser() {
       const file = files[0];
       const reader = new FileReader();
 
-      reader.onloadend = () => {
+      reader.onloadend = async () => {
         const base64String = reader.result as string;
-        setMechanismasImages([...generalFormulaImages, base64String]);
+        try {
+          const imageName = `${uuidv4()}.png`;
+          await uploadImage(imageName, base64String);          
+          setMechanismasImageUrls([...mechanismasImageUrls, 'http://admin-storage.reaction-development.swiswiswift.com.s3-website-ap-northeast-1.amazonaws.com/' + imageName]);
+        } catch (err) {
+          alert("アップロードに失敗しました");
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -146,7 +154,7 @@ export default function EditUser() {
   };
 
   const mechanismsDeleteHandleChange = (index: number) => {
-    setMechanismasImages((prev) => prev.filter((_, idx) => idx !== index));
+    setMechanismasImageUrls((prev) => prev.filter((_, idx) => idx !== index));
   };
 
   // Examples

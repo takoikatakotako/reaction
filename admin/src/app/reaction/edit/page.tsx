@@ -1,25 +1,59 @@
 'use client';
 
-import React, { useState, useRef, ChangeEvent, FormEvent } from 'react';
+import React, {
+  useState,
+  useRef,
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+} from 'react';
+import { useSearchParams } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
-import { uploadImage, AddReaction, addReaction } from '@/lib/api';
+import { uploadImage, AddReaction, addReaction, fetchReaction2, Reaction, fetchImage, deleteReaction, fetchImages } from '@/lib/api';
 
-export default function AboutPage() {
+export default function EditUser() {
+  const searchParams = useSearchParams();
+  const id : string = searchParams.get('id') ?? "";
+
   const [englishName, setEnglishName] = useState<string>('');
   const [japaneseName, setJapaneseName] = useState<string>('');
-  const [thumbnailImage, setThumbnailImage] = useState<string>('');
-  const [generalFormulaImages, setGeneralFormulaImages] = useState<string[]>(
+  const [thumbnailImageUrl, setThumbnailImageUrl] = useState<string>('');
+  const [generalFormulaImageUrls, setGeneralFormulaImageUrls] = useState<string[]>(
     []
   );
-  const [mechanismasImages, setMechanismasImages] = useState<string[]>([]);
-  const [exampleImages, setExampleImages] = useState<string[]>([]);
-  const [supplementsImages, setSupplementsImages] = useState<string[]>([]);
+  const [mechanismasImageUrls, setMechanismasImageUrls] = useState<string[]>(
+    []
+  );
+  const [exampleImageUrls, setExampleImageUrls] = useState<string[]>([]);
+  const [supplementsImageUrls, setSupplementsImageUrls] = useState<string[]>([]);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [reactants, setReactants] = useState<string[]>([]);
   const [products, setProducts] = useState<string[]>([]);
   const [youtubes, setYoutubes] = useState<string[]>([]);
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const loadReaction = async () => {
+      try {
+        const reaction: Reaction = await fetchReaction2(id);
+        setEnglishName(reaction.englishName);
+        setJapaneseName(reaction.japaneseName);
+        setThumbnailImageUrl(reaction.thumbnailImageUrl);
+        setGeneralFormulaImageUrls(reaction.generalFormulaImageUrls);
+        setMechanismasImageUrls(reaction.mechanismsImageUrls);
+        setExampleImageUrls(reaction.exampleImageUrls);
+        setSupplementsImageUrls(reaction.exampleImageUrls);
+        setSuggestions(reaction.suggestions);
+        setReactants(reaction.reactants);
+        setProducts(reaction.products);
+        setYoutubes(reaction.youtubeUrls);
+      } catch (err) {
+        alert('エラーが発生しました');
+      }
+    };
+    loadReaction();
+  }, []);
 
   // EnglishName
   const englishNameHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -39,9 +73,15 @@ export default function AboutPage() {
       const file = files[0];
       const reader = new FileReader();
 
-      reader.onloadend = () => {
+      reader.onloadend = async () => {
         const base64String = reader.result as string;
-        setThumbnailImage(base64String); // Base64をstateにセット
+        try {
+          const imageName = `${uuidv4()}.png`;
+          await uploadImage(imageName, base64String);          
+          setThumbnailImageUrl('http://admin-storage.reaction-development.swiswiswift.com.s3-website-ap-northeast-1.amazonaws.com/' + imageName)
+        } catch (err) {
+          alert("アップロードに失敗しました");
+        }
       };
       reader.readAsDataURL(file); // Base64に変換開始
     }
@@ -52,7 +92,7 @@ export default function AboutPage() {
   };
 
   const thumbnailDeleteHandleChange = () => {
-    setThumbnailImage('');
+    setThumbnailImageUrl('');
   };
 
   // General Formulas
@@ -65,9 +105,15 @@ export default function AboutPage() {
       const file = files[0];
       const reader = new FileReader();
 
-      reader.onloadend = () => {
+      reader.onloadend = async () => {
         const base64String = reader.result as string;
-        setGeneralFormulaImages([...generalFormulaImages, base64String]);
+        try {
+          const imageName = `${uuidv4()}.png`;
+          await uploadImage(imageName, base64String);          
+          setGeneralFormulaImageUrls([...generalFormulaImageUrls, 'http://admin-storage.reaction-development.swiswiswift.com.s3-website-ap-northeast-1.amazonaws.com/' + imageName]);
+        } catch (err) {
+          alert("アップロードに失敗しました");
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -78,7 +124,7 @@ export default function AboutPage() {
   };
 
   const generalFormulasDeleteHandleChange = (index: number) => {
-    setGeneralFormulaImages((prev) => prev.filter((_, idx) => idx !== index));
+    setGeneralFormulaImageUrls((prev) => prev.filter((_, idx) => idx !== index));
   };
 
   // Mechanisms
@@ -89,9 +135,15 @@ export default function AboutPage() {
       const file = files[0];
       const reader = new FileReader();
 
-      reader.onloadend = () => {
+      reader.onloadend = async () => {
         const base64String = reader.result as string;
-        setMechanismasImages([...generalFormulaImages, base64String]);
+        try {
+          const imageName = `${uuidv4()}.png`;
+          await uploadImage(imageName, base64String);          
+          setMechanismasImageUrls([...mechanismasImageUrls, 'http://admin-storage.reaction-development.swiswiswift.com.s3-website-ap-northeast-1.amazonaws.com/' + imageName]);
+        } catch (err) {
+          alert("アップロードに失敗しました");
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -102,7 +154,7 @@ export default function AboutPage() {
   };
 
   const mechanismsDeleteHandleChange = (index: number) => {
-    setMechanismasImages((prev) => prev.filter((_, idx) => idx !== index));
+    setMechanismasImageUrls((prev) => prev.filter((_, idx) => idx !== index));
   };
 
   // Examples
@@ -225,8 +277,8 @@ export default function AboutPage() {
     setYoutubes([...youtubes, '']);
   };
 
-  // Submit
-  const submitHandleChange = async () => {
+  // Edit Submit
+  const editHandleChange = async () => {
     try {
       // Upload Thumbnail
       const thumbnailImageName = `${uuidv4()}.png`;
@@ -287,11 +339,36 @@ export default function AboutPage() {
     }
   };
 
+
+  // Delete Submit
+  const deleteHandleChange = async () => {
+    try {
+      await deleteReaction(id);
+
+      alert('送信成功！');
+    } catch (error) {
+      alert('エラーが発生しました');
+    }
+  }
+
   return (
     <main className="wrapper">
-      <h1>反応機構追加</h1>
+      <h1>反応機構編集</h1>
 
       <form>
+        {/* ID */}
+        <div className="reaction-edit-content">
+          <label htmlFor="id">ID</label>
+          <input
+            type="text"
+            name="id"
+            placeholder="反応機構の英語名を入力"
+            value={id ?? ''}
+            readOnly
+          />
+          <hr />
+        </div>
+
         {/* English Name */}
         <div className="reaction-edit-content">
           <label htmlFor="englishName">EnglishName</label>
@@ -328,7 +405,7 @@ export default function AboutPage() {
             ref={inputRef}
           />
 
-          {thumbnailImage === '' ? (
+          {thumbnailImageUrl === '' ? (
             <div className="reaction-edit-image-container">
               <img
                 className="reaction-edit-image"
@@ -337,7 +414,7 @@ export default function AboutPage() {
             </div>
           ) : (
             <div className="reaction-edit-image-container">
-              <img className="reaction-edit-image" src={thumbnailImage} />
+              <img className="reaction-edit-image" src={thumbnailImageUrl} />
               <button
                 type="button"
                 className="reaction-edit-image-delete-button"
@@ -360,7 +437,7 @@ export default function AboutPage() {
             ref={inputRef}
           />
 
-          {generalFormulaImages.length === 0 && (
+          {generalFormulaImageUrls.length === 0 && (
             <div className="reaction-edit-image-container">
               <img
                 className="reaction-edit-image"
@@ -369,10 +446,10 @@ export default function AboutPage() {
             </div>
           )}
 
-          {generalFormulaImages.length !== 0 &&
-            generalFormulaImages.map((image, idx) => (
-              <div className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={image} />
+          {generalFormulaImageUrls.length !== 0 &&
+            generalFormulaImageUrls.map((url, idx) => (
+              <div className="reaction-edit-image-container" key={idx}>
+                <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
@@ -396,7 +473,7 @@ export default function AboutPage() {
             ref={inputRef}
           />
 
-          {mechanismasImages.length === 0 && (
+          {mechanismasImageUrls.length === 0 && (
             <div className="reaction-edit-image-container">
               <img
                 className="reaction-edit-image"
@@ -405,10 +482,10 @@ export default function AboutPage() {
             </div>
           )}
 
-          {mechanismasImages.length !== 0 &&
-            mechanismasImages.map((image, idx) => (
-              <div className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={image} />
+          {mechanismasImageUrls.length !== 0 &&
+            mechanismasImageUrls.map((url, idx) => (
+              <div className="reaction-edit-image-container" key={idx}>
+                <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
@@ -431,7 +508,7 @@ export default function AboutPage() {
             ref={inputRef}
           />
 
-          {exampleImages.length === 0 && (
+          {exampleImageUrls.length === 0 && (
             <div className="reaction-edit-image-container">
               <img
                 className="reaction-edit-image"
@@ -440,10 +517,10 @@ export default function AboutPage() {
             </div>
           )}
 
-          {exampleImages.length !== 0 &&
-            exampleImages.map((image, idx) => (
-              <div className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={image} />
+          {exampleImageUrls.length !== 0 &&
+            exampleImageUrls.map((url, idx) => (
+              <div className="reaction-edit-image-container" key={idx}>
+                <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
@@ -467,7 +544,7 @@ export default function AboutPage() {
             ref={inputRef}
           />
 
-          {supplementsImages.length === 0 && (
+          {supplementsImageUrls.length === 0 && (
             <div className="reaction-edit-image-container">
               <img
                 className="reaction-edit-image"
@@ -476,10 +553,10 @@ export default function AboutPage() {
             </div>
           )}
 
-          {supplementsImages.length !== 0 &&
-            supplementsImages.map((image, idx) => (
-              <div className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={image} />
+          {supplementsImageUrls.length !== 0 &&
+            supplementsImageUrls.map((url, idx) => (
+              <div className="reaction-edit-image-container" key={idx}>
+                <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
@@ -635,13 +712,22 @@ export default function AboutPage() {
             <img src="/plus.svg" />
           </button>
 
-          {/* Submit */}
+          {/* Edit Submit */}
           <button
             type="button"
             className="reaction-edit-add-reaction-button"
-            onClick={() => submitHandleChange()}
+            onClick={() => editHandleChange()}
           >
-            <img src="/add-reaction.svg" />
+            <img src="/edit-reaction.svg" />
+          </button>
+
+          {/* Delete Submit */}
+          <button
+            type="button"
+            className="reaction-edit-add-reaction-button"
+            onClick={() => deleteHandleChange()}
+          >
+            <img src="/delete-reaction.svg" />
           </button>
         </div>
       </form>

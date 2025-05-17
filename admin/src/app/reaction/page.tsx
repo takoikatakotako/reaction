@@ -1,47 +1,43 @@
+'use client';
+
 // import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 // import React, { useState, ChangeEvent, FormEvent } from 'react';
 
+import { fetchReaction, Reaction } from '@/lib/api';
+
 export default function AboutPage() {
+  const [reactions, setReactions] = useState<Reaction[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadReaction = async () => {
+      try {
+        const reactions = await fetchReaction();
+        setReactions(reactions);
+      } catch (err) {
+        // setError((err as Error).message);
+      }
+    };
+
+    loadReaction();
+  }, []);
+
   return (
     <main className="wrapper">
       <h1>反応機構一覧</h1>
 
-      <div className="reaction-content">
-        <a href="reaction-edit.html">
-          <h2>ID: 0de3475a-9619-4c7e-8c60-bd8bee64128b</h2>
-        </a>
-        <p>Name: Acetoacetic Ester Synthesis</p>
-        <img src="acetoacetic-ester-synthesis-thumbnail.png" />
-        <hr />
-      </div>
-
-      <div className="reaction-content">
-        <a href="reaction-edit.html">
-          <h2>ID: 0de3475a-9619-4c7e-8c60-bd8bee64128b</h2>
-        </a>
-        <p>Name: Acetoacetic Ester Synthesis</p>
-        <img src="acetoacetic-ester-synthesis-thumbnail.png" />
-        <hr />
-      </div>
-
-      <div className="reaction-content">
-        <a href="reaction-edit.html">
-          <h2>ID: 0de3475a-9619-4c7e-8c60-bd8bee64128b</h2>
-        </a>
-        <p>Name: Acetoacetic Ester Synthesis</p>
-        <img src="acetoacetic-ester-synthesis-thumbnail.png" />
-        <hr />
-      </div>
-
-      <div className="reaction-content">
-        <a href="reaction-edit.html">
-          <h2>ID: 0de3475a-9619-4c7e-8c60-bd8bee64128b</h2>
-        </a>
-        <p>Name: Acetoacetic Ester Synthesis</p>
-        <img src="acetoacetic-ester-synthesis-thumbnail.png" />
-        <hr />
-      </div>
+      {reactions.map((reaction) => (
+        <div className="reaction-content" key={reaction.id}>
+          <Link href={`reaction/edit?id=${reaction.id}`}>
+            <h2>ID: {reaction.id}</h2>
+          </Link>
+          <p>Name: {reaction.englishName}</p>
+          <img src={`${reaction.thumbnailImageUrl}`}/>
+          <hr />
+        </div>
+      ))}
 
       <div>
         <ul className="pagination">

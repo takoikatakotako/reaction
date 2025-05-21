@@ -1,7 +1,7 @@
 pnpm prettier --write "**/*.tsx"
 
 
-npm run build
+pnpm dev
 
 
 pnpm install uuid

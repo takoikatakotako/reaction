@@ -2,267 +2,237 @@
 
 import React, { useState, useRef, ChangeEvent, FormEvent } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { uploadImage, AddReaction, addReaction } from '@/lib/api';
+import { uploadImage, AddReaction, addReaction, deleteReaction } from '@/lib/api';
 
 export default function AboutPage() {
+
+// ----- common ----
+const handleImageURLChange = (
+  e: React.ChangeEvent<HTMLInputElement>,
+  setImageUrl: React.Dispatch<React.SetStateAction<string>>,
+  inputRef: React.RefObject<HTMLInputElement | null>
+) => {
+  const files = e.target.files;
+
+  if (files && files.length > 0) {
+    const file = files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = async () => {
+      const base64String = reader.result as string;
+      const imageName = `${uuidv4()}.png`;
+      try {
+        await uploadImage(imageName, base64String);
+        setImageUrl(imageName)  
+      } catch (err) {
+        alert("アップロードに失敗しました");
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  if (inputRef.current) {
+    inputRef.current.value = '';
+  }
+};
+
+const handleImageURLsChange = (
+  e: React.ChangeEvent<HTMLInputElement>,
+  setImageUrls: React.Dispatch<React.SetStateAction<string[]>>,
+  imageUrls: string[],
+  inputRef: React.RefObject<HTMLInputElement | null>
+) => {
+  const files = e.target.files;
+
+  if (files && files.length > 0) {
+    const file = files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = async () => {
+      const base64String = reader.result as string;
+      const imageName = `${uuidv4()}.png`;
+      try {
+        await uploadImage(imageName, base64String);
+        setImageUrls([...imageUrls, base64String]);          
+      } catch (err) {
+        alert("アップロードに失敗しました");
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  if (inputRef.current) {
+    inputRef.current.value = '';
+  }
+};
+
+// 共通の削除ハンドラ
+const handleImageURLsDelete = (
+  index: number,
+  setImageURLs: React.Dispatch<React.SetStateAction<string[]>>
+) => {
+  setImageURLs((prev) => prev.filter((_, idx) => idx !== index));
+};
+
+const handleImageURLDelete = (
+  setImageURL: React.Dispatch<React.SetStateAction<string>>
+) => {
+  setImageURL('');
+};
+
+
+// Text 
+const handleTextsChange = (
+  e: React.ChangeEvent<HTMLInputElement>,
+  index: number,
+  setTexts: React.Dispatch<React.SetStateAction<string[]>>,
+  texts: string[]
+) => {
+    const newTexts = [...texts];
+    newTexts[index] = e.target.value;
+    setTexts(newTexts);
+};
+
+const handleTextDelete = (
+  index: number,
+  setTexts: React.Dispatch<React.SetStateAction<string[]>>,
+  texts: string[],
+) => {
+    setTexts((texts) => texts.filter((_, idx) => idx !== index));
+};
+
+const handleTextAdd = (
+  setTexts: React.Dispatch<React.SetStateAction<string[]>>,
+  texts: string[],
+) => {
+    setTexts([...texts, '']);
+};
+
+function extractImageName(url: string): string {
+  const parsedUrl = new URL(url);
+  const pathname = parsedUrl.pathname;
+  const fileName = pathname.substring(pathname.lastIndexOf('/') + 1);
+  return fileName.split('?')[0].split('#')[0];
+}
+
+function extractImageNames(urls: string[]): string[] {
+  return urls.map((url) => extractImageName(url));
+}
+// ----- common ----
+
+
+
+  // English Name
   const [englishName, setEnglishName] = useState<string>('');
-  const [japaneseName, setJapaneseName] = useState<string>('');
-  const [thumbnailImage, setThumbnailImage] = useState<string>('');
-  const [generalFormulaImages, setGeneralFormulaImages] = useState<string[]>(
-    []
-  );
-  const [mechanismasImages, setMechanismasImages] = useState<string[]>([]);
-  const [exampleImages, setExampleImages] = useState<string[]>([]);
-  const [supplementsImages, setSupplementsImages] = useState<string[]>([]);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [reactants, setReactants] = useState<string[]>([]);
-  const [products, setProducts] = useState<string[]>([]);
-  const [youtubes, setYoutubes] = useState<string[]>([]);
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  // EnglishName
-  const englishNameHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onEnglishNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEnglishName(e.target.value);
   };
 
-  // JapaneseName
-  const japaneseNameHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  // Japanese Name
+  const [japaneseName, setJapaneseName] = useState<string>('');
+  const onJapaneseNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setJapaneseName(e.target.value);
   };
 
   // Thumbnail
-  const thumbnailHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-
-    if (files && files.length > 0) {
-      const file = files[0];
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        setThumbnailImage(base64String); // Base64をstateにセット
-      };
-      reader.readAsDataURL(file); // Base64に変換開始
-    }
-
-    if (inputRef.current) {
-      inputRef.current.value = '';
-    }
-  };
-
-  const thumbnailDeleteHandleChange = () => {
-    setThumbnailImage('');
-  };
-
-  // General Formulas
-  const generalFormulasHandleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const files = e.target.files;
-
-    if (files && files.length > 0) {
-      const file = files[0];
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        setGeneralFormulaImages([...generalFormulaImages, base64String]);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    if (inputRef.current) {
-      inputRef.current.value = '';
-    }
-  };
-
-  const generalFormulasDeleteHandleChange = (index: number) => {
-    setGeneralFormulaImages((prev) => prev.filter((_, idx) => idx !== index));
-  };
+  const [thumbnailImageURL, setThumbnailImageURL] = useState<string>('');
+  const thumbnailInputRef = useRef<HTMLInputElement>(null);
+  const onThumbnailChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    handleImageURLChange(e, setThumbnailImageURL, thumbnailInputRef);
+  const onThumbnailDelete = () =>
+    handleImageURLDelete(setThumbnailImageURL);
 
   // Mechanisms
-  const mechanismsHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
+  const [mechanismaImageURLs, setMechanismasImageURLs] = useState<string[]>([]);
+  const mechanismsInputRef = useRef<HTMLInputElement>(null);
+  const onMechanismsChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    handleImageURLsChange(e, setMechanismasImageURLs, mechanismaImageURLs, mechanismsInputRef);
+  const onMechanismsDelete = (index: number) =>
+    handleImageURLsDelete(index, setMechanismasImageURLs);
 
-    if (files && files.length > 0) {
-      const file = files[0];
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        setMechanismasImages([...generalFormulaImages, base64String]);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    if (inputRef.current) {
-      inputRef.current.value = '';
-    }
-  };
-
-  const mechanismsDeleteHandleChange = (index: number) => {
-    setMechanismasImages((prev) => prev.filter((_, idx) => idx !== index));
-  };
+  // General Formulas
+  const [generalFormulaImageURLs, setGeneralFormulaImageURLs] = useState<string[]>(
+    []
+  );
+  const generalFormulasInputRef = useRef<HTMLInputElement>(null);
+  const onGeneralFormulasChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    handleImageURLsChange(e, setGeneralFormulaImageURLs, generalFormulaImageURLs, generalFormulasInputRef);
+  const onGeneralFormulasDelete = (index: number) =>
+    handleImageURLsDelete(index, setGeneralFormulaImageURLs);
 
   // Examples
-  const examplesHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-
-    if (files && files.length > 0) {
-      const file = files[0];
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        setExampleImages([...generalFormulaImages, base64String]);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    if (inputRef.current) {
-      inputRef.current.value = '';
-    }
-  };
-
-  const examplessDeleteHandleChange = (index: number) => {
-    setExampleImages((prev) => prev.filter((_, idx) => idx !== index));
-  };
+    const [exampleImageURLs, setExampleImageUrls] = useState<string[]>(
+    []
+  );
+  const examplesInputRef = useRef<HTMLInputElement>(null);
+  const onExamplesChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    handleImageURLsChange(e, setExampleImageUrls, exampleImageURLs, examplesInputRef);
+  const onExamplesDelete = (index: number) =>
+    handleImageURLsDelete(index, setExampleImageUrls);
 
   // Supplements
-  const supplementsHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-
-    if (files && files.length > 0) {
-      const file = files[0];
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        setSupplementsImages([...generalFormulaImages, base64String]);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    if (inputRef.current) {
-      inputRef.current.value = '';
-    }
-  };
-
-  const supplementsDeleteHandleChange = (index: number) => {
-    setSupplementsImages((prev) => prev.filter((_, idx) => idx !== index));
-  };
+  const [supplementsImageURLs, setSupplementsImageURLs] = useState<string[]>([]);
+  const supplementsInputRef = useRef<HTMLInputElement>(null);
+  const onSupplementsChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    handleImageURLsChange(e, setSupplementsImageURLs, supplementsImageURLs, supplementsInputRef);
+  const onSupplementsDelete = (index: number) =>
+    handleImageURLsDelete(index, setSupplementsImageURLs);
 
   // Suggestions
-  const suggestionsUpdateHandleChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => {
-    const newSuggestions = [...suggestions];
-    newSuggestions[index] = e.target.value;
-    setSuggestions(newSuggestions);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const onSuggestionsChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) =>
+    handleTextsChange(e, index, setSuggestions, suggestions);
+  const onSuggestionsDelete = (index: number) => {
+    handleTextDelete(index, setSuggestions, suggestions)
   };
-
-  const suggestionsDeleteHandleChange = (index: number) => {
-    setSuggestions((prev) => prev.filter((_, idx) => idx !== index));
-  };
-
-  const suggestionsAddHandleChange = () => {
-    setSuggestions([...suggestions, '']);
+  const onSuggestionsAdd = () => {
+    handleTextAdd(setSuggestions, suggestions)
   };
 
   // Reactants
-  const reactantsUpdateHandleChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => {
-    const newReactants = [...reactants];
-    newReactants[index] = e.target.value;
-    setReactants(newReactants);
+  const [reactants, setReactants] = useState<string[]>([]);
+  const onReactansChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) =>
+    handleTextsChange(e, index, setReactants, reactants);
+  const onReactionsDelete = (index: number) => {
+    handleTextDelete(index, setReactants, reactants)
   };
-
-  const reactantsDeleteHandleChange = (index: number) => {
-    setReactants((prev) => prev.filter((_, idx) => idx !== index));
-  };
-
-  const reactantsAddHandleChange = () => {
-    setReactants([...reactants, '']);
+  const onReactionsAdd = () => {
+    handleTextAdd(setReactants, reactants)
   };
 
   // Products
-  const productsUpdateHandleChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => {
-    const newProducts = [...products];
-    newProducts[index] = e.target.value;
-    setProducts(newProducts);
+  const [products, setProducts] = useState<string[]>([]);
+  const onProductsChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) =>
+    handleTextsChange(e, index, setProducts, products);
+  const onProductsDelete = (index: number) => {
+    handleTextDelete(index, setProducts, products)
+  };
+  const onProductsAdd = () => {
+    handleTextAdd(setProducts, products)
   };
 
-  const productsDeleteHandleChange = (index: number) => {
-    setProducts((prev) => prev.filter((_, idx) => idx !== index));
+  // YoutubeURLs
+  const [youtubeURLs, setYoutubeURLs] = useState<string[]>([]);
+  const onYoutubeURLsChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) =>
+    handleTextsChange(e, index, setYoutubeURLs, youtubeURLs);
+  const onYoutubeURLsDelete = (index: number) => {
+    handleTextDelete(index, setYoutubeURLs, youtubeURLs)
+  };
+  const onYoutubeURLsAdd = () => {
+    handleTextAdd(setYoutubeURLs, youtubeURLs)
   };
 
-  const productsAddHandleChange = () => {
-    setProducts([...products, '']);
-  };
 
-  // Youtube
-  const youtubesUpdateHandleChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => {
-    const newYoutubes = [...youtubes];
-    newYoutubes[index] = e.target.value;
-    setYoutubes(newYoutubes);
-  };
 
-  const youtubesDeleteHandleChange = (index: number) => {
-    setYoutubes((prev) => prev.filter((_, idx) => idx !== index));
-  };
-
-  const youtubesAddHandleChange = () => {
-    setYoutubes([...youtubes, '']);
-  };
 
   // Submit
   const submitHandleChange = async () => {
     try {
-      // Upload Thumbnail
-      const thumbnailImageName = `${uuidv4()}.png`;
-      await uploadImage(thumbnailImageName, thumbnailImage);
-
-      // Upload General Formulas
-      let generalFormulaImageNames: string[] = [];
-      for (const generalFormulaImage of generalFormulaImages) {
-        const generalFormulaImageName = `${uuidv4()}.png`;
-        await uploadImage(generalFormulaImageName, generalFormulaImage);
-        generalFormulaImageNames.push(generalFormulaImageName);
-      }
-
-      // Upload Mechanisms
-      let mechanismImageNames: string[] = [];
-      for (const mechanismasImage of mechanismasImages) {
-        const mechanismImageName = `${uuidv4()}.png`;
-        await uploadImage(mechanismImageName, mechanismasImage);
-        mechanismImageNames.push(mechanismImageName);
-      }
-
-      // Upload Examples
-      let exampleImageNames: string[] = [];
-      for (const exampleImage of exampleImages) {
-        const exampleImageName = `${uuidv4()}.png`;
-        await uploadImage(exampleImageName, exampleImage);
-        exampleImageNames.push(exampleImageName);
-      }
-
-      // Upload Examples
-      let supplementsImageNames: string[] = [];
-      for (const supplementsImage of supplementsImages) {
-        const supplementsImageName = `${uuidv4()}.png`;
-        await uploadImage(supplementsImageName, supplementsImage);
-        supplementsImageNames.push(supplementsImageName);
-      }
+      const thumbnailImageName = extractImageName(thumbnailImageURL);
+      const generalFormulaImageNames = extractImageNames(generalFormulaImageURLs);
+      const mechanismImageNames = extractImageNames(mechanismaImageURLs);
+      const exampleImageNames = extractImageNames(exampleImageURLs);
+      const supplementsImageNames = extractImageNames(supplementsImageURLs);
 
       // Add Reaction
       const newReaction: AddReaction = {
@@ -276,11 +246,10 @@ export default function AboutPage() {
         suggestions: suggestions,
         reactants: reactants,
         products: products,
-        youtubeUrls: youtubes,
+        youtubeUrls: youtubeURLs,
       };
 
       await addReaction(newReaction);
-
       alert('送信成功！');
     } catch (error) {
       alert('エラーが発生しました');
@@ -300,7 +269,7 @@ export default function AboutPage() {
             name="englishName"
             placeholder="反応機構の英語名を入力"
             value={englishName}
-            onChange={englishNameHandleChange}
+            onChange={onEnglishNameChange}
           />
           <hr />
         </div>
@@ -313,7 +282,7 @@ export default function AboutPage() {
             name="japanseeName"
             placeholder="反応機構の日本語名を入力"
             value={japaneseName}
-            onChange={japaneseNameHandleChange}
+            onChange={onJapaneseNameChange}
           />
           <hr />
         </div>
@@ -324,11 +293,11 @@ export default function AboutPage() {
           <input
             type="file"
             accept="image/png"
-            onChange={thumbnailHandleChange}
-            ref={inputRef}
+            onChange={onThumbnailChange}
+            ref={thumbnailInputRef}
           />
 
-          {thumbnailImage === '' ? (
+          {thumbnailImageURL === '' ? (
             <div className="reaction-edit-image-container">
               <img
                 className="reaction-edit-image"
@@ -337,11 +306,11 @@ export default function AboutPage() {
             </div>
           ) : (
             <div className="reaction-edit-image-container">
-              <img className="reaction-edit-image" src={thumbnailImage} />
+              <img className="reaction-edit-image" src={thumbnailImageURL} />
               <button
                 type="button"
                 className="reaction-edit-image-delete-button"
-                onClick={thumbnailDeleteHandleChange}
+                onClick={onThumbnailDelete}
               >
                 <img src="/image-delete.svg" />
               </button>
@@ -356,11 +325,11 @@ export default function AboutPage() {
           <input
             type="file"
             accept="image/png"
-            onChange={generalFormulasHandleChange}
-            ref={inputRef}
+            onChange={onGeneralFormulasChange}
+            ref={generalFormulasInputRef}
           />
 
-          {generalFormulaImages.length === 0 && (
+          {generalFormulaImageURLs.length === 0 && (
             <div className="reaction-edit-image-container">
               <img
                 className="reaction-edit-image"
@@ -369,14 +338,14 @@ export default function AboutPage() {
             </div>
           )}
 
-          {generalFormulaImages.length !== 0 &&
-            generalFormulaImages.map((image, idx) => (
+          {generalFormulaImageURLs.length !== 0 &&
+            generalFormulaImageURLs.map((url, index) => (
               <div className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={image} />
+                <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
-                  onClick={() => generalFormulasDeleteHandleChange(idx)}
+                  onClick={() => onGeneralFormulasDelete(index)}
                 >
                   <img src="/image-delete.svg" />
                 </button>
@@ -392,11 +361,11 @@ export default function AboutPage() {
           <input
             type="file"
             accept="image/png"
-            onChange={mechanismsHandleChange}
-            ref={inputRef}
+            onChange={onMechanismsChange}
+            ref={mechanismsInputRef}
           />
 
-          {mechanismasImages.length === 0 && (
+          {mechanismaImageURLs.length === 0 && (
             <div className="reaction-edit-image-container">
               <img
                 className="reaction-edit-image"
@@ -405,14 +374,14 @@ export default function AboutPage() {
             </div>
           )}
 
-          {mechanismasImages.length !== 0 &&
-            mechanismasImages.map((image, idx) => (
+          {mechanismaImageURLs.length !== 0 &&
+            mechanismaImageURLs.map((url, index) => (
               <div className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={image} />
+                <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
-                  onClick={() => mechanismsDeleteHandleChange(idx)}
+                  onClick={() => onMechanismsDelete}
                 >
                   <img src="/image-delete.svg" />
                 </button>
@@ -427,11 +396,11 @@ export default function AboutPage() {
           <input
             type="file"
             accept="image/png"
-            onChange={examplesHandleChange}
-            ref={inputRef}
+            onChange={onExamplesChange}
+            ref={examplesInputRef}
           />
 
-          {exampleImages.length === 0 && (
+          {exampleImageURLs.length === 0 && (
             <div className="reaction-edit-image-container">
               <img
                 className="reaction-edit-image"
@@ -440,14 +409,14 @@ export default function AboutPage() {
             </div>
           )}
 
-          {exampleImages.length !== 0 &&
-            exampleImages.map((image, idx) => (
+          {exampleImageURLs.length !== 0 &&
+            exampleImageURLs.map((image, index) => (
               <div className="reaction-edit-image-container">
                 <img className="reaction-edit-image" src={image} />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
-                  onClick={() => examplessDeleteHandleChange(idx)}
+                  onClick={() => onExamplesDelete(index)}
                 >
                   <img src="/image-delete.svg" />
                 </button>
@@ -463,11 +432,11 @@ export default function AboutPage() {
           <input
             type="file"
             accept="image/png"
-            onChange={supplementsHandleChange}
-            ref={inputRef}
+            onChange={onSupplementsChange}
+            ref={supplementsInputRef}
           />
 
-          {supplementsImages.length === 0 && (
+          {supplementsImageURLs.length === 0 && (
             <div className="reaction-edit-image-container">
               <img
                 className="reaction-edit-image"
@@ -476,14 +445,14 @@ export default function AboutPage() {
             </div>
           )}
 
-          {supplementsImages.length !== 0 &&
-            supplementsImages.map((image, idx) => (
+          {supplementsImageURLs.length !== 0 &&
+            supplementsImageURLs.map((url, index) => (
               <div className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={image} />
+                <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
-                  onClick={() => supplementsDeleteHandleChange(idx)}
+                  onClick={() => onSupplementsDelete(index)}
                 >
                   <img src="/image-delete.svg" />
                 </button>
@@ -497,20 +466,20 @@ export default function AboutPage() {
           <label htmlFor="englishName">Suggestions</label>
 
           {suggestions.length !== 0 &&
-            suggestions.map((suggestion, idx) => (
-              <div key={idx}>
+            suggestions.map((suggestion, index) => (
+              <div key={index}>
                 <div className="reaction-edit-multi-input-container">
                   <input
                     type="text"
                     name="englishName"
                     value={suggestion}
                     placeholder="サジェスチョンの単語を入力"
-                    onChange={(e) => suggestionsUpdateHandleChange(e, idx)}
+                    onChange={(e) => onSuggestionsChange(e, index)}
                   />
                   <button
                     type="button"
                     className="reaction-edit-image-delete-button"
-                    onClick={() => suggestionsDeleteHandleChange(idx)}
+                    onClick={() => onSuggestionsDelete(index)}
                   >
                     <img src="/image-delete.svg" />
                   </button>
@@ -522,7 +491,7 @@ export default function AboutPage() {
           <button
             type="button"
             className="reaction-edit-multi-input-plus-button"
-            onClick={() => suggestionsAddHandleChange()}
+            onClick={() => onSuggestionsAdd()}
           >
             <img src="/plus.svg" />
           </button>
@@ -533,20 +502,20 @@ export default function AboutPage() {
           <label htmlFor="englishName">Reactants</label>
 
           {reactants.length !== 0 &&
-            reactants.map((reactant, idx) => (
-              <div key={idx}>
+            reactants.map((reactant, index) => (
+              <div key={index}>
                 <div className="reaction-edit-multi-input-container">
                   <input
                     type="text"
                     name="englishName"
                     value={reactant}
                     placeholder="反応物の単語を入力"
-                    onChange={(e) => reactantsUpdateHandleChange(e, idx)}
+                    onChange={(e) => onReactansChange(e, index)}
                   />
                   <button
                     type="button"
                     className="reaction-edit-image-delete-button"
-                    onClick={() => reactantsDeleteHandleChange(idx)}
+                    onClick={() => onReactionsDelete(index)}
                   >
                     <img src="/image-delete.svg" />
                   </button>
@@ -558,7 +527,7 @@ export default function AboutPage() {
           <button
             type="button"
             className="reaction-edit-multi-input-plus-button"
-            onClick={() => reactantsAddHandleChange()}
+            onClick={() => onReactionsAdd()}
           >
             <img src="/plus.svg" />
           </button>
@@ -569,20 +538,20 @@ export default function AboutPage() {
           <label htmlFor="englishName">Products</label>
 
           {products.length !== 0 &&
-            products.map((product, idx) => (
-              <div key={idx}>
+            products.map((product, index) => (
+              <div key={index}>
                 <div className="reaction-edit-multi-input-container">
                   <input
                     type="text"
                     name="englishName"
                     value={product}
                     placeholder="精製物の単語を入力"
-                    onChange={(e) => productsUpdateHandleChange(e, idx)}
+                    onChange={(e) => onProductsChange(e, index)}
                   />
                   <button
                     type="button"
                     className="reaction-edit-image-delete-button"
-                    onClick={() => productsDeleteHandleChange(idx)}
+                    onClick={() => onProductsDelete(index)}
                   >
                     <img src="/image-delete.svg" />
                   </button>
@@ -594,7 +563,7 @@ export default function AboutPage() {
           <button
             type="button"
             className="reaction-edit-multi-input-plus-button"
-            onClick={() => productsAddHandleChange()}
+            onClick={() => onProductsAdd()}
           >
             <img src="/plus.svg" />
           </button>
@@ -604,21 +573,21 @@ export default function AboutPage() {
         <div className="reaction-edit-content">
           <label htmlFor="englishName">Youtube</label>
 
-          {youtubes.length !== 0 &&
-            youtubes.map((youtube, idx) => (
-              <div key={idx}>
+          {youtubeURLs.length !== 0 &&
+            youtubeURLs.map((url, index) => (
+              <div key={index}>
                 <div className="reaction-edit-multi-input-container">
                   <input
                     type="text"
                     name="englishName"
-                    value={youtube}
+                    value={url}
                     placeholder="Youtubeのリンクを入力"
-                    onChange={(e) => youtubesUpdateHandleChange(e, idx)}
+                    onChange={(e) => onYoutubeURLsChange(e, index)}
                   />
                   <button
                     type="button"
                     className="reaction-edit-image-delete-button"
-                    onClick={() => youtubesDeleteHandleChange(idx)}
+                    onClick={() => onYoutubeURLsDelete(index)}
                   >
                     <img src="/image-delete.svg" />
                   </button>
@@ -630,7 +599,7 @@ export default function AboutPage() {
           <button
             type="button"
             className="reaction-edit-multi-input-plus-button"
-            onClick={() => youtubesAddHandleChange()}
+            onClick={() => onYoutubeURLsAdd()}
           >
             <img src="/plus.svg" />
           </button>

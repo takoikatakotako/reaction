@@ -1,10 +1,15 @@
 'use client';
 
-import React, { useState, useRef, ChangeEvent } from 'react';
+import React, { useState, useRef, ChangeEvent, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
 
-export default function AboutPage() {
+export default function EditUser() {
+  // ID
+  const searchParams = useSearchParams();
+  const id: string = searchParams.get('id') ?? '';
+
   // English Name
   const [englishName, setEnglishName] = useState<string>('');
   const onEnglishNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -133,8 +138,8 @@ export default function AboutPage() {
     service.handleTextsAdd(setYoutubeURLs, youtubeURLs);
   };
 
-  // Submit
-  const submitHandleChange = async () => {
+  // Edit Submit
+  const onEditSubmit = async () => {
     try {
       const thumbnailImageName = service.extractImageName(thumbnailImageURL);
       const generalFormulaImageNames = service.extractImageNames(
@@ -168,11 +173,57 @@ export default function AboutPage() {
     }
   };
 
+  // Delete Submit
+  const onDeleteSubmit = async () => {
+    try {
+      await service.deleteReaction(id);
+      alert('送信成功！');
+    } catch (error) {
+      alert('エラーが発生しました');
+    }
+  };
+
+  // Fetch Reaction
+  useEffect(() => {
+    const loadReaction = async () => {
+      try {
+        const reaction: entity.Reaction = await service.fetchReaction(id);
+        setEnglishName(reaction.englishName);
+        setJapaneseName(reaction.japaneseName);
+        setThumbnailImageURL(reaction.thumbnailImageUrl);
+        setGeneralFormulaImageURLs(reaction.generalFormulaImageUrls);
+        setMechanismasImageURLs(reaction.mechanismsImageUrls);
+        setExampleImageUrls(reaction.exampleImageUrls);
+        setSupplementsImageURLs(reaction.exampleImageUrls);
+        setSuggestions(reaction.suggestions);
+        setReactants(reaction.reactants);
+        setProducts(reaction.products);
+        setYoutubeURLs(reaction.youtubeUrls);
+      } catch (err) {
+        alert('エラーが発生しました');
+      }
+    };
+    loadReaction();
+  }, []);
+
   return (
     <main className="wrapper">
-      <h1>反応機構追加</h1>
+      <h1>反応機構編集</h1>
 
       <form>
+        {/* ID */}
+        <div className="reaction-edit-content">
+          <label htmlFor="id">ID</label>
+          <input
+            type="text"
+            name="id"
+            placeholder="反応機構の英語名を入力"
+            value={id ?? ''}
+            readOnly
+          />
+          <hr />
+        </div>
+
         {/* English Name */}
         <div className="reaction-edit-content">
           <label htmlFor="englishName">EnglishName</label>
@@ -188,10 +239,10 @@ export default function AboutPage() {
 
         {/* Japanese Name */}
         <div className="reaction-edit-content">
-          <label htmlFor="japaneseName">JapaneseName</label>
+          <label htmlFor="japanseeName">JapaneseName</label>
           <input
             type="text"
-            name="japaneseName"
+            name="japanseeName"
             placeholder="反応機構の日本語名を入力"
             value={japaneseName}
             onChange={onJapaneseNameChange}
@@ -252,7 +303,7 @@ export default function AboutPage() {
 
           {generalFormulaImageURLs.length !== 0 &&
             generalFormulaImageURLs.map((url, index) => (
-              <div key={index} className="reaction-edit-image-container">
+              <div className="reaction-edit-image-container" key={index}>
                 <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
@@ -288,7 +339,7 @@ export default function AboutPage() {
 
           {mechanismaImageURLs.length !== 0 &&
             mechanismaImageURLs.map((url, index) => (
-              <div className="reaction-edit-image-container">
+              <div className="reaction-edit-image-container" key={index}>
                 <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
@@ -322,9 +373,9 @@ export default function AboutPage() {
           )}
 
           {exampleImageURLs.length !== 0 &&
-            exampleImageURLs.map((image, index) => (
-              <div className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={image} />
+            exampleImageURLs.map((url, index) => (
+              <div className="reaction-edit-image-container" key={index}>
+                <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
@@ -359,12 +410,12 @@ export default function AboutPage() {
 
           {supplementsImageURLs.length !== 0 &&
             supplementsImageURLs.map((url, index) => (
-              <div className="reaction-edit-image-container">
+              <div className="reaction-edit-image-container" key={index}>
                 <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
-                  onClick={() => onSupplementsDelete(index)}
+                  onClick={() => onSuggestionsDelete(index)}
                 >
                   <img src="/image-delete.svg" />
                 </button>
@@ -475,7 +526,7 @@ export default function AboutPage() {
           <button
             type="button"
             className="reaction-edit-multi-input-plus-button"
-            onClick={() => onProductsAdd()}
+            onClick={() => onProductsAdd}
           >
             <img src="/plus.svg" />
           </button>
@@ -516,13 +567,22 @@ export default function AboutPage() {
             <img src="/plus.svg" />
           </button>
 
-          {/* Submit */}
+          {/* Edit Submit */}
           <button
             type="button"
             className="reaction-edit-add-reaction-button"
-            onClick={() => submitHandleChange()}
+            onClick={() => onEditSubmit()}
           >
-            <img src="/add-reaction.svg" />
+            <img src="/edit-reaction.svg" />
+          </button>
+
+          {/* Delete Submit */}
+          <button
+            type="button"
+            className="reaction-edit-add-reaction-button"
+            onClick={() => onDeleteSubmit()}
+          >
+            <img src="/delete-reaction.svg" />
           </button>
         </div>
       </form>

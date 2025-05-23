@@ -41,8 +41,8 @@ export default function RootLayout({
                   </a>
                 </li>
                 <li>
-                  <a href="report.html" className="main-nav-inactive">
-                    報告
+                  <a href="/update" className="main-nav-inactive">
+                    更新
                   </a>
                 </li>
               </ul>

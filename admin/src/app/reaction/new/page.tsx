@@ -1,127 +1,10 @@
 'use client';
 
-import React, { useState, useRef, ChangeEvent, FormEvent } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { uploadImage, AddReaction, addReaction, deleteReaction } from '@/lib/api';
+import React, { useState, useRef, ChangeEvent } from 'react';
+import * as service from '@/lib/service';
+import * as entity from '@/lib/entity';
 
 export default function AboutPage() {
-
-// ----- common ----
-const handleImageURLChange = (
-  e: React.ChangeEvent<HTMLInputElement>,
-  setImageUrl: React.Dispatch<React.SetStateAction<string>>,
-  inputRef: React.RefObject<HTMLInputElement | null>
-) => {
-  const files = e.target.files;
-
-  if (files && files.length > 0) {
-    const file = files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = async () => {
-      const base64String = reader.result as string;
-      const imageName = `${uuidv4()}.png`;
-      try {
-        await uploadImage(imageName, base64String);
-        setImageUrl(imageName)  
-      } catch (err) {
-        alert("アップロードに失敗しました");
-      }
-    };
-    reader.readAsDataURL(file);
-  }
-
-  if (inputRef.current) {
-    inputRef.current.value = '';
-  }
-};
-
-const handleImageURLsChange = (
-  e: React.ChangeEvent<HTMLInputElement>,
-  setImageUrls: React.Dispatch<React.SetStateAction<string[]>>,
-  imageUrls: string[],
-  inputRef: React.RefObject<HTMLInputElement | null>
-) => {
-  const files = e.target.files;
-
-  if (files && files.length > 0) {
-    const file = files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = async () => {
-      const base64String = reader.result as string;
-      const imageName = `${uuidv4()}.png`;
-      try {
-        await uploadImage(imageName, base64String);
-        setImageUrls([...imageUrls, base64String]);          
-      } catch (err) {
-        alert("アップロードに失敗しました");
-      }
-    };
-    reader.readAsDataURL(file);
-  }
-
-  if (inputRef.current) {
-    inputRef.current.value = '';
-  }
-};
-
-// 共通の削除ハンドラ
-const handleImageURLsDelete = (
-  index: number,
-  setImageURLs: React.Dispatch<React.SetStateAction<string[]>>
-) => {
-  setImageURLs((prev) => prev.filter((_, idx) => idx !== index));
-};
-
-const handleImageURLDelete = (
-  setImageURL: React.Dispatch<React.SetStateAction<string>>
-) => {
-  setImageURL('');
-};
-
-
-// Text 
-const handleTextsChange = (
-  e: React.ChangeEvent<HTMLInputElement>,
-  index: number,
-  setTexts: React.Dispatch<React.SetStateAction<string[]>>,
-  texts: string[]
-) => {
-    const newTexts = [...texts];
-    newTexts[index] = e.target.value;
-    setTexts(newTexts);
-};
-
-const handleTextDelete = (
-  index: number,
-  setTexts: React.Dispatch<React.SetStateAction<string[]>>,
-  texts: string[],
-) => {
-    setTexts((texts) => texts.filter((_, idx) => idx !== index));
-};
-
-const handleTextAdd = (
-  setTexts: React.Dispatch<React.SetStateAction<string[]>>,
-  texts: string[],
-) => {
-    setTexts([...texts, '']);
-};
-
-function extractImageName(url: string): string {
-  const parsedUrl = new URL(url);
-  const pathname = parsedUrl.pathname;
-  const fileName = pathname.substring(pathname.lastIndexOf('/') + 1);
-  return fileName.split('?')[0].split('#')[0];
-}
-
-function extractImageNames(urls: string[]): string[] {
-  return urls.map((url) => extractImageName(url));
-}
-// ----- common ----
-
-
-
   // English Name
   const [englishName, setEnglishName] = useState<string>('');
   const onEnglishNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -138,104 +21,133 @@ function extractImageNames(urls: string[]): string[] {
   const [thumbnailImageURL, setThumbnailImageURL] = useState<string>('');
   const thumbnailInputRef = useRef<HTMLInputElement>(null);
   const onThumbnailChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    handleImageURLChange(e, setThumbnailImageURL, thumbnailInputRef);
+    service.handleImageChange(e, setThumbnailImageURL, thumbnailInputRef);
   const onThumbnailDelete = () =>
-    handleImageURLDelete(setThumbnailImageURL);
+    service.handleImageDelete(setThumbnailImageURL);
 
   // Mechanisms
   const [mechanismaImageURLs, setMechanismasImageURLs] = useState<string[]>([]);
   const mechanismsInputRef = useRef<HTMLInputElement>(null);
   const onMechanismsChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    handleImageURLsChange(e, setMechanismasImageURLs, mechanismaImageURLs, mechanismsInputRef);
+    service.handleImagesChange(
+      e,
+      setMechanismasImageURLs,
+      mechanismaImageURLs,
+      mechanismsInputRef
+    );
   const onMechanismsDelete = (index: number) =>
-    handleImageURLsDelete(index, setMechanismasImageURLs);
+    service.handleImagesDelete(index, setMechanismasImageURLs);
 
   // General Formulas
-  const [generalFormulaImageURLs, setGeneralFormulaImageURLs] = useState<string[]>(
-    []
-  );
+  const [generalFormulaImageURLs, setGeneralFormulaImageURLs] = useState<
+    string[]
+  >([]);
   const generalFormulasInputRef = useRef<HTMLInputElement>(null);
   const onGeneralFormulasChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    handleImageURLsChange(e, setGeneralFormulaImageURLs, generalFormulaImageURLs, generalFormulasInputRef);
+    service.handleImagesChange(
+      e,
+      setGeneralFormulaImageURLs,
+      generalFormulaImageURLs,
+      generalFormulasInputRef
+    );
   const onGeneralFormulasDelete = (index: number) =>
-    handleImageURLsDelete(index, setGeneralFormulaImageURLs);
+    service.handleImagesDelete(index, setGeneralFormulaImageURLs);
 
   // Examples
-    const [exampleImageURLs, setExampleImageUrls] = useState<string[]>(
-    []
-  );
+  const [exampleImageURLs, setExampleImageUrls] = useState<string[]>([]);
   const examplesInputRef = useRef<HTMLInputElement>(null);
   const onExamplesChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    handleImageURLsChange(e, setExampleImageUrls, exampleImageURLs, examplesInputRef);
+    service.handleImagesChange(
+      e,
+      setExampleImageUrls,
+      exampleImageURLs,
+      examplesInputRef
+    );
   const onExamplesDelete = (index: number) =>
-    handleImageURLsDelete(index, setExampleImageUrls);
+    service.handleImagesDelete(index, setExampleImageUrls);
 
   // Supplements
-  const [supplementsImageURLs, setSupplementsImageURLs] = useState<string[]>([]);
+  const [supplementsImageURLs, setSupplementsImageURLs] = useState<string[]>(
+    []
+  );
   const supplementsInputRef = useRef<HTMLInputElement>(null);
   const onSupplementsChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    handleImageURLsChange(e, setSupplementsImageURLs, supplementsImageURLs, supplementsInputRef);
+    service.handleImagesChange(
+      e,
+      setSupplementsImageURLs,
+      supplementsImageURLs,
+      supplementsInputRef
+    );
   const onSupplementsDelete = (index: number) =>
-    handleImageURLsDelete(index, setSupplementsImageURLs);
+    service.handleImagesDelete(index, setSupplementsImageURLs);
 
   // Suggestions
   const [suggestions, setSuggestions] = useState<string[]>([]);
-  const onSuggestionsChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) =>
-    handleTextsChange(e, index, setSuggestions, suggestions);
+  const onSuggestionsChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => service.handleTextsChange(e, index, setSuggestions, suggestions);
   const onSuggestionsDelete = (index: number) => {
-    handleTextDelete(index, setSuggestions, suggestions)
+    service.handleTextDelete(index, setSuggestions, suggestions);
   };
   const onSuggestionsAdd = () => {
-    handleTextAdd(setSuggestions, suggestions)
+    service.handleTextsAdd(setSuggestions, suggestions);
   };
 
   // Reactants
   const [reactants, setReactants] = useState<string[]>([]);
-  const onReactansChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) =>
-    handleTextsChange(e, index, setReactants, reactants);
+  const onReactansChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => service.handleTextsChange(e, index, setReactants, reactants);
   const onReactionsDelete = (index: number) => {
-    handleTextDelete(index, setReactants, reactants)
+    service.handleTextDelete(index, setReactants, reactants);
   };
   const onReactionsAdd = () => {
-    handleTextAdd(setReactants, reactants)
+    service.handleTextsAdd(setReactants, reactants);
   };
 
   // Products
   const [products, setProducts] = useState<string[]>([]);
-  const onProductsChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) =>
-    handleTextsChange(e, index, setProducts, products);
+  const onProductsChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => service.handleTextsChange(e, index, setProducts, products);
   const onProductsDelete = (index: number) => {
-    handleTextDelete(index, setProducts, products)
+    service.handleTextDelete(index, setProducts, products);
   };
   const onProductsAdd = () => {
-    handleTextAdd(setProducts, products)
+    service.handleTextsAdd(setProducts, products);
   };
 
   // YoutubeURLs
   const [youtubeURLs, setYoutubeURLs] = useState<string[]>([]);
-  const onYoutubeURLsChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) =>
-    handleTextsChange(e, index, setYoutubeURLs, youtubeURLs);
+  const onYoutubeURLsChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => service.handleTextsChange(e, index, setYoutubeURLs, youtubeURLs);
   const onYoutubeURLsDelete = (index: number) => {
-    handleTextDelete(index, setYoutubeURLs, youtubeURLs)
+    service.handleTextDelete(index, setYoutubeURLs, youtubeURLs);
   };
   const onYoutubeURLsAdd = () => {
-    handleTextAdd(setYoutubeURLs, youtubeURLs)
+    service.handleTextsAdd(setYoutubeURLs, youtubeURLs);
   };
-
-
-
 
   // Submit
   const submitHandleChange = async () => {
     try {
-      const thumbnailImageName = extractImageName(thumbnailImageURL);
-      const generalFormulaImageNames = extractImageNames(generalFormulaImageURLs);
-      const mechanismImageNames = extractImageNames(mechanismaImageURLs);
-      const exampleImageNames = extractImageNames(exampleImageURLs);
-      const supplementsImageNames = extractImageNames(supplementsImageURLs);
+      const thumbnailImageName = service.extractImageName(thumbnailImageURL);
+      const generalFormulaImageNames = service.extractImageNames(
+        generalFormulaImageURLs
+      );
+      const mechanismImageNames =
+        service.extractImageNames(mechanismaImageURLs);
+      const exampleImageNames = service.extractImageNames(exampleImageURLs);
+      const supplementsImageNames =
+        service.extractImageNames(supplementsImageURLs);
 
       // Add Reaction
-      const newReaction: AddReaction = {
+      const addReaction: entity.AddReaction = {
         englishName: englishName,
         japaneseName: japaneseName,
         thumbnailImageName: thumbnailImageName,
@@ -249,7 +161,7 @@ function extractImageNames(urls: string[]): string[] {
         youtubeUrls: youtubeURLs,
       };
 
-      await addReaction(newReaction);
+      await service.addReaction(addReaction);
       alert('送信成功！');
     } catch (error) {
       alert('エラーが発生しました');
@@ -276,10 +188,10 @@ function extractImageNames(urls: string[]): string[] {
 
         {/* Japanese Name */}
         <div className="reaction-edit-content">
-          <label htmlFor="japanseeName">JapaneseName</label>
+          <label htmlFor="japaneseName">JapaneseName</label>
           <input
             type="text"
-            name="japanseeName"
+            name="japaneseName"
             placeholder="反応機構の日本語名を入力"
             value={japaneseName}
             onChange={onJapaneseNameChange}
@@ -340,7 +252,7 @@ function extractImageNames(urls: string[]): string[] {
 
           {generalFormulaImageURLs.length !== 0 &&
             generalFormulaImageURLs.map((url, index) => (
-              <div className="reaction-edit-image-container">
+              <div key={index} className="reaction-edit-image-container">
                 <img className="reaction-edit-image" src={url} />
                 <button
                   type="button"
@@ -381,7 +293,7 @@ function extractImageNames(urls: string[]): string[] {
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
-                  onClick={() => onMechanismsDelete}
+                  onClick={() => onMechanismsDelete(index)}
                 >
                   <img src="/image-delete.svg" />
                 </button>

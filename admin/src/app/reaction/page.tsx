@@ -1,23 +1,22 @@
 'use client';
 
-// import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-// import React, { useState, ChangeEvent, FormEvent } from 'react';
+import * as service from '@/lib/service';
+import * as entity from '@/lib/entity';
 
-import { fetchReaction, Reaction } from '@/lib/api';
-
-export default function AboutPage() {
-  const [reactions, setReactions] = useState<Reaction[]>([]);
+export default function ReactionPage() {
+  const [reactions, setReactions] = useState<entity.Reaction[]>([]);
   const [loading, setLoading] = useState(true);
 
+  
   useEffect(() => {
     const loadReaction = async () => {
       try {
-        const reactions = await fetchReaction();
+        const reactions = await service.fetchReactions();
         setReactions(reactions);
       } catch (err) {
-        // setError((err as Error).message);
+        alert('error');
       }
     };
 
@@ -34,48 +33,40 @@ export default function AboutPage() {
             <h2>ID: {reaction.id}</h2>
           </Link>
           <p>Name: {reaction.englishName}</p>
-          <img src={`${reaction.thumbnailImageUrl}`}/>
+          <img src={`${reaction.thumbnailImageUrl}`} loading="lazy" />
           <hr />
         </div>
       ))}
 
       <div>
         <ul className="pagination">
-          <li className="pagination-active">
-            <Link href="/reaction/new">+</Link>
-          </li>
-          <li className="pagination-active">
-            <a href="user.html">1</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">2</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">3</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">4</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">5</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">6</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">7</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">8</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">9</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">10</a>
-          </li>
+          <Link href="/reaction/new">
+            <li className="pagination-active">
+              <p>追加</p>
+            </li>
+          </Link>
+
+          <Link href="/reaction/update">
+            <li className="pagination-active">
+              <p>更新</p>
+            </li>
+          </Link>
+
+
+          {/* <Link href="/reaction/update">
+            <li className="pagination-inactive">
+              <p>←</p>
+            </li>
+          </Link>
+
+          <Link href="/reaction/update">
+            <li className="pagination-active">
+              <p>→</p>
+            </li>
+          </Link> */}
         </ul>
       </div>
+      
     </main>
   );
 }

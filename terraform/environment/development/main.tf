@@ -77,7 +77,7 @@ module "admin" {
   domain                        = local.admin_domain
   zone_id                       = module.root_domain.zone_id
   resource_bucket_name          = "resource.reaction-development.swiswiswift.com"
-  resource_base_url             = "https://reaction-development.swiswiswift.com/resource/image/"
+  resource_base_url             = "https://reaction-development.swiswiswift.com/resource/image"
 }
 
 module "admin_database" {

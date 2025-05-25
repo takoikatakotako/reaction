@@ -20,7 +20,7 @@ export default function UpdatePage() {
           <button
             type="button"
             className="reaction-edit-add-reaction-button"
-            onClick={() => onEditSubmit()}
+            onClick={() => alert("hello")}
           >
             <img src="/edit-reaction.svg" />
           </button>

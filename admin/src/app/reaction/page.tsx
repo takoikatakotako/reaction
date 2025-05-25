@@ -1,85 +1,72 @@
-// import Image from 'next/image';
-import Link from 'next/link';
-// import React, { useState, ChangeEvent, FormEvent } from 'react';
+'use client';
 
-export default function AboutPage() {
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import * as service from '@/lib/service';
+import * as entity from '@/lib/entity';
+
+export default function ReactionPage() {
+  const [reactions, setReactions] = useState<entity.Reaction[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  
+  useEffect(() => {
+    const loadReaction = async () => {
+      try {
+        const reactions = await service.fetchReactions();
+        setReactions(reactions);
+      } catch (err) {
+        alert('error');
+      }
+    };
+
+    loadReaction();
+  }, []);
+
   return (
     <main className="wrapper">
       <h1>反応機構一覧</h1>
 
-      <div className="reaction-content">
-        <a href="reaction-edit.html">
-          <h2>ID: 0de3475a-9619-4c7e-8c60-bd8bee64128b</h2>
-        </a>
-        <p>Name: Acetoacetic Ester Synthesis</p>
-        <img src="acetoacetic-ester-synthesis-thumbnail.png" />
-        <hr />
-      </div>
-
-      <div className="reaction-content">
-        <a href="reaction-edit.html">
-          <h2>ID: 0de3475a-9619-4c7e-8c60-bd8bee64128b</h2>
-        </a>
-        <p>Name: Acetoacetic Ester Synthesis</p>
-        <img src="acetoacetic-ester-synthesis-thumbnail.png" />
-        <hr />
-      </div>
-
-      <div className="reaction-content">
-        <a href="reaction-edit.html">
-          <h2>ID: 0de3475a-9619-4c7e-8c60-bd8bee64128b</h2>
-        </a>
-        <p>Name: Acetoacetic Ester Synthesis</p>
-        <img src="acetoacetic-ester-synthesis-thumbnail.png" />
-        <hr />
-      </div>
-
-      <div className="reaction-content">
-        <a href="reaction-edit.html">
-          <h2>ID: 0de3475a-9619-4c7e-8c60-bd8bee64128b</h2>
-        </a>
-        <p>Name: Acetoacetic Ester Synthesis</p>
-        <img src="acetoacetic-ester-synthesis-thumbnail.png" />
-        <hr />
-      </div>
+      {reactions.map((reaction) => (
+        <div className="reaction-content" key={reaction.id}>
+          <Link href={`reaction/edit?id=${reaction.id}`}>
+            <h2>ID: {reaction.id}</h2>
+          </Link>
+          <p>Name: {reaction.englishName}</p>
+          <img src={`${reaction.thumbnailImageUrl}`} loading="lazy" />
+          <hr />
+        </div>
+      ))}
 
       <div>
         <ul className="pagination">
-          <li className="pagination-active">
-            <Link href="/reaction/new">+</Link>
-          </li>
-          <li className="pagination-active">
-            <a href="user.html">1</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">2</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">3</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">4</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">5</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">6</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">7</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">8</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">9</a>
-          </li>
-          <li className="pagination-inactive">
-            <a href="user.html">10</a>
-          </li>
+          <Link href="/reaction/new">
+            <li className="pagination-active">
+              <p>追加</p>
+            </li>
+          </Link>
+
+          <Link href="/reaction/update">
+            <li className="pagination-active">
+              <p>更新</p>
+            </li>
+          </Link>
+
+
+          {/* <Link href="/reaction/update">
+            <li className="pagination-inactive">
+              <p>←</p>
+            </li>
+          </Link>
+
+          <Link href="/reaction/update">
+            <li className="pagination-active">
+              <p>→</p>
+            </li>
+          </Link> */}
         </ul>
       </div>
+      
     </main>
   );
 }

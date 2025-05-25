@@ -19,14 +19,14 @@ export default function RootLayout({
         <div className="sub-cover">
           <header className="page-header wrapper">
             <h1 className="align-center">
-              <a href="index.html">
+              <a href="/">
                 <p className="logo">シン反応機構管理画面</p>
               </a>
             </h1>
             <nav>
               <ul className="main-nav">
                 <li>
-                  <a href="reaction.html" className="main-nav-active">
+                  <a href="/reaction" className="main-nav-active">
                     反応機構
                   </a>
                 </li>
@@ -41,8 +41,8 @@ export default function RootLayout({
                   </a>
                 </li>
                 <li>
-                  <a href="report.html" className="main-nav-inactive">
-                    報告
+                  <a href="/update" className="main-nav-inactive">
+                    更新
                   </a>
                 </li>
               </ul>

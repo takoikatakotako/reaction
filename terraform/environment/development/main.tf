@@ -36,7 +36,16 @@ module "root_domain" {
 
 
 ##############################################################
-# Admin Front
+# Resource
+##############################################################
+module "resource" {
+  source      = "../../modules/resource"
+  bucket_name = local.resource_bucket_name
+}
+
+
+##############################################################
+# Admin
 ##############################################################
 module "cloudfront_admin_certificate" {
   source = "../../modules/cloudfront_certificate"
@@ -54,76 +63,31 @@ module "admin" {
   acm_certificate_arn           = module.cloudfront_admin_certificate.certificate_arn
   domain                        = local.admin_domain
   zone_id                       = module.root_domain.zone_id
-  resource_bucket_name          = "admin-storage.reaction-development.swiswiswift.com"
-  resource_base_url             = "https://s3.ap-northeast-1.amazonaws.com/admin-storage.reaction-development.swiswiswift.com"
+  resource_bucket_name          = "resource.reaction-development.swiswiswift.com"
+  resource_base_url             = "https://reaction-development.swiswiswift.com/resource/image/"
 }
 
-
-# ##############################################################
-# # Admin API
-# ##############################################################
-# module "cloudfront_admin_api_certificate" {
-#   source = "../../modules/cloudfront_certificate"
-#   providers = {
-#     aws = aws.virginia
-#   }
-#   zone_id     = module.root_domain.zone_id
-#   domain_name = "${local.admin_api_record_name}.${local.root_domain}"
-# }
-
-# module "admin_api" {
-#   source                        = "../../modules/admin_api"
-#   api_lambda_function_image_uri = "392961483375.dkr.ecr.ap-northeast-1.amazonaws.com/reaction-admin:latest"
-#   root_domain_name              = local.root_domain
-#   api_record_name               = local.admin_api_record_name
-#   api_cloudfront_certificate    = module.cloudfront_admin_api_certificate.certificate_arn
-#   root_domain_zone_id           = module.root_domain.zone_id
-# }
-
-
-##############################################################
-# Admin Database
-##############################################################
 module "admin_database" {
   source = "../../modules/admin_database"
 }
 
 
 ##############################################################
-# Admin Storage
+# Front
 ##############################################################
-module "admin_storage" {
-  source      = "../../modules/admin_storage"
-  bucket_name = "admin-storage.reaction-development.swiswiswift.com"
+module "cloudfront_front_certificate" {
+  source = "../../modules/cloudfront_certificate"
+  providers = {
+    aws = aws.virginia
+  }
+  zone_id     = module.root_domain.zone_id
+  domain_name = local.front_domain
 }
 
-
-# # deprecated
-
-# # module "web_api" {
-# #   source                    = "../../modules/web_api"
-# #   domain                    = local.api_domain
-# #   route53_zone_id           = local.route53_zone_id
-# #   acm_certificate_arn       = local.api_acm_certificate_arn
-# #   application_version       = local.application_version
-# #   application_bucket_name   = local.application_bucket_name
-# #   resource_domain           = local.resource_domain
-# #   datadog_log_forwarder_arn = local.datadog_log_forwarder_arn
-# # }
-
-# # module "datadog" {
-# #   source     = "../../modules/datadog"
-# #   dd_api_key = local.dd_api_key
-# # }
-
-# # module "github" {
-# #   source = "../../modules/github"
-# # }
-
-# # module "lp" {
-# #   source              = "../../modules/lp"
-# #   bucket_name         = local.lp_bucket_name
-# #   acm_certificate_arn = local.lp_acm_certificate_arn
-# #   domain              = local.lp_domain
-# #   zone_id             = local.route53_zone_id
-# # }
+module "front" {
+  source                        = "../../modules/front"
+  bucket_name                   = local.front_bucket_name
+    acm_certificate_arn           = module.cloudfront_front_certificate.certificate_arn
+  zone_id                       = module.root_domain.zone_id
+    domain                        = local.front_domain
+}

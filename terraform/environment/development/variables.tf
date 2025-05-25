@@ -6,10 +6,21 @@ locals {
   // admin
   admin_domain      = "admin.reaction-development.swiswiswift.com"
   admin_bucket_name = "admin.reaction-development.swiswiswift.com"
-  # admin_front_domain      = "admin.reaction-development.swiswiswift.com"
 
   // admin api
   admin_api_record_name = "api.admin"
+
+  // front
+  front_domain =  "reaction-development.swiswiswift.com"
+  front_bucket_name = "reaction-development.swiswiswift.com"
+
+  // resource
+  resource_bucket_name = "resource.reaction-development.swiswiswift.com"
+
+
+  # admin_front_domain      = "admin.reaction-development.swiswiswift.com"
+
+
 
   # aws_profile     = "sandbox"
   # route53_zone_id = "Z06272247TSQ89OL8QZN"

@@ -11,7 +11,7 @@ locals {
   admin_api_record_name = "api.admin"
 
   // front
-  front_domain =  "reaction-development.swiswiswift.com"
+  front_domain      = "reaction-development.swiswiswift.com"
   front_bucket_name = "reaction-development.swiswiswift.com"
 
   // resource

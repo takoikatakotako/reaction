@@ -1,4 +1,9 @@
-variable "bucket_name" {
+variable "resource_bucket_name" {
+  type = string
+}
+
+
+variable "front_bucket_name" {
   type = string
 }
 

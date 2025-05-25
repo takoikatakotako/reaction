@@ -45,7 +45,7 @@ resource "aws_s3_bucket_cors_configuration" "s3_bucket_cors_configuration" {
     expose_headers  = []
     max_age_seconds = 3000
   }
-  }
+}
 
 // たぶん不要
 # resource "aws_s3_bucket_website_configuration" "s3_bucket_website_configuration" {

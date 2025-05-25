@@ -36,11 +36,24 @@ module "root_domain" {
 
 
 ##############################################################
-# Resource
+# Front
 ##############################################################
-module "resource" {
-  source      = "../../modules/resource"
-  bucket_name = local.resource_bucket_name
+module "cloudfront_front_certificate" {
+  source = "../../modules/cloudfront_certificate"
+  providers = {
+    aws = aws.virginia
+  }
+  zone_id     = module.root_domain.zone_id
+  domain_name = local.front_domain
+}
+
+module "front" {
+  source = "../../modules/front"
+  resource_bucket_name = local.resource_bucket_name
+  front_bucket_name   = local.front_bucket_name
+  acm_certificate_arn = module.cloudfront_front_certificate.certificate_arn
+  zone_id             = module.root_domain.zone_id
+  domain              = local.front_domain
 }
 
 
@@ -72,22 +85,3 @@ module "admin_database" {
 }
 
 
-##############################################################
-# Front
-##############################################################
-module "cloudfront_front_certificate" {
-  source = "../../modules/cloudfront_certificate"
-  providers = {
-    aws = aws.virginia
-  }
-  zone_id     = module.root_domain.zone_id
-  domain_name = local.front_domain
-}
-
-module "front" {
-  source                        = "../../modules/front"
-  bucket_name                   = local.front_bucket_name
-    acm_certificate_arn           = module.cloudfront_front_certificate.certificate_arn
-  zone_id                       = module.root_domain.zone_id
-    domain                        = local.front_domain
-}

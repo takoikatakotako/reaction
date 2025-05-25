@@ -7,6 +7,7 @@ import (
 	"github.com/takoikatakotako/reaction/infrastructure"
 	"github.com/takoikatakotako/reaction/infrastructure/database"
 	"log/slog"
+	"sort"
 	"time"
 )
 
@@ -16,12 +17,20 @@ type Reaction struct {
 }
 
 func (a *Reaction) GetReactions() ([]output.Reaction, error) {
+	// Get Reactions
 	reactions, err := a.AWS.GetReactions()
 	if err != nil {
 		slog.Error(err.Error())
 		return []output.Reaction{}, err
 	}
+
+	// Convert
 	outputReactions := convertToOutputReactions(reactions, a.ResourceBaseURL)
+
+	// Sort
+	sort.Slice(outputReactions, func(i, j int) bool {
+		return outputReactions[i].EnglishName < outputReactions[j].EnglishName
+	})
 	return outputReactions, nil
 }
 

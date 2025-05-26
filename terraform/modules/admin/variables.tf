@@ -6,6 +6,10 @@ variable "api_lambda_function_image_uri" {
   type = string
 }
 
+variable "api_lambda_function_image_tag" {
+  type = string
+}
+
 variable "acm_certificate_arn" {
   type = string
 }

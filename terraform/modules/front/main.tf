@@ -106,6 +106,19 @@ resource "aws_s3_bucket_policy" "resource_s3_bucket_policy" {
 }
 
 
+# CORSを許可（アップロードを許可）
+resource "aws_s3_bucket_cors_configuration" "resource_s3_bucket_cors_configuration" {
+  bucket = aws_s3_bucket.resource_s3_bucket.id
+
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["GET", "POST", "PUT"]
+    allowed_origins = ["*"]
+    expose_headers  = []
+    max_age_seconds = 3000
+  }
+}
+
 ##############################################################
 # CloudFront
 ##############################################################

@@ -47,35 +47,46 @@ func (a *AWS) GetReaction(id string) (database.Reaction, error) {
 }
 
 func (a *AWS) GetReactions() ([]database.Reaction, error) {
+	// 要素を全て取得
 	client, err := a.createDynamoDBClient()
 	if err != nil {
 		return []database.Reaction{}, err
 	}
 
-	// クエリ実行
-	input := &dynamodb.ScanInput{
-		TableName: aws.String(database.ReactionTableName),
-		Limit:     aws.Int32(10),
-	}
-	output, err := client.Scan(context.Background(), input)
-	if err != nil {
-		return []database.Reaction{}, err
+	reactions := make([]database.Reaction, 0)
+	var lastEvaluatedKey map[string]types.AttributeValue
+	for {
+		input := &dynamodb.ScanInput{
+			TableName:         aws.String(database.ReactionTableName),
+			ExclusiveStartKey: lastEvaluatedKey,
+		}
+
+		output, err := client.Scan(context.Background(), input)
+		if err != nil {
+			return nil, err
+		}
+
+		for _, item := range output.Items {
+			var reaction database.Reaction
+			err := attributevalue.UnmarshalMap(item, &reaction)
+			if err != nil {
+				pc, fileName, _, _ := runtime.Caller(1)
+				funcName := runtime.FuncForPC(pc).Name()
+				slog.Error(err.Error(), slog.String("file", fileName), slog.String("func", funcName))
+				continue
+			}
+			reactions = append(reactions, reaction)
+		}
+
+		// ページング処理
+		if output.LastEvaluatedKey == nil || len(output.LastEvaluatedKey) == 0 {
+			break
+		}
+		lastEvaluatedKey = output.LastEvaluatedKey
 	}
 
-	// 取得結果を struct の配列に変換
-	reactions := make([]database.Reaction, 0)
-	for _, item := range output.Items {
-		reaction := database.Reaction{}
-		err := attributevalue.UnmarshalMap(item, &reaction)
-		if err != nil {
-			// Error
-			pc, fileName, _, _ := runtime.Caller(1)
-			funcName := runtime.FuncForPC(pc).Name()
-			slog.Error(err.Error(), slog.String("file", fileName), slog.String("func", funcName))
-			continue
-		}
-		reactions = append(reactions, reaction)
-	}
+	// English Name を元にソート
+
 	return reactions, nil
 }
 

@@ -151,8 +151,9 @@ export default function EditUser() {
       const supplementsImageNames =
         service.extractImageNames(supplementsImageURLs);
 
-      // Add Reaction
-      const addReaction: entity.AddReaction = {
+      // Edit Reaction
+      const editReaction: entity.EditReaction = {
+        id: id,
         englishName: englishName,
         japaneseName: japaneseName,
         thumbnailImageName: thumbnailImageName,
@@ -166,8 +167,8 @@ export default function EditUser() {
         youtubeUrls: youtubeURLs,
       };
 
-      await service.addReaction(addReaction);
-      alert('送信成功！');
+      await service.editReaction(editReaction);
+      alert('編集成功！');
     } catch (error) {
       alert('エラーが発生しました');
     }

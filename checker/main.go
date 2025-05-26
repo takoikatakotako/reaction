@@ -15,23 +15,24 @@ import (
 	"time"
 )
 
+const (
+	profile    = "reaction-development"
+	bucketName = "resource.reaction-development.swiswiswift.com"
+)
+
 func main() {
+
 	// ファイルを読み込み
 	reactions := readReactionsFile("resource/reactions.json")
 	checkReactions(reactions)
 
 	ctx := context.Background()
-	cfg, err := config.LoadDefaultConfig(ctx, config.WithSharedConfigProfile("reaction-development"))
+	cfg, err := config.LoadDefaultConfig(ctx, config.WithSharedConfigProfile(profile))
 	if err != nil {
 		log.Fatal("Failed to ")
 	}
 
-	for i, reaction := range reactions {
-
-		limit := 10
-		if limit < i {
-			break
-		}
+	for _, reaction := range reactions {
 
 		fmt.Printf("%s Uploading...\n", reaction.DirectoryName)
 
@@ -129,9 +130,10 @@ func uploadImage(cfg aws.Config, filePath string, imageName string) error {
 
 	// Upload
 	s3Client := s3.NewFromConfig(cfg)
+	key := fmt.Sprintf("resource/image/%s", imageName)
 	_, err = s3Client.PutObject(context.TODO(), &s3.PutObjectInput{
-		Bucket:      aws.String("admin-storage.reaction-development.swiswiswift.com"),
-		Key:         aws.String(imageName),
+		Bucket:      aws.String(bucketName),
+		Key:         aws.String(key),
 		Body:        file,
 		ContentType: aws.String("image/png"), // 必要に応じて変更
 	})

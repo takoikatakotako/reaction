@@ -27,17 +27,6 @@ export default function ReactionPage() {
     <main className="wrapper">
       <h1>反応機構一覧</h1>
 
-      {reactions.map((reaction) => (
-        <div className="reaction-content" key={reaction.id}>
-          <Link href={`reaction/edit?id=${reaction.id}`}>
-            <h2>ID: {reaction.id}</h2>
-          </Link>
-          <p>Name: {reaction.englishName}</p>
-          <img src={`${reaction.thumbnailImageUrl}`} loading="lazy" />
-          <hr />
-        </div>
-      ))}
-
       <div>
         <ul className="pagination">
           <Link href="/reaction/new">
@@ -51,21 +40,19 @@ export default function ReactionPage() {
               <p>更新</p>
             </li>
           </Link>
-
-
-          {/* <Link href="/reaction/update">
-            <li className="pagination-inactive">
-              <p>←</p>
-            </li>
-          </Link>
-
-          <Link href="/reaction/update">
-            <li className="pagination-active">
-              <p>→</p>
-            </li>
-          </Link> */}
         </ul>
       </div>
+
+      {reactions.map((reaction) => (
+        <div className="reaction-content" key={reaction.id}>
+          <Link href={`reaction/edit?id=${reaction.id}`}>
+            <h2>ID: {reaction.id}</h2>
+          </Link>
+          <p>Name: {reaction.englishName}</p>
+          <img src={`${reaction.thumbnailImageUrl}`} loading="lazy" />
+          <hr />
+        </div>
+      ))}
       
     </main>
   );

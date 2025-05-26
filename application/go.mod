@@ -1,8 +1,6 @@
 module github.com/takoikatakotako/reaction
 
-go 1.22
-
-toolchain go1.23.8
+go 1.23.8
 
 require (
 	github.com/aws/aws-lambda-go v1.41.0

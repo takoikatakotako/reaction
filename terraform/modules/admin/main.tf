@@ -74,6 +74,17 @@ resource "aws_lambda_permission" "api_lambda_permission" {
 
 
 ##############################################################
+# Basic Auth Function
+##############################################################
+resource "aws_cloudfront_function" "basic_auth_function" {
+  name    = "admin-basic-auth-function"
+  publish = true
+  runtime = "cloudfront-js-2.0"
+  code    = file("${path.module}/basic-auth-function.js")
+}
+
+
+##############################################################
 # CloudFront
 ##############################################################
 resource "aws_cloudfront_distribution" "charalarm_cloudfront_distribution" {
@@ -108,11 +119,15 @@ resource "aws_cloudfront_distribution" "charalarm_cloudfront_distribution" {
   default_root_object = "index.html"
 
   default_cache_behavior {
-    allowed_methods  = ["GET", "HEAD"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "S3-${var.bucket_name}"
-
+    allowed_methods        = ["GET", "HEAD"]
+    cached_methods         = ["GET", "HEAD"]
+    target_origin_id       = "S3-${var.bucket_name}"
     viewer_protocol_policy = "redirect-to-https"
+
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.basic_auth_function.arn
+    }
 
     forwarded_values {
       query_string = false

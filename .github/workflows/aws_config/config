@@ -1,0 +1,7 @@
+[profile reaction-management]
+credential_source = Environment
+role_arn = arn:aws:iam::392961483375:role/management-ci-role
+
+[profile reaction-development]
+credential_source = Environment
+role_arn = arn:aws:iam::xxxxx02:role/GitHubActions-LeanerTerraform-SwitchRole

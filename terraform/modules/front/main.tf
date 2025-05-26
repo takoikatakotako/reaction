@@ -112,8 +112,8 @@ resource "aws_s3_bucket_policy" "resource_s3_bucket_policy" {
 resource "aws_cloudfront_distribution" "cloudfront_distribution" {
   // Front S3 Origin
   origin {
-    origin_id   = aws_s3_bucket.front_s3_bucket.bucket_regional_domain_name
-    domain_name = aws_s3_bucket.front_s3_bucket.bucket_regional_domain_name
+    origin_id                = aws_s3_bucket.front_s3_bucket.bucket_regional_domain_name
+    domain_name              = aws_s3_bucket.front_s3_bucket.bucket_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.front_s3_bucket_origin_access_control.id
   }
 

@@ -40,9 +40,6 @@ jobs:
       with:
         version: 10
 
-    - name: Install dependencies
-      run: pnpm install
-
-    - name: Build and Export static site
-      run: |
-        pnpm build
+    - name: Build Admin Front
+      working-directory: admin
+      run: make deploy-development

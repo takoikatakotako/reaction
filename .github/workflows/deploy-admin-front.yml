@@ -41,4 +41,8 @@ jobs:
 
     - name: Build Admin Front
       working-directory: admin
+      run: make build-development
+
+    - name: Build Admin Front
+      working-directory: admin
       run: make deploy-development

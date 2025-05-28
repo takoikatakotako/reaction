@@ -170,6 +170,7 @@ img {
 
 .reaction-content img {
   width: 600px;
+  height: auto;
   display: block;
   margin: 0.5rem auto;  
 }
@@ -212,6 +213,7 @@ img {
 
 .reaction-edit-image {
   width: 400px;
+  height: auto;
   display: block;
 }
 

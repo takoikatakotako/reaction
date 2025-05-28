@@ -32,17 +32,17 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '23.11.0'
-        cache: 'pnpm'
+        node-version: 23.11.0
 
     - name: Install pnpm
       uses: pnpm/action-setup@v4
       with:
         version: 10
 
-    - name: Install dependencies
-      run: pnpm install
+    - name: Build Admin Front
+      working-directory: admin
+      run: make build-development
 
-    - name: Build and Export static site
-      run: |
-        pnpm build
+    - name: Build Admin Front
+      working-directory: admin
+      run: make deploy-development

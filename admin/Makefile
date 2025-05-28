@@ -1,6 +1,7 @@
 
 .PHONY: build-development
 build-development:
+	pnpm install
 	pnpm build
 
 .PHONY: deploy-development

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-// import { Geist, Geist_Mono } from 'next/font/google';
+import Link from 'next/link';
 import './reset.css';
 import './globals.css';
 
@@ -19,9 +19,9 @@ export default function RootLayout({
         <div className="sub-cover">
           <header className="page-header wrapper">
             <h1 className="align-center">
-              <a href="/">
+              <Link href="/">
                 <p className="logo">シン反応機構管理画面</p>
-              </a>
+              </Link>
             </h1>
             <nav>
               <ul className="main-nav">

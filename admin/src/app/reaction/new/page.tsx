@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, ChangeEvent } from 'react';
+import Image from 'next/image';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
 
@@ -88,7 +89,7 @@ export default function AboutPage() {
     index: number
   ) => service.handleTextsChange(e, index, setSuggestions, suggestions);
   const onSuggestionsDelete = (index: number) => {
-    service.handleTextDelete(index, setSuggestions, suggestions);
+    service.handleTextDelete(index, setSuggestions);
   };
   const onSuggestionsAdd = () => {
     service.handleTextsAdd(setSuggestions, suggestions);
@@ -101,7 +102,7 @@ export default function AboutPage() {
     index: number
   ) => service.handleTextsChange(e, index, setReactants, reactants);
   const onReactionsDelete = (index: number) => {
-    service.handleTextDelete(index, setReactants, reactants);
+    service.handleTextDelete(index, setReactants);
   };
   const onReactionsAdd = () => {
     service.handleTextsAdd(setReactants, reactants);
@@ -114,7 +115,7 @@ export default function AboutPage() {
     index: number
   ) => service.handleTextsChange(e, index, setProducts, products);
   const onProductsDelete = (index: number) => {
-    service.handleTextDelete(index, setProducts, products);
+    service.handleTextDelete(index, setProducts);
   };
   const onProductsAdd = () => {
     service.handleTextsAdd(setProducts, products);
@@ -127,7 +128,7 @@ export default function AboutPage() {
     index: number
   ) => service.handleTextsChange(e, index, setYoutubeURLs, youtubeURLs);
   const onYoutubeURLsDelete = (index: number) => {
-    service.handleTextDelete(index, setYoutubeURLs, youtubeURLs);
+    service.handleTextDelete(index, setYoutubeURLs);
   };
   const onYoutubeURLsAdd = () => {
     service.handleTextsAdd(setYoutubeURLs, youtubeURLs);
@@ -164,7 +165,7 @@ export default function AboutPage() {
       await service.addReaction(addReaction);
       alert('送信成功！');
     } catch (error) {
-      alert('エラーが発生しました');
+      alert(`エラーが発生しました:\n${error}`);
     }
   };
 
@@ -211,20 +212,27 @@ export default function AboutPage() {
 
           {thumbnailImageURL === '' ? (
             <div className="reaction-edit-image-container">
-              <img
+              <Image
                 className="reaction-edit-image"
                 src="/image-placeholder.png"
+                width={0}
+                height={0}
+                alt=""
               />
             </div>
           ) : (
             <div className="reaction-edit-image-container">
-              <img className="reaction-edit-image" src={thumbnailImageURL} />
+              <Image
+                className="reaction-edit-image"
+                src={thumbnailImageURL}
+                alt=""
+              />
               <button
                 type="button"
                 className="reaction-edit-image-delete-button"
                 onClick={onThumbnailDelete}
               >
-                <img src="/image-delete.svg" />
+                <Image src="/image-delete.svg" alt="" width={0} height={0} />
               </button>
             </div>
           )}
@@ -243,9 +251,12 @@ export default function AboutPage() {
 
           {generalFormulaImageURLs.length === 0 && (
             <div className="reaction-edit-image-container">
-              <img
+              <Image
                 className="reaction-edit-image"
                 src="/image-placeholder.png"
+                alt=""
+                width={0}
+                height={0}
               />
             </div>
           )}
@@ -253,13 +264,19 @@ export default function AboutPage() {
           {generalFormulaImageURLs.length !== 0 &&
             generalFormulaImageURLs.map((url, index) => (
               <div key={index} className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={url} />
+                <Image
+                  className="reaction-edit-image"
+                  src={url}
+                  alt=""
+                  width={0}
+                  height={0}
+                />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
                   onClick={() => onGeneralFormulasDelete(index)}
                 >
-                  <img src="/image-delete.svg" />
+                  <Image src="/image-delete.svg" alt="" width={0} height={0} />
                 </button>
               </div>
             ))}
@@ -279,23 +296,32 @@ export default function AboutPage() {
 
           {mechanismaImageURLs.length === 0 && (
             <div className="reaction-edit-image-container">
-              <img
+              <Image
                 className="reaction-edit-image"
                 src="/image-placeholder.png"
+                alt=""
+                width={0}
+                height={0}
               />
             </div>
           )}
 
           {mechanismaImageURLs.length !== 0 &&
             mechanismaImageURLs.map((url, index) => (
-              <div className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={url} />
+              <div key={index} className="reaction-edit-image-container">
+                <Image
+                  className="reaction-edit-image"
+                  src={url}
+                  alt=""
+                  width={0}
+                  height={0}
+                />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
                   onClick={() => onMechanismsDelete(index)}
                 >
-                  <img src="/image-delete.svg" />
+                  <Image src="/image-delete.svg" alt="" width={0} height={0} />
                 </button>
               </div>
             ))}
@@ -314,23 +340,32 @@ export default function AboutPage() {
 
           {exampleImageURLs.length === 0 && (
             <div className="reaction-edit-image-container">
-              <img
+              <Image
                 className="reaction-edit-image"
                 src="/image-placeholder.png"
+                width={0}
+                height={0}
+                alt=""
               />
             </div>
           )}
 
           {exampleImageURLs.length !== 0 &&
             exampleImageURLs.map((image, index) => (
-              <div className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={image} />
+              <div key={index} className="reaction-edit-image-container">
+                <Image
+                  className="reaction-edit-image"
+                  src={image}
+                  alt=""
+                  width={0}
+                  height={0}
+                />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
                   onClick={() => onExamplesDelete(index)}
                 >
-                  <img src="/image-delete.svg" />
+                  <Image src="/image-delete.svg" alt="" width={0} height={0} />
                 </button>
               </div>
             ))}
@@ -350,23 +385,26 @@ export default function AboutPage() {
 
           {supplementsImageURLs.length === 0 && (
             <div className="reaction-edit-image-container">
-              <img
+              <Image
                 className="reaction-edit-image"
                 src="/image-placeholder.png"
+                alt=""
+                width={0}
+                height={0}
               />
             </div>
           )}
 
           {supplementsImageURLs.length !== 0 &&
             supplementsImageURLs.map((url, index) => (
-              <div className="reaction-edit-image-container">
-                <img className="reaction-edit-image" src={url} />
+              <div key={index} className="reaction-edit-image-container">
+                <Image className="reaction-edit-image" src={url} alt="" />
                 <button
                   type="button"
                   className="reaction-edit-image-delete-button"
                   onClick={() => onSupplementsDelete(index)}
                 >
-                  <img src="/image-delete.svg" />
+                  <Image src="/image-delete.svg" alt="" width={0} height={0} />
                 </button>
               </div>
             ))}
@@ -393,7 +431,12 @@ export default function AboutPage() {
                     className="reaction-edit-image-delete-button"
                     onClick={() => onSuggestionsDelete(index)}
                   >
-                    <img src="/image-delete.svg" />
+                    <Image
+                      src="/image-delete.svg"
+                      alt=""
+                      width={0}
+                      height={0}
+                    />
                   </button>
                 </div>
                 <hr />
@@ -405,7 +448,7 @@ export default function AboutPage() {
             className="reaction-edit-multi-input-plus-button"
             onClick={() => onSuggestionsAdd()}
           >
-            <img src="/plus.svg" />
+            <Image src="/plus.svg" alt="" width={0} height={0} />
           </button>
         </div>
 
@@ -429,7 +472,12 @@ export default function AboutPage() {
                     className="reaction-edit-image-delete-button"
                     onClick={() => onReactionsDelete(index)}
                   >
-                    <img src="/image-delete.svg" />
+                    <Image
+                      src="/image-delete.svg"
+                      alt=""
+                      width={0}
+                      height={0}
+                    />
                   </button>
                 </div>
                 <hr />
@@ -441,7 +489,7 @@ export default function AboutPage() {
             className="reaction-edit-multi-input-plus-button"
             onClick={() => onReactionsAdd()}
           >
-            <img src="/plus.svg" />
+            <Image src="/plus.svg" alt="" width={0} height={0} />
           </button>
         </div>
 
@@ -465,7 +513,12 @@ export default function AboutPage() {
                     className="reaction-edit-image-delete-button"
                     onClick={() => onProductsDelete(index)}
                   >
-                    <img src="/image-delete.svg" />
+                    <Image
+                      src="/image-delete.svg"
+                      alt=""
+                      width={0}
+                      height={0}
+                    />
                   </button>
                 </div>
                 <hr />
@@ -477,7 +530,7 @@ export default function AboutPage() {
             className="reaction-edit-multi-input-plus-button"
             onClick={() => onProductsAdd()}
           >
-            <img src="/plus.svg" />
+            <Image src="/plus.svg" alt="" width={0} height={0} />
           </button>
         </div>
 
@@ -501,7 +554,12 @@ export default function AboutPage() {
                     className="reaction-edit-image-delete-button"
                     onClick={() => onYoutubeURLsDelete(index)}
                   >
-                    <img src="/image-delete.svg" />
+                    <Image
+                      src="/image-delete.svg"
+                      alt=""
+                      width={0}
+                      height={0}
+                    />
                   </button>
                 </div>
                 <hr />
@@ -513,7 +571,7 @@ export default function AboutPage() {
             className="reaction-edit-multi-input-plus-button"
             onClick={() => onYoutubeURLsAdd()}
           >
-            <img src="/plus.svg" />
+            <Image src="/plus.svg" alt="" width={0} height={0} />
           </button>
 
           {/* Submit */}
@@ -522,7 +580,7 @@ export default function AboutPage() {
             className="reaction-edit-add-reaction-button"
             onClick={() => submitHandleChange()}
           >
-            <img src="/add-reaction.svg" />
+            <Image src="/add-reaction.svg" alt="" width={300} height={20} />
           </button>
         </div>
       </form>

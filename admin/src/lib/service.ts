@@ -22,8 +22,8 @@ export const handleImagesChange = (
       try {
         const iamgeURL = await repository.uploadImage(base64String);
         setImageUrls([...imageUrls, iamgeURL]);          
-      } catch (err) {
-        alert("アップロードに失敗しました");
+      } catch (error) {
+        alert(`画像のアップロードに失敗しました:\n${error}`);
       }
     };
     reader.readAsDataURL(file);
@@ -65,8 +65,8 @@ export const handleImageChange = (
       try {
         const iamgeURL = await repository.uploadImage(base64String);
         setImageUrl(iamgeURL)  
-      } catch (err) {
-        alert("アップロードに失敗しました");
+      } catch (error) {
+        alert(`画像のアップロードに失敗しました:\n${error}`);
       }
     };
     reader.readAsDataURL(file);
@@ -109,9 +109,8 @@ export const handleTextsChange = (
 export const handleTextDelete = (
   index: number,
   setTexts: React.Dispatch<React.SetStateAction<string[]>>,
-  texts: string[],
 ) => {
-    setTexts((texts) => texts.filter((_, idx) => idx !== index));
+    setTexts((prev) => prev.filter((_, idx) => idx !== index));
 };
 
 

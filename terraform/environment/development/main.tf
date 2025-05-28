@@ -86,3 +86,10 @@ module "admin_database" {
 }
 
 
+##############################################################
+# GitHub
+##############################################################
+module "github" {
+  source                 = "../../modules/github_for_app"
+  github_action_role_arn = "arn:aws:iam::392961483375:role/reaction-github-action-role"
+}

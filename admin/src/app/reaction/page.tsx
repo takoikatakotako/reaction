@@ -2,21 +2,20 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
 
 export default function ReactionPage() {
   const [reactions, setReactions] = useState<entity.Reaction[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  
   useEffect(() => {
     const loadReaction = async () => {
       try {
         const reactions = await service.fetchReactions();
         setReactions(reactions);
-      } catch (err) {
-        alert('error');
+      } catch (error) {
+        alert(`エラーが発生しました:\n${error}`);
       }
     };
 
@@ -49,11 +48,16 @@ export default function ReactionPage() {
             <h2>ID: {reaction.id}</h2>
           </Link>
           <p>Name: {reaction.englishName}</p>
-          <img src={`${reaction.thumbnailImageUrl}`} loading="lazy" />
+          <Image
+            src={`${reaction.thumbnailImageUrl}`}
+            loading="lazy"
+            width={0}
+            height={0}
+            alt=""
+          />
           <hr />
         </div>
       ))}
-      
     </main>
   );
 }

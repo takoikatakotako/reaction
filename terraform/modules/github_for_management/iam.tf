@@ -1,4 +1,3 @@
-
 # GitHub Action Role
 resource "aws_iam_role" "github_action_role" {
   name               = "reaction-github-action-role"

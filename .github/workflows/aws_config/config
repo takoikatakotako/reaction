@@ -4,4 +4,4 @@ role_arn = arn:aws:iam::392961483375:role/management-ci-role
 
 [profile reaction-development]
 credential_source = Environment
-role_arn = arn:aws:iam::467988630030:role/reaction-api-role
+role_arn = arn:aws:iam::467988630030:role/reaction-ci-role

@@ -3,6 +3,8 @@
 import React, { useState, useRef, ChangeEvent, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import TextInputField from '../common/TextInputField';
+import ImageInputField from '../common/ImageInputField';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
 
@@ -227,71 +229,30 @@ export default function EditUser() {
         </div>
 
         {/* English Name */}
-        <div className="reaction-edit-content">
-          <label htmlFor="englishName">EnglishName</label>
-          <input
-            type="text"
-            name="englishName"
-            placeholder="反応機構の英語名を入力"
-            value={englishName}
-            onChange={onEnglishNameChange}
-          />
-          <hr />
-        </div>
+        <TextInputField
+          label="EnglishName"
+          name="englishName"
+          placeholder="反応機構の英語名を入力"
+          value={englishName}
+          onChange={onEnglishNameChange}
+        />
 
         {/* Japanese Name */}
-        <div className="reaction-edit-content">
-          <label htmlFor="japanseeName">JapaneseName</label>
-          <input
-            type="text"
-            name="japanseeName"
-            placeholder="反応機構の日本語名を入力"
-            value={japaneseName}
-            onChange={onJapaneseNameChange}
-          />
-          <hr />
-        </div>
+        <TextInputField
+          label="JapaneseName"
+          name="japaneseName"
+          placeholder="反応機構の日本語名を入力"
+          value={japaneseName}
+          onChange={onJapaneseNameChange}
+        />
 
         {/* Thumbnail */}
-        <div className="reaction-edit-content">
-          <label htmlFor="thumbnail">Thumbnail</label>
-          <input
-            type="file"
-            accept="image/png"
-            onChange={onThumbnailChange}
-            ref={thumbnailInputRef}
-          />
-
-          {thumbnailImageURL === '' ? (
-            <div className="reaction-edit-image-container">
-              <Image
-                className="reaction-edit-image"
-                src="/image-placeholder.png"
-                width={0}
-                height={0}
-                alt="PlaceHolder"
-              />
-            </div>
-          ) : (
-            <div className="reaction-edit-image-container">
-              <Image
-                className="reaction-edit-image"
-                src={thumbnailImageURL}
-                alt=""
-                width={0}
-                height={0}
-              />
-              <button
-                type="button"
-                className="reaction-edit-image-delete-button"
-                onClick={onThumbnailDelete}
-              >
-                <Image src="/image-delete.svg" alt="" width={0} height={0} />
-              </button>
-            </div>
-          )}
-          <hr />
-        </div>
+        <ImageInputField
+          imageURL={thumbnailImageURL}
+          inputRef={thumbnailInputRef}
+          onImageChange={onThumbnailChange}
+          onImageDelete={onThumbnailDelete}
+        />
 
         {/* General Formulas */}
         <div className="reaction-edit-content">

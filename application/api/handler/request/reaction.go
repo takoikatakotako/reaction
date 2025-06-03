@@ -1,34 +1,34 @@
 package request
 
 type AddReaction struct {
-	EnglishName              string   `json:"englishName"`
-	JapaneseName             string   `json:"japaneseName"`
-	ThumbnailImageName       string   `json:"thumbnailImageName"`
-	GeneralFormulaImageNames []string `json:"generalFormulaImageNames"`
-	MechanismsImageNames     []string `json:"mechanismsImageNames"`
-	ExampleImageNames        []string `json:"exampleImageNames"`
-	SupplementsImageNames    []string `json:"supplementsImageNames"`
-	Suggestions              []string `json:"suggestions"`
-	Reactants                []string `json:"reactants"`
-	Products                 []string `json:"products"`
-	YoutubeUrls              []string `json:"youtubeUrls"`
+	EnglishName              string   `file:"englishName"`
+	JapaneseName             string   `file:"japaneseName"`
+	ThumbnailImageName       string   `file:"thumbnailImageName"`
+	GeneralFormulaImageNames []string `file:"generalFormulaImageNames"`
+	MechanismsImageNames     []string `file:"mechanismsImageNames"`
+	ExampleImageNames        []string `file:"exampleImageNames"`
+	SupplementsImageNames    []string `file:"supplementsImageNames"`
+	Suggestions              []string `file:"suggestions"`
+	Reactants                []string `file:"reactants"`
+	Products                 []string `file:"products"`
+	YoutubeUrls              []string `file:"youtubeUrls"`
 }
 
 type EditReaction struct {
-	ID                       string   `json:"id"`
-	EnglishName              string   `json:"englishName"`
-	JapaneseName             string   `json:"japaneseName"`
-	ThumbnailImageName       string   `json:"thumbnailImageName"`
-	GeneralFormulaImageNames []string `json:"generalFormulaImageNames"`
-	MechanismsImageNames     []string `json:"mechanismsImageNames"`
-	ExampleImageNames        []string `json:"exampleImageNames"`
-	SupplementsImageNames    []string `json:"supplementsImageNames"`
-	Suggestions              []string `json:"suggestions"`
-	Reactants                []string `json:"reactants"`
-	Products                 []string `json:"products"`
-	YoutubeUrls              []string `json:"youtubeUrls"`
+	ID                       string   `file:"id"`
+	EnglishName              string   `file:"englishName"`
+	JapaneseName             string   `file:"japaneseName"`
+	ThumbnailImageName       string   `file:"thumbnailImageName"`
+	GeneralFormulaImageNames []string `file:"generalFormulaImageNames"`
+	MechanismsImageNames     []string `file:"mechanismsImageNames"`
+	ExampleImageNames        []string `file:"exampleImageNames"`
+	SupplementsImageNames    []string `file:"supplementsImageNames"`
+	Suggestions              []string `file:"suggestions"`
+	Reactants                []string `file:"reactants"`
+	Products                 []string `file:"products"`
+	YoutubeUrls              []string `file:"youtubeUrls"`
 }
 
 type DeleteReaction struct {
-	ID                       string   `json:"id"`
+	ID string `file:"id"`
 }

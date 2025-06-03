@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/takoikatakotako/reaction/api/service/output"
 	"github.com/takoikatakotako/reaction/infrastructure/database"
+	"github.com/takoikatakotako/reaction/infrastructure/file"
 )
 
 func convertToOutputReactions(reactions []database.Reaction, resourceBaseURL string) []output.Reaction {
@@ -16,31 +17,11 @@ func convertToOutputReactions(reactions []database.Reaction, resourceBaseURL str
 }
 
 func convertToOutputReaction(reaction database.Reaction, resourceBaseURL string) output.Reaction {
-	thumbnailImageURL := resourceBaseURL + "/" + reaction.ThumbnailImageName
-
-	generalFormulaImageURLs := make([]string, 0)
-	for _, generalFormulaImageName := range reaction.GeneralFormulaImageNames {
-		generalFormulaImageURL := fmt.Sprintf("%s/%s", resourceBaseURL, generalFormulaImageName)
-		generalFormulaImageURLs = append(generalFormulaImageURLs, generalFormulaImageURL)
-	}
-
-	mechanismsImageURLs := make([]string, 0)
-	for _, mechanismsImageName := range reaction.MechanismsImageNames {
-		mechanismsImageURL := fmt.Sprintf("%s/%s", resourceBaseURL, mechanismsImageName)
-		mechanismsImageURLs = append(mechanismsImageURLs, mechanismsImageURL)
-	}
-
-	exampleImageURLs := make([]string, 0)
-	for _, exampleImageName := range reaction.ExampleImageNames {
-		exampleImagURL := fmt.Sprintf("%s/%s", resourceBaseURL, exampleImageName)
-		exampleImageURLs = append(exampleImageURLs, exampleImagURL)
-	}
-
-	supplementsImageURLs := make([]string, 0)
-	for _, supplementsImageName := range reaction.SupplementsImageNames {
-		supplementsImageURL := fmt.Sprintf("%s/%s", resourceBaseURL, supplementsImageName)
-		supplementsImageURLs = append(supplementsImageURLs, supplementsImageURL)
-	}
+	thumbnailImageURL := convertImageNameToImageURL(reaction.ThumbnailImageName, resourceBaseURL)
+	generalFormulaImageURLs := convertImageNamesToImageURLs(reaction.GeneralFormulaImageNames, resourceBaseURL)
+	mechanismsImageURLs := convertImageNamesToImageURLs(reaction.MechanismsImageNames, resourceBaseURL)
+	exampleImageURLs := convertImageNamesToImageURLs(reaction.ExampleImageNames, resourceBaseURL)
+	supplementsImageURLs := convertImageNamesToImageURLs(reaction.SupplementsImageNames, resourceBaseURL)
 
 	return output.Reaction{
 		ID:                      reaction.ID,
@@ -56,6 +37,42 @@ func convertToOutputReaction(reaction database.Reaction, resourceBaseURL string)
 		Products:                reaction.Products,
 		YoutubeUrls:             reaction.YoutubeUrls,
 	}
+}
+
+func convertToFileReaction(reaction database.Reaction, resourceBaseURL string) file.Reaction {
+	thumbnailImageURL := convertImageNameToImageURL(reaction.ThumbnailImageName, resourceBaseURL)
+	generalFormulaImageURLs := convertImageNamesToImageURLs(reaction.GeneralFormulaImageNames, resourceBaseURL)
+	mechanismsImageURLs := convertImageNamesToImageURLs(reaction.MechanismsImageNames, resourceBaseURL)
+	exampleImageURLs := convertImageNamesToImageURLs(reaction.ExampleImageNames, resourceBaseURL)
+	supplementsImageURLs := convertImageNamesToImageURLs(reaction.SupplementsImageNames, resourceBaseURL)
+
+	return file.Reaction{
+		ID:                      reaction.ID,
+		EnglishName:             reaction.EnglishName,
+		JapaneseName:            reaction.JapaneseName,
+		ThumbnailImageURL:       thumbnailImageURL,
+		GeneralFormulaImageURLs: generalFormulaImageURLs,
+		MechanismsImageURLs:     mechanismsImageURLs,
+		ExampleImageURLs:        exampleImageURLs,
+		SupplementsImageURLs:    supplementsImageURLs,
+		Suggestions:             reaction.Suggestions,
+		Reactants:               reaction.Reactants,
+		Products:                reaction.Products,
+		YoutubeUrls:             reaction.YoutubeUrls,
+	}
+}
+
+func convertImageNamesToImageURLs(imageNames []string, resourceBaseURL string) []string {
+	imageURLs := make([]string, 0)
+	for _, imageName := range imageNames {
+		imageURL := convertImageNameToImageURL(imageName, resourceBaseURL)
+		imageURLs = append(imageURLs, imageURL)
+	}
+	return imageURLs
+}
+
+func convertImageNameToImageURL(imageName string, resourceBaseURL string) string {
+	return fmt.Sprintf("%s/%s", resourceBaseURL, imageName)
 }
 
 // 2文字目移行の文字を*に変換

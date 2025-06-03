@@ -62,12 +62,24 @@ export const handleImageChange = (
 
     reader.onloadend = async () => {
       const base64String = reader.result as string;
-      try {
-        const iamgeURL = await repository.uploadImage(base64String);
-        setImageUrl(iamgeURL)  
-      } catch (error) {
-        alert(`画像のアップロードに失敗しました:\n${error}`);
-      }
+      const img = new Image();
+      img.onload = async () => {
+        if (img.width !== 1772) {
+          alert("画像の横幅は1772にする必要があります。");
+          return;
+        }
+
+        try {
+          const imageURL = await repository.uploadImage(base64String);
+          setImageUrl(imageURL);
+        } catch (error) {
+          alert(`画像のアップロードに失敗しました:\n${error}`);
+        }
+      };
+      img.onerror = () => {
+        alert("画像の読み込みに失敗しました。");
+      };
+      img.src = base64String;
     };
     reader.readAsDataURL(file);
   }
@@ -173,10 +185,6 @@ export async function addReaction(addReaction: entity.AddReaction) {
       throw new Error('日本語名が入力されていません');
     }
 
-    if (!isValidUUID(addReaction.thumbnailImageName)) {
-      throw new Error('ThumbnailのUUIDが有効化どうか');
-    }
-
     await repository.addReaction(addReaction);
 }
 
@@ -201,14 +209,14 @@ export async function deleteReaction(id: string) {
 
 
 //////////////////////////////////////////////////////////////
-// XXX
+// Vlidator
 //////////////////////////////////////////////////////////////
-function isValidUUID(value: string | null | undefined): boolean {
-  if (!value || value.trim().length === 0) {
-    return false; // 空、null、undefined は無効
-  }
+// function isValidUUID(value: string | null | undefined): boolean {
+//   if (!value || value.trim().length === 0) {
+//     return false; // 空、null、undefined は無効
+//   }
 
-  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+//   const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
-  return uuidRegex.test(value); // 正しいUUIDなら true
-}
+//   return uuidRegex.test(value); // 正しいUUIDなら true
+// }

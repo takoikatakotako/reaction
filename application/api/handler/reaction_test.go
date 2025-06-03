@@ -1,7 +1,7 @@
 package handler
 
 //curl -X POST http://localhost:8080/api/reaction/add \
-//	-H "Content-Type: application/json" \
+//	-H "Content-Type: application/file" \
 //	-d '{
 //		"englishName": "EnglishName",
 //		"japaneseName": "JapaneseName",
@@ -16,8 +16,8 @@ package handler
 //		"youtubeUrls": ["youtubeUrls"]
 //		}'
 
-//	Suggestions              []string `json:"suggestions"`
-//	Reactants                []string `json:"reactants"`
-//	Products                 []string `json:"products"`
-//	YoutubeUrls              []string `json:"youtubeUrls"`
+//	Suggestions              []string `file:"suggestions"`
+//	Reactants                []string `file:"reactants"`
+//	Products                 []string `file:"products"`
+//	YoutubeUrls              []string `file:"youtubeUrls"`
 //}

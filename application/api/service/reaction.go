@@ -107,3 +107,18 @@ func (a *Reaction) DeleteReaction(input input.DeleteReaction) error {
 	}
 	return nil
 }
+
+func (a *Reaction) GenerateReaction() error {
+	reactions, err := a.AWS.GetReactions()
+	if err != nil {
+		return err
+	}
+
+	for _, v := range reactions {
+
+		fileReaction := convertToFileReaction(v, a.ResourceBaseURL)
+
+	}
+
+	return nil
+}

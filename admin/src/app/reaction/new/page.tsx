@@ -1,13 +1,19 @@
 'use client';
 
 import React, { useState, useRef, ChangeEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import TextInputField from '../common/TextInputField';
+import TextsInputField from '../common/TextsInputField';
 import ImageInputField from '../common/ImageInputField';
+import ImagesInputField from '../common/ImagesInputField';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
 
 export default function AboutPage() {
+  // Router
+  const router = useRouter();
+
   // English Name
   const [englishName, setEnglishName] = useState<string>('');
   const onEnglishNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -139,6 +145,9 @@ export default function AboutPage() {
   // Submit
   const submitHandleChange = async () => {
     try {
+      if (!thumbnailImageURL) {
+        throw new Error('サムネイルが入力されていません');
+      }
       const thumbnailImageName = service.extractImageName(thumbnailImageURL);
       const generalFormulaImageNames = service.extractImageNames(
         generalFormulaImageURLs
@@ -166,6 +175,7 @@ export default function AboutPage() {
 
       await service.addReaction(addReaction);
       alert('送信成功！');
+      router.push('/');
     } catch (error) {
       alert(`エラーが発生しました:\n${error}`);
     }
@@ -203,349 +213,93 @@ export default function AboutPage() {
         />
 
         {/* General Formulas */}
-        <div className="reaction-edit-content">
-          <label htmlFor="thumbnail">General Formulas</label>
-          <input
-            type="file"
-            accept="image/png"
-            onChange={onGeneralFormulasChange}
-            ref={generalFormulasInputRef}
-          />
-
-          {generalFormulaImageURLs.length === 0 && (
-            <div className="reaction-edit-image-container">
-              <Image
-                className="reaction-edit-image"
-                src="/image-placeholder.png"
-                alt=""
-                width={0}
-                height={0}
-              />
-            </div>
-          )}
-
-          {generalFormulaImageURLs.length !== 0 &&
-            generalFormulaImageURLs.map((url, index) => (
-              <div key={index} className="reaction-edit-image-container">
-                <Image
-                  className="reaction-edit-image"
-                  src={url}
-                  alt=""
-                  width={0}
-                  height={0}
-                />
-                <button
-                  type="button"
-                  className="reaction-edit-image-delete-button"
-                  onClick={() => onGeneralFormulasDelete(index)}
-                >
-                  <Image src="/image-delete.svg" alt="" width={0} height={0} />
-                </button>
-              </div>
-            ))}
-
-          <hr />
-        </div>
+        <ImagesInputField
+          label="generalFormulas"
+          name="General Formulas"
+          imageURLs={generalFormulaImageURLs}
+          inputRef={generalFormulasInputRef}
+          onImageChange={onGeneralFormulasChange}
+          onImageDelete={onGeneralFormulasDelete}
+        />
 
         {/* Mechanisms */}
-        <div className="reaction-edit-content">
-          <label htmlFor="thumbnail">Mechanisms</label>
-          <input
-            type="file"
-            accept="image/png"
-            onChange={onMechanismsChange}
-            ref={mechanismsInputRef}
-          />
-
-          {mechanismaImageURLs.length === 0 && (
-            <div className="reaction-edit-image-container">
-              <Image
-                className="reaction-edit-image"
-                src="/image-placeholder.png"
-                alt=""
-                width={0}
-                height={0}
-              />
-            </div>
-          )}
-
-          {mechanismaImageURLs.length !== 0 &&
-            mechanismaImageURLs.map((url, index) => (
-              <div key={index} className="reaction-edit-image-container">
-                <Image
-                  className="reaction-edit-image"
-                  src={url}
-                  alt=""
-                  width={0}
-                  height={0}
-                />
-                <button
-                  type="button"
-                  className="reaction-edit-image-delete-button"
-                  onClick={() => onMechanismsDelete(index)}
-                >
-                  <Image src="/image-delete.svg" alt="" width={0} height={0} />
-                </button>
-              </div>
-            ))}
-          <hr />
-        </div>
+        <ImagesInputField
+          label="mechanisms"
+          name="Mechanisms"
+          imageURLs={mechanismaImageURLs}
+          inputRef={mechanismsInputRef}
+          onImageChange={onMechanismsChange}
+          onImageDelete={onMechanismsDelete}
+        />
 
         {/* Examples */}
-        <div className="reaction-edit-content">
-          <label htmlFor="thumbnail">Examples</label>
-          <input
-            type="file"
-            accept="image/png"
-            onChange={onExamplesChange}
-            ref={examplesInputRef}
-          />
-
-          {exampleImageURLs.length === 0 && (
-            <div className="reaction-edit-image-container">
-              <Image
-                className="reaction-edit-image"
-                src="/image-placeholder.png"
-                width={0}
-                height={0}
-                alt=""
-              />
-            </div>
-          )}
-
-          {exampleImageURLs.length !== 0 &&
-            exampleImageURLs.map((image, index) => (
-              <div key={index} className="reaction-edit-image-container">
-                <Image
-                  className="reaction-edit-image"
-                  src={image}
-                  alt=""
-                  width={0}
-                  height={0}
-                />
-                <button
-                  type="button"
-                  className="reaction-edit-image-delete-button"
-                  onClick={() => onExamplesDelete(index)}
-                >
-                  <Image src="/image-delete.svg" alt="" width={0} height={0} />
-                </button>
-              </div>
-            ))}
-
-          <hr />
-        </div>
+        <ImagesInputField
+          label="examples"
+          name="Examples"
+          imageURLs={exampleImageURLs}
+          inputRef={examplesInputRef}
+          onImageChange={onExamplesChange}
+          onImageDelete={onExamplesDelete}
+        />
 
         {/* Supplements */}
-        <div className="reaction-edit-content">
-          <label htmlFor="thumbnail">Supplements</label>
-          <input
-            type="file"
-            accept="image/png"
-            onChange={onSupplementsChange}
-            ref={supplementsInputRef}
-          />
-
-          {supplementsImageURLs.length === 0 && (
-            <div className="reaction-edit-image-container">
-              <Image
-                className="reaction-edit-image"
-                src="/image-placeholder.png"
-                alt=""
-                width={0}
-                height={0}
-              />
-            </div>
-          )}
-
-          {supplementsImageURLs.length !== 0 &&
-            supplementsImageURLs.map((url, index) => (
-              <div key={index} className="reaction-edit-image-container">
-                <Image className="reaction-edit-image" src={url} alt="" />
-                <button
-                  type="button"
-                  className="reaction-edit-image-delete-button"
-                  onClick={() => onSupplementsDelete(index)}
-                >
-                  <Image src="/image-delete.svg" alt="" width={0} height={0} />
-                </button>
-              </div>
-            ))}
-          <hr />
-        </div>
+        <ImagesInputField
+          label="supplements"
+          name="Supplements"
+          imageURLs={supplementsImageURLs}
+          inputRef={supplementsInputRef}
+          onImageChange={onSupplementsChange}
+          onImageDelete={onSupplementsDelete}
+        />
 
         {/* Suggestions */}
-        <div className="reaction-edit-content">
-          <label htmlFor="englishName">Suggestions</label>
-
-          {suggestions.length !== 0 &&
-            suggestions.map((suggestion, index) => (
-              <div key={index}>
-                <div className="reaction-edit-multi-input-container">
-                  <input
-                    type="text"
-                    name="englishName"
-                    value={suggestion}
-                    placeholder="サジェスチョンの単語を入力"
-                    onChange={(e) => onSuggestionsChange(e, index)}
-                  />
-                  <button
-                    type="button"
-                    className="reaction-edit-image-delete-button"
-                    onClick={() => onSuggestionsDelete(index)}
-                  >
-                    <Image
-                      src="/image-delete.svg"
-                      alt=""
-                      width={0}
-                      height={0}
-                    />
-                  </button>
-                </div>
-                <hr />
-              </div>
-            ))}
-
-          <button
-            type="button"
-            className="reaction-edit-multi-input-plus-button"
-            onClick={() => onSuggestionsAdd()}
-          >
-            <Image src="/plus.svg" alt="" width={0} height={0} />
-          </button>
-        </div>
+        <TextsInputField
+          label="suggestions"
+          name="Suggestions"
+          texts={suggestions}
+          onTextsChange={onSuggestionsChange}
+          onTextsDelete={onSuggestionsDelete}
+          onTextsAdd={onSuggestionsAdd}
+        />
 
         {/* Reactants */}
-        <div className="reaction-edit-content">
-          <label htmlFor="englishName">Reactants</label>
-
-          {reactants.length !== 0 &&
-            reactants.map((reactant, index) => (
-              <div key={index}>
-                <div className="reaction-edit-multi-input-container">
-                  <input
-                    type="text"
-                    name="englishName"
-                    value={reactant}
-                    placeholder="反応物の単語を入力"
-                    onChange={(e) => onReactansChange(e, index)}
-                  />
-                  <button
-                    type="button"
-                    className="reaction-edit-image-delete-button"
-                    onClick={() => onReactionsDelete(index)}
-                  >
-                    <Image
-                      src="/image-delete.svg"
-                      alt=""
-                      width={0}
-                      height={0}
-                    />
-                  </button>
-                </div>
-                <hr />
-              </div>
-            ))}
-
-          <button
-            type="button"
-            className="reaction-edit-multi-input-plus-button"
-            onClick={() => onReactionsAdd()}
-          >
-            <Image src="/plus.svg" alt="" width={0} height={0} />
-          </button>
-        </div>
+        <TextsInputField
+          label="reactants"
+          name="Reactants"
+          texts={reactants}
+          onTextsChange={onReactansChange}
+          onTextsDelete={onReactionsDelete}
+          onTextsAdd={onReactionsAdd}
+        />
 
         {/* Products */}
-        <div className="reaction-edit-content">
-          <label htmlFor="englishName">Products</label>
-
-          {products.length !== 0 &&
-            products.map((product, index) => (
-              <div key={index}>
-                <div className="reaction-edit-multi-input-container">
-                  <input
-                    type="text"
-                    name="englishName"
-                    value={product}
-                    placeholder="精製物の単語を入力"
-                    onChange={(e) => onProductsChange(e, index)}
-                  />
-                  <button
-                    type="button"
-                    className="reaction-edit-image-delete-button"
-                    onClick={() => onProductsDelete(index)}
-                  >
-                    <Image
-                      src="/image-delete.svg"
-                      alt=""
-                      width={0}
-                      height={0}
-                    />
-                  </button>
-                </div>
-                <hr />
-              </div>
-            ))}
-
-          <button
-            type="button"
-            className="reaction-edit-multi-input-plus-button"
-            onClick={() => onProductsAdd()}
-          >
-            <Image src="/plus.svg" alt="" width={0} height={0} />
-          </button>
-        </div>
+        <TextsInputField
+          label="products"
+          name="Products"
+          texts={products}
+          onTextsChange={onProductsChange}
+          onTextsDelete={onProductsDelete}
+          onTextsAdd={onProductsAdd}
+        />
 
         {/* Youtube */}
-        <div className="reaction-edit-content">
-          <label htmlFor="englishName">Youtube</label>
+        <TextsInputField
+          label="youtubes"
+          name="Youtube"
+          texts={youtubeURLs}
+          onTextsChange={onYoutubeURLsChange}
+          onTextsDelete={onYoutubeURLsDelete}
+          onTextsAdd={onYoutubeURLsAdd}
+        />
 
-          {youtubeURLs.length !== 0 &&
-            youtubeURLs.map((url, index) => (
-              <div key={index}>
-                <div className="reaction-edit-multi-input-container">
-                  <input
-                    type="text"
-                    name="englishName"
-                    value={url}
-                    placeholder="Youtubeのリンクを入力"
-                    onChange={(e) => onYoutubeURLsChange(e, index)}
-                  />
-                  <button
-                    type="button"
-                    className="reaction-edit-image-delete-button"
-                    onClick={() => onYoutubeURLsDelete(index)}
-                  >
-                    <Image
-                      src="/image-delete.svg"
-                      alt=""
-                      width={0}
-                      height={0}
-                    />
-                  </button>
-                </div>
-                <hr />
-              </div>
-            ))}
-
-          <button
-            type="button"
-            className="reaction-edit-multi-input-plus-button"
-            onClick={() => onYoutubeURLsAdd()}
-          >
-            <Image src="/plus.svg" alt="" width={0} height={0} />
-          </button>
-
-          {/* Submit */}
-          <button
-            type="button"
-            className="reaction-edit-add-reaction-button"
-            onClick={() => submitHandleChange()}
-          >
-            <Image src="/add-reaction.svg" alt="" width={200} height={60} />
-          </button>
-        </div>
+        {/* Submit */}
+        <button
+          type="button"
+          className="reaction-edit-add-reaction-button"
+          onClick={() => submitHandleChange()}
+        >
+          <Image src="/add-reaction.svg" alt="" width={200} height={60} />
+        </button>
       </form>
     </main>
   );

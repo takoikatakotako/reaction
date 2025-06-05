@@ -1,19 +1,23 @@
 package service
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/google/uuid"
 	"github.com/takoikatakotako/reaction/api/service/input"
 	"github.com/takoikatakotako/reaction/api/service/output"
 	"github.com/takoikatakotako/reaction/infrastructure"
 	"github.com/takoikatakotako/reaction/infrastructure/database"
+	"github.com/takoikatakotako/reaction/infrastructure/file"
 	"log/slog"
 	"sort"
 	"time"
 )
 
 type Reaction struct {
-	AWS             infrastructure.AWS
-	ResourceBaseURL string
+	AWS                infrastructure.AWS
+	ResourceBucketName string
+	ResourceBaseURL    string
 }
 
 func (a *Reaction) GetReactions() ([]output.Reaction, error) {
@@ -114,11 +118,33 @@ func (a *Reaction) GenerateReaction() error {
 		return err
 	}
 
+	// 各々のファイルを保存
+	fileReactions := make([]file.Reaction, 0)
 	for _, v := range reactions {
-
 		fileReaction := convertToFileReaction(v, a.ResourceBaseURL)
+		bytes, err := json.Marshal(fileReaction)
+		if err != nil {
+			return err
+		}
 
+		objectKey := fmt.Sprintf("resource/reaction/%s.json", v.ID)
+		err = a.AWS.PutObject(a.ResourceBucketName, objectKey, bytes)
+		if err != nil {
+			return err
+		}
+
+		fileReactions = append(fileReactions, fileReaction)
 	}
 
+	// 全体のリストを保存
+	listFileReactions := file.Reactions{
+		Reactions: fileReactions,
+	}
+	bytes, err := json.Marshal(listFileReactions)
+	objectKey := "resource/reaction/reactions.json"
+	err = a.AWS.PutObject(a.ResourceBucketName, objectKey, bytes)
+	if err != nil {
+		return err
+	}
 	return nil
 }

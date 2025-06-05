@@ -15,6 +15,6 @@ type Reaction struct {
 	YoutubeUrls             []string `file:"youtubeUrls"`
 }
 
-//type GetReactions struct {
-//	Reactions []Reaction `file:"reactions"`
-//}
+type Reactions struct {
+	Reactions []Reaction `file:"reactions"`
+}

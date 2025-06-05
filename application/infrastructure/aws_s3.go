@@ -1,6 +1,7 @@
 package infrastructure
 
 import (
+	"bytes"
 	"context"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
@@ -43,20 +44,23 @@ func (a *AWS) GeneratePresignedURL(bucketName string, objectKey string) (string,
 	return resp.URL, nil
 }
 
-func (a *AWS) PutObject(bucketName string, objectKey string, xxx []byte) (string, error) {
+func (a *AWS) PutObject(bucketName string, objectKey string, xxx []byte) error {
 	client, err := a.createS3Client()
 	if err != nil {
-		return "", err
+		return err
 	}
 
-	presign := s3.NewPresignClient(client)
-	resp, err := presign.PresignPutObject(context.TODO(), &s3.PutObjectInput{
-		Bucket: aws.String(bucketName),
-		Key:    aws.String(objectKey),
-	}, s3.WithPresignExpires(15*time.Minute)) // 有効期限15分
+	input := &s3.PutObjectInput{
+		Bucket:      aws.String(bucketName),
+		Key:         aws.String(objectKey),
+		Body:        bytes.NewReader(xxx),
+		ContentType: aws.String("application/json"),
+	}
+
+	_, err = client.PutObject(context.TODO(), input)
 	if err != nil {
-		return "", err
+		return err
 	}
 
-	return resp.URL, nil
+	return nil
 }

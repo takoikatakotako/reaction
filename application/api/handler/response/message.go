@@ -1,5 +1,5 @@
 package response
 
 type Message struct {
-	Message string `file:"message"`
+	Message string `json:"message"`
 }

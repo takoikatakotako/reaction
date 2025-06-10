@@ -1,5 +1,5 @@
 package response
 
 type UploadURL struct {
-	UploadURL string `file:"uploadUrl"`
+	UploadURL string `json:"uploadUrl"`
 }

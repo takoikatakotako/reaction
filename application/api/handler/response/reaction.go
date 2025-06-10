@@ -1,20 +1,20 @@
 package response
 
 type Reaction struct {
-	ID                      string   `file:"id"`
-	EnglishName             string   `file:"englishName"`
-	JapaneseName            string   `file:"japaneseName"`
-	ThumbnailImageURL       string   `file:"thumbnailImageUrl"`
-	GeneralFormulaImageURLs []string `file:"generalFormulaImageUrls"`
-	MechanismsImageURLs     []string `file:"mechanismsImageUrls"`
-	ExampleImageURLs        []string `file:"exampleImageUrls"`
-	SupplementsImageURLs    []string `file:"supplementsImageUrls"`
-	Suggestions             []string `file:"suggestions"`
-	Reactants               []string `file:"reactants"`
-	Products                []string `file:"products"`
-	YoutubeUrls             []string `file:"youtubeUrls"`
+	ID                      string   `json:"id"`
+	EnglishName             string   `json:"englishName"`
+	JapaneseName            string   `json:"japaneseName"`
+	ThumbnailImageURL       string   `json:"thumbnailImageUrl"`
+	GeneralFormulaImageURLs []string `json:"generalFormulaImageUrls"`
+	MechanismsImageURLs     []string `json:"mechanismsImageUrls"`
+	ExampleImageURLs        []string `json:"exampleImageUrls"`
+	SupplementsImageURLs    []string `json:"supplementsImageUrls"`
+	Suggestions             []string `json:"suggestions"`
+	Reactants               []string `json:"reactants"`
+	Products                []string `json:"products"`
+	YoutubeUrls             []string `json:"youtubeUrls"`
 }
 
 type GetReactions struct {
-	Reactions []Reaction `file:"reactions"`
+	Reactions []Reaction `json:"reactions"`
 }

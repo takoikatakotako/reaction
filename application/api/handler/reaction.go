@@ -126,7 +126,7 @@ func (a *Reaction) DeleteReactionDelete(c echo.Context) error {
 }
 
 func (a *Reaction) GenerateReactionPost(c echo.Context) error {
-	err := a.Service.DeleteReaction(in)
+	err := a.Service.GenerateReactions()
 	if err != nil {
 		res := response.Message{Message: "Error!"}
 		return c.JSON(http.StatusInternalServerError, res)

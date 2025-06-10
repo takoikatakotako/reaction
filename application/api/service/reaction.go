@@ -112,7 +112,7 @@ func (a *Reaction) DeleteReaction(input input.DeleteReaction) error {
 	return nil
 }
 
-func (a *Reaction) GenerateReaction() error {
+func (a *Reaction) GenerateReactions() error {
 	reactions, err := a.AWS.GetReactions()
 	if err != nil {
 		return err
@@ -128,7 +128,7 @@ func (a *Reaction) GenerateReaction() error {
 		}
 
 		objectKey := fmt.Sprintf("resource/reaction/%s.json", v.ID)
-		err = a.AWS.PutObject(a.ResourceBucketName, objectKey, bytes)
+		err = a.AWS.PutObject(a.ResourceBucketName, objectKey, bytes, "application/json")
 		if err != nil {
 			return err
 		}
@@ -137,12 +137,12 @@ func (a *Reaction) GenerateReaction() error {
 	}
 
 	// 全体のリストを保存
-	listFileReactions := file.Reactions{
+	fileListReactions := file.Reactions{
 		Reactions: fileReactions,
 	}
-	bytes, err := json.Marshal(listFileReactions)
+	bytes, err := json.Marshal(fileListReactions)
 	objectKey := "resource/reaction/reactions.json"
-	err = a.AWS.PutObject(a.ResourceBucketName, objectKey, bytes)
+	err = a.AWS.PutObject(a.ResourceBucketName, objectKey, bytes, "application/json")
 	if err != nil {
 		return err
 	}

@@ -44,7 +44,7 @@ func (a *AWS) GeneratePresignedURL(bucketName string, objectKey string) (string,
 	return resp.URL, nil
 }
 
-func (a *AWS) PutObject(bucketName string, objectKey string, xxx []byte) error {
+func (a *AWS) PutObject(bucketName string, objectKey string, data []byte, contentType string) error {
 	client, err := a.createS3Client()
 	if err != nil {
 		return err
@@ -53,8 +53,8 @@ func (a *AWS) PutObject(bucketName string, objectKey string, xxx []byte) error {
 	input := &s3.PutObjectInput{
 		Bucket:      aws.String(bucketName),
 		Key:         aws.String(objectKey),
-		Body:        bytes.NewReader(xxx),
-		ContentType: aws.String("application/json"),
+		Body:        bytes.NewReader(data),
+		ContentType: aws.String(contentType),
 	}
 
 	_, err = client.PutObject(context.TODO(), input)

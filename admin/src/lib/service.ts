@@ -64,8 +64,8 @@ export const handleImageChange = (
       const base64String = reader.result as string;
       const img = new Image();
       img.onload = async () => {
-        if (img.width !== 1772) {
-          alert("画像の横幅は1772にする必要があります。");
+        if (img.width === 1772 || img.width === 3898) {} else {
+          alert("画像の横幅は1772 or 3898にする必要があります。");
           return;
         }
 

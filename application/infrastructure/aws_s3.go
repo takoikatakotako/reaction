@@ -4,25 +4,41 @@ import (
 	"bytes"
 	"context"
 	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"time"
 )
 
 // Private Methods
 func (a *AWS) createS3Client() (*s3.Client, error) {
+	// Localの場合
+	if a.Profile == "local" {
+		// AWS Configを読み込み（LocalStack用にカスタム）
+		// CI設定次第移行する
+		customResolver := aws.EndpointResolverWithOptionsFunc(func(service, region string, options ...interface{}) (aws.Endpoint, error) {
+			return aws.Endpoint{
+				URL:               LocalstackEndpoint,
+				HostnameImmutable: true,
+			}, nil
+		})
+
+		cfg, err := config.LoadDefaultConfig(context.TODO(),
+			config.WithRegion("ap-northeast-1"),
+			config.WithEndpointResolverWithOptions(customResolver),
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		return s3.NewFromConfig(cfg), nil
+	}
+
+	// Local 以外の場合
 	cfg, err := a.createAWSConfig()
 	if err != nil {
 		return nil, err
 	}
 
-	// Localの場合
-	if a.Profile == "local" {
-		return s3.NewFromConfig(cfg, func(o *s3.Options) {
-			o.BaseEndpoint = aws.String(LocalstackEndpoint)
-		}), nil
-	}
-
-	// Local 以外の場合
 	return s3.NewFromConfig(cfg), nil
 }
 

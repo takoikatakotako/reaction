@@ -29,16 +29,4 @@ func TestAWS_PutObject(t *testing.T) {
 	// PutObject 実行
 	err := infra.PutObject(bucketName, objectKey, content, contentType)
 	assert.NoError(t, err)
-
-	//// オブジェクトを取得して内容を検証
-	//getResp, err := client.GetObject(context.TODO(), &s3.GetObjectInput{
-	//	Bucket: aws.String(bucketName),
-	//	Key:    aws.String(objectKey),
-	//})
-	//assert.NoError(t, err)
-	//
-	//buf := new(bytes.Buffer)
-	//_, err = buf.ReadFrom(getResp.Body)
-	//assert.NoError(t, err)
-	//assert.Equal(t, string(content), buf.String())
 }

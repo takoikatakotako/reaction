@@ -1,4 +1,4 @@
-name: Build Admin API Image
+name: Build Admin Image
 
 on:
   workflow_dispatch:
@@ -7,8 +7,8 @@ env:
   AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
 
 jobs:
-  build_admin_api_image:
-    name: build admin api image
+  build_admin_image:
+    name: build admin image
     runs-on: ubuntu-latest
     permissions:
       id-token: write

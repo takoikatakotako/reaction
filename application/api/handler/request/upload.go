@@ -1,5 +1,5 @@
 package request
 
 type GenerateUploadURL struct {
-	ImageName string `file:"imageName"`
+	ImageName string `json:"imageName"`
 }

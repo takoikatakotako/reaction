@@ -51,10 +51,11 @@ func (a *AWS) PutObject(bucketName string, objectKey string, data []byte, conten
 	}
 
 	input := &s3.PutObjectInput{
-		Bucket:      aws.String(bucketName),
-		Key:         aws.String(objectKey),
-		Body:        bytes.NewReader(data),
-		ContentType: aws.String(contentType),
+		Bucket:        aws.String(bucketName),
+		Key:           aws.String(objectKey),
+		Body:          bytes.NewReader(data),
+		ContentType:   aws.String(contentType),
+		ContentLength: aws.Int64(int64(len(data))),
 	}
 
 	_, err = client.PutObject(context.TODO(), input)

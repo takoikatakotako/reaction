@@ -32,5 +32,4 @@ func TestUpload_GenerateUploadURLPost(t *testing.T) {
 
 	expectedPrefix := "http://resource.reaction-local.swiswiswift.com.localhost:4566/"
 	assert.True(t, strings.HasPrefix(out.UploadURL, expectedPrefix))
-
 }

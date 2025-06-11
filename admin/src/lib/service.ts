@@ -205,6 +205,13 @@ export async function deleteReaction(id: string) {
 }
 
 
+//////////////////////////////////////////////////////////////
+// Generate Reactions
+//////////////////////////////////////////////////////////////
+export async function generateReactions() {
+    await repository.generateReactions();
+}
+
 
 
 

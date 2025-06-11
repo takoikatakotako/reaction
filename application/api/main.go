@@ -25,8 +25,9 @@ func main() {
 
 	// service
 	reactionService := service.Reaction{
-		AWS:             awsRepository,
-		ResourceBaseURL: env.ResourceBaseURL,
+		AWS:                awsRepository,
+		ResourceBaseURL:    env.ResourceBaseURL,
+		ResourceBucketName: env.ResourceBucketName,
 	}
 	uploadService := service.Upload{
 		AWS:                awsRepository,

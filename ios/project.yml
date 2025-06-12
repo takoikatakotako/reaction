@@ -4,7 +4,7 @@ options:
   deploymentTarget:
     iOS: 17.0
 schemes:
-  Develop:
+  Development:
     build:
       targets:
         ReactionDevelop: all
@@ -40,7 +40,7 @@ packages:
     from: 7.8.0
   LicenseList:
     url: https://github.com/cybozu/LicenseList
-    from: 2.0.0
+    from: 2.0.3
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk
     from: 11.6.0

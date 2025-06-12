@@ -222,7 +222,7 @@ class SearchResultViewState: ObservableObject {
 
     private func sorted(_ originalReactionMechanism: [ReactionMechanism]) -> [ReactionMechanism] {
         return originalReactionMechanism.sorted(by: { lhs, rhs in
-            lhs.directoryName < rhs.directoryName
+            lhs.englishName < rhs.englishName
         })
     }
 }

@@ -15,7 +15,7 @@ struct ReactionListRow: View {
         VStack(alignment: .leading) {
             CommonText(text: reactionMechanism.getDisplayTitle(identifier: localeIdentifier), font: Font.system(size: 12))
             if showingThmbnail {
-                ReactionListRowImage(imageUrl: reactionMechanism.thmbnailUrl, placeHolderName: "placeholder-list")
+                ReactionListRowImage(imageUrl: URL(string: reactionMechanism.thumbnailImageUrl)!, placeHolderName: "placeholder-list")
             }
         }
     }

@@ -40,7 +40,7 @@ class SearchResultViewState: ObservableObject {
         }
         Task { @MainActor in
             do {
-                let reactionMechanisms = try await reactionRepository.fetchMechanisms()
+                let reactionMechanisms = try await reactionRepository.fetchMechanisms(reactionsEndpoint: EnvironmentVariable.shared.getReactionsEndpoint)
                 // 検索結果を取得
                 if self.withoutCheck {
                     // チェックしたもの以外を検索

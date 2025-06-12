@@ -48,7 +48,7 @@ class ReactionListViewState: ObservableObject {
         }
         Task { @MainActor in
             do {
-                let reactionMechanisms = try await reactionRepository.fetchMechanisms()
+                let reactionMechanisms = try await reactionRepository.fetchMechanisms(reactionsEndpoint: EnvironmentVariable.shared.getReactionsEndpoint)
                 self.reactionMechanisms = reactionMechanisms
                 self.isFetching = false
             } catch {

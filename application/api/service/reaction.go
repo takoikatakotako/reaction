@@ -136,6 +136,11 @@ func (a *Reaction) GenerateReactions() error {
 		fileReactions = append(fileReactions, fileReaction)
 	}
 
+	// 全体をソートを行う
+	sort.Slice(fileReactions, func(i, j int) bool {
+		return fileReactions[i].EnglishName < fileReactions[j].EnglishName
+	})
+
 	// 全体のリストを保存
 	fileListReactions := file.Reactions{
 		Reactions: fileReactions,

@@ -82,7 +82,7 @@ struct ReactionDetailContent: View {
 
     private func getYoutubeThmbnailUrlString(youtubeUrl: URL) -> URL {
         let youtubePath = youtubeUrl.path
-        return URL(string: "https://img.youtube.com/vi\(youtubePath)/0.jpg")!
+        return URL(string: "https://img.youtube.com/vi\(youtubePath)/hqdefault.jpg")!
     }
 
     private func openUrl(url: URL) {

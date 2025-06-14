@@ -1,0 +1,25 @@
+name: Terraform Format Check
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - terraform/**
+    branches: 
+      - main
+      - develop
+jobs:
+  fmt-check:
+    runs-on: ubuntu-latest
+    name: Check Terraform format
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.4
+
+      - name: Terraform format check
+        run: terraform fmt -check -recursive

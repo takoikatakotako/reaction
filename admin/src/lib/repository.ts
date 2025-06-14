@@ -160,3 +160,21 @@ export async function uploadImage(image: string): Promise<string> {
 }
 
 
+//////////////////////////////////////////////////////////////
+// Generate Reaction
+//////////////////////////////////////////////////////////////
+export async function generateReactions() {
+    const response = await fetch(apiBaseUrl + "/api/reaction/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+
+      console.log(response.body);
+
+      if (!response.ok) {
+        throw new Error('反応機構の更新に失敗しました。');
+      }
+}
+

@@ -7,7 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let userDefaultRepository = UserDefaultRepository()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-
+        
         // Use Firebase library to configure APIs.
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
@@ -20,14 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         application.registerForRemoteNotifications()
 
+        // UserDefaults
         UserDefaultRepository().initilize()
-
+        
+        // Environment
+        guard let reactionsEndpoint = Bundle.main.infoDictionary?["REACTIONS_ENDPOINT"] as? String else {
+            fatalError("Error: Missing RESOURCE_ENDPOINT in Info.plist")
+        }
+        EnvironmentVariable.shared.setReactionsEndpoint(reactionsEndpoint: reactionsEndpoint)
+        
+        // Push Token
         Messaging.messaging().token { token, error in
             if let error = error {
                 print("Error fetching FCM registration token: \(error)")
             } else if let token = token {
                 print("FCM registration token: \(token)")
-                // self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
             }
         }
 

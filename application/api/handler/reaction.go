@@ -6,6 +6,7 @@ import (
 	"github.com/takoikatakotako/reaction/api/handler/response"
 	"github.com/takoikatakotako/reaction/api/service"
 	"github.com/takoikatakotako/reaction/api/service/input"
+	"log/slog"
 	"net/http"
 )
 
@@ -16,6 +17,7 @@ type Reaction struct {
 func (a *Reaction) ListReactionGet(c echo.Context) error {
 	reactions, err := a.Service.GetReactions()
 	if err != nil {
+		slog.Error(err.Error())
 		res := response.Message{Message: "Error!"}
 		return c.JSON(http.StatusInternalServerError, res)
 	}
@@ -33,6 +35,7 @@ func (a *Reaction) GetReactionGet(c echo.Context) error {
 	}
 	reaction, err := a.Service.GetReaction(in)
 	if err != nil {
+		slog.Error(err.Error())
 		res := response.Message{Message: "Error!"}
 		return c.JSON(http.StatusInternalServerError, res)
 	}
@@ -45,6 +48,7 @@ func (a *Reaction) AddReactionPost(c echo.Context) error {
 	// parse request
 	req := new(request.AddReaction)
 	if err := c.Bind(&req); err != nil {
+		slog.Error(err.Error())
 		res := response.Message{Message: "Failed to parse request"}
 		return c.JSON(http.StatusInternalServerError, res)
 	}
@@ -64,6 +68,7 @@ func (a *Reaction) AddReactionPost(c echo.Context) error {
 	}
 	err := a.Service.AddReaction(in)
 	if err != nil {
+		slog.Error(err.Error())
 		res := response.Message{Message: "Error!"}
 		return c.JSON(http.StatusInternalServerError, res)
 	}
@@ -76,6 +81,7 @@ func (a *Reaction) EditReactionPost(c echo.Context) error {
 	// parse request
 	req := new(request.EditReaction)
 	if err := c.Bind(&req); err != nil {
+		slog.Error(err.Error())
 		res := response.Message{Message: "Failed to parse request"}
 		return c.JSON(http.StatusInternalServerError, res)
 	}
@@ -96,6 +102,7 @@ func (a *Reaction) EditReactionPost(c echo.Context) error {
 	}
 	err := a.Service.EditReaction(in)
 	if err != nil {
+		slog.Error(err.Error())
 		res := response.Message{Message: "Error!"}
 		return c.JSON(http.StatusInternalServerError, res)
 	}
@@ -108,6 +115,7 @@ func (a *Reaction) DeleteReactionDelete(c echo.Context) error {
 	// parse request
 	req := new(request.DeleteReaction)
 	if err := c.Bind(&req); err != nil {
+		slog.Error(err.Error())
 		res := response.Message{Message: "Failed to parse request"}
 		return c.JSON(http.StatusInternalServerError, res)
 	}
@@ -117,6 +125,19 @@ func (a *Reaction) DeleteReactionDelete(c echo.Context) error {
 	}
 	err := a.Service.DeleteReaction(in)
 	if err != nil {
+		slog.Error(err.Error())
+		res := response.Message{Message: "Error!"}
+		return c.JSON(http.StatusInternalServerError, res)
+	}
+
+	res := response.Message{Message: "Success!!"}
+	return c.JSON(http.StatusOK, res)
+}
+
+func (a *Reaction) GenerateReactionPost(c echo.Context) error {
+	err := a.Service.GenerateReactions()
+	if err != nil {
+		slog.Error(err.Error())
 		res := response.Message{Message: "Error!"}
 		return c.JSON(http.StatusInternalServerError, res)
 	}

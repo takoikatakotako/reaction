@@ -9,55 +9,55 @@ struct ReactionDetailContent: View {
             CommonText(text: reactionMechanism.getDisplayTitle(identifier: localeIdentifier), font: Font.system(size: 24))
                 .padding(.bottom, 12)
 
-            if !reactionMechanism.generalFormulas.isEmpty {
+            if !reactionMechanism.generalFormulaImageUrls.isEmpty {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-general-formula"), font: Font.system(size: 14))
-                    ForEach(reactionMechanism.generalFormulas, id: \.self) { generalFormula in
-                        CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + generalFormula.imageName))
+                    ForEach(reactionMechanism.generalFormulaImageUrls, id: \.self) { generalFormulaImageUrl in
+                        CommonWebImage(url: URL(string: generalFormulaImageUrl))
                             .scaledToFit()
                             .padding()
                     }
                 }
             }
 
-            if !reactionMechanism.mechanisms.isEmpty {
+            if !reactionMechanism.mechanismsImageUrls.isEmpty {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-reaction-mechanism"), font: Font.system(size: 14))
-                    ForEach(reactionMechanism.mechanisms, id: \.self) { mechanism in
-                        CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + mechanism.imageName))
+                    ForEach(reactionMechanism.mechanismsImageUrls, id: \.self) { mechanismsImageUrl in
+                        CommonWebImage(url: URL(string: mechanismsImageUrl))
                             .scaledToFit()
                             .padding()
                     }
                 }
             }
 
-            if !reactionMechanism.examples.isEmpty {
+            if !reactionMechanism.exampleImageUrls.isEmpty {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-example"), font: Font.system(size: 14))
-                    ForEach(reactionMechanism.examples, id: \.self) { example in
-                        CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + example.imageName))
+                    ForEach(reactionMechanism.exampleImageUrls, id: \.self) { exampleImageUrl in
+                        CommonWebImage(url: URL(string: exampleImageUrl))
                             .scaledToFit()
                             .padding()
                     }
                 }
             }
 
-            if !reactionMechanism.supplements.isEmpty {
+            if !reactionMechanism.supplementsImageUrls.isEmpty {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-supplement"), font: Font.system(size: 14))
-                    ForEach(reactionMechanism.supplements, id: \.self) { supplement in
-                        CommonWebImage(url: URL(string: reactionMechanism.reactionUrlString + supplement.imageName))
+                    ForEach(reactionMechanism.supplementsImageUrls, id: \.self) { supplementsImageUrl in
+                        CommonWebImage(url: URL(string: supplementsImageUrl))
                             .scaledToFit()
                             .padding()
                     }
                 }
             }
 
-            if !reactionMechanism.youtubeLinks.isEmpty {
+            if !reactionMechanism.youtubeUrls.isEmpty {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-movie"), font: Font.system(size: 14))
-                    ForEach(reactionMechanism.youtubeLinks, id: \.self) { youtubeLink in
-                        if let youtubeUrl = URL(string: youtubeLink) {
+                    ForEach(reactionMechanism.youtubeUrls, id: \.self) { youtubeUrl in
+                        if let youtubeUrl = URL(string: youtubeUrl) {
                             Button {
                                 openUrl(url: youtubeUrl)
                             } label: {
@@ -82,7 +82,7 @@ struct ReactionDetailContent: View {
 
     private func getYoutubeThmbnailUrlString(youtubeUrl: URL) -> URL {
         let youtubePath = youtubeUrl.path
-        return URL(string: "https://img.youtube.com/vi\(youtubePath)/0.jpg")!
+        return URL(string: "https://img.youtube.com/vi\(youtubePath)/hqdefault.jpg")!
     }
 
     private func openUrl(url: URL) {

@@ -30,5 +30,5 @@ type EditReaction struct {
 }
 
 type DeleteReaction struct {
-	ID                       string   `json:"id"`
+	ID string `file:"id"`
 }

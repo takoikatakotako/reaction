@@ -45,7 +45,7 @@ struct ReactionDetailView: View {
             ReactionDetailFullScreenView(localeIdentifier: Locale.current.identifier, reactionMechanism: reactionMechanism)
         }
         .sheet(isPresented: $showingSheet, content: {
-            ActivityViewController(activityItems: [URL(string: "https://chemist.swiswiswift.com/reaction/\(reactionMechanism.directoryName)")!])
+            ActivityViewController(activityItems: [URL(string: "https://chemist.swiswiswift.com/reaction/\(reactionMechanism.id)")!])
         })
     }
 }

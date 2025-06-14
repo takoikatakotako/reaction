@@ -1,6 +1,6 @@
 services:
   reaction-localstack:
-    image: localstack/localstack:4.0.3
+    image: localstack/localstack:4.5.0
     ports:
       - "4566:4566"
     environment:

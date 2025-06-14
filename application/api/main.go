@@ -25,8 +25,9 @@ func main() {
 
 	// service
 	reactionService := service.Reaction{
-		AWS:             awsRepository,
-		ResourceBaseURL: env.ResourceBaseURL,
+		AWS:                awsRepository,
+		ResourceBaseURL:    env.ResourceBaseURL,
+		ResourceBucketName: env.ResourceBucketName,
 	}
 	uploadService := service.Upload{
 		AWS:                awsRepository,
@@ -55,6 +56,7 @@ func main() {
 	e.POST("/api/reaction/add", reactionHandler.AddReactionPost)
 	e.POST("/api/reaction/edit", reactionHandler.EditReactionPost)
 	e.DELETE("/api/reaction/delete", reactionHandler.DeleteReactionDelete)
+	e.POST("/api/reaction/generate", reactionHandler.GenerateReactionPost)
 
 	// upload
 	e.POST("/api/generate-upload-url", uploadHandler.GenerateUploadURLPost)

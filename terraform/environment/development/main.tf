@@ -36,7 +36,7 @@ module "root_domain" {
 
 
 ##############################################################
-# Front
+# Admin Front
 ##############################################################
 module "cloudfront_front_certificate" {
   source = "../../modules/cloudfront_certificate"
@@ -58,7 +58,7 @@ module "front" {
 
 
 ##############################################################
-# Admin
+# Admin API
 ##############################################################
 module "cloudfront_admin_certificate" {
   source = "../../modules/cloudfront_certificate"
@@ -73,7 +73,7 @@ module "admin" {
   source                        = "../../modules/admin"
   bucket_name                   = local.admin_bucket_name
   api_lambda_function_image_uri = "392961483375.dkr.ecr.ap-northeast-1.amazonaws.com/reaction-admin"
-  api_lambda_function_image_tag = "137ad9dc9756e550500be5f19cdfc8ce3e6e1069"
+  api_lambda_function_image_tag = "6c1798ea984d23140cfe3f29f1f76e4c45b28f7c"
   acm_certificate_arn           = module.cloudfront_admin_certificate.certificate_arn
   domain                        = local.admin_domain
   zone_id                       = module.root_domain.zone_id

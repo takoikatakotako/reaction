@@ -32,8 +32,7 @@ func (e *Environment) SetResourceBucketName(defaultValue string) {
 
 func (e *Environment) SetDistributionID(defaultValue string) {
 	e.DistributionID = defaultValue
-	if val, exists := os.LookupEnv("DISTRIBUTION_ID"); exists {
+	if val, exists := os.LookupEnv("FRONT_DISTRIBUTION_ID"); exists {
 		e.DistributionID = val
 	}
 }
-

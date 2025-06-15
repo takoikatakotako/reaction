@@ -18,6 +18,7 @@ type Reaction struct {
 	AWS                infrastructure.AWS
 	ResourceBucketName string
 	ResourceBaseURL    string
+	DistributionID     string
 }
 
 func (a *Reaction) GetReactions() ([]output.Reaction, error) {
@@ -148,6 +149,13 @@ func (a *Reaction) GenerateReactions() error {
 	bytes, err := json.Marshal(fileListReactions)
 	objectKey := "resource/reaction/reactions.json"
 	err = a.AWS.PutObject(a.ResourceBucketName, objectKey, bytes, "application/json")
+	if err != nil {
+		return err
+	}
+
+	// キャッシュの削除
+	paths := []string{"/*"}
+	err = a.AWS.CreateInvalidation(a.DistributionID, paths)
 	if err != nil {
 		return err
 	}

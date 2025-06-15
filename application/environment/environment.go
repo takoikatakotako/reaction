@@ -6,6 +6,7 @@ type Environment struct {
 	Profile            string
 	ResourceBaseURL    string
 	ResourceBucketName string
+	DistributionID     string
 }
 
 func (e *Environment) SetReactionAWSProfile(defaultValue string) {
@@ -28,3 +29,11 @@ func (e *Environment) SetResourceBucketName(defaultValue string) {
 		e.ResourceBucketName = val
 	}
 }
+
+func (e *Environment) SetDistributionID(defaultValue string) {
+	e.DistributionID = defaultValue
+	if val, exists := os.LookupEnv("DISTRIBUTION_ID"); exists {
+		e.DistributionID = val
+	}
+}
+

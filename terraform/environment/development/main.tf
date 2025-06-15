@@ -73,7 +73,7 @@ module "admin" {
   source                        = "../../modules/admin"
   bucket_name                   = local.admin_bucket_name
   api_lambda_function_image_uri = "392961483375.dkr.ecr.ap-northeast-1.amazonaws.com/reaction-admin"
-  api_lambda_function_image_tag = "786ba6bb014999a7ead5d0095c25911e9334bcf5"
+  api_lambda_function_image_tag = "6ce148c95d4126b62b63fc248769b0b6f88059d6"
   acm_certificate_arn           = module.cloudfront_admin_certificate.certificate_arn
   domain                        = local.admin_domain
   zone_id                       = module.root_domain.zone_id

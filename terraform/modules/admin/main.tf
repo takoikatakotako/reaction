@@ -52,9 +52,9 @@ resource "aws_lambda_function" "api_lambda_function" {
 
   environment {
     variables = {
-      "REACTION_AWS_PROFILE" = "",
-      "RESOURCE_BUCKET_NAME" = var.resource_bucket_name
-      "RESOURCE_BASE_URL"    = var.resource_base_url
+      "REACTION_AWS_PROFILE"  = "",
+      "RESOURCE_BUCKET_NAME"  = var.resource_bucket_name
+      "RESOURCE_BASE_URL"     = var.resource_base_url
       "FRONT_DISTRIBUTION_ID" = var.front_distribution_id
     }
   }

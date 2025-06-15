@@ -30,6 +30,10 @@ variable "resource_base_url" {
   type = string
 }
 
+# キャッシュ削除用のCloudfrontのID
+variable "front_distribution_id" {
+  type = string
+}
 
 
 

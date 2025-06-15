@@ -17,6 +17,7 @@ func main() {
 
 	env.SetResourceBaseURL("http://localhost:4566")
 	env.SetResourceBucketName("resource.reaction-local.swiswiswift.com")
+	env.SetDistributionID("")
 
 	// infrastructure
 	awsRepository := infrastructure.AWS{
@@ -28,6 +29,7 @@ func main() {
 		AWS:                awsRepository,
 		ResourceBaseURL:    env.ResourceBaseURL,
 		ResourceBucketName: env.ResourceBucketName,
+		DistributionID:     env.DistributionID,
 	}
 	uploadService := service.Upload{
 		AWS:                awsRepository,

@@ -74,6 +74,15 @@ data "aws_iam_policy_document" "api_lambda_function_role_policy_document" {
     ]
     resources = ["*"]
   }
+
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "cloudfront:*",
+    ]
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "api_lambda_function_role_policy_attachment" {

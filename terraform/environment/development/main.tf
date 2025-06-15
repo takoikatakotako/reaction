@@ -36,7 +36,7 @@ module "root_domain" {
 
 
 ##############################################################
-# Admin Front
+# Front
 ##############################################################
 module "cloudfront_front_certificate" {
   source = "../../modules/cloudfront_certificate"
@@ -58,7 +58,7 @@ module "front" {
 
 
 ##############################################################
-# Admin API
+# Admin
 ##############################################################
 module "cloudfront_admin_certificate" {
   source = "../../modules/cloudfront_certificate"
@@ -79,6 +79,7 @@ module "admin" {
   zone_id                       = module.root_domain.zone_id
   resource_bucket_name          = "resource.reaction-development.swiswiswift.com"
   resource_base_url             = "https://reaction-development.swiswiswift.com/resource/image"
+  front_distribution_id         = module.front.distribution_id
 }
 
 module "admin_database" {

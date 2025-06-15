@@ -17,7 +17,6 @@ func main() {
 
 	env.SetResourceBaseURL("http://localhost:4566")
 	env.SetResourceBucketName("resource.reaction-local.swiswiswift.com")
-	env.Set
 
 	// infrastructure
 	awsRepository := infrastructure.AWS{

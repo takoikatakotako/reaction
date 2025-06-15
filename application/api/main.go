@@ -28,6 +28,7 @@ func main() {
 		AWS:                awsRepository,
 		ResourceBaseURL:    env.ResourceBaseURL,
 		ResourceBucketName: env.ResourceBucketName,
+		DistributionID:     env.DistributionID,
 	}
 	uploadService := service.Upload{
 		AWS:                awsRepository,

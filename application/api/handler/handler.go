@@ -2,10 +2,14 @@ package handler
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 )
 
 func checkAuthHeader(authHeader string, apiKey string) error {
+	text := fmt.Sprintf("AuthHeader: %s, API Key: %s\n", authHeader, apiKey)
+	fmt.Println(text)
+	
 	if authHeader == "" {
 		return errors.New("missing Authorization header")
 	}

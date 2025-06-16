@@ -42,7 +42,7 @@ jobs:
     - name: Build Admin Front
       working-directory: admin
       env:
-        SUPER_SECRET: ${{ secrets.DEVELOPMENT_NEXT_PUBLIC_API_KEY }}
+        DEVELOPMENT_NEXT_PUBLIC_API_KEY: ${{ secrets.DEVELOPMENT_NEXT_PUBLIC_API_KEY }}
       run: make build-development
 
     - name: Build Admin Front

@@ -47,5 +47,5 @@ jobs:
     - name: Format Check
       working-directory: admin
       run: |
-      	pnpm install
+        pnpm install
         pnpm prettier --check "**/*.tsx"

@@ -10,13 +10,7 @@ const resourceBaseUrl = process.env.NEXT_PUBLIC_RESOURCE_BASE_URL;
 // Fetch Reactions
 //////////////////////////////////////////////////////////////
 export async function fetchReactions(): Promise<entity.Reaction[]> {
-    const response = await fetch(apiBaseUrl + "/api/reaction/list", {
-      method: "GET",
-      headers: {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json", // 必要に応じて
-      },
-    });
+    const response = await fetch(apiBaseUrl + "/api/reaction/list");
     const reactionList: entity.ReactionList = await response.json();
     return reactionList.reactions;
 }
@@ -39,6 +33,7 @@ export async function addReaction(addReaction: entity.AddReaction) {
     const response = await fetch(apiBaseUrl + "/api/reaction/add", {
         method: "POST",
         headers: {
+          "Authorization": `Bearer ${apiKey}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -69,6 +64,7 @@ export async function editReaction(editReaction: entity.EditReaction) {
     const response = await fetch(apiBaseUrl + "/api/reaction/edit", {
         method: "POST",
         headers: {
+          "Authorization": `Bearer ${apiKey}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -100,6 +96,7 @@ export async function deleteReaction(id: string) {
     const response = await fetch(apiBaseUrl + "/api/reaction/delete", {
         method: "DELETE",
         headers: {
+          "Authorization": `Bearer ${apiKey}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -120,6 +117,7 @@ export async function generateUploadUrl(imageName: string) {
     const response = await fetch(apiBaseUrl + "/api/generate-upload-url", {
       method: "POST",
       headers: {
+        "Authorization": `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -173,6 +171,7 @@ export async function generateReactions() {
     const response = await fetch(apiBaseUrl + "/api/reaction/generate", {
         method: "POST",
         headers: {
+          "Authorization": `Bearer ${apiKey}`,
           "Content-Type": "application/json",
         }
       });

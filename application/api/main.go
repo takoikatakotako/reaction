@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/takoikatakotako/reaction/api/handler"
@@ -20,8 +19,6 @@ func main() {
 	env.SetResourceBaseURL("http://localhost:4566")
 	env.SetResourceBucketName("resource.reaction-local.swiswiswift.com")
 	env.SetDistributionID("")
-
-	fmt.Printf("API KEY: %s", env.APIKey)
 
 	// infrastructure
 	awsRepository := infrastructure.AWS{

@@ -15,6 +15,7 @@ func main() {
 	env.SetReactionAWSProfile("local")
 	//env.SetReactionAWSProfile("reaction-development")
 
+	env.SetAPIKey("dummy-api-key")
 	env.SetResourceBaseURL("http://localhost:4566")
 	env.SetResourceBucketName("resource.reaction-local.swiswiswift.com")
 	env.SetDistributionID("")

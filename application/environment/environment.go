@@ -4,6 +4,7 @@ import "os"
 
 type Environment struct {
 	Profile            string
+	APIKey             string
 	ResourceBaseURL    string
 	ResourceBucketName string
 	DistributionID     string
@@ -13,6 +14,13 @@ func (e *Environment) SetReactionAWSProfile(defaultValue string) {
 	e.Profile = defaultValue
 	if val, exists := os.LookupEnv("REACTION_AWS_PROFILE"); exists {
 		e.Profile = val
+	}
+}
+
+func (e *Environment) SetAPIKey(defaultValue string) {
+	e.APIKey = defaultValue
+	if val, exists := os.LookupEnv("API_KEY"); exists {
+		e.APIKey = val
 	}
 }
 

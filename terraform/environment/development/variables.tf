@@ -48,3 +48,7 @@ locals {
   # ios_voip_push_private_filename     = "development-voip-expiration-20260408-privatekey.pem"
   # datadog_log_forwarder_arn          = "arn:aws:lambda:ap-northeast-1:397693451628:function:datadog-forwarder"
 }
+
+variable "admin_api_key" {
+  type = string
+}

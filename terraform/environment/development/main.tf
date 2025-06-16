@@ -73,12 +73,13 @@ module "admin" {
   source                        = "../../modules/admin"
   bucket_name                   = local.admin_bucket_name
   api_lambda_function_image_uri = "392961483375.dkr.ecr.ap-northeast-1.amazonaws.com/reaction-admin"
-  api_lambda_function_image_tag = "6ce148c95d4126b62b63fc248769b0b6f88059d6"
+  api_lambda_function_image_tag = "18bbbbcf602c4e51f705d3bade358b09e34b750e"
   acm_certificate_arn           = module.cloudfront_admin_certificate.certificate_arn
   domain                        = local.admin_domain
   zone_id                       = module.root_domain.zone_id
   resource_bucket_name          = "resource.reaction-development.swiswiswift.com"
   resource_base_url             = "https://reaction-development.swiswiswift.com/resource/image"
+  api_key                       = var.admin_api_key
   front_distribution_id         = module.front.distribution_id
 }
 

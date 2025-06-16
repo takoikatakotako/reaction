@@ -30,12 +30,14 @@ variable "resource_base_url" {
   type = string
 }
 
+variable "api_key" {
+  type = string
+}
+
 # キャッシュ削除用のCloudfrontのID
 variable "front_distribution_id" {
   type = string
 }
-
-
 
 data "aws_caller_identity" "current" {}
 

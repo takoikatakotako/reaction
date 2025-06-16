@@ -15,6 +15,7 @@ func main() {
 	env.SetReactionAWSProfile("local")
 	//env.SetReactionAWSProfile("reaction-development")
 
+	env.SetAPIKey("dummy-api-key")
 	env.SetResourceBaseURL("http://localhost:4566")
 	env.SetResourceBucketName("resource.reaction-local.swiswiswift.com")
 	env.SetDistributionID("")
@@ -39,6 +40,7 @@ func main() {
 	// handler
 	healthcheckHandler := handler.Healthcheck{}
 	reactionHandler := handler.Reaction{
+		APIKey:  env.APIKey,
 		Service: reactionService,
 	}
 	uploadHandler := handler.Upload{

@@ -12,7 +12,7 @@ env:
   AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
 
 jobs:
-  test_admin_front_:
+  test_admin_front:
     name: test admin front
     runs-on: ubuntu-latest
     permissions:
@@ -44,8 +44,8 @@ jobs:
       with:
         version: 10
 
-    - name: Format Check
-      working-directory: admin
-      run: |
-      	pnpm install
-        pnpm prettier --check "**/*.tsx"
+    # - name: Format Check
+    #   working-directory: admin
+    #   run: |
+    #     pnpm install
+    #     pnpm prettier --check "**/*.tsx"

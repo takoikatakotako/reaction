@@ -12,6 +12,7 @@ import (
 
 type Reaction struct {
 	Service service.Reaction
+	APIKey  string
 }
 
 func (a *Reaction) ListReactionGet(c echo.Context) error {
@@ -45,6 +46,14 @@ func (a *Reaction) GetReactionGet(c echo.Context) error {
 }
 
 func (a *Reaction) AddReactionPost(c echo.Context) error {
+	// Check Auth Header
+	authHeader := c.Request().Header.Get("Authorization")
+	err := checkAuthHeader(authHeader, a.APIKey)
+	if err != nil {
+		res := response.Message{Message: "Error!"}
+		return c.JSON(http.StatusForbidden, res)
+	}
+
 	// parse request
 	req := new(request.AddReaction)
 	if err := c.Bind(&req); err != nil {
@@ -66,7 +75,7 @@ func (a *Reaction) AddReactionPost(c echo.Context) error {
 		Products:                 req.Products,
 		YoutubeUrls:              req.YoutubeUrls,
 	}
-	err := a.Service.AddReaction(in)
+	err = a.Service.AddReaction(in)
 	if err != nil {
 		slog.Error(err.Error())
 		res := response.Message{Message: "Error!"}
@@ -78,6 +87,14 @@ func (a *Reaction) AddReactionPost(c echo.Context) error {
 }
 
 func (a *Reaction) EditReactionPost(c echo.Context) error {
+	// Check Auth Header
+	authHeader := c.Request().Header.Get("Authorization")
+	err := checkAuthHeader(authHeader, a.APIKey)
+	if err != nil {
+		res := response.Message{Message: "Error!"}
+		return c.JSON(http.StatusForbidden, res)
+	}
+
 	// parse request
 	req := new(request.EditReaction)
 	if err := c.Bind(&req); err != nil {
@@ -100,7 +117,7 @@ func (a *Reaction) EditReactionPost(c echo.Context) error {
 		Products:                 req.Products,
 		YoutubeUrls:              req.YoutubeUrls,
 	}
-	err := a.Service.EditReaction(in)
+	err = a.Service.EditReaction(in)
 	if err != nil {
 		slog.Error(err.Error())
 		res := response.Message{Message: "Error!"}
@@ -112,6 +129,14 @@ func (a *Reaction) EditReactionPost(c echo.Context) error {
 }
 
 func (a *Reaction) DeleteReactionDelete(c echo.Context) error {
+	// Check Auth Header
+	authHeader := c.Request().Header.Get("Authorization")
+	err := checkAuthHeader(authHeader, a.APIKey)
+	if err != nil {
+		res := response.Message{Message: "Error!"}
+		return c.JSON(http.StatusForbidden, res)
+	}
+
 	// parse request
 	req := new(request.DeleteReaction)
 	if err := c.Bind(&req); err != nil {
@@ -123,7 +148,7 @@ func (a *Reaction) DeleteReactionDelete(c echo.Context) error {
 	in := input.DeleteReaction{
 		ID: req.ID,
 	}
-	err := a.Service.DeleteReaction(in)
+	err = a.Service.DeleteReaction(in)
 	if err != nil {
 		slog.Error(err.Error())
 		res := response.Message{Message: "Error!"}
@@ -135,7 +160,15 @@ func (a *Reaction) DeleteReactionDelete(c echo.Context) error {
 }
 
 func (a *Reaction) GenerateReactionPost(c echo.Context) error {
-	err := a.Service.GenerateReactions()
+	// Check Auth Header
+	authHeader := c.Request().Header.Get("Authorization")
+	err := checkAuthHeader(authHeader, a.APIKey)
+	if err != nil {
+		res := response.Message{Message: "Error!"}
+		return c.JSON(http.StatusForbidden, res)
+	}
+
+	err = a.Service.GenerateReactions()
 	if err != nil {
 		slog.Error(err.Error())
 		res := response.Message{Message: "Error!"}

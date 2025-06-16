@@ -1,7 +1,11 @@
+NEXT_PUBLIC_API_BASE_URL := https://admin.reaction-development.swiswiswift.com
+NEXT_PUBLIC_RESOURCE_BASE_URL := https://reaction-development.swiswiswift.com/resource/image
 
 .PHONY: build-development
 build-development:
 	pnpm install
+	NEXT_PUBLIC_API_BASE_URL=$(NEXT_PUBLIC_API_BASE_URL) \
+	NEXT_PUBLIC_RESOURCE_BASE_URL=$(NEXT_PUBLIC_RESOURCE_BASE_URL) \
 	pnpm build
 
 .PHONY: deploy-development

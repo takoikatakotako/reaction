@@ -1,4 +1,4 @@
-name: Deploy Admin Front
+name: Deploy Admin Front Development
 
 on:
   workflow_dispatch:
@@ -7,8 +7,8 @@ env:
   AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
 
 jobs:
-  deploy_admin_front:
-    name: build admin front
+  deploy_admin_front_development:
+    name: build admin front development
     runs-on: ubuntu-latest
     permissions:
       id-token: write

@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import * as entity from '@/lib/entity';
 
+const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 const resourceBaseUrl = process.env.NEXT_PUBLIC_RESOURCE_BASE_URL;
 
@@ -9,10 +10,15 @@ const resourceBaseUrl = process.env.NEXT_PUBLIC_RESOURCE_BASE_URL;
 // Fetch Reactions
 //////////////////////////////////////////////////////////////
 export async function fetchReactions(): Promise<entity.Reaction[]> {
-    const response = await fetch(apiBaseUrl + "/api/reaction/list") 
+    const response = await fetch(apiBaseUrl + "/api/reaction/list", {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json", // 必要に応じて
+      },
+    });
     const reactionList: entity.ReactionList = await response.json();
-    const reactions = reactionList.reactions
-    return reactions;
+    return reactionList.reactions;
 }
 
 

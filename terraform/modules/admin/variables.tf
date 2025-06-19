@@ -39,6 +39,14 @@ variable "front_distribution_id" {
   type = string
 }
 
+variable "admin_user" {
+  type = string
+}
+
+variable "admin_password" {
+  type = string
+}
+
 data "aws_caller_identity" "current" {}
 
 locals {

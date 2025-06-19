@@ -2,8 +2,8 @@ function handler(event) {
     var request = event.request;
     var headers = request.headers;
 
-    var username = 'admin';
-    var password = 'password';
+    var username = '${admin_user}';
+    var password = '${admin_password}';
     var expectedAuth = 'Basic ' + btoa(username + ':' + password);
 
     if (!headers.authorization || headers.authorization.value !== expectedAuth) {

@@ -52,3 +52,11 @@ locals {
 variable "admin_api_key" {
   type = string
 }
+
+variable "admin_user" {
+  type = string
+}
+
+variable "admin_password" {
+  type = string
+}

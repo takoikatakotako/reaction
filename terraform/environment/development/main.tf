@@ -81,6 +81,8 @@ module "admin" {
   resource_base_url             = "https://reaction-development.swiswiswift.com/resource/image"
   api_key                       = var.admin_api_key
   front_distribution_id         = module.front.distribution_id
+  admin_user                    = var.admin_user
+  admin_password                = var.admin_password
 }
 
 module "admin_database" {

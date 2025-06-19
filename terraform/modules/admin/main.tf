@@ -82,7 +82,10 @@ resource "aws_cloudfront_function" "basic_auth_function" {
   name    = "admin-basic-auth-function"
   publish = true
   runtime = "cloudfront-js-2.0"
-  code    = file("${path.module}/basic-auth-function.js")
+  code = templatefile("${path.module}/basic-auth-function.js", {
+    admin_user     = var.admin_user,
+    admin_password = var.admin_password,
+  })
 }
 
 

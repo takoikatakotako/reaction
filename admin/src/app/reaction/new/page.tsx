@@ -154,6 +154,11 @@ export default function AboutPage() {
       if (hasEmptyReactant) {
         throw new Error('Reactantsで「選択してください」のままの項目があります');
       }
+      // Validate products
+      const hasEmptyProduct = products.some(product => !product || product === '');
+      if (hasEmptyProduct) {
+        throw new Error('Productsで「選択してください」のままの項目があります');
+      }
       const thumbnailImageName = service.extractImageName(thumbnailImageURL);
       const generalFormulaImageNames = service.extractImageNames(
         generalFormulaImageURLs

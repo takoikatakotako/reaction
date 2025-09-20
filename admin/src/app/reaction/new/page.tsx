@@ -149,6 +149,12 @@ export default function AboutPage() {
       if (!thumbnailImageURL) {
         throw new Error('サムネイルが入力されていません');
       }
+
+      // Validate reactants
+      const hasEmptyReactant = reactants.some(reactant => !reactant || reactant === '');
+      if (hasEmptyReactant) {
+        throw new Error('Reactantsで「選択してください」のままの項目があります');
+      }
       const thumbnailImageName = service.extractImageName(thumbnailImageURL);
       const generalFormulaImageNames = service.extractImageNames(
         generalFormulaImageURLs

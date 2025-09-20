@@ -150,6 +150,12 @@ export default function EditUser() {
   // Edit Submit
   const onEditSubmit = async () => {
     try {
+      // Validate reactants
+      const hasEmptyReactant = reactants.some(reactant => !reactant || reactant === '');
+      if (hasEmptyReactant) {
+        throw new Error('Reactantsで「選択してください」のままの項目があります');
+      }
+
       const thumbnailImageName = service.extractImageName(thumbnailImageURL);
       const generalFormulaImageNames = service.extractImageNames(
         generalFormulaImageURLs

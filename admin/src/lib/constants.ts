@@ -18,3 +18,24 @@ export const REACTANT_OPTIONS = [
   'Halogene-AlkylHalide',
   'Halogene-Other',
 ];
+
+export const PRODUCT_OPTIONS = [
+  'Alcohol',
+  'Alkene/Alkyne',
+  'Amine',
+  'Aromatic_Ring',
+  'Aromatic_Ring-Hetroaromatic_Ring',
+  'Aromtic_Ring-Benzene',
+  'Carbonyl',
+  'Carbonyl-Aldehyde',
+  'Carbonyl-Carboxylic_Acid_Drivative',
+  'Carbonyl-Carboxylic_Acid_Drivative-Acid_Anhydride',
+  'Carbonyl-Carboxylic_Acid_Drivative-Acid_Halide',
+  'Carbonyl-Carboxylic_Acid_Drivative-Amide',
+  'Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid',
+  'Carbonyl-Carboxylic_Acid_Drivative-Ester',
+  'Carbonyl-Ketone',
+  'Halogene',
+  'Halogene-AlkylHalide',
+  'Halogene-Other',
+];

@@ -36,6 +36,10 @@ func main() {
 		AWS:                awsRepository,
 		ResourceBucketName: env.ResourceBucketName,
 	}
+	exportService := service.Export{
+		AWS:                awsRepository,
+		ResourceBucketName: env.ResourceBucketName,
+	}
 
 	// handler
 	healthcheckHandler := handler.Healthcheck{}
@@ -45,6 +49,10 @@ func main() {
 	}
 	uploadHandler := handler.Upload{
 		Service: uploadService,
+	}
+	exportHandler := handler.Export{
+		APIKey:  env.APIKey,
+		Service: exportService,
 	}
 
 	e := echo.New()
@@ -62,8 +70,11 @@ func main() {
 	e.DELETE("/api/reaction/delete", reactionHandler.DeleteReactionDelete)
 	e.POST("/api/reaction/generate", reactionHandler.GenerateReactionPost)
 
-	// upload
+	// generate-upload-url
 	e.POST("/api/generate-upload-url", uploadHandler.GenerateUploadURLPost)
+
+	// export
+	e.POST("/api/export/s3", exportHandler.ExportS3Post)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }

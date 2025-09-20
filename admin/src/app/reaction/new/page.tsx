@@ -5,10 +5,12 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import TextInputField from '../common/TextInputField';
 import TextsInputField from '../common/TextsInputField';
+import SelectField from '../common/SelectField';
 import ImageInputField from '../common/ImageInputField';
 import ImagesInputField from '../common/ImagesInputField';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
+import { REACTANT_OPTIONS, PRODUCT_OPTIONS } from '@/lib/constants';
 
 export default function AboutPage() {
   // Router
@@ -105,28 +107,26 @@ export default function AboutPage() {
 
   // Reactants
   const [reactants, setReactants] = useState<string[]>([]);
-  const onReactansChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => service.handleTextsChange(e, index, setReactants, reactants);
-  const onReactionsDelete = (index: number) => {
-    service.handleTextDelete(index, setReactants);
+  const onReactantsSelectionChange = (selectedValues: string[]) => {
+    service.handleSelectionChange(selectedValues, setReactants);
   };
-  const onReactionsAdd = () => {
-    service.handleTextsAdd(setReactants, reactants);
+  const onReactantsDelete = (index: number) => {
+    service.handleSelectionDelete(index, setReactants);
+  };
+  const onReactantsAdd = () => {
+    service.handleSelectionAdd(setReactants, reactants);
   };
 
   // Products
   const [products, setProducts] = useState<string[]>([]);
-  const onProductsChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => service.handleTextsChange(e, index, setProducts, products);
+  const onProductsSelectionChange = (selectedValues: string[]) => {
+    service.handleSelectionChange(selectedValues, setProducts);
+  };
   const onProductsDelete = (index: number) => {
-    service.handleTextDelete(index, setProducts);
+    service.handleSelectionDelete(index, setProducts);
   };
   const onProductsAdd = () => {
-    service.handleTextsAdd(setProducts, products);
+    service.handleSelectionAdd(setProducts, products);
   };
 
   // YoutubeURLs
@@ -147,6 +147,17 @@ export default function AboutPage() {
     try {
       if (!thumbnailImageURL) {
         throw new Error('サムネイルが入力されていません');
+      }
+
+      // Validate reactants
+      const hasEmptyReactant = reactants.some(reactant => !reactant || reactant === '');
+      if (hasEmptyReactant) {
+        throw new Error('Reactantsで「選択してください」のままの項目があります');
+      }
+      // Validate products
+      const hasEmptyProduct = products.some(product => !product || product === '');
+      if (hasEmptyProduct) {
+        throw new Error('Productsで「選択してください」のままの項目があります');
       }
       const thumbnailImageName = service.extractImageName(thumbnailImageURL);
       const generalFormulaImageNames = service.extractImageNames(
@@ -263,23 +274,25 @@ export default function AboutPage() {
         />
 
         {/* Reactants */}
-        <TextsInputField
+        <SelectField
           label="reactants"
           name="Reactants"
-          texts={reactants}
-          onTextsChange={onReactansChange}
-          onTextsDelete={onReactionsDelete}
-          onTextsAdd={onReactionsAdd}
+          options={REACTANT_OPTIONS}
+          selectedValues={reactants}
+          onSelectionChange={onReactantsSelectionChange}
+          onSelectionAdd={onReactantsAdd}
+          onSelectionDelete={onReactantsDelete}
         />
 
         {/* Products */}
-        <TextsInputField
+        <SelectField
           label="products"
           name="Products"
-          texts={products}
-          onTextsChange={onProductsChange}
-          onTextsDelete={onProductsDelete}
-          onTextsAdd={onProductsAdd}
+          options={PRODUCT_OPTIONS}
+          selectedValues={products}
+          onSelectionChange={onProductsSelectionChange}
+          onSelectionAdd={onProductsAdd}
+          onSelectionDelete={onProductsDelete}
         />
 
         {/* Youtube */}

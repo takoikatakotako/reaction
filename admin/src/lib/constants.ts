@@ -1,82 +1,20 @@
 export const REACTANT_OPTIONS = [
-  // アルコール類
-  'メタノール',
-  'エタノール',
-  'プロパノール',
-  'ブタノール',
-  'ベンジルアルコール',
-  'フェノール',
-
-  // アルデヒド・ケトン類
-  'ホルムアルデヒド',
-  'アセトアルデヒド',
-  'ベンズアルデヒド',
-  'アセトン',
-  'ブタノン',
-  'ベンゾフェノン',
-
-  // カルボン酸類
-  '酢酸',
-  'プロピオン酸',
-  '安息香酸',
-  'サリチル酸',
-
-  // エステル類
-  '酢酸エチル',
-  '酢酸メチル',
-  '安息香酸メチル',
-
-  // アミン類
-  'メチルアミン',
-  'エチルアミン',
-  'アニリン',
-  'ジメチルアミン',
-  'トリエチルアミン',
-
-  // ハロゲン化合物
-  'ブロモベンゼン',
-  'クロロベンゼン',
-  'ヨードベンゼン',
-  '塩化ベンゾイル',
-
-  // 芳香族化合物
-  'ベンゼン',
-  'トルエン',
-  'ナフタレン',
-  'ピリジン',
-  'フラン',
-  'チオフェン',
-
-  // アルケン・アルキン
-  'エチレン',
-  'プロピレン',
-  'ブテン',
-  'アセチレン',
-  'スチレン',
-
-  // 試薬・触媒
-  '水素化ホウ素ナトリウム',
-  '水素化アルミニウムリチウム',
-  'グリニャール試薬',
-  'パラジウム触媒',
-  'ニッケル触媒',
-  '酸化クロム',
-  '過マンガン酸カリウム',
-  '過酸化水素',
-  'オゾン',
-
-  // 無機化合物
-  '水酸化ナトリウム',
-  '硫酸',
-  '塩酸',
-  '硝酸',
-  'アンモニア',
-  '水',
-
-  // その他
-  'グルコース',
-  'フルクトース',
-  'ショ糖',
-  'グリセリン',
-  'エチレングリコール'
+  'Alcohol',
+  'Alkene/Alkyne',
+  'Amine',
+  'Aromatic_Ring',
+  'Aromatic_Ring-Hetroaromatic_Ring',
+  'Aromtic_Ring-Benzene',
+  'Carbonyl',
+  'Carbonyl-Aldehyde',
+  'Carbonyl-Carboxylic_Acid_Drivative',
+  'Carbonyl-Carboxylic_Acid_Drivative-Acid_Anhydride',
+  'Carbonyl-Carboxylic_Acid_Drivative-Acid_Halide',
+  'Carbonyl-Carboxylic_Acid_Drivative-Amide',
+  'Carbonyl-Carboxylic_Acid_Drivative-Caboxylic_Acid',
+  'Carbonyl-Carboxylic_Acid_Drivative-Ester',
+  'Carbonyl-Ketone',
+  'Halogene',
+  'Halogene-AlkylHalide',
+  'Halogene-Other',
 ];

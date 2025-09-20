@@ -41,7 +41,7 @@ export default function SelectField({
                   width: '100%',
                   padding: '8px',
                   fontSize: '16px',
-                  border: '1px solid #ccc',
+                  border: 'none',
                   borderRadius: '4px',
                   backgroundColor: 'white'
                 }}

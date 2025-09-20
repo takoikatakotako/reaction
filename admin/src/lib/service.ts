@@ -249,7 +249,7 @@ export const handleSelectionAdd = (
 
 
 //////////////////////////////////////////////////////////////
-// Vlidator
+// Validator
 //////////////////////////////////////////////////////////////
 // function isValidUUID(value: string | null | undefined): boolean {
 //   if (!value || value.trim().length === 0) {

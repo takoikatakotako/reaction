@@ -84,7 +84,7 @@ export async function editReaction(editReaction: entity.EditReaction) {
       });
 
       if (!response.ok) {
-        throw new Error('反応機構の追加に失敗しました。');
+        throw new Error('反応機構の編集に失敗しました。');
       }
 }
 

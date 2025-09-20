@@ -5,10 +5,12 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import TextInputField from '../common/TextInputField';
 import TextsInputField from '../common/TextsInputField';
+import SelectField from '../common/SelectField';
 import ImageInputField from '../common/ImageInputField';
 import ImagesInputField from '../common/ImagesInputField';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
+import { REACTANT_OPTIONS } from '@/lib/constants';
 
 export default function EditUser() {
   // ID
@@ -109,15 +111,14 @@ export default function EditUser() {
 
   // Reactants
   const [reactants, setReactants] = useState<string[]>([]);
-  const onReactansChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => service.handleTextsChange(e, index, setReactants, reactants);
-  const onReactionsDelete = (index: number) => {
-    service.handleTextDelete(index, setReactants);
+  const onReactantsSelectionChange = (selectedValues: string[]) => {
+    service.handleSelectionChange(selectedValues, setReactants);
   };
-  const onReactionsAdd = () => {
-    service.handleTextsAdd(setReactants, reactants);
+  const onReactantsDelete = (index: number) => {
+    service.handleSelectionDelete(index, setReactants);
+  };
+  const onReactantsAdd = () => {
+    service.handleSelectionAdd(setReactants, reactants);
   };
 
   // Products
@@ -312,13 +313,14 @@ export default function EditUser() {
         />
 
         {/* Reactants */}
-        <TextsInputField
+        <SelectField
           label="reactants"
           name="Reactants"
-          texts={reactants}
-          onTextsChange={onReactansChange}
-          onTextsDelete={onReactionsDelete}
-          onTextsAdd={onReactionsAdd}
+          options={REACTANT_OPTIONS}
+          selectedValues={reactants}
+          onSelectionChange={onReactantsSelectionChange}
+          onSelectionAdd={onReactantsAdd}
+          onSelectionDelete={onReactantsDelete}
         />
 
         {/* Products */}

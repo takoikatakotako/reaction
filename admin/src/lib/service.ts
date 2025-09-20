@@ -20,8 +20,8 @@ export const handleImagesChange = (
     reader.onloadend = async () => {
       const base64String = reader.result as string;
       try {
-        const iamgeURL = await repository.uploadImage(base64String);
-        setImageUrls([...imageUrls, iamgeURL]);          
+        const imageURL = await repository.uploadImage(base64String);
+        setImageUrls([...imageUrls, imageURL]);          
       } catch (error) {
         alert(`画像のアップロードに失敗しました:\n${error}`);
       }
@@ -213,6 +213,39 @@ export async function generateReactions() {
 }
 
 
+
+
+//////////////////////////////////////////////////////////////
+// Handle Selection Change
+//////////////////////////////////////////////////////////////
+export const handleSelectionChange = (
+  selectedValues: string[],
+  setSelectedValues: React.Dispatch<React.SetStateAction<string[]>>
+) => {
+  setSelectedValues(selectedValues);
+};
+
+
+//////////////////////////////////////////////////////////////
+// Handle Selection Delete
+//////////////////////////////////////////////////////////////
+export const handleSelectionDelete = (
+  index: number,
+  setSelectedValues: React.Dispatch<React.SetStateAction<string[]>>,
+) => {
+  setSelectedValues((prev) => prev.filter((_, idx) => idx !== index));
+};
+
+
+//////////////////////////////////////////////////////////////
+// Handle Selection Add
+//////////////////////////////////////////////////////////////
+export const handleSelectionAdd = (
+  setSelectedValues: React.Dispatch<React.SetStateAction<string[]>>,
+  selectedValues: string[],
+) => {
+  setSelectedValues([...selectedValues, '']);
+};
 
 
 //////////////////////////////////////////////////////////////

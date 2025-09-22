@@ -13,28 +13,6 @@ type Export struct {
 	APIKey  string
 }
 
-func (e *Export) ExportReactionsGet(c echo.Context) error {
-	// Check Auth Header
-	authHeader := c.Request().Header.Get("Authorization")
-	err := checkAuthHeader(authHeader, e.APIKey)
-	if err != nil {
-		res := response.Message{Message: "Error!"}
-		return c.JSON(http.StatusForbidden, res)
-	}
-
-	reactions, err := e.Service.GetReactions()
-	if err != nil {
-		slog.Error(err.Error())
-		res := response.Message{Message: "Error!"}
-		return c.JSON(http.StatusInternalServerError, res)
-	}
-
-	res := response.GetReactions{
-		Reactions: convertToResponseReactions(reactions),
-	}
-	return c.JSON(http.StatusOK, res)
-}
-
 func (e *Export) ExportS3Post(c echo.Context) error {
 	// Check Auth Header
 	authHeader := c.Request().Header.Get("Authorization")

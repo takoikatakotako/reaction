@@ -1,0 +1,57 @@
+name: Deploy Admin API Development
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_uri:
+        description: 'Docker image URI to deploy'
+        required: true
+        type: string
+        default: '392961483375.dkr.ecr.ap-northeast-1.amazonaws.com/reaction-admin:latest'
+
+env:
+  AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
+  LAMBDA_FUNCTION_NAME: reaction-admin-api-development
+
+jobs:
+  deploy:
+    name: Deploy Admin API to Development
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        role-session-name: github-action-role-${{ github.run_id }}
+        aws-region: ap-northeast-1
+
+    - name: Update Lambda function image
+      run: |
+        echo "Updating Lambda function: ${{ env.LAMBDA_FUNCTION_NAME }}"
+        echo "New image URI: ${{ github.event.inputs.image_uri }}"
+
+        aws lambda update-function-code \
+          --function-name ${{ env.LAMBDA_FUNCTION_NAME }} \
+          --image-uri ${{ github.event.inputs.image_uri }}
+
+        echo "Waiting for function update to complete..."
+        aws lambda wait function-updated \
+          --function-name ${{ env.LAMBDA_FUNCTION_NAME }}
+
+        echo "Lambda function updated successfully!"
+
+    - name: Verify deployment
+      run: |
+        FUNCTION_INFO=$(aws lambda get-function --function-name ${{ env.LAMBDA_FUNCTION_NAME }})
+        CURRENT_IMAGE=$(echo $FUNCTION_INFO | jq -r '.Code.ImageUri')
+        echo "Current image URI: $CURRENT_IMAGE"
+
+        if [ "$CURRENT_IMAGE" = "${{ github.event.inputs.image_uri }}" ]; then
+          echo "✅ Deployment verified successfully!"
+        else
+          echo "❌ Deployment verification failed!"
+          exit 1
+        fi

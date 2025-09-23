@@ -1,0 +1,63 @@
+name: List Admin Images
+
+on:
+  workflow_dispatch:
+
+env:
+  AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
+  ECR_REPOSITORY: reaction-admin
+
+jobs:
+  list_images:
+    name: List Admin API Images
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        role-session-name: github-action-role-${{ github.run_id }}
+        aws-region: ap-northeast-1
+
+    - name: List ECR images
+      run: |
+        echo "📋 Listing images in ECR repository: ${{ env.ECR_REPOSITORY }}"
+        echo "========================================================"
+
+        # Get images with details, sorted by newest first
+        aws ecr describe-images \
+          --repository-name ${{ env.ECR_REPOSITORY }} \
+          --query 'sort_by(imageDetails, &imagePushedAt)' \
+          --output table \
+          --no-cli-pager
+
+        echo ""
+        echo "🏷️  Available image tags:"
+        echo "========================"
+
+        # Get just the tags in a simple format
+        aws ecr describe-images \
+          --repository-name ${{ env.ECR_REPOSITORY }} \
+          --query 'sort_by(imageDetails, &imagePushedAt)[*].imageTags[0]' \
+          --output table \
+          --no-cli-pager
+
+        echo ""
+        echo "📦 Ready-to-use image URIs:"
+        echo "============================"
+
+        # Generate full URIs for easy copy-paste
+        ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+        REGION="ap-northeast-1"
+
+        aws ecr describe-images \
+          --repository-name ${{ env.ECR_REPOSITORY }} \
+          --query 'sort_by(imageDetails, &imagePushedAt)[*].imageTags[0]' \
+          --output text | while read tag; do
+          if [ "$tag" != "None" ] && [ ! -z "$tag" ]; then
+            echo "${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${{ env.ECR_REPOSITORY }}:${tag}"
+          fi
+        done

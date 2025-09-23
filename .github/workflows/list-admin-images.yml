@@ -32,7 +32,8 @@ jobs:
           --repository-name ${{ env.ECR_REPOSITORY }} \
           --query 'sort_by(imageDetails, &imagePushedAt)' \
           --output table \
-          --no-cli-pager
+          --no-cli-pager \
+          --profile reaction-management
 
         echo ""
         echo "🏷️  Available image tags:"
@@ -43,7 +44,9 @@ jobs:
           --repository-name ${{ env.ECR_REPOSITORY }} \
           --query 'sort_by(imageDetails, &imagePushedAt)[*].imageTags[0]' \
           --output table \
-          --no-cli-pager
+          --no-cli-pager \
+          --profile reaction-management
+
 
         echo ""
         echo "📦 Ready-to-use image URIs:"
@@ -56,8 +59,9 @@ jobs:
         aws ecr describe-images \
           --repository-name ${{ env.ECR_REPOSITORY }} \
           --query 'sort_by(imageDetails, &imagePushedAt)[*].imageTags[0]' \
-          --output text | while read tag; do
+          --output text --profile reaction-management | while read tag; do
           if [ "$tag" != "None" ] && [ ! -z "$tag" ]; then
             echo "${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${{ env.ECR_REPOSITORY }}:${tag}"
           fi
         done
+        

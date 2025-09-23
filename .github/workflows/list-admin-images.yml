@@ -15,12 +15,17 @@ jobs:
       id-token: write
       contents: read
     steps:
-    - name: Configure AWS credentials
+    - name: configure aws credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
         role-to-assume: ${{ env.AWS_ROLE_ARN }}
         role-session-name: github-action-role-${{ github.run_id }}
         aws-region: ap-northeast-1
+
+    - name: configure aws profiles
+      run: |
+        mkdir ~/.aws
+        cp .github/workflows/aws_config/config ~/.aws/config
 
     - name: List ECR images
       run: |
@@ -29,7 +34,7 @@ jobs:
 
         # Get images with details, sorted by newest first
         aws ecr describe-images \
-          --repository-name ${{ env.ECR_REPOSITORY }} \
+          --repository-name reaction-admin \
           --query 'sort_by(imageDetails, &imagePushedAt)' \
           --output table \
           --no-cli-pager \

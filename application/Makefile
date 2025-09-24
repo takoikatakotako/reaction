@@ -15,3 +15,7 @@ build-admin-image:
 	docker push ${ADMIN_REPOSITORY_URI}:latest
 	docker tag reaction/admin:latest ${ADMIN_REPOSITORY_URI}:${GITHUB_SHA}
 	docker push ${ADMIN_REPOSITORY_URI}:${GITHUB_SHA}
+
+.PHONY: list-admin-images
+list-admin-images:
+	aws ecr list-images --repository-name reaction-admin --output table --profile reaction-management

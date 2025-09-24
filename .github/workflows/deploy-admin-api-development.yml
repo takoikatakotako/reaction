@@ -43,4 +43,4 @@ jobs:
         aws lambda update-function-code \
           --function-name reaction-api \
           --image-uri 392961483375.dkr.ecr.ap-northeast-1.amazonaws.com/reaction-admin:${{ github.event.inputs.admin_api_image_tag }} \
-          --profile reaction-management
+          --profile reaction-development

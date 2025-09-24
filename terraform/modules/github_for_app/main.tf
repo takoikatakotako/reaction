@@ -40,6 +40,15 @@ data "aws_iam_policy_document" "app_ci_role_policy_document" {
     ]
     resources = ["*"]
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "lambda:UpdateFunctionCode",
+      "lambda:GetFunction",
+    ]
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "app_ci_role_policy_attachment" {

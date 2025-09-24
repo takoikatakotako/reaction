@@ -54,5 +54,5 @@ module "admin_repository" {
 # }
 
 module "github" {
-  source = "../../modules/github"
+  source = "../../modules/github_for_management"
 }

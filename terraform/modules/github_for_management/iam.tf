@@ -80,7 +80,6 @@ data "aws_iam_policy_document" "management_ci_role_policy_document" {
     effect = "Allow"
     actions = [
       "ecr:*",
-      "lambda:UpdateFunctionCode",
     ]
     resources = ["*"]
   }

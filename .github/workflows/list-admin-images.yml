@@ -7,13 +7,15 @@ env:
   AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
   ECR_REPOSITORY: reaction-admin
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   list_images:
     name: List Admin API Images
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4

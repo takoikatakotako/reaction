@@ -11,14 +11,14 @@ export default function UpdatePage() {
   const handleExportToS3 = async () => {
     if (isExporting) return;
 
-    const result = window.confirm("DynamoDBの値をS3にエクスポートしますか?");
+    const result = window.confirm("反応機構データを更新しますか?");
     if (result) {
       setIsExporting(true);
       try {
         await service.exportToS3();
-        alert('S3エクスポートが完了しました。');
+        alert('データ更新が完了しました。');
       } catch (error) {
-        alert(`S3エクスポートエラー:\n${error}`);
+        alert(`データ更新エラー:\n${error}`);
       } finally {
         setIsExporting(false);
       }
@@ -27,10 +27,10 @@ export default function UpdatePage() {
 
   return (
     <main className="wrapper">
-      <h1>S3エクスポート</h1>
+      <h1>データ更新</h1>
 
       <p>
-        S3エクスポートボタンを押すと、DynamoDBの反応機構データをS3にエクスポートできます。
+        更新ボタンを押すと、反応機構データが更新されます。
       </p>
 
       <form>
@@ -55,7 +55,7 @@ export default function UpdatePage() {
             fontSize: '16px',
             fontWeight: 'bold'
           }}>
-            {isExporting ? 'S3エクスポート中...' : 'S3エクスポート'}
+            {isExporting ? '更新中...' : 'データ更新'}
           </div>
         </button>
       </form>

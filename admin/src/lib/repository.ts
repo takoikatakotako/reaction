@@ -183,3 +183,21 @@ export async function generateReactions() {
       }
 }
 
+
+//////////////////////////////////////////////////////////////
+// Export to S3
+//////////////////////////////////////////////////////////////
+export async function exportToS3() {
+    const response = await fetch(apiBaseUrl + "/api/export/s3", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('S3エクスポートに失敗しました。');
+      }
+}
+

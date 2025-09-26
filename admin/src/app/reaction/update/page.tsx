@@ -1,45 +1,62 @@
 'use client';
 
-// import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import * as service from '@/lib/service';
-// import * as entity from '@/lib/entity';
 
 export default function UpdatePage() {
-  // Router
-  const router = useRouter();
+  const [isExporting, setIsExporting] = useState(false);
 
 
-  // Submit
-  const submitHandleChange = async () => {
-    const result = window.confirm("反応機構を更新してよろしいですか?");
+  // S3 Export
+  const handleExportToS3 = async () => {
+    if (isExporting) return;
+
+    const result = window.confirm("反応機構データを更新しますか?");
     if (result) {
+      setIsExporting(true);
       try {
-        await service.generateReactions()
-        alert('更新成功！');
-        router.push('/');
+        await service.exportToS3();
+        alert('データ更新が完了しました。');
       } catch (error) {
-        alert(`エラーが発生しました:\n${error}`);
+        alert(`データ更新エラー:\n${error}`);
+      } finally {
+        setIsExporting(false);
       }
     }
   };
 
   return (
     <main className="wrapper">
-      <h1>反応機構更新</h1>
+      <h1>データ更新</h1>
 
       <p>
-        以下のボタンを押すと反応機構が更新されます。若干のタイムラグがあります。
+        更新ボタンを押すと、反応機構データが更新されます。
       </p>
 
       <form>
         <button
           type="button"
           className="reaction-edit-add-reaction-button"
-          onClick={() => submitHandleChange()}
+          onClick={() => handleExportToS3()}
+          disabled={isExporting}
+          style={{
+            opacity: isExporting ? 0.6 : 1,
+            cursor: isExporting ? 'not-allowed' : 'pointer'
+          }}
         >
-          <Image src="/edit-reaction.svg" alt="" width={200} height={60} />
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#007bff',
+            color: 'white',
+            padding: '15px 30px',
+            borderRadius: '5px',
+            fontSize: '16px',
+            fontWeight: 'bold'
+          }}>
+            {isExporting ? '更新中...' : 'データ更新'}
+          </div>
         </button>
       </form>
     </main>

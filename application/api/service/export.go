@@ -10,6 +10,7 @@ type Export struct {
 	AWS                infrastructure.AWS
 	ResourceBucketName string
 	ResourceBaseURL    string
+	DistributionID     string
 }
 
 func (e *Export) ExportReactionsToS3() error {
@@ -52,5 +53,11 @@ func (e *Export) ExportReactionsToS3() error {
 		}
 	}
 
+	// S3エクスポート後、CloudFront distributionを削除
+	paths := []string{"/resource/reaction/*"}
+	err = e.AWS.CreateInvalidation(e.DistributionID, paths)
+	if err != nil {
+		return err
+	}
 	return nil
 }

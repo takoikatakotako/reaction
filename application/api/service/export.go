@@ -53,7 +53,7 @@ func (e *Export) ExportReactionsToS3() error {
 		}
 	}
 
-	// S3エクスポート後、CloudFront distributionを削除
+	// S3エクスポート後、CloudFront distributionのキャッシュを無効化
 	paths := []string{"/resource/reaction/*"}
 	err = e.AWS.CreateInvalidation(e.DistributionID, paths)
 	if err != nil {

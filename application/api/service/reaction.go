@@ -11,6 +11,7 @@ import (
 	"github.com/takoikatakotako/reaction/infrastructure/file"
 	"log/slog"
 	"sort"
+	"strings"
 	"time"
 )
 
@@ -34,7 +35,7 @@ func (a *Reaction) GetReactions() ([]output.Reaction, error) {
 
 	// Sort
 	sort.Slice(outputReactions, func(i, j int) bool {
-		return outputReactions[i].EnglishName < outputReactions[j].EnglishName
+		return strings.ToLower(outputReactions[i].EnglishName) < strings.ToLower(outputReactions[j].EnglishName)
 	})
 	return outputReactions, nil
 }
@@ -139,7 +140,7 @@ func (a *Reaction) GenerateReactions() error {
 
 	// 全体をソートを行う
 	sort.Slice(fileReactions, func(i, j int) bool {
-		return fileReactions[i].EnglishName < fileReactions[j].EnglishName
+		return strings.ToLower(fileReactions[i].EnglishName) < strings.ToLower(fileReactions[j].EnglishName)
 	})
 
 	// 全体のリストを保存

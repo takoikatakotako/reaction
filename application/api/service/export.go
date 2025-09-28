@@ -26,6 +26,8 @@ func (e *Export) ExportReactionsToS3() error {
 		fileReactions = append(fileReactions, fileReaction)
 	}
 
+	// データベースで既にソート済み
+
 	// Export reactions list
 	fileReactionsWrapper := file.Reactions{Reactions: fileReactions}
 	bytes, err := json.Marshal(fileReactionsWrapper)

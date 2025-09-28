@@ -39,6 +39,7 @@ func main() {
 	exportService := service.Export{
 		AWS:                awsRepository,
 		ResourceBucketName: env.ResourceBucketName,
+		ResourceBaseURL:    env.ResourceBaseURL,
 		DistributionID:     env.DistributionID,
 	}
 

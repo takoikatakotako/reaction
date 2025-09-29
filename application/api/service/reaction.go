@@ -10,7 +10,6 @@ import (
 	"github.com/takoikatakotako/reaction/infrastructure/database"
 	"github.com/takoikatakotako/reaction/infrastructure/file"
 	"log/slog"
-	"sort"
 	"time"
 )
 
@@ -32,10 +31,7 @@ func (a *Reaction) GetReactions() ([]output.Reaction, error) {
 	// Convert
 	outputReactions := convertToOutputReactions(reactions, a.ResourceBaseURL)
 
-	// Sort
-	sort.Slice(outputReactions, func(i, j int) bool {
-		return outputReactions[i].EnglishName < outputReactions[j].EnglishName
-	})
+	// データベースで既にソート済み
 	return outputReactions, nil
 }
 
@@ -114,6 +110,7 @@ func (a *Reaction) DeleteReaction(input input.DeleteReaction) error {
 }
 
 func (a *Reaction) GenerateReactions() error {
+	// AWS.GetReactionsを使用（既にソート済み）
 	reactions, err := a.AWS.GetReactions()
 	if err != nil {
 		return err
@@ -136,11 +133,6 @@ func (a *Reaction) GenerateReactions() error {
 
 		fileReactions = append(fileReactions, fileReaction)
 	}
-
-	// 全体をソートを行う
-	sort.Slice(fileReactions, func(i, j int) bool {
-		return fileReactions[i].EnglishName < fileReactions[j].EnglishName
-	})
 
 	// 全体のリストを保存
 	fileListReactions := file.Reactions{

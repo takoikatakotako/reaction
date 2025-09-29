@@ -11,6 +11,8 @@ import (
 	"github.com/takoikatakotako/reaction/infrastructure/database"
 	"log/slog"
 	"runtime"
+	"sort"
+	"strings"
 )
 
 func (a *AWS) GetReaction(id string) (database.Reaction, error) {
@@ -85,7 +87,10 @@ func (a *AWS) GetReactions() ([]database.Reaction, error) {
 		lastEvaluatedKey = output.LastEvaluatedKey
 	}
 
-	// English Name を元にソート
+	// English Name を元にソート（大文字小文字を区別しない）
+	sort.Slice(reactions, func(i, j int) bool {
+		return strings.ToLower(reactions[i].EnglishName) < strings.ToLower(reactions[j].EnglishName)
+	})
 
 	return reactions, nil
 }

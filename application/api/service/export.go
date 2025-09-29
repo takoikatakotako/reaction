@@ -10,6 +10,7 @@ type Export struct {
 	AWS                infrastructure.AWS
 	ResourceBucketName string
 	ResourceBaseURL    string
+	DistributionID     string
 }
 
 func (e *Export) ExportReactionsToS3() error {
@@ -24,6 +25,8 @@ func (e *Export) ExportReactionsToS3() error {
 		fileReaction := convertToFileReaction(reaction, e.ResourceBaseURL)
 		fileReactions = append(fileReactions, fileReaction)
 	}
+
+	// データベースで既にソート済み
 
 	// Export reactions list
 	fileReactionsWrapper := file.Reactions{Reactions: fileReactions}
@@ -52,5 +55,11 @@ func (e *Export) ExportReactionsToS3() error {
 		}
 	}
 
+	// S3エクスポート後、CloudFront distributionのキャッシュを無効化
+	paths := []string{"/resource/reaction/*"}
+	err = e.AWS.CreateInvalidation(e.DistributionID, paths)
+	if err != nil {
+		return err
+	}
 	return nil
 }

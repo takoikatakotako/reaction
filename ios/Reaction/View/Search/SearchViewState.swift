@@ -83,14 +83,14 @@ class SearchViewState: ObservableObject {
             name: "Halogen",
             englishName: "Halogen",
             japaneseName: "ハロゲン",
-            tag: "Halogene",
+            tag: "Halogen",
             check: true,
             secondCategories: [
                 SecondCategory(
                     name: "Alkyl Halide",
                     englishName: "Alkyl Halide",
                     japaneseName: "ハロゲン化アルキル",
-                    tag: "Halogene-Alkyl_Halide",
+                    tag: "Halogen-Alkyl_Halide",
                     check: true,
                     thirdCategories: []
                 ),
@@ -98,7 +98,7 @@ class SearchViewState: ObservableObject {
                     name: "Other",
                     englishName: "Other",
                     japaneseName: "その他",
-                    tag: "Halogene-Other",
+                    tag: "Halogen-Other",
                     check: true,
                     thirdCategories: []
                 )
@@ -139,7 +139,7 @@ class SearchViewState: ObservableObject {
                     name: "Benzene",
                     englishName: "Benzene",
                     japaneseName: "ベンゼン",
-                    tag: "Aromtic_Ring-Benzene",
+                    tag: "Aromatic_Ring-Benzene",
                     check: true,
                     thirdCategories: []
                 ),
@@ -147,7 +147,7 @@ class SearchViewState: ObservableObject {
                     name: "Heterocyclic Compound",
                     englishName: "Heterocyclic Compound",
                     japaneseName: "複素環化合物",
-                    tag: "Aromatic_Ring-Hetroaromatic_Ring",
+                    tag: "Aromatic_Ring-Heteroaromatic_Ring",
                     check: true,
                     thirdCategories: []
                 )

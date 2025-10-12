@@ -29,29 +29,8 @@ module "admin_repository" {
   name   = "reaction-admin"
   allow_pull_account_ids = [
     local.development_account_id,
-    # local.production_account_id
   ]
 }
-
-# module "batch_repository" {
-#   source = "../../modules/repository"
-#   name   = "charalarm-batch"
-#   allow_pull_account_ids = [
-#     local.development_account_id,
-#     local.staging_account_id,
-#     local.production_account_id
-#   ]
-# }
-
-# module "worker_repository" {
-#   source = "../../modules/repository"
-#   name   = "charalarm-worker"
-#   allow_pull_account_ids = [
-#     local.development_account_id,
-#     local.staging_account_id,
-#     local.production_account_id
-#   ]
-# }
 
 module "github" {
   source = "../../modules/github_for_management"

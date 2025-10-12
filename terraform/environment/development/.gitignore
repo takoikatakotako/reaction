@@ -20,6 +20,12 @@ crash.*.log
 *.tfvars
 *.tfvars.json
 
+# Exception: Allow terraform.tfvars to be committed (non-sensitive configuration)
+!terraform.tfvars
+
+# Ensure credentials.tfvars is always ignored (sensitive data)
+credentials.tfvars
+
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
 override.tf

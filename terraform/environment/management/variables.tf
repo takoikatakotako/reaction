@@ -1,4 +1,4 @@
 locals {
   development_account_id = "467988630030"
-  # production_account_id  = "986921280333"
+  production_account_id  = "852798039462"
 }

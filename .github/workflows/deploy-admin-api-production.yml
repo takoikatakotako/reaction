@@ -1,4 +1,4 @@
-name: Deploy Admin API Development
+name: Deploy Admin API Production
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   deploy:
-    name: Deploy Admin API to Development
+    name: Deploy Admin API to Production
     runs-on: ubuntu-latest
 
     steps:
@@ -43,4 +43,4 @@ jobs:
         aws lambda update-function-code \
           --function-name ${{ env.LAMBDA_FUNCTION_NAME }} \
           --image-uri 392961483375.dkr.ecr.ap-northeast-1.amazonaws.com/reaction-admin:${{ github.event.inputs.admin_api_image_tag }} \
-          --profile reaction-development
+          --profile reaction-production

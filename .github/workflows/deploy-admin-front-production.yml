@@ -45,6 +45,9 @@ jobs:
         PRODUCTION_NEXT_PUBLIC_API_KEY: ${{ secrets.PRODUCTION_NEXT_PUBLIC_API_KEY }}
       run: make build-production
 
-    - name: Deploy Admin Front
+    - name: Deploy Admin Front to S3
       working-directory: admin
-      run: make deploy-production
+      run: aws s3 sync ./out/ s3://admin.reaction-production.swiswiswift.com --exact-timestamps --delete
+
+    - name: Invalidate CloudFront Cache
+      run: aws cloudfront create-invalidation --distribution-id E3AOD193EW8R9B --paths "/*"

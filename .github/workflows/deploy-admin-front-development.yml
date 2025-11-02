@@ -45,6 +45,9 @@ jobs:
         DEVELOPMENT_NEXT_PUBLIC_API_KEY: ${{ secrets.DEVELOPMENT_NEXT_PUBLIC_API_KEY }}
       run: make build-development
 
-    - name: Deploy Admin Front
+    - name: Deploy Admin Front to S3
       working-directory: admin
-      run: make deploy-development
+      run: aws s3 sync ./out/ s3://admin.reaction-development.swiswiswift.com --exact-timestamps --delete
+
+    - name: Invalidate CloudFront Cache
+      run: aws cloudfront create-invalidation --distribution-id E20221GYUASSFI --paths "/*"

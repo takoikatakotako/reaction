@@ -1,8 +1,8 @@
 DEVELOPMENT_NEXT_PUBLIC_API_BASE_URL := https://admin.reaction-development.swiswiswift.com
 DEVELOPMENT_NEXT_PUBLIC_RESOURCE_BASE_URL := https://reaction-development.swiswiswift.com/resource/image
 
-PRODUCTION_NEXT_PUBLIC_API_BASE_URL := https://admin.reaction-productions.swiswiswift.com
-PRODUCTION_NEXT_PUBLIC_RESOURCE_BASE_URL := https://reaction-productions.swiswiswift.com/resource/image
+PRODUCTION_NEXT_PUBLIC_API_BASE_URL := https://admin.reaction-production.swiswiswift.com
+PRODUCTION_NEXT_PUBLIC_RESOURCE_BASE_URL := https://reaction-production.swiswiswift.com/resource/image
 
 .PHONY: build-development
 build-development:

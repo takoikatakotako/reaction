@@ -36,6 +36,24 @@ data "aws_iam_policy_document" "iam_policy_document" {
       "arn:aws:s3:::${var.bucket_name}/*"
     ]
   }
+
+  statement {
+    sid = "AllowGitHubActionsAccess"
+    actions = [
+      "s3:ListBucket",
+      "s3:GetObject",
+      "s3:PutObject",
+      "s3:DeleteObject"
+    ]
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::392961483375:role/reaction-github-action-role"]
+    }
+    resources = [
+      "arn:aws:s3:::${var.bucket_name}",
+      "arn:aws:s3:::${var.bucket_name}/*"
+    ]
+  }
 }
 
 

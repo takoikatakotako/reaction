@@ -1,0 +1,141 @@
+name: Sync S3 Resource Bucket Development to Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run in dry-run mode (preview changes without applying)'
+        required: false
+        type: boolean
+        default: true
+
+env:
+  AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
+  REGION: ap-northeast-1
+  DEV_BUCKET: resource.reaction-development.swiswiswift.com
+  PROD_BUCKET: resource.reaction-production.swiswiswift.com
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  sync-s3-bucket:
+    name: Sync S3 Resource Bucket
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        role-session-name: github-action-role-${{ github.run_id }}
+        aws-region: ${{ env.REGION }}
+
+    - name: Configure AWS profiles
+      run: |
+        mkdir -p ~/.aws
+        cp .github/workflows/aws_config/config ~/.aws/config
+
+    - name: Check source bucket contents
+      run: |
+        echo "=========================================="
+        echo "Checking Development bucket contents..."
+        echo "=========================================="
+
+        OBJECT_COUNT=$(aws s3 ls s3://${{ env.DEV_BUCKET }} \
+          --profile reaction-development \
+          --region ${{ env.REGION }} \
+          --recursive | wc -l)
+
+        echo "Development bucket contains ${OBJECT_COUNT} objects"
+
+        if [ "${OBJECT_COUNT}" -eq 0 ]; then
+          echo "No objects to sync. Exiting."
+          exit 0
+        fi
+
+    - name: Dry run - Preview changes
+      if: ${{ github.event.inputs.dry_run == 'true' }}
+      run: |
+        echo "=========================================="
+        echo "DRY RUN MODE: Previewing changes..."
+        echo "=========================================="
+
+        # Development から Production へ同期
+        echo "Files to be synced from Development to Production:"
+        aws s3 sync \
+          s3://${{ env.DEV_BUCKET }} \
+          s3://${{ env.PROD_BUCKET }} \
+          --profile reaction-development \
+          --dryrun \
+          --region ${{ env.REGION }}
+
+        echo ""
+        echo "=========================================="
+        echo "DRY RUN completed. No changes were made."
+        echo "To apply these changes, run this workflow with dry_run=false"
+        echo "=========================================="
+
+    - name: Sync buckets
+      if: ${{ github.event.inputs.dry_run == 'false' }}
+      run: |
+        echo "=========================================="
+        echo "Syncing from Development to Production..."
+        echo "=========================================="
+
+        # Note: AWS CLI の s3 sync は同じアカウント内でのみ動作するため、
+        # ソースバケットからローカルにダウンロードしてから、
+        # デスティネーションバケットにアップロードする必要があります
+
+        # Development バケットからダウンロード
+        echo "Downloading from Development bucket..."
+        mkdir -p ./s3-sync-temp
+        aws s3 sync \
+          s3://${{ env.DEV_BUCKET }} \
+          ./s3-sync-temp \
+          --profile reaction-development \
+          --region ${{ env.REGION }}
+
+        # Production バケットにアップロード
+        echo ""
+        echo "Uploading to Production bucket..."
+        aws s3 sync \
+          ./s3-sync-temp \
+          s3://${{ env.PROD_BUCKET }} \
+          --profile reaction-production \
+          --region ${{ env.REGION }}
+
+        # 一時ファイルの削除
+        rm -rf ./s3-sync-temp
+
+        echo ""
+        echo "Sync completed"
+
+    - name: Verify sync
+      if: ${{ github.event.inputs.dry_run == 'false' }}
+      run: |
+        echo "=========================================="
+        echo "Verifying sync..."
+        echo "=========================================="
+
+        # Development環境のオブジェクト数
+        DEV_COUNT=$(aws s3 ls s3://${{ env.DEV_BUCKET }} \
+          --profile reaction-development \
+          --region ${{ env.REGION }} \
+          --recursive | wc -l)
+        echo "Development bucket objects: ${DEV_COUNT}"
+
+        # Production環境のオブジェクト数
+        PROD_COUNT=$(aws s3 ls s3://${{ env.PROD_BUCKET }} \
+          --profile reaction-production \
+          --region ${{ env.REGION }} \
+          --recursive | wc -l)
+        echo "Production bucket objects: ${PROD_COUNT}"
+
+        echo "=========================================="
+        echo "Sync completed successfully!"
+        echo "=========================================="

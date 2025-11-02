@@ -34,7 +34,7 @@ export default function ReactionPage() {
             </li>
           </Link>
 
-          <Link href="/reaction/update">
+          <Link href="/update">
             <li className="pagination-active">
               <p>更新</p>
             </li>

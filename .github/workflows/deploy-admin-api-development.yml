@@ -1,0 +1,46 @@
+name: Deploy Admin API Development
+
+on:
+  workflow_dispatch:
+    inputs:
+      admin_api_image_tag:
+        description: 'Admin API Image Tag to deploy'
+        required: true
+        type: string
+        default: 'latest'
+
+env:
+  AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
+  LAMBDA_FUNCTION_NAME: reaction-api
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy Admin API to Development
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        role-session-name: github-action-role-${{ github.run_id }}
+        aws-region: ap-northeast-1
+
+    - name: configure aws profiles
+      run: |
+        mkdir ~/.aws
+        cp .github/workflows/aws_config/config ~/.aws/config
+
+    - name: Update Lambda function image
+      run: |
+        aws lambda update-function-code \
+          --function-name ${{ env.LAMBDA_FUNCTION_NAME }} \
+          --image-uri 392961483375.dkr.ecr.ap-northeast-1.amazonaws.com/reaction-admin:${{ github.event.inputs.admin_api_image_tag }} \
+          --profile reaction-development

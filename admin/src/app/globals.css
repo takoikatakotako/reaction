@@ -1,0 +1,696 @@
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+} */
+
+
+/* --------------------------------------------------------------
+/* 共通部分
+----------------------------------------------------------------- */
+html {
+  font-size: 100%;
+}
+
+body{
+  font-family: "M PLUS 2", sans-serif;
+  line-height: 1.7;
+  color: #432;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* レイアウト */
+.wrapper {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 1.5rem;
+}
+.align-center {
+  text-align: center;
+}
+
+
+
+/* ヘッダー
+------------------------------- */
+.page-header {
+  padding-top: .5rem;
+}
+.logo {
+  font-size: 1.5rem;
+  color: #DF5C44;
+  font-weight: 500;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  font-size: 1rem;
+  list-style: none;
+  font-weight: 500;
+}
+.main-nav a:hover {
+  color: #df5c43;
+}
+.main-nav-active {
+  color: #df5c43;
+}
+.main-nav-inactive {
+  color: #432;
+}
+
+
+/* ヘッダーカバー
+------------------------------- */
+.sub-cover {
+  background-color: #faf7f0;
+  background-size: cover;
+  background-position: center bottom;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+
+/* ページ
+------------------------------- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
+  font-weight: 500;
+  margin-top: 2rem;
+}
+
+.pagination a {
+  color: white;
+  line-height: 36px;
+}
+
+.pagination li {
+  width: 76px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.pagination-active {
+  background-color: #df5c43;
+}
+
+.pagination-inactive {
+  background-color: #432;
+}
+
+
+
+
+/* --------------------------------------------------------------
+/* reaction
+----------------------------------------------------------------- */
+.reaction-content {
+  margin-top: 0.5rem;
+}
+
+.reaction-content a h2 {
+  color: #df5c43;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.reaction-content p {
+  color: #432;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.reaction-content img {
+  width: 600px;
+  height: auto;
+  display: block;
+  margin: 0.5rem auto;  
+}
+
+.reaction-content hr {
+  margin-top: 0.3rem;
+}
+
+
+/* --------------------------------------------------------------
+/* reaction-edit
+----------------------------------------------------------------- */
+.reaction-edit-content {
+  margin-top: 0.5rem;
+}
+
+.reaction-edit-content label {
+  color: #df5c43;
+  font-size: 1.3rem;
+  font-weight: 500;
+  display: block;
+}
+
+.reaction-edit-content input {
+  width: 100%;
+}
+
+.reaction-edit-content hr {
+  margin-top: 0.3rem;
+}
+
+/* image selection */ 
+.reaction-edit-image-container {
+  margin-top: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.reaction-edit-image {
+  width: 400px;
+  height: auto;
+  display: block;
+}
+
+.reaction-edit-image-delete-button {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.reaction-edit-image-delete-button img {
+  width: 20px;
+  height: 20px;
+}
+
+/* xxx selection */ 
+.reaction-edit-multi-input-container {
+  margin-top: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.reaction-edit-multi-input-delete-button {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.reaction-edit-multi-input-delete-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.reaction-edit-multi-input-plus-button {
+  display: block;
+  margin: 0.5rem auto;
+}
+
+.reaction-edit-add-reaction-button {
+  /* position: absolute;
+  right: 0;
+  cursor: pointer; */
+  display: block;
+  margin: 0.5rem auto;
+}
+
+/* .reaction-edit-multi-input-delete-button img {
+  width: 20px;
+  height: 20px;
+} */
+
+
+/* .user-detail-content p {
+  color: #432;
+  font-size: 1rem;
+}
+
+.user-detail-review {
+  margin-top: 0.5rem;
+}
+
+.user-detail-review h2 {
+  color: #df5c43;
+} */
+
+
+
+/* --------------------------------------------------------------
+/* review
+----------------------------------------------------------------- */
+.review-content {
+  margin-top: 0.5rem;
+}
+
+.review-content hr {
+  margin-top: 0.3rem;
+}
+
+.review-content-flexbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-content-flexbox div {
+  flex-shrink: 10;
+}
+
+.review-content-flexbox a h2 {
+  color: #df5c43;
+}
+
+.review-content-flexbox p {
+  color: #432;
+  font-size: 1rem;
+}
+
+.review-content-flexbox img {
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  margin: auto 0px;
+  border-radius: 8px;
+}
+
+
+/* --------------------------------------------------------------
+/* review-detail
+----------------------------------------------------------------- */
+.review-detail-content {
+  margin-top: 0.5rem;
+}
+
+.review-detail-content h2 {
+  color: #df5c43;
+}
+
+.review-detail-content-pair {
+  margin-top: 0.3rem;
+}
+
+.review-detail-content-pair-title {
+  color: #432;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.review-detail-content-pair img {
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  margin: auto 0px;
+  border-radius: 8px;
+}
+
+.review-detail-content-pair-images {
+  margin-top: 0.3rem;
+}
+
+
+/* --------------------------------------------------------------
+/* merchandise
+----------------------------------------------------------------- */
+.merchandise-content {
+  margin-top: 0.5rem;
+}
+
+.merchandise-content hr {
+  margin-top: 0.3rem;
+}
+
+.merchandise-content-flexbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.merchandise-content-flexbox div {
+  flex-shrink: 10;
+}
+
+.merchandise-content-flexbox a h2 {
+  color: #df5c43;
+}
+
+.merchandise-content-flexbox p {
+  color: #432;
+  font-size: 1rem;
+}
+
+.merchandise-content-flexbox img {
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  margin: auto 0px;
+  border-radius: 8px;
+}
+
+
+
+
+/* --------------------------------------------------------------
+/* report
+----------------------------------------------------------------- */
+.report-content {
+  margin-top: 0.5rem;
+}
+
+.report-content a h2 {
+  color: #df5c43;
+}
+
+.report-content p {
+  color: #432;
+  font-size: 1rem;
+}
+
+.report-content hr {
+  margin-top: 0.3rem;
+}
+
+
+
+
+
+/* HOME
+------------------------------- */
+
+/* .cover-home {
+  background-image: url(../images/cover-home-s.webp);
+}
+.about {
+  max-width: 736px;
+  padding: 0 1.5rem;
+  margin: 3rem auto 0;
+}
+.about p {
+  margin-bottom: 3rem;
+} */
+
+/* --------------------------------------------------------------
+/* Home
+----------------------------------------------------------------- */
+/* .home {
+  margin-bottom: 1.2rem;
+}
+.home-article {
+  margin-bottom: 1.2rem;
+}
+.home-date {
+  font-size: 1rem;
+}
+.home-article p {
+  margin-bottom: 0.8rem;
+}
+.home-article * {
+  color: #432;
+}
+*/
+
+
+/* --------------------------------------------------------------
+/* Article
+----------------------------------------------------------------- */
+/* 記事部分 */
+/* .post {
+  margin-bottom: 1rem;
+}
+.post-title {
+  font-weight: normal;
+  margin-bottom: 1.25rem;
+}
+.post-info {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.post-cat {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  list-style: none;
+}
+.post-cat a {
+  color: #432;
+  background-color: #faf7f0;
+  border-radius: 8px;
+  font-size: .875rem;
+  padding: .5rem .5rem;
+}
+.post-cat a:hover {
+  background-color: #c9c2bc;
+}
+.post-date {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: .8rem;
+}
+.post-thumbnail {
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+}
+.post p {
+  margin-bottom: 1.5rem;
+  line-height: 2;
+}
+
+
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+/* MENU
+------------------------------- */
+/* .cover-menu {
+  background-image: url(../images/cover-menu-s.webp);
+}
+.grid {
+  display: grid;
+  gap: 2rem 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+}
+.item img {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 16px;
+}
+.item p {
+  font-size: .875rem;
+} */
+
+/* CONTACT
+------------------------------- */
+/* .cover-contact {
+  background-image: url(../images/cover-contact-s.webp);
+} */
+
+/* 店舗情報 */
+/* .location {
+  margin-bottom: 3.5rem;
+}
+.location-info {
+  margin-bottom: 2rem;
+}
+.location-info .info {
+  padding: 0;
+} */
+
+/* お問い合わせ */
+/* .email {
+  max-width: 916px;
+  background-color: #faf7f0;
+  border-radius: 48px;
+  padding: 1.5rem 2.5rem 2.5rem;
+  margin: 0 auto 2rem;
+}
+.email p {
+  margin: 1rem 0 2rem;
+} */
+
+/* SNS */
+/* .sns-item {
+  margin-bottom: 2rem;
+}
+.sns-item .heading-medium {
+  margin-bottom: .5rem;
+}
+.sns-youtube {
+  aspect-ratio: 16/9;
+}
+.sns-youtube iframe {
+  height: 100%;
+} */
+
+/* フッター
+------------------------------- */
+.copyright {
+  background-color: #432;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  color: #fff;
+}
+
+
+/* --------------------------------------------------------------
+/* デスクトップ版
+----------------------------------------------------------------- */
+@media (min-width: 800px) {
+  /* ヘッダー */
+  .page-header {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 1.5rem;
+  }
+  
+  .main-nav {
+      font-size: 1rem;
+  }
+
+  /* ヘッダーカバー画像 */
+  .sub-cover {
+      height: 80px;
+  }
+
+  /* コンテンツ */
+  /* .contents {
+      /* display: flex;
+      justify-content: space-between;
+  } */
+
+  
+  /* /* .news-contents {
+      display: flex;
+      justify-content: space-between;
+  } */
+  /* HOME */
+  /* .home {
+      width: 70%;
+  }
+*/
+
+
+  /* NEWS */
+  /* .cover-news {
+      background-image: url(../images/cover-news-l2.png);
+  } */
+  /* .news-contents {
+      display: flex;
+      justify-content: space-between;
+  }
+  .post {
+      width: 70%;
+  }
+  .sidebar {
+      width: 22%;
+  }
+  .sidebar .heading-medium {
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      font-weight: normal;
+  }
+
+  /* MENU */
+  /* .cover-menu {
+      background-image: url(../images/cover-menu-l.webp);
+  }
+  .grid {
+      gap: 3rem 2rem;
+      grid-template-columns: repeat(3, 1fr);
+  }
+  .item img {
+      margin-bottom: .5rem;
+  }
+  .item p {
+      font-size: 1rem;
+  } */
+
+  /* CONTACT */
+  /* .cover-contact {
+      background-image: url(../images/cover-contact-l.webp);
+  }
+  .location {
+      display: flex;
+      gap: 2rem;
+  }
+  .location-info {
+      width: 32%;
+  }
+  .location-info .info th {
+      padding-left: 2rem;
+  }
+  .location-map {
+      width: 64%;
+  }
+  .email {
+      margin-bottom: 4rem;
+  }
+  .sns {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 0;
+  }
+  .sns-item {
+      flex: 1;
+  } */
+
+  /* フッター */
+}

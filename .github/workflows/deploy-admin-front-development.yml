@@ -1,0 +1,50 @@
+name: Deploy Admin Front Development
+
+on:
+  workflow_dispatch:
+
+env:
+  AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
+
+jobs:
+  deploy_admin_front_development:
+    name: build admin front development
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        role-session-name: github-action-role-${{ github.run_id }}
+        aws-region: ap-northeast-1
+
+    - name: configure aws profiles
+      run: |
+        mkdir ~/.aws
+        cp .github/workflows/aws_config/config ~/.aws/config
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 23.11.0
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10
+
+    - name: Build Admin Front
+      working-directory: admin
+      env:
+        DEVELOPMENT_NEXT_PUBLIC_API_KEY: ${{ secrets.DEVELOPMENT_NEXT_PUBLIC_API_KEY }}
+      run: make build-development
+
+    - name: Deploy Admin Front
+      working-directory: admin
+      run: make deploy-development

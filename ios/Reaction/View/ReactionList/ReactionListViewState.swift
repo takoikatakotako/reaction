@@ -48,7 +48,7 @@ class ReactionListViewState: ObservableObject {
         }
         Task { @MainActor in
             do {
-                let reactionMechanisms = try await reactionRepository.fetchMechanisms()
+                let reactionMechanisms = try await reactionRepository.fetchMechanisms(reactionsEndpoint: EnvironmentVariable.shared.getReactionsEndpoint)
                 self.reactionMechanisms = reactionMechanisms
                 self.isFetching = false
             } catch {
@@ -62,7 +62,7 @@ class ReactionListViewState: ObservableObject {
     }
 
     func tapped(reactionMechanism: ReactionMechanism) {
-        guard userDefaultsRepository.enableDetaileAbility else {
+        guard userDefaultsRepository.enableDetaileAbility || !isProduction  else {
             // 未課金なのでアラートを表示
             billingAlert = true
             return
@@ -158,5 +158,9 @@ class ReactionListViewState: ObservableObject {
         case .unverified:
             throw SubscribeError.failedVerification
         }
+    }
+    
+    private var isProduction: Bool {
+        return Bundle.main.bundleIdentifier == "com.example.junpei.chemi"
     }
 }

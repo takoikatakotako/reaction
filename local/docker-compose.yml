@@ -1,0 +1,10 @@
+services:
+  reaction-localstack:
+    image: localstack/localstack:4.5.0
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,sqs,sns,dynamodb
+    volumes:
+      - ./createTable.sh:/etc/localstack/init/ready.d/createTable.sh
+      - ./createBucket.sh:/etc/localstack/init/ready.d/createBucket.sh

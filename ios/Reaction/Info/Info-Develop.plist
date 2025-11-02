@@ -24,6 +24,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>MinimumOSVersion</key>
 	<string>17.0</string>
+	<key>REACTIONS_ENDPOINT</key>
+	<string>https://reaction-development.swiswiswift.com/resource/reaction/reactions.json</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>MPLUS2-VariableFont.ttf</string>

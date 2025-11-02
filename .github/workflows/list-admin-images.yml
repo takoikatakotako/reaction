@@ -1,0 +1,37 @@
+name: List Admin Images
+
+on:
+  workflow_dispatch:
+
+env:
+  AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
+  ECR_REPOSITORY: reaction-admin
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  list_images:
+    name: List Admin API Images
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        role-session-name: github-action-role-${{ github.run_id }}
+        aws-region: ap-northeast-1
+
+    - name: configure aws profiles
+      run: |
+        mkdir ~/.aws
+        cp .github/workflows/aws_config/config ~/.aws/config
+
+    - name: List Admin images
+      working-directory: application
+      run: make list-admin-images

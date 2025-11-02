@@ -1,4 +1,4 @@
-name: Deploy Admin Front Development
+name: Deploy Admin Front Production
 
 on:
   workflow_dispatch:
@@ -7,8 +7,8 @@ env:
   AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
 
 jobs:
-  deploy_admin_front_development:
-    name: build admin front development
+  deploy_admin_front_production:
+    name: build admin front production
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -42,9 +42,9 @@ jobs:
     - name: Build Admin Front
       working-directory: admin
       env:
-        DEVELOPMENT_NEXT_PUBLIC_API_KEY: ${{ secrets.DEVELOPMENT_NEXT_PUBLIC_API_KEY }}
-      run: make build-development
+        PRODUCTION_NEXT_PUBLIC_API_KEY: ${{ secrets.PRODUCTION_NEXT_PUBLIC_API_KEY }}
+      run: make build-production
 
     - name: Deploy Admin Front
       working-directory: admin
-      run: make deploy-development
+      run: make deploy-production

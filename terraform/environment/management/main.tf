@@ -29,6 +29,7 @@ module "admin_repository" {
   name   = "reaction-admin"
   allow_pull_account_ids = [
     local.development_account_id,
+    local.production_account_id,
   ]
 }
 

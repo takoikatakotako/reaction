@@ -1,0 +1,106 @@
+name: Sync DynamoDB Development to Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      table_name:
+        description: 'DynamoDB table name to sync'
+        required: true
+        type: string
+        default: 'reactions'
+
+env:
+  AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
+  REGION: ap-northeast-1
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  sync-dynamodb:
+    name: Sync DynamoDB Data
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        role-session-name: github-action-role-${{ github.run_id }}
+        aws-region: ${{ env.REGION }}
+
+    - name: Configure AWS profiles
+      run: |
+        mkdir -p ~/.aws
+        cp .github/workflows/aws_config/config ~/.aws/config
+
+    - name: Export data from Development
+      run: |
+        echo "=========================================="
+        echo "Exporting data from Development..."
+        echo "=========================================="
+
+        aws dynamodb scan \
+          --table-name ${{ github.event.inputs.table_name }} \
+          --profile reaction-development \
+          --region ${{ env.REGION }} \
+          --output json > backup.json
+
+        ITEM_COUNT=$(cat backup.json | jq '.Items | length')
+        echo "Exported ${ITEM_COUNT} items"
+
+        if [ "${ITEM_COUNT}" -eq 0 ]; then
+          echo "No items to sync. Exiting."
+          exit 0
+        fi
+
+    - name: Sync data to Production
+      run: |
+        echo "=========================================="
+        echo "Importing data to Production..."
+        echo "=========================================="
+
+        # batch-write-itemを使用してデータをインポート
+        # DynamoDBのbatch-write-itemは最大25アイテムまで一度に書き込める
+        cat backup.json | jq -c '.Items' | jq -c '_nwise(25)' | while read -r batch; do
+          # バッチをPutRequestフォーマットに変換
+          REQUEST_ITEMS=$(echo "${batch}" | jq -c '{
+            "${{ github.event.inputs.table_name }}": [.[] | {PutRequest: {Item: .}}]
+          }')
+
+          echo "${REQUEST_ITEMS}" | aws dynamodb batch-write-item \
+            --request-items file:///dev/stdin \
+            --profile reaction-production \
+            --region ${{ env.REGION }} \
+            --output json
+        done
+
+        echo ""
+        echo "Import completed"
+
+    - name: Verify import
+      run: |
+        echo "=========================================="
+        echo "Verifying import..."
+        echo "=========================================="
+
+        # Development環境のアイテム数
+        DEV_COUNT=$(cat backup.json | jq '.Items | length')
+        echo "Development table items: ${DEV_COUNT}"
+
+        # Production環境のアイテム数
+        PROD_COUNT=$(aws dynamodb scan \
+          --table-name ${{ github.event.inputs.table_name }} \
+          --profile reaction-production \
+          --region ${{ env.REGION }} \
+          --select COUNT \
+          --output json | jq '.Count')
+        echo "Production table items: ${PROD_COUNT}"
+
+        echo "=========================================="
+        echo "Sync completed successfully!"
+        echo "=========================================="

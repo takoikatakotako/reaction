@@ -65,14 +65,19 @@ jobs:
         echo "DRY RUN MODE: Previewing changes..."
         echo "=========================================="
 
-        # Development から Production へ同期
-        echo "Files to be synced from Development to Production:"
-        aws s3 sync \
-          s3://${{ env.DEV_BUCKET }} \
-          s3://${{ env.PROD_BUCKET }} \
+        # Development バケットの内容を表示
+        echo "Files in Development bucket:"
+        aws s3 ls s3://${{ env.DEV_BUCKET }} \
           --profile reaction-development \
-          --dryrun \
-          --region ${{ env.REGION }}
+          --region ${{ env.REGION }} \
+          --recursive
+
+        echo ""
+        echo "Files in Production bucket:"
+        aws s3 ls s3://${{ env.PROD_BUCKET }} \
+          --profile reaction-production \
+          --region ${{ env.REGION }} \
+          --recursive
 
         echo ""
         echo "=========================================="

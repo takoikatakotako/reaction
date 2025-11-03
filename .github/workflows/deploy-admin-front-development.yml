@@ -45,16 +45,6 @@ jobs:
         DEVELOPMENT_NEXT_PUBLIC_API_KEY: ${{ secrets.DEVELOPMENT_NEXT_PUBLIC_API_KEY }}
       run: make build-development
 
-    - name: Assume Development Role
-      run: |
-        CREDS=$(aws sts assume-role --role-arn arn:aws:iam::467988630030:role/reaction-ci-role --role-session-name github-actions-deployment)
-        echo "AWS_ACCESS_KEY_ID=$(echo $CREDS | jq -r '.Credentials.AccessKeyId')" >> $GITHUB_ENV
-        echo "AWS_SECRET_ACCESS_KEY=$(echo $CREDS | jq -r '.Credentials.SecretAccessKey')" >> $GITHUB_ENV
-        echo "AWS_SESSION_TOKEN=$(echo $CREDS | jq -r '.Credentials.SessionToken')" >> $GITHUB_ENV
-
-    - name: Deploy Admin Front to S3
+    - name: Deploy Admin Front
       working-directory: admin
-      run: aws s3 sync ./out/ s3://admin.reaction-development.swiswiswift.com --exact-timestamps --delete
-
-    - name: Invalidate CloudFront Cache
-      run: aws cloudfront create-invalidation --distribution-id E20221GYUASSFI --paths "/*"
+      run: make deploy-development

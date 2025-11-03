@@ -115,6 +115,9 @@ func (a *Reaction) GenerateReactions() error {
 	if err != nil {
 		return err
 	}
+	fmt.Println("GenerateReactions:")
+	fmt.Println("a.ResourceBucketName", a.ResourceBucketName)
+	fmt.Println("reactions:", reactions)
 
 	// 各々のファイルを保存
 	fileReactions := make([]file.Reaction, 0)

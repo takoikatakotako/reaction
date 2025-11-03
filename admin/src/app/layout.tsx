@@ -30,7 +30,7 @@ export default function RootLayout({
                     反応機構
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="review.html" className="main-nav-inactive">
                     学習問題
                   </a>
@@ -44,7 +44,7 @@ export default function RootLayout({
                   <a href="/update" className="main-nav-inactive">
                     更新
                   </a>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </header>

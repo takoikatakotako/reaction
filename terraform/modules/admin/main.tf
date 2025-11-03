@@ -176,7 +176,7 @@ resource "aws_cloudfront_distribution" "charalarm_cloudfront_distribution" {
     }
 
     forwarded_values {
-      query_string = false
+      query_string = true
 
       cookies {
         forward = "none"

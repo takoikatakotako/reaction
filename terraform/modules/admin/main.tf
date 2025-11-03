@@ -71,6 +71,10 @@ resource "aws_lambda_function" "api_lambda_function" {
       "FRONT_DISTRIBUTION_ID" = var.front_distribution_id
     }
   }
+
+  lifecycle {
+    ignore_changes = [image_uri]
+  }
 }
 
 resource "aws_lambda_function_url" "api_lambda_function_url" {

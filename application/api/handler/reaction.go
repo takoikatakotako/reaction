@@ -159,22 +159,3 @@ func (a *Reaction) DeleteReactionDelete(c echo.Context) error {
 	return c.JSON(http.StatusOK, res)
 }
 
-func (a *Reaction) GenerateReactionPost(c echo.Context) error {
-	// Check Auth Header
-	authHeader := c.Request().Header.Get("Authorization")
-	err := checkAuthHeader(authHeader, a.APIKey)
-	if err != nil {
-		res := response.Message{Message: "Error!"}
-		return c.JSON(http.StatusForbidden, res)
-	}
-
-	err = a.Service.GenerateReactions()
-	if err != nil {
-		slog.Error(err.Error())
-		res := response.Message{Message: "Error!"}
-		return c.JSON(http.StatusInternalServerError, res)
-	}
-
-	res := response.Message{Message: "Success!!"}
-	return c.JSON(http.StatusOK, res)
-}

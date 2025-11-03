@@ -44,7 +44,7 @@ export default function ReactionPage() {
 
       {reactions.map((reaction) => (
         <div className="reaction-content" key={reaction.id}>
-          <Link href={`reaction/edit?id=${reaction.id}`}>
+          <Link href={`/reaction/edit?id=${reaction.id}`}>
             <h2>ID: {reaction.id}</h2>
           </Link>
           <p>Name: {reaction.englishName}</p>

@@ -20,7 +20,7 @@ settings:
   base:
     CODE_SIGN_STYLE: Automatic
     DEVELOPMENT_TEAM: 5RH346BQ66
-    MARKETING_VERSION: 5.2.1
+    MARKETING_VERSION: 6.0.0
     CURRENT_PROJECT_VERSION: 1
     TARGETED_DEVICE_FAMILY: 1
     ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: YES
@@ -30,10 +30,10 @@ packages:
     from: 7.8.0
   LicenseList:
     url: https://github.com/cybozu/LicenseList
-    from: 2.0.3
+    from: 2.2.0
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk
-    from: 11.14.0
+    from: 12.5.0
 
 targets:
   ReactionDevelopment:
@@ -62,7 +62,7 @@ targets:
         UIAppFonts:
           - MPLUS2-VariableFont.ttf
         MinimumOSVersion: "17.0"
-        REACTIONS_ENDPOINT: https://reaction-development.swiswiswift.com/resource/reaction/reactions.json
+        REACTIONS_ENDPOINT: https://reaction-development.swiswiswift.com/resource/reaction/list.json
     dependencies:
       - package: Rswift
         product: RswiftLibrary
@@ -109,7 +109,7 @@ targets:
         UIAppFonts:
           - MPLUS2-VariableFont.ttf
         MinimumOSVersion: "17.0"
-        REACTIONS_ENDPOINT: https://reaction-development.swiswiswift.com/resource/reaction/reactions.json
+        REACTIONS_ENDPOINT: https://reaction-production.swiswiswift.com/resource/reaction/list.json
     dependencies:
       - package: Rswift
         product: RswiftLibrary

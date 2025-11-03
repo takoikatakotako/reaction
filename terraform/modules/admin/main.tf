@@ -38,6 +38,18 @@ data "aws_iam_policy_document" "iam_policy_document" {
   }
 }
 
+resource "aws_s3_bucket_website_configuration" "s3_bucket_website_configuration" {
+  bucket = aws_s3_bucket.s3_bucket.id
+
+  index_document {
+    suffix = "index.html"
+  }
+
+  error_document {
+    key = "index.html"
+  }
+}
+
 
 ##############################################################
 # API Lambda Function
@@ -94,8 +106,19 @@ resource "aws_cloudfront_function" "basic_auth_function" {
 ##############################################################
 resource "aws_cloudfront_distribution" "charalarm_cloudfront_distribution" {
   origin {
-    domain_name = "${var.bucket_name}.s3.amazonaws.com"
+    domain_name = aws_s3_bucket_website_configuration.s3_bucket_website_configuration.website_endpoint
     origin_id   = "S3-${var.bucket_name}"
+
+    custom_origin_config {
+      http_port                = 80
+      https_port               = 443
+      origin_keepalive_timeout = 5
+      origin_protocol_policy   = "http-only"
+      origin_read_timeout      = 30
+      origin_ssl_protocols = [
+        "TLSv1.2",
+      ]
+    }
   }
 
   origin {
@@ -126,6 +149,13 @@ resource "aws_cloudfront_distribution" "charalarm_cloudfront_distribution" {
   custom_error_response {
     error_caching_min_ttl = 10
     error_code            = 404
+    response_code         = 200
+    response_page_path    = "/index.html"
+  }
+
+  custom_error_response {
+    error_caching_min_ttl = 10
+    error_code            = 403
     response_code         = 200
     response_page_path    = "/index.html"
   }

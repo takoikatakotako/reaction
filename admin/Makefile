@@ -14,7 +14,7 @@ build-development:
 
 .PHONY: deploy-development
 deploy-development:
-	aws s3 sync ./out/ s3://admin.reaction-development.swiswiswift.com --exact-timestamps --delete --profile reaction-development  
+	aws s3 sync ./out/ s3://admin.reaction-development.swiswiswift.com --exact-timestamps --delete --profile reaction-development
 	aws cloudfront create-invalidation --distribution-id E20221GYUASSFI --paths "/*" --profile reaction-development
 
 .PHONY: build-production
@@ -27,5 +27,5 @@ build-production:
 
 .PHONY: deploy-production
 deploy-production:
-	aws s3 sync ./out/ s3://admin.reaction-production.swiswiswift.com --exact-timestamps --delete --profile reaction-production  
+	aws s3 sync ./out/ s3://admin.reaction-production.swiswiswift.com --exact-timestamps --delete --profile reaction-production
 	aws cloudfront create-invalidation --distribution-id E3AOD193EW8R9B --paths "/*" --profile reaction-production

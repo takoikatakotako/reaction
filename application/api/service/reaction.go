@@ -1,14 +1,11 @@
 package service
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/google/uuid"
 	"github.com/takoikatakotako/reaction/api/service/input"
 	"github.com/takoikatakotako/reaction/api/service/output"
 	"github.com/takoikatakotako/reaction/infrastructure"
 	"github.com/takoikatakotako/reaction/infrastructure/database"
-	"github.com/takoikatakotako/reaction/infrastructure/file"
 	"log/slog"
 	"time"
 )
@@ -109,47 +106,3 @@ func (a *Reaction) DeleteReaction(input input.DeleteReaction) error {
 	return nil
 }
 
-func (a *Reaction) GenerateReactions() error {
-	// AWS.GetReactionsを使用（既にソート済み）
-	reactions, err := a.AWS.GetReactions()
-	if err != nil {
-		return err
-	}
-
-	// 各々のファイルを保存
-	fileReactions := make([]file.Reaction, 0)
-	for _, v := range reactions {
-		fileReaction := convertToFileReaction(v, a.ResourceBaseURL)
-		bytes, err := json.Marshal(fileReaction)
-		if err != nil {
-			return err
-		}
-
-		objectKey := fmt.Sprintf("resource/reaction/%s.json", v.ID)
-		err = a.AWS.PutObject(a.ResourceBucketName, objectKey, bytes, "application/json")
-		if err != nil {
-			return err
-		}
-
-		fileReactions = append(fileReactions, fileReaction)
-	}
-
-	// 全体のリストを保存
-	fileListReactions := file.Reactions{
-		Reactions: fileReactions,
-	}
-	bytes, err := json.Marshal(fileListReactions)
-	objectKey := "resource/reaction/reactions.json"
-	err = a.AWS.PutObject(a.ResourceBucketName, objectKey, bytes, "application/json")
-	if err != nil {
-		return err
-	}
-
-	// キャッシュの削除
-	paths := []string{"/*"}
-	err = a.AWS.CreateInvalidation(a.DistributionID, paths)
-	if err != nil {
-		return err
-	}
-	return nil
-}

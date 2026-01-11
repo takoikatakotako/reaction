@@ -1,14 +1,11 @@
 package service
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/google/uuid"
 	"github.com/takoikatakotako/reaction/api/service/input"
 	"github.com/takoikatakotako/reaction/api/service/output"
 	"github.com/takoikatakotako/reaction/infrastructure"
 	"github.com/takoikatakotako/reaction/infrastructure/database"
-	"github.com/takoikatakotako/reaction/infrastructure/file"
 	"log/slog"
 	"time"
 )

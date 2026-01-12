@@ -15,10 +15,11 @@ theme:
 nav:
   - Home: index.md
   - URL一覧: urls.md
-  # - API: api.md
+  - API: api.md
 
 markdown_extensions:
   - tables
   - admonition
+  - attr_list
   - pymdownx.highlight
   - pymdownx.superfences

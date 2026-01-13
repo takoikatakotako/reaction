@@ -57,9 +57,19 @@ make build-production && make deploy-production     # 本番環境
 
 ## 環境
 
-- **開発**: `reaction-development.swiswiswift.com`
-- **本番**: `reaction-production.swiswiswift.com`
-- **AWS Profile**: `reaction-development`, `reaction-production`, `reaction-management`
+### URL
+
+| 種別 | 開発環境 | 本番環境 |
+|------|----------|----------|
+| 管理画面 | `admin.reaction-development.swiswiswift.com` | `admin.reaction-production.swiswiswift.com` |
+| API | `admin.reaction-development.swiswiswift.com` | `admin.reaction-production.swiswiswift.com` |
+| リソース | `reaction-development.swiswiswift.com/resource/image` | `reaction-production.swiswiswift.com/resource/image` |
+
+### AWS Profile
+
+- `reaction-development` - 開発環境
+- `reaction-production` - 本番環境
+- `reaction-management` - 管理用
 
 ## GitHub Actions ワークフロー
 

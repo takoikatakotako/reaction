@@ -1,0 +1,26 @@
+site_name: Reaction Documentation
+site_description: 化学反応の情報管理・表示システム
+site_url: https://takoikatakotako.github.io/reaction/
+
+site_dir: ../docs
+
+theme:
+  name: material
+  language: ja
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+
+nav:
+  - Home: index.md
+  - アーキテクチャ: architecture.md
+  - URL一覧: urls.md
+  - API: api.md
+
+markdown_extensions:
+  - tables
+  - admonition
+  - attr_list
+  - pymdownx.highlight
+  - pymdownx.superfences

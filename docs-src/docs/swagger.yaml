@@ -1,0 +1,457 @@
+openapi: 3.0.3
+info:
+  title: Reaction API
+  description: 化学反応管理システムのAPI
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+
+servers:
+  - url: ${API_BASE_URL}
+    description: メインサーバー
+
+security:
+  - BearerAuth: []
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Reaction:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: 反応のユニークID
+        englishName:
+          type: string
+          description: 英語名
+        japaneseName:
+          type: string
+          description: 日本語名
+        thumbnailImageUrl:
+          type: string
+          format: uri
+          description: サムネイル画像URL
+        generalFormulaImageUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: 一般式画像URL配列
+        mechanismsImageUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: 反応機構画像URL配列
+        exampleImageUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: 例画像URL配列
+        supplementsImageUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: 補足画像URL配列
+        suggestions:
+          type: array
+          items:
+            type: string
+          description: 提案配列
+        reactants:
+          type: array
+          items:
+            type: string
+          description: 反応物配列
+        products:
+          type: array
+          items:
+            type: string
+          description: 生成物配列
+        youtubeUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: YouTube URL配列
+      required:
+        - id
+        - englishName
+        - japaneseName
+
+    ReactionList:
+      type: object
+      properties:
+        reactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reaction'
+      required:
+        - reactions
+
+    AddReaction:
+      type: object
+      properties:
+        englishName:
+          type: string
+          description: 英語名
+        japaneseName:
+          type: string
+          description: 日本語名
+        thumbnailImageName:
+          type: string
+          description: サムネイル画像ファイル名
+        generalFormulaImageNames:
+          type: array
+          items:
+            type: string
+          description: 一般式画像ファイル名配列
+        mechanismsImageNames:
+          type: array
+          items:
+            type: string
+          description: 反応機構画像ファイル名配列
+        exampleImageNames:
+          type: array
+          items:
+            type: string
+          description: 例画像ファイル名配列
+        supplementsImageNames:
+          type: array
+          items:
+            type: string
+          description: 補足画像ファイル名配列
+        suggestions:
+          type: array
+          items:
+            type: string
+          description: 提案配列
+        reactants:
+          type: array
+          items:
+            type: string
+          description: 反応物配列
+        products:
+          type: array
+          items:
+            type: string
+          description: 生成物配列
+        youtubeUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: YouTube URL配列
+      required:
+        - englishName
+        - japaneseName
+
+    EditReaction:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: 編集対象の反応ID
+          required:
+            - id
+        - $ref: '#/components/schemas/AddReaction'
+
+    UploadUrlResponse:
+      type: object
+      properties:
+        uploadUrl:
+          type: string
+          format: uri
+          description: 画像アップロード用の署名付きURL
+      required:
+        - uploadUrl
+
+    UploadUrlRequest:
+      type: object
+      properties:
+        imageName:
+          type: string
+          description: アップロードする画像のファイル名
+      required:
+        - imageName
+
+    DeleteReactionRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: 削除する反応のID
+      required:
+        - id
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: エラーメッセージ
+        code:
+          type: string
+          description: エラーコード
+      required:
+        - error
+
+paths:
+  /api/reaction/list:
+    get:
+      summary: 反応一覧取得
+      description: 登録されている全ての化学反応の一覧を取得します
+      tags:
+        - Reactions
+      security: []
+      responses:
+        '200':
+          description: 反応一覧の取得成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReactionList'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/reaction/detail/{id}:
+    get:
+      summary: 反応詳細取得
+      description: 指定されたIDの化学反応の詳細情報を取得します
+      tags:
+        - Reactions
+      security: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: 取得する反応のID
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: 反応詳細の取得成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reaction'
+        '404':
+          description: 指定されたIDの反応が見つからない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/reaction/add:
+    post:
+      summary: 反応追加
+      description: 新しい化学反応を追加します
+      tags:
+        - Reactions
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddReaction'
+      responses:
+        '201':
+          description: 反応の追加成功
+        '400':
+          description: リクエストデータが不正
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/reaction/edit:
+    post:
+      summary: 反応編集
+      description: 既存の化学反応の情報を更新します
+      tags:
+        - Reactions
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditReaction'
+      responses:
+        '200':
+          description: 反応の編集成功
+        '400':
+          description: リクエストデータが不正
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: 指定されたIDの反応が見つからない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/reaction/delete:
+    delete:
+      summary: 反応削除
+      description: 指定された化学反応を削除します
+      tags:
+        - Reactions
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteReactionRequest'
+      responses:
+        '200':
+          description: 反応の削除成功
+        '400':
+          description: リクエストデータが不正
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: 指定されたIDの反応が見つからない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/reaction/generate:
+    post:
+      summary: 反応生成
+      description: 新しい化学反応を自動生成します
+      tags:
+        - Reactions
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: 反応の生成成功
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/generate-upload-url:
+    post:
+      summary: アップロードURL生成
+      description: 画像アップロード用の署名付きURLを生成します
+      tags:
+        - Upload
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadUrlRequest'
+      responses:
+        '200':
+          description: アップロードURLの生成成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadUrlResponse'
+        '400':
+          description: リクエストデータが不正
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+tags:
+  - name: Reactions
+    description: 化学反応に関するAPI
+  - name: Upload
+    description: ファイルアップロードに関するAPI

@@ -1,4 +1,5 @@
 import SwiftUI
+import Kingfisher
 
 struct ReactionListRowImage: View {
     let imageUrl: URL
@@ -11,28 +12,27 @@ struct ReactionListRowImage: View {
     }
 
     var body: some View {
-        if isDarkMode {
-            AsyncImage(url: imageUrl) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .colorInvert()
-            } placeholder: {
+        KFImage(imageUrl)
+            .placeholder {
                 Image(placeHolderName)
                     .resizable()
                     .scaledToFit()
-                    .colorInvert()
+                    .colorInvert(isDarkMode)
             }
+            .fade(duration: 0.25)
+            .resizable()
+            .scaledToFit()
+            .colorInvert(isDarkMode)
+    }
+}
+
+private extension View {
+    @ViewBuilder
+    func colorInvert(_ apply: Bool) -> some View {
+        if apply {
+            self.colorInvert()
         } else {
-            AsyncImage(url: imageUrl) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                Image(placeHolderName)
-                    .resizable()
-                    .scaledToFit()
-            }
+            self
         }
     }
 }

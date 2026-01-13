@@ -34,6 +34,9 @@ packages:
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk
     from: 12.5.0
+  Kingfisher:
+    url: https://github.com/onevcat/Kingfisher
+    from: 8.6.2
 
 targets:
   ReactionDevelopment:
@@ -78,6 +81,7 @@ targets:
         product: FirebaseStorage
       - package: Firebase
         product: FirebaseMessaging
+      - package: Kingfisher
     buildToolPlugins:
       - plugin: RswiftGenerateInternalResources
         package: Rswift
@@ -125,6 +129,7 @@ targets:
         product: FirebaseStorage
       - package: Firebase
         product: FirebaseMessaging
+      - package: Kingfisher
     buildToolPlugins:
       - plugin: RswiftGenerateInternalResources
         package: Rswift

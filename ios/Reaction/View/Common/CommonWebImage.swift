@@ -1,4 +1,5 @@
 import SwiftUI
+import Kingfisher
 
 struct CommonWebImage: View {
     let url: URL?
@@ -10,23 +11,24 @@ struct CommonWebImage: View {
     }
 
     var body: some View {
-        if isDarkMode {
-            AsyncImage(url: url) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .colorInvert()
-            } placeholder: {
+        KFImage(url)
+            .placeholder {
                 ProgressView()
             }
+            .fade(duration: 0.25)
+            .resizable()
+            .scaledToFit()
+            .colorInvert(isDarkMode)
+    }
+}
+
+private extension View {
+    @ViewBuilder
+    func colorInvert(_ apply: Bool) -> some View {
+        if apply {
+            self.colorInvert()
         } else {
-            AsyncImage(url: url) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                ProgressView()
-            }
+            self
         }
     }
 }

@@ -1,1 +1,4 @@
 application/.idea
+
+# MkDocs build output
+/site/

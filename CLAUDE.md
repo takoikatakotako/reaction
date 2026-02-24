@@ -86,3 +86,12 @@ make build-production && make deploy-production     # 本番環境
 - Go: 標準のgofmt
 - TypeScript: ESLint + Prettier
 - コミットメッセージ: 日本語OK
+
+## チェッカー (checker/)
+
+反応データの検証ツール。データの整合性チェックに使用する。
+
+```bash
+cd checker
+go test ./...         # テスト実行
+```

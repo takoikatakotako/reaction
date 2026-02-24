@@ -167,34 +167,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     max_ttl     = 31536000
   }
 
-  // JSON Behavior (キャッシュ無効)
-  ordered_cache_behavior {
-    allowed_methods = [
-      "GET",
-      "HEAD",
-    ]
-    cache_policy_id = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
-    cached_methods = [
-      "GET",
-      "HEAD",
-    ]
-    compress               = true
-    default_ttl            = 0
-    max_ttl                = 0
-    min_ttl                = 0
-    path_pattern           = "/resource/*.json"
-    smooth_streaming       = false
-    target_origin_id       = aws_s3_bucket.resource_s3_bucket.bucket_regional_domain_name
-    trusted_key_groups     = []
-    trusted_signers        = []
-    viewer_protocol_policy = "allow-all"
-
-    grpc_config {
-      enabled = false
-    }
-  }
-
-  // Resource Behavior (画像などはキャッシュ有効)
+  // Resource Befavior
   ordered_cache_behavior {
     allowed_methods = [
       "GET",

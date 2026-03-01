@@ -33,10 +33,10 @@ packages:
     from: 2.2.0
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk
-    from: 12.5.0
+    from: 12.10.0
   Kingfisher:
     url: https://github.com/onevcat/Kingfisher
-    from: 8.6.2
+    from: 8.7.0
 
 targetTemplates:
   ReactionApp:

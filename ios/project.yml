@@ -15,7 +15,7 @@ schemes:
       targets:
         ReactionProduction: all
     run:
-      config: Debug
+      config: Release
 settings:
   base:
     CODE_SIGN_STYLE: Automatic
@@ -38,10 +38,36 @@ packages:
     url: https://github.com/onevcat/Kingfisher
     from: 8.6.2
 
-targets:
-  ReactionDevelopment:
+targetTemplates:
+  ReactionApp:
     type: application
     platform: iOS
+    dependencies:
+      - package: Rswift
+        product: RswiftLibrary
+      - package: LicenseList
+        product: LicenseList
+      - package: Firebase
+        product: FirebaseAnalytics
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseCrashlytics
+      - package: Firebase
+        product: FirebaseStorage
+      - package: Firebase
+        product: FirebaseMessaging
+      - package: Kingfisher
+    buildToolPlugins:
+      - plugin: RswiftGenerateInternalResources
+        package: Rswift
+      - plugin: PrepareLicenseList
+        package: LicenseList
+
+targets:
+  ReactionDevelopment:
+    templates:
+      - ReactionApp
     sources:
       - path: Reaction
       - path: Config/Development
@@ -66,30 +92,9 @@ targets:
           - MPLUS2-VariableFont.ttf
         MinimumOSVersion: "17.0"
         REACTIONS_ENDPOINT: https://reaction-development.swiswiswift.com/resource/reaction/list.json
-    dependencies:
-      - package: Rswift
-        product: RswiftLibrary
-      - package: LicenseList
-        product: LicenseList
-      - package: Firebase
-        product: FirebaseAnalytics
-      - package: Firebase
-        product: FirebaseAuth
-      - package: Firebase
-        product: FirebaseCrashlytics
-      - package: Firebase
-        product: FirebaseStorage
-      - package: Firebase
-        product: FirebaseMessaging
-      - package: Kingfisher
-    buildToolPlugins:
-      - plugin: RswiftGenerateInternalResources
-        package: Rswift
-      - plugin: PrepareLicenseList
-        package: LicenseList
   ReactionProduction:
-    type: application
-    platform: iOS
+    templates:
+      - ReactionApp
     sources:
       - path: Reaction
       - path: Config/Production
@@ -114,24 +119,3 @@ targets:
           - MPLUS2-VariableFont.ttf
         MinimumOSVersion: "17.0"
         REACTIONS_ENDPOINT: https://reaction-production.swiswiswift.com/resource/reaction/list.json
-    dependencies:
-      - package: Rswift
-        product: RswiftLibrary
-      - package: LicenseList
-        product: LicenseList
-      - package: Firebase
-        product: FirebaseAnalytics
-      - package: Firebase
-        product: FirebaseAuth
-      - package: Firebase
-        product: FirebaseCrashlytics
-      - package: Firebase
-        product: FirebaseStorage
-      - package: Firebase
-        product: FirebaseMessaging
-      - package: Kingfisher
-    buildToolPlugins:
-      - plugin: RswiftGenerateInternalResources
-        package: Rswift
-      - plugin: PrepareLicenseList
-        package: LicenseList

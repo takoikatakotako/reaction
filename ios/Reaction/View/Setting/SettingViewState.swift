@@ -6,7 +6,6 @@ class SettingViewState: ObservableObject {
     @Published var thmbnail: Bool?
     @Published var showingReactionMechanismAlert = false
     @Published var showingThmbnailAlert = false
-    @Published var showingResetAlert = false
 
     private let userDefaultRepository = UserDefaultRepository()
 
@@ -52,11 +51,6 @@ class SettingViewState: ObservableObject {
     func setHiddenThumbnail() {
         userDefaultRepository.setShowThmbnail(false)
         thmbnail = false
-    }
-
-    func reset() {
-        URLCache.shared.removeAllCachedResponses()
-        showingResetAlert = true
     }
 
     private func setReactionMechanismLanguage(language: String) {

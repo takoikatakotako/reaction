@@ -43,13 +43,12 @@ class ReactionListViewState: ObservableObject {
         reactionMechanismIdentifier = userDefaultsRepository.reactionMechanismLanguage
         showingThmbnail = userDefaultsRepository.showThmbnail
 
-        guard reactionMechanisms.isEmpty else {
-            return
-        }
         Task { @MainActor in
             do {
-                let reactionMechanisms = try await reactionRepository.fetchMechanisms(reactionsEndpoint: EnvironmentVariable.shared.getReactionsEndpoint)
-                self.reactionMechanisms = reactionMechanisms
+                let fetched = try await reactionRepository.fetchMechanisms(reactionsEndpoint: EnvironmentVariable.shared.getReactionsEndpoint)
+                if fetched != self.reactionMechanisms {
+                    self.reactionMechanisms = fetched
+                }
                 self.isFetching = false
             } catch {
                 self.isFetching = false

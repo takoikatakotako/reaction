@@ -72,13 +72,6 @@ struct SettingView: View {
                     }
                 }
 
-                Section(String(localized: "setting-reset")) {
-                    Button {
-                        viewState.reset()
-                    } label: {
-                        CommonText(text: String(localized: "setting-clear-cache"), font: Font.system(size: 14))
-                    }
-                }
             }
             .onAppear {
                 viewState.onAppear()
@@ -108,11 +101,6 @@ struct SettingView: View {
                 Button(String(localized: "common-close")) {}
             }, message: {
                 CommonText(text: String(localized: "setting-select-reaction-mechanism-language"), font: Font.system(size: 14))
-            })
-            .alert("", isPresented: $viewState.showingResetAlert, actions: {
-
-            }, message: {
-                CommonText(text: String(localized: "setting-clear-cache-complete"), font: Font.system(size: 14))
             })
             .listStyle(.grouped)
             .navigationTitle(String(localized: "common-setting"))

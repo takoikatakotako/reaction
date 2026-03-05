@@ -25,7 +25,7 @@
 	<key>MinimumOSVersion</key>
 	<string>17.0</string>
 	<key>REACTIONS_ENDPOINT</key>
-	<string>https://reaction-production.swiswiswift.com/resource/reaction/list.json</string>
+	<string>$(REACTIONS_ENDPOINT)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>MPLUS2-VariableFont.ttf</string>

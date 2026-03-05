@@ -10,7 +10,9 @@ class SettingViewState: ObservableObject {
     private let userDefaultRepository = UserDefaultRepository()
 
     var appVersion: String {
-        return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
+        return "\(version) (\(build))"
     }
 
     func onAppear() {

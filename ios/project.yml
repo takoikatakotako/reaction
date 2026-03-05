@@ -77,8 +77,9 @@ targets:
         CODE_SIGN_ENTITLEMENTS: Config/Development/ReactionDevelopment.entitlements
         DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
         PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.reaction.development
+        REACTIONS_ENDPOINT: https://reaction-development.swiswiswift.com/resource/reaction/list.json
     info:
-      path: Reaction/Info/Info-Develop.plist
+      path: Reaction/Info/Info.plist
       properties:
         Appearance: Light
         CFBundleDisplayName: Reaction
@@ -91,7 +92,7 @@ targets:
         UIAppFonts:
           - MPLUS2-VariableFont.ttf
         MinimumOSVersion: "17.0"
-        REACTIONS_ENDPOINT: https://reaction-development.swiswiswift.com/resource/reaction/list.json
+        REACTIONS_ENDPOINT: $(REACTIONS_ENDPOINT)
   ReactionProduction:
     templates:
       - ReactionApp
@@ -104,8 +105,9 @@ targets:
         CODE_SIGN_ENTITLEMENTS: Config/Production/ReactionProduction.entitlements
         DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
         PRODUCT_BUNDLE_IDENTIFIER: com.example.junpei.chemi
+        REACTIONS_ENDPOINT: https://reaction-production.swiswiswift.com/resource/reaction/list.json
     info:
-      path: Reaction/Info/Info-Production.plist
+      path: Reaction/Info/Info.plist
       properties:
         Appearance: Light
         CFBundleDisplayName: Reaction
@@ -118,4 +120,4 @@ targets:
         UIAppFonts:
           - MPLUS2-VariableFont.ttf
         MinimumOSVersion: "17.0"
-        REACTIONS_ENDPOINT: https://reaction-production.swiswiswift.com/resource/reaction/list.json
+        REACTIONS_ENDPOINT: $(REACTIONS_ENDPOINT)

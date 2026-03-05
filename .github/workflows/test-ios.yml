@@ -1,0 +1,69 @@
+name: Test iOS
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ios/**
+    branches:
+      - main
+      - develop
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_16.2.app
+
+jobs:
+  test_ios:
+    name: test ios
+    runs-on: macos-15
+
+    steps:
+    # チェックアウト
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    # Mintのインストール
+    - name: Install Mint
+      run: brew install mint
+
+    # Mintのキャッシュの取得
+    - name: Cache Mint packages
+      uses: actions/cache@v4
+      with:
+        path: ios/.mint
+        key: ${{ runner.os }}-mint-${{ hashFiles('ios/Mintfile') }}
+        restore-keys: |
+          ${{ runner.os }}-mint-
+
+    # Mintで管理しているライブラリのインストール
+    - name: Install Mint packages
+      working-directory: ios
+      run: mint bootstrap
+
+    # SwiftLintによるチェック
+    - name: SwiftLint
+      working-directory: ios
+      run: mint run swiftlint swiftlint --strict
+
+    # GoogleService-Info.plistを作成
+    - name: Create GoogleService-Info.plist
+      working-directory: ios
+      run: echo '${{ secrets.GOOGLE_SERVICE_INFO_PLIST_FOR_DEVELOPMENT }}' > Config/Development/GoogleService-Info.plist
+
+    # プロジェクト生成
+    - name: Generate Project
+      working-directory: ios
+      run: mint run xcodegen xcodegen generate
+
+    # ビルド
+    - name: Build
+      working-directory: ios
+      run: |
+        xcodebuild build \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGNING_ALLOWED=NO \
+          -project Reaction.xcodeproj \
+          -scheme "Development" \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+          -skipPackagePluginValidation

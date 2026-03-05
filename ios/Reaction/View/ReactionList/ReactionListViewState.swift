@@ -158,7 +158,7 @@ class ReactionListViewState: ObservableObject {
             throw SubscribeError.failedVerification
         }
     }
-    
+
     private var isProduction: Bool {
         return Bundle.main.bundleIdentifier == "com.example.junpei.chemi"
     }

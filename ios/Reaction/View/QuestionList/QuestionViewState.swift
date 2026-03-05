@@ -447,7 +447,7 @@ class QuestionViewState: ObservableObject {
             problemImageNames: [R.image.questionProblem66.name],
             solutionImageNames: [
                 R.image.questionSolution66Image1.name,
-                R.image.questionSolution66Image2.name,
+                R.image.questionSolution66Image2.name
             ],
             references: []
         ),
@@ -534,7 +534,7 @@ class QuestionViewState: ObservableObject {
             problemImageNames: [R.image.questionProblem80.name],
             solutionImageNames: [
                 R.image.questionSolution80Image1.name,
-                R.image.questionSolution80Image2.name,
+                R.image.questionSolution80Image2.name
             ],
             references: []
         ),
@@ -593,7 +593,7 @@ class QuestionViewState: ObservableObject {
                 R.image.questionSolution89Image1.name,
                 R.image.questionSolution89Image2.name,
                 R.image.questionSolution89Image3.name,
-                R.image.questionSolution89Image4.name,
+                R.image.questionSolution89Image4.name
             ],
             references: []
         ),

@@ -12,7 +12,7 @@ struct DeveloperView: View {
                 }
 
                 Divider()
-                
+
                 Button {
                     openUrl(urlString: "https://x.com/_M26Pershing")
                 } label: {
@@ -21,7 +21,7 @@ struct DeveloperView: View {
                 }
 
                 Divider()
-                
+
                 Button {
                     openUrl(urlString: "https://x.com/takoikatakotako")
                 } label: {

@@ -63,6 +63,19 @@ jobs:
     - name: Trust Package Plugins
       run: defaults write com.apple.dt.Xcode IDESkipPackagePluginFingerprintValidatation -bool YES
 
+    # sppを事前ビルド（LicenseListのビルドプラグイン用）
+    - name: Build spp
+      working-directory: ios
+      run: |
+        xcodebuild -resolvePackageDependencies \
+          -project Reaction.xcodeproj \
+          -scheme "Development"
+        SPP_DIR=$(find ~/Library/Developer/Xcode/DerivedData -path "*/SourcePackages/checkouts/LicenseList" -type d | head -1)
+        cd "$SPP_DIR"
+        swift build --product spp -c debug
+        DERIVED_DATA=$(find ~/Library/Developer/Xcode/DerivedData -name "Reaction-*" -type d -maxdepth 1 | head -1)
+        cp .build/debug/spp "$DERIVED_DATA/Build/Products/Debug/spp"
+
     # ビルド
     - name: Build
       working-directory: ios

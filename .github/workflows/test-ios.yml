@@ -55,6 +55,10 @@ jobs:
       working-directory: ios
       run: mint run xcodegen xcodegen generate
 
+    # SPMキャッシュをクリア
+    - name: Clean SPM Cache
+      run: rm -rf ~/Library/Caches/org.swift.swiftpm/repositories
+
     # ビルド
     - name: Build
       working-directory: ios

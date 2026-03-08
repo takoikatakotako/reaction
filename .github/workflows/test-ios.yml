@@ -59,6 +59,10 @@ jobs:
     - name: Clean SPM Cache
       run: rm -rf ~/Library/Caches/org.swift.swiftpm/repositories
 
+    # プラグイン信頼設定
+    - name: Trust Package Plugins
+      run: defaults write com.apple.dt.Xcode IDESkipPackagePluginFingerprintValidatation -bool YES
+
     # ビルド
     - name: Build
       working-directory: ios

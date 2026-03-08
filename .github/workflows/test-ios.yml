@@ -71,9 +71,11 @@ jobs:
           CODE_SIGNING_REQUIRED=NO \
           CODE_SIGNING_ALLOWED=NO \
           DISABLE_SANDBOX=YES \
+          ONLY_ACTIVE_ARCH=YES \
           -project Reaction.xcodeproj \
           -scheme "Development" \
           -sdk iphonesimulator \
           -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.5' \
           -skipPackagePluginValidation \
-          -skipMacroValidation
+          -skipMacroValidation \
+          -parallelizeTargets

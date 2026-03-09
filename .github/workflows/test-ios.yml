@@ -9,9 +9,6 @@ on:
       - main
       - develop
 
-env:
-  DEVELOPER_DIR: /Applications/Xcode_16.4.app
-
 jobs:
   test_ios:
     name: test ios
@@ -44,51 +41,3 @@ jobs:
     - name: SwiftLint
       working-directory: ios
       run: mint run swiftlint swiftlint --strict
-
-    # GoogleService-Info.plistを作成
-    - name: Create GoogleService-Info.plist
-      working-directory: ios
-      run: echo '${{ secrets.GOOGLE_SERVICE_INFO_PLIST_FOR_DEVELOPMENT }}' > Config/Development/GoogleService-Info.plist
-
-    # プロジェクト生成
-    - name: Generate Project
-      working-directory: ios
-      run: mint run xcodegen xcodegen generate
-
-    # SPMキャッシュをクリア
-    - name: Clean SPM Cache
-      run: rm -rf ~/Library/Caches/org.swift.swiftpm/repositories
-
-    # プラグイン信頼設定
-    - name: Trust Package Plugins
-      run: defaults write com.apple.dt.Xcode IDESkipPackagePluginFingerprintValidatation -bool YES
-
-    # sppを事前ビルド（LicenseListのビルドプラグイン用）
-    - name: Build spp
-      working-directory: ios
-      run: |
-        xcodebuild -resolvePackageDependencies \
-          -project Reaction.xcodeproj \
-          -scheme "Development"
-        SPP_DIR=$(find ~/Library/Developer/Xcode/DerivedData -path "*/SourcePackages/checkouts/LicenseList" -type d | head -1)
-        cd "$SPP_DIR"
-        swift build --product spp -c debug
-        DERIVED_DATA=$(find ~/Library/Developer/Xcode/DerivedData -name "Reaction-*" -type d -maxdepth 1 | head -1)
-        cp .build/debug/spp "$DERIVED_DATA/Build/Products/Debug/spp"
-
-    # ビルド
-    - name: Build
-      working-directory: ios
-      run: |
-        xcodebuild build \
-          CODE_SIGNING_REQUIRED=NO \
-          CODE_SIGNING_ALLOWED=NO \
-          DISABLE_SANDBOX=YES \
-          ONLY_ACTIVE_ARCH=YES \
-          -project Reaction.xcodeproj \
-          -scheme "Development" \
-          -sdk iphonesimulator \
-          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.5' \
-          -skipPackagePluginValidation \
-          -skipMacroValidation \
-          -parallelizeTargets

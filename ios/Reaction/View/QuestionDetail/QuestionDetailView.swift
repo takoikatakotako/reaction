@@ -2,7 +2,7 @@ import SwiftUI
 
 struct QuestionDetailView: View {
     @StateObject var viewState: QuestionDetailViewState
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -17,7 +17,7 @@ struct QuestionDetailView: View {
                             CommonImage(imageName: imageName)
                         }
                     }
-                    
+
                     if viewState.showSolution {
                         // Solution
                         Text("Solution")
@@ -29,12 +29,12 @@ struct QuestionDetailView: View {
                                 CommonImage(imageName: imageName)
                             }
                         }
-                        
+
                         if !viewState.question.references.isEmpty {
                             // Refarence
                             Text("Refarence")
                                 .font(Font.system(size: 16).bold())
-                            
+
                             ForEach(viewState.question.references, id: \.self) { refarence in
                                 if let refarenceUrl = URL(string: refarence) {
                                     Button {
@@ -48,14 +48,14 @@ struct QuestionDetailView: View {
                     } else {
                         HStack {
                             Spacer()
-                            
+
                             Button {
                                 viewState.showSolutionTapped()
                             } label: {
                                 Text("Show Solution")
                                     .font(Font.system(size: 16))
                             }
-                            
+
                             Spacer()
                         }
                     }

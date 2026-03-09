@@ -7,6 +7,6 @@ enum QuestionDetailViewSheet: Identifiable {
             return imageName.hashValue
         }
     }
-    
+
     case imageViewer(imageName: String)
 }

@@ -5,7 +5,7 @@ struct QuestionListView: View {
 
     var body: some View {
         NavigationStack {
-            List(viewState.questions){ question in
+            List(viewState.questions) { question in
                 if let imageName = question.problemImageNames.first {
                     NavigationLink {
                         QuestionDetailView(viewState: QuestionDetailViewState(question: question))

@@ -26,7 +26,7 @@ struct ReactionListView: View {
 
                         List(viewState.showingReactions) { (reactionMechanism: ReactionMechanism) in
                             // 言語が変わったタイミングでリロードするため
-                            if viewState.reactionMechanismIdentifier == "ja"{
+                            if viewState.reactionMechanismIdentifier == "ja" {
                                 Button {
                                     viewState.tapped(reactionMechanism: reactionMechanism)
                                 } label: {

@@ -11,6 +11,9 @@ const resourceBaseUrl = process.env.NEXT_PUBLIC_RESOURCE_BASE_URL;
 //////////////////////////////////////////////////////////////
 export async function fetchReactions(): Promise<entity.Reaction[]> {
     const response = await fetch(apiBaseUrl + "/api/reaction/list");
+    if (!response.ok) {
+        throw new Error('反応機構一覧の取得に失敗しました。');
+    }
     const reactionList: entity.ReactionList = await response.json();
     return reactionList.reactions;
 }
@@ -20,7 +23,10 @@ export async function fetchReactions(): Promise<entity.Reaction[]> {
 // Fetch Reaction
 //////////////////////////////////////////////////////////////
 export async function fetchReaction(id: string): Promise<entity.Reaction> {
-    const response = await fetch(apiBaseUrl + `/api/reaction/detail/${id}`) 
+    const response = await fetch(apiBaseUrl + `/api/reaction/detail/${id}`);
+    if (!response.ok) {
+        throw new Error('反応機構の取得に失敗しました。');
+    }
     const reaction: entity.Reaction = await response.json();
     return reaction;
 }
@@ -105,7 +111,7 @@ export async function deleteReaction(id: string) {
       });
 
       if (!response.ok) {
-        throw new Error('反応機構の追加に失敗しました。');
+        throw new Error('反応機構の削除に失敗しました。');
       }
 }
 

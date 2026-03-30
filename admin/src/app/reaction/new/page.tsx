@@ -12,7 +12,7 @@ import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
 import { REACTANT_OPTIONS, PRODUCT_OPTIONS } from '@/lib/constants';
 
-export default function AboutPage() {
+export default function NewReactionPage() {
   // Router
   const router = useRouter();
 

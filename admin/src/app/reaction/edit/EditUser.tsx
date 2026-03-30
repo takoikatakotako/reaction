@@ -211,7 +211,7 @@ export default function EditUser() {
         setGeneralFormulaImageURLs(reaction.generalFormulaImageUrls);
         setMechanismasImageURLs(reaction.mechanismsImageUrls);
         setExampleImageUrls(reaction.exampleImageUrls);
-        setSupplementsImageURLs(reaction.exampleImageUrls);
+        setSupplementsImageURLs(reaction.supplementsImageUrls);
         setSuggestions(reaction.suggestions);
         setReactants(reaction.reactants);
         setProducts(reaction.products);

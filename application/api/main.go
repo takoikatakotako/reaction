@@ -1,6 +1,8 @@
 package main
 
 import (
+	"strings"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/takoikatakotako/reaction/api/handler"
@@ -19,6 +21,7 @@ func main() {
 	env.SetResourceBaseURL("http://localhost:4566")
 	env.SetResourceBucketName("resource.reaction-local.swiswiswift.com")
 	env.SetDistributionID("")
+	env.SetAllowedOrigins("http://localhost:3000")
 
 	// infrastructure
 	awsRepository := infrastructure.AWS{
@@ -59,7 +62,10 @@ func main() {
 
 	e := echo.New()
 	e.Use(middleware.Logger())
-	e.Use(middleware.CORS())
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: strings.Split(env.AllowedOrigins, ","),
+		AllowMethods: []string{echo.GET, echo.POST, echo.PUT, echo.DELETE},
+	}))
 
 	// healthcheck
 	e.GET("/api/healthcheck", healthcheckHandler.HealthcheckGet)

@@ -95,7 +95,7 @@ func main() {
 			}
 			exampleImageNames = append(exampleImageNames, exampleImageName)
 		}
-		databaseReaction.ExampleImageNames = mechanismsImageNames
+		databaseReaction.ExampleImageNames = exampleImageNames
 
 		// Supplements
 		supplementsImageNames := make([]string, 0)
@@ -165,22 +165,3 @@ func insertDatabaseReaction(cfg aws.Config, databaseReaction database.Reaction) 
 
 	return nil
 }
-
-//func convertToDatabaseReaction(reaction Reaction) database.Reaction  {
-//	database.Reaction{
-//		ID                : uuid.NewString(),
-//		EnglishName          : reaction.English,
-//		JapaneseName: reaction.Japanese,
-//		ThumbnailImageName: reaction.ThmbnailName,
-//		GeneralFormulaImageNames []string `dynamodbav:"generalFormulaImageNames"`
-//		MechanismsImageNames     []string `dynamodbav:"mechanismsImageNames"`
-//		ExampleImageNames        []string `dynamodbav:"exampleImageNames"`
-//		SupplementsImageNames    []string `dynamodbav:"supplementsImageNames"`
-//		Suggestions              []string `dynamodbav:"suggestions"`
-//		Reactants                []string `dynamodbav:"reactants"`
-//		Products                 []string `dynamodbav:"products"`
-//		YoutubeUrls              []string `dynamodbav:"youtubeUrls"`
-//		CreatedAt                string   `dynamodbav:"createdAt"`
-//		UpdatedAt                string   `dynamodbav:"updatedAt"`
-//	}
-//}

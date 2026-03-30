@@ -8,6 +8,7 @@ type Environment struct {
 	ResourceBaseURL    string
 	ResourceBucketName string
 	DistributionID     string
+	AllowedOrigins     string
 }
 
 func (e *Environment) SetReactionAWSProfile(defaultValue string) {
@@ -42,5 +43,12 @@ func (e *Environment) SetDistributionID(defaultValue string) {
 	e.DistributionID = defaultValue
 	if val, exists := os.LookupEnv("FRONT_DISTRIBUTION_ID"); exists {
 		e.DistributionID = val
+	}
+}
+
+func (e *Environment) SetAllowedOrigins(defaultValue string) {
+	e.AllowedOrigins = defaultValue
+	if val, exists := os.LookupEnv("ALLOWED_ORIGINS"); exists {
+		e.AllowedOrigins = val
 	}
 }

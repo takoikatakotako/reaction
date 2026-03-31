@@ -30,3 +30,21 @@ func convertToResponseReaction(reaction output.Reaction) response.Reaction {
 		YoutubeUrls:             reaction.YoutubeUrls,
 	}
 }
+
+func convertToResponseQuestions(questions []output.Question) []response.Question {
+	responseQuestions := make([]response.Question, 0)
+	for i := 0; i < len(questions); i++ {
+		questionOutput := convertToResponseQuestion(questions[i])
+		responseQuestions = append(responseQuestions, questionOutput)
+	}
+	return responseQuestions
+}
+
+func convertToResponseQuestion(question output.Question) response.Question {
+	return response.Question{
+		ID:                question.ID,
+		ProblemImageURLs:  question.ProblemImageURLs,
+		SolutionImageURLs: question.SolutionImageURLs,
+		References:        question.References,
+	}
+}

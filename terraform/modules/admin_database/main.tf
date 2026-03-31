@@ -12,3 +12,17 @@ resource "aws_dynamodb_table" "reactions_table" {
     type = "S"
   }
 }
+
+resource "aws_dynamodb_table" "questions_table" {
+  name           = "questions"
+  hash_key       = "id"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 1
+  write_capacity = 1
+  stream_enabled = false
+
+  attribute {
+    name = "id"
+    type = "S"
+  }
+}

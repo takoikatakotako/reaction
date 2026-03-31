@@ -75,6 +75,39 @@ func convertImageNameToImageURL(imageName string, resourceBaseURL string) string
 	return fmt.Sprintf("%s/%s", resourceBaseURL, imageName)
 }
 
+func convertToOutputQuestions(questions []database.Question, resourceBaseURL string) []output.Question {
+	outputQuestions := make([]output.Question, 0)
+	for i := 0; i < len(questions); i++ {
+		outputQuestion := convertToOutputQuestion(questions[i], resourceBaseURL)
+		outputQuestions = append(outputQuestions, outputQuestion)
+	}
+	return outputQuestions
+}
+
+func convertToOutputQuestion(question database.Question, resourceBaseURL string) output.Question {
+	problemImageURLs := convertImageNamesToImageURLs(question.ProblemImageNames, resourceBaseURL)
+	solutionImageURLs := convertImageNamesToImageURLs(question.SolutionImageNames, resourceBaseURL)
+
+	return output.Question{
+		ID:                question.ID,
+		ProblemImageURLs:  problemImageURLs,
+		SolutionImageURLs: solutionImageURLs,
+		References:        question.References,
+	}
+}
+
+func convertToFileQuestion(question database.Question, resourceBaseURL string) file.Question {
+	problemImageURLs := convertImageNamesToImageURLs(question.ProblemImageNames, resourceBaseURL)
+	solutionImageURLs := convertImageNamesToImageURLs(question.SolutionImageNames, resourceBaseURL)
+
+	return file.Question{
+		ID:                question.ID,
+		ProblemImageURLs:  problemImageURLs,
+		SolutionImageURLs: solutionImageURLs,
+		References:        question.References,
+	}
+}
+
 // 2文字目移行の文字を*に変換
 func maskAuthToken(authToken string) string {
 	length := len(authToken)

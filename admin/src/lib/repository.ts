@@ -117,6 +117,100 @@ export async function deleteReaction(id: string) {
 
 
 //////////////////////////////////////////////////////////////
+// Fetch Questions
+//////////////////////////////////////////////////////////////
+export async function fetchQuestions(): Promise<entity.Question[]> {
+    const response = await fetch(apiBaseUrl + "/api/question/list");
+    if (!response.ok) {
+        throw new Error('学習問題一覧の取得に失敗しました。');
+    }
+    const questionList: entity.QuestionList = await response.json();
+    return questionList.questions;
+}
+
+
+//////////////////////////////////////////////////////////////
+// Fetch Question
+//////////////////////////////////////////////////////////////
+export async function fetchQuestion(id: string): Promise<entity.Question> {
+    const response = await fetch(apiBaseUrl + `/api/question/detail/${id}`);
+    if (!response.ok) {
+        throw new Error('学習問題の取得に失敗しました。');
+    }
+    const question: entity.Question = await response.json();
+    return question;
+}
+
+
+//////////////////////////////////////////////////////////////
+// Add Question
+//////////////////////////////////////////////////////////////
+export async function addQuestion(addQuestion: entity.AddQuestion) {
+    const response = await fetch(apiBaseUrl + "/api/question/add", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          problemImageNames: addQuestion.problemImageNames,
+          solutionImageNames: addQuestion.solutionImageNames,
+          references: addQuestion.references,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('学習問題の追加に失敗しました。');
+      }
+}
+
+
+//////////////////////////////////////////////////////////////
+// Edit Question
+//////////////////////////////////////////////////////////////
+export async function editQuestion(editQuestion: entity.EditQuestion) {
+    const response = await fetch(apiBaseUrl + "/api/question/edit", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: editQuestion.id,
+          problemImageNames: editQuestion.problemImageNames,
+          solutionImageNames: editQuestion.solutionImageNames,
+          references: editQuestion.references,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('学習問題の編集に失敗しました。');
+      }
+}
+
+
+//////////////////////////////////////////////////////////////
+// Delete Question
+//////////////////////////////////////////////////////////////
+export async function deleteQuestion(id: string) {
+    const response = await fetch(apiBaseUrl + "/api/question/delete", {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: id,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('学習問題の削除に失敗しました。');
+      }
+}
+
+
+//////////////////////////////////////////////////////////////
 // Generate Upload URL
 //////////////////////////////////////////////////////////////
 export async function generateUploadUrl(imageName: string) {

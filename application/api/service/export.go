@@ -63,3 +63,51 @@ func (e *Export) ExportReactionsToS3() error {
 	}
 	return nil
 }
+
+func (e *Export) ExportQuestionsToS3() error {
+	questions, err := e.AWS.GetQuestions()
+	if err != nil {
+		return err
+	}
+
+	fileQuestions := make([]file.Question, 0, len(questions))
+	for _, question := range questions {
+		fileQuestion := convertToFileQuestion(question, e.ResourceBaseURL)
+		fileQuestions = append(fileQuestions, fileQuestion)
+	}
+
+	// Export questions list
+	fileQuestionsWrapper := file.Questions{Questions: fileQuestions}
+	bytes, err := json.Marshal(fileQuestionsWrapper)
+	if err != nil {
+		return err
+	}
+
+	objectKey := "resource/question/list.json"
+	err = e.AWS.PutObject(e.ResourceBucketName, objectKey, bytes, "application/json")
+	if err != nil {
+		return err
+	}
+
+	// Export individual question files
+	for _, fileQuestion := range fileQuestions {
+		questionBytes, err := json.Marshal(fileQuestion)
+		if err != nil {
+			return err
+		}
+
+		individualKey := "resource/question/" + fileQuestion.ID + "/question.json"
+		err = e.AWS.PutObject(e.ResourceBucketName, individualKey, questionBytes, "application/json")
+		if err != nil {
+			return err
+		}
+	}
+
+	// CloudFrontキャッシュ無効化
+	paths := []string{"/resource/question/*"}
+	err = e.AWS.CreateInvalidation(e.DistributionID, paths)
+	if err != nil {
+		return err
+	}
+	return nil
+}

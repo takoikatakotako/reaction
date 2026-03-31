@@ -30,21 +30,11 @@ export default function RootLayout({
                     反応機構
                   </a>
                 </li>
-                {/* <li>
-                  <a href="review.html" className="main-nav-inactive">
+                <li>
+                  <a href="/question" className="main-nav-active">
                     学習問題
                   </a>
                 </li>
-                <li>
-                  <a href="merchandise.html" className="main-nav-inactive">
-                    略称一覧
-                  </a>
-                </li>
-                <li>
-                  <a href="/update" className="main-nav-inactive">
-                    更新
-                  </a>
-                </li> */}
               </ul>
             </nav>
           </header>

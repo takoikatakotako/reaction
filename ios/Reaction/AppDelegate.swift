@@ -29,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         EnvironmentVariable.shared.setReactionsEndpoint(reactionsEndpoint: reactionsEndpoint)
 
+        guard let questionsEndpoint = Bundle.main.infoDictionary?["QUESTIONS_ENDPOINT"] as? String else {
+            fatalError("Error: Missing QUESTIONS_ENDPOINT in Info.plist")
+        }
+        EnvironmentVariable.shared.setQuestionsEndpoint(questionsEndpoint: questionsEndpoint)
+
         // Push Token
         Messaging.messaging().token { token, error in
             if let error = error {

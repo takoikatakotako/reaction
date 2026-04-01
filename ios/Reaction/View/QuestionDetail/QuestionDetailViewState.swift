@@ -14,7 +14,7 @@ class QuestionDetailViewState: ObservableObject {
         showSolution = true
     }
 
-    func imageTapped(imageName: String) {
-        sheet = .imageViewer(imageName: imageName)
+    func imageTapped(imageUrlString: String) {
+        sheet = .imageViewer(imageUrlString: imageUrlString)
     }
 }

@@ -10,11 +10,13 @@ struct QuestionDetailView: View {
                     // Question
                     Text("Problem")
                         .font(Font.system(size: 16))
-                    ForEach(viewState.question.problemImageNames, id: \.self) { imageName in
-                        Button {
-                            viewState.imageTapped(imageName: imageName)
-                        } label: {
-                            CommonImage(imageName: imageName)
+                    ForEach(viewState.question.problemImageUrls, id: \.self) { imageUrlString in
+                        if let imageUrl = URL(string: imageUrlString) {
+                            Button {
+                                viewState.imageTapped(imageUrlString: imageUrlString)
+                            } label: {
+                                CommonWebImage(url: imageUrl)
+                            }
                         }
                     }
 
@@ -22,25 +24,27 @@ struct QuestionDetailView: View {
                         // Solution
                         Text("Solution")
                             .font(Font.system(size: 16).bold())
-                        ForEach(viewState.question.solutionImageNames, id: \.self) { imageName in
-                            Button {
-                                viewState.imageTapped(imageName: imageName)
-                            } label: {
-                                CommonImage(imageName: imageName)
+                        ForEach(viewState.question.solutionImageUrls, id: \.self) { imageUrlString in
+                            if let imageUrl = URL(string: imageUrlString) {
+                                Button {
+                                    viewState.imageTapped(imageUrlString: imageUrlString)
+                                } label: {
+                                    CommonWebImage(url: imageUrl)
+                                }
                             }
                         }
 
                         if !viewState.question.references.isEmpty {
-                            // Refarence
-                            Text("Refarence")
+                            // Reference
+                            Text("Reference")
                                 .font(Font.system(size: 16).bold())
 
-                            ForEach(viewState.question.references, id: \.self) { refarence in
-                                if let refarenceUrl = URL(string: refarence) {
+                            ForEach(viewState.question.references, id: \.self) { reference in
+                                if let referenceUrl = URL(string: reference) {
                                     Button {
-                                        UIApplication.shared.open(refarenceUrl)
+                                        UIApplication.shared.open(referenceUrl)
                                     } label: {
-                                        Text(refarence)
+                                        Text(reference)
                                     }
                                 }
                             }
@@ -64,8 +68,10 @@ struct QuestionDetailView: View {
             }
             .sheet(item: $viewState.sheet) { item in
                 switch item {
-                case .imageViewer(imageName: let imageName):
-                    CommonImageViewer(imageName: imageName)
+                case .imageViewer(imageUrlString: let imageUrlString):
+                    if let imageUrl = URL(string: imageUrlString) {
+                        CommonWebImage(url: imageUrl)
+                    }
                 }
             }
         }

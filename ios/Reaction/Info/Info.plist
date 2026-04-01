@@ -26,6 +26,8 @@
 	<string>17.0</string>
 	<key>REACTIONS_ENDPOINT</key>
 	<string>$(REACTIONS_ENDPOINT)</string>
+	<key>QUESTIONS_ENDPOINT</key>
+	<string>$(QUESTIONS_ENDPOINT)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>MPLUS2-VariableFont.ttf</string>

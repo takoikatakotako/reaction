@@ -13,6 +13,7 @@ const (
 
 type Question struct {
 	ID                 string   `dynamodbav:"id"`
+	Order              int      `dynamodbav:"order"`
 	ProblemImageNames  []string `dynamodbav:"problemImageNames"`
 	SolutionImageNames []string `dynamodbav:"solutionImageNames"`
 	References         []string `dynamodbav:"references"`

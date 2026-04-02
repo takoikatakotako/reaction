@@ -5,6 +5,7 @@ type GetQuestion struct {
 }
 
 type AddQuestion struct {
+	Order              int
 	ProblemImageNames  []string
 	SolutionImageNames []string
 	References         []string
@@ -12,6 +13,7 @@ type AddQuestion struct {
 
 type EditQuestion struct {
 	ID                 string
+	Order              int
 	ProblemImageNames  []string
 	SolutionImageNames []string
 	References         []string

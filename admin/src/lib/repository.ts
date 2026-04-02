@@ -153,6 +153,7 @@ export async function addQuestion(addQuestion: entity.AddQuestion) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          order: addQuestion.order,
           problemImageNames: addQuestion.problemImageNames,
           solutionImageNames: addQuestion.solutionImageNames,
           references: addQuestion.references,
@@ -177,6 +178,7 @@ export async function editQuestion(editQuestion: entity.EditQuestion) {
         },
         body: JSON.stringify({
           id: editQuestion.id,
+          order: editQuestion.order,
           problemImageNames: editQuestion.problemImageNames,
           solutionImageNames: editQuestion.solutionImageNames,
           references: editQuestion.references,

@@ -6,6 +6,7 @@ struct QuestionsResponse: Decodable, Hashable {
 
 struct Question: Identifiable, Decodable, Hashable {
     let id: String
+    let order: Int
     let problemImageUrls: [String]
     let solutionImageUrls: [String]
     let references: [String]

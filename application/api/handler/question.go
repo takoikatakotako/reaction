@@ -61,6 +61,7 @@ func (q *Question) AddQuestionPost(c echo.Context) error {
 	}
 
 	in := input.AddQuestion{
+		Order:              req.Order,
 		ProblemImageNames:  req.ProblemImageNames,
 		SolutionImageNames: req.SolutionImageNames,
 		References:         req.References,
@@ -93,6 +94,7 @@ func (q *Question) EditQuestionPost(c echo.Context) error {
 
 	in := input.EditQuestion{
 		ID:                 req.ID,
+		Order:              req.Order,
 		ProblemImageNames:  req.ProblemImageNames,
 		SolutionImageNames: req.SolutionImageNames,
 		References:         req.References,

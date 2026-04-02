@@ -10,6 +10,9 @@ import * as entity from '@/lib/entity';
 export default function NewQuestionPage() {
   const router = useRouter();
 
+  // Order
+  const [order, setOrder] = useState<number>(0);
+
   // Problem Images
   const [problemImageURLs, setProblemImageURLs] = useState<string[]>([]);
   const problemInputRef = useRef<HTMLInputElement>(null);
@@ -46,6 +49,7 @@ export default function NewQuestionPage() {
       const solutionImageNames = service.extractImageNames(solutionImageURLs);
 
       const addQuestion: entity.AddQuestion = {
+        order: order,
         problemImageNames: problemImageNames,
         solutionImageNames: solutionImageNames,
         references: references,
@@ -64,6 +68,18 @@ export default function NewQuestionPage() {
       <h1>学習問題追加</h1>
 
       <form>
+        {/* Order */}
+        <div className="reaction-edit-content">
+          <label htmlFor="order">表示順</label>
+          <input
+            type="number"
+            name="order"
+            value={order}
+            onChange={(e) => setOrder(Number(e.target.value))}
+          />
+          <hr />
+        </div>
+
         {/* Problem Images */}
         <ImagesInputField
           label="problemImages"

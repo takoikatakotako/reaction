@@ -59,7 +59,7 @@ export default function EditQuestion() {
       };
 
       await service.editQuestion(editQuestion);
-      alert('編集成功！');
+      alert('更新成功！');
       router.push('/question');
     } catch (error) {
       alert(`エラーが発生しました:\n${error}`);
@@ -169,7 +169,7 @@ export default function EditQuestion() {
             fontSize: '16px',
             fontWeight: 'bold',
           }}>
-            編集
+            更新
           </div>
         </button>
 

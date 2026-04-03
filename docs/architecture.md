@@ -44,11 +44,21 @@ resource/
 │   │   └── {UUID}.png
 │   └── resized/
 │       └── {UUID}.png
-└── reaction/
-    ├── list.json
-    └── {ID}/
-        └── reaction.json
+├── reaction/
+│   ├── list.json
+│   └── {ID}/
+│       └── reaction.json
+└── question/
+    └── list.json
 ```
+
+### 学習問題のデータフロー
+
+学習問題は管理画面から登録・編集し、「データ更新」で S3 にエクスポートします。
+
+- **DynamoDB `questions` テーブル**: マスターデータ（id, order, problemImageNames, solutionImageNames, references）
+- **S3 `resource/question/list.json`**: アプリ配信用 JSON（order 順でソート済み、画像URLに変換済み）
+- **S3 `resource/image/{UUID}.png`**: 問題・解答の画像ファイル（反応機構と共有）
 
 ## 編集用ファイル
 

@@ -11,6 +11,8 @@
 - [アーキテクチャ](architecture.md) - システム構成図・コンポーネント説明
 - [URL一覧](urls.md) - 各環境のURL
 - [API](api.md) - Swagger UIによるAPI仕様
+- [学習問題の管理](question-management.md) - 問題の追加・編集・並び替え・データ更新
+- [デプロイ手順](deploy.md) - GitHub Actions によるデプロイ方法
 
 ## リンク
 

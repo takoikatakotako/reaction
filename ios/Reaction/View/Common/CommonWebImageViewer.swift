@@ -12,7 +12,8 @@ struct CommonWebImageViewer: View {
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            WebImageViewer(url: url, isDarkMode: isDarkMode)
+            WebImageViewer(url: url)
+                .colorInvert(isDarkMode)
 
             Button {
                 dismiss()
@@ -25,16 +26,26 @@ struct CommonWebImageViewer: View {
                     .padding(.leading, 16)
             }
         }
-        .background(Color.black)
+        .background(isDarkMode ? Color.black : Color.white)
+    }
+}
+
+private extension View {
+    @ViewBuilder
+    func colorInvert(_ apply: Bool) -> some View {
+        if apply {
+            self.colorInvert()
+        } else {
+            self
+        }
     }
 }
 
 struct WebImageViewer: UIViewRepresentable {
     let url: URL
-    let isDarkMode: Bool
 
     func makeUIView(context: Context) -> UIWebImageViewerView {
-        let view = UIWebImageViewerView(url: url, isDarkMode: isDarkMode)
+        let view = UIWebImageViewerView(url: url)
         return view
     }
 
@@ -45,11 +56,11 @@ class UIWebImageViewerView: UIView {
     private let scrollView = UIScrollView()
     private let imageView = UIImageView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
-    private let isDarkMode: Bool
 
-    init(url: URL, isDarkMode: Bool) {
-        self.isDarkMode = isDarkMode
+    init(url: URL) {
         super.init(frame: .zero)
+
+        backgroundColor = .white
 
         scrollView.delegate = self
         scrollView.maximumZoomScale = 5.0
@@ -62,7 +73,7 @@ class UIWebImageViewerView: UIView {
         imageView.contentMode = .scaleAspectFit
         scrollView.addSubview(imageView)
 
-        activityIndicator.color = .white
+        activityIndicator.color = .gray
         activityIndicator.startAnimating()
         addSubview(activityIndicator)
 
@@ -73,19 +84,7 @@ class UIWebImageViewerView: UIView {
                 self.activityIndicator.removeFromSuperview()
                 switch result {
                 case .success(let value):
-                    var image = value.image
-                    if self.isDarkMode {
-                        if let ciImage = CIImage(image: image),
-                           let filter = CIFilter(name: "CIColorInvert") {
-                            filter.setValue(ciImage, forKey: kCIInputImageKey)
-                            let context = CIContext()
-                            if let outputImage = filter.outputImage,
-                               let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
-                                image = UIImage(cgImage: cgImage)
-                            }
-                        }
-                    }
-                    self.imageView.image = image
+                    self.imageView.image = value.image
                     self.setNeedsLayout()
                 case .failure:
                     break

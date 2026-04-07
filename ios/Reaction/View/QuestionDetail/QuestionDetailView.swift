@@ -17,6 +17,7 @@ struct QuestionDetailView: View {
                             } label: {
                                 CommonWebImage(url: imageUrl)
                             }
+                            .buttonStyle(.plain)
                         }
                     }
 
@@ -31,6 +32,7 @@ struct QuestionDetailView: View {
                                 } label: {
                                     CommonWebImage(url: imageUrl)
                                 }
+                                .buttonStyle(.plain)
                             }
                         }
 

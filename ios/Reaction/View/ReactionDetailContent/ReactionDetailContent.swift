@@ -21,6 +21,7 @@ struct ReactionDetailContent: View {
                                 .scaledToFit()
                                 .padding()
                         }
+                        .buttonStyle(.plain)
                     }
                 }
             }
@@ -36,6 +37,7 @@ struct ReactionDetailContent: View {
                                 .scaledToFit()
                                 .padding()
                         }
+                        .buttonStyle(.plain)
                     }
                 }
             }
@@ -51,6 +53,7 @@ struct ReactionDetailContent: View {
                                 .scaledToFit()
                                 .padding()
                         }
+                        .buttonStyle(.plain)
                     }
                 }
             }
@@ -66,6 +69,7 @@ struct ReactionDetailContent: View {
                                 .scaledToFit()
                                 .padding()
                         }
+                        .buttonStyle(.plain)
                     }
                 }
             }

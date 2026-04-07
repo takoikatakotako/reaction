@@ -66,11 +66,11 @@ struct QuestionDetailView: View {
                 }
                 .padding(8)
             }
-            .sheet(item: $viewState.sheet) { item in
+            .fullScreenCover(item: $viewState.sheet) { item in
                 switch item {
                 case .imageViewer(imageUrlString: let imageUrlString):
                     if let imageUrl = URL(string: imageUrlString) {
-                        CommonWebImage(url: imageUrl)
+                        CommonWebImageViewer(url: imageUrl)
                     }
                 }
             }

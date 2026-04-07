@@ -3,6 +3,7 @@ import SwiftUI
 struct ReactionDetailContent: View {
     let localeIdentifier: String
     @State var reactionMechanism: ReactionMechanism
+    @State private var selectedImageUrlString: String?
 
     var body: some View {
         LazyVStack {
@@ -13,9 +14,13 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-general-formula"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.generalFormulaImageUrls, id: \.self) { generalFormulaImageUrl in
-                        CommonWebImage(url: URL(string: generalFormulaImageUrl))
-                            .scaledToFit()
-                            .padding()
+                        Button {
+                            selectedImageUrlString = generalFormulaImageUrl
+                        } label: {
+                            CommonWebImage(url: URL(string: generalFormulaImageUrl))
+                                .scaledToFit()
+                                .padding()
+                        }
                     }
                 }
             }
@@ -24,9 +29,13 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-reaction-mechanism"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.mechanismsImageUrls, id: \.self) { mechanismsImageUrl in
-                        CommonWebImage(url: URL(string: mechanismsImageUrl))
-                            .scaledToFit()
-                            .padding()
+                        Button {
+                            selectedImageUrlString = mechanismsImageUrl
+                        } label: {
+                            CommonWebImage(url: URL(string: mechanismsImageUrl))
+                                .scaledToFit()
+                                .padding()
+                        }
                     }
                 }
             }
@@ -35,9 +44,13 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-example"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.exampleImageUrls, id: \.self) { exampleImageUrl in
-                        CommonWebImage(url: URL(string: exampleImageUrl))
-                            .scaledToFit()
-                            .padding()
+                        Button {
+                            selectedImageUrlString = exampleImageUrl
+                        } label: {
+                            CommonWebImage(url: URL(string: exampleImageUrl))
+                                .scaledToFit()
+                                .padding()
+                        }
                     }
                 }
             }
@@ -46,9 +59,13 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-supplement"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.supplementsImageUrls, id: \.self) { supplementsImageUrl in
-                        CommonWebImage(url: URL(string: supplementsImageUrl))
-                            .scaledToFit()
-                            .padding()
+                        Button {
+                            selectedImageUrlString = supplementsImageUrl
+                        } label: {
+                            CommonWebImage(url: URL(string: supplementsImageUrl))
+                                .scaledToFit()
+                                .padding()
+                        }
                     }
                 }
             }
@@ -78,6 +95,14 @@ struct ReactionDetailContent: View {
         }
         .padding(.vertical, 16)
         .padding(.bottom, 16)
+        .fullScreenCover(isPresented: Binding(
+            get: { selectedImageUrlString != nil },
+            set: { if !$0 { selectedImageUrlString = nil } }
+        )) {
+            if let imageUrlString = selectedImageUrlString, let imageUrl = URL(string: imageUrlString) {
+                CommonWebImageViewer(url: imageUrl)
+            }
+        }
     }
 
     private func getYoutubeThmbnailUrlString(youtubeUrl: URL) -> URL {

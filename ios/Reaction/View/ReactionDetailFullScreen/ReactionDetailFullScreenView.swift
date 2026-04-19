@@ -10,7 +10,7 @@ struct ReactionDetailFullScreenView: View {
 
     var body: some View {
         NavigationView {
-            ZStack {
+            Group {
                 if isLoading {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

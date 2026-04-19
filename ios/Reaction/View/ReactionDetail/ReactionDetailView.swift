@@ -8,30 +8,32 @@ struct ReactionDetailView: View {
     @State private var isLoading = true
 
     var body: some View {
-        ZStack(alignment: .bottom) {
+        Group {
             if isLoading {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                ZoomableScrollView {
-                    ReactionDetailContent(localeIdentifier: Locale.current.identifier, reactionMechanism: reactionMechanism)
-                        .padding(.bottom, 40)
-                }
+                ZStack(alignment: .bottom) {
+                    ZoomableScrollView {
+                        ReactionDetailContent(localeIdentifier: Locale.current.identifier, reactionMechanism: reactionMechanism)
+                            .padding(.bottom, 40)
+                    }
 
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        showingSheet = true
-                    }, label: {
-                        Image(systemName: "square.and.arrow.up")
-                            .renderingMode(.template)
-                            .colorMultiply(.black)
-                            .padding(16)
-                            .background(Color.gray)
-                            .cornerRadius(16)
-                            .padding(.trailing, 16)
-                    })
-                    .padding(.bottom, 8)
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            showingSheet = true
+                        }, label: {
+                            Image(systemName: "square.and.arrow.up")
+                                .renderingMode(.template)
+                                .colorMultiply(.black)
+                                .padding(16)
+                                .background(Color.gray)
+                                .cornerRadius(16)
+                                .padding(.trailing, 16)
+                        })
+                        .padding(.bottom, 8)
+                    }
                 }
             }
         }

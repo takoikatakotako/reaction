@@ -1,6 +1,16 @@
 import SwiftUI
 import Combine
 
+// Notifies when SwiftUI content inside the hosting controller re-renders (e.g. after async image load)
+private class TrackingHostingController<Content: View>: UIHostingController<Content> {
+    var onLayoutSubviews: (() -> Void)?
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        onLayoutSubviews?()
+    }
+}
+
 struct ZoomableScrollView<Content: View>: View {
     let content: Content
 
@@ -27,7 +37,7 @@ private struct ZoomableScrollViewImpl<Content: View>: UIViewControllerRepresenta
     }
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator(hostingController: UIHostingController(rootView: self.content))
+        return Coordinator(hostingController: TrackingHostingController(rootView: self.content))
     }
 
     func updateUIViewController(_ viewController: ViewController, context: Context) {
@@ -47,6 +57,8 @@ private struct ZoomableScrollViewImpl<Content: View>: UIViewControllerRepresenta
             willSet { NSLayoutConstraint.deactivate(contentSizeConstraints) }
             didSet { NSLayoutConstraint.activate(contentSizeConstraints) }
         }
+
+        private var lastComputedSize: CGSize = .zero
 
         required init?(coder: NSCoder) { fatalError() }
         init(coordinator: Coordinator, doubleTap: AnyPublisher<Void, Never>) {
@@ -79,10 +91,17 @@ private struct ZoomableScrollViewImpl<Content: View>: UIViewControllerRepresenta
                     view.setNeedsUpdateConstraints()
                 }
             doubleTapCancellable = doubleTap.sink { [unowned self] in handleDoubleTap() }
+
+            // KFImage等の非同期レンダリング後にも制約を再計算するため、
+            // HostingController内のレイアウト更新を監視する
+            coordinator.hostingController.onLayoutSubviews = { [weak self] in
+                self?.view.setNeedsUpdateConstraints()
+            }
         }
 
         func update(content: Content, doubleTap: AnyPublisher<Void, Never>) {
             coordinator.hostingController.rootView = content
+            lastComputedSize = .zero
             scrollView.setNeedsUpdateConstraints()
             doubleTapCancellable = doubleTap.sink { [unowned self] in handleDoubleTap() }
         }
@@ -101,6 +120,9 @@ private struct ZoomableScrollViewImpl<Content: View>: UIViewControllerRepresenta
                 width: view.bounds.width,
                 height: UIView.layoutFittingExpandedSize.height
             ))
+            // サイズが変わった時だけ制約を更新し、無限ループを防ぐ
+            guard hostedContentSize != lastComputedSize else { return }
+            lastComputedSize = hostedContentSize
             contentSizeConstraints = [
                 hostedView.widthAnchor.constraint(equalToConstant: max(hostedContentSize.width, view.bounds.width)),
                 hostedView.heightAnchor.constraint(equalToConstant: hostedContentSize.height),
@@ -118,9 +140,9 @@ private struct ZoomableScrollViewImpl<Content: View>: UIViewControllerRepresenta
     }
 
     class Coordinator: NSObject {
-        var hostingController: UIHostingController<Content>
+        var hostingController: TrackingHostingController<Content>
 
-        init(hostingController: UIHostingController<Content>) {
+        init(hostingController: TrackingHostingController<Content>) {
             self.hostingController = hostingController
         }
     }

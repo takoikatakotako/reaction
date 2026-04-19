@@ -4,7 +4,7 @@ struct ReactionDetailContent: View {
     let localeIdentifier: String
     @State var reactionMechanism: ReactionMechanism
     var body: some View {
-        LazyVStack {
+        VStack {
             CommonText(text: reactionMechanism.getDisplayTitle(identifier: localeIdentifier), font: Font.system(size: 24))
                 .padding(.bottom, 12)
 

@@ -3,8 +3,6 @@ import SwiftUI
 struct ReactionDetailContent: View {
     let localeIdentifier: String
     @State var reactionMechanism: ReactionMechanism
-    @State private var selectedImageUrlString: String?
-
     var body: some View {
         LazyVStack {
             CommonText(text: reactionMechanism.getDisplayTitle(identifier: localeIdentifier), font: Font.system(size: 24))
@@ -14,14 +12,9 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-general-formula"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.generalFormulaImageUrls, id: \.self) { generalFormulaImageUrl in
-                        Button {
-                            selectedImageUrlString = generalFormulaImageUrl
-                        } label: {
-                            CommonWebImage(url: URL(string: generalFormulaImageUrl))
-                                .scaledToFit()
-                                .padding()
-                        }
-                        .buttonStyle(.plain)
+                        CommonWebImage(url: URL(string: generalFormulaImageUrl))
+                            .scaledToFit()
+                            .padding()
                     }
                 }
             }
@@ -30,14 +23,9 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-reaction-mechanism"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.mechanismsImageUrls, id: \.self) { mechanismsImageUrl in
-                        Button {
-                            selectedImageUrlString = mechanismsImageUrl
-                        } label: {
-                            CommonWebImage(url: URL(string: mechanismsImageUrl))
-                                .scaledToFit()
-                                .padding()
-                        }
-                        .buttonStyle(.plain)
+                        CommonWebImage(url: URL(string: mechanismsImageUrl))
+                            .scaledToFit()
+                            .padding()
                     }
                 }
             }
@@ -46,14 +34,9 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-example"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.exampleImageUrls, id: \.self) { exampleImageUrl in
-                        Button {
-                            selectedImageUrlString = exampleImageUrl
-                        } label: {
-                            CommonWebImage(url: URL(string: exampleImageUrl))
-                                .scaledToFit()
-                                .padding()
-                        }
-                        .buttonStyle(.plain)
+                        CommonWebImage(url: URL(string: exampleImageUrl))
+                            .scaledToFit()
+                            .padding()
                     }
                 }
             }
@@ -62,14 +45,9 @@ struct ReactionDetailContent: View {
                 VStack(spacing: 0) {
                     CommonText(text: String(localized: "common-supplement"), font: Font.system(size: 14))
                     ForEach(reactionMechanism.supplementsImageUrls, id: \.self) { supplementsImageUrl in
-                        Button {
-                            selectedImageUrlString = supplementsImageUrl
-                        } label: {
-                            CommonWebImage(url: URL(string: supplementsImageUrl))
-                                .scaledToFit()
-                                .padding()
-                        }
-                        .buttonStyle(.plain)
+                        CommonWebImage(url: URL(string: supplementsImageUrl))
+                            .scaledToFit()
+                            .padding()
                     }
                 }
             }
@@ -99,14 +77,6 @@ struct ReactionDetailContent: View {
         }
         .padding(.vertical, 16)
         .padding(.bottom, 16)
-        .fullScreenCover(isPresented: Binding(
-            get: { selectedImageUrlString != nil },
-            set: { if !$0 { selectedImageUrlString = nil } }
-        )) {
-            if let imageUrlString = selectedImageUrlString, let imageUrl = URL(string: imageUrlString) {
-                CommonWebImageViewer(url: imageUrl)
-            }
-        }
     }
 
     private func getYoutubeThmbnailUrlString(youtubeUrl: URL) -> URL {

@@ -4,7 +4,6 @@ class QuestionDetailViewState: ObservableObject {
     let question: Question
 
     @Published var showSolution: Bool = false
-    @Published var sheet: QuestionDetailViewSheet?
 
     init(question: Question) {
         self.question = question
@@ -12,9 +11,5 @@ class QuestionDetailViewState: ObservableObject {
 
     func showSolutionTapped() {
         showSolution = true
-    }
-
-    func imageTapped(imageUrlString: String) {
-        sheet = .imageViewer(imageUrlString: imageUrlString)
     }
 }

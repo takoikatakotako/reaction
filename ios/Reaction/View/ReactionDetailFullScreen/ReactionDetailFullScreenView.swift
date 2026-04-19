@@ -8,7 +8,7 @@ struct ReactionDetailFullScreenView: View {
 
     var body: some View {
         NavigationView {
-            ScrollView(showsIndicators: false) {
+            ZoomableScrollView {
                 ReactionDetailContent(localeIdentifier: localeIdentifier, reactionMechanism: reactionMechanism)
             }
             .navigationBarTitleDisplayMode(.inline)

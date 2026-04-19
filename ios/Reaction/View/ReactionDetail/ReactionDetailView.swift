@@ -7,7 +7,7 @@ struct ReactionDetailView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            ScrollView {
+            ZoomableScrollView {
                 ReactionDetailContent(localeIdentifier: Locale.current.identifier, reactionMechanism: reactionMechanism)
                     .padding(.bottom, 40)
             }

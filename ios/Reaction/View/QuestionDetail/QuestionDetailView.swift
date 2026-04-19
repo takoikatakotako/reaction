@@ -5,19 +5,14 @@ struct QuestionDetailView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
+            ZoomableScrollView {
                 VStack(alignment: .leading) {
                     // Question
                     Text("Problem")
                         .font(Font.system(size: 16))
                     ForEach(viewState.question.problemImageUrls, id: \.self) { imageUrlString in
                         if let imageUrl = URL(string: imageUrlString) {
-                            Button {
-                                viewState.imageTapped(imageUrlString: imageUrlString)
-                            } label: {
-                                CommonWebImage(url: imageUrl)
-                            }
-                            .buttonStyle(.plain)
+                            CommonWebImage(url: imageUrl)
                         }
                     }
 
@@ -27,12 +22,7 @@ struct QuestionDetailView: View {
                             .font(Font.system(size: 16).bold())
                         ForEach(viewState.question.solutionImageUrls, id: \.self) { imageUrlString in
                             if let imageUrl = URL(string: imageUrlString) {
-                                Button {
-                                    viewState.imageTapped(imageUrlString: imageUrlString)
-                                } label: {
-                                    CommonWebImage(url: imageUrl)
-                                }
-                                .buttonStyle(.plain)
+                                CommonWebImage(url: imageUrl)
                             }
                         }
 
@@ -67,14 +57,6 @@ struct QuestionDetailView: View {
                     }
                 }
                 .padding(8)
-            }
-            .fullScreenCover(item: $viewState.sheet) { item in
-                switch item {
-                case .imageViewer(imageUrlString: let imageUrlString):
-                    if let imageUrl = URL(string: imageUrlString) {
-                        CommonWebImageViewer(url: imageUrl)
-                    }
-                }
             }
         }
     }

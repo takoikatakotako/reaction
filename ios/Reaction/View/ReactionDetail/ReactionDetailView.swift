@@ -73,11 +73,11 @@ struct ReactionDetailView: View {
             return
         }
 
-        let prefetcher = ImagePrefetcher(urls: allUrls) { _, _, _ in
+        let prefetcher = ImagePrefetcher(urls: allUrls, completionHandler: { _, _, _ in
             DispatchQueue.main.async {
                 isLoading = false
             }
-        }
+        })
         prefetcher.start()
     }
 }

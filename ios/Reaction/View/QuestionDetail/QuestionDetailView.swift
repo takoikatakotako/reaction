@@ -34,7 +34,7 @@ struct QuestionDetailView: View {
                             ForEach(viewState.question.references, id: \.self) { reference in
                                 if let referenceUrl = URL(string: reference) {
                                     Button {
-                                        UIApplication.shared.open(referenceUrl)
+                                        viewState.referenceTapped(url: referenceUrl)
                                     } label: {
                                         Text(reference)
                                     }
@@ -58,6 +58,16 @@ struct QuestionDetailView: View {
                 }
                 .padding(8)
             }
+            .alert(String(localized: "question-detail-open-reference-title"), isPresented: $viewState.showingReferenceAlert, actions: {
+                Button(String(localized: "common-open")) {
+                    viewState.openSelectedReference()
+                }
+                Button(String(localized: "common-cancel"), role: .cancel) {}
+            }, message: {
+                if let url = viewState.selectedReferenceUrl {
+                    Text(url.absoluteString)
+                }
+            })
         }
     }
 }

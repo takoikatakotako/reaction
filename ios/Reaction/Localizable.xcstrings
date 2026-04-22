@@ -38,6 +38,23 @@
         }
       }
     },
+    "common-open" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開く"
+          }
+        }
+      }
+    },
     "common-english" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -414,6 +431,23 @@
     },
     "Problem" : {
 
+    },
+    "question-detail-open-reference-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open this link?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このリンクを開きますか？"
+          }
+        }
+      }
     },
     "Reference" : {
       "comment" : "A label displayed above a list of external links.",

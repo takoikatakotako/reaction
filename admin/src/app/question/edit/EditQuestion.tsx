@@ -12,6 +12,9 @@ export default function EditQuestion() {
   const id: string = searchParams.get('id') ?? '';
   const router = useRouter();
 
+  // Order
+  const [order, setOrder] = useState<number>(0);
+
   // Problem Images
   const [problemImageURLs, setProblemImageURLs] = useState<string[]>([]);
   const problemInputRef = useRef<HTMLInputElement>(null);
@@ -49,13 +52,14 @@ export default function EditQuestion() {
 
       const editQuestion: entity.EditQuestion = {
         id: id,
+        order: order,
         problemImageNames: problemImageNames,
         solutionImageNames: solutionImageNames,
         references: references,
       };
 
       await service.editQuestion(editQuestion);
-      alert('編集成功！');
+      alert('更新成功！');
       router.push('/question');
     } catch (error) {
       alert(`エラーが発生しました:\n${error}`);
@@ -78,6 +82,7 @@ export default function EditQuestion() {
     const loadQuestion = async () => {
       try {
         const question: entity.Question = await service.fetchQuestion(id);
+        setOrder(question.order);
         setProblemImageURLs(question.problemImageUrls);
         setSolutionImageURLs(question.solutionImageUrls);
         setReferences(question.references);
@@ -101,6 +106,18 @@ export default function EditQuestion() {
             name="id"
             value={id ?? ''}
             readOnly
+          />
+          <hr />
+        </div>
+
+        {/* Order */}
+        <div className="reaction-edit-content">
+          <label htmlFor="order">表示順</label>
+          <input
+            type="number"
+            name="order"
+            value={order}
+            onChange={(e) => setOrder(Number(e.target.value))}
           />
           <hr />
         </div>
@@ -152,7 +169,7 @@ export default function EditQuestion() {
             fontSize: '16px',
             fontWeight: 'bold',
           }}>
-            編集
+            更新
           </div>
         </button>
 

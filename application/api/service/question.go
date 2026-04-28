@@ -40,6 +40,7 @@ func (q *Question) GetQuestion(input input.GetQuestion) (output.Question, error)
 func (q *Question) AddQuestion(input input.AddQuestion) error {
 	question := database.Question{
 		ID:                 uuid.NewString(),
+		Order:              input.Order,
 		ProblemImageNames:  input.ProblemImageNames,
 		SolutionImageNames: input.SolutionImageNames,
 		References:         input.References,
@@ -63,6 +64,7 @@ func (q *Question) EditQuestion(input input.EditQuestion) error {
 
 	question := database.Question{
 		ID:                 currentQuestion.ID,
+		Order:              input.Order,
 		ProblemImageNames:  input.ProblemImageNames,
 		SolutionImageNames: input.SolutionImageNames,
 		References:         input.References,

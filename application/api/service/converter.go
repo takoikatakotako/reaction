@@ -90,6 +90,7 @@ func convertToOutputQuestion(question database.Question, resourceBaseURL string)
 
 	return output.Question{
 		ID:                question.ID,
+		Order:             question.Order,
 		ProblemImageURLs:  problemImageURLs,
 		SolutionImageURLs: solutionImageURLs,
 		References:        question.References,
@@ -102,6 +103,7 @@ func convertToFileQuestion(question database.Question, resourceBaseURL string) f
 
 	return file.Question{
 		ID:                question.ID,
+		Order:             question.Order,
 		ProblemImageURLs:  problemImageURLs,
 		SolutionImageURLs: solutionImageURLs,
 		References:        question.References,

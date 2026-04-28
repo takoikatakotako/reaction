@@ -43,6 +43,7 @@ func convertToResponseQuestions(questions []output.Question) []response.Question
 func convertToResponseQuestion(question output.Question) response.Question {
 	return response.Question{
 		ID:                question.ID,
+		Order:             question.Order,
 		ProblemImageURLs:  question.ProblemImageURLs,
 		SolutionImageURLs: question.SolutionImageURLs,
 		References:        question.References,

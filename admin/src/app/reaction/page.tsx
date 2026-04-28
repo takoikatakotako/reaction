@@ -33,12 +33,6 @@ export default function ReactionPage() {
               <p>追加</p>
             </li>
           </Link>
-
-          <Link href="/reaction/update">
-            <li className="pagination-active">
-              <p>更新</p>
-            </li>
-          </Link>
         </ul>
       </div>
 

@@ -39,7 +39,7 @@ export default function QuestionPage() {
       {questions.map((question) => (
         <div className="reaction-content" key={question.id}>
           <Link href={`/question/edit?id=${question.id}`}>
-            <h2>ID: {question.id}</h2>
+            <h2>#{question.order} - {question.id}</h2>
           </Link>
           {question.problemImageUrls.length > 0 && (
             <Image

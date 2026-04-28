@@ -11,6 +11,7 @@ import (
 	"github.com/takoikatakotako/reaction/infrastructure/database"
 	"log/slog"
 	"runtime"
+	"sort"
 )
 
 func (a *AWS) GetQuestion(id string) (database.Question, error) {
@@ -79,6 +80,11 @@ func (a *AWS) GetQuestions() ([]database.Question, error) {
 		}
 		lastEvaluatedKey = output.LastEvaluatedKey
 	}
+
+	// Order でソート
+	sort.Slice(questions, func(i, j int) bool {
+		return questions[i].Order < questions[j].Order
+	})
 
 	return questions, nil
 }

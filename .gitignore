@@ -2,3 +2,9 @@ application/.idea
 
 # MkDocs build output
 /site/
+
+# Migration binary
+migration/migration
+
+# Claude Code local settings
+.claude/

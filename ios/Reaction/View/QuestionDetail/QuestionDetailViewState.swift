@@ -4,7 +4,8 @@ class QuestionDetailViewState: ObservableObject {
     let question: Question
 
     @Published var showSolution: Bool = false
-    @Published var sheet: QuestionDetailViewSheet?
+    @Published var showingReferenceAlert: Bool = false
+    @Published var selectedReferenceUrl: URL?
 
     init(question: Question) {
         self.question = question
@@ -14,7 +15,13 @@ class QuestionDetailViewState: ObservableObject {
         showSolution = true
     }
 
-    func imageTapped(imageName: String) {
-        sheet = .imageViewer(imageName: imageName)
+    func referenceTapped(url: URL) {
+        selectedReferenceUrl = url
+        showingReferenceAlert = true
+    }
+
+    func openSelectedReference() {
+        guard let url = selectedReferenceUrl else { return }
+        UIApplication.shared.open(url)
     }
 }

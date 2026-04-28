@@ -35,6 +35,11 @@ export default function RootLayout({
                     学習問題
                   </a>
                 </li>
+                <li>
+                  <a href="/reaction/update" className="main-nav-active">
+                    データ更新
+                  </a>
+                </li>
               </ul>
             </nav>
           </header>

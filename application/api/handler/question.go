@@ -50,7 +50,7 @@ func (q *Question) AddQuestionPost(c echo.Context) error {
 	err := checkAuthHeader(authHeader, q.APIKey)
 	if err != nil {
 		res := response.Message{Message: "Error!"}
-		return c.JSON(http.StatusForbidden, res)
+		return c.JSON(http.StatusUnauthorized, res)
 	}
 
 	req := new(request.AddQuestion)
@@ -61,6 +61,7 @@ func (q *Question) AddQuestionPost(c echo.Context) error {
 	}
 
 	in := input.AddQuestion{
+		Order:              req.Order,
 		ProblemImageNames:  req.ProblemImageNames,
 		SolutionImageNames: req.SolutionImageNames,
 		References:         req.References,
@@ -81,7 +82,7 @@ func (q *Question) EditQuestionPost(c echo.Context) error {
 	err := checkAuthHeader(authHeader, q.APIKey)
 	if err != nil {
 		res := response.Message{Message: "Error!"}
-		return c.JSON(http.StatusForbidden, res)
+		return c.JSON(http.StatusUnauthorized, res)
 	}
 
 	req := new(request.EditQuestion)
@@ -93,6 +94,7 @@ func (q *Question) EditQuestionPost(c echo.Context) error {
 
 	in := input.EditQuestion{
 		ID:                 req.ID,
+		Order:              req.Order,
 		ProblemImageNames:  req.ProblemImageNames,
 		SolutionImageNames: req.SolutionImageNames,
 		References:         req.References,
@@ -113,7 +115,7 @@ func (q *Question) DeleteQuestionDelete(c echo.Context) error {
 	err := checkAuthHeader(authHeader, q.APIKey)
 	if err != nil {
 		res := response.Message{Message: "Error!"}
-		return c.JSON(http.StatusForbidden, res)
+		return c.JSON(http.StatusUnauthorized, res)
 	}
 
 	req := new(request.DeleteQuestion)

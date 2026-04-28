@@ -67,6 +67,7 @@ export type EditReaction = {
 //////////////////////////////////////////////////////////////
 export type Question = {
     id: string;
+    order: number;
     problemImageUrls: string[];
     solutionImageUrls: string[];
     references: string[];
@@ -85,6 +86,7 @@ export type QuestionList = {
 // Add Question
 //////////////////////////////////////////////////////////////
 export type AddQuestion = {
+    order: number;
     problemImageNames: string[];
     solutionImageNames: string[];
     references: string[];
@@ -96,6 +98,7 @@ export type AddQuestion = {
 //////////////////////////////////////////////////////////////
 export type EditQuestion = {
     id: string;
+    order: number;
     problemImageNames: string[];
     solutionImageNames: string[];
     references: string[];

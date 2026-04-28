@@ -51,7 +51,7 @@ func (a *Reaction) AddReactionPost(c echo.Context) error {
 	err := checkAuthHeader(authHeader, a.APIKey)
 	if err != nil {
 		res := response.Message{Message: "Error!"}
-		return c.JSON(http.StatusForbidden, res)
+		return c.JSON(http.StatusUnauthorized, res)
 	}
 
 	// parse request
@@ -92,7 +92,7 @@ func (a *Reaction) EditReactionPost(c echo.Context) error {
 	err := checkAuthHeader(authHeader, a.APIKey)
 	if err != nil {
 		res := response.Message{Message: "Error!"}
-		return c.JSON(http.StatusForbidden, res)
+		return c.JSON(http.StatusUnauthorized, res)
 	}
 
 	// parse request
@@ -134,7 +134,7 @@ func (a *Reaction) DeleteReactionDelete(c echo.Context) error {
 	err := checkAuthHeader(authHeader, a.APIKey)
 	if err != nil {
 		res := response.Message{Message: "Error!"}
-		return c.JSON(http.StatusForbidden, res)
+		return c.JSON(http.StatusUnauthorized, res)
 	}
 
 	// parse request

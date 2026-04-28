@@ -19,7 +19,7 @@ func (e *Export) ExportS3Post(c echo.Context) error {
 	err := checkAuthHeader(authHeader, e.APIKey)
 	if err != nil {
 		res := response.Message{Message: "Error!"}
-		return c.JSON(http.StatusForbidden, res)
+		return c.JSON(http.StatusUnauthorized, res)
 	}
 
 	err = e.Service.ExportReactionsToS3()

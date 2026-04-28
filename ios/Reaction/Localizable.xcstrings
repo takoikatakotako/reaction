@@ -89,6 +89,23 @@
         }
       }
     },
+    "common-error-message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load data. Please try again later."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データの読み込みに失敗しました。"
+          }
+        }
+      }
+    },
     "common-example" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -17,8 +17,8 @@ import (
 )
 
 const (
-	profile    = "reaction-development"
-	bucketName = "resource.reaction-development.swiswiswift.com"
+	profile    = "reaction-production"
+	bucketName = "resource.reaction-production.swiswiswift.com"
 	tableName  = "questions"
 	assetsBase = "../../ios/Reaction/Assets.xcassets/question"
 )

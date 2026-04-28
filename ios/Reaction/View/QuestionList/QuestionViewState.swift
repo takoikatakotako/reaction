@@ -3,6 +3,7 @@ import SwiftUI
 class QuestionViewState: ObservableObject {
     @Published var questions: [Question] = []
     @Published var isFetching = true
+    @Published var isError = false
 
     private let questionRepository = QuestionRepository()
 
@@ -18,6 +19,7 @@ class QuestionViewState: ObservableObject {
                 self.isFetching = false
             } catch {
                 self.isFetching = false
+                self.isError = true
             }
         }
     }

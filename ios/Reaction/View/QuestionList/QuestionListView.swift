@@ -5,17 +5,24 @@ struct QuestionListView: View {
 
     var body: some View {
         NavigationStack {
-            List(viewState.questions) { question in
-                if let imageUrlString = question.problemImageUrls.first,
-                   let imageUrl = URL(string: imageUrlString) {
-                    NavigationLink {
-                        QuestionDetailView(viewState: QuestionDetailViewState(question: question))
-                    } label: {
-                        CommonWebImage(url: imageUrl)
+            Group {
+                if viewState.isError {
+                    Text(String(localized: "common-error-message"))
+                        .foregroundStyle(.secondary)
+                } else {
+                    List(viewState.questions) { question in
+                        if let imageUrlString = question.problemImageUrls.first,
+                           let imageUrl = URL(string: imageUrlString) {
+                            NavigationLink {
+                                QuestionDetailView(viewState: QuestionDetailViewState(question: question))
+                            } label: {
+                                CommonWebImage(url: imageUrl)
+                            }
+                        }
                     }
+                    .listStyle(.plain)
                 }
             }
-            .listStyle(.plain)
             .navigationTitle(String(localized: "common-study"))
             .navigationBarTitleDisplayMode(.inline)
         }

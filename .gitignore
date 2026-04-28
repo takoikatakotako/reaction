@@ -5,3 +5,6 @@ application/.idea
 
 # Migration binary
 migration/migration
+
+# Claude Code local settings
+.claude/

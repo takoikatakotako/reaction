@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, ChangeEvent, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import Image from 'next/image';
 import TextInputField from '../common/TextInputField';
 import TextsInputField from '../common/TextsInputField';
 import SelectField from '../common/SelectField';
@@ -202,6 +201,7 @@ export default function EditUser() {
 
   // Fetch Reaction
   useEffect(() => {
+    if (!id) return;
     const loadReaction = async () => {
       try {
         const reaction: entity.Reaction = await service.fetchReaction(id);
@@ -355,7 +355,19 @@ export default function EditUser() {
           className="reaction-edit-add-reaction-button"
           onClick={() => onEditSubmit()}
         >
-          <Image src="/edit-reaction.svg" alt="" width={200} height={60} />
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#DF5C44',
+            color: 'white',
+            padding: '15px 60px',
+            borderRadius: '5px',
+            fontSize: '16px',
+            fontWeight: 'bold',
+          }}>
+            更新
+          </div>
         </button>
 
         {/* Delete Submit */}
@@ -364,7 +376,19 @@ export default function EditUser() {
           className="reaction-edit-add-reaction-button"
           onClick={() => onDeleteSubmit()}
         >
-          <Image src="/delete-reaction.svg" alt="" width={200} height={60} />
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#443322',
+            color: 'white',
+            padding: '15px 60px',
+            borderRadius: '5px',
+            fontSize: '16px',
+            fontWeight: 'bold',
+          }}>
+            削除
+          </div>
         </button>
       </form>
     </main>

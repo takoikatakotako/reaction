@@ -79,6 +79,7 @@ export default function EditQuestion() {
 
   // Fetch Question
   useEffect(() => {
+    if (!id) return;
     const loadQuestion = async () => {
       try {
         const question: entity.Question = await service.fetchQuestion(id);
@@ -162,9 +163,9 @@ export default function EditQuestion() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#007bff',
+            backgroundColor: '#DF5C44',
             color: 'white',
-            padding: '15px 30px',
+            padding: '15px 60px',
             borderRadius: '5px',
             fontSize: '16px',
             fontWeight: 'bold',
@@ -183,9 +184,9 @@ export default function EditQuestion() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#dc3545',
+            backgroundColor: '#443322',
             color: 'white',
-            padding: '15px 30px',
+            padding: '15px 60px',
             borderRadius: '5px',
             fontSize: '16px',
             fontWeight: 'bold',

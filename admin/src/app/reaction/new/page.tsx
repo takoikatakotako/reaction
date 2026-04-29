@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, ChangeEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import TextInputField from '../common/TextInputField';
 import TextsInputField from '../common/TextsInputField';
 import SelectField from '../common/SelectField';
@@ -311,7 +310,19 @@ export default function NewReactionPage() {
           className="reaction-edit-add-reaction-button"
           onClick={() => submitHandleChange()}
         >
-          <Image src="/add-reaction.svg" alt="" width={200} height={60} />
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#DF5C44',
+            color: 'white',
+            padding: '15px 60px',
+            borderRadius: '5px',
+            fontSize: '16px',
+            fontWeight: 'bold',
+          }}>
+            登録
+          </div>
         </button>
       </form>
     </main>

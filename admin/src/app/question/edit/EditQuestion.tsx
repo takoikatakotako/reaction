@@ -79,6 +79,7 @@ export default function EditQuestion() {
 
   // Fetch Question
   useEffect(() => {
+    if (!id) return;
     const loadQuestion = async () => {
       try {
         const question: entity.Question = await service.fetchQuestion(id);
@@ -162,7 +163,7 @@ export default function EditQuestion() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#007bff',
+            backgroundColor: '#DF5C44',
             color: 'white',
             padding: '15px 30px',
             borderRadius: '5px',

@@ -314,7 +314,7 @@ export default function NewReactionPage() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#007bff',
+            backgroundColor: '#DF5C44',
             color: 'white',
             padding: '15px 30px',
             borderRadius: '5px',

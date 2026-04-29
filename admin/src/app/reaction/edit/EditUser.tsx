@@ -201,6 +201,7 @@ export default function EditUser() {
 
   // Fetch Reaction
   useEffect(() => {
+    if (!id) return;
     const loadReaction = async () => {
       try {
         const reaction: entity.Reaction = await service.fetchReaction(id);
@@ -358,7 +359,7 @@ export default function EditUser() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#007bff',
+            backgroundColor: '#DF5C44',
             color: 'white',
             padding: '15px 30px',
             borderRadius: '5px',

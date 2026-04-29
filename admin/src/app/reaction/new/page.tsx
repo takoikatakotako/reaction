@@ -316,7 +316,7 @@ export default function NewReactionPage() {
             justifyContent: 'center',
             backgroundColor: '#DF5C44',
             color: 'white',
-            padding: '15px 30px',
+            padding: '15px 60px',
             borderRadius: '5px',
             fontSize: '16px',
             fontWeight: 'bold',

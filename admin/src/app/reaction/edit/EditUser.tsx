@@ -355,7 +355,19 @@ export default function EditUser() {
           className="reaction-edit-add-reaction-button"
           onClick={() => onEditSubmit()}
         >
-          <Image src="/edit-reaction.svg" alt="" width={200} height={60} />
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#007bff',
+            color: 'white',
+            padding: '15px 30px',
+            borderRadius: '5px',
+            fontSize: '16px',
+            fontWeight: 'bold',
+          }}>
+            更新
+          </div>
         </button>
 
         {/* Delete Submit */}
@@ -364,7 +376,19 @@ export default function EditUser() {
           className="reaction-edit-add-reaction-button"
           onClick={() => onDeleteSubmit()}
         >
-          <Image src="/delete-reaction.svg" alt="" width={200} height={60} />
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#dc3545',
+            color: 'white',
+            padding: '15px 30px',
+            borderRadius: '5px',
+            fontSize: '16px',
+            fontWeight: 'bold',
+          }}>
+            削除
+          </div>
         </button>
       </form>
     </main>

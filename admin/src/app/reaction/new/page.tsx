@@ -311,7 +311,19 @@ export default function NewReactionPage() {
           className="reaction-edit-add-reaction-button"
           onClick={() => submitHandleChange()}
         >
-          <Image src="/add-reaction.svg" alt="" width={200} height={60} />
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#007bff',
+            color: 'white',
+            padding: '15px 30px',
+            borderRadius: '5px',
+            fontSize: '16px',
+            fontWeight: 'bold',
+          }}>
+            登録
+          </div>
         </button>
       </form>
     </main>

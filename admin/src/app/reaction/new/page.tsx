@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, ChangeEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import TextInputField from '../common/TextInputField';
 import TextsInputField from '../common/TextsInputField';
 import SelectField from '../common/SelectField';

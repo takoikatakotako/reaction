@@ -14,6 +14,11 @@ const (
 type Question struct {
 	ID                 string   `dynamodbav:"id"`
 	Order              int      `dynamodbav:"order"`
+	EnglishTitle       string   `dynamodbav:"englishTitle"`
+	JapaneseTitle      string   `dynamodbav:"japaneseTitle"`
+	Category           string   `dynamodbav:"category"`
+	Number             int      `dynamodbav:"number"`
+	Difficulty         int      `dynamodbav:"difficulty"`
 	ProblemImageNames  []string `dynamodbav:"problemImageNames"`
 	SolutionImageNames []string `dynamodbav:"solutionImageNames"`
 	References         []string `dynamodbav:"references"`

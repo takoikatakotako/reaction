@@ -7,6 +7,22 @@ struct QuestionDetailView: View {
         NavigationStack {
             ZoomableScrollView {
                 VStack(alignment: .leading) {
+                    // Title
+                    if !viewState.displayTitle.isEmpty {
+                        Text(viewState.displayTitle)
+                            .font(Font.system(size: 20).bold())
+                    }
+
+                    // Difficulty
+                    if viewState.difficulty > 0 {
+                        HStack(spacing: 2) {
+                            ForEach(1...5, id: \.self) { level in
+                                Image(systemName: level <= viewState.difficulty ? "star.fill" : "star")
+                                    .foregroundStyle(.yellow)
+                            }
+                        }
+                    }
+
                     // Question
                     Text("Problem")
                         .font(Font.system(size: 16))

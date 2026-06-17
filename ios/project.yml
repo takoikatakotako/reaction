@@ -84,6 +84,7 @@ targets:
       path: Reaction/Info/Info.plist
       properties:
         Appearance: Light
+        ITSAppUsesNonExemptEncryption: false
         CFBundleDisplayName: Reaction
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleShortVersionString: $(MARKETING_VERSION)
@@ -114,6 +115,7 @@ targets:
       path: Reaction/Info/Info.plist
       properties:
         Appearance: Light
+        ITSAppUsesNonExemptEncryption: false
         CFBundleDisplayName: Reaction
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleShortVersionString: $(MARKETING_VERSION)

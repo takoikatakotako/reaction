@@ -15,12 +15,7 @@ struct QuestionDetailView: View {
 
                     // Difficulty
                     if viewState.difficulty > 0 {
-                        HStack(spacing: 2) {
-                            ForEach(1...5, id: \.self) { level in
-                                Image(systemName: level <= viewState.difficulty ? "star.fill" : "star")
-                                    .foregroundStyle(.yellow)
-                            }
-                        }
+                        DifficultyStarsView(difficulty: viewState.difficulty)
                     }
 
                     // Question

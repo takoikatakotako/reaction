@@ -60,18 +60,15 @@ struct QuestionDetailView: View {
                             }
                         }
                     } else {
-                        HStack {
-                            Spacer()
-
-                            Button {
-                                viewState.showSolutionTapped()
-                            } label: {
-                                Text("Show Solution")
-                                    .font(Font.system(size: 16))
-                            }
-
-                            Spacer()
+                        Button {
+                            viewState.showSolutionTapped()
+                        } label: {
+                            Text("Show Solution")
+                                .font(Font.system(size: 18).bold())
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 12)
                         }
+                        .buttonStyle(.borderedProminent)
                     }
                 }
                 .padding(16)

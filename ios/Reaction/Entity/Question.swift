@@ -24,4 +24,10 @@ struct Question: Identifiable, Decodable, Hashable {
             return englishTitle ?? ""
         }
     }
+
+    // 管理画面と同じ「カテゴリ + 3桁番号」（例: 今週の反応機構001）
+    var displayNumber: String {
+        guard let category, !category.isEmpty else { return "" }
+        return category + String(format: "%03d", number ?? 0)
+    }
 }

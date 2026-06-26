@@ -6,57 +6,75 @@ struct QuestionDetailView: View {
     var body: some View {
         NavigationStack {
             ZoomableScrollView {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 24) {
+                    // Title & Difficulty
+                    if !viewState.displayTitle.isEmpty || viewState.difficulty > 0 {
+                        VStack(alignment: .leading, spacing: 8) {
+                            if !viewState.displayTitle.isEmpty {
+                                Text(viewState.displayTitle)
+                                    .font(Font.system(size: 20).bold())
+                            }
+                            if viewState.difficulty > 0 {
+                                DifficultyStarsView(difficulty: viewState.difficulty)
+                            }
+                        }
+                    }
+
                     // Question
-                    Text("Problem")
-                        .font(Font.system(size: 16))
-                    ForEach(viewState.question.problemImageUrls, id: \.self) { imageUrlString in
-                        if let imageUrl = URL(string: imageUrlString) {
-                            CommonWebImage(url: imageUrl)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Problem")
+                            .font(Font.system(size: 16).bold())
+                        ForEach(viewState.question.problemImageUrls, id: \.self) { imageUrlString in
+                            if let imageUrl = URL(string: imageUrlString) {
+                                CommonWebImage(url: imageUrl)
+                            }
                         }
                     }
 
                     if viewState.showSolution {
                         // Solution
-                        Text("Solution")
-                            .font(Font.system(size: 16).bold())
-                        ForEach(viewState.question.solutionImageUrls, id: \.self) { imageUrlString in
-                            if let imageUrl = URL(string: imageUrlString) {
-                                CommonWebImage(url: imageUrl)
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Solution")
+                                .font(Font.system(size: 16).bold())
+                            ForEach(viewState.question.solutionImageUrls, id: \.self) { imageUrlString in
+                                if let imageUrl = URL(string: imageUrlString) {
+                                    CommonWebImage(url: imageUrl)
+                                }
                             }
                         }
 
                         if !viewState.question.references.isEmpty {
                             // Reference
-                            Text("Reference")
-                                .font(Font.system(size: 16).bold())
-
-                            ForEach(viewState.question.references, id: \.self) { reference in
-                                if let referenceUrl = URL(string: reference) {
-                                    Button {
-                                        viewState.referenceTapped(url: referenceUrl)
-                                    } label: {
-                                        Text(reference)
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("Reference")
+                                    .font(Font.system(size: 16).bold())
+                                ForEach(viewState.question.references, id: \.self) { reference in
+                                    if let referenceUrl = URL(string: reference) {
+                                        Button {
+                                            viewState.referenceTapped(url: referenceUrl)
+                                        } label: {
+                                            Text(reference)
+                                        }
                                     }
                                 }
                             }
                         }
                     } else {
-                        HStack {
-                            Spacer()
-
-                            Button {
-                                viewState.showSolutionTapped()
-                            } label: {
-                                Text("Show Solution")
-                                    .font(Font.system(size: 16))
-                            }
-
-                            Spacer()
+                        Button {
+                            viewState.showSolutionTapped()
+                        } label: {
+                            Text("Show Solution")
+                                .font(Font.system(size: 18).bold())
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                                .foregroundStyle(Color(uiColor: .systemBackground))
+                                .background(Color.primary)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
+                        .buttonStyle(.plain)
                     }
                 }
-                .padding(8)
+                .padding(16)
             }
             .alert(String(localized: "question-detail-open-reference-title"), isPresented: $viewState.showingReferenceAlert, actions: {
                 Button(String(localized: "common-open")) {

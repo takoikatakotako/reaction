@@ -154,6 +154,11 @@ export async function addQuestion(addQuestion: entity.AddQuestion) {
         },
         body: JSON.stringify({
           order: addQuestion.order,
+          englishTitle: addQuestion.englishTitle,
+          japaneseTitle: addQuestion.japaneseTitle,
+          category: addQuestion.category,
+          number: addQuestion.number,
+          difficulty: addQuestion.difficulty,
           problemImageNames: addQuestion.problemImageNames,
           solutionImageNames: addQuestion.solutionImageNames,
           references: addQuestion.references,
@@ -179,6 +184,11 @@ export async function editQuestion(editQuestion: entity.EditQuestion) {
         body: JSON.stringify({
           id: editQuestion.id,
           order: editQuestion.order,
+          englishTitle: editQuestion.englishTitle,
+          japaneseTitle: editQuestion.japaneseTitle,
+          category: editQuestion.category,
+          number: editQuestion.number,
+          difficulty: editQuestion.difficulty,
           problemImageNames: editQuestion.problemImageNames,
           solutionImageNames: editQuestion.solutionImageNames,
           references: editQuestion.references,

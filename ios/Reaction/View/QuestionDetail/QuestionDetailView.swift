@@ -66,9 +66,12 @@ struct QuestionDetailView: View {
                             Text("Show Solution")
                                 .font(Font.system(size: 18).bold())
                                 .frame(maxWidth: .infinity)
-                                .padding(.vertical, 12)
+                                .padding(.vertical, 14)
+                                .foregroundStyle(Color(uiColor: .systemBackground))
+                                .background(Color.primary)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.plain)
                     }
                 }
                 .padding(16)

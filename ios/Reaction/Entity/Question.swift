@@ -25,9 +25,12 @@ struct Question: Identifiable, Decodable, Hashable {
         }
     }
 
-    // 管理画面と同じ「カテゴリ + 3桁番号」（例: 今週の反応機構001）
+    // 管理画面と同じ表記。カテゴリあり→「カテゴリ + 3桁番号」（例: 今週の反応機構001）、
+    // カテゴリなし→「#order」でフォールバック
     var displayNumber: String {
-        guard let category, !category.isEmpty else { return "" }
-        return category + String(format: "%03d", number ?? 0)
+        if let category, !category.isEmpty {
+            return category + String(format: "%03d", number ?? 0)
+        }
+        return "#\(order)"
     }
 }

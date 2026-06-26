@@ -17,11 +17,9 @@ struct QuestionListView: View {
                                 QuestionDetailView(viewState: QuestionDetailViewState(question: question))
                             } label: {
                                 VStack(alignment: .leading, spacing: 4) {
-                                    if !question.displayNumber.isEmpty {
-                                        Text(question.displayNumber)
-                                            .font(Font.system(size: 14))
-                                            .foregroundStyle(.secondary)
-                                    }
+                                    Text(question.displayNumber)
+                                        .font(Font.system(size: 14))
+                                        .foregroundStyle(.secondary)
                                     let difficulty = question.difficulty ?? 0
                                     if difficulty > 0 {
                                         DifficultyStarsView(difficulty: difficulty)

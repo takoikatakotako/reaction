@@ -44,8 +44,14 @@ jobs:
       with:
         version: 10
 
-    # - name: Format Check
-    #   working-directory: admin
-    #   run: |
-    #     pnpm install
-    #     pnpm prettier --check "**/*.tsx"
+    - name: Install dependencies
+      working-directory: admin
+      run: pnpm install --frozen-lockfile
+
+    - name: Format Check
+      working-directory: admin
+      run: pnpm prettier --check "**/*.tsx"
+
+    - name: Lint
+      working-directory: admin
+      run: pnpm lint

@@ -19,7 +19,10 @@ export default function SelectField({
   onSelectionAdd,
   onSelectionDelete,
 }: SelectFieldProps) {
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>, index: number) => {
+  const handleSelectChange = (
+    e: React.ChangeEvent<HTMLSelectElement>,
+    index: number
+  ) => {
     const newSelectedValues = [...selectedValues];
     newSelectedValues[index] = e.target.value;
     onSelectionChange(newSelectedValues);
@@ -43,7 +46,7 @@ export default function SelectField({
                   fontSize: '16px',
                   border: 'none',
                   borderRadius: '4px',
-                  backgroundColor: 'white'
+                  backgroundColor: 'white',
                 }}
               >
                 <option value="">選択してください</option>

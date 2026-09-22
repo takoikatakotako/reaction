@@ -4,8 +4,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import ImagesInputField from '../../reaction/common/ImagesInputField';
 import TextsInputField from '../../reaction/common/TextsInputField';
+import TextInputField from '../../reaction/common/TextInputField';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
+import {
+  DEFAULT_QUESTION_ENGLISH_TITLE,
+  DEFAULT_QUESTION_JAPANESE_TITLE,
+  DIFFICULTY_OPTIONS,
+} from '@/lib/constants';
 
 export default function EditQuestion() {
   const searchParams = useSearchParams();
@@ -14,6 +20,15 @@ export default function EditQuestion() {
 
   // Order
   const [order, setOrder] = useState<number>(0);
+
+  // Title
+  const [englishTitle, setEnglishTitle] = useState<string>('');
+  const [japaneseTitle, setJapaneseTitle] = useState<string>('');
+
+  // Category / Number / Difficulty
+  const [category, setCategory] = useState<string>('');
+  const [number, setNumber] = useState<number>(0);
+  const [difficulty, setDifficulty] = useState<number>(1);
 
   // Problem Images
   const [problemImageURLs, setProblemImageURLs] = useState<string[]>([]);
@@ -53,6 +68,11 @@ export default function EditQuestion() {
       const editQuestion: entity.EditQuestion = {
         id: id,
         order: order,
+        englishTitle: englishTitle,
+        japaneseTitle: japaneseTitle,
+        category: category,
+        number: number,
+        difficulty: difficulty,
         problemImageNames: problemImageNames,
         solutionImageNames: solutionImageNames,
         references: references,
@@ -84,6 +104,11 @@ export default function EditQuestion() {
       try {
         const question: entity.Question = await service.fetchQuestion(id);
         setOrder(question.order);
+        setEnglishTitle(question.englishTitle ?? DEFAULT_QUESTION_ENGLISH_TITLE);
+        setJapaneseTitle(question.japaneseTitle ?? DEFAULT_QUESTION_JAPANESE_TITLE);
+        setCategory(question.category ?? '');
+        setNumber(question.number ?? 0);
+        setDifficulty(question.difficulty ?? 1);
         setProblemImageURLs(question.problemImageUrls);
         setSolutionImageURLs(question.solutionImageUrls);
         setReferences(question.references);
@@ -120,6 +145,60 @@ export default function EditQuestion() {
             value={order}
             onChange={(e) => setOrder(Number(e.target.value))}
           />
+          <hr />
+        </div>
+
+        {/* English Title */}
+        <TextInputField
+          label="タイトル(英語)"
+          name="englishTitle"
+          value={englishTitle}
+          onChange={(e) => setEnglishTitle(e.target.value)}
+        />
+
+        {/* Japanese Title */}
+        <TextInputField
+          label="タイトル(日本語)"
+          name="japaneseTitle"
+          value={japaneseTitle}
+          onChange={(e) => setJapaneseTitle(e.target.value)}
+        />
+
+        {/* Category */}
+        <TextInputField
+          label="カテゴリ"
+          name="category"
+          placeholder="例: 今週の反応機構"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        />
+
+        {/* Number */}
+        <div className="reaction-edit-content">
+          <label htmlFor="number">問題番号</label>
+          <input
+            type="number"
+            name="number"
+            value={number}
+            onChange={(e) => setNumber(Number(e.target.value))}
+          />
+          <hr />
+        </div>
+
+        {/* Difficulty */}
+        <div className="reaction-edit-content">
+          <label htmlFor="difficulty">難易度</label>
+          <select
+            name="difficulty"
+            value={difficulty}
+            onChange={(e) => setDifficulty(Number(e.target.value))}
+          >
+            {DIFFICULTY_OPTIONS.map((level) => (
+              <option key={level} value={level}>
+                {`Lv.${level}`}
+              </option>
+            ))}
+          </select>
           <hr />
         </div>
 

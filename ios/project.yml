@@ -20,7 +20,7 @@ settings:
   base:
     CODE_SIGN_STYLE: Automatic
     DEVELOPMENT_TEAM: 5RH346BQ66
-    MARKETING_VERSION: 6.1.0
+    MARKETING_VERSION: 6.2.0
     CURRENT_PROJECT_VERSION: 1
     TARGETED_DEVICE_FAMILY: 1
     ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: YES
@@ -73,7 +73,7 @@ targets:
       - path: Config/Development
     settings:
       base:
-        MARKETING_VERSION: 6.1.0
+        MARKETING_VERSION: 6.2.0
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Development
         CODE_SIGN_ENTITLEMENTS: Config/Development/ReactionDevelopment.entitlements
         DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
@@ -84,6 +84,7 @@ targets:
       path: Reaction/Info/Info.plist
       properties:
         Appearance: Light
+        ITSAppUsesNonExemptEncryption: false
         CFBundleDisplayName: Reaction
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleShortVersionString: $(MARKETING_VERSION)
@@ -114,6 +115,7 @@ targets:
       path: Reaction/Info/Info.plist
       properties:
         Appearance: Light
+        ITSAppUsesNonExemptEncryption: false
         CFBundleDisplayName: Reaction
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleShortVersionString: $(MARKETING_VERSION)

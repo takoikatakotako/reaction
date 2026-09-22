@@ -68,6 +68,11 @@ export type EditReaction = {
 export type Question = {
     id: string;
     order: number;
+    englishTitle: string;
+    japaneseTitle: string;
+    category: string;
+    number: number;
+    difficulty: number;
     problemImageUrls: string[];
     solutionImageUrls: string[];
     references: string[];
@@ -87,6 +92,11 @@ export type QuestionList = {
 //////////////////////////////////////////////////////////////
 export type AddQuestion = {
     order: number;
+    englishTitle: string;
+    japaneseTitle: string;
+    category: string;
+    number: number;
+    difficulty: number;
     problemImageNames: string[];
     solutionImageNames: string[];
     references: string[];
@@ -99,6 +109,11 @@ export type AddQuestion = {
 export type EditQuestion = {
     id: string;
     order: number;
+    englishTitle: string;
+    japaneseTitle: string;
+    category: string;
+    number: number;
+    difficulty: number;
     problemImageNames: string[];
     solutionImageNames: string[];
     references: string[];

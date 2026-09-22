@@ -16,7 +16,16 @@ struct QuestionListView: View {
                             NavigationLink {
                                 QuestionDetailView(viewState: QuestionDetailViewState(question: question))
                             } label: {
-                                CommonWebImage(url: imageUrl)
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(question.displayNumber)
+                                        .font(Font.system(size: 14))
+                                        .foregroundStyle(.secondary)
+                                    let difficulty = question.difficulty ?? 0
+                                    if difficulty > 0 {
+                                        DifficultyStarsView(difficulty: difficulty)
+                                    }
+                                    CommonWebImage(url: imageUrl)
+                                }
                             }
                         }
                     }

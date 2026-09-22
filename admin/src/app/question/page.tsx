@@ -36,10 +36,14 @@ export default function QuestionPage() {
         </ul>
       </div>
 
-      {questions.map((question) => (
+      {questions.map((question) => {
+        const label = question.category
+          ? `${question.category}${String(question.number ?? 0).padStart(3, '0')}`
+          : `#${question.order}`;
+        return (
         <div className="reaction-content" key={question.id}>
           <Link href={`/question/edit?id=${question.id}`}>
-            <h2>#{question.order} - {question.id}</h2>
+            <h2>{label}{question.difficulty ? ` (Lv.${question.difficulty})` : ''} - {question.id}</h2>
           </Link>
           {question.problemImageUrls.length > 0 && (
             <Image
@@ -52,7 +56,8 @@ export default function QuestionPage() {
           )}
           <hr />
         </div>
-      ))}
+        );
+      })}
     </main>
   );
 }

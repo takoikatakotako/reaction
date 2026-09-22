@@ -2,26 +2,21 @@ import XCTest
 @testable import ReactionDevelopment
 
 final class UserDefaultRepositoryTests: XCTestCase {
-    private let repository = UserDefaultRepository()
-
-    private func clearKeys() {
-        let defaults = UserDefaults.standard
-        defaults.removeObject(forKey: repository.KEY_REACTION_MECHANISM_LANGUAGE)
-        defaults.removeObject(forKey: repository.KEY_SHOW_THUMBNAIL)
-        defaults.removeObject(forKey: repository.KEY_ENABLE_DETAILE_ABILITY)
-    }
+    private var repository: UserDefaultRepository!
 
     override func setUp() {
         super.setUp()
-        clearKeys()
-    }
-
-    override func tearDown() {
-        clearKeys()
-        super.tearDown()
+        repository = UserDefaultRepository(userDefaults: TestUserDefaults.make())
     }
 
     func testDefaultValues() {
+        XCTAssertEqual(repository.reactionMechanismLanguage, "en")
+        XCTAssertTrue(repository.showThmbnail)
+        XCTAssertFalse(repository.enableDetaileAbility)
+    }
+
+    func testInitilizeRegistersDefaults() {
+        repository.initilize()
         XCTAssertEqual(repository.reactionMechanismLanguage, "en")
         XCTAssertTrue(repository.showThmbnail)
         XCTAssertFalse(repository.enableDetaileAbility)

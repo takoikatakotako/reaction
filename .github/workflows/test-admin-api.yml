@@ -40,3 +40,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: "dummy"
       working-directory: application
       run: make test
+
+    # 本番イメージと同じ経路でビルドできることを確認する
+    # （Dockerfile のビルド対象指定ミスは go test では検出できないため）
+    - name: Build Docker image
+      working-directory: application
+      run: docker build --file api/Dockerfile .

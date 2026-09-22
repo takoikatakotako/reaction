@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"strings"
 
 	"github.com/labstack/echo/v4"
@@ -12,6 +13,9 @@ import (
 )
 
 func main() {
+	// logger
+	setupLogger(os.Stdout)
+
 	// environment
 	env := environment.Environment{}
 	env.SetReactionAWSProfile("local")

@@ -1,3 +1,8 @@
+// アップロードを許可する画像の横幅 (px)。
+// 反応機構の画像は 300dpi で書き出しており、1772px = 幅 15cm、3898px = 幅 33cm に相当する。
+// この幅以外はレイアウトが崩れるため、アップロード前に弾く。
+export const ALLOWED_IMAGE_WIDTHS = [1772, 3898];
+
 // 学習問題のデフォルトタイトル（新規作成時のプリフィル用。編集可能）
 export const DEFAULT_QUESTION_ENGLISH_TITLE =
   'Provide reasonable mechanism for following reaction.';

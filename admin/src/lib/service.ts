@@ -1,5 +1,6 @@
 import * as entity from '@/lib/entity';
 import * as repository from '@/lib/repository';
+import { ALLOWED_IMAGE_WIDTHS } from '@/lib/constants';
 
 
 //////////////////////////////////////////////////////////////
@@ -64,8 +65,10 @@ export const handleImageChange = (
       const base64String = reader.result as string;
       const img = new Image();
       img.onload = async () => {
-        if (img.width === 1772 || img.width === 3898) {} else {
-          alert("画像の横幅は1772 or 3898にする必要があります。");
+        if (!ALLOWED_IMAGE_WIDTHS.includes(img.width)) {
+          alert(
+            `画像の横幅は ${ALLOWED_IMAGE_WIDTHS.join(" or ")} にする必要があります。`
+          );
           return;
         }
 

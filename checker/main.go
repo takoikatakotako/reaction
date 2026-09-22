@@ -16,11 +16,22 @@ import (
 )
 
 const (
-	profile    = "reaction-development"
-	bucketName = "resource.reaction-development.swiswiswift.com"
+	defaultProfile    = "reaction-development"
+	defaultBucketName = "resource.reaction-development.swiswiswift.com"
 )
 
+// 環境変数が設定されていればそちらを優先し、なければ開発環境のデフォルト値を使う
+func getEnv(key string, fallback string) string {
+	if value := os.Getenv(key); value != "" {
+		return value
+	}
+	return fallback
+}
+
 func main() {
+	profile := getEnv("REACTION_AWS_PROFILE", defaultProfile)
+	bucketName := getEnv("REACTION_BUCKET_NAME", defaultBucketName)
+	fmt.Printf("profile: %s, bucket: %s\n", profile, bucketName)
 
 	// ファイルを読み込み
 	reactions := readReactionsFile("resource/reactions.json")
@@ -29,7 +40,7 @@ func main() {
 	ctx := context.Background()
 	cfg, err := config.LoadDefaultConfig(ctx, config.WithSharedConfigProfile(profile))
 	if err != nil {
-		log.Fatal("Failed to ")
+		log.Fatalf("Failed to load AWS config: %v", err)
 	}
 
 	for _, reaction := range reactions {
@@ -52,7 +63,7 @@ func main() {
 		// Thumbnail
 		thumbnailImagePath := fmt.Sprintf("resource/images/%s/%s", reaction.DirectoryName, reaction.ThmbnailName)
 		thumbnailImageName := fmt.Sprintf("%s.png", uuid.NewString())
-		err := uploadImage(cfg, thumbnailImagePath, thumbnailImageName)
+		err := uploadImage(cfg, bucketName, thumbnailImagePath, thumbnailImageName)
 		if err != nil {
 			log.Fatal("thumbnail Upload Error")
 		}
@@ -63,7 +74,7 @@ func main() {
 		for _, generalFormula := range reaction.GeneralFormulas {
 			generalFormulaImagePath := fmt.Sprintf("resource/images/%s/%s", reaction.DirectoryName, generalFormula.ImageName)
 			generalFormulaImageName := fmt.Sprintf("%s.png", uuid.NewString())
-			err := uploadImage(cfg, generalFormulaImagePath, generalFormulaImageName)
+			err := uploadImage(cfg, bucketName, generalFormulaImagePath, generalFormulaImageName)
 			if err != nil {
 				log.Fatal("General Formula Upload Error")
 			}
@@ -76,7 +87,7 @@ func main() {
 		for _, mechanism := range reaction.Mechanisms {
 			mechanismImagePath := fmt.Sprintf("resource/images/%s/%s", reaction.DirectoryName, mechanism.ImageName)
 			mechanismsImageName := fmt.Sprintf("%s.png", uuid.NewString())
-			err := uploadImage(cfg, mechanismImagePath, mechanismsImageName)
+			err := uploadImage(cfg, bucketName, mechanismImagePath, mechanismsImageName)
 			if err != nil {
 				log.Fatal("General Formula Upload Error")
 			}
@@ -89,7 +100,7 @@ func main() {
 		for _, example := range reaction.Examples {
 			exampleImagePath := fmt.Sprintf("resource/images/%s/%s", reaction.DirectoryName, example.ImageName)
 			exampleImageName := fmt.Sprintf("%s.png", uuid.NewString())
-			err := uploadImage(cfg, exampleImagePath, exampleImageName)
+			err := uploadImage(cfg, bucketName, exampleImagePath, exampleImageName)
 			if err != nil {
 				log.Fatal("General Formula Upload Error")
 			}
@@ -102,7 +113,7 @@ func main() {
 		for _, supplement := range reaction.Supplements {
 			supplementImagePath := fmt.Sprintf("resource/images/%s/%s", reaction.DirectoryName, supplement.ImageName)
 			supplementsImageName := fmt.Sprintf("%s.png", uuid.NewString())
-			err := uploadImage(cfg, supplementImagePath, supplementsImageName)
+			err := uploadImage(cfg, bucketName, supplementImagePath, supplementsImageName)
 			if err != nil {
 				log.Fatal("General Formula Upload Error")
 			}
@@ -120,7 +131,7 @@ func main() {
 	fmt.Printf("Finish!!")
 }
 
-func uploadImage(cfg aws.Config, filePath string, imageName string) error {
+func uploadImage(cfg aws.Config, bucketName string, filePath string, imageName string) error {
 	// Open Image
 	file, err := os.Open(filePath)
 	if err != nil {

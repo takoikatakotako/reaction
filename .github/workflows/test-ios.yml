@@ -41,3 +41,31 @@ jobs:
     - name: SwiftLint
       working-directory: ios
       run: mint run swiftlint swiftlint --strict
+
+    # xcodegen でプロジェクトを生成
+    - name: Generate Xcode project
+      working-directory: ios
+      run: mint run xcodegen xcodegen generate
+
+    # SwiftPM のキャッシュ
+    - name: Cache SwiftPM packages
+      uses: actions/cache@v4
+      with:
+        path: ~/Library/Developer/Xcode/DerivedData/**/SourcePackages
+        key: ${{ runner.os }}-spm-${{ hashFiles('ios/project.yml') }}
+        restore-keys: |
+          ${{ runner.os }}-spm-
+
+    # ユニットテスト
+    - name: Unit Test
+      working-directory: ios
+      run: |
+        set -o pipefail
+        xcodebuild test \
+          -project Reaction.xcodeproj \
+          -scheme Development \
+          -destination 'platform=iOS Simulator,name=iPhone 16' \
+          -skipPackagePluginValidation \
+          -skipMacroValidation \
+          CODE_SIGNING_ALLOWED=NO \
+          | xcbeautify --renderer github-actions

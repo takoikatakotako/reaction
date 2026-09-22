@@ -6,12 +6,11 @@ import * as service from '@/lib/service';
 export default function UpdatePage() {
   const [isExporting, setIsExporting] = useState(false);
 
-
   // S3 Export
   const handleExportToS3 = async () => {
     if (isExporting) return;
 
-    const result = window.confirm("反応機構データを更新しますか?");
+    const result = window.confirm('反応機構データを更新しますか?');
     if (result) {
       setIsExporting(true);
       try {
@@ -29,9 +28,7 @@ export default function UpdatePage() {
     <main className="wrapper">
       <h1>データ更新</h1>
 
-      <p>
-        更新ボタンを押すと、反応機構と学習問題のデータが更新されます。
-      </p>
+      <p>更新ボタンを押すと、反応機構と学習問題のデータが更新されます。</p>
 
       <form>
         <button
@@ -41,20 +38,22 @@ export default function UpdatePage() {
           disabled={isExporting}
           style={{
             opacity: isExporting ? 0.6 : 1,
-            cursor: isExporting ? 'not-allowed' : 'pointer'
+            cursor: isExporting ? 'not-allowed' : 'pointer',
           }}
         >
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#DF5C44',
-            color: 'white',
-            padding: '15px 60px',
-            borderRadius: '5px',
-            fontSize: '16px',
-            fontWeight: 'bold'
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#DF5C44',
+              color: 'white',
+              padding: '15px 60px',
+              borderRadius: '5px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+            }}
+          >
             {isExporting ? '更新中...' : 'データ更新'}
           </div>
         </button>

@@ -34,7 +34,12 @@ export default function EditQuestion() {
   const [problemImageURLs, setProblemImageURLs] = useState<string[]>([]);
   const problemInputRef = useRef<HTMLInputElement>(null);
   const onProblemChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    service.handleImagesChange(e, setProblemImageURLs, problemImageURLs, problemInputRef);
+    service.handleImagesChange(
+      e,
+      setProblemImageURLs,
+      problemImageURLs,
+      problemInputRef
+    );
   const onProblemDelete = (index: number) =>
     service.handleImagesDelete(index, setProblemImageURLs);
 
@@ -42,7 +47,12 @@ export default function EditQuestion() {
   const [solutionImageURLs, setSolutionImageURLs] = useState<string[]>([]);
   const solutionInputRef = useRef<HTMLInputElement>(null);
   const onSolutionChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    service.handleImagesChange(e, setSolutionImageURLs, solutionImageURLs, solutionInputRef);
+    service.handleImagesChange(
+      e,
+      setSolutionImageURLs,
+      solutionImageURLs,
+      solutionInputRef
+    );
   const onSolutionDelete = (index: number) =>
     service.handleImagesDelete(index, setSolutionImageURLs);
 
@@ -104,8 +114,12 @@ export default function EditQuestion() {
       try {
         const question: entity.Question = await service.fetchQuestion(id);
         setOrder(question.order);
-        setEnglishTitle(question.englishTitle ?? DEFAULT_QUESTION_ENGLISH_TITLE);
-        setJapaneseTitle(question.japaneseTitle ?? DEFAULT_QUESTION_JAPANESE_TITLE);
+        setEnglishTitle(
+          question.englishTitle ?? DEFAULT_QUESTION_ENGLISH_TITLE
+        );
+        setJapaneseTitle(
+          question.japaneseTitle ?? DEFAULT_QUESTION_JAPANESE_TITLE
+        );
         setCategory(question.category ?? '');
         setNumber(question.number ?? 0);
         setDifficulty(question.difficulty ?? 1);
@@ -127,12 +141,7 @@ export default function EditQuestion() {
         {/* ID */}
         <div className="reaction-edit-content">
           <label htmlFor="id">ID</label>
-          <input
-            type="text"
-            name="id"
-            value={id ?? ''}
-            readOnly
-          />
+          <input type="text" name="id" value={id ?? ''} readOnly />
           <hr />
         </div>
 
@@ -238,17 +247,19 @@ export default function EditQuestion() {
           className="reaction-edit-add-reaction-button"
           onClick={() => onEditSubmit()}
         >
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#DF5C44',
-            color: 'white',
-            padding: '15px 60px',
-            borderRadius: '5px',
-            fontSize: '16px',
-            fontWeight: 'bold',
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#DF5C44',
+              color: 'white',
+              padding: '15px 60px',
+              borderRadius: '5px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+            }}
+          >
             更新
           </div>
         </button>
@@ -259,17 +270,19 @@ export default function EditQuestion() {
           className="reaction-edit-add-reaction-button"
           onClick={() => onDeleteSubmit()}
         >
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#443322',
-            color: 'white',
-            padding: '15px 60px',
-            borderRadius: '5px',
-            fontSize: '16px',
-            fontWeight: 'bold',
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#443322',
+              color: 'white',
+              padding: '15px 60px',
+              borderRadius: '5px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+            }}
+          >
             削除
           </div>
         </button>

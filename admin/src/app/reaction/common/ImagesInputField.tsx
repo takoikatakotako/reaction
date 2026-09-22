@@ -17,7 +17,7 @@ export default function ImagesInputField({
   onImageChange,
   onImageDelete,
 }: ImagesInputFieldProps) {
-    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       const file = e.dataTransfer.files[0];
@@ -40,7 +40,7 @@ export default function ImagesInputField({
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
-  return (  
+  return (
     <div className="reaction-edit-content">
       <label htmlFor={label}>{name}</label>
 

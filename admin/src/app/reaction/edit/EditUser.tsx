@@ -149,9 +149,13 @@ export default function EditUser() {
   const onEditSubmit = async () => {
     try {
       // Validate reactants
-      const hasEmptyReactant = reactants.some(reactant => !reactant || reactant === '');
+      const hasEmptyReactant = reactants.some(
+        (reactant) => !reactant || reactant === ''
+      );
       if (hasEmptyReactant) {
-        throw new Error('Reactantsで「選択してください」のままの項目があります');
+        throw new Error(
+          'Reactantsで「選択してください」のままの項目があります'
+        );
       }
 
       const thumbnailImageName = service.extractImageName(thumbnailImageURL);
@@ -355,17 +359,19 @@ export default function EditUser() {
           className="reaction-edit-add-reaction-button"
           onClick={() => onEditSubmit()}
         >
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#DF5C44',
-            color: 'white',
-            padding: '15px 60px',
-            borderRadius: '5px',
-            fontSize: '16px',
-            fontWeight: 'bold',
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#DF5C44',
+              color: 'white',
+              padding: '15px 60px',
+              borderRadius: '5px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+            }}
+          >
             更新
           </div>
         </button>
@@ -376,17 +382,19 @@ export default function EditUser() {
           className="reaction-edit-add-reaction-button"
           onClick={() => onDeleteSubmit()}
         >
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#443322',
-            color: 'white',
-            padding: '15px 60px',
-            borderRadius: '5px',
-            fontSize: '16px',
-            fontWeight: 'bold',
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#443322',
+              color: 'white',
+              padding: '15px 60px',
+              borderRadius: '5px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+            }}
+          >
             削除
           </div>
         </button>

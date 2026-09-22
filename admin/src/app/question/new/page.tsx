@@ -20,8 +20,12 @@ export default function NewQuestionPage() {
   const [order, setOrder] = useState<number>(0);
 
   // Title
-  const [englishTitle, setEnglishTitle] = useState<string>(DEFAULT_QUESTION_ENGLISH_TITLE);
-  const [japaneseTitle, setJapaneseTitle] = useState<string>(DEFAULT_QUESTION_JAPANESE_TITLE);
+  const [englishTitle, setEnglishTitle] = useState<string>(
+    DEFAULT_QUESTION_ENGLISH_TITLE
+  );
+  const [japaneseTitle, setJapaneseTitle] = useState<string>(
+    DEFAULT_QUESTION_JAPANESE_TITLE
+  );
 
   // Category / Number / Difficulty
   const [category, setCategory] = useState<string>('');
@@ -32,7 +36,12 @@ export default function NewQuestionPage() {
   const [problemImageURLs, setProblemImageURLs] = useState<string[]>([]);
   const problemInputRef = useRef<HTMLInputElement>(null);
   const onProblemChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    service.handleImagesChange(e, setProblemImageURLs, problemImageURLs, problemInputRef);
+    service.handleImagesChange(
+      e,
+      setProblemImageURLs,
+      problemImageURLs,
+      problemInputRef
+    );
   const onProblemDelete = (index: number) =>
     service.handleImagesDelete(index, setProblemImageURLs);
 
@@ -40,7 +49,12 @@ export default function NewQuestionPage() {
   const [solutionImageURLs, setSolutionImageURLs] = useState<string[]>([]);
   const solutionInputRef = useRef<HTMLInputElement>(null);
   const onSolutionChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    service.handleImagesChange(e, setSolutionImageURLs, solutionImageURLs, solutionInputRef);
+    service.handleImagesChange(
+      e,
+      setSolutionImageURLs,
+      solutionImageURLs,
+      solutionInputRef
+    );
   const onSolutionDelete = (index: number) =>
     service.handleImagesDelete(index, setSolutionImageURLs);
 
@@ -190,17 +204,19 @@ export default function NewQuestionPage() {
           className="reaction-edit-add-reaction-button"
           onClick={() => submitHandleChange()}
         >
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#007bff',
-            color: 'white',
-            padding: '15px 30px',
-            borderRadius: '5px',
-            fontSize: '16px',
-            fontWeight: 'bold',
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#007bff',
+              color: 'white',
+              padding: '15px 30px',
+              borderRadius: '5px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+            }}
+          >
             追加
           </div>
         </button>

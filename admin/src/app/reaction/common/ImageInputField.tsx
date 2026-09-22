@@ -13,7 +13,7 @@ export default function ImageInputField({
   onImageChange,
   onImageDelete,
 }: ImageInputFieldProps) {
-    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       const file = e.dataTransfer.files[0];
@@ -36,7 +36,7 @@ export default function ImageInputField({
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
-  
+
   return (
     <div className="reaction-edit-content">
       <label htmlFor="thumbnail">Thumbnail</label>

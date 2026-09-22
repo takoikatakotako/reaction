@@ -149,12 +149,18 @@ export default function NewReactionPage() {
       }
 
       // Validate reactants
-      const hasEmptyReactant = reactants.some(reactant => !reactant || reactant === '');
+      const hasEmptyReactant = reactants.some(
+        (reactant) => !reactant || reactant === ''
+      );
       if (hasEmptyReactant) {
-        throw new Error('Reactantsで「選択してください」のままの項目があります');
+        throw new Error(
+          'Reactantsで「選択してください」のままの項目があります'
+        );
       }
       // Validate products
-      const hasEmptyProduct = products.some(product => !product || product === '');
+      const hasEmptyProduct = products.some(
+        (product) => !product || product === ''
+      );
       if (hasEmptyProduct) {
         throw new Error('Productsで「選択してください」のままの項目があります');
       }
@@ -310,17 +316,19 @@ export default function NewReactionPage() {
           className="reaction-edit-add-reaction-button"
           onClick={() => submitHandleChange()}
         >
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#DF5C44',
-            color: 'white',
-            padding: '15px 60px',
-            borderRadius: '5px',
-            fontSize: '16px',
-            fontWeight: 'bold',
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#DF5C44',
+              color: 'white',
+              padding: '15px 60px',
+              borderRadius: '5px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+            }}
+          >
             登録
           </div>
         </button>

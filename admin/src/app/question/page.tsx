@@ -41,21 +41,26 @@ export default function QuestionPage() {
           ? `${question.category}${String(question.number ?? 0).padStart(3, '0')}`
           : `#${question.order}`;
         return (
-        <div className="reaction-content" key={question.id}>
-          <Link href={`/question/edit?id=${question.id}`}>
-            <h2>{label}{question.difficulty ? ` (Lv.${question.difficulty})` : ''} - {question.id}</h2>
-          </Link>
-          {question.problemImageUrls.length > 0 && (
-            <Image
-              src={question.problemImageUrls[0]}
-              loading="lazy"
-              width={0}
-              height={0}
-              alt=""
-            />
-          )}
-          <hr />
-        </div>
+          <div className="reaction-content" key={question.id}>
+            <Link href={`/question/edit?id=${question.id}`}>
+              <h2>
+                {label}
+                {question.difficulty
+                  ? ` (Lv.${question.difficulty})`
+                  : ''} - {question.id}
+              </h2>
+            </Link>
+            {question.problemImageUrls.length > 0 && (
+              <Image
+                src={question.problemImageUrls[0]}
+                loading="lazy"
+                width={0}
+                height={0}
+                alt=""
+              />
+            )}
+            <hr />
+          </div>
         );
       })}
     </main>

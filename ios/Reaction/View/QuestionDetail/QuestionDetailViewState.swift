@@ -10,10 +10,11 @@ class QuestionDetailViewState: ObservableObject {
     // タイトルの表示言語は反応機構名と同じ設定に準拠する
     let reactionMechanismIdentifier: String
 
-    private let userDefaultRepository = UserDefaultRepository()
+    private let userDefaultRepository: UserDefaultRepository
 
-    init(question: Question) {
+    init(question: Question, userDefaultRepository: UserDefaultRepository = UserDefaultRepository()) {
         self.question = question
+        self.userDefaultRepository = userDefaultRepository
         self.reactionMechanismIdentifier = userDefaultRepository.reactionMechanismLanguage
     }
 

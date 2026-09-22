@@ -6,20 +6,12 @@ import StoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     private let userDefaultRepository = UserDefaultRepository()
 
+    // ユニットテスト実行時（XCTest がホストアプリとして起動したとき）は true
+    private var isRunningUnitTests: Bool {
+        ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+    }
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-
-        // Use Firebase library to configure APIs.
-        FirebaseApp.configure()
-        Messaging.messaging().delegate = self
-
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: { _, _ in }
-        )
-
-        application.registerForRemoteNotifications()
-
         // UserDefaults
         UserDefaultRepository().initilize()
 
@@ -33,6 +25,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError("Error: Missing QUESTIONS_ENDPOINT in Info.plist")
         }
         EnvironmentVariable.shared.setQuestionsEndpoint(questionsEndpoint: questionsEndpoint)
+
+        // ユニットテスト中は Firebase・通知・課金の初期化を行わない（CI のシミュレータで落ちるため）
+        if isRunningUnitTests {
+            return true
+        }
+
+        // Use Firebase library to configure APIs.
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { _, _ in }
+        )
+
+        application.registerForRemoteNotifications()
 
         // Push Token
         Messaging.messaging().token { token, error in

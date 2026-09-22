@@ -2,12 +2,26 @@ name: Test iOS
 
 on:
   workflow_dispatch:
+  # main への push でも実行して Mint / SwiftPM のキャッシュを main に作る
+  # （PR の run は main のキャッシュを参照できるため、新しい PR が毎回コールドスタートになるのを防ぐ）
+  push:
+    branches:
+      - main
+    paths:
+      - ios/**
+      - .github/workflows/test-ios.yml
   pull_request:
     paths:
       - ios/**
+      - .github/workflows/test-ios.yml
     branches:
       - main
       - develop
+
+env:
+  # mint のインストール先をリポジトリ配下にして actions/cache の対象にする
+  MINT_PATH: ${{ github.workspace }}/ios/.mint
+  MINT_LINK_PATH: ${{ github.workspace }}/ios/.mint/bin
 
 jobs:
   test_ios:
@@ -23,21 +37,62 @@ jobs:
     - name: Install Mint
       run: brew install mint
 
-    # Mintのキャッシュの取得
-    - name: Cache Mint packages
-      uses: actions/cache@v4
+    # Mintのキャッシュの取得（保存はジョブ失敗時も行うため restore / save を分ける）
+    - name: Restore Mint packages
+      id: mint-cache
+      uses: actions/cache/restore@v4
       with:
         path: ios/.mint
         key: ${{ runner.os }}-mint-${{ hashFiles('ios/Mintfile') }}
-        restore-keys: |
-          ${{ runner.os }}-mint-
 
     # Mintで管理しているライブラリのインストール
     - name: Install Mint packages
       working-directory: ios
       run: mint bootstrap
 
+    - name: Save Mint packages
+      if: always() && steps.mint-cache.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v4
+      with:
+        path: ios/.mint
+        key: ${{ steps.mint-cache.outputs.cache-primary-key }}
+
     # SwiftLintによるチェック
     - name: SwiftLint
       working-directory: ios
       run: mint run swiftlint swiftlint --strict
+
+    # xcodegen でプロジェクトを生成
+    - name: Generate Xcode project
+      working-directory: ios
+      run: mint run xcodegen xcodegen generate
+
+    # SwiftPM のキャッシュ（DerivedData を固定パスにしてその中の SourcePackages を保存する）
+    - name: Restore SwiftPM packages
+      id: spm-cache
+      uses: actions/cache/restore@v4
+      with:
+        path: ios/DerivedData/SourcePackages
+        key: ${{ runner.os }}-spm-${{ hashFiles('ios/project.yml') }}
+
+    # ユニットテスト
+    - name: Unit Test
+      working-directory: ios
+      run: |
+        set -o pipefail
+        xcodebuild test \
+          -project Reaction.xcodeproj \
+          -scheme Development \
+          -destination 'platform=iOS Simulator,name=iPhone 16' \
+          -derivedDataPath DerivedData \
+          -skipPackagePluginValidation \
+          -skipMacroValidation \
+          CODE_SIGNING_ALLOWED=NO \
+          | xcbeautify --renderer github-actions
+
+    - name: Save SwiftPM packages
+      if: always() && steps.spm-cache.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v4
+      with:
+        path: ios/DerivedData/SourcePackages
+        key: ${{ steps.spm-cache.outputs.cache-primary-key }}

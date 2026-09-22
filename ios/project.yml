@@ -8,8 +8,13 @@ schemes:
     build:
       targets:
         ReactionDevelopment: all
+        ReactionTests: [test]
     run:
       config: Debug
+    test:
+      config: Debug
+      targets:
+        - ReactionTests
   Production:
     build:
       targets:
@@ -128,3 +133,14 @@ targets:
         MinimumOSVersion: "17.0"
         REACTIONS_ENDPOINT: $(REACTIONS_ENDPOINT)
         QUESTIONS_ENDPOINT: $(QUESTIONS_ENDPOINT)
+  ReactionTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: ReactionTests
+    dependencies:
+      - target: ReactionDevelopment
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.reaction.development.tests
+        GENERATE_INFOPLIST_FILE: YES

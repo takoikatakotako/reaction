@@ -1,25 +1,32 @@
 import SwiftUI
 
 class UserDefaultRepository {
+    private let userDefaults: UserDefaults
+
+    // テストでは専用の suite を渡して本番の設定を汚さないようにする
+    init(userDefaults: UserDefaults = .standard) {
+        self.userDefaults = userDefaults
+    }
+
     // UserDefaults
     let KEY_REACTION_MECHANISM_LANGUAGE = "KEY_REACTION_MECHANISM_LANGUAGE"
     let KEY_SHOW_THUMBNAIL = "KEY_SHOW_THUMBNAIL"
     let KEY_ENABLE_DETAILE_ABILITY = "KEY_ENABLE_DETAILE_ABILITY"
 
     var reactionMechanismLanguage: String {
-        UserDefaults.standard.object(forKey: KEY_REACTION_MECHANISM_LANGUAGE) as? String ?? "en"
+        userDefaults.object(forKey: KEY_REACTION_MECHANISM_LANGUAGE) as? String ?? "en"
     }
 
     var showThmbnail: Bool {
-        UserDefaults.standard.object(forKey: KEY_SHOW_THUMBNAIL) as? Bool ?? true
+        userDefaults.object(forKey: KEY_SHOW_THUMBNAIL) as? Bool ?? true
     }
 
     var enableDetaileAbility: Bool {
-        UserDefaults.standard.object(forKey: KEY_ENABLE_DETAILE_ABILITY) as? Bool ?? false
+        userDefaults.object(forKey: KEY_ENABLE_DETAILE_ABILITY) as? Bool ?? false
     }
 
     func initilize() {
-        UserDefaults.standard.register(
+        userDefaults.register(
             defaults: [
                 KEY_REACTION_MECHANISM_LANGUAGE: "en",
                 KEY_SHOW_THUMBNAIL: true,
@@ -29,14 +36,14 @@ class UserDefaultRepository {
     }
 
     func setReactionMechanismLanguage(_ language: String) {
-        UserDefaults.standard.setValue(language, forKey: KEY_REACTION_MECHANISM_LANGUAGE)
+        userDefaults.setValue(language, forKey: KEY_REACTION_MECHANISM_LANGUAGE)
     }
 
     func setShowThmbnail(_ showThmbnail: Bool) {
-        UserDefaults.standard.setValue(showThmbnail, forKey: KEY_SHOW_THUMBNAIL)
+        userDefaults.setValue(showThmbnail, forKey: KEY_SHOW_THUMBNAIL)
     }
 
     func setEnableDetaileAbility(_ enableDetaileAbility: Bool) {
-        UserDefaults.standard.setValue(enableDetaileAbility, forKey: KEY_ENABLE_DETAILE_ABILITY)
+        userDefaults.setValue(enableDetaileAbility, forKey: KEY_ENABLE_DETAILE_ABILITY)
     }
 }

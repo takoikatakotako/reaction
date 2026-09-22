@@ -6,6 +6,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "6.66.0"
     }
+    archive = {
+      source  = "hashicorp/archive"
+      version = "2.7.1"
+    }
   }
 
   backend "s3" {
@@ -70,6 +74,7 @@ module "admin" {
   front_distribution_id         = module.front.distribution_id
   admin_user                    = var.admin_user
   admin_password                = var.admin_password
+  api_log_retention_in_days     = 14
 }
 
 module "admin_database" {
@@ -82,4 +87,26 @@ module "admin_database" {
 module "github" {
   source                 = "../../modules/github_for_app"
   github_action_role_arn = "arn:aws:iam::392961483375:role/reaction-github-action-role"
+}
+
+##############################################################
+# Monitoring
+##############################################################
+module "monitoring" {
+  source                           = "../../modules/monitoring"
+  environment                      = "development"
+  lambda_function_name             = module.admin.api_lambda_function_name
+  lambda_log_group_name            = module.admin.api_lambda_log_group_name
+  dynamodb_table_names             = module.admin_database.table_names
+  slack_webhook_ssm_parameter_name = "/reaction/development/slack-alert-webhook-url"
+}
+
+##############################################################
+# Import
+##############################################################
+# Lambda が自動作成済みのロググループを Terraform 管理下に取り込む。
+# apply 後はこの import ブロックを削除してよい。
+import {
+  to = module.admin.aws_cloudwatch_log_group.api_lambda_function
+  id = "/aws/lambda/reaction-api"
 }

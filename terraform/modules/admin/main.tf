@@ -77,6 +77,13 @@ resource "aws_lambda_function" "api_lambda_function" {
   }
 }
 
+# Lambda が自動作成するロググループを Terraform 管理下に置き、保持期間を設定する
+# （未設定だと無期限に保持される）
+resource "aws_cloudwatch_log_group" "api_lambda_function" {
+  name              = "/aws/lambda/${aws_lambda_function.api_lambda_function.function_name}"
+  retention_in_days = var.api_log_retention_in_days
+}
+
 resource "aws_lambda_function_url" "api_lambda_function_url" {
   function_name      = aws_lambda_function.api_lambda_function.function_name
   authorization_type = "NONE"
@@ -215,4 +222,16 @@ resource "aws_cloudfront_distribution" "charalarm_cloudfront_distribution" {
       restriction_type = "none"
     }
   }
+}
+
+
+##############################################################
+# Outputs
+##############################################################
+output "api_lambda_function_name" {
+  value = aws_lambda_function.api_lambda_function.function_name
+}
+
+output "api_lambda_log_group_name" {
+  value = aws_cloudwatch_log_group.api_lambda_function.name
 }

@@ -55,3 +55,7 @@ jobs:
     - name: Lint
       working-directory: admin
       run: pnpm lint
+
+    - name: Test
+      working-directory: admin
+      run: pnpm test

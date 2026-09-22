@@ -2,9 +2,18 @@ name: Test iOS
 
 on:
   workflow_dispatch:
+  # main への push でも実行して Mint / SwiftPM のキャッシュを main に作る
+  # （PR の run は main のキャッシュを参照できるため、新しい PR が毎回コールドスタートになるのを防ぐ）
+  push:
+    branches:
+      - main
+    paths:
+      - ios/**
+      - .github/workflows/test-ios.yml
   pull_request:
     paths:
       - ios/**
+      - .github/workflows/test-ios.yml
     branches:
       - main
       - develop

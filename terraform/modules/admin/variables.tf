@@ -56,3 +56,8 @@ locals {
   # AllViewerExceptHostHeader (Managed Policy)
   origin_request_policy_id = "b689b0a8-53d0-40ab-baf2-68738e2966ac"
 }
+
+variable "api_log_retention_in_days" {
+  type        = string
+  description = "API Lambda のログ保持日数"
+}

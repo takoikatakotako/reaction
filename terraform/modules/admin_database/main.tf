@@ -26,3 +26,14 @@ resource "aws_dynamodb_table" "questions_table" {
     type = "S"
   }
 }
+
+
+##############################################################
+# Outputs
+##############################################################
+output "table_names" {
+  value = [
+    aws_dynamodb_table.reactions_table.name,
+    aws_dynamodb_table.questions_table.name,
+  ]
+}

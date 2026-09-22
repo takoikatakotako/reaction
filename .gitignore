@@ -8,3 +8,6 @@ migration/migration
 
 # Claude Code local settings
 .claude/
+
+# zip はビルド生成物
+terraform/modules/monitoring/lambda/*.zip

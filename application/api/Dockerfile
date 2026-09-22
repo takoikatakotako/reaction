@@ -2,7 +2,9 @@ FROM golang:1.23.2-alpine3.19 AS builder
 WORKDIR /app
 COPY .. .
 RUN go mod tidy
-RUN CGE_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o main api/main.go
+# main.go だけを指定すると同じ package の他ファイル（logger.go 等）が
+# コンパイル対象から外れるため、package 単位でビルドする
+RUN CGE_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o main ./api
 
 
 FROM golang:1.23.2-alpine3.19

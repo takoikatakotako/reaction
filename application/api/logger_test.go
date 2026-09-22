@@ -3,13 +3,23 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"io"
 	"log/slog"
 	"testing"
 )
 
+// setupLogger はプロセス全体のデフォルトロガーを差し替えるため、
+// 他のテストに影響しないようテスト終了時に元へ戻す
+func setupLoggerForTest(t *testing.T, w io.Writer) {
+	t.Helper()
+	old := slog.Default()
+	t.Cleanup(func() { slog.SetDefault(old) })
+	setupLogger(w)
+}
+
 func TestSetupLoggerOutputsJSON(t *testing.T) {
 	var buf bytes.Buffer
-	setupLogger(&buf)
+	setupLoggerForTest(t, &buf)
 
 	slog.Error("something went wrong")
 
@@ -32,7 +42,7 @@ func TestSetupLoggerOutputsJSON(t *testing.T) {
 
 func TestSetupLoggerDropsDebugLevel(t *testing.T) {
 	var buf bytes.Buffer
-	setupLogger(&buf)
+	setupLoggerForTest(t, &buf)
 
 	slog.Debug("デバッグログは出力しない")
 

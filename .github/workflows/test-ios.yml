@@ -66,11 +66,12 @@ jobs:
       working-directory: ios
       run: |
         set -o pipefail
+        mkdir -p SourcePackages
         xcodebuild test \
           -project Reaction.xcodeproj \
           -scheme Development \
           -destination 'platform=iOS Simulator,name=iPhone 16' \
-          -clonedSourcePackagesDirPath SourcePackages \
+          -clonedSourcePackagesDirPath "$PWD/SourcePackages" \
           -skipPackagePluginValidation \
           -skipMacroValidation \
           CODE_SIGNING_ALLOWED=NO \

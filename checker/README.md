@@ -85,3 +85,14 @@ for windows
 ```
 $ GOOS=windows GOARCH=amd64 go build -o checker.exe checker.go 
 ```
+
+## 環境設定
+
+デフォルトでは開発環境（`reaction-development` プロファイル / `resource.reaction-development.swiswiswift.com` バケット）にアップロードします。
+別の環境を使う場合は環境変数で上書きしてください。
+
+```
+$ REACTION_AWS_PROFILE=reaction-production \
+  REACTION_BUCKET_NAME=resource.reaction-production.swiswiswift.com \
+  ./checker
+```

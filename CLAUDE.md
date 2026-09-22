@@ -35,6 +35,7 @@ pnpm install          # 依存関係インストール
 pnpm dev              # 開発サーバー起動 (Turbopack)
 pnpm build            # ビルド
 pnpm lint             # Lint実行
+pnpm test             # ユニットテスト実行 (Vitest)
 ```
 
 ### API (application/)

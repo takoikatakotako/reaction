@@ -11,3 +11,8 @@ migration/migration
 
 # zip はビルド生成物
 terraform/modules/monitoring/lambda/*.zip
+
+# Python のバイトコードキャッシュ（archive_file の source_dir 配下に
+# 混入すると Lambda の ZIP に入ってしまう）
+__pycache__/
+*.py[cod]

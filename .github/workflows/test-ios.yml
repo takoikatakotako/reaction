@@ -65,7 +65,7 @@ jobs:
     # xcodegen でプロジェクトを生成
     - name: Generate Xcode project
       working-directory: ios
-      run: mint run xcodegen xcodegen generate
+      run: make generate
 
     # SwiftPM のキャッシュ（DerivedData を固定パスにしてその中の SourcePackages を保存する）
     - name: Restore SwiftPM packages
@@ -73,7 +73,7 @@ jobs:
       uses: actions/cache/restore@v4
       with:
         path: ios/DerivedData/SourcePackages
-        key: ${{ runner.os }}-spm-${{ hashFiles('ios/project.yml') }}
+        key: ${{ runner.os }}-spm-${{ hashFiles('ios/Package.resolved') }}
 
     # ユニットテスト
     - name: Unit Test
@@ -85,6 +85,7 @@ jobs:
           -scheme Development \
           -destination 'platform=iOS Simulator,name=iPhone 16' \
           -derivedDataPath DerivedData \
+          -onlyUsePackageVersionsFromResolvedFile \
           -skipPackagePluginValidation \
           -skipMacroValidation \
           CODE_SIGNING_ALLOWED=NO \

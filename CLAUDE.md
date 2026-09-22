@@ -51,13 +51,14 @@ make build-admin-image  # Dockerイメージビルド
 
 ```bash
 cd ios
-mint bootstrap                          # ツールインストール (xcodegen, swiftlint など)
-mint run xcodegen xcodegen generate     # Xcode プロジェクト生成
-mint run swiftlint swiftlint --strict   # Lint実行
-xcodebuild test -project Reaction.xcodeproj -scheme Development \
-  -destination 'platform=iOS Simulator,name=iPhone 17 Pro' \
-  -skipPackagePluginValidation -skipMacroValidation CODE_SIGNING_ALLOWED=NO   # ユニットテスト
+mint bootstrap        # ツールインストール (xcodegen, swiftlint など)
+make generate         # Xcode プロジェクト生成 + Package.resolved 配置
+make lint             # Lint実行
+make test             # ユニットテスト (シミュレータ)
+make save-resolved    # Xcode で依存を更新した後、Package.resolved をバージョン管理側へ書き戻す
 ```
+
+SwiftPM の依存バージョンは `ios/Package.resolved` で固定している（xcodeproj は生成物で gitignore されているため別置き）。
 
 ### デプロイ
 

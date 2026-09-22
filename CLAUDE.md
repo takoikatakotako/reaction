@@ -12,7 +12,6 @@ reaction/
 ├── android/        # Androidアプリ
 ├── checker/        # 反応データ検証ツール (Go)
 ├── terraform/      # AWSインフラ (Lambda, DynamoDB, S3, CloudFront)
-├── html/           # 静的HTMLファイル
 ├── local/          # ローカル開発用設定
 └── documents/      # ドキュメント
 ```

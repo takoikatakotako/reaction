@@ -8,7 +8,9 @@ class ReactionMechanismRepository {
     }
 
     func fetchMechanisms(reactionsEndpoint: String) async throws -> [ReactionMechanism] {
-        let url = URL(string: reactionsEndpoint)!
+        guard let url = URL(string: reactionsEndpoint) else {
+            throw URLError(.badURL)
+        }
         var request = URLRequest(url: url)
         request.cachePolicy = .reloadIgnoringLocalCacheData
         let (data, _) = try await session.data(for: request)

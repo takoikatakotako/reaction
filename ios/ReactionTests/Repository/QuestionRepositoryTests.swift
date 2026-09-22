@@ -55,4 +55,14 @@ final class QuestionRepositoryTests: XCTestCase {
             XCTAssertEqual((error as? URLError)?.code, .notConnectedToInternet)
         }
     }
+
+    func testFetchQuestionsThrowsBadURLForInvalidEndpoint() async {
+        let repository = QuestionRepository(session: MockURLProtocol.makeSession())
+        do {
+            _ = try await repository.fetchQuestions(questionsEndpoint: "")
+            XCTFail("URL 生成に失敗するはず")
+        } catch {
+            XCTAssertEqual((error as? URLError)?.code, .badURL)
+        }
+    }
 }

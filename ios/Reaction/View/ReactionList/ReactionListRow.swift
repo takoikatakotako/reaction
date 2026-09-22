@@ -14,8 +14,8 @@ struct ReactionListRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             CommonText(text: reactionMechanism.getDisplayTitle(identifier: localeIdentifier), font: Font.system(size: 12))
-            if showingThmbnail {
-                ReactionListRowImage(imageUrl: URL(string: reactionMechanism.thumbnailImageUrl)!, placeHolderName: "placeholder-list")
+            if showingThmbnail, let imageUrl = URL(string: reactionMechanism.thumbnailImageUrl) {
+                ReactionListRowImage(imageUrl: imageUrl, placeHolderName: "placeholder-list")
             }
         }
     }

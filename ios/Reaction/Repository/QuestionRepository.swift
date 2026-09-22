@@ -8,7 +8,9 @@ class QuestionRepository {
     }
 
     func fetchQuestions(questionsEndpoint: String) async throws -> [Question] {
-        let url = URL(string: questionsEndpoint)!
+        guard let url = URL(string: questionsEndpoint) else {
+            throw URLError(.badURL)
+        }
         var request = URLRequest(url: url)
         request.cachePolicy = .reloadIgnoringLocalCacheData
         let (data, _) = try await session.data(for: request)

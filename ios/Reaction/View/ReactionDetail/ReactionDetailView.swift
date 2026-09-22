@@ -7,6 +7,11 @@ struct ReactionDetailView: View {
     @State var reactionMechanism: ReactionMechanism
     @State private var isLoading = true
 
+    // 共有シートで渡す Web 版のページ URL
+    private var shareUrl: URL? {
+        URL(string: "https://chemist.swiswiswift.com/reaction/\(reactionMechanism.id)")
+    }
+
     var body: some View {
         Group {
             if isLoading {
@@ -54,7 +59,7 @@ struct ReactionDetailView: View {
             ReactionDetailFullScreenView(localeIdentifier: Locale.current.identifier, reactionMechanism: reactionMechanism)
         }
         .sheet(isPresented: $showingSheet, content: {
-            ActivityViewController(activityItems: [URL(string: "https://chemist.swiswiswift.com/reaction/\(reactionMechanism.id)")!])
+            ActivityViewController(activityItems: [shareUrl].compactMap { $0 })
         })
         .onAppear {
             prefetchImages()

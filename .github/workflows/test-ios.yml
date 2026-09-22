@@ -9,6 +9,11 @@ on:
       - main
       - develop
 
+env:
+  # mint のインストール先をリポジトリ配下にして actions/cache の対象にする
+  MINT_PATH: ${{ github.workspace }}/ios/.mint
+  MINT_LINK_PATH: ${{ github.workspace }}/ios/.mint/bin
+
 jobs:
   test_ios:
     name: test ios
@@ -47,11 +52,11 @@ jobs:
       working-directory: ios
       run: mint run xcodegen xcodegen generate
 
-    # SwiftPM のキャッシュ
+    # SwiftPM のキャッシュ（-clonedSourcePackagesDirPath で固定パスに置く）
     - name: Cache SwiftPM packages
       uses: actions/cache@v4
       with:
-        path: ~/Library/Developer/Xcode/DerivedData/**/SourcePackages
+        path: ios/SourcePackages
         key: ${{ runner.os }}-spm-${{ hashFiles('ios/project.yml') }}
         restore-keys: |
           ${{ runner.os }}-spm-
@@ -65,6 +70,7 @@ jobs:
           -project Reaction.xcodeproj \
           -scheme Development \
           -destination 'platform=iOS Simulator,name=iPhone 16' \
+          -clonedSourcePackagesDirPath SourcePackages \
           -skipPackagePluginValidation \
           -skipMacroValidation \
           CODE_SIGNING_ALLOWED=NO \

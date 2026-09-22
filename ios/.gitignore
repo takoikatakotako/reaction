@@ -55,3 +55,7 @@ DerivedData/
 # GoogleService-Info.plist
 GoogleService-Info.plist
 
+
+# CI / ローカルのツール・パッケージキャッシュ
+.mint/
+SourcePackages/

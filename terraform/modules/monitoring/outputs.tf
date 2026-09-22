@@ -4,6 +4,6 @@ output "sns_topic_arn" {
 }
 
 output "slack_webhook_ssm_parameter_name" {
-  description = "Slack Webhook URL を入れる SSM パラメータ名"
-  value       = aws_ssm_parameter.slack_webhook_url.name
+  description = "Slack Webhook URL を入れる SSM パラメータ名（Terraform 管理外。手動で作成する）"
+  value       = var.slack_webhook_ssm_parameter_name
 }

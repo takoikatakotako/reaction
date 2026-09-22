@@ -30,21 +30,17 @@ locals {
 ##############################################################
 # Slack Webhook URL (SSM)
 ##############################################################
-# 値は Terraform では管理しない（シークレットのため）。
-# 初回のみ手動で投入する:
-#   aws ssm put-parameter --profile reaction-<env> --overwrite \
-#     --name <このパラメータ名> --type SecureString \
+# パラメータそのものを Terraform で管理すると、refresh 時に
+# GetParameter(WithDecryption=true) が実行され復号済みの値が state に
+# 保存されてしまうため、Terraform では作成しない。
+# 名前から ARN だけを組み立てて IAM ポリシーに使う。
+#
+# apply の前に手動で作成しておく:
+#   aws ssm put-parameter --profile reaction-<env> \
+#     --name <slack_webhook_ssm_parameter_name> --type SecureString \
 #     --value 'https://hooks.slack.com/services/...'
-resource "aws_ssm_parameter" "slack_webhook_url" {
-  name        = var.slack_webhook_ssm_parameter_name
-  type        = "SecureString"
-  value       = "PLACEHOLDER"
-  description = "Slack incoming webhook for CloudWatch alarms (value managed out-of-band)"
-  tags        = local.tags
-
-  lifecycle {
-    ignore_changes = [value]
-  }
+locals {
+  slack_webhook_ssm_parameter_arn = "arn:aws:ssm:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:parameter${var.slack_webhook_ssm_parameter_name}"
 }
 
 
@@ -100,7 +96,7 @@ resource "aws_iam_role_policy" "slack_notifier_ssm" {
     Statement = [{
       Effect   = "Allow"
       Action   = ["ssm:GetParameter"]
-      Resource = aws_ssm_parameter.slack_webhook_url.arn
+      Resource = local.slack_webhook_ssm_parameter_arn
     }]
   })
 }
@@ -126,7 +122,7 @@ resource "aws_lambda_function" "slack_notifier" {
     variables = {
       # 実値ではなく SSM の参照を渡す。Lambda 環境変数に直接書くと
       # update-function-code のレスポンス経由でログに露出するため。
-      SLACK_WEBHOOK_URL = "ssm:${aws_ssm_parameter.slack_webhook_url.name}"
+      SLACK_WEBHOOK_URL = "ssm:${var.slack_webhook_ssm_parameter_name}"
     }
   }
 

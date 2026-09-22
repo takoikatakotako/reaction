@@ -24,10 +24,12 @@ CloudWatch Logs ───────────┘
 
 ## セットアップ
 
-Slack Webhook URL は Terraform では管理しない（シークレットのため）。apply 後に一度だけ手動で投入する。
+Slack Webhook URL は Terraform では管理しない。`aws_ssm_parameter` で管理すると、`lifecycle.ignore_changes` を付けていても refresh 時に `GetParameter(WithDecryption=true)` が走り、復号済みの値が state に保存されてしまうため。
+
+**apply の前に**一度だけ手動で作成する。
 
 ```bash
-aws ssm put-parameter --profile reaction-development --overwrite \
+aws ssm put-parameter --profile reaction-development \
   --name /reaction/development/slack-alert-webhook-url \
   --type SecureString \
   --value 'https://hooks.slack.com/services/...'
@@ -35,10 +37,12 @@ aws ssm put-parameter --profile reaction-development --overwrite \
 
 本番も同様に `reaction-production` / `/reaction/production/...` で投入する。
 
-SSM パラメータ自体は Terraform が `PLACEHOLDER` という値で作成し、以降は `lifecycle.ignore_changes` で値を無視するため、手動投入した値が上書きされることはない。
+Terraform はこのパラメータの ARN を IAM ポリシーに使うだけで、値の読み書きはしない。
 
 ## 備考
 
 - Slack 通知 Lambda は rikako (takoikatakotako/rikako) の同名 Lambda をベースにしている
 - Webhook URL は Lambda 環境変数に `ssm:<パラメータ名>` という参照だけを入れ、起動時に SSM から取得する。実値を環境変数に置くと `update-function-code` のレスポンス経由でログに露出するため
+- 1 バッチに複数の ERROR ログが入った場合は 1 メッセージに集約して送る。1 件ずつ送ると Slack のレート制限（概ね 1 req/sec）に当たり、Lambda の再実行でバッチ先頭から送り直すため重複・未達が起きる。429 が返った場合は `Retry-After` に従ってリトライする
+- CloudWatch Logs は at-least-once 配信のため、重複を判別できるよう各ログにイベント ID を付けて送る
 - CloudFront のメトリクスは us-east-1 にしか存在せず、アラームと SNS トピックを別リージョンに作る必要があるため本モジュールには含めていない

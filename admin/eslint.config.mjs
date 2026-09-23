@@ -1,16 +1,21 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
+import nextTypeScript from 'eslint-config-next/typescript';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
+// eslint-config-next 16 は flat config を直接エクスポートするため、
+// FlatCompat 経由の extends は不要になった
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    ignores: ['.next/**', 'out/**', 'node_modules/**'],
+  },
+  ...nextCoreWebVitals,
+  ...nextTypeScript,
+  {
+    // eslint-plugin-react の自動バージョン検出が設定ファイル自身の lint 時に
+    // 失敗するため、明示的に指定する
+    settings: {
+      react: { version: '19.3' },
+    },
+  },
 ];
 
 export default eslintConfig;

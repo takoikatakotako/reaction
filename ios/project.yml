@@ -35,13 +35,13 @@ packages:
     from: 7.8.0
   LicenseList:
     url: https://github.com/cybozu/LicenseList
-    from: 2.2.0
+    from: 2.5.0
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk
-    from: 12.10.0
+    from: 12.19.2
   Kingfisher:
     url: https://github.com/onevcat/Kingfisher
-    from: 8.7.0
+    from: 8.13.0
 
 targetTemplates:
   ReactionApp:

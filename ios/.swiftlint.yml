@@ -1,3 +1,9 @@
+# ビルド生成物（SwiftPM の依存ソースを含む）は対象外
+excluded:
+  - DerivedData
+  - SourcePackages
+  - .mint
+
 disabled_rules:
   - unneeded_break_in_switch
   - for_where

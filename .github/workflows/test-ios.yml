@@ -26,12 +26,20 @@ env:
 jobs:
   test_ios:
     name: test ios
-    runs-on: macos-15
+    # LicenseList 2.5.0 / Kingfisher 8.13.0 が Swift tools 6.2 を要求するため
+    # Xcode 26 を含むランナーを使う（macos-15 は Swift 6.1 で解決に失敗する）
+    runs-on: macos-26
 
     steps:
     # チェックアウト
     - name: Checkout
       uses: actions/checkout@v4
+
+    # 使用している Xcode / Swift を記録しておく（依存の要求バージョンとの突き合わせ用）
+    - name: Show Xcode version
+      run: |
+        xcodebuild -version
+        swift --version
 
     # Mintのインストール
     - name: Install Mint
@@ -75,6 +83,24 @@ jobs:
         path: ios/DerivedData/SourcePackages
         key: ${{ runner.os }}-spm-${{ hashFiles('ios/Package.resolved') }}
 
+    # 利用可能な iPhone シミュレータを動的に選ぶ
+    # （ランナーイメージの更新で特定の機種名が消えることがあるため）
+    - name: Select simulator
+      id: simulator
+      run: |
+        set -o pipefail
+        udid=$(xcrun simctl list devices available --json \
+          | jq -r '[.devices[][] | select(.name | startswith("iPhone"))] | last | .udid')
+        name=$(xcrun simctl list devices available --json \
+          | jq -r '[.devices[][] | select(.name | startswith("iPhone"))] | last | .name')
+        if [ -z "$udid" ] || [ "$udid" = "null" ]; then
+          echo "利用可能な iPhone シミュレータが見つかりません" >&2
+          xcrun simctl list devices available
+          exit 1
+        fi
+        echo "使用するシミュレータ: $name ($udid)"
+        echo "udid=$udid" >> "$GITHUB_OUTPUT"
+
     # ユニットテスト
     - name: Unit Test
       working-directory: ios
@@ -83,7 +109,7 @@ jobs:
         xcodebuild test \
           -project Reaction.xcodeproj \
           -scheme Development \
-          -destination 'platform=iOS Simulator,name=iPhone 16' \
+          -destination "id=${{ steps.simulator.outputs.udid }}" \
           -derivedDataPath DerivedData \
           -onlyUsePackageVersionsFromResolvedFile \
           -skipPackagePluginValidation \

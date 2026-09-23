@@ -8,13 +8,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.rememberImagePainter
-import coil.size.OriginalSize
-import coil.size.SizeResolver
+import coil3.compose.AsyncImage
 import java.net.URI
 
 import android.content.Intent
@@ -58,14 +57,9 @@ fun ReactionDetail(navController: NavController, reaction: Reaction?) {
                             }
 
                             items(reaction.generalFormulas) { generalFormula ->
-                                Image(
-                                    painter = rememberImagePainter(
-                                        "${IMAGE_URL}${reaction.directoryName}/${generalFormula.imageName}",
-                                        builder = {
-                                            this.placeholder(R.drawable.placeholder)
-                                                .size(SizeResolver(OriginalSize))
-                                        },
-                                    ),
+                                AsyncImage(
+                                    model = "${IMAGE_URL}${reaction.directoryName}/${generalFormula.imageName}",
+                                    placeholder = painterResource(R.drawable.placeholder),
                                     contentDescription = null,
                                     contentScale = ContentScale.FillWidth,
                                     modifier = Modifier
@@ -85,14 +79,9 @@ fun ReactionDetail(navController: NavController, reaction: Reaction?) {
                             }
 
                             items(reaction.mechanisms) { mechanism ->
-                                Image(
-                                    painter = rememberImagePainter(
-                                        "${IMAGE_URL}${reaction.directoryName}/${mechanism.imageName}",
-                                        builder = {
-                                            this.placeholder(R.drawable.placeholder)
-                                                .size(SizeResolver(OriginalSize))
-                                        },
-                                    ),
+                                AsyncImage(
+                                    model = "${IMAGE_URL}${reaction.directoryName}/${mechanism.imageName}",
+                                    placeholder = painterResource(R.drawable.placeholder),
                                     contentDescription = null,
                                     contentScale = ContentScale.FillWidth,
                                     modifier = Modifier
@@ -112,14 +101,9 @@ fun ReactionDetail(navController: NavController, reaction: Reaction?) {
                             }
 
                             items(reaction.examples) { example ->
-                                Image(
-                                    painter = rememberImagePainter(
-                                        "${IMAGE_URL}${reaction.directoryName}/${example.imageName}",
-                                        builder = {
-                                            this.placeholder(R.drawable.placeholder)
-                                                .size(SizeResolver(OriginalSize))
-                                        },
-                                    ),
+                                AsyncImage(
+                                    model = "${IMAGE_URL}${reaction.directoryName}/${example.imageName}",
+                                    placeholder = painterResource(R.drawable.placeholder),
                                     contentDescription = null,
                                     contentScale = ContentScale.FillWidth,
                                     modifier = Modifier
@@ -139,14 +123,9 @@ fun ReactionDetail(navController: NavController, reaction: Reaction?) {
                             }
 
                             items(reaction.supplements) { supplement ->
-                                Image(
-                                    painter = rememberImagePainter(
-                                        "${IMAGE_URL}${reaction.directoryName}/${supplement.imageName}",
-                                        builder = {
-                                            this.placeholder(R.drawable.placeholder)
-                                                .size(SizeResolver(OriginalSize))
-                                        },
-                                    ),
+                                AsyncImage(
+                                    model = "${IMAGE_URL}${reaction.directoryName}/${supplement.imageName}",
+                                    placeholder = painterResource(R.drawable.placeholder),
                                     contentDescription = null,
                                     contentScale = ContentScale.FillWidth,
                                     modifier = Modifier
@@ -170,14 +149,9 @@ fun ReactionDetail(navController: NavController, reaction: Reaction?) {
                                 val path: String = uri.path
                                 val context = LocalContext.current
 
-                                Image(
-                                    painter = rememberImagePainter(
-                                        "https://img.youtube.com/vi${path}/0.jpg",
-                                        builder = {
-                                            this.placeholder(R.drawable.placeholder)
-                                                .size(SizeResolver(OriginalSize))
-                                        },
-                                    ),
+                                AsyncImage(
+                                    model = "https://img.youtube.com/vi${path}/0.jpg",
+                                    placeholder = painterResource(R.drawable.placeholder),
                                     contentDescription = null,
                                     contentScale = ContentScale.FillWidth,
                                     modifier = Modifier

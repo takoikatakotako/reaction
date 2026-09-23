@@ -1,12 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 }
 
 android {
     namespace = "com.swiswiswift.chemist"
-    compileSdk = 36
+    // AndroidX の最新版が compileSdk 37 を要求するため上げている。
+    // targetSdk は Play の対象 API レベル要件に合わせて 36 のまま。
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.swiswiswift.chemist"
@@ -70,7 +71,6 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.material)
-    implementation(libs.coil.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

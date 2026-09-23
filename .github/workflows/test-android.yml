@@ -37,7 +37,7 @@ jobs:
 
     # Android SDK のセットアップ（ライセンス同意を含む）
     - name: Set up Android SDK
-      uses: android-actions/setup-android@v3
+      uses: android-actions/setup-android@v4
 
     # Gradle のセットアップとキャッシュ
     - name: Set up Gradle

@@ -83,6 +83,24 @@ jobs:
         path: ios/DerivedData/SourcePackages
         key: ${{ runner.os }}-spm-${{ hashFiles('ios/Package.resolved') }}
 
+    # 利用可能な iPhone シミュレータを動的に選ぶ
+    # （ランナーイメージの更新で特定の機種名が消えることがあるため）
+    - name: Select simulator
+      id: simulator
+      run: |
+        set -o pipefail
+        udid=$(xcrun simctl list devices available --json \
+          | jq -r '[.devices[][] | select(.name | startswith("iPhone"))] | last | .udid')
+        name=$(xcrun simctl list devices available --json \
+          | jq -r '[.devices[][] | select(.name | startswith("iPhone"))] | last | .name')
+        if [ -z "$udid" ] || [ "$udid" = "null" ]; then
+          echo "利用可能な iPhone シミュレータが見つかりません" >&2
+          xcrun simctl list devices available
+          exit 1
+        fi
+        echo "使用するシミュレータ: $name ($udid)"
+        echo "udid=$udid" >> "$GITHUB_OUTPUT"
+
     # ユニットテスト
     - name: Unit Test
       working-directory: ios
@@ -91,7 +109,7 @@ jobs:
         xcodebuild test \
           -project Reaction.xcodeproj \
           -scheme Development \
-          -destination 'platform=iOS Simulator,name=iPhone 16' \
+          -destination "id=${{ steps.simulator.outputs.udid }}" \
           -derivedDataPath DerivedData \
           -onlyUsePackageVersionsFromResolvedFile \
           -skipPackagePluginValidation \

@@ -100,13 +100,3 @@ module "monitoring" {
   dynamodb_table_names             = module.admin_database.table_names
   slack_webhook_ssm_parameter_name = "/reaction/development/slack-alert-webhook-url"
 }
-
-##############################################################
-# Import
-##############################################################
-# Lambda が自動作成済みのロググループを Terraform 管理下に取り込む。
-# apply 後はこの import ブロックを削除してよい。
-import {
-  to = module.admin.aws_cloudwatch_log_group.api_lambda_function
-  id = "/aws/lambda/reaction-api"
-}

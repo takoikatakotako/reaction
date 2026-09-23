@@ -26,12 +26,20 @@ env:
 jobs:
   test_ios:
     name: test ios
-    runs-on: macos-15
+    # LicenseList 2.5.0 / Kingfisher 8.13.0 が Swift tools 6.2 を要求するため
+    # Xcode 26 を含むランナーを使う（macos-15 は Swift 6.1 で解決に失敗する）
+    runs-on: macos-26
 
     steps:
     # チェックアウト
     - name: Checkout
       uses: actions/checkout@v4
+
+    # 使用している Xcode / Swift を記録しておく（依存の要求バージョンとの突き合わせ用）
+    - name: Show Xcode version
+      run: |
+        xcodebuild -version
+        swift --version
 
     # Mintのインストール
     - name: Install Mint

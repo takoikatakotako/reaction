@@ -1,0 +1,69 @@
+name: Test Android
+
+on:
+  workflow_dispatch:
+  # main への push でも実行して Gradle のキャッシュを main に作る
+  # （PR の run は main のキャッシュを参照できるため）
+  push:
+    branches:
+      - main
+    paths:
+      - android/**
+      - .github/workflows/test-android.yml
+  pull_request:
+    paths:
+      - android/**
+      - .github/workflows/test-android.yml
+    branches:
+      - main
+      - develop
+
+jobs:
+  test_android:
+    name: test android
+    runs-on: ubuntu-latest
+
+    steps:
+    # チェックアウト
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    # JDK のセットアップ（AGP 9 は JDK 17 以上が必須）
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: 21
+
+    # Android SDK のセットアップ（ライセンス同意を含む）
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v4
+
+    # Gradle のセットアップとキャッシュ
+    - name: Set up Gradle
+      uses: gradle/actions/setup-gradle@v4
+
+    # Lint
+    - name: Lint
+      working-directory: android
+      run: ./gradlew lintDebug
+
+    # ユニットテスト
+    - name: Unit Test
+      working-directory: android
+      run: ./gradlew testDebugUnitTest
+
+    # デバッグビルド
+    - name: Build
+      working-directory: android
+      run: ./gradlew assembleDebug
+
+    # 失敗時に調査できるようレポートを残す
+    - name: Upload reports
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-reports
+        path: |
+          android/app/build/reports/
+        retention-days: 7

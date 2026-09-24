@@ -68,6 +68,26 @@ targetTemplates:
         package: Rswift
       - plugin: PrepareLicenseList
         package: LicenseList
+    postBuildScripts:
+      # Crashlytics に dSYM をアップロードする。
+      # これが無いとクラッシュは記録されてもスタックトレースが記号化されない。
+      # SwiftPM 構成なので run スクリプトは SourcePackages/checkouts 配下にある。
+      - name: Upload dSYM to Crashlytics
+        script: |
+          # シミュレータ向けビルドのクラッシュは Crashlytics に送られないため、
+          # CI やローカルの開発ビルドで無駄なアップロードを走らせない
+          if [ "${EFFECTIVE_PLATFORM_NAME}" = "-iphonesimulator" ]; then
+            echo "note: シミュレータ向けビルドのため dSYM のアップロードをスキップします"
+            exit 0
+          fi
+          "${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run"
+        inputFiles:
+          - $(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist
+          - $(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)
+          - ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}
+          - ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist
+          - ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}
+        basedOnDependencyAnalysis: false
 
 targets:
   ReactionDevelopment:

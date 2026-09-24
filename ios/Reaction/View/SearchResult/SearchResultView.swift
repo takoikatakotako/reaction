@@ -11,7 +11,7 @@ struct SearchResultView: View {
                 } label: {
                     ReactionListRow(
                         reactionMechanism: reactionMechanism,
-                        showingThmbnail: $viewModel.showingThmbnail,
+                        showingThumbnail: $viewModel.showingThumbnail,
                         localeIdentifier: Locale.current.identifier
                     )
                 }
@@ -57,9 +57,3 @@ struct SearchResultView: View {
         .navigationTitle(viewModel.navigationTitle)
     }
 }
-
-// struct SearchResult_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SearchResultView(searchResultType: .reactant, withoutCheck: true, firstCategories: [])
-//    }
-// }

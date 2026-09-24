@@ -1,6 +1,7 @@
 import SwiftUI
 
-class QuestionDetailViewState: ObservableObject {
+@MainActor
+final class QuestionDetailViewState: ObservableObject {
     let question: Question
 
     @Published var showSolution: Bool = false

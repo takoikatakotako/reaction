@@ -11,24 +11,24 @@ final class UserDefaultRepositoryTests: XCTestCase {
 
     func testDefaultValues() {
         XCTAssertEqual(repository.reactionMechanismLanguage, "en")
-        XCTAssertTrue(repository.showThmbnail)
-        XCTAssertFalse(repository.enableDetaileAbility)
+        XCTAssertTrue(repository.showThumbnail)
+        XCTAssertFalse(repository.enableDetailAbility)
     }
 
     func testInitilizeRegistersDefaults() {
-        repository.initilize()
+        repository.initialize()
         XCTAssertEqual(repository.reactionMechanismLanguage, "en")
-        XCTAssertTrue(repository.showThmbnail)
-        XCTAssertFalse(repository.enableDetaileAbility)
+        XCTAssertTrue(repository.showThumbnail)
+        XCTAssertFalse(repository.enableDetailAbility)
     }
 
     func testSetAndGetValues() {
         repository.setReactionMechanismLanguage("ja")
-        repository.setShowThmbnail(false)
-        repository.setEnableDetaileAbility(true)
+        repository.setShowThumbnail(false)
+        repository.setEnableDetailAbility(true)
 
         XCTAssertEqual(repository.reactionMechanismLanguage, "ja")
-        XCTAssertFalse(repository.showThmbnail)
-        XCTAssertTrue(repository.enableDetaileAbility)
+        XCTAssertFalse(repository.showThumbnail)
+        XCTAssertTrue(repository.enableDetailAbility)
     }
 }

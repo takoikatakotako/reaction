@@ -1,9 +1,10 @@
 import XCTest
 @testable import ReactionDevelopment
 
+@MainActor
 final class ReactionListViewStateTests: XCTestCase {
     private func makeViewState() -> ReactionListViewState {
-        let viewState = ReactionListViewState(showingThmbnail: true)
+        let viewState = ReactionListViewState(showingThumbnail: true)
         viewState.reactionMechanisms = [
             Fixtures.reactionMechanism(id: "1", englishName: "Aldol Reaction", suggestions: ["Aldol", "Enolate"]),
             Fixtures.reactionMechanism(id: "2", englishName: "Diels-Alder Reaction", suggestions: ["Diels-Alder", "Cycloaddition"]),

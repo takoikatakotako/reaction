@@ -1,6 +1,6 @@
 import SwiftUI
 
-class UserDefaultRepository {
+final class UserDefaultRepository {
     private let userDefaults: UserDefaults
 
     // テストでは専用の suite を渡して本番の設定を汚さないようにする
@@ -17,15 +17,15 @@ class UserDefaultRepository {
         userDefaults.object(forKey: KEY_REACTION_MECHANISM_LANGUAGE) as? String ?? "en"
     }
 
-    var showThmbnail: Bool {
+    var showThumbnail: Bool {
         userDefaults.object(forKey: KEY_SHOW_THUMBNAIL) as? Bool ?? true
     }
 
-    var enableDetaileAbility: Bool {
+    var enableDetailAbility: Bool {
         userDefaults.object(forKey: KEY_ENABLE_DETAILE_ABILITY) as? Bool ?? false
     }
 
-    func initilize() {
+    func initialize() {
         userDefaults.register(
             defaults: [
                 KEY_REACTION_MECHANISM_LANGUAGE: "en",
@@ -39,11 +39,11 @@ class UserDefaultRepository {
         userDefaults.setValue(language, forKey: KEY_REACTION_MECHANISM_LANGUAGE)
     }
 
-    func setShowThmbnail(_ showThmbnail: Bool) {
-        userDefaults.setValue(showThmbnail, forKey: KEY_SHOW_THUMBNAIL)
+    func setShowThumbnail(_ showThumbnail: Bool) {
+        userDefaults.setValue(showThumbnail, forKey: KEY_SHOW_THUMBNAIL)
     }
 
-    func setEnableDetaileAbility(_ enableDetaileAbility: Bool) {
-        userDefaults.setValue(enableDetaileAbility, forKey: KEY_ENABLE_DETAILE_ABILITY)
+    func setEnableDetailAbility(_ enableDetailAbility: Bool) {
+        userDefaults.setValue(enableDetailAbility, forKey: KEY_ENABLE_DETAILE_ABILITY)
     }
 }

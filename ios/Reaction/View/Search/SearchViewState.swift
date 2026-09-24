@@ -1,6 +1,7 @@
 import Foundation
 
-class SearchViewState: ObservableObject {
+@MainActor
+final class SearchViewState: ObservableObject {
     @Published var searchType = 0
     @Published var firstCategories: [FirstCategory] = [
         FirstCategory(

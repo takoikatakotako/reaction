@@ -1,11 +1,12 @@
 import SwiftUI
 
-class SettingViewState: ObservableObject {
-    @Published var reactionMechanismLangage: String = ""
-    @Published var appLangage: String = ""
-    @Published var thmbnail: Bool?
+@MainActor
+final class SettingViewState: ObservableObject {
+    @Published var reactionMechanismLanguageText: String = ""
+    @Published var appLanguage: String = ""
+    @Published var thumbnail: Bool?
     @Published var showingReactionMechanismAlert = false
-    @Published var showingThmbnailAlert = false
+    @Published var showingThumbnailAlert = false
 
     private let userDefaultRepository = UserDefaultRepository()
 
@@ -21,14 +22,14 @@ class SettingViewState: ObservableObject {
         setReactionMechanismLanguage(language: reactionMechanismLanguage)
 
         // アプリの言語
-        let appLangageidentifier = Locale.current.identifier
-        if appLangageidentifier.starts(with: "en") {
-            appLangage = String(localized: "common-english")
-        } else if appLangageidentifier.starts(with: "ja") {
-            appLangage = String(localized: "common-japanese")
+        let appLanguageIdentifier = Locale.current.identifier
+        if appLanguageIdentifier.starts(with: "en") {
+            appLanguage = String(localized: "common-english")
+        } else if appLanguageIdentifier.starts(with: "ja") {
+            appLanguage = String(localized: "common-japanese")
         }
 
-        thmbnail = userDefaultRepository.showThmbnail
+        thumbnail = userDefaultRepository.showThumbnail
     }
 
     func showReactionMechanismLanguageAlert() {
@@ -36,7 +37,7 @@ class SettingViewState: ObservableObject {
     }
 
     func showThumbnailAlert() {
-        showingThmbnailAlert = true
+        showingThumbnailAlert = true
     }
 
     func updateReactionMechanismLanguage(language: String) {
@@ -46,21 +47,21 @@ class SettingViewState: ObservableObject {
     }
 
     func setShowThumbnail() {
-        userDefaultRepository.setShowThmbnail(true)
-        thmbnail = true
+        userDefaultRepository.setShowThumbnail(true)
+        thumbnail = true
     }
 
     func setHiddenThumbnail() {
-        userDefaultRepository.setShowThmbnail(false)
-        thmbnail = false
+        userDefaultRepository.setShowThumbnail(false)
+        thumbnail = false
     }
 
     private func setReactionMechanismLanguage(language: String) {
         // 反応機構の言語を更新
         if language.starts(with: "en") {
-            self.reactionMechanismLangage = String(localized: "common-english")
+            self.reactionMechanismLanguageText = String(localized: "common-english")
         } else if language.starts(with: "ja") {
-            self.reactionMechanismLangage = String(localized: "common-japanese")
+            self.reactionMechanismLanguageText = String(localized: "common-japanese")
         }
     }
 }

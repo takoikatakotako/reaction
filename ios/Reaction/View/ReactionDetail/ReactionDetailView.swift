@@ -86,11 +86,3 @@ struct ReactionDetailView: View {
         prefetcher.start()
     }
 }
-
-// struct ReactionDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            ReactionDetailView(selectJapanese: false, reactionMechanism: ReactionMechanism.mock())
-//        }
-//    }
-// }

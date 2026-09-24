@@ -13,18 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         // UserDefaults
-        UserDefaultRepository().initilize()
+        UserDefaultRepository().initialize()
 
         // Environment
         guard let reactionsEndpoint = Bundle.main.infoDictionary?["REACTIONS_ENDPOINT"] as? String else {
             fatalError("Error: Missing RESOURCE_ENDPOINT in Info.plist")
         }
-        EnvironmentVariable.shared.setReactionsEndpoint(reactionsEndpoint: reactionsEndpoint)
+        EnvironmentVariable.shared.setReactionsEndpoint(reactionsEndpoint)
 
         guard let questionsEndpoint = Bundle.main.infoDictionary?["QUESTIONS_ENDPOINT"] as? String else {
             fatalError("Error: Missing QUESTIONS_ENDPOINT in Info.plist")
         }
-        EnvironmentVariable.shared.setQuestionsEndpoint(questionsEndpoint: questionsEndpoint)
+        EnvironmentVariable.shared.setQuestionsEndpoint(questionsEndpoint)
 
         // ユニットテスト中は Firebase・通知・課金の初期化を行わない（CI のシミュレータで落ちるため）
         if isRunningUnitTests {
@@ -124,12 +124,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                 if transaction.revocationDate != nil {
                     // 払い戻しされてるので特典削除
-                    userDefaultRepository.setEnableDetaileAbility(false)
+                    userDefaultRepository.setEnableDetailAbility(false)
                 } else if let expirationDate = transaction.expirationDate,
                           Date() < expirationDate // 有効期限内
                           && !transaction.isUpgraded { // アップグレードされていない
                     // 有効なサブスクリプションなのでproductIdに対応した特典を有効にする
-                    userDefaultRepository.setEnableDetaileAbility(true)
+                    userDefaultRepository.setEnableDetailAbility(true)
                 }
 
                 await transaction.finish()
@@ -148,10 +148,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if validSubscription?.productID != nil {
             // 特典を付与
-            userDefaultRepository.setEnableDetaileAbility(true)
+            userDefaultRepository.setEnableDetailAbility(true)
         } else {
             // 特典を削除
-            userDefaultRepository.setEnableDetaileAbility(false)
+            userDefaultRepository.setEnableDetailAbility(false)
         }
     }
 }

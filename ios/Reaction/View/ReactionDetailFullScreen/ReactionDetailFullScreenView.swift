@@ -57,9 +57,3 @@ struct ReactionDetailFullScreenView: View {
         prefetcher.start()
     }
 }
-
-// struct ReactionDetailFullScreenView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ReactionDetailFullScreenView(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
-//    }
-// }

@@ -6,7 +6,7 @@ struct RootView: View {
     var body: some View {
         TabView {
             ReactionListView(viewState: ReactionListViewState(
-                showingThmbnail: viewState.showThmbnail)
+                showingThumbnail: viewState.showThumbnail)
             )
             .tabItem {
                 Image(systemName: "list.dash")

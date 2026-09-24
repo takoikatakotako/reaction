@@ -1,8 +1,9 @@
 import SwiftUI
 import StoreKit
 
-class SearchResultViewState: ObservableObject {
-    @Published var showingThmbnail: Bool = true
+@MainActor
+final class SearchResultViewState: ObservableObject {
+    @Published var showingThumbnail: Bool = true
     @Published var selectJapanese: Bool = true
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
@@ -33,14 +34,14 @@ class SearchResultViewState: ObservableObject {
     }
 
     func onAppear() {
-        showingThmbnail = userDefaultsRepository.showThmbnail
+        showingThumbnail = userDefaultsRepository.showThumbnail
 
         guard reactionMechanisms.isEmpty else {
             return
         }
-        Task { @MainActor in
+        Task {
             do {
-                let reactionMechanisms = try await reactionRepository.fetchMechanisms(reactionsEndpoint: EnvironmentVariable.shared.getReactionsEndpoint)
+                let reactionMechanisms = try await reactionRepository.fetchMechanisms(reactionsEndpoint: EnvironmentVariable.shared.reactionsEndpoint)
                 // 検索結果を取得
                 if self.withoutCheck {
                     // チェックしたもの以外を検索
@@ -57,7 +58,7 @@ class SearchResultViewState: ObservableObject {
     }
 
     func tapped(reactionMechanism: ReactionMechanism) {
-        guard userDefaultsRepository.enableDetaileAbility else {
+        guard userDefaultsRepository.enableDetailAbility else {
             // 未課金なのでアラートを表示
             billingAlert = true
             return
@@ -68,7 +69,7 @@ class SearchResultViewState: ObservableObject {
 
     func purchase() {
         isFetching = true
-        Task { @MainActor in
+        Task {
             do {
                 let productIdList = ["detail_available"]
                 let products: [Product] = try await Product.products(for: productIdList)
@@ -78,7 +79,7 @@ class SearchResultViewState: ObservableObject {
                     return
                 }
                 let transaction = try await purchase(product: product)
-                userDefaultsRepository.setEnableDetaileAbility(true)
+                userDefaultsRepository.setEnableDetailAbility(true)
                 await transaction.finish()
                 isFetching = false
                 completeAlert = true
@@ -91,7 +92,7 @@ class SearchResultViewState: ObservableObject {
 
     func restore() {
         isFetching = true
-        Task { @MainActor in
+        Task {
             do {
                 try await AppStore.sync()
 
@@ -110,7 +111,7 @@ class SearchResultViewState: ObservableObject {
                 }
 
                 // 特典を付与
-                userDefaultsRepository.setEnableDetaileAbility(true)
+                userDefaultsRepository.setEnableDetailAbility(true)
                 isFetching = false
                 completeAlert = true
             } catch {

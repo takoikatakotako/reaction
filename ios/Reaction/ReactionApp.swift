@@ -2,7 +2,7 @@ import SwiftUI
 import UserNotifications
 
 @main
-struct reactionApp: App {
+struct ReactionApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {

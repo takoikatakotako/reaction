@@ -32,7 +32,7 @@ struct ReactionListView: View {
                                 } label: {
                                     ReactionListRow(
                                         reactionMechanism: reactionMechanism,
-                                        showingThmbnail: $viewState.showingThmbnail,
+                                        showingThumbnail: $viewState.showingThumbnail,
                                         localeIdentifier: viewState.reactionMechanismIdentifier
                                     )
                                 }
@@ -43,7 +43,7 @@ struct ReactionListView: View {
                                 } label: {
                                     ReactionListRow(
                                         reactionMechanism: reactionMechanism,
-                                        showingThmbnail: $viewState.showingThmbnail,
+                                        showingThumbnail: $viewState.showingThumbnail,
                                         localeIdentifier: viewState.reactionMechanismIdentifier
                                     )
                                 }
@@ -111,5 +111,5 @@ struct ReactionListView: View {
 }
 
 #Preview {
-    ReactionListView(viewState: ReactionListViewState(showingThmbnail: true))
+    ReactionListView(viewState: ReactionListViewState(showingThumbnail: true))
 }

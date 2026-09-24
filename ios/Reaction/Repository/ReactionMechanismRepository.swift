@@ -1,6 +1,6 @@
 import SwiftUI
 
-class ReactionMechanismRepository {
+final class ReactionMechanismRepository {
     private let session: URLSession
 
     init(session: URLSession = .shared) {

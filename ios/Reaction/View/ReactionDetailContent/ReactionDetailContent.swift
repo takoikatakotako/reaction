@@ -60,7 +60,7 @@ struct ReactionDetailContent: View {
                             Button {
                                 openUrl(url: youtubeUrl)
                             } label: {
-                                AsyncImage(url: getYoutubeThmbnailUrl(youtubeUrl: youtubeUrl)) { image in
+                                AsyncImage(url: youtubeThumbnailUrl(youtubeUrl: youtubeUrl)) { image in
                                     image
                                         .resizable()
                                         .scaledToFit()
@@ -80,7 +80,7 @@ struct ReactionDetailContent: View {
     }
 
     // AsyncImage は nil を渡すと placeholder を表示するので Optional のまま返す
-    private func getYoutubeThmbnailUrl(youtubeUrl: URL) -> URL? {
+    private func youtubeThumbnailUrl(youtubeUrl: URL) -> URL? {
         let youtubePath = youtubeUrl.path
         return URL(string: "https://img.youtube.com/vi\(youtubePath)/hqdefault.jpg")
     }
@@ -89,9 +89,3 @@ struct ReactionDetailContent: View {
         UIApplication.shared.open(url)
     }
 }
-
-// struct ReactionDetailContent_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ReactionDetailContent(selectJapanese: true, reactionMechanism: ReactionMechanism.mock())
-//    }
-// }

@@ -1,6 +1,7 @@
 import SwiftUI
 
-class QuestionViewState: ObservableObject {
+@MainActor
+final class QuestionViewState: ObservableObject {
     @Published var questions: [Question] = []
     @Published var isFetching = true
     @Published var isError = false
@@ -8,10 +9,10 @@ class QuestionViewState: ObservableObject {
     private let questionRepository = QuestionRepository()
 
     func onAppear() {
-        Task { @MainActor in
+        Task {
             do {
                 let fetched = try await questionRepository.fetchQuestions(
-                    questionsEndpoint: EnvironmentVariable.shared.getQuestionsEndpoint
+                    questionsEndpoint: EnvironmentVariable.shared.questionsEndpoint
                 )
                 if fetched != self.questions {
                     self.questions = fetched

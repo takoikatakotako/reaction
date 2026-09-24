@@ -1,24 +1,20 @@
-class EnvironmentVariable {
+import Foundation
+
+/// Info.plist から読み込んだエンドポイントを保持する。
+/// AppDelegate の起動時に一度だけ設定される。
+final class EnvironmentVariable {
     static let shared = EnvironmentVariable()
 
     private init() {}
 
-    private var reactionsEndpoint: String = ""
-    private var questionsEndpoint: String = ""
+    private(set) var reactionsEndpoint: String = ""
+    private(set) var questionsEndpoint: String = ""
 
-    var getReactionsEndpoint: String {
-        return Self.shared.reactionsEndpoint
+    func setReactionsEndpoint(_ endpoint: String) {
+        reactionsEndpoint = endpoint
     }
 
-    func setReactionsEndpoint(reactionsEndpoint: String) {
-        Self.shared.reactionsEndpoint = reactionsEndpoint
-    }
-
-    var getQuestionsEndpoint: String {
-        return Self.shared.questionsEndpoint
-    }
-
-    func setQuestionsEndpoint(questionsEndpoint: String) {
-        Self.shared.questionsEndpoint = questionsEndpoint
+    func setQuestionsEndpoint(_ endpoint: String) {
+        questionsEndpoint = endpoint
     }
 }

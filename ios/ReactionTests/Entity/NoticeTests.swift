@@ -67,4 +67,24 @@ final class NoticeTests: XCTestCase {
         XCTAssertFalse(displayDate.isEmpty)
         XCTAssertTrue(displayDate.contains("2026"))
     }
+
+    // 管理画面は日付を 00:00:00Z として保存するため、端末のタイムゾーンで
+    // 解釈すると UTC より西の地域で前日になる。UTC 固定で表示されること。
+    func testDisplayDateIsStableAcrossTimeZones() {
+        let notice = Fixtures.notice(publishedAt: "2026-09-24T00:00:00Z")
+
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        let expected = formatter.string(from: Date(timeIntervalSince1970: 1_790_208_000))
+
+        XCTAssertEqual(notice.displayDate, expected)
+    }
+
+    func testDisplayDateAcceptsFractionalSeconds() {
+        let notice = Fixtures.notice(publishedAt: "2026-09-24T00:00:00.500Z")
+        XCTAssertFalse(notice.displayDate.isEmpty)
+        XCTAssertTrue(notice.displayDate.contains("2026"))
+    }
 }

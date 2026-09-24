@@ -29,17 +29,24 @@ struct Notice: Identifiable, Decodable, Hashable {
     }
 
     /// publishedAt は RFC3339。表示用に年月日だけを取り出す。
+    ///
+    /// 管理画面は選択された日付を 00:00:00Z として保存するため、これは時刻ではなく
+    /// 日付そのものを表す値。端末のタイムゾーンで解釈すると UTC より西の地域で
+    /// 前日になってしまうので、表示用フォーマッターは UTC に固定する。
     var displayDate: String {
         guard let publishedAt else {
             return ""
         }
-        let formatter = ISO8601DateFormatter()
-        guard let date = formatter.date(from: publishedAt) else {
+        let parser = ISO8601DateFormatter()
+        parser.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        guard let date = parser.date(from: publishedAt)
+                ?? ISO8601DateFormatter().date(from: publishedAt) else {
             return ""
         }
         let display = DateFormatter()
         display.dateStyle = .medium
         display.timeStyle = .none
+        display.timeZone = TimeZone(identifier: "UTC")
         return display.string(from: date)
     }
 }

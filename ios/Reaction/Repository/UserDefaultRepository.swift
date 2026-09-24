@@ -9,41 +9,42 @@ final class UserDefaultRepository {
     }
 
     // UserDefaults
-    let KEY_REACTION_MECHANISM_LANGUAGE = "KEY_REACTION_MECHANISM_LANGUAGE"
-    let KEY_SHOW_THUMBNAIL = "KEY_SHOW_THUMBNAIL"
-    let KEY_ENABLE_DETAILE_ABILITY = "KEY_ENABLE_DETAILE_ABILITY"
+    // 保存キーの文字列は既存ユーザーの設定を引き継ぐため変更しない
+    let keyReactionMechanismLanguage = "KEY_REACTION_MECHANISM_LANGUAGE"
+    let keyShowThumbnail = "KEY_SHOW_THUMBNAIL"
+    let keyEnableDetailAbility = "KEY_ENABLE_DETAILE_ABILITY"
 
     var reactionMechanismLanguage: String {
-        userDefaults.object(forKey: KEY_REACTION_MECHANISM_LANGUAGE) as? String ?? "en"
+        userDefaults.object(forKey: keyReactionMechanismLanguage) as? String ?? "en"
     }
 
     var showThumbnail: Bool {
-        userDefaults.object(forKey: KEY_SHOW_THUMBNAIL) as? Bool ?? true
+        userDefaults.object(forKey: keyShowThumbnail) as? Bool ?? true
     }
 
     var enableDetailAbility: Bool {
-        userDefaults.object(forKey: KEY_ENABLE_DETAILE_ABILITY) as? Bool ?? false
+        userDefaults.object(forKey: keyEnableDetailAbility) as? Bool ?? false
     }
 
     func initialize() {
         userDefaults.register(
             defaults: [
-                KEY_REACTION_MECHANISM_LANGUAGE: "en",
-                KEY_SHOW_THUMBNAIL: true,
-                KEY_ENABLE_DETAILE_ABILITY: false
+                keyReactionMechanismLanguage: "en",
+                keyShowThumbnail: true,
+                keyEnableDetailAbility: false
             ]
         )
     }
 
     func setReactionMechanismLanguage(_ language: String) {
-        userDefaults.setValue(language, forKey: KEY_REACTION_MECHANISM_LANGUAGE)
+        userDefaults.setValue(language, forKey: keyReactionMechanismLanguage)
     }
 
     func setShowThumbnail(_ showThumbnail: Bool) {
-        userDefaults.setValue(showThumbnail, forKey: KEY_SHOW_THUMBNAIL)
+        userDefaults.setValue(showThumbnail, forKey: keyShowThumbnail)
     }
 
     func setEnableDetailAbility(_ enableDetailAbility: Bool) {
-        userDefaults.setValue(enableDetailAbility, forKey: KEY_ENABLE_DETAILE_ABILITY)
+        userDefaults.setValue(enableDetailAbility, forKey: keyEnableDetailAbility)
     }
 }

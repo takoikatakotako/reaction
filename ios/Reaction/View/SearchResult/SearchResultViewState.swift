@@ -187,38 +187,38 @@ final class SearchResultViewState: ObservableObject {
 
     // 反応機構検索。チェックしたものを検索
     private func searchReactionsWithCheck(originalReactionMechanism: [ReactionMechanism]) -> [ReactionMechanism] {
-        var filterdReactionMechanisms: Set<ReactionMechanism> = []
+        var filteredReactionMechanisms: Set<ReactionMechanism> = []
         for reactionMechanism in originalReactionMechanism {
             for tag in self.getTags() {
                 // 出発物検索
                 if searchResultType == .reactant {
                     if reactionMechanism.reactants.firstIndex(where: {$0 == tag}) != nil {
-                        filterdReactionMechanisms.insert(reactionMechanism)
+                        filteredReactionMechanisms.insert(reactionMechanism)
                     }
                 }
                 // 生成物検索
                 if searchResultType == .product {
                     if reactionMechanism.products.firstIndex(where: {$0 == tag}) != nil {
-                        filterdReactionMechanisms.insert(reactionMechanism)
+                        filteredReactionMechanisms.insert(reactionMechanism)
                     }
                 }
             }
         }
-        return sorted(Array(filterdReactionMechanisms))
+        return sorted(Array(filteredReactionMechanisms))
     }
 
     // 反応機構検索。チェックしたものを除外
     private func searchReactionsWithoutCheck(originalReactionMechanism: [ReactionMechanism]) -> [ReactionMechanism] {
-        var filterdReactionMechanisms: [ReactionMechanism] = originalReactionMechanism
+        var filteredReactionMechanisms: [ReactionMechanism] = originalReactionMechanism
         // チェックしたものを取得
         let searchReactionsWithChecks = searchReactionsWithCheck(originalReactionMechanism: originalReactionMechanism)
         // チェックしたものを除いていく
         for searchReactionsWithCheck in searchReactionsWithChecks {
-            if let index = filterdReactionMechanisms.firstIndex(where: {$0 == searchReactionsWithCheck}) {
-                filterdReactionMechanisms.remove(at: index)
+            if let index = filteredReactionMechanisms.firstIndex(where: {$0 == searchReactionsWithCheck}) {
+                filteredReactionMechanisms.remove(at: index)
             }
         }
-        return sorted(filterdReactionMechanisms)
+        return sorted(filteredReactionMechanisms)
     }
 
     private func sorted(_ originalReactionMechanism: [ReactionMechanism]) -> [ReactionMechanism] {

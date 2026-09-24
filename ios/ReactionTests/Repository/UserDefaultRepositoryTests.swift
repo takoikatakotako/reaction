@@ -15,7 +15,7 @@ final class UserDefaultRepositoryTests: XCTestCase {
         XCTAssertFalse(repository.enableDetailAbility)
     }
 
-    func testInitilizeRegistersDefaults() {
+    func testInitializeRegistersDefaults() {
         repository.initialize()
         XCTAssertEqual(repository.reactionMechanismLanguage, "en")
         XCTAssertTrue(repository.showThumbnail)

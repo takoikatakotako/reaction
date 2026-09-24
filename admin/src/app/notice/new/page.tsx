@@ -6,7 +6,7 @@ import TextInputField from '../../reaction/common/TextInputField';
 import TextAreaInputField from '../../reaction/common/TextAreaInputField';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
-import { fromDateInputValue, toDateInputValue } from '@/lib/notice';
+import { fromDateInputValue, todayDateInputValue } from '@/lib/notice';
 
 export default function NewNoticePage() {
   const router = useRouter();
@@ -15,9 +15,9 @@ export default function NewNoticePage() {
   const [englishTitle, setEnglishTitle] = useState<string>('');
   const [japaneseBody, setJapaneseBody] = useState<string>('');
   const [englishBody, setEnglishBody] = useState<string>('');
-  // 既定は今日
+  // 既定は今日（ブラウザのローカル日付基準）
   const [publishedDate, setPublishedDate] = useState<string>(
-    toDateInputValue(new Date().toISOString())
+    todayDateInputValue()
   );
 
   const submitHandleChange = async () => {

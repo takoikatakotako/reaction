@@ -23,3 +23,15 @@ export function formatPublishedAt(publishedAt: string): string {
   const value = toDateInputValue(publishedAt);
   return value || '(公開日なし)';
 }
+
+/**
+ * 今日の日付を input[type=date] 用の YYYY-MM-DD で返す。
+ * toISOString() は UTC 基準のため、JST の 0:00〜8:59 に呼ぶと前日になる。
+ * ブラウザのローカル年月日から組み立てる。
+ */
+export function todayDateInputValue(now: Date = new Date()): string {
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}

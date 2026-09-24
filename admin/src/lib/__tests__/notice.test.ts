@@ -3,6 +3,7 @@ import {
   formatPublishedAt,
   fromDateInputValue,
   toDateInputValue,
+  todayDateInputValue,
 } from '@/lib/notice';
 
 describe('toDateInputValue', () => {
@@ -44,5 +45,25 @@ describe('formatPublishedAt', () => {
 
   it('未設定はプレースホルダを返す', () => {
     expect(formatPublishedAt('')).toBe('(公開日なし)');
+  });
+});
+
+describe('todayDateInputValue', () => {
+  it('ローカル日付を YYYY-MM-DD で返す', () => {
+    // 2026-09-24 09:00 JST = 2026-09-24T00:00:00Z
+    const jstMorning = new Date('2026-09-24T09:00:00+09:00');
+    expect(todayDateInputValue(jstMorning)).toBe('2026-09-24');
+  });
+
+  it('JST の早朝でも UTC 基準で前日にならない', () => {
+    // 2026-09-24 01:00 JST = 2026-09-23T16:00:00Z
+    // toISOString() を使うと 2026-09-23 になってしまうケース
+    const jstEarlyMorning = new Date('2026-09-24T01:00:00+09:00');
+    expect(todayDateInputValue(jstEarlyMorning)).toBe('2026-09-24');
+  });
+
+  it('月日が 1 桁でもゼロ埋めする', () => {
+    const date = new Date('2026-01-05T12:00:00+09:00');
+    expect(todayDateInputValue(date)).toBe('2026-01-05');
   });
 });

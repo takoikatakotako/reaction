@@ -36,6 +36,11 @@ export default function RootLayout({
                   </a>
                 </li>
                 <li>
+                  <a href="/notice" className="main-nav-active">
+                    お知らせ
+                  </a>
+                </li>
+                <li>
                   <a href="/reaction/update" className="main-nav-active">
                     データ更新
                   </a>

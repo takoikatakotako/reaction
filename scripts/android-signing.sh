@@ -95,6 +95,9 @@ verify_key_password() {
     local dest_dir
     dest_dir="$(mktemp -d)"
     chmod 700 "$dest_dir"
+    # keytool 実行中に割り込まれても秘密鍵のコピーが残らないよう、
+    # 後始末は EXIT trap で保証する
+    trap 'rm -rf "$dest_dir"' EXIT
     local verified=0
     if keytool -importkeystore -noprompt \
         -srckeystore "$keystore" -srcstorepass "$store_password" \
@@ -104,6 +107,7 @@ verify_key_password() {
       verified=1
     fi
     rm -rf "$dest_dir"
+    trap - EXIT
     if [ "$verified" -ne 1 ]; then
       echo "error: 鍵のパスワードが違います" >&2
       exit 1

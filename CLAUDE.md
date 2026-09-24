@@ -41,9 +41,20 @@ pnpm test             # ユニットテスト実行 (Vitest)
 
 ```bash
 cd application
-go test ./...         # テスト実行
+make run              # ローカル実行 (go run ./api)
 make test             # テスト実行 (キャッシュクリア付き)
 make build-admin-image  # Dockerイメージビルド
+```
+
+`go run api/main.go` のようにファイル単体を指定すると、同じ package の他ファイル
+(`logger.go` など) がコンパイル対象から外れて `undefined` になる。`./api` のように
+package 単位で指定すること。
+
+ローカル実行には LocalStack が必要:
+
+```bash
+cd local && make setup   # DynamoDB / S3 のモックを起動
+cd local && make down    # 停止
 ```
 
 ### iOS (ios/)

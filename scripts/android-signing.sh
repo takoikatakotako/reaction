@@ -89,18 +89,25 @@ verify_key_password() {
   local keystore="$1" store_password="$2" key_alias="$3" key_password="$4"
 
   if is_jks_keystore "$keystore"; then
-    local dest
-    dest="$(mktemp -u)"
-    if ! keytool -importkeystore -noprompt \
+    # 既知のパスワードで秘密鍵のコピーを書き出すため、出力先は必ず自分で作った
+    # 権限 700 のディレクトリにする。mktemp -u はパスを決めるだけでファイルを
+    # 作らないので、作成までの隙に別プロセスが同名パスや symlink を置ける。
+    local dest_dir
+    dest_dir="$(mktemp -d)"
+    chmod 700 "$dest_dir"
+    local verified=0
+    if keytool -importkeystore -noprompt \
         -srckeystore "$keystore" -srcstorepass "$store_password" \
         -srcalias "$key_alias" -srckeypass "$key_password" \
-        -destkeystore "$dest" -deststorepass "verify-only" -destkeypass "verify-only" \
+        -destkeystore "$dest_dir/verify.jks" -deststorepass "verify-only" -destkeypass "verify-only" \
         >/dev/null 2>&1; then
-      rm -f "$dest"
+      verified=1
+    fi
+    rm -rf "$dest_dir"
+    if [ "$verified" -ne 1 ]; then
       echo "error: 鍵のパスワードが違います" >&2
       exit 1
     fi
-    rm -f "$dest"
     return
   fi
 

@@ -49,21 +49,40 @@ describe('formatPublishedAt', () => {
 });
 
 describe('todayDateInputValue', () => {
+  // 「ローカル日付を返す」という契約なので、ローカル時刻で組み立てた Date で検証する。
+  // new Date('...+09:00') のような絶対時刻を使うと、実行環境の TZ に依存してしまう
+  // （CI は UTC、手元は JST）。
   it('ローカル日付を YYYY-MM-DD で返す', () => {
-    // 2026-09-24 09:00 JST = 2026-09-24T00:00:00Z
-    const jstMorning = new Date('2026-09-24T09:00:00+09:00');
-    expect(todayDateInputValue(jstMorning)).toBe('2026-09-24');
+    const localNoon = new Date(2026, 8, 24, 12, 0, 0);
+    expect(todayDateInputValue(localNoon)).toBe('2026-09-24');
   });
 
-  it('JST の早朝でも UTC 基準で前日にならない', () => {
-    // 2026-09-24 01:00 JST = 2026-09-23T16:00:00Z
-    // toISOString() を使うと 2026-09-23 になってしまうケース
-    const jstEarlyMorning = new Date('2026-09-24T01:00:00+09:00');
-    expect(todayDateInputValue(jstEarlyMorning)).toBe('2026-09-24');
+  it('ローカルの early morning でも同じ日付を返す', () => {
+    const localEarlyMorning = new Date(2026, 8, 24, 1, 0, 0);
+    expect(todayDateInputValue(localEarlyMorning)).toBe('2026-09-24');
+  });
+
+  it('UTC 日付とずれる時刻でもローカル日付を優先する', () => {
+    // UTC より東の TZ では toISOString() が前日を返す時刻。
+    // UTC で実行した場合は両者が一致するだけで、期待値はどちらでも変わらない。
+    const localEarlyMorning = new Date(2026, 8, 24, 1, 0, 0);
+    expect(todayDateInputValue(localEarlyMorning)).toBe('2026-09-24');
+    expect(todayDateInputValue(localEarlyMorning)).toBe(
+      `${localEarlyMorning.getFullYear()}-09-24`
+    );
   });
 
   it('月日が 1 桁でもゼロ埋めする', () => {
-    const date = new Date('2026-01-05T12:00:00+09:00');
+    const date = new Date(2026, 0, 5, 12, 0, 0);
     expect(todayDateInputValue(date)).toBe('2026-01-05');
+  });
+
+  it('年末年始でも破綻しない', () => {
+    expect(todayDateInputValue(new Date(2026, 11, 31, 23, 59, 0))).toBe(
+      '2026-12-31'
+    );
+    expect(todayDateInputValue(new Date(2027, 0, 1, 0, 1, 0))).toBe(
+      '2027-01-01'
+    );
   });
 });

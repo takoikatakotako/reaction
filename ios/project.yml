@@ -74,10 +74,11 @@ targetTemplates:
       # SwiftPM 構成なので run スクリプトは SourcePackages/checkouts 配下にある。
       - name: Upload dSYM to Crashlytics
         script: |
-          # シミュレータ向けビルドのクラッシュは Crashlytics に送られないため、
-          # CI やローカルの開発ビルドで無駄なアップロードを走らせない
-          if [ "${EFFECTIVE_PLATFORM_NAME}" = "-iphonesimulator" ]; then
-            echo "note: シミュレータ向けビルドのため dSYM のアップロードをスキップします"
+          # ローカルではシミュレータのテストクラッシュも Crashlytics に送れるため、
+          # 記号化できるよう dSYM をアップロードする。
+          # CI はクラッシュを送らないので通信だけ無駄になる。ここだけスキップする。
+          if [ "${CI}" = "true" ]; then
+            echo "note: CI 実行のため dSYM のアップロードをスキップします"
             exit 0
           fi
           "${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run"

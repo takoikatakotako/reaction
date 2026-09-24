@@ -36,6 +36,13 @@ func (e *Export) ExportS3Post(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, res)
 	}
 
+	err = e.Service.ExportNoticesToS3()
+	if err != nil {
+		slog.Error(err.Error())
+		res := response.Message{Message: "Error!"}
+		return c.JSON(http.StatusInternalServerError, res)
+	}
+
 	res := response.Message{Message: "Success!!"}
 	return c.JSON(http.StatusOK, res)
 }

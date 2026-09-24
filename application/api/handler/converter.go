@@ -54,3 +54,22 @@ func convertToResponseQuestion(question output.Question) response.Question {
 		References:        question.References,
 	}
 }
+
+func convertToResponseNotices(notices []output.Notice) []response.Notice {
+	responseNotices := make([]response.Notice, 0, len(notices))
+	for _, notice := range notices {
+		responseNotices = append(responseNotices, convertToResponseNotice(notice))
+	}
+	return responseNotices
+}
+
+func convertToResponseNotice(notice output.Notice) response.Notice {
+	return response.Notice{
+		ID:            notice.ID,
+		EnglishTitle:  notice.EnglishTitle,
+		JapaneseTitle: notice.JapaneseTitle,
+		EnglishBody:   notice.EnglishBody,
+		JapaneseBody:  notice.JapaneseBody,
+		PublishedAt:   notice.PublishedAt,
+	}
+}

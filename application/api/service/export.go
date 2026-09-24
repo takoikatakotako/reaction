@@ -111,3 +111,30 @@ func (e *Export) ExportQuestionsToS3() error {
 	}
 	return nil
 }
+
+func (e *Export) ExportNoticesToS3() error {
+	notices, err := e.AWS.GetNotices()
+	if err != nil {
+		return err
+	}
+
+	fileNotices := make([]file.Notice, 0, len(notices))
+	for _, notice := range notices {
+		fileNotices = append(fileNotices, convertToFileNotice(notice))
+	}
+
+	// お知らせは件数が少なく個別取得の用途も無いため一覧のみ出力する
+	bytes, err := json.Marshal(file.Notices{Notices: fileNotices})
+	if err != nil {
+		return err
+	}
+
+	objectKey := "resource/notice/list.json"
+	if err := e.AWS.PutObject(e.ResourceBucketName, objectKey, bytes, "application/json"); err != nil {
+		return err
+	}
+
+	// CloudFrontキャッシュ無効化
+	paths := []string{"/resource/notice/*"}
+	return e.AWS.CreateInvalidation(e.DistributionID, paths)
+}

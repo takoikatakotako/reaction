@@ -135,3 +135,33 @@ func maskAuthToken(authToken string) string {
 	}
 	return r
 }
+
+func convertToOutputNotice(notice database.Notice) output.Notice {
+	return output.Notice{
+		ID:            notice.ID,
+		EnglishTitle:  notice.EnglishTitle,
+		JapaneseTitle: notice.JapaneseTitle,
+		EnglishBody:   notice.EnglishBody,
+		JapaneseBody:  notice.JapaneseBody,
+		PublishedAt:   notice.PublishedAt,
+	}
+}
+
+func convertToOutputNotices(notices []database.Notice) []output.Notice {
+	outputNotices := make([]output.Notice, 0, len(notices))
+	for _, notice := range notices {
+		outputNotices = append(outputNotices, convertToOutputNotice(notice))
+	}
+	return outputNotices
+}
+
+func convertToFileNotice(notice database.Notice) file.Notice {
+	return file.Notice{
+		ID:            notice.ID,
+		EnglishTitle:  notice.EnglishTitle,
+		JapaneseTitle: notice.JapaneseTitle,
+		EnglishBody:   notice.EnglishBody,
+		JapaneseBody:  notice.JapaneseBody,
+		PublishedAt:   notice.PublishedAt,
+	}
+}

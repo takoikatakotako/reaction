@@ -81,6 +81,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.reaction.development
         REACTIONS_ENDPOINT: https://reaction-development.swiswiswift.com/resource/reaction/list.json
         QUESTIONS_ENDPOINT: https://reaction-development.swiswiswift.com/resource/question/list.json
+        NOTICES_ENDPOINT: https://reaction-development.swiswiswift.com/resource/notice/list.json
     info:
       path: Reaction/Info/Info.plist
       properties:
@@ -98,6 +99,7 @@ targets:
         MinimumOSVersion: "17.0"
         REACTIONS_ENDPOINT: $(REACTIONS_ENDPOINT)
         QUESTIONS_ENDPOINT: $(QUESTIONS_ENDPOINT)
+        NOTICES_ENDPOINT: $(NOTICES_ENDPOINT)
   ReactionProduction:
     templates:
       - ReactionApp
@@ -112,6 +114,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.example.junpei.chemi
         REACTIONS_ENDPOINT: https://reaction-production.swiswiswift.com/resource/reaction/list.json
         QUESTIONS_ENDPOINT: https://reaction-production.swiswiswift.com/resource/question/list.json
+        NOTICES_ENDPOINT: https://reaction-production.swiswiswift.com/resource/notice/list.json
     info:
       path: Reaction/Info/Info.plist
       properties:
@@ -129,6 +132,7 @@ targets:
         MinimumOSVersion: "17.0"
         REACTIONS_ENDPOINT: $(REACTIONS_ENDPOINT)
         QUESTIONS_ENDPOINT: $(QUESTIONS_ENDPOINT)
+        NOTICES_ENDPOINT: $(NOTICES_ENDPOINT)
   ReactionTests:
     type: bundle.unit-test
     platform: iOS

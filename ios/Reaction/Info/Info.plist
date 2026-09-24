@@ -26,6 +26,8 @@
 	<false/>
 	<key>MinimumOSVersion</key>
 	<string>17.0</string>
+	<key>NOTICES_ENDPOINT</key>
+	<string>$(NOTICES_ENDPOINT)</string>
 	<key>QUESTIONS_ENDPOINT</key>
 	<string>$(QUESTIONS_ENDPOINT)</string>
 	<key>REACTIONS_ENDPOINT</key>

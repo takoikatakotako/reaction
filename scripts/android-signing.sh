@@ -60,11 +60,56 @@ do_pull() {
   local keystore="$dir/upload-keystore.jks"
   get_param "$prefix/upload-keystore" | base64 -d > "$keystore"
   chmod 600 "$keystore"
-  # 値はシングルクォートで囲む（パスワードに記号が含まれても壊れないように）
-  printf "export ANDROID_KEYSTORE_FILE='%s'\n" "$keystore"
-  printf "export ANDROID_KEYSTORE_PASSWORD='%s'\n" "$(get_param "$prefix/upload-keystore-password")"
-  printf "export ANDROID_KEY_ALIAS='%s'\n" "$(get_param "$prefix/upload-key-alias")"
-  printf "export ANDROID_KEY_PASSWORD='%s'\n" "$(get_param "$prefix/upload-key-password")"
+  emit_export ANDROID_KEYSTORE_FILE "$keystore"
+  emit_export ANDROID_KEYSTORE_PASSWORD "$(get_param "$prefix/upload-keystore-password")"
+  emit_export ANDROID_KEY_ALIAS "$(get_param "$prefix/upload-key-alias")"
+  emit_export ANDROID_KEY_PASSWORD "$(get_param "$prefix/upload-key-password")"
+}
+
+# eval される export 文を組み立てる。
+# シングルクォートで囲むだけでは値に ' が含まれると壊れるため、
+# ' を '\'' に置換してから囲む（シェルの標準的なエスケープ）。
+emit_export() {
+  local name="$1" value="$2" escaped
+  escaped=$(printf '%s' "$value" | sed "s/'/'\\\\''/g")
+  printf "export %s='%s'\n" "$name" "$escaped"
+}
+
+# keystore の形式を先頭バイトで判定する（keytool の出力はロケール依存のため）。
+# JKS は 0xFEEDFEED、PKCS12 は ASN.1 SEQUENCE (0x30) で始まる。
+is_jks_keystore() {
+  [ "$(xxd -p -l 4 "$1" 2>/dev/null)" = "feedfeed" ]
+}
+
+# 鍵パスワードを検証する。
+# PKCS12 は store と key のパスワードを分けられない形式で、keytool は -keypass を
+# 無視する。そのため「一致しているか」を確認するのが唯一の正しい検証になる。
+# JKS は分けられるので、秘密鍵の取り出しを伴う操作で実際に検証する。
+verify_key_password() {
+  local keystore="$1" store_password="$2" key_alias="$3" key_password="$4"
+
+  if is_jks_keystore "$keystore"; then
+    local dest
+    dest="$(mktemp -u)"
+    if ! keytool -importkeystore -noprompt \
+        -srckeystore "$keystore" -srcstorepass "$store_password" \
+        -srcalias "$key_alias" -srckeypass "$key_password" \
+        -destkeystore "$dest" -deststorepass "verify-only" -destkeypass "verify-only" \
+        >/dev/null 2>&1; then
+      rm -f "$dest"
+      echo "error: 鍵のパスワードが違います" >&2
+      exit 1
+    fi
+    rm -f "$dest"
+    return
+  fi
+
+  # PKCS12
+  if [ "$key_password" != "$store_password" ]; then
+    echo "error: この keystore は PKCS12 形式のため、鍵のパスワードは" >&2
+    echo "       keystore のパスワードと同じである必要があります" >&2
+    exit 1
+  fi
 }
 
 do_push() {
@@ -76,11 +121,13 @@ do_push() {
   read -rp  "鍵の alias: " key_alias
   read -rsp "鍵のパスワード: " key_password; echo
 
-  # 登録前に鍵が開けるか確認する
+  # 登録前に keystore・alias・鍵パスワードを検証する。
+  # keytool -list は storepass と alias しか見ないため、鍵パスワードは別途確認する。
   if ! keytool -list -keystore "$keystore" -storepass "$store_password" -alias "$key_alias" >/dev/null 2>&1; then
     echo "error: keystore を開けないか alias が見つかりません" >&2
     exit 1
   fi
+  verify_key_password "$keystore" "$store_password" "$key_alias" "$key_password"
 
   local tmp
   tmp="$(mktemp)"

@@ -14,7 +14,7 @@ struct SettingView: View {
                         HStack {
                             Text(String(localized: "setting-reaction-mechanism-language"))
                             Spacer()
-                            CommonText(text: viewState.reactionMechanismLangage, font: Font.system(size: 14))
+                            CommonText(text: viewState.reactionMechanismLanguageText, font: Font.system(size: 14))
                         }
                     }
 
@@ -26,7 +26,7 @@ struct SettingView: View {
                         HStack {
                             Text(String(localized: "setting-app-language"))
                             Spacer()
-                            CommonText(text: viewState.appLangage, font: Font.system(size: 14))
+                            CommonText(text: viewState.appLanguage, font: Font.system(size: 14))
                         }
                     }
 
@@ -34,10 +34,10 @@ struct SettingView: View {
                         viewState.showThumbnailAlert()
                     } label: {
                         HStack {
-                            Text(String(localized: "setting-thmbnail"))
+                            Text(String(localized: "setting-thumbnail"))
                             Spacer()
-                            if let thmbnail = viewState.thmbnail {
-                                Text(thmbnail ? String(localized: "setting-show") : String(localized: "setting-hidden"))
+                            if let thumbnail = viewState.thumbnail {
+                                Text(thumbnail ? String(localized: "setting-show") : String(localized: "setting-hidden"))
                             }
                         }
                     }
@@ -45,7 +45,7 @@ struct SettingView: View {
 
                 Section(String(localized: "setting-developer-info")) {
                     Button(action: {
-                        if let url = URL(string: GITHUB_REPOSITORY_URL) {
+                        if let url = URL(string: Config.githubRepositoryUrl) {
                             UIApplication.shared.open(url)
                         }
                     }, label: {
@@ -89,7 +89,7 @@ struct SettingView: View {
             }, message: {
                 CommonText(text: String(localized: "setting-select-reaction-mechanism-language"), font: Font.system(size: 14))
             })
-            .alert("", isPresented: $viewState.showingThmbnailAlert, actions: {
+            .alert("", isPresented: $viewState.showingThumbnailAlert, actions: {
                 Button(String(localized: "common-visible")) {
                     viewState.setShowThumbnail()
                 }

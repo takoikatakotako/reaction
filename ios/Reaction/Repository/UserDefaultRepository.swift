@@ -1,6 +1,6 @@
 import SwiftUI
 
-class UserDefaultRepository {
+final class UserDefaultRepository {
     private let userDefaults: UserDefaults
 
     // テストでは専用の suite を渡して本番の設定を汚さないようにする
@@ -9,41 +9,42 @@ class UserDefaultRepository {
     }
 
     // UserDefaults
-    let KEY_REACTION_MECHANISM_LANGUAGE = "KEY_REACTION_MECHANISM_LANGUAGE"
-    let KEY_SHOW_THUMBNAIL = "KEY_SHOW_THUMBNAIL"
-    let KEY_ENABLE_DETAILE_ABILITY = "KEY_ENABLE_DETAILE_ABILITY"
+    // 保存キーの文字列は既存ユーザーの設定を引き継ぐため変更しない
+    let keyReactionMechanismLanguage = "KEY_REACTION_MECHANISM_LANGUAGE"
+    let keyShowThumbnail = "KEY_SHOW_THUMBNAIL"
+    let keyEnableDetailAbility = "KEY_ENABLE_DETAILE_ABILITY"
 
     var reactionMechanismLanguage: String {
-        userDefaults.object(forKey: KEY_REACTION_MECHANISM_LANGUAGE) as? String ?? "en"
+        userDefaults.object(forKey: keyReactionMechanismLanguage) as? String ?? "en"
     }
 
-    var showThmbnail: Bool {
-        userDefaults.object(forKey: KEY_SHOW_THUMBNAIL) as? Bool ?? true
+    var showThumbnail: Bool {
+        userDefaults.object(forKey: keyShowThumbnail) as? Bool ?? true
     }
 
-    var enableDetaileAbility: Bool {
-        userDefaults.object(forKey: KEY_ENABLE_DETAILE_ABILITY) as? Bool ?? false
+    var enableDetailAbility: Bool {
+        userDefaults.object(forKey: keyEnableDetailAbility) as? Bool ?? false
     }
 
-    func initilize() {
+    func initialize() {
         userDefaults.register(
             defaults: [
-                KEY_REACTION_MECHANISM_LANGUAGE: "en",
-                KEY_SHOW_THUMBNAIL: true,
-                KEY_ENABLE_DETAILE_ABILITY: false
+                keyReactionMechanismLanguage: "en",
+                keyShowThumbnail: true,
+                keyEnableDetailAbility: false
             ]
         )
     }
 
     func setReactionMechanismLanguage(_ language: String) {
-        userDefaults.setValue(language, forKey: KEY_REACTION_MECHANISM_LANGUAGE)
+        userDefaults.setValue(language, forKey: keyReactionMechanismLanguage)
     }
 
-    func setShowThmbnail(_ showThmbnail: Bool) {
-        userDefaults.setValue(showThmbnail, forKey: KEY_SHOW_THUMBNAIL)
+    func setShowThumbnail(_ showThumbnail: Bool) {
+        userDefaults.setValue(showThumbnail, forKey: keyShowThumbnail)
     }
 
-    func setEnableDetaileAbility(_ enableDetaileAbility: Bool) {
-        userDefaults.setValue(enableDetaileAbility, forKey: KEY_ENABLE_DETAILE_ABILITY)
+    func setEnableDetailAbility(_ enableDetailAbility: Bool) {
+        userDefaults.setValue(enableDetailAbility, forKey: keyEnableDetailAbility)
     }
 }

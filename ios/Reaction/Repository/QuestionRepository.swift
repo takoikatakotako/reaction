@@ -1,6 +1,6 @@
 import SwiftUI
 
-class QuestionRepository {
+final class QuestionRepository {
     private let session: URLSession
 
     init(session: URLSession = .shared) {

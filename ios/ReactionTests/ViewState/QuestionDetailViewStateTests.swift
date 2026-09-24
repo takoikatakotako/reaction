@@ -1,6 +1,7 @@
 import XCTest
 @testable import ReactionDevelopment
 
+@MainActor
 final class QuestionDetailViewStateTests: XCTestCase {
     private var userDefaultRepository: UserDefaultRepository!
 

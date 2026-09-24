@@ -2,9 +2,10 @@ import SwiftUI
 import Combine
 import StoreKit
 
-class ReactionListViewState: ObservableObject {
+@MainActor
+final class ReactionListViewState: ObservableObject {
     @Published var searchText: String = ""
-    @Published var showingThmbnail: Bool
+    @Published var showingThumbnail: Bool
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
     @Published var billingAlert = false
@@ -19,9 +20,9 @@ class ReactionListViewState: ObservableObject {
     private let userDefaultsRepository = UserDefaultRepository()
     private let reactionRepository = ReactionMechanismRepository()
 
-    init(showingThmbnail: Bool) {
+    init(showingThumbnail: Bool) {
         self.reactionMechanismIdentifier = userDefaultsRepository.reactionMechanismLanguage
-        self.showingThmbnail = showingThmbnail
+        self.showingThumbnail = showingThumbnail
     }
 
     var showingReactions: [ReactionMechanism] {
@@ -41,11 +42,11 @@ class ReactionListViewState: ObservableObject {
 
     func onAppear() {
         reactionMechanismIdentifier = userDefaultsRepository.reactionMechanismLanguage
-        showingThmbnail = userDefaultsRepository.showThmbnail
+        showingThumbnail = userDefaultsRepository.showThumbnail
 
-        Task { @MainActor in
+        Task {
             do {
-                let fetched = try await reactionRepository.fetchMechanisms(reactionsEndpoint: EnvironmentVariable.shared.getReactionsEndpoint)
+                let fetched = try await reactionRepository.fetchMechanisms(reactionsEndpoint: EnvironmentVariable.shared.reactionsEndpoint)
                 if fetched != self.reactionMechanisms {
                     self.reactionMechanisms = fetched
                 }
@@ -61,7 +62,7 @@ class ReactionListViewState: ObservableObject {
     }
 
     func tapped(reactionMechanism: ReactionMechanism) {
-        guard userDefaultsRepository.enableDetaileAbility || !isProduction  else {
+        guard userDefaultsRepository.enableDetailAbility || !isProduction  else {
             // 未課金なのでアラートを表示
             billingAlert = true
             return
@@ -72,7 +73,7 @@ class ReactionListViewState: ObservableObject {
 
     func purchase() {
         isFetching = true
-        Task { @MainActor in
+        Task {
             do {
                 let productIdList = ["detail_available"]
                 let products: [Product] = try await Product.products(for: productIdList)
@@ -82,7 +83,7 @@ class ReactionListViewState: ObservableObject {
                     return
                 }
                 let transaction = try await purchase(product: product)
-                userDefaultsRepository.setEnableDetaileAbility(true)
+                userDefaultsRepository.setEnableDetailAbility(true)
                 await transaction.finish()
                 isFetching = false
                 completeAlert = true
@@ -95,7 +96,7 @@ class ReactionListViewState: ObservableObject {
 
     func restore() {
         isFetching = true
-        Task { @MainActor in
+        Task {
             do {
                 try await AppStore.sync()
 
@@ -114,7 +115,7 @@ class ReactionListViewState: ObservableObject {
                 }
 
                 // 特典を付与
-                userDefaultsRepository.setEnableDetaileAbility(true)
+                userDefaultsRepository.setEnableDetailAbility(true)
                 isFetching = false
                 completeAlert = true
             } catch {

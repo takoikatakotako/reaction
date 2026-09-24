@@ -50,11 +50,11 @@ make build-admin-image  # Dockerイメージビルド
 (`logger.go` など) がコンパイル対象から外れて `undefined` になる。`./api` のように
 package 単位で指定すること。
 
-ローカル実行には LocalStack が必要:
+ローカル実行には LocalStack が必要（リポジトリルートから実行する）:
 
 ```bash
-cd local && make setup   # DynamoDB / S3 のモックを起動
-cd local && make down    # 停止
+make -C local setup   # DynamoDB / S3 のモックを起動
+make -C local down    # 停止
 ```
 
 ### iOS (ios/)

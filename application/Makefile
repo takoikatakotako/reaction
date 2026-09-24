@@ -1,6 +1,9 @@
 ADMIN_REPOSITORY_URI = 392961483375.dkr.ecr.ap-northeast-1.amazonaws.com/reaction-admin
 GITHUB_SHA ?= local
 
+# 裸の make の挙動を変えないよう、従来どおり test を既定にする
+.DEFAULT_GOAL := test
+
 # main.go を単体で指定すると同じ package の他ファイル（logger.go など）が
 # コンパイル対象から外れて undefined になるため、package 単位で実行する
 .PHONY: run

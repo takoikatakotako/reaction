@@ -11,6 +11,7 @@ import (
 	"log/slog"
 	"runtime"
 	"sort"
+	"time"
 )
 
 func (a *AWS) GetNotice(id string) (database.Notice, error) {
@@ -80,10 +81,7 @@ func (a *AWS) GetNotices() ([]database.Notice, error) {
 		lastEvaluatedKey = output.LastEvaluatedKey
 	}
 
-	// 新しいお知らせが先に来るように PublishedAt の降順で並べる
-	sort.Slice(notices, func(i, j int) bool {
-		return notices[i].PublishedAt > notices[j].PublishedAt
-	})
+	sortNoticesByPublishedAtDesc(notices)
 
 	return notices, nil
 }
@@ -131,4 +129,29 @@ func (a *AWS) DeleteNotice(id string) error {
 		},
 	})
 	return err
+}
+
+// 新しいお知らせが先に来るように PublishedAt の降順で並べる。
+// RFC3339 はオフセットや小数秒を含み得るので、文字列ではなく時刻として比較する。
+// パースできない値は最後に回す。
+func sortNoticesByPublishedAtDesc(notices []database.Notice) {
+	sort.SliceStable(notices, func(i, j int) bool {
+		ti, iOK := parsePublishedAt(notices[i].PublishedAt)
+		tj, jOK := parsePublishedAt(notices[j].PublishedAt)
+		if iOK != jOK {
+			return iOK
+		}
+		if !iOK {
+			return false
+		}
+		return ti.After(tj)
+	})
+}
+
+func parsePublishedAt(value string) (time.Time, bool) {
+	t, err := time.Parse(time.RFC3339, value)
+	if err != nil {
+		return time.Time{}, false
+	}
+	return t, true
 }

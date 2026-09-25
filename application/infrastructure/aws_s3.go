@@ -8,12 +8,12 @@ import (
 	"time"
 )
 
-// ローカル開発では MinIO を使う（LocalStack の代替、#137）
+// ローカル開発では s3mock を使う（LocalStack の代替、#137）
 const LocalS3Endpoint = "http://localhost:9000"
 
 // Private Methods
 func (a *AWS) createS3Client() (*s3.Client, error) {
-	// Localの場合は MinIO を使う（LocalStack の代替、#137）
+	// Localの場合は s3mock を使う（LocalStack の代替、#137）
 	if a.Profile == "local" {
 		cfg, err := a.createAWSConfig()
 		if err != nil {
@@ -22,7 +22,7 @@ func (a *AWS) createS3Client() (*s3.Client, error) {
 
 		return s3.NewFromConfig(cfg, func(o *s3.Options) {
 			o.BaseEndpoint = aws.String(LocalS3Endpoint)
-			// MinIO は仮想ホスト形式のバケット名を解決できないのでパス形式にする
+			// s3mock は仮想ホスト形式のバケット名を解決できないのでパス形式にする
 			o.UsePathStyle = true
 		}), nil
 	}

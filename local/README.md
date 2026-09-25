@@ -42,6 +42,7 @@ quay.io/minio    → タグ取得不可
 - DynamoDB Local は認証を検証しないが、コード側は `local` プロファイル用の
   静的な資格情報（`infrastructure/aws.go` の `LocalAccessKeyID` 等）を使う
 - `adobe/s3mock` は認証もバケットポリシーも検証しない。バケットは
-  `initialBuckets` 環境変数で起動時に作られる
+  初期化コンテナの `setup.sh` が作成する（`initialBuckets` 環境変数は
+  効かなかった）
 - S3 はパス形式のアドレッシングが必要なため、`aws_s3.go` で
   `UsePathStyle = true` を指定している

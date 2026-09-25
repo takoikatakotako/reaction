@@ -7,8 +7,9 @@ import (
 	"github.com/aws/aws-sdk-go-v2/credentials"
 )
 
-// ローカルの MinIO に設定している資格情報。
-// DynamoDB Local は任意の値で通るが、MinIO は一致していないと 403 になる。
+// ローカルのモック用の資格情報。
+// DynamoDB Local も s3mock も値を検証しないが、SDK は資格情報が
+// 無いとリクエストを組み立てられないのでダミーを渡す。
 const (
 	LocalAccessKeyID     = "reactionlocal"
 	LocalSecretAccessKey = "reactionlocal"
@@ -31,7 +32,7 @@ func (a *AWS) createAWSConfig() (aws.Config, error) {
 		return cfg, nil
 	}
 
-	// CI やローカル開発で DynamoDB Local / MinIO を利用する場合
+	// CI やローカル開発で DynamoDB Local / s3mock を利用する場合
 	if a.Profile == "local" {
 		cfg, err := config.LoadDefaultConfig(ctx,
 			config.WithRegion("ap-northeast-1"),

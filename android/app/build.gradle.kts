@@ -22,8 +22,23 @@ android {
         }
     }
 
+    // アップロード鍵は scripts/android-signing.sh pull で環境変数に取り込む。
+    // 環境変数が無い場合は署名設定を作らない（debug ビルドや CI のテストを壊さないため）。
+    val keystoreFile = System.getenv("ANDROID_KEYSTORE_FILE")
+    signingConfigs {
+        if (keystoreFile != null) {
+            create("release") {
+                storeFile = file(keystoreFile)
+                storePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("ANDROID_KEY_ALIAS")
+                keyPassword = System.getenv("ANDROID_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.findByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

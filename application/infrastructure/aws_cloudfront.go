@@ -2,11 +2,10 @@ package infrastructure
 
 import (
 	"context"
-	"fmt"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cloudfront"
 	"github.com/aws/aws-sdk-go-v2/service/cloudfront/types"
-	"time"
+	"github.com/google/uuid"
 )
 
 // Private Methods
@@ -25,8 +24,7 @@ func (a *AWS) CreateInvalidation(distributionID string, paths []string) error {
 		return err
 	}
 
-	// キャッシュ無効化リクエストの作成
-	callerReference := fmt.Sprintf("invalidation-%d", time.Now().Unix())
+	callerReference := newInvalidationCallerReference()
 	input := &cloudfront.CreateInvalidationInput{
 		DistributionId: aws.String(distributionID),
 		InvalidationBatch: &types.InvalidationBatch{
@@ -44,4 +42,11 @@ func (a *AWS) CreateInvalidation(distributionID string, paths []string) error {
 		return err
 	}
 	return nil
+}
+
+// CallerReference は distribution ごとに一意である必要がある。
+// 秒精度のタイムスタンプだと、1 回のエクスポートで複数回呼ぶ際に
+// 同じ秒に収まって InvalidArgument で失敗する。
+func newInvalidationCallerReference() string {
+	return "invalidation-" + uuid.NewString()
 }

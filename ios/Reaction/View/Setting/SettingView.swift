@@ -7,6 +7,14 @@ struct SettingView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section(String(localized: "notice-title")) {
+                    NavigationLink {
+                        NoticeListView(viewState: NoticeListViewState())
+                    } label: {
+                        CommonText(text: String(localized: "notice-title"), font: Font.system(size: 14))
+                    }
+                }
+
                 Section(String(localized: "setting-app-setting")) {
                     Button {
                         viewState.showReactionMechanismLanguageAlert()

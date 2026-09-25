@@ -2,7 +2,6 @@ import * as entity from '@/lib/entity';
 import * as repository from '@/lib/repository';
 import { ALLOWED_IMAGE_WIDTHS } from '@/lib/constants';
 
-
 //////////////////////////////////////////////////////////////
 // Handle Images Change
 //////////////////////////////////////////////////////////////
@@ -22,7 +21,7 @@ export const handleImagesChange = (
       const base64String = reader.result as string;
       try {
         const imageURL = await repository.uploadImage(base64String);
-        setImageUrls([...imageUrls, imageURL]);          
+        setImageUrls([...imageUrls, imageURL]);
       } catch (error) {
         alert(`画像のアップロードに失敗しました:\n${error}`);
       }
@@ -35,7 +34,6 @@ export const handleImagesChange = (
   }
 };
 
-
 //////////////////////////////////////////////////////////////
 // Handle Images Delete
 //////////////////////////////////////////////////////////////
@@ -45,7 +43,6 @@ export const handleImagesDelete = (
 ) => {
   setImageURLs((prev) => prev.filter((_, idx) => idx !== index));
 };
-
 
 //////////////////////////////////////////////////////////////
 // Handle Image Change
@@ -67,7 +64,7 @@ export const handleImageChange = (
       img.onload = async () => {
         if (!ALLOWED_IMAGE_WIDTHS.includes(img.width)) {
           alert(
-            `画像の横幅は ${ALLOWED_IMAGE_WIDTHS.join(" or ")} にする必要があります。`
+            `画像の横幅は ${ALLOWED_IMAGE_WIDTHS.join(' or ')} にする必要があります。`
           );
           return;
         }
@@ -80,7 +77,7 @@ export const handleImageChange = (
         }
       };
       img.onerror = () => {
-        alert("画像の読み込みに失敗しました。");
+        alert('画像の読み込みに失敗しました。');
       };
       img.src = base64String;
     };
@@ -92,7 +89,6 @@ export const handleImageChange = (
   }
 };
 
-
 //////////////////////////////////////////////////////////////
 // Handle Image Delete
 //////////////////////////////////////////////////////////////
@@ -101,7 +97,6 @@ export const handleImageDelete = (
 ) => {
   setImageURL('');
 };
-
 
 //////////////////////////////////////////////////////////////
 // Handle Texts Change
@@ -112,33 +107,30 @@ export const handleTextsChange = (
   setTexts: React.Dispatch<React.SetStateAction<string[]>>,
   texts: string[]
 ) => {
-    const newTexts = [...texts];
-    newTexts[index] = e.target.value;
-    setTexts(newTexts);
+  const newTexts = [...texts];
+  newTexts[index] = e.target.value;
+  setTexts(newTexts);
 };
-
 
 //////////////////////////////////////////////////////////////
 // Handle Texts Delete
 //////////////////////////////////////////////////////////////
 export const handleTextDelete = (
   index: number,
-  setTexts: React.Dispatch<React.SetStateAction<string[]>>,
+  setTexts: React.Dispatch<React.SetStateAction<string[]>>
 ) => {
-    setTexts((prev) => prev.filter((_, idx) => idx !== index));
+  setTexts((prev) => prev.filter((_, idx) => idx !== index));
 };
-
 
 //////////////////////////////////////////////////////////////
 // Handle Texts Add
 //////////////////////////////////////////////////////////////
 export const handleTextsAdd = (
   setTexts: React.Dispatch<React.SetStateAction<string[]>>,
-  texts: string[],
+  texts: string[]
 ) => {
-    setTexts([...texts, '']);
+  setTexts([...texts, '']);
 };
-
 
 //////////////////////////////////////////////////////////////
 // Extract Image
@@ -150,7 +142,6 @@ export function extractImageName(url: string): string {
   return fileName.split('?')[0].split('#')[0];
 }
 
-
 //////////////////////////////////////////////////////////////
 // Extract Images
 //////////////////////////////////////////////////////////////
@@ -158,105 +149,91 @@ export function extractImageNames(urls: string[]): string[] {
   return urls.map((url) => extractImageName(url));
 }
 
-
 //////////////////////////////////////////////////////////////
 // Fetch Reactions
 //////////////////////////////////////////////////////////////
 export async function fetchReactions(): Promise<entity.Reaction[]> {
-    return await repository.fetchReactions();
+  return await repository.fetchReactions();
 }
-
 
 //////////////////////////////////////////////////////////////
 // Fetch Reaction
 //////////////////////////////////////////////////////////////
 export async function fetchReaction(id: string): Promise<entity.Reaction> {
-    return await repository.fetchReaction(id);
+  return await repository.fetchReaction(id);
 }
-
 
 //////////////////////////////////////////////////////////////
 // Add Reaction
 //////////////////////////////////////////////////////////////
 export async function addReaction(addReaction: entity.AddReaction) {
-    // validate
-    if (!addReaction.englishName) {
-      throw new Error('英語名が入力されていません');
-    }
+  // validate
+  if (!addReaction.englishName) {
+    throw new Error('英語名が入力されていません');
+  }
 
-    if (!addReaction.japaneseName) {
-      throw new Error('日本語名が入力されていません');
-    }
+  if (!addReaction.japaneseName) {
+    throw new Error('日本語名が入力されていません');
+  }
 
-    await repository.addReaction(addReaction);
+  await repository.addReaction(addReaction);
 }
-
 
 //////////////////////////////////////////////////////////////
 // Edit Reaction
 //////////////////////////////////////////////////////////////
 export async function editReaction(editReaction: entity.EditReaction) {
-    await repository.editReaction(editReaction);
+  await repository.editReaction(editReaction);
 }
-
 
 //////////////////////////////////////////////////////////////
 // Delete Reaction
 //////////////////////////////////////////////////////////////
 export async function deleteReaction(id: string) {
-    await repository.deleteReaction(id);
+  await repository.deleteReaction(id);
 }
-
 
 //////////////////////////////////////////////////////////////
 // Fetch Questions
 //////////////////////////////////////////////////////////////
 export async function fetchQuestions(): Promise<entity.Question[]> {
-    return await repository.fetchQuestions();
+  return await repository.fetchQuestions();
 }
-
 
 //////////////////////////////////////////////////////////////
 // Fetch Question
 //////////////////////////////////////////////////////////////
 export async function fetchQuestion(id: string): Promise<entity.Question> {
-    return await repository.fetchQuestion(id);
+  return await repository.fetchQuestion(id);
 }
-
 
 //////////////////////////////////////////////////////////////
 // Add Question
 //////////////////////////////////////////////////////////////
 export async function addQuestion(addQuestion: entity.AddQuestion) {
-    await repository.addQuestion(addQuestion);
+  await repository.addQuestion(addQuestion);
 }
-
 
 //////////////////////////////////////////////////////////////
 // Edit Question
 //////////////////////////////////////////////////////////////
 export async function editQuestion(editQuestion: entity.EditQuestion) {
-    await repository.editQuestion(editQuestion);
+  await repository.editQuestion(editQuestion);
 }
-
 
 //////////////////////////////////////////////////////////////
 // Delete Question
 //////////////////////////////////////////////////////////////
 export async function deleteQuestion(id: string) {
-    await repository.deleteQuestion(id);
+  await repository.deleteQuestion(id);
 }
-
 
 //////////////////////////////////////////////////////////////
 // Export to S3
 //////////////////////////////////////////////////////////////
 export async function exportToS3() {
-    await repository.exportToS3();
+  await repository.exportToS3();
 }
-
-
-
 
 //////////////////////////////////////////////////////////////
 // Handle Selection Change
@@ -268,24 +245,59 @@ export const handleSelectionChange = (
   setSelectedValues(selectedValues);
 };
 
-
 //////////////////////////////////////////////////////////////
 // Handle Selection Delete
 //////////////////////////////////////////////////////////////
 export const handleSelectionDelete = (
   index: number,
-  setSelectedValues: React.Dispatch<React.SetStateAction<string[]>>,
+  setSelectedValues: React.Dispatch<React.SetStateAction<string[]>>
 ) => {
   setSelectedValues((prev) => prev.filter((_, idx) => idx !== index));
 };
-
 
 //////////////////////////////////////////////////////////////
 // Handle Selection Add
 //////////////////////////////////////////////////////////////
 export const handleSelectionAdd = (
   setSelectedValues: React.Dispatch<React.SetStateAction<string[]>>,
-  selectedValues: string[],
+  selectedValues: string[]
 ) => {
   setSelectedValues([...selectedValues, '']);
 };
+
+//////////////////////////////////////////////////////////////
+// Notice
+//////////////////////////////////////////////////////////////
+export async function fetchNotices(): Promise<entity.Notice[]> {
+  return await repository.fetchNotices();
+}
+
+export async function fetchNotice(id: string): Promise<entity.Notice> {
+  return await repository.fetchNotice(id);
+}
+
+export async function addNotice(addNotice: entity.AddNotice) {
+  validateNotice(addNotice);
+  await repository.addNotice(addNotice);
+}
+
+export async function editNotice(editNotice: entity.EditNotice) {
+  validateNotice(editNotice);
+  await repository.editNotice(editNotice);
+}
+
+export async function deleteNotice(id: string) {
+  await repository.deleteNotice(id);
+}
+
+function validateNotice(notice: entity.AddNotice | entity.EditNotice) {
+  if (!notice.japaneseTitle) {
+    throw new Error('日本語のタイトルが入力されていません');
+  }
+  if (!notice.englishTitle) {
+    throw new Error('英語のタイトルが入力されていません');
+  }
+  if (!notice.publishedAt) {
+    throw new Error('公開日が入力されていません');
+  }
+}

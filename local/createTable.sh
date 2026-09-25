@@ -17,4 +17,12 @@ awslocal dynamodb create-table \
     --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
     --region ap-northeast-1
 
+# notices table
+awslocal dynamodb create-table \
+    --table-name notices \
+    --attribute-definitions AttributeName=id,AttributeType=S \
+    --key-schema AttributeName=id,KeyType=HASH \
+    --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
+    --region ap-northeast-1
+
 set +x

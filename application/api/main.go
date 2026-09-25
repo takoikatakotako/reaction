@@ -45,6 +45,9 @@ func main() {
 		ResourceBucketName: env.ResourceBucketName,
 		DistributionID:     env.DistributionID,
 	}
+	noticeService := service.Notice{
+		AWS: awsRepository,
+	}
 	uploadService := service.Upload{
 		AWS:                awsRepository,
 		ResourceBucketName: env.ResourceBucketName,
@@ -65,6 +68,10 @@ func main() {
 	questionHandler := handler.Question{
 		APIKey:  env.APIKey,
 		Service: questionService,
+	}
+	noticeHandler := handler.Notice{
+		APIKey:  env.APIKey,
+		Service: noticeService,
 	}
 	uploadHandler := handler.Upload{
 		Service: uploadService,
@@ -97,6 +104,13 @@ func main() {
 	e.POST("/api/question/add", questionHandler.AddQuestionPost)
 	e.POST("/api/question/edit", questionHandler.EditQuestionPost)
 	e.DELETE("/api/question/delete", questionHandler.DeleteQuestionDelete)
+
+	// notice
+	e.GET("/api/notice/list", noticeHandler.ListNoticeGet)
+	e.GET("/api/notice/detail/:id", noticeHandler.GetNoticeGet)
+	e.POST("/api/notice/add", noticeHandler.AddNoticePost)
+	e.POST("/api/notice/edit", noticeHandler.EditNoticePost)
+	e.DELETE("/api/notice/delete", noticeHandler.DeleteNoticeDelete)
 
 	// generate-upload-url
 	e.POST("/api/generate-upload-url", uploadHandler.GenerateUploadURLPost)

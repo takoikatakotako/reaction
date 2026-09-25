@@ -26,6 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         EnvironmentVariable.shared.setQuestionsEndpoint(questionsEndpoint)
 
+        guard let noticesEndpoint = Bundle.main.infoDictionary?["NOTICES_ENDPOINT"] as? String else {
+            fatalError("Error: Missing NOTICES_ENDPOINT in Info.plist")
+        }
+        EnvironmentVariable.shared.setNoticesEndpoint(noticesEndpoint)
+
         // ユニットテスト中は Firebase・通知・課金の初期化を行わない（CI のシミュレータで落ちるため）
         if isRunningUnitTests {
             return true

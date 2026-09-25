@@ -9,6 +9,7 @@ final class EnvironmentVariable {
 
     private(set) var reactionsEndpoint: String = ""
     private(set) var questionsEndpoint: String = ""
+    private(set) var noticesEndpoint: String = ""
 
     func setReactionsEndpoint(_ endpoint: String) {
         reactionsEndpoint = endpoint
@@ -16,5 +17,9 @@ final class EnvironmentVariable {
 
     func setQuestionsEndpoint(_ endpoint: String) {
         questionsEndpoint = endpoint
+    }
+
+    func setNoticesEndpoint(_ endpoint: String) {
+        noticesEndpoint = endpoint
     }
 }

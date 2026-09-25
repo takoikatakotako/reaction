@@ -11,8 +11,7 @@
 #   /reaction/production/android/upload-key-password       … 鍵のパスワード
 #
 # 使い方:
-#   exports="$(scripts/android-signing.sh pull)" || exit
-#   eval "$exports"
+#   exports="$(scripts/android-signing.sh pull)" && eval "$exports"
 #       keystore を一時ディレクトリに復元し、Gradle が読む
 #       ANDROID_KEYSTORE_FILE / ANDROID_KEYSTORE_PASSWORD / ANDROID_KEY_ALIAS /
 #       ANDROID_KEY_PASSWORD の export 文を標準出力に出す。
@@ -31,7 +30,9 @@ prefix="/reaction/production/android"
 expected_account=852798039462
 
 usage() {
-  echo "usage: $0 pull [dir]        # eval \"\$($0 pull)\" で環境変数に取り込む" >&2
+  echo "usage: $0 pull [dir]" >&2
+  echo "         exports=\"\$($0 pull)\" && eval \"\$exports\"" >&2
+  echo "         ※ eval \"\$($0 pull)\" と直接書くと pull の失敗を検知できない" >&2
   echo "       $0 push <keystore.jks>" >&2
   exit 2
 }
@@ -73,8 +74,17 @@ do_pull() {
   key_password="$(get_param "$prefix/upload-key-password")" || return 1
 
   mkdir -p "$dir"
-  printf '%s' "$keystore_base64" | base64 -d > "$keystore" || return 1
-  chmod 600 "$keystore"
+  # 最初から mode 600 の一時ファイルへデコードし、成功したときだけ本来の名前へ
+  # 置き換える。> で直接作ると umask 次第で他ユーザーから読める権限になり、
+  # デコード失敗時は chmod に到達せず中途半端な keystore が残る。
+  local tmp_keystore
+  tmp_keystore="$(mktemp "$dir/.upload-keystore.XXXXXX")" || return 1
+  if ! printf '%s' "$keystore_base64" | base64 -d > "$tmp_keystore"; then
+    rm -f "$tmp_keystore"
+    return 1
+  fi
+  chmod 600 "$tmp_keystore"
+  mv "$tmp_keystore" "$keystore" || { rm -f "$tmp_keystore"; return 1; }
 
   emit_export ANDROID_KEYSTORE_FILE "$keystore"
   emit_export ANDROID_KEYSTORE_PASSWORD "$store_password"

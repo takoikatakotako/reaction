@@ -22,7 +22,7 @@ func main() {
 	//env.SetReactionAWSProfile("reaction-development")
 
 	env.SetAPIKey("dummy-api-key")
-	env.SetResourceBaseURL("http://localhost:4566")
+	env.SetResourceBaseURL("http://localhost:9000/resource.reaction-local.swiswiswift.com/resource/image")
 	env.SetResourceBucketName("resource.reaction-local.swiswiswift.com")
 	env.SetDistributionID("")
 	env.SetAllowedOrigins("http://localhost:3000")

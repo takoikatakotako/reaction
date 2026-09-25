@@ -19,3 +19,17 @@ func TestCallerReferenceIsUniquePerCall(t *testing.T) {
 	}
 	assert.Len(t, seen, 100)
 }
+
+// distributionID が空のときの扱い。
+// ローカルには CloudFront が無いのでスキップするが、非 local で空なのは
+// 環境変数の設定漏れなので、黙って成功扱いにせずエラーにする。
+func TestCreateInvalidationWithEmptyDistributionID(t *testing.T) {
+	local := AWS{Profile: "local"}
+	assert.NoError(t, local.CreateInvalidation("", []string{"/resource/*"}))
+
+	production := AWS{Profile: ""}
+	assert.Error(t, production.CreateInvalidation("", []string{"/resource/*"}))
+
+	named := AWS{Profile: "reaction-production"}
+	assert.Error(t, named.CreateInvalidation("", []string{"/resource/*"}))
+}

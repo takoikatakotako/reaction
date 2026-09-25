@@ -2,6 +2,7 @@ package infrastructure
 
 import (
 	"context"
+	"errors"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cloudfront"
 	"github.com/aws/aws-sdk-go-v2/service/cloudfront/types"
@@ -19,6 +20,16 @@ func (a *AWS) createCloudfrontClient() (*cloudfront.Client, error) {
 }
 
 func (a *AWS) CreateInvalidation(distributionID string, paths []string) error {
+	// ローカル開発では CloudFront が無いのでスキップする。
+	// 非 local で ID が空なのは環境変数の設定漏れなので、黙って成功扱いにせず
+	// エラーにする（キャッシュが古いまま残るのを見逃さないため）。
+	if distributionID == "" {
+		if a.Profile == "local" {
+			return nil
+		}
+		return errors.New("distribution id is empty")
+	}
+
 	client, err := a.createCloudfrontClient()
 	if err != nil {
 		return err

@@ -4,33 +4,27 @@ import (
 	"bytes"
 	"context"
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"time"
 )
 
+// ローカル開発では s3mock を使う（LocalStack の代替、#137）
+const LocalS3Endpoint = "http://localhost:9000"
+
 // Private Methods
 func (a *AWS) createS3Client() (*s3.Client, error) {
-	// Localの場合
+	// Localの場合は s3mock を使う（LocalStack の代替、#137）
 	if a.Profile == "local" {
-		// AWS Configを読み込み（LocalStack用にカスタム）
-		// CI設定次第移行する
-		customResolver := aws.EndpointResolverWithOptionsFunc(func(service, region string, options ...interface{}) (aws.Endpoint, error) {
-			return aws.Endpoint{
-				URL:               LocalstackEndpoint,
-				HostnameImmutable: true,
-			}, nil
-		})
-
-		cfg, err := config.LoadDefaultConfig(context.TODO(),
-			config.WithRegion("ap-northeast-1"),
-			config.WithEndpointResolverWithOptions(customResolver),
-		)
+		cfg, err := a.createAWSConfig()
 		if err != nil {
 			return nil, err
 		}
 
-		return s3.NewFromConfig(cfg), nil
+		return s3.NewFromConfig(cfg, func(o *s3.Options) {
+			o.BaseEndpoint = aws.String(LocalS3Endpoint)
+			// s3mock は仮想ホスト形式のバケット名を解決できないのでパス形式にする
+			o.UsePathStyle = true
+		}), nil
 	}
 
 	// Local 以外の場合

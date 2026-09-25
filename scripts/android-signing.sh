@@ -26,6 +26,17 @@
 set -euo pipefail
 
 region="${AWS_REGION:-ap-northeast-1}"
+
+# push が使う秘密ファイルの置き場。EXIT trap から参照するのでグローバルにする。
+# local にすると trap 実行時にはスコープ外になり、後始末できない。
+secret_dir=""
+
+cleanup_secret_dir() {
+  if [ -n "$secret_dir" ]; then
+    rm -rf "$secret_dir"
+    secret_dir=""
+  fi
+}
 prefix="/reaction/production/android"
 expected_account=852798039462
 
@@ -146,10 +157,14 @@ do_push() {
   # 秘密値はコマンドライン引数に載せず、権限 700 のディレクトリ配下の
   # ファイル経由で keytool / AWS CLI に渡す。検証用の一時出力もここに置き、
   # 後始末はこの trap 1 個で保証する。
-  local secret_dir
   secret_dir="$(mktemp -d)"
   chmod 700 "$secret_dir"
-  trap 'rm -rf "$secret_dir"' EXIT INT TERM
+  # 後始末は EXIT だけに担当させ、INT / TERM ではハンドラから明示的に
+  # 非 0 で終了する。同じ削除処理を INT / TERM に登録すると、bash は
+  # ハンドラ実行後に処理を再開してしまい、中断したのに成功扱いになる。
+  trap cleanup_secret_dir EXIT
+  trap 'exit 130' INT
+  trap 'exit 143' TERM
 
   local key_alias
   read -rsp "keystore のパスワード: " store_password_input; echo
@@ -179,7 +194,7 @@ do_push() {
   # 正常終了時は明示的に消す。bash 3.2 (macOS 標準) は、パイプなどの
   # サブシェルが正常終了したとき EXIT trap を発火しないため、
   # trap だけに任せると秘密値が残ることがある。
-  rm -rf "$secret_dir"
+  cleanup_secret_dir
   trap - EXIT INT TERM
 
   echo "pushed $prefix/{upload-keystore,upload-keystore-password,upload-key-alias,upload-key-password}"

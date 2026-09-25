@@ -5,7 +5,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
 
-const LocalstackEndpoint = "http://localhost:4566"
+// ローカル開発では DynamoDB Local を使う（LocalStack の代替、#137）
+const LocalDynamoDBEndpoint = "http://localhost:8000"
 
 // Private Methods
 func (a *AWS) createDynamoDBClient() (*dynamodb.Client, error) {
@@ -17,7 +18,7 @@ func (a *AWS) createDynamoDBClient() (*dynamodb.Client, error) {
 	// Localの場合
 	if a.Profile == "local" {
 		return dynamodb.NewFromConfig(cfg, func(o *dynamodb.Options) {
-			o.BaseEndpoint = aws.String(LocalstackEndpoint)
+			o.BaseEndpoint = aws.String(LocalDynamoDBEndpoint)
 		}), nil
 	}
 

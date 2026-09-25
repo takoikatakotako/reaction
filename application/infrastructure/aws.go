@@ -4,6 +4,14 @@ import (
 	"context"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/credentials"
+)
+
+// ローカルの MinIO に設定している資格情報。
+// DynamoDB Local は任意の値で通るが、MinIO は一致していないと 403 になる。
+const (
+	LocalAccessKeyID     = "reactionlocal"
+	LocalSecretAccessKey = "reactionlocal"
 )
 
 type AWS struct {
@@ -23,9 +31,14 @@ func (a *AWS) createAWSConfig() (aws.Config, error) {
 		return cfg, nil
 	}
 
-	// CIなど Local Stack を利用する場合
+	// CI やローカル開発で DynamoDB Local / MinIO を利用する場合
 	if a.Profile == "local" {
-		cfg, err := config.LoadDefaultConfig(ctx, config.WithRegion("ap-northeast-1"))
+		cfg, err := config.LoadDefaultConfig(ctx,
+			config.WithRegion("ap-northeast-1"),
+			config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider(
+				LocalAccessKeyID, LocalSecretAccessKey, "",
+			)),
+		)
 		if err != nil {
 			return aws.Config{}, err
 		}

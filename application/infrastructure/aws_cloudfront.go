@@ -19,6 +19,12 @@ func (a *AWS) createCloudfrontClient() (*cloudfront.Client, error) {
 }
 
 func (a *AWS) CreateInvalidation(distributionID string, paths []string) error {
+	// ローカル開発では CloudFront を使わないため distribution が無い。
+	// 呼び出し側で分岐させず、ここで何もせず成功扱いにする。
+	if distributionID == "" {
+		return nil
+	}
+
 	client, err := a.createCloudfrontClient()
 	if err != nil {
 		return err

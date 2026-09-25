@@ -24,14 +24,11 @@ jobs:
       with:
         go-version: 1.23.2
 
-    # Mock環境のセットアップ
+    # Mock環境（DynamoDB Local / MinIO）のセットアップ。
+    # 初期化コンテナの完了まで待つので、固定の sleep は不要。
     - name: Setup Mock
       working-directory: local
       run: make setup
-
-    # Local Stack の起動完了まで待つ
-    - name: Wait SetUp Localstack
-      run: sleep 30s
 
     # Application API の実行
     - name: Run Test

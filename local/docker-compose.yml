@@ -1,10 +1,51 @@
+# LocalStack の Community Edition が 2026-03-23 で終了し、CI での実行に
+# 有償契約が必要になったため、DynamoDB と S3 をそれぞれの代替に置き換えている。
+#   DynamoDB → amazon/dynamodb-local (AWS 公式)
+#   S3        → adobe/s3mock (S3 互換)
+# MinIO も Docker Hub / quay.io から公開イメージを引けなくなっていたため
+# adobe/s3mock を採用している。
 services:
-  reaction-localstack:
-    image: localstack/localstack:4.5.0
+  reaction-dynamodb:
+    # 3.3.1 は arm64 で jetty のクラスが見つからず起動しないため 3.0.0 に固定する
+    image: amazon/dynamodb-local:3.0.0
+    command: ["-jar", "DynamoDBLocal.jar", "-inMemory", "-sharedDb"]
     ports:
-      - "4566:4566"
+      - "8000:8000"
+    healthcheck:
+      # DynamoDB Local は認証なしのリクエストに 400 を返すが、
+      # 応答が返ること自体が起動完了の確認になる
+      test: ["CMD-SHELL", "curl -s -o /dev/null http://127.0.0.1:8000/ || exit 1"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  reaction-s3:
+    image: adobe/s3mock:5.2.0
+    # 既定は HTTP 9090 / HTTPS 9191。SERVER_PORT で上書きすると
+    # 両者が同じポートを取り合って起動に失敗するので指定しない。
+    # initialBuckets は効かなかったのでバケット作成は init 側で行う。
+    ports:
+      - "9000:9090"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:9090/ || exit 1"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  # LocalStack の init フック相当。テーブルとバケットを作って終了する。
+  reaction-init:
+    image: amazon/aws-cli:2.37.3
+    entrypoint: ["/bin/sh", "/init/setup.sh"]
     environment:
-      - SERVICES=s3,sqs,sns,dynamodb
+      AWS_ACCESS_KEY_ID: reactionlocal
+      AWS_SECRET_ACCESS_KEY: reactionlocal
+      AWS_DEFAULT_REGION: ap-northeast-1
+      DYNAMODB_ENDPOINT: http://reaction-dynamodb:8000
+      S3_ENDPOINT: http://reaction-s3:9090
     volumes:
-      - ./createTable.sh:/etc/localstack/init/ready.d/createTable.sh
-      - ./createBucket.sh:/etc/localstack/init/ready.d/createBucket.sh
+      - ./setup.sh:/init/setup.sh:ro
+    depends_on:
+      reaction-dynamodb:
+        condition: service_healthy
+      reaction-s3:
+        condition: service_healthy

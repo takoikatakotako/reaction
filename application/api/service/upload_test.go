@@ -30,6 +30,7 @@ func TestUpload_GenerateUploadURLPost(t *testing.T) {
 		t.Errorf("unexpected error: %v", err)
 	}
 
-	expectedPrefix := "http://localhost:4566/resource.reaction-local.swiswiswift.com/"
+	// エンドポイントを直書きすると移行のたびに壊れるので定数を参照する
+	expectedPrefix := infrastructure.LocalS3Endpoint + "/resource.reaction-local.swiswiswift.com/"
 	assert.True(t, strings.HasPrefix(out.UploadURL, expectedPrefix))
 }

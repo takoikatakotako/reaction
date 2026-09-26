@@ -11,16 +11,30 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$repo_root"
 
-# Play は同じ versionCode の再アップロードを受け付けない。コミット数から
-# 採番する。単調増加で、どのコミットのビルドか後から辿れる。
-# 同じコミットで作り直すときだけ ANDROID_VERSION_CODE で明示する。
+# Play は同じ versionCode の再アップロードを受け付けない。
+# コミット数 * 100 + RETRY で採番する。
+#
+# コミット数そのものを使うと、同じコミットを手で +1 して配信したあと、
+# 次のコミットで自動採番に戻ったときに同じ番号になってしまう
+#   例) 628 で配信 -> 同じコミットを 629 で配信 -> 次のコミットも 629
+# 下 2 桁を再配信用に空けておけば、RETRY を使っても次のコミットの
+# 番号 (n+1)*100 を超えないので、自動採番に戻しても衝突しない。
+retry="${RETRY:-0}"
+if ! [ "$retry" -ge 0 ] 2>/dev/null || [ "$retry" -ge 100 ]; then
+  # ${} で囲む。全角文字が直後に来ると bash が変数名の一部として読む。
+  echo "error: RETRY は 0-99 の整数で指定してください（指定値: ${retry}）" >&2
+  exit 1
+fi
+
 if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
   echo "error: 浅いクローンではビルド番号を採番できません" >&2
   echo "       git fetch --unshallow するか fetch-depth: 0 を指定してください" >&2
   exit 1
 fi
-export ANDROID_VERSION_CODE="${ANDROID_VERSION_CODE:-$(git rev-list --count HEAD)}"
-echo "==> versionCode = $ANDROID_VERSION_CODE"
+
+commit_count="$(git rev-list --count HEAD)"
+export ANDROID_VERSION_CODE="${ANDROID_VERSION_CODE:-$(( commit_count * 100 + retry ))}"
+echo "==> versionCode = $ANDROID_VERSION_CODE (commit $(git rev-parse --short HEAD))"
 
 echo "==> Firebase 設定を取得"
 ./scripts/firebase-config.sh pull android
@@ -40,8 +54,10 @@ aab="android/app/build/outputs/bundle/release/app-release.aab"
 echo "==> 署名を検証"
 # keystore 側と AAB 側の証明書フィンガープリントを突き合わせる。
 # 鍵を取り違えると Play が受け付けないので、アップロード前にここで落とす。
+# パスワードは argv に載せない。引用符は単語分割を防ぐだけで、
+# 実行中のプロセス一覧からは見えてしまう。環境変数経由で渡す。
 key_sha="$(keytool -list -v -keystore "$ANDROID_KEYSTORE_FILE" \
-  -storepass "$ANDROID_KEYSTORE_PASSWORD" -alias "$ANDROID_KEY_ALIAS" 2>/dev/null \
+  -storepass:env ANDROID_KEYSTORE_PASSWORD -alias "$ANDROID_KEY_ALIAS" 2>/dev/null \
   | awk '/SHA256:/ {print $2; exit}')"
 
 work="$(mktemp -d)"

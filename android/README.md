@@ -43,14 +43,20 @@ Play Console → テスト → 内部テスト → 新しいリリースを作�
 ### バージョン
 
 Play は同じ `versionCode` の再アップロードを受け付けない。スクリプトが
-`git rev-list --count HEAD`（コミット数）から自動で採番するので、普段は
-意識しなくてよい。単調増加で、どのコミットのビルドか後から辿れる。
-
-同じコミットで作り直すときだけ明示する。
+**コミット数 × 100** から自動で採番するので、普段は意識しなくてよい。
 
 ```bash
-ANDROID_VERSION_CODE=628 AWS_PROFILE=reaction-production ./scripts/android-release.sh
+# 62700
+AWS_PROFILE=reaction-production ./scripts/android-release.sh
+
+# 62701（同じコミットで作り直すとき）
+RETRY=1 AWS_PROFILE=reaction-production ./scripts/android-release.sh
 ```
+
+下 2 桁を再配信用に空けてあるのは、コミット数をそのまま使うと番号が衝突する
+ため。628 で配信 → 同じコミットを手で 629 にして再配信 → 次のコミットで自動
+採番に戻ると、また 629 になる。`RETRY` を使っても次のコミットの番号
+`(n+1)×100` を超えないので、そのあと自動採番に戻して構わない。`RETRY` は 0-99。
 
 `build.gradle.kts` の既定値は 1。Play にアップロードしないビルド（手元の
 動作確認や CI のテスト）はこれで構わない。

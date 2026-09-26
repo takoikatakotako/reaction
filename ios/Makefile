@@ -28,14 +28,19 @@ test:
 		CODE_SIGNING_ALLOWED=NO
 
 # --- TestFlight 配信 ---------------------------------------------------------
-# ビルド番号。TestFlight は同じ (MARKETING_VERSION, CFBundleVersion) の
-# 再アップロードを受け付けないので、コミット数から自動で採番する。
-# 単調増加で、どのコミットのビルドか後から辿れる。
+# TestFlight は同じ (MARKETING_VERSION, CFBundleVersion) の再アップロードを
+# 受け付けない。コミット数 * 100 + RETRY で採番する。
 #
-# 同じコミットで archive し直すと番号が変わらず弾かれるので、
-# そのときだけ明示する:
-#   make archive BUILD_NUMBER=628
-BUILD_NUMBER ?= $(shell git rev-list --count HEAD)
+# コミット数そのものを使うと、同じコミットを手で +1 して配信したあと、
+# 次のコミットで自動採番に戻ったときに同じ番号になってしまう
+#   例) 628 で配信 -> 同じコミットを 629 で配信 -> 次のコミットも 629
+# 下 2 桁を再配信用に空けておけば、RETRY を使っても次のコミットの
+# 番号 (n+1)*100 を超えないので、自動採番に戻しても衝突しない。
+#
+#   make archive            # 62700
+#   make archive RETRY=1    # 62701（同じコミットで作り直すとき）
+RETRY ?= 0
+BUILD_NUMBER ?= $(shell echo $$(( $$(git rev-list --count HEAD) * 100 + $(RETRY) )))
 
 # 浅いクローンだとコミット数が実際より小さくなり、番号が巻き戻る。
 # CI では actions/checkout に fetch-depth: 0 を指定すること。
@@ -50,9 +55,12 @@ check-not-shallow:
 ARCHIVE_PATH = build/Reaction.xcarchive
 EXPORT_PATH  = build/export
 
-# 配布用の署名は Xcode に任せる。このチームは Cloud Managed Distribution
-# Certificate を使っており、秘密鍵は Apple 側にある（手元の keychain には
-# 無い）。-allowProvisioningUpdates がそれを取ってくる。
+# 配布用の署名は Xcode に任せる。
+#
+# -allowProvisioningUpdates は Apple Developer との通信を許可するフラグで、
+# 自動署名ターゲット（このプロジェクトは CODE_SIGN_STYLE: Automatic）では
+# プロファイル・App ID・証明書の作成と更新を行う。証明書が新規に発行され
+# ないことは保証されない。
 .PHONY: archive
 archive: check-not-shallow generate
 	xcodebuild archive \

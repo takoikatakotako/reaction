@@ -55,6 +55,8 @@ jobs:
         role-to-assume: ${{ env.AWS_PRODUCTION_ROLE_ARN }}
         role-session-name: reaction-ci-role-${{ github.run_id }}
         role-chaining: true
+        # reaction-ci-role の信頼ポリシーは sts:AssumeRole だけを許可している
+        role-skip-session-tagging: true
         aws-region: ap-northeast-1
 
     - name: Fetch google-services.json

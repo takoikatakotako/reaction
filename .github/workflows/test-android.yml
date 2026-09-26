@@ -22,6 +22,7 @@ on:
 
 env:
   AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
+  AWS_PRODUCTION_ROLE_ARN: arn:aws:iam::852798039462:role/reaction-ci-role
 
 jobs:
   test_android:
@@ -45,14 +46,18 @@ jobs:
         role-session-name: github-action-role-${{ github.run_id }}
         aws-region: ap-northeast-1
 
-    - name: configure aws profiles
-      run: |
-        mkdir -p ~/.aws
-        cp .github/workflows/aws_config/config ~/.aws/config
+    # ~/.aws/config のプロファイル（credential_source = Environment）は
+    # 使えない。AWS CLI は環境変数の認証情報をプロファイルより優先するため、
+    # AWS_PROFILE を指定しても management のままになる。ロールを繋ぐ。
+    - name: assume production role
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ env.AWS_PRODUCTION_ROLE_ARN }}
+        role-session-name: reaction-ci-role-${{ github.run_id }}
+        role-chaining: true
+        aws-region: ap-northeast-1
 
     - name: Fetch google-services.json
-      env:
-        AWS_PROFILE: reaction-production
       run: ./scripts/firebase-config.sh pull android
 
     # JDK のセットアップ（AGP 9 は JDK 17 以上が必須）

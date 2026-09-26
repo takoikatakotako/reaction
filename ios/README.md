@@ -31,8 +31,8 @@ make archive BUILD_NUMBER=2
 make export
 ```
 
-`build/export/Reaction.ipa` ができるので、Transporter でアップロードするか、
-Xcode の Organizer から配信する。
+`build/export/ReactionProduction.ipa` ができるので、Transporter でアップロード
+するか、Xcode の Organizer から配信する。
 
 ### ビルド番号
 

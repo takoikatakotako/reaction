@@ -61,5 +61,5 @@ export:
 		-exportOptionsPlist ExportOptions.plist \
 		-allowProvisioningUpdates
 	@echo
-	@echo "できました: ios/$(EXPORT_PATH)/Reaction.ipa"
+	@echo "できました: ios/$(EXPORT_PATH)/ReactionProduction.ipa"
 	@echo "Transporter でアップロードするか、Xcode の Organizer から配信してください。"

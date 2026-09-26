@@ -59,6 +59,34 @@ data "aws_iam_policy_document" "app_ci_role_policy_document" {
     ]
     resources = ["*"]
   }
+
+  # モバイルのビルドに必要な設定ファイル・署名鍵の取得
+  # （scripts/firebase-config.sh, scripts/android-signing.sh）
+  statement {
+    effect = "Allow"
+    actions = [
+      "ssm:GetParameter",
+    ]
+    resources = [
+      "arn:aws:ssm:*:*:parameter/reaction/*/firebase/*",
+      "arn:aws:ssm:*:*:parameter/reaction/*/android/*",
+    ]
+  }
+
+  # SecureString の復号。SSM 経由の呼び出しに限定する
+  statement {
+    effect = "Allow"
+    actions = [
+      "kms:Decrypt",
+    ]
+    resources = ["*"]
+
+    condition {
+      test     = "StringEquals"
+      variable = "kms:ViaService"
+      values   = ["ssm.ap-northeast-1.amazonaws.com"]
+    }
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "app_ci_role_policy_attachment" {

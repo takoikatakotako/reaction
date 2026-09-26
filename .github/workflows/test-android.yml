@@ -9,24 +9,51 @@ on:
       - main
     paths:
       - android/**
+      - scripts/firebase-config.sh
       - .github/workflows/test-android.yml
   pull_request:
     paths:
       - android/**
+      - scripts/firebase-config.sh
       - .github/workflows/test-android.yml
     branches:
       - main
       - develop
 
+env:
+  AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
+
 jobs:
   test_android:
     name: test android
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
     # チェックアウト
     - name: Checkout
       uses: actions/checkout@v4
+
+    # google-services.json は SSM がマスターでリポジトリに置いていないため、
+    # ビルド前に取得する（google-services プラグインが無いと失敗する）
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        role-session-name: github-action-role-${{ github.run_id }}
+        aws-region: ap-northeast-1
+
+    - name: configure aws profiles
+      run: |
+        mkdir -p ~/.aws
+        cp .github/workflows/aws_config/config ~/.aws/config
+
+    - name: Fetch google-services.json
+      env:
+        AWS_PROFILE: reaction-production
+      run: ./scripts/firebase-config.sh pull android
 
     # JDK のセットアップ（AGP 9 は JDK 17 以上が必須）
     - name: Set up JDK

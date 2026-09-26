@@ -66,7 +66,8 @@ captures/
 .cxx/
 
 # Google Services (e.g. APIs or Firebase)
-# google-services.json
+# SSM がマスター。scripts/firebase-config.sh pull android で取得する
+google-services.json
 
 # Freeline
 freeline.py

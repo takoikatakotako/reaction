@@ -15,7 +15,10 @@ android {
         applicationId = "com.swiswiswift.chemist"
         minSdk = 29
         targetSdk = 36
-        versionCode = 6
+        // Play にアップロードするビルドは scripts/android-release.sh が
+        // コミット数を渡す。それ以外（手元の動作確認や CI のテスト）は
+        // アップロードしないので 1 で構わない。
+        versionCode = (System.getenv("ANDROID_VERSION_CODE") ?: "1").toInt()
         versionName = "1.1.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

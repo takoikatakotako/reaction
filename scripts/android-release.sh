@@ -11,6 +11,17 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$repo_root"
 
+# Play は同じ versionCode の再アップロードを受け付けない。コミット数から
+# 採番する。単調増加で、どのコミットのビルドか後から辿れる。
+# 同じコミットで作り直すときだけ ANDROID_VERSION_CODE で明示する。
+if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+  echo "error: 浅いクローンではビルド番号を採番できません" >&2
+  echo "       git fetch --unshallow するか fetch-depth: 0 を指定してください" >&2
+  exit 1
+fi
+export ANDROID_VERSION_CODE="${ANDROID_VERSION_CODE:-$(git rev-list --count HEAD)}"
+echo "==> versionCode = $ANDROID_VERSION_CODE"
+
 echo "==> Firebase 設定を取得"
 ./scripts/firebase-config.sh pull android
 
@@ -49,7 +60,7 @@ fi
 
 echo
 echo "できました: $aab"
-echo "  versionCode: $(grep -E '^\s*versionCode' android/app/build.gradle.kts | grep -oE '[0-9]+')"
+echo "  versionCode: $ANDROID_VERSION_CODE"
 echo "  versionName: $(grep -E '^\s*versionName' android/app/build.gradle.kts | grep -oE '"[^"]+"' | tr -d '"')"
 echo "  SHA256:      $aab_sha"
 echo

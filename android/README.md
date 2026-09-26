@@ -42,8 +42,22 @@ Play Console → テスト → 内部テスト → 新しいリリースを作�
 
 ### バージョン
 
-Play は同じ `versionCode` の再アップロードを受け付けない。上げ直すときは
-`app/build.gradle.kts` の `versionCode` を上げる。
+Play は同じ `versionCode` の再アップロードを受け付けない。スクリプトが
+`git rev-list --count HEAD`（コミット数）から自動で採番するので、普段は
+意識しなくてよい。単調増加で、どのコミットのビルドか後から辿れる。
+
+同じコミットで作り直すときだけ明示する。
+
+```bash
+ANDROID_VERSION_CODE=628 AWS_PROFILE=reaction-production ./scripts/android-release.sh
+```
+
+`build.gradle.kts` の既定値は 1。Play にアップロードしないビルド（手元の
+動作確認や CI のテスト）はこれで構わない。
+
+浅いクローンだとコミット数が実際より小さくなり番号が巻き戻るため、
+スクリプトは shallow repository を検出して落とす。CI で使うときは
+`actions/checkout` に `fetch-depth: 0` を指定すること。
 
 詳細は `scripts/android-signing.sh` の冒頭コメントを参照。
 

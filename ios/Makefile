@@ -29,9 +29,23 @@ test:
 
 # --- TestFlight 配信 ---------------------------------------------------------
 # ビルド番号。TestFlight は同じ (MARKETING_VERSION, CFBundleVersion) の
-# 再アップロードを受け付けないので、上げ直すときに指定する。
-#   make archive BUILD_NUMBER=2
-BUILD_NUMBER ?= 1
+# 再アップロードを受け付けないので、コミット数から自動で採番する。
+# 単調増加で、どのコミットのビルドか後から辿れる。
+#
+# 同じコミットで archive し直すと番号が変わらず弾かれるので、
+# そのときだけ明示する:
+#   make archive BUILD_NUMBER=628
+BUILD_NUMBER ?= $(shell git rev-list --count HEAD)
+
+# 浅いクローンだとコミット数が実際より小さくなり、番号が巻き戻る。
+# CI では actions/checkout に fetch-depth: 0 を指定すること。
+.PHONY: check-not-shallow
+check-not-shallow:
+	@if [ "$$(git rev-parse --is-shallow-repository)" = "true" ]; then \
+		echo "error: 浅いクローンではビルド番号を採番できません" >&2; \
+		echo "       git fetch --unshallow するか fetch-depth: 0 を指定してください" >&2; \
+		exit 1; \
+	fi
 
 ARCHIVE_PATH = build/Reaction.xcarchive
 EXPORT_PATH  = build/export
@@ -40,7 +54,7 @@ EXPORT_PATH  = build/export
 # Certificate を使っており、秘密鍵は Apple 側にある（手元の keychain には
 # 無い）。-allowProvisioningUpdates がそれを取ってくる。
 .PHONY: archive
-archive: generate
+archive: check-not-shallow generate
 	xcodebuild archive \
 		-project Reaction.xcodeproj \
 		-scheme Production \

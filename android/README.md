@@ -25,14 +25,25 @@ cd android
 ./gradlew lintDebug
 ```
 
-## 署名付きビルド
+## Play への配信
 
-アップロード鍵も SSM がマスター。
+アップロード鍵も SSM がマスター。設定ファイルの取得・署名付きビルド・
+署名の検証をまとめて行うスクリプトがある。
 
 ```bash
-exports="$(scripts/android-signing.sh pull)" && eval "$exports"
-cd android && ./gradlew bundleRelease
+AWS_PROFILE=reaction-production ./scripts/android-release.sh
 ```
+
+`android/app/build/outputs/bundle/release/app-release.aab` ができるので、
+Play Console → テスト → 内部テスト → 新しいリリースを作成 からアップロードする。
+
+アップロード前に AAB の署名がアップロード鍵と一致することを検証している。
+鍵を取り違えると Play が受け付けないため、そこで落とす。
+
+### バージョン
+
+Play は同じ `versionCode` の再アップロードを受け付けない。上げ直すときは
+`app/build.gradle.kts` の `versionCode` を上げる。
 
 詳細は `scripts/android-signing.sh` の冒頭コメントを参照。
 

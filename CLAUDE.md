@@ -70,6 +70,20 @@ make save-resolved    # Xcode で依存を更新した後、Package.resolved を
 
 SwiftPM の依存バージョンは `ios/Package.resolved` で固定している（xcodeproj は生成物で gitignore されているため別置き）。
 
+### モバイルの配信
+
+```bash
+# Android: 署名付き AAB を作る（Play Console から手動アップロード）
+AWS_PROFILE=reaction-production ./scripts/android-release.sh
+
+# iOS: TestFlight 用の ipa を作る
+cd ios && make archive BUILD_NUMBER=2 && make export
+```
+
+Firebase の設定ファイルはリポジトリに置かず SSM がマスター。
+`scripts/firebase-config.sh pull android` / `pull ios dev|prod` で取得する。
+詳細は `android/README.md` と `ios/README.md`。
+
 ### デプロイ
 
 管理画面:

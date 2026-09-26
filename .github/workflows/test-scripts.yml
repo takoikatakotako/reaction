@@ -49,7 +49,8 @@ jobs:
                 for m in pat.finditer(line):
                     nxt = line[m.end():m.end()+1]
                     if nxt and ord(nxt) > 127:
-                        bad.append(f"{f}:{i}: {m.group()} の直後に {nxt!r}。${{...}} で囲むこと")
+                        # 波括弧 2 つを直接書くと Actions が式として解釈するため避ける
+                        bad.append(f"{f}:{i}: {m.group()} の直後に {nxt!r}。波括弧で囲むこと")
         print("\n".join(bad) if bad else "問題なし")
         sys.exit(1 if bad else 0)
         PY

@@ -28,6 +28,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    # google-services.json は SSM がマスターでリポジトリに置いていないが、
+    # プラグインはファイルが無いとビルドを失敗させる。CI は lint /
+    # ユニットテスト / assembleDebug にしか使わないのでダミーで足りる。
+    # 本物を取りに行くと PR のコードに本番の認証情報を渡すことになる。
+    - name: Place placeholder google-services.json
+      run: cp android/ci/google-services.json android/app/google-services.json
+
     # JDK のセットアップ（AGP 9 は JDK 17 以上が必須）
     - name: Set up JDK
       uses: actions/setup-java@v4

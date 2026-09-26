@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
@@ -37,9 +39,23 @@ android {
     }
 
     buildTypes {
+        debug {
+            // デバッグビルドは記号化不要なのでアップロードしない（ビルドを速くする）
+            configure<com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension> {
+                mappingFileUploadEnabled = false
+            }
+        }
+
         release {
             signingConfig = signingConfigs.findByName("release")
             isMinifyEnabled = false
+
+            // 難読化を有効にしたときに記号化できるよう、mapping を
+            // Crashlytics にアップロードする設定を先に入れておく。
+            // isMinifyEnabled = false の間は mapping が生成されないので何も起きない。
+            configure<com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension> {
+                mappingFileUploadEnabled = true
+            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -66,6 +82,9 @@ android {
 }
 
 dependencies {
+    // Crashlytics。BOM がバージョンを揃えるので個別指定はしない
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.crashlytics)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

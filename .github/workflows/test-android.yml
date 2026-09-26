@@ -9,58 +9,31 @@ on:
       - main
     paths:
       - android/**
-      - scripts/firebase-config.sh
       - .github/workflows/test-android.yml
   pull_request:
     paths:
       - android/**
-      - scripts/firebase-config.sh
       - .github/workflows/test-android.yml
     branches:
       - main
       - develop
 
-env:
-  AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
-  AWS_PRODUCTION_ROLE_ARN: arn:aws:iam::852798039462:role/reaction-ci-role
-
 jobs:
   test_android:
     name: test android
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
 
     steps:
     # チェックアウト
     - name: Checkout
       uses: actions/checkout@v4
 
-    # google-services.json は SSM がマスターでリポジトリに置いていないため、
-    # ビルド前に取得する（google-services プラグインが無いと失敗する）
-    - name: configure aws credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        role-to-assume: ${{ env.AWS_ROLE_ARN }}
-        role-session-name: github-action-role-${{ github.run_id }}
-        aws-region: ap-northeast-1
-
-    # ~/.aws/config のプロファイル（credential_source = Environment）は
-    # 使えない。AWS CLI は環境変数の認証情報をプロファイルより優先するため、
-    # AWS_PROFILE を指定しても management のままになる。ロールを繋ぐ。
-    - name: assume production role
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        role-to-assume: ${{ env.AWS_PRODUCTION_ROLE_ARN }}
-        role-session-name: reaction-ci-role-${{ github.run_id }}
-        role-chaining: true
-        # reaction-ci-role の信頼ポリシーは sts:AssumeRole だけを許可している
-        role-skip-session-tagging: true
-        aws-region: ap-northeast-1
-
-    - name: Fetch google-services.json
-      run: ./scripts/firebase-config.sh pull android
+    # google-services.json は SSM がマスターでリポジトリに置いていないが、
+    # プラグインはファイルが無いとビルドを失敗させる。CI は lint /
+    # ユニットテスト / assembleDebug にしか使わないのでダミーで足りる。
+    # 本物を取りに行くと PR のコードに本番の認証情報を渡すことになる。
+    - name: Place placeholder google-services.json
+      run: cp android/ci/google-services.json android/app/google-services.json
 
     # JDK のセットアップ（AGP 9 は JDK 17 以上が必須）
     - name: Set up JDK

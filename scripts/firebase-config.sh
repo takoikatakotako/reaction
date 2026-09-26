@@ -29,7 +29,7 @@ dev_account=467988630030
 prod_account=852798039462
 
 usage() {
-  echo "usage: $0 pull <android|ios|all> [dev|prod]" >&2
+  echo "usage: $0 pull <android|ios> [dev|prod]" >&2
   echo "       $0 push android <google-services.json>" >&2
   exit 2
 }
@@ -90,7 +90,6 @@ case "$action" in
     case "$target" in
       android) pull_android ;;
       ios)     pull_ios "${3:-dev}" ;;
-      all)     pull_android; pull_ios dev; pull_ios prod ;;
       *) usage ;;
     esac
     ;;

@@ -12,6 +12,10 @@ AWS_PROFILE=reaction-production ./scripts/firebase-config.sh pull android
 Firebase プロジェクトは本番のみ（`reaction-9c595`）。デバッグビルドの
 クラッシュも同じプロジェクトに届く。
 
+CI は AWS を使わず `ci/google-services.json`（ダミー）をコピーしている。
+lint / ユニットテスト / `assembleDebug` を通すだけなのでそれで足りる。
+Firebase に繋ぐ動作確認は手元か実機で行う。
+
 ## ビルド
 
 ```bash

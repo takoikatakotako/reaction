@@ -40,7 +40,29 @@ test:
 #   make archive            # 62700
 #   make archive RETRY=1    # 62701（同じコミットで作り直すとき）
 RETRY ?= 0
-BUILD_NUMBER ?= $(shell echo $$(( $$(git rev-list --count HEAD) * 100 + $(RETRY) )))
+# RETRY= と空で渡された場合は未指定として 0 に倒す（Android 側の
+# ${RETRY:-0} と挙動を揃える）。
+RETRY_N := $(or $(strip $(RETRY)),0)
+BUILD_NUMBER ?= $(shell echo $$(( $$(git rev-list --count HEAD) * 100 + $(RETRY_N) )))
+
+# 前提の検証は宣言順に実行させる。make -j でも generate や xcodebuild と
+# 並行に走らないようにするため、この Makefile では並列実行を無効にする。
+# 重い処理は xcodebuild が内部で並列化するので実害はない。
+.NOTPARALLEL:
+
+# RETRY は 0-99。範囲外だと次のコミットの (n+1)*100 に到達して衝突し、
+# 負値や非数値はシェル算術に素通りして意図しない番号になる。
+.PHONY: check-retry
+check-retry:
+	@case "$(RETRY_N)" in \
+		'' | *[!0-9]*) \
+			echo "error: RETRY は 0-99 の整数で指定してください（指定値: $(RETRY_N)）" >&2; \
+			exit 1 ;; \
+	esac
+	@if [ "$(RETRY_N)" -gt 99 ]; then \
+		echo "error: RETRY は 0-99 の整数で指定してください（指定値: $(RETRY_N)）" >&2; \
+		exit 1; \
+	fi
 
 # 浅いクローンだとコミット数が実際より小さくなり、番号が巻き戻る。
 # CI では actions/checkout に fetch-depth: 0 を指定すること。
@@ -62,7 +84,7 @@ EXPORT_PATH  = build/export
 # プロファイル・App ID・証明書の作成と更新を行う。証明書が新規に発行され
 # ないことは保証されない。
 .PHONY: archive
-archive: check-not-shallow generate
+archive: check-retry check-not-shallow generate
 	xcodebuild archive \
 		-project Reaction.xcodeproj \
 		-scheme Production \

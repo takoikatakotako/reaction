@@ -50,7 +50,8 @@ make archive RETRY=1     # 62701（同じコミットで作り直すとき）
 採番に戻ると、また 629 になる。`RETRY` を使っても次のコミットの番号
 `(n+1)×100` を超えないので、そのあと自動採番に戻して構わない。
 
-`RETRY` は 0-99。`project.yml` の `CURRENT_PROJECT_VERSION: 1` は Xcode から
+`RETRY` は 0-99 の整数。範囲外・負値・非数値は `make archive` が弾く。
+空文字（`RETRY=`）は未指定として 0 に倒す。`project.yml` の `CURRENT_PROJECT_VERSION: 1` は Xcode から
 直接ビルドしたときの既定値で、`make archive` はそれを上書きする。
 
 浅いクローンだとコミット数が実際より小さくなり番号が巻き戻るため、

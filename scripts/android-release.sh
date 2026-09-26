@@ -6,6 +6,9 @@
 #
 # 事前に production のプロファイルで認証しておくこと:
 #   AWS_PROFILE=reaction-production scripts/android-release.sh
+#
+# --print-version-code を渡すと、採番だけ行って番号を表示して終わる
+# （AWS には触らない）。テストから使う。
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -34,6 +37,12 @@ fi
 
 commit_count="$(git rev-list --count HEAD)"
 export ANDROID_VERSION_CODE="${ANDROID_VERSION_CODE:-$(( commit_count * 100 + retry ))}"
+
+if [ "${1:-}" = "--print-version-code" ]; then
+  echo "$ANDROID_VERSION_CODE"
+  exit 0
+fi
+
 echo "==> versionCode = $ANDROID_VERSION_CODE (commit $(git rev-parse --short HEAD))"
 
 echo "==> Firebase 設定を取得"

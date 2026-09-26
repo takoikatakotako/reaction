@@ -3,7 +3,7 @@
 # rikako (takoikatakotako/rikako) の同名スクリプトを 1 アプリ構成向けに簡略化したもの。
 #
 # これらは API キーを含むが秘密度は低い（アプリに同梱されて配布される値）。
-# SSM に置くのは CI とローカルが同じ場所から取れるようにするため。
+# SSM に置くのは、置き場所を 1 箇所に決めて各自の手元に散らさないため。
 #
 # パラメータ（すべて SecureString、手動 put。Terraform 管理外）:
 #   /reaction/development/firebase/ios       … GoogleService-Info.plist
@@ -15,11 +15,16 @@
 # 使い方:
 #   scripts/firebase-config.sh pull android
 #   scripts/firebase-config.sh pull ios dev
-#   scripts/firebase-config.sh pull all
+#   scripts/firebase-config.sh pull ios prod
 #   scripts/firebase-config.sh push android <google-services.json>
 #
+# 1 回の実行が触るのは 1 アカウントだけ。android と ios prod は production、
+# ios dev は development にあるため、まとめて取得する all のような指定は
+# 用意していない（1 つの資格情報では両方のアカウントを満たせない）。
+#
 # 事前に対象環境のプロファイルで認証しておくこと。
-# CI では OIDC で assume したロールでそのまま動く。
+# CI は使わない。Android CI は android/ci/google-services.json（ダミー）で
+# ビルドするので、PR のワークフローに AWS の認証情報は渡していない。
 set -euo pipefail
 
 region="${AWS_REGION:-ap-northeast-1}"

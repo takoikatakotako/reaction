@@ -22,7 +22,9 @@
 #       （コマンドライン履歴に残さない）。
 #
 # 事前に production のプロファイルで認証しておくこと。
-# CI では OIDC で assume したロールでそのまま動く。
+# CI からはまだ使っていない。共有の reaction-ci-role には SSM の読み取りを
+# 付けていないため、Play へのアップロードを CI 化するときは、信頼済み ref
+# または保護された environment に限定した専用の経路を用意すること。
 set -euo pipefail
 
 region="${AWS_REGION:-ap-northeast-1}"

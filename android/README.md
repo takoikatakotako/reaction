@@ -25,14 +25,49 @@ cd android
 ./gradlew lintDebug
 ```
 
-## 署名付きビルド
+## Play への配信
 
-アップロード鍵も SSM がマスター。
+アップロード鍵も SSM がマスター。設定ファイルの取得・署名付きビルド・
+署名の検証をまとめて行うスクリプトがある。
 
 ```bash
-exports="$(scripts/android-signing.sh pull)" && eval "$exports"
-cd android && ./gradlew bundleRelease
+AWS_PROFILE=reaction-production ./scripts/android-release.sh
 ```
+
+`android/app/build/outputs/bundle/release/app-release.aab` ができるので、
+Play Console → テスト → 内部テスト → 新しいリリースを作成 からアップロードする。
+
+アップロード前に AAB の署名がアップロード鍵と一致することを検証している。
+鍵を取り違えると Play が受け付けないため、そこで落とす。
+
+### バージョン
+
+Play は同じ `versionCode` の再アップロードを受け付けない。スクリプトが
+**コミット数 × 100** から自動で採番するので、普段は意識しなくてよい。
+
+```bash
+# 62700
+AWS_PROFILE=reaction-production ./scripts/android-release.sh
+
+# 62701（同じコミットで作り直すとき）
+RETRY=1 AWS_PROFILE=reaction-production ./scripts/android-release.sh
+```
+
+下 2 桁を再配信用に空けてあるのは、コミット数をそのまま使うと番号が衝突する
+ため。628 で配信 → 同じコミットを手で 629 にして再配信 → 次のコミットで自動
+採番に戻ると、また 629 になる。`RETRY` を使っても次のコミットの番号
+`(n+1)×100` を超えないので、そのあと自動採番に戻して構わない。
+
+`RETRY` は 0-99 の整数。範囲外・負値・非数値はスクリプトが弾く。空文字
+（`RETRY=`）は未指定として 0 に倒す。採番の挙動は
+`scripts/test-version-numbering.sh` でテストしている。
+
+`build.gradle.kts` の既定値は 1。Play にアップロードしないビルド（手元の
+動作確認や CI のテスト）はこれで構わない。
+
+浅いクローンだとコミット数が実際より小さくなり番号が巻き戻るため、
+スクリプトは shallow repository を検出して落とす。CI で使うときは
+`actions/checkout` に `fetch-depth: 0` を指定すること。
 
 詳細は `scripts/android-signing.sh` の冒頭コメントを参照。
 

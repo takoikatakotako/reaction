@@ -42,10 +42,17 @@ TestFlight は同じ (`MARKETING_VERSION`, `CFBundleVersion`) の再アップロ
 
 ### 配布証明書について
 
-`make archive` は `-allowProvisioningUpdates` を付けているので、手元に配布証明書
-（Apple Distribution）が無ければ Apple Developer 側に作りに行く。**配布証明書は
-発行枠に限りがある**（チームあたり数枚）ので、既に他の Mac で発行済みでないか
-確認してから実行すること。既にある場合は、そちらから書き出した .p12 を
-インポートするほうが枠を消費しない。
+このチーム（5RH346BQ66）は **Cloud Managed Distribution Certificate** を使っている。
+秘密鍵を Apple 側が保持する方式で、署名時に Xcode が取ってくる。
 
-Xcode の Organizer から Archive → Distribute App を使う場合も同じ扱いになる。
+そのため `security find-identity` には配布証明書が出てこない。手元の keychain しか
+見ていないだけで、証明書が無いわけではない。証明書の実体はプロビジョニング
+プロファイルから確認できる。
+
+```bash
+cd ~/Library/Developer/Xcode/UserData/Provisioning\ Profiles/
+security cms -D -i <profile>.mobileprovision | plutil -p - | head
+```
+
+`make archive` の `-allowProvisioningUpdates` はこのクラウド管理証明書を使うので、
+新しく証明書が発行されることはない。

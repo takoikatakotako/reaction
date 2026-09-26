@@ -36,9 +36,9 @@ BUILD_NUMBER ?= 1
 ARCHIVE_PATH = build/Reaction.xcarchive
 EXPORT_PATH  = build/export
 
-# 配布用の署名は Xcode に任せる。証明書やプロファイルが手元に無い場合は
-# -allowProvisioningUpdates が Apple Developer 側に作りに行く。
-# 配布証明書は発行枠に限りがあるので、意図せず増やさないよう注意すること。
+# 配布用の署名は Xcode に任せる。このチームは Cloud Managed Distribution
+# Certificate を使っており、秘密鍵は Apple 側にある（手元の keychain には
+# 無い）。-allowProvisioningUpdates がそれを取ってくる。
 .PHONY: archive
 archive: generate
 	xcodebuild archive \

@@ -23,16 +23,60 @@ make test
 
 ## TestFlight への配信
 
-スキームは `Production`（`com.example.junpei.chemi`）。
+本番と開発の 2 つを別アプリとして配信できる。
+
+| | スキーム | バンドル ID | API |
+|---|---|---|---|
+| 本番 | `Production` | `com.example.junpei.chemi` | reaction-production |
+| 開発 | `Development` | `com.swiswiswift.reaction.development` | reaction-development |
 
 ```bash
 cd ios
+
+# 本番 -> build/export/ReactionProduction.ipa
 make archive
 make export
+
+# 開発 -> build/export-development/ReactionDevelopment.ipa
+make archive-development
+make export-development
 ```
 
-`build/export/ReactionProduction.ipa` ができるので、Transporter でアップロード
-するか、Xcode の Organizer から配信する。
+Transporter でアップロードするか、Xcode の Organizer から配信する。
+
+### アップロードまで一発でやる
+
+App Store Connect の API キーを SSM に入れてあれば、ビルドからアップロード
+まで通しで行える。
+
+```bash
+AWS_PROFILE=reaction-production ./scripts/ios-release.sh production
+AWS_PROFILE=reaction-production ./scripts/ios-release.sh development
+```
+
+Firebase 設定の有無を確認 → archive → export → `altool --validate-app` →
+`altool --upload-app` の順に進む。アップロードは取り消せないので、
+先に検証して弾かれる理由があれば手前で止める。
+
+`SKIP_UPLOAD=1` を付けると ipa を作るところまでで止まる。
+
+API キーの登録は 1 回だけ。
+
+```bash
+AWS_PROFILE=reaction-production ./scripts/appstore-connect.sh push AuthKey_XXXXXXXXXX.p8
+```
+
+キー ID と Issuer ID は対話で聞かれる。App Store Connect →
+ユーザーとアクセス → 統合 → App Store Connect API で発行する
+（アクセス権は App Manager）。`.p8` は 1 回しかダウンロードできないが、
+SSM に入れたあとは手元から消してよい。
+
+どちらも構成は `Release`。開発版も本番と同じ最適化で確認したいため、
+`Development` スキームの run は `Debug` のままだが archive は `Release` に
+している（`project.yml`）。
+
+バンドル ID が違うので端末に両方入れられる。アイコンも
+`AppIcon-Development` / `AppIcon-Production` で分かれている。
 
 ### ビルド番号
 

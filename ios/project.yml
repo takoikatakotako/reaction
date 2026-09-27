@@ -15,11 +15,16 @@ schemes:
       config: Debug
       targets:
         - ReactionTests
+    # 配信するビルドは本番と同じ最適化で確認したいので Release
+    archive:
+      config: Release
   Production:
     build:
       targets:
         ReactionProduction: all
     run:
+      config: Release
+    archive:
       config: Release
 settings:
   base:

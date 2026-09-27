@@ -7,6 +7,9 @@
 # 事前に production のプロファイルで認証しておくこと:
 #   AWS_PROFILE=reaction-production scripts/android-release.sh
 #
+# UPLOAD=1 を付けると、ビルドしたあと Play の内部テストトラックまで
+# 上げる（scripts/play-upload.sh）。
+#
 # --print-version-code を渡すと、採番だけ行って番号を表示して終わる
 # （AWS には触らない）。テストから使う。
 set -euo pipefail
@@ -88,5 +91,13 @@ echo "できました: $aab"
 echo "  versionCode: $ANDROID_VERSION_CODE"
 echo "  versionName: $(grep -E '^\s*versionName' android/app/build.gradle.kts | grep -oE '"[^"]+"' | tr -d '"')"
 echo "  SHA256:      $aab_sha"
+
+if [ -z "${UPLOAD:-}" ]; then
+  echo
+  echo "Play Console → テスト → 内部テスト → 新しいリリースを作成 からアップロードしてください。"
+  echo "（UPLOAD=1 を付けるとそのままアップロードします）"
+  exit 0
+fi
+
 echo
-echo "Play Console → テスト → 内部テスト → 新しいリリースを作成 からアップロードしてください。"
+./scripts/play-upload.sh "$aab"

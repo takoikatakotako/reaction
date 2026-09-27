@@ -64,6 +64,10 @@ Play Developer API v3 を直接叩いている。依存を増やさないため�
 commit するまでは何も公開されない。途中で落ちた場合は edit を破棄するので、
 Play Console に未完了の編集が残らない。
 
+commit には `changesInReviewBehavior=ERROR_IF_IN_REVIEW` を付けている。省略すると
+審査中の変更をキャンセルして再送信する挙動になり、製品版の審査中に内部テストを
+上げると巻き込むため。審査中の場合はエラーで止まる。
+
 ### Play の認証（鍵ファイルは使わない）
 
 `play-publisher@takoikatakotako-management.iam.gserviceaccount.com` を

@@ -125,7 +125,12 @@ curl -sS -X PUT "$api/$package/edits/$edit_id/tracks/$track" \
   | python3 -c 'import json,sys; d=json.load(sys.stdin); sys.exit("error: %s" % d) if "error" in d else None'
 
 echo "==> commit"
-curl -sS -X POST "$api/$package/edits/$edit_id:commit" -H "$auth" -H "Content-Length: 0" \
+# changesInReviewBehavior を省略すると CANCEL_IN_REVIEW_AND_SUBMIT になり、
+# 審査中の変更があるとそれをキャンセルして再送信してしまう。製品版の審査中に
+# 内部テストを上げると巻き込むので、審査中なら止める。
+# この場合 API は edit を無効化せずエラーを返すため、cleanup で破棄できる。
+curl -sS -X POST "$api/$package/edits/$edit_id:commit?changesInReviewBehavior=ERROR_IF_IN_REVIEW" \
+  -H "$auth" -H "Content-Length: 0" \
   | python3 -c 'import json,sys; d=json.load(sys.stdin); sys.exit("error: %s" % d) if "error" in d else None'
 committed=1
 

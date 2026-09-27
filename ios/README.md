@@ -44,6 +44,33 @@ make export-development
 
 Transporter でアップロードするか、Xcode の Organizer から配信する。
 
+### アップロードまで一発でやる
+
+App Store Connect の API キーを SSM に入れてあれば、ビルドからアップロード
+まで通しで行える。
+
+```bash
+AWS_PROFILE=reaction-production ./scripts/ios-release.sh production
+AWS_PROFILE=reaction-production ./scripts/ios-release.sh development
+```
+
+Firebase 設定の有無を確認 → archive → export → `altool --validate-app` →
+`altool --upload-app` の順に進む。アップロードは取り消せないので、
+先に検証して弾かれる理由があれば手前で止める。
+
+`SKIP_UPLOAD=1` を付けると ipa を作るところまでで止まる。
+
+API キーの登録は 1 回だけ。
+
+```bash
+AWS_PROFILE=reaction-production ./scripts/appstore-connect.sh push AuthKey_XXXXXXXXXX.p8
+```
+
+キー ID と Issuer ID は対話で聞かれる。App Store Connect →
+ユーザーとアクセス → 統合 → App Store Connect API で発行する
+（アクセス権は App Manager）。`.p8` は 1 回しかダウンロードできないが、
+SSM に入れたあとは手元から消してよい。
+
 どちらも構成は `Release`。開発版も本番と同じ最適化で確認したいため、
 `Development` スキームの run は `Debug` のままだが archive は `Release` に
 している（`project.yml`）。

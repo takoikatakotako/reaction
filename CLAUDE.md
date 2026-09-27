@@ -76,7 +76,11 @@ SwiftPM の依存バージョンは `ios/Package.resolved` で固定している
 # Android: 署名付き AAB を作る（Play Console から手動アップロード）
 AWS_PROFILE=reaction-production ./scripts/android-release.sh
 
-# iOS: TestFlight 用の ipa を作る（ビルド番号はコミット数から自動採番）
+# iOS: ビルドから TestFlight へのアップロードまで一発
+AWS_PROFILE=reaction-production ./scripts/ios-release.sh production
+AWS_PROFILE=reaction-production ./scripts/ios-release.sh development
+
+# ipa を作るだけなら（ビルド番号はコミット数から自動採番）
 cd ios && make archive && make export                          # 本番
 cd ios && make archive-development && make export-development  # 開発
 ```

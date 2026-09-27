@@ -98,6 +98,15 @@ EXPORT_FLAGS = \
 	-exportOptionsPlist ExportOptions.plist \
 	-allowProvisioningUpdates
 
+# スクリプトから採番結果を読むため
+.PHONY: print-build-number
+print-build-number: check-retry
+	@echo $(BUILD_NUMBER)
+
+.PHONY: print-marketing-version
+print-marketing-version:
+	@sed -n 's/^ *MARKETING_VERSION: *//p' project.yml | head -1
+
 # 本番 (com.example.junpei.chemi)
 .PHONY: archive
 archive: check-retry check-not-shallow generate

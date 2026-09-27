@@ -39,9 +39,6 @@ Play Console → テスト → 内部テスト → 新しいリリースを作�
 
 ### アップロードまで一発でやる
 
-サービスアカウント鍵を SSM に入れてあれば、ビルドからアップロードまで
-通しで行える。
-
 ```bash
 UPLOAD=1 AWS_PROFILE=reaction-production ./scripts/android-release.sh
 ```
@@ -55,10 +52,10 @@ UPLOAD=1 RELEASE_NOTES_FILE=notes.txt AWS_PROFILE=reaction-production ./scripts/
 `TRACK=internal`（既定）、`STATUS=completed`（既定。`draft` にすると
 Play Console で手動公開になる）も指定できる。
 
-fastlane や Google のクライアントライブラリは使わず、curl と openssl で
+fastlane や Google のクライアントライブラリは使わず、curl で
 Play Developer API v3 を直接叩いている。依存を増やさないため。
 
-1. サービスアカウント鍵で JWT を作りアクセストークンと交換
+1. サービスアカウントを借用してアクセストークンを取る
 2. edit を作る
 3. AAB をアップロード
 4. トラックに versionCode を載せる
@@ -67,18 +64,21 @@ Play Developer API v3 を直接叩いている。依存を増やさないため�
 commit するまでは何も公開されない。途中で落ちた場合は edit を破棄するので、
 Play Console に未完了の編集が残らない。
 
-### サービスアカウントの登録（1 回だけ）
+### Play の認証（鍵ファイルは使わない）
 
-```bash
-AWS_PROFILE=reaction-production ./scripts/play-credentials.sh push service-account.json
-```
+`play-publisher@takoikatakotako-management.iam.gserviceaccount.com` を
+**権限借用**して使う。AWS の AssumeRole に相当する仕組みで、手元の gcloud の
+認証情報でこの SA になりすまし、1 時間で失効するトークンを取る。
 
-Play Console → 設定 → API アクセス から Google Cloud プロジェクトを紐付け、
-サービスアカウントを作って JSON 鍵を発行する。Play Console 側でそのアカウントに
-「リリースを管理」の権限を与えること。登録後は手元の JSON を消してよい。
+**サービスアカウントの鍵ファイルは作らない。** 漏洩・失効管理・保管場所の
+心配が要らないため。
 
-アップロード前に AAB の署名がアップロード鍵と一致することを検証している。
-鍵を取り違えると Play が受け付けないため、そこで落とす。
+事前に `gcloud auth login` しておくこと。借用できるのは gcp-iac の
+`play_publisher_impersonators` に列挙された principal だけ。
+
+Play Developer API のスコープは `cloud-platform` に含まれないため、
+`gcloud --impersonate-service-account` では足りない。IAM Credentials API の
+`generateAccessToken` に scope を明示して取っている。
 
 ### バージョン
 

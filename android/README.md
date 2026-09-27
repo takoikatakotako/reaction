@@ -37,6 +37,46 @@ AWS_PROFILE=reaction-production ./scripts/android-release.sh
 `android/app/build/outputs/bundle/release/app-release.aab` ができるので、
 Play Console → テスト → 内部テスト → 新しいリリースを作成 からアップロードする。
 
+### アップロードまで一発でやる
+
+サービスアカウント鍵を SSM に入れてあれば、ビルドからアップロードまで
+通しで行える。
+
+```bash
+UPLOAD=1 AWS_PROFILE=reaction-production ./scripts/android-release.sh
+```
+
+リリースノートを指定する場合:
+
+```bash
+UPLOAD=1 RELEASE_NOTES_FILE=notes.txt AWS_PROFILE=reaction-production ./scripts/android-release.sh
+```
+
+`TRACK=internal`（既定）、`STATUS=completed`（既定。`draft` にすると
+Play Console で手動公開になる）も指定できる。
+
+fastlane や Google のクライアントライブラリは使わず、curl と openssl で
+Play Developer API v3 を直接叩いている。依存を増やさないため。
+
+1. サービスアカウント鍵で JWT を作りアクセストークンと交換
+2. edit を作る
+3. AAB をアップロード
+4. トラックに versionCode を載せる
+5. edit を commit
+
+commit するまでは何も公開されない。途中で落ちた場合は edit を破棄するので、
+Play Console に未完了の編集が残らない。
+
+### サービスアカウントの登録（1 回だけ）
+
+```bash
+AWS_PROFILE=reaction-production ./scripts/play-credentials.sh push service-account.json
+```
+
+Play Console → 設定 → API アクセス から Google Cloud プロジェクトを紐付け、
+サービスアカウントを作って JSON 鍵を発行する。Play Console 側でそのアカウントに
+「リリースを管理」の権限を与えること。登録後は手元の JSON を消してよい。
+
 アップロード前に AAB の署名がアップロード鍵と一致することを検証している。
 鍵を取り違えると Play が受け付けないため、そこで落とす。
 

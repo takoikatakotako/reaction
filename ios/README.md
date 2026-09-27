@@ -23,16 +23,33 @@ make test
 
 ## TestFlight への配信
 
-スキームは `Production`（`com.example.junpei.chemi`）。
+本番と開発の 2 つを別アプリとして配信できる。
+
+| | スキーム | バンドル ID | API |
+|---|---|---|---|
+| 本番 | `Production` | `com.example.junpei.chemi` | reaction-production |
+| 開発 | `Development` | `com.swiswiswift.reaction.development` | reaction-development |
 
 ```bash
 cd ios
+
+# 本番 -> build/export/ReactionProduction.ipa
 make archive
 make export
+
+# 開発 -> build/export-development/ReactionDevelopment.ipa
+make archive-development
+make export-development
 ```
 
-`build/export/ReactionProduction.ipa` ができるので、Transporter でアップロード
-するか、Xcode の Organizer から配信する。
+Transporter でアップロードするか、Xcode の Organizer から配信する。
+
+どちらも構成は `Release`。開発版も本番と同じ最適化で確認したいため、
+`Development` スキームの run は `Debug` のままだが archive は `Release` に
+している（`project.yml`）。
+
+バンドル ID が違うので端末に両方入れられる。アイコンも
+`AppIcon-Development` / `AppIcon-Production` で分かれている。
 
 ### ビルド番号
 

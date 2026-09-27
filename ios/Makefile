@@ -74,36 +74,56 @@ check-not-shallow:
 		exit 1; \
 	fi
 
-ARCHIVE_PATH = build/Reaction.xcarchive
-EXPORT_PATH  = build/export
+ARCHIVE_PATH     = build/Reaction.xcarchive
+EXPORT_PATH      = build/export
+ARCHIVE_PATH_DEV = build/ReactionDevelopment.xcarchive
+EXPORT_PATH_DEV  = build/export-development
 
-# 配布用の署名は Xcode に任せる。
+# archive / export で共通のフラグ。
 #
 # -allowProvisioningUpdates は Apple Developer との通信を許可するフラグで、
 # 自動署名ターゲット（このプロジェクトは CODE_SIGN_STYLE: Automatic）では
 # プロファイル・App ID・証明書の作成と更新を行う。証明書が新規に発行され
 # ないことは保証されない。
+ARCHIVE_FLAGS = \
+	-project Reaction.xcodeproj \
+	-configuration Release \
+	-destination 'generic/platform=iOS' \
+	-onlyUsePackageVersionsFromResolvedFile \
+	-skipPackagePluginValidation \
+	-skipMacroValidation \
+	-allowProvisioningUpdates
+
+EXPORT_FLAGS = \
+	-exportOptionsPlist ExportOptions.plist \
+	-allowProvisioningUpdates
+
+# 本番 (com.example.junpei.chemi)
 .PHONY: archive
 archive: check-retry check-not-shallow generate
-	xcodebuild archive \
-		-project Reaction.xcodeproj \
-		-scheme Production \
-		-configuration Release \
-		-destination 'generic/platform=iOS' \
-		-archivePath $(ARCHIVE_PATH) \
-		-onlyUsePackageVersionsFromResolvedFile \
-		-skipPackagePluginValidation \
-		-skipMacroValidation \
-		-allowProvisioningUpdates \
-		CURRENT_PROJECT_VERSION=$(BUILD_NUMBER)
+	xcodebuild archive -scheme Production -archivePath $(ARCHIVE_PATH) \
+		$(ARCHIVE_FLAGS) CURRENT_PROJECT_VERSION=$(BUILD_NUMBER)
 
 .PHONY: export
 export:
-	xcodebuild -exportArchive \
-		-archivePath $(ARCHIVE_PATH) \
-		-exportPath $(EXPORT_PATH) \
-		-exportOptionsPlist ExportOptions.plist \
-		-allowProvisioningUpdates
+	xcodebuild -exportArchive -archivePath $(ARCHIVE_PATH) \
+		-exportPath $(EXPORT_PATH) $(EXPORT_FLAGS)
 	@echo
 	@echo "できました: ios/$(EXPORT_PATH)/ReactionProduction.ipa"
+	@echo "Transporter でアップロードするか、Xcode の Organizer から配信してください。"
+
+# 開発 (com.swiswiswift.reaction.development)
+# 開発環境の API を向いたビルドを TestFlight で配る。構成は本番と同じ
+# Release にしているので、最適化した状態で確認できる。
+.PHONY: archive-development
+archive-development: check-retry check-not-shallow generate
+	xcodebuild archive -scheme Development -archivePath $(ARCHIVE_PATH_DEV) \
+		$(ARCHIVE_FLAGS) CURRENT_PROJECT_VERSION=$(BUILD_NUMBER)
+
+.PHONY: export-development
+export-development:
+	xcodebuild -exportArchive -archivePath $(ARCHIVE_PATH_DEV) \
+		-exportPath $(EXPORT_PATH_DEV) $(EXPORT_FLAGS)
+	@echo
+	@echo "できました: ios/$(EXPORT_PATH_DEV)/ReactionDevelopment.ipa"
 	@echo "Transporter でアップロードするか、Xcode の Organizer から配信してください。"

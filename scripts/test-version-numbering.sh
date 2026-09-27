@@ -34,7 +34,9 @@ done
 # 空文字は未指定として 0 に倒す（RETRY= と書かれた場合）
 echo "--- 空文字は 0 として扱う"
 check "Android RETRY=''" "$(( count * 100 ))" "$(RETRY= ./scripts/android-release.sh --print-version-code 2>/dev/null)"
-check "iOS RETRY=''" "$(( count * 100 ))" "$(make -C ios -n archive RETRY= 2>/dev/null | sed -n 's/.*CURRENT_PROJECT_VERSION=\([0-9]*\).*/\1/p' | head -1)"
+for target in archive archive-development; do
+  check "iOS $target RETRY=''" "$(( count * 100 ))" "$(make -C ios -n "$target" RETRY= 2>/dev/null | sed -n 's/.*CURRENT_PROJECT_VERSION=\([0-9]*\).*/\1/p' | head -1)"
+done
 
 echo "--- Android: 不正値を弾く"
 for retry in 100 -1 abc; do
@@ -43,11 +45,13 @@ for retry in 100 -1 abc; do
 done
 
 echo "--- iOS: 採番"
-for retry in 0 1 99; do
-  # make -n はレシピを実行しないので、xcodebuild の行から番号を読む
-  actual="$(make -C ios -n archive RETRY=$retry 2>/dev/null \
-    | sed -n 's/.*CURRENT_PROJECT_VERSION=\([0-9]*\).*/\1/p' | head -1)"
-  check "RETRY=$retry" "$(( count * 100 + retry ))" "$actual"
+for target in archive archive-development; do
+  for retry in 0 1 99; do
+    # make -n はレシピを実行しないので、xcodebuild の行から番号を読む
+    actual="$(make -C ios -n "$target" RETRY=$retry 2>/dev/null \
+      | sed -n 's/.*CURRENT_PROJECT_VERSION=\([0-9]*\).*/\1/p' | head -1)"
+    check "$target RETRY=$retry" "$(( count * 100 + retry ))" "$actual"
+  done
 done
 
 echo "--- iOS: 不正値を弾く"

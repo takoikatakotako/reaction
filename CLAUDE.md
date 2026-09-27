@@ -77,7 +77,8 @@ SwiftPM の依存バージョンは `ios/Package.resolved` で固定している
 AWS_PROFILE=reaction-production ./scripts/android-release.sh
 
 # iOS: TestFlight 用の ipa を作る（ビルド番号はコミット数から自動採番）
-cd ios && make archive && make export
+cd ios && make archive && make export                          # 本番
+cd ios && make archive-development && make export-development  # 開発
 ```
 
 Firebase の設定ファイルはリポジトリに置かず SSM がマスター。

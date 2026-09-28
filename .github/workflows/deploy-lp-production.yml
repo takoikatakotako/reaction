@@ -56,15 +56,17 @@ jobs:
     # 配信先が揃っていない状態で走らせない。
     - name: Preflight
       run: |
-        aws s3api head-bucket --bucket "$BUCKET" --profile reaction-production || {
-          echo "::error::バケット $BUCKET がありません。terraform apply が済んでいるか確認してください。"
+        if ! err="$(aws s3api head-bucket --bucket "$BUCKET" \
+              --profile reaction-production 2>&1 >/dev/null)"; then
+          echo "::error::バケット $BUCKET を参照できません: ${err}"
           exit 1
-        }
-        aws cloudfront get-distribution --id "$DISTRIBUTION_ID" --profile reaction-production >/dev/null || {
-          echo "::error::CloudFront $DISTRIBUTION_ID が見つかりません。" \
-               "vars.LP_PRODUCTION_DISTRIBUTION_ID の値を確認してください。"
+        fi
+        # 権限不足と未存在を区別できるよう、CLI のエラーをそのまま出す。
+        if ! err="$(aws cloudfront get-distribution --id "$DISTRIBUTION_ID" \
+              --profile reaction-production 2>&1 >/dev/null)"; then
+          echo "::error::CloudFront $DISTRIBUTION_ID を参照できません: ${err}"
           exit 1
-        }
+        fi
 
     # --delete で S3 側の余分なファイルを消す。lp/ がそのまま配信内容になる。
     - name: Sync to S3

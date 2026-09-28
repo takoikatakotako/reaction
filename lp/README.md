@@ -127,5 +127,15 @@ distribution を無効化してからでないと実行できない**。つま�
 2. 旧 distribution を有効化する
 3. `associate-alias` で alias を旧 distribution へ戻す
 4. Cloudflare の CNAME を旧 distribution のドメインへ戻す
+5. **`lp_aliases = []` に戻して apply する**
+
+5 を忘れると Terraform の宣言が実態とずれる。移行手順 9 を終えた状態では
+`lp_aliases = ["chemist.swiswiswift.com"]` になっており、そのまま次の
+apply を打つと、旧 distribution が alias を持っているのに新 distribution に
+付け直そうとして `CNAMEAlreadyExists` で失敗する。
+
+このモジュールは `enabled = true` を固定しているため、apply で新
+distribution は再び有効になる。alias が空なら誰の配信にも影響しない。
+apply 後に `terraform plan` が `No changes` になることを確認しておくこと。
 
 こちらも停止を伴うため、手順 4 の確認を丁寧にやること。

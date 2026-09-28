@@ -1,0 +1,182 @@
+@charset "UTF-8";
+
+
+html{
+    font-size: 100%;
+
+}
+
+body{
+    font-family:  "游ゴシック体","Yu Gothic Medium", "ヒラギノ角ゴ Pro W3", sans-serif;
+    line-height: 1.7;
+    color:black;
+
+}
+
+
+/* 背景 */
+#home{
+    background-color: darkgrey;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    background-image: url(../images/background.png);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+
+#content{
+    width: 80vw;
+    height: 80vh;
+    /* background-color: coral; */
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;    
+}
+
+
+/* スマホ画像 */
+#phone{
+    height: 490px;
+    width: 250px;
+    /* background-color: darkred; */
+    position: absolute;
+    left: 120px;
+    top:20px;
+}
+
+
+/* アプリアイコン画像 */
+#icon{
+    height: 70px;
+    width: 70px;
+    /* background-color:greenyellow; */
+    position:absolute;
+    left: 460px;
+    top: 60px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px 2px #000000;
+}
+
+
+/* アプリ名称 */
+#name{    
+    height: 43px;
+    width: 220px;
+    /* background-color:rgb(97, 97, 179); */
+    position:absolute;
+    left: 550px;
+    top: 70px;
+}
+
+
+/* 無料領域 */
+#free{
+    height: 58px;
+    width: 58px;
+    background-color:orange;
+    position:absolute;
+    left: 780px;
+    top:65px;
+    border-radius: 50%;
+    filter: blur(1px);  
+}
+
+
+/* 無料文字 */
+h3{
+    text-align:center; 
+    padding:15px 0;
+    color: white;
+    position:absolute;
+    left: 790px;
+    top:63px;
+}
+
+
+/* キャッチフレーズ */
+#theme{
+    height: 60px;
+    width: 430px;
+    /* background-color:khaki; */
+    position:absolute;
+    left: 460px;
+    top:140px;
+}
+
+
+/* アプリの説明 */
+#text{
+    height: 130px;
+    width: 430px;
+    /* background-color:rgb(159, 122, 185); */
+    position:absolute;
+    left: 460px;
+    top: 225px;
+}
+
+
+/* textの中身(アプリの説明) */
+h2{
+    color: black;
+    font-size: 1.1rem;
+}
+
+
+/* 「今すぐダウンロード」領域 */
+#recommend{
+    height: 30px;
+    width: 430px;
+    /* background-color:khaki; */
+    position:absolute;
+    left: 470px;
+    top:340px;
+}
+
+
+/* 「今すぐダウンロード」文字 */
+h4{
+    text-align:center; 
+    color: white;
+    font-size: 1.1rem;
+}
+
+
+/* iosリンク画像 */
+#ios_telop{
+    height: 50px;
+    width: 100px;
+    /* background-color:darkturquoise; */
+    position:absolute;
+    left: 720px;
+    top: 380px;
+}
+
+
+/* androidリンク画像 */
+#android_telop{
+    height: 50px;
+    width: 120px;
+    /* background-color:forestgreen; */
+    position:absolute;
+    left: 535px;
+    top: 380px;
+}
+
+/* プライバシーポリシーへの導線 */
+#footer{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+#footer a{
+    color: black;
+}

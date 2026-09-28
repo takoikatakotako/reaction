@@ -63,8 +63,8 @@ resource "aws_cloudfront_distribution" "lp" {
 
   # 別アカウントの CloudFront が同じ alternate domain name を保持している
   # 間は、ここに入れると CNAMEAlreadyExists で作成できない。移行は
-  # associate-alias で行い、所有権が移ってからこの変数に値を入れる。
-  # 詳細は lp/README.md の「移行手順」。
+  # 旧 distribution の無効化と associate-alias で行い、所有権が移ってから
+  # この変数に値を入れる。停止を伴う。詳細は lp/README.md の「移行手順」。
   aliases = var.aliases
 
   enabled             = true

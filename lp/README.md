@@ -46,20 +46,33 @@ CloudFront は**同じ alternate domain name を 2 つの distribution に登録
 `chemist.swiswiswift.com` を保持しているため、新しい distribution に最初から
 alias を入れると `CNAMEAlreadyExists` で作成に失敗する。
 
-DNS の CNAME を変えるだけでは CloudFront 側の所有権は移らない。
-`associate-alias` で明示的に移す必要がある。
+DNS の CNAME を変えるだけでは所有権は移らない。CloudFront は alias の
+所有先でルーティングするため、`associate-alias` で明示的に移す必要がある。
+
+さらに**異なる AWS アカウント間で `associate-alias` を使うには、旧
+distribution を無効化してからでないと実行できない**。つまり移行には
+停止時間が伴う。
+
+停止を避ける方法として wildcard（`*.swiswiswift.com`）を使う手順も
+公式にはあるが、`swiswiswift.com` の他のサブドメインは別アカウントで
+配信しており、ワイルドドメインを 1 アカウントが握ると後々の取り回しが
+悪くなる。ランディングページなので短時間の停止を受け入れる。
+
+参考: [Moving an alternate domain name to a different distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/alternate-domain-names-move-options.html)
+
+### 停止前（影響なし）
 
 1. **ACM の検証レコードを Cloudflare に追加**（プロキシ OFF / DNS only）
-   現在の配信には影響しない。
 
 2. **`lp_aliases = []` のまま apply**
    alias 無しで S3 と CloudFront ができる。
 
-3. **`LP_PRODUCTION_DISTRIBUTION_ID` をリポジトリ変数に登録**して デプロイ
+3. **`LP_PRODUCTION_DISTRIBUTION_ID` をリポジトリ変数に登録**してデプロイ
    `module.lp.distribution_id` の値。登録するまでワークフローは起動しない。
 
 4. **CloudFront の標準ドメインで表示を確認**
-   `https://<distribution_domain_name>/`。本番はまだ旧環境を向いている。
+   `https://<distribution_domain_name>/`。ここで中身を十分に確認しておく。
+   切り戻しに手間がかかるため、この段階での確認が実質最後の砦になる。
 
 5. **所有権移転用の TXT レコードを Cloudflare に追加**（プロキシ OFF）
 
@@ -68,21 +81,51 @@ DNS の CNAME を変えるだけでは CloudFront 側の所有権は移らない
    値    <新しい distribution のドメイン>
    ```
 
-6. **alias を移す**
+### 停止を伴う区間
+
+ここから `chemist.swiswiswift.com` が見えなくなる。CloudFront の
+変更反映に数分から十数分かかるため、**30 分程度の停止を見込む**。
+
+6. **旧 distribution を無効化し、`Deployed` になるまで待つ**
+
+   ```bash
+   AWS_PROFILE=swiswiswift aws cloudfront get-distribution-config --id E7K0W7JYJMRK
+   # Enabled を false にして update-distribution（ETag が必要）
+   AWS_PROFILE=swiswiswift aws cloudfront wait distribution-deployed --id E7K0W7JYJMRK
+   ```
+
+7. **alias を移す**
 
    ```bash
    AWS_PROFILE=reaction-production aws cloudfront associate-alias \
      --target-distribution-id <新しい distribution ID> \
      --alias chemist.swiswiswift.com
+   AWS_PROFILE=reaction-production aws cloudfront wait distribution-deployed \
+     --id <新しい distribution ID>
    ```
 
-7. **Cloudflare の CNAME を新しい CloudFront のドメインへ差し替え**
+8. **Cloudflare の CNAME を新しい CloudFront のドメインへ差し替え**
 
-8. **`lp_aliases = ["chemist.swiswiswift.com"]` にして apply**
+   ここで復旧する。
+
+### 停止後
+
+9. **`lp_aliases = ["chemist.swiswiswift.com"]` にして apply**
    実際の状態と Terraform を揃える。
 
-9. **旧環境を削除**
-   Onojun アカウントの CloudFront `E7K0W7JYJMRK` と S3
-   `chemist.swiswiswift.com`。2021 年の Create React App のビルドもここで消える。
+10. **しばらく置いてから旧環境を削除**
+    Onojun アカウントの CloudFront `E7K0W7JYJMRK` と S3
+    `chemist.swiswiswift.com`。2021 年の Create React App のビルドも
+    ここで消える。**切り戻しの可能性が無くなるまで消さない。**
 
-切り戻しは、7 まで進んでいれば Cloudflare の CNAME を戻すだけ。
+### 切り戻し
+
+手順 7 を実行したあとは、CNAME を戻すだけでは戻らない。逆順に
+やり直すことになる。
+
+1. 新 distribution を無効化して `Deployed` を待つ
+2. 旧 distribution を有効化する
+3. `associate-alias` で alias を旧 distribution へ戻す
+4. Cloudflare の CNAME を旧 distribution のドメインへ戻す
+
+こちらも停止を伴うため、手順 4 の確認を丁寧にやること。

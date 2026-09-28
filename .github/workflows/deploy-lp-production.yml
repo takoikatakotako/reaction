@@ -47,17 +47,20 @@ jobs:
         mkdir -p ~/.aws
         cp .github/workflows/aws_config/config ~/.aws/config
 
+    # プロファイルは AWS_PROFILE ではなく --profile で渡す。AWS CLI は
+    # 環境変数の認証情報をプロファイルより優先するため、AWS_PROFILE だと
+    # OIDC で得た management のロールのまま呼んでしまい 403 になる。
+    # コマンドラインオプションは環境変数より優先される。
+    #
     # 先に前提を確かめる。--delete はバケットの中身を消すので、
     # 配信先が揃っていない状態で走らせない。
     - name: Preflight
-      env:
-        AWS_PROFILE: reaction-production
       run: |
-        aws s3api head-bucket --bucket "$BUCKET" || {
+        aws s3api head-bucket --bucket "$BUCKET" --profile reaction-production || {
           echo "::error::バケット $BUCKET がありません。terraform apply が済んでいるか確認してください。"
           exit 1
         }
-        aws cloudfront get-distribution --id "$DISTRIBUTION_ID" >/dev/null || {
+        aws cloudfront get-distribution --id "$DISTRIBUTION_ID" --profile reaction-production >/dev/null || {
           echo "::error::CloudFront $DISTRIBUTION_ID が見つかりません。" \
                "vars.LP_PRODUCTION_DISTRIBUTION_ID の値を確認してください。"
           exit 1
@@ -65,14 +68,11 @@ jobs:
 
     # --delete で S3 側の余分なファイルを消す。lp/ がそのまま配信内容になる。
     - name: Sync to S3
-      env:
-        AWS_PROFILE: reaction-production
-      run: aws s3 sync lp/ "s3://${BUCKET}/" --delete
+      run: aws s3 sync lp/ "s3://${BUCKET}/" --delete --profile reaction-production
 
     - name: Invalidate CloudFront
-      env:
-        AWS_PROFILE: reaction-production
       run: |
         aws cloudfront create-invalidation \
           --distribution-id "$DISTRIBUTION_ID" \
-          --paths '/*'
+          --paths '/*' \
+          --profile reaction-production

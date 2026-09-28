@@ -41,6 +41,11 @@ DNS は Cloudflare 管理（Route53 ではない）。CNAME を CloudFront の
 
 ## 移行手順（Onojun アカウントから reaction-production へ）
 
+> **2026-09-29 に移行済み。** 手順 1〜9 は完了している。
+> 残っているのは手順 10（旧環境の削除）のみ。旧 distribution
+> `E7K0W7JYJMRK` は無効化済みで配信はしていないが、切り戻しのために
+> 残してある。以下は経緯と切り戻しのための記録。
+
 CloudFront は**同じ alternate domain name を 2 つの distribution に登録できない**。
 旧 distribution（Onojun アカウントの `E7K0W7JYJMRK`）が
 `chemist.swiswiswift.com` を保持しているため、新しい distribution に最初から

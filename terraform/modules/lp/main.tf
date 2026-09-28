@@ -61,7 +61,11 @@ resource "aws_cloudfront_distribution" "lp" {
     origin_access_control_id = aws_cloudfront_origin_access_control.lp.id
   }
 
-  aliases = [var.domain]
+  # 別アカウントの CloudFront が同じ alternate domain name を保持している
+  # 間は、ここに入れると CNAMEAlreadyExists で作成できない。移行は
+  # associate-alias で行い、所有権が移ってからこの変数に値を入れる。
+  # 詳細は lp/README.md の「移行手順」。
+  aliases = var.aliases
 
   enabled             = true
   is_ipv6_enabled     = true

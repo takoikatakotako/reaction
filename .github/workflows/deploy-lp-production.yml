@@ -24,6 +24,9 @@ jobs:
   deploy_lp_production:
     name: deploy lp production
     runs-on: ubuntu-latest
+    # 配信基盤ができるまでは何もしない。この変数は apply 後に登録するため、
+    # 初回マージ時点では未設定で、その状態で走ると失敗するだけになる。
+    if: vars.LP_PRODUCTION_DISTRIBUTION_ID != ''
     permissions:
       id-token: write
       contents: read
@@ -44,6 +47,22 @@ jobs:
         mkdir -p ~/.aws
         cp .github/workflows/aws_config/config ~/.aws/config
 
+    # 先に前提を確かめる。--delete はバケットの中身を消すので、
+    # 配信先が揃っていない状態で走らせない。
+    - name: Preflight
+      env:
+        AWS_PROFILE: reaction-production
+      run: |
+        aws s3api head-bucket --bucket "$BUCKET" || {
+          echo "::error::バケット $BUCKET がありません。terraform apply が済んでいるか確認してください。"
+          exit 1
+        }
+        aws cloudfront get-distribution --id "$DISTRIBUTION_ID" >/dev/null || {
+          echo "::error::CloudFront $DISTRIBUTION_ID が見つかりません。" \
+               "vars.LP_PRODUCTION_DISTRIBUTION_ID の値を確認してください。"
+          exit 1
+        }
+
     # --delete で S3 側の余分なファイルを消す。lp/ がそのまま配信内容になる。
     - name: Sync to S3
       env:
@@ -54,11 +73,6 @@ jobs:
       env:
         AWS_PROFILE: reaction-production
       run: |
-        if [ -z "$DISTRIBUTION_ID" ]; then
-          echo "::error::vars.LP_PRODUCTION_DISTRIBUTION_ID が未設定です。" \
-               "terraform の module.lp.distribution_id を GitHub の変数に登録してください。"
-          exit 1
-        fi
         aws cloudfront create-invalidation \
           --distribution-id "$DISTRIBUTION_ID" \
           --paths '/*'

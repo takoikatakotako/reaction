@@ -52,3 +52,9 @@ variable "lp_domain" {
   description = "ランディングページを配信するドメイン。"
   type        = string
 }
+
+variable "lp_aliases" {
+  description = "ランディングページの CloudFront に設定する alternate domain name。移行が終わるまでは空。"
+  type        = list(string)
+  default     = []
+}

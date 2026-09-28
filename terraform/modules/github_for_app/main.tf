@@ -37,6 +37,10 @@ data "aws_iam_policy_document" "app_ci_role_policy_document" {
     effect = "Allow"
     actions = [
       "cloudfront:CreateInvalidation",
+      # デプロイ前に配信先の存在を確かめるため（読み取りのみ）。
+      # distribution の ARN はこのモジュールからは分からないので * にする。
+      # CreateInvalidation も同じスコープにしている。
+      "cloudfront:GetDistribution",
     ]
     resources = ["*"]
   }

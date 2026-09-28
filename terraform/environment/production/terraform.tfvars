@@ -13,3 +13,7 @@ resource_bucket_name = "resource.reaction-production.swiswiswift.com"
 
 # GitHub
 github_action_role_arn = "arn:aws:iam::392961483375:role/reaction-github-action-role"
+
+# LP
+lp_bucket_name = "reaction-production-lp"
+lp_domain      = "chemist.swiswiswift.com"

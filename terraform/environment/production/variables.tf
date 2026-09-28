@@ -42,3 +42,13 @@ variable "admin_image_tag" {
 variable "github_action_role_arn" {
   type = string
 }
+
+variable "lp_bucket_name" {
+  description = "ランディングページを置く S3 バケット名。"
+  type        = string
+}
+
+variable "lp_domain" {
+  description = "ランディングページを配信するドメイン。"
+  type        = string
+}

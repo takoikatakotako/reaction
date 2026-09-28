@@ -27,3 +27,14 @@ cd lp && python3 -m http.server 8000
 
 同じバケットのルートには 2021 年の Create React App のビルドが残っていたが、
 メンテナンスされていないため配信をこのランディングページだけにした。
+
+## 配信
+
+`reaction-production` アカウントの S3 + CloudFront。Terraform は
+`terraform/modules/lp` と `terraform/environment/production`。
+
+`main` の `lp/` が変わると `deploy-lp-production.yml` が S3 へ sync して
+CloudFront のキャッシュを消す。ビルドが無いので、ファイルがそのまま配信内容になる。
+
+DNS は Cloudflare 管理（Route53 ではない）。CNAME を CloudFront の
+ドメインへ向けている。

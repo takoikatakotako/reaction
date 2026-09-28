@@ -1,0 +1,64 @@
+name: Deploy LP Production
+
+on:
+  workflow_dispatch:
+  # main に入った変更をそのまま反映する。静的ファイルだけでビルドが無く、
+  # 戻すのも再デプロイで済むため自動にしている。
+  push:
+    branches:
+      - main
+    paths:
+      - lp/**
+      - .github/workflows/deploy-lp-production.yml
+
+env:
+  AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role
+  BUCKET: reaction-production-lp
+  DISTRIBUTION_ID: ${{ vars.LP_PRODUCTION_DISTRIBUTION_ID }}
+
+concurrency:
+  group: deploy-lp-production
+  cancel-in-progress: false
+
+jobs:
+  deploy_lp_production:
+    name: deploy lp production
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        role-session-name: github-action-role-${{ github.run_id }}
+        aws-region: ap-northeast-1
+
+    - name: configure aws profiles
+      run: |
+        mkdir -p ~/.aws
+        cp .github/workflows/aws_config/config ~/.aws/config
+
+    # --delete で S3 側の余分なファイルを消す。lp/ がそのまま配信内容になる。
+    - name: Sync to S3
+      env:
+        AWS_PROFILE: reaction-production
+      run: aws s3 sync lp/ "s3://${BUCKET}/" --delete
+
+    - name: Invalidate CloudFront
+      env:
+        AWS_PROFILE: reaction-production
+      run: |
+        if [ -z "$DISTRIBUTION_ID" ]; then
+          echo "::error::vars.LP_PRODUCTION_DISTRIBUTION_ID が未設定です。" \
+               "terraform の module.lp.distribution_id を GitHub の変数に登録してください。"
+          exit 1
+        fi
+        aws cloudfront create-invalidation \
+          --distribution-id "$DISTRIBUTION_ID" \
+          --paths '/*'

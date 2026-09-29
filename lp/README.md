@@ -29,6 +29,28 @@ cd lp && python3 -m http.server 8000
 同じバケットのルートには 2021 年の Create React App のビルドが残っていたが、
 メンテナンスされていないため配信をこのランディングページだけにした。
 
+## /resource/ はアプリの画像
+
+`chemist.swiswiswift.com/resource/` 配下は、**本番配信中の Android アプリが
+参照している**反応機構の画像と JSON。ランディングページとは無関係。
+
+```kotlin
+// android/app/src/main/java/com/swiswiswift/chemist/Config.kt
+const val RESOURCE_URL = "https://chemist.swiswiswift.com/resource/"
+const val IMAGE_URL = "${RESOURCE_URL}images/"
+```
+
+移設前はランディングページと同じバケットに同居していた。LP のデプロイは
+`aws s3 sync --delete` なので、同居させるとデプロイのたびに消える。
+**別バケット（`reaction-production-lp-resource`）に分け**、CloudFront の
+`/resource/*` だけそちらへ振り分けている。
+
+`lp/` には含めない。デプロイ対象外。
+
+アプリ側を `resource.reaction-production.swiswiswift.com` に向けられれば
+このバケットは不要になるが、そちらは UUID 命名で互換性が無く、アプリの
+リリースも要る。
+
 ## 配信
 
 `reaction-production` アカウントの S3 + CloudFront。Terraform は

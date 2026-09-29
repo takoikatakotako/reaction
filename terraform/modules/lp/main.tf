@@ -52,6 +52,63 @@ resource "aws_s3_bucket_policy" "lp" {
 }
 
 ##############################################################
+# Legacy Resource S3 Bucket
+##############################################################
+# Android アプリ（本番配信中）が chemist.swiswiswift.com/resource/images/
+# から反応機構の画像を取得している。移設前はランディングページと同じ
+# バケットに同居していた。
+#
+# LP のデプロイは aws s3 sync --delete なので、同じバケットに置くと
+# デプロイのたびに消える。別バケットに分けて /resource/* だけ
+# こちらへ振り分ける。
+#
+# アプリ側を reaction-production のリソースバケットに向けられれば不要に
+# なるが、そちらは UUID 命名で互換性が無く、アプリのリリースも要る。
+resource "aws_s3_bucket" "resource" {
+  bucket = var.resource_bucket_name
+}
+
+resource "aws_s3_bucket_public_access_block" "resource" {
+  bucket = aws_s3_bucket.resource.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_cloudfront_origin_access_control" "resource" {
+  name                              = "${var.resource_bucket_name}-origin-access-control"
+  description                       = "Access control for CloudFront to S3"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
+data "aws_iam_policy_document" "resource_bucket_policy" {
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = ["${aws_s3_bucket.resource.arn}/*"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [aws_cloudfront_distribution.lp.arn]
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "resource" {
+  bucket = aws_s3_bucket.resource.id
+  policy = data.aws_iam_policy_document.resource_bucket_policy.json
+}
+
+##############################################################
 # CloudFront
 ##############################################################
 resource "aws_cloudfront_distribution" "lp" {
@@ -59,6 +116,12 @@ resource "aws_cloudfront_distribution" "lp" {
     origin_id                = aws_s3_bucket.lp.bucket_regional_domain_name
     domain_name              = aws_s3_bucket.lp.bucket_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.lp.id
+  }
+
+  origin {
+    origin_id                = aws_s3_bucket.resource.bucket_regional_domain_name
+    domain_name              = aws_s3_bucket.resource.bucket_regional_domain_name
+    origin_access_control_id = aws_cloudfront_origin_access_control.resource.id
   }
 
   # 別アカウントの CloudFront が同じ alternate domain name を保持している
@@ -76,6 +139,19 @@ resource "aws_cloudfront_distribution" "lp" {
     allowed_methods        = ["GET", "HEAD"]
     cached_methods         = ["GET", "HEAD"]
     target_origin_id       = aws_s3_bucket.lp.bucket_regional_domain_name
+    viewer_protocol_policy = "redirect-to-https"
+    compress               = true
+
+    # Managed-CachingOptimized
+    cache_policy_id = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+  }
+
+  # アプリが参照する画像。中身は変わらないので長めにキャッシュする。
+  ordered_cache_behavior {
+    path_pattern           = "/resource/*"
+    allowed_methods        = ["GET", "HEAD"]
+    cached_methods         = ["GET", "HEAD"]
+    target_origin_id       = aws_s3_bucket.resource.bucket_regional_domain_name
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
 

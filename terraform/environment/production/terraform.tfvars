@@ -15,8 +15,9 @@ resource_bucket_name = "resource.reaction-production.swiswiswift.com"
 github_action_role_arn = "arn:aws:iam::392961483375:role/reaction-github-action-role"
 
 # LP
-lp_bucket_name = "reaction-production-lp"
-lp_domain      = "chemist.swiswiswift.com"
+lp_bucket_name          = "reaction-production-lp"
+lp_resource_bucket_name = "reaction-production-lp-resource"
+lp_domain               = "chemist.swiswiswift.com"
 
 # 移行済み。切り戻すときは空に戻すこと。実態とずれると次の apply が
 # CNAMEAlreadyExists で失敗する（lp/README.md の「切り戻し」）。

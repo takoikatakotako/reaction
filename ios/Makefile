@@ -21,137 +21,32 @@ lint:
 # 「My Mac's macOS platform doesn't match」で失敗する。Xcode を更新すると
 # 旧バージョンの端末が残って名前が重複しやすい。
 #
-# CI（test-ios.yml）と同じく、利用可能な iPhone の中から最後のものを選ぶ。
-# SIMULATOR_UDID を渡せば上書きできる。
-# ?= だと参照のたびに simctl が走るので、未指定のときだけ 1 回評価する。
-ifeq ($(origin SIMULATOR_UDID), undefined)
-SIMULATOR_UDID := $(shell xcrun simctl list devices available --json \
-	| jq -r '[.devices[][] | select(.name | startswith("iPhone"))] | last | .udid')
-endif
+# 自動選択は test のレシピの中だけで行う。Makefile のトップレベルで
+# $(shell ...) を使うと読み込み時に評価され、lint や generate でも
+# simctl が起動してしまう。
+#
+# SIMULATOR_UDID を渡せばそちらが優先される。
+SIMULATOR_UDID ?=
 
 .PHONY: test
 test:
-	@if [ -z "$(SIMULATOR_UDID)" ] || [ "$(SIMULATOR_UDID)" = "null" ]; then \
+	@set -e; \
+	udid="$(SIMULATOR_UDID)"; \
+	if [ -z "$$udid" ]; then \
+		udid=$$(xcrun simctl list devices available --json \
+			| jq -r '[.devices[][] | select(.name | startswith("iPhone"))] | last | .udid'); \
+	fi; \
+	if [ -z "$$udid" ] || [ "$$udid" = "null" ]; then \
 		echo "error: 利用可能な iPhone シミュレータが見つかりません" >&2; \
 		xcrun simctl list devices available; \
 		exit 1; \
-	fi
-	@echo "使用するシミュレータ: $(SIMULATOR_UDID)"
+	fi; \
+	echo "使用するシミュレータ: $$udid"; \
 	xcodebuild test \
 		-project Reaction.xcodeproj \
 		-scheme Development \
-		-destination "id=$(SIMULATOR_UDID)" \
+		-destination "id=$$udid" \
 		-onlyUsePackageVersionsFromResolvedFile \
 		-skipPackagePluginValidation \
 		-skipMacroValidation \
 		CODE_SIGNING_ALLOWED=NO
-
-# --- TestFlight 配信 ---------------------------------------------------------
-# TestFlight は同じ (MARKETING_VERSION, CFBundleVersion) の再アップロードを
-# 受け付けない。コミット数 * 100 + RETRY で採番する。
-#
-# コミット数そのものを使うと、同じコミットを手で +1 して配信したあと、
-# 次のコミットで自動採番に戻ったときに同じ番号になってしまう
-#   例) 628 で配信 -> 同じコミットを 629 で配信 -> 次のコミットも 629
-# 下 2 桁を再配信用に空けておけば、RETRY を使っても次のコミットの
-# 番号 (n+1)*100 を超えないので、自動採番に戻しても衝突しない。
-#
-#   make archive            # 62700
-#   make archive RETRY=1    # 62701（同じコミットで作り直すとき）
-RETRY ?= 0
-# RETRY= と空で渡された場合は未指定として 0 に倒す（Android 側の
-# ${RETRY:-0} と挙動を揃える）。
-RETRY_N := $(or $(strip $(RETRY)),0)
-BUILD_NUMBER ?= $(shell echo $$(( $$(git rev-list --count HEAD) * 100 + $(RETRY_N) )))
-
-# 前提の検証は宣言順に実行させる。make -j でも generate や xcodebuild と
-# 並行に走らないようにするため、この Makefile では並列実行を無効にする。
-# 重い処理は xcodebuild が内部で並列化するので実害はない。
-.NOTPARALLEL:
-
-# RETRY は 0-99。範囲外だと次のコミットの (n+1)*100 に到達して衝突し、
-# 負値や非数値はシェル算術に素通りして意図しない番号になる。
-.PHONY: check-retry
-check-retry:
-	@case "$(RETRY_N)" in \
-		'' | *[!0-9]*) \
-			echo "error: RETRY は 0-99 の整数で指定してください（指定値: $(RETRY_N)）" >&2; \
-			exit 1 ;; \
-	esac
-	@if [ "$(RETRY_N)" -gt 99 ]; then \
-		echo "error: RETRY は 0-99 の整数で指定してください（指定値: $(RETRY_N)）" >&2; \
-		exit 1; \
-	fi
-
-# 浅いクローンだとコミット数が実際より小さくなり、番号が巻き戻る。
-# CI では actions/checkout に fetch-depth: 0 を指定すること。
-.PHONY: check-not-shallow
-check-not-shallow:
-	@if [ "$$(git rev-parse --is-shallow-repository)" = "true" ]; then \
-		echo "error: 浅いクローンではビルド番号を採番できません" >&2; \
-		echo "       git fetch --unshallow するか fetch-depth: 0 を指定してください" >&2; \
-		exit 1; \
-	fi
-
-ARCHIVE_PATH     = build/Reaction.xcarchive
-EXPORT_PATH      = build/export
-ARCHIVE_PATH_DEV = build/ReactionDevelopment.xcarchive
-EXPORT_PATH_DEV  = build/export-development
-
-# archive / export で共通のフラグ。
-#
-# -allowProvisioningUpdates は Apple Developer との通信を許可するフラグで、
-# 自動署名ターゲット（このプロジェクトは CODE_SIGN_STYLE: Automatic）では
-# プロファイル・App ID・証明書の作成と更新を行う。証明書が新規に発行され
-# ないことは保証されない。
-ARCHIVE_FLAGS = \
-	-project Reaction.xcodeproj \
-	-configuration Release \
-	-destination 'generic/platform=iOS' \
-	-onlyUsePackageVersionsFromResolvedFile \
-	-skipPackagePluginValidation \
-	-skipMacroValidation \
-	-allowProvisioningUpdates
-
-EXPORT_FLAGS = \
-	-exportOptionsPlist ExportOptions.plist \
-	-allowProvisioningUpdates
-
-# スクリプトから採番結果を読むため
-.PHONY: print-build-number
-print-build-number: check-retry
-	@echo $(BUILD_NUMBER)
-
-.PHONY: print-marketing-version
-print-marketing-version:
-	@sed -n 's/^ *MARKETING_VERSION: *//p' project.yml | head -1
-
-# 本番 (com.example.junpei.chemi)
-.PHONY: archive
-archive: check-retry check-not-shallow generate
-	xcodebuild archive -scheme Production -archivePath $(ARCHIVE_PATH) \
-		$(ARCHIVE_FLAGS) CURRENT_PROJECT_VERSION=$(BUILD_NUMBER)
-
-.PHONY: export
-export:
-	xcodebuild -exportArchive -archivePath $(ARCHIVE_PATH) \
-		-exportPath $(EXPORT_PATH) $(EXPORT_FLAGS)
-	@echo
-	@echo "できました: ios/$(EXPORT_PATH)/ReactionProduction.ipa"
-	@echo "Transporter でアップロードするか、Xcode の Organizer から配信してください。"
-
-# 開発 (com.swiswiswift.reaction.development)
-# 開発環境の API を向いたビルドを TestFlight で配る。構成は本番と同じ
-# Release にしているので、最適化した状態で確認できる。
-.PHONY: archive-development
-archive-development: check-retry check-not-shallow generate
-	xcodebuild archive -scheme Development -archivePath $(ARCHIVE_PATH_DEV) \
-		$(ARCHIVE_FLAGS) CURRENT_PROJECT_VERSION=$(BUILD_NUMBER)
-
-.PHONY: export-development
-export-development:
-	xcodebuild -exportArchive -archivePath $(ARCHIVE_PATH_DEV) \
-		-exportPath $(EXPORT_PATH_DEV) $(EXPORT_FLAGS)
-	@echo
-	@echo "できました: ios/$(EXPORT_PATH_DEV)/ReactionDevelopment.ipa"
-	@echo "Transporter でアップロードするか、Xcode の Organizer から配信してください。"

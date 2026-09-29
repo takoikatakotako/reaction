@@ -4,15 +4,16 @@
 
 ## 構成
 
-素の HTML と CSS のみ。ビルド不要。画面幅で 3 つの CSS を出し分ける。
+素の HTML と CSS のみ。ビルド不要。
 
 ```
 index.html
-css/phone.css   ～800px
-css/ipad.css    800px～1200px
-css/pc.css      1200px～
+css/style.css
 images/
 ```
+
+flexbox で組んでいて、800px 以下で縦積みに切り替わる。ブレークポイントは
+折り返しの都合で 1 つだけ。
 
 ## 手元で見る
 

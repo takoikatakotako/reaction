@@ -18,8 +18,6 @@ github_action_role_arn = "arn:aws:iam::392961483375:role/reaction-github-action-
 lp_bucket_name = "reaction-production-lp"
 lp_domain      = "chemist.swiswiswift.com"
 
-# 移行が終わるまで空。associate-alias で所有権を移したあとに
-# ["chemist.swiswiswift.com"] を入れる（lp/README.md の「移行手順」）。
-# 切り戻したときも空に戻すこと。実態とずれると次の apply が
-# CNAMEAlreadyExists で失敗する。
-lp_aliases = []
+# 移行済み。切り戻すときは空に戻すこと。実態とずれると次の apply が
+# CNAMEAlreadyExists で失敗する（lp/README.md の「切り戻し」）。
+lp_aliases = ["chemist.swiswiswift.com"]

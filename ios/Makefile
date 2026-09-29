@@ -16,12 +16,31 @@ save-resolved:
 lint:
 	mint run swiftlint swiftlint --strict
 
+# シミュレータは名前ではなく UDID で指定する。同じ名前の端末が複数あると
+# xcodebuild は解決できず、macOS にフォールバックして
+# 「My Mac's macOS platform doesn't match」で失敗する。Xcode を更新すると
+# 旧バージョンの端末が残って名前が重複しやすい。
+#
+# CI（test-ios.yml）と同じく、利用可能な iPhone の中から最後のものを選ぶ。
+# SIMULATOR_UDID を渡せば上書きできる。
+# ?= だと参照のたびに simctl が走るので、未指定のときだけ 1 回評価する。
+ifeq ($(origin SIMULATOR_UDID), undefined)
+SIMULATOR_UDID := $(shell xcrun simctl list devices available --json \
+	| jq -r '[.devices[][] | select(.name | startswith("iPhone"))] | last | .udid')
+endif
+
 .PHONY: test
 test:
+	@if [ -z "$(SIMULATOR_UDID)" ] || [ "$(SIMULATOR_UDID)" = "null" ]; then \
+		echo "error: 利用可能な iPhone シミュレータが見つかりません" >&2; \
+		xcrun simctl list devices available; \
+		exit 1; \
+	fi
+	@echo "使用するシミュレータ: $(SIMULATOR_UDID)"
 	xcodebuild test \
 		-project Reaction.xcodeproj \
 		-scheme Development \
-		-destination 'platform=iOS Simulator,name=iPhone 17 Pro' \
+		-destination "id=$(SIMULATOR_UDID)" \
 		-onlyUsePackageVersionsFromResolvedFile \
 		-skipPackagePluginValidation \
 		-skipMacroValidation \

@@ -64,7 +64,7 @@ cd ios
 mint bootstrap        # ツールインストール (xcodegen, swiftlint など)
 make generate         # Xcode プロジェクト生成 + Package.resolved 配置
 make lint             # Lint実行
-make test             # ユニットテスト (シミュレータ)
+make test             # ユニットテスト (シミュレータは自動選択。SIMULATOR_UDID で指定可)
 make save-resolved    # Xcode で依存を更新した後、Package.resolved をバージョン管理側へ書き戻す
 ```
 

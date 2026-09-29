@@ -58,3 +58,8 @@ variable "lp_aliases" {
   type        = list(string)
   default     = []
 }
+
+variable "lp_resource_bucket_name" {
+  description = "アプリが参照する画像を置く S3 バケット名。"
+  type        = string
+}

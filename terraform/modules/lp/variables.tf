@@ -3,6 +3,11 @@ variable "bucket_name" {
   type        = string
 }
 
+variable "resource_bucket_name" {
+  description = "アプリが参照する画像を置く S3 バケット名。LP とは分ける。"
+  type        = string
+}
+
 variable "domain" {
   description = "配信するドメイン。証明書と CloudFront の comment に使う。"
   type        = string

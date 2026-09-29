@@ -63,11 +63,12 @@ module "cloudfront_lp_certificate" {
 }
 
 module "lp" {
-  source              = "../../modules/lp"
-  bucket_name         = var.lp_bucket_name
-  domain              = var.lp_domain
-  aliases             = var.lp_aliases
-  acm_certificate_arn = module.cloudfront_lp_certificate.certificate_arn
+  source               = "../../modules/lp"
+  bucket_name          = var.lp_bucket_name
+  resource_bucket_name = var.lp_resource_bucket_name
+  domain               = var.lp_domain
+  aliases              = var.lp_aliases
+  acm_certificate_arn  = module.cloudfront_lp_certificate.certificate_arn
 }
 
 ##############################################################

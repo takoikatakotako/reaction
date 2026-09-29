@@ -12,3 +12,8 @@ output "distribution_domain_name" {
   description = "Cloudflare の CNAME に設定する CloudFront のドメイン。"
   value       = aws_cloudfront_distribution.lp.domain_name
 }
+
+output "resource_bucket_name" {
+  description = "アプリが参照する画像のバケット名。"
+  value       = aws_s3_bucket.resource.id
+}

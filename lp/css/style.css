@@ -187,8 +187,11 @@ img {
 /* もとは hero の中に絶対配置していて、背景に沈んで読めず、
    短いビューポートでは見切れていた。通常フローに出す。 */
 .footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
   padding: 1rem;
-  text-align: center;
   font-size: 0.85rem;
   background-color: #0d2a47;
 }

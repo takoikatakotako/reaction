@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+/*
+ * 法務ページ（プライバシーポリシー / 利用規約）
+ *
+ * ランディングページは全画面の 1 枚もので背景画像も敷くが、こちらは
+ * 長文を読ませるページなので別のスタイルにする。style.css は読み込まない。
+ */
+
+:root {
+  --text: #1a1a1a;
+  --muted: #666;
+  --line: #e2e6ea;
+  --link: #1a6fc4;
+  --bar: #0d2a47;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "游ゴシック体", "Yu Gothic Medium", "ヒラギノ角ゴ Pro W3", sans-serif;
+  line-height: 1.9;
+  color: var(--text);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+a {
+  color: var(--link);
+}
+
+/* ------------------------------------------------------------------ */
+/* ヘッダー                                                            */
+/* ------------------------------------------------------------------ */
+
+.header {
+  border-bottom: 1px solid var(--line);
+  padding: 0.75rem 1.25rem;
+}
+
+.header__home {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header__home img {
+  border-radius: 7px;
+}
+
+/* ------------------------------------------------------------------ */
+/* 本文                                                                */
+/* ------------------------------------------------------------------ */
+
+.document {
+  flex: 1;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.document h1 {
+  font-size: 1.7rem;
+  margin: 0 0 0.5rem;
+}
+
+/* 条見出し。本文との境目が分かるよう線を引く。 */
+.document h2 {
+  font-size: 1.15rem;
+  margin: 2.5rem 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.document p {
+  margin: 0 0 1rem;
+}
+
+.document ol,
+.document ul {
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+}
+
+.document li {
+  margin-bottom: 0.4rem;
+}
+
+.document hr {
+  margin: 3rem 0 1.5rem;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+/* 「最終更新日」。h1 の直後の段落だけ小さく見せる。 */
+.document h1 + p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.document .end {
+  margin-top: 2.5rem;
+  text-align: center;
+  color: #999;
+}
+
+/* ------------------------------------------------------------------ */
+/* フッター                                                            */
+/* ------------------------------------------------------------------ */
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: var(--bar);
+  font-size: 0.85rem;
+}
+
+.footer a {
+  color: #cfe3f7;
+}
+
+@media (max-width: 600px) {
+  .document {
+    padding: 1.75rem 1rem 3rem;
+  }
+
+  .document h1 {
+    font-size: 1.4rem;
+  }
+}

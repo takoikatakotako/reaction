@@ -7,10 +7,25 @@
 素の HTML と CSS のみ。ビルド不要。
 
 ```
-index.html
-css/style.css
+index.html          ランディングページ
+privacy.html        プライバシーポリシー（生成物）
+terms.html          利用規約（生成物）
+legal/*.md          法務ページの原本
+tools/build-legal.py
+css/style.css       ランディングページ用
+css/legal.css       法務ページ用
 images/
 ```
+
+法務ページは Markdown が原本。条文の追記がしやすく、差分も読める。
+編集したら生成し直す。
+
+```bash
+python3 lp/tools/build-legal.py
+```
+
+生成物（`privacy.html` / `terms.html`）もコミットする。デプロイは
+`lp/` をそのまま S3 へ流すだけなので、ビルド手順を CI に足さずに済む。
 
 flexbox で組んでいて、800px 以下で縦積みに切り替わる。ブレークポイントは
 折り返しの都合で 1 つだけ。

@@ -2,15 +2,9 @@ import SwiftUI
 import Kingfisher
 
 struct ReactionDetailView: View {
-    @State var showingSheet = false
     @State var showingFullScreen = false
     @State var reactionMechanism: ReactionMechanism
     @State private var isLoading = true
-
-    // 共有シートで渡す Web 版のページ URL
-    private var shareUrl: URL? {
-        URL(string: "https://chemist.swiswiswift.com/reaction/\(reactionMechanism.id)")
-    }
 
     var body: some View {
         Group {
@@ -18,27 +12,8 @@ struct ReactionDetailView: View {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                ZStack(alignment: .bottom) {
-                    ZoomableScrollView {
-                        ReactionDetailContent(localeIdentifier: Locale.current.identifier, reactionMechanism: reactionMechanism)
-                            .padding(.bottom, 40)
-                    }
-
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            showingSheet = true
-                        }, label: {
-                            Image(systemName: "square.and.arrow.up")
-                                .renderingMode(.template)
-                                .colorMultiply(.black)
-                                .padding(16)
-                                .background(Color.gray)
-                                .cornerRadius(16)
-                                .padding(.trailing, 16)
-                        })
-                        .padding(.bottom, 8)
-                    }
+                ZoomableScrollView {
+                    ReactionDetailContent(localeIdentifier: Locale.current.identifier, reactionMechanism: reactionMechanism)
                 }
             }
         }
@@ -58,9 +33,6 @@ struct ReactionDetailView: View {
         .fullScreenCover(isPresented: $showingFullScreen) {
             ReactionDetailFullScreenView(localeIdentifier: Locale.current.identifier, reactionMechanism: reactionMechanism)
         }
-        .sheet(isPresented: $showingSheet, content: {
-            ActivityViewController(activityItems: [shareUrl].compactMap { $0 })
-        })
         .onAppear {
             prefetchImages()
         }

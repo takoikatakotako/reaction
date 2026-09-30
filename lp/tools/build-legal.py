@@ -61,53 +61,90 @@ def inline(text):
 
 
 def convert(md):
+    """Markdown を HTML にする。
+
+    入れ子のリストを保つ。平坦化すると、条文の途中に箇条書きを挟んだときに
+    そのあとの項番号が 1 に戻ってしまう。
+    """
     out = []
-    list_type = None
+    # 開いているリストの (インデント, タグ)。深い順に積む。
+    stack = []
+    # 現在の階層で <li> が開いているか
+    li_open = False
 
-    def close_list():
-        nonlocal list_type
-        if list_type:
-            out.append(f"      </{list_type}>")
-            list_type = None
+    def pad(depth):
+        return "      " + "  " * depth
 
-    def open_list(kind):
-        nonlocal list_type
-        if list_type != kind:
-            close_list()
-            out.append(f"      <{kind}>")
-            list_type = kind
+    def close_li():
+        nonlocal li_open
+        if li_open:
+            out.append(pad(len(stack)) + "</li>")
+            li_open = False
+
+    def close_lists(min_indent=-1):
+        nonlocal li_open
+        while stack and stack[-1][0] > min_indent:
+            close_li()
+            _, tag = stack.pop()
+            out.append(pad(len(stack)) + f"</{tag}>")
+            # 親の <li> は開いたままなので、閉じる担当を引き継ぐ
+            li_open = bool(stack)
+        if not stack:
+            li_open = False
+
+    def add_item(indent, tag, text):
+        nonlocal li_open
+        # 浅くなったぶんだけ閉じる
+        while stack and indent < stack[-1][0]:
+            close_lists(stack[-1][0] - 1)
+
+        if stack and indent == stack[-1][0]:
+            if stack[-1][1] != tag:
+                # 同じ深さで種類が変わったら開き直す
+                close_lists(indent - 1)
+            else:
+                close_li()
+
+        if not stack or indent > stack[-1][0]:
+            # 親の <li> の中に入れ子のリストを開く
+            out.append(pad(len(stack) + 1) + f"<{tag}>")
+            stack.append((indent, tag))
+            li_open = False
+
+        out.append(pad(len(stack)) + f"<li>{inline(text)}")
+        li_open = True
 
     for raw in md.split("\n"):
         line = raw.rstrip()
         stripped = line.strip()
+        indent = len(line) - len(line.lstrip())
+
+        ordered = re.match(r"^\s*\d+\. (.*)$", line)
+        bullet = re.match(r"^\s*- (.*)$", line)
 
         if not stripped:
-            close_list()
+            close_lists()
+        elif ordered:
+            add_item(indent, "ol", ordered.group(1))
+        elif bullet:
+            add_item(indent, "ul", bullet.group(1))
         elif stripped == "---":
-            close_list()
+            close_lists()
             out.append("      <hr>")
         elif stripped == "以上":
-            close_list()
+            close_lists()
             out.append('      <p class="end">以上</p>')
         elif line.startswith("# "):
-            close_list()
+            close_lists()
             out.append(f"      <h1>{inline(line[2:])}</h1>")
         elif line.startswith("## "):
-            close_list()
+            close_lists()
             out.append(f"      <h2>{inline(line[3:])}</h2>")
-        elif re.match(r"^\s*\d+\. ", line):
-            open_list("ol")
-            item = re.sub(r"^\s*\d+\. ", "", line)
-            out.append(f"        <li>{inline(item)}</li>")
-        elif re.match(r"^\s*- ", line):
-            open_list("ul")
-            item = re.sub(r"^\s*- ", "", line)
-            out.append(f"        <li>{inline(item)}</li>")
         else:
-            close_list()
+            close_lists()
             out.append(f"      <p>{inline(stripped)}</p>")
 
-    close_list()
+    close_lists()
     return "\n".join(out) + "\n"
 
 

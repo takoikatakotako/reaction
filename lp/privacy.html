@@ -26,28 +26,38 @@
       <h2>2. クラッシュ情報の収集</h2>
       <p>本アプリ（iOS 版・Android 版）では、不具合の原因究明のため、Google が提供する Firebase Crashlytics を利用してクラッシュ情報を収集します。</p>
       <p>収集する場合がある情報は以下のとおりです。</p>
-      <ul>
-        <li>エラー情報・クラッシュ情報（発生箇所、スタックトレース）</li>
-        <li>デバイスの機種</li>
-        <li>OSバージョン</li>
-        <li>アプリのバージョン</li>
-        <li>端末に固有ではないインストール識別子</li>
+        <ul>
+        <li>エラー情報・クラッシュ情報（発生箇所、スタックトレース）
+        </li>
+        <li>デバイスの機種
+        </li>
+        <li>OSバージョン
+        </li>
+        <li>アプリのバージョン
+        </li>
+        <li>端末に固有ではないインストール識別子
+        </li>
       </ul>
       <p>クラッシュ情報は、アプリが異常終了した際に記録され、次回起動時に送信されます。</p>
       <h2>3. データ解析</h2>
       <p>本アプリの iOS 版では、アプリの利便性向上のため、Google が提供する Firebase Analytics を利用してアクセス解析を行います。</p>
       <p>収集する場合がある情報は以下のとおりです。</p>
-      <ul>
-        <li>アプリの利用状況（画面の表示、操作の回数など）</li>
-        <li>デバイス情報</li>
-        <li>OSバージョン</li>
-        <li>おおよその地域</li>
+        <ul>
+        <li>アプリの利用状況（画面の表示、操作の回数など）
+        </li>
+        <li>デバイス情報
+        </li>
+        <li>OSバージョン
+        </li>
+        <li>おおよその地域
+        </li>
       </ul>
       <p>Android 版では Firebase Analytics を利用していません。</p>
       <p>これらの情報は、サービスの品質向上およびユーザー体験の改善を目的として使用されます。Firebase における情報の取り扱いについては、<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google プライバシーポリシー</a>をご確認ください。</p>
       <h2>4. プッシュ通知</h2>
-      <p>本アプリの iOS 版では、お知らせの配信のため、Google が提供する Firebase Cloud Messaging を利用します。通知の送信に必要な端末のトークンを取得しますが、これは個人を特定する情報ではありません。</p>
-      <p>プッシュ通知の受信可否は、端末の設定からいつでも変更できます。Android 版ではプッシュ通知を利用していません。</p>
+      <p>本アプリの iOS 版では、お知らせの配信のため、Google が提供する Firebase Cloud Messaging を利用します。</p>
+      <p>通知の送信には、アプリのインストールごとに Firebase が発行する登録トークンを利用します。このトークンはアプリのインストールを識別する一意の値です。当方はこれを通知の配信にのみ使用し、氏名・メールアドレスなど個人を特定する情報と結び付けることはありません。また、第三者へ提供することもありません。</p>
+      <p>アプリを削除するか再インストールすると、トークンは無効になるか新しく発行されます。プッシュ通知の受信可否は、端末の設定からいつでも変更できます。Android 版ではプッシュ通知を利用していません。</p>
       <h2>5. アプリ内課金</h2>
       <p>本アプリの iOS 版では、Apple が提供する App Store の課金機能（StoreKit）を利用したアプリ内課金を行います。</p>
       <p><strong>決済に関する情報は Apple が処理し、当方はクレジットカード番号などの決済情報を取得しません。</strong> 当方が受け取るのは、購入が完了したかどうかの情報のみです。</p>
@@ -58,13 +68,25 @@
       <h2>8. 第三者への提供</h2>
       <p>当方は、法令に基づく場合を除き、収集した情報を第三者に販売・譲渡することはありません。</p>
       <p>本アプリが利用する外部サービスプロバイダは以下のとおりです。</p>
-      <ul>
-        <li>Google（Firebase Crashlytics / Firebase Analytics / Firebase Cloud Messaging）</li>
-        <li>プライバシーポリシー: https://policies.google.com/privacy</li>
-        <li>Apple（App Store の課金機能。iOS 版のみ）</li>
-        <li>プライバシーポリシー: https://www.apple.com/legal/privacy/</li>
-        <li>Amazon Web Services（データおよび画像の配信）</li>
-        <li>プライバシーポリシー: https://aws.amazon.com/jp/privacy/</li>
+        <ul>
+        <li>Google（Firebase Crashlytics / Firebase Analytics / Firebase Cloud Messaging）
+          <ul>
+          <li>プライバシーポリシー: https://policies.google.com/privacy
+          </li>
+        </ul>
+        </li>
+        <li>Apple（App Store の課金機能。iOS 版のみ）
+          <ul>
+          <li>プライバシーポリシー: https://www.apple.com/legal/privacy/
+          </li>
+        </ul>
+        </li>
+        <li>Amazon Web Services（データおよび画像の配信）
+          <ul>
+          <li>プライバシーポリシー: https://aws.amazon.com/jp/privacy/
+          </li>
+        </ul>
+        </li>
       </ul>
       <p>ユーザーは、本アプリを使用することで、外部サービスプロバイダによる情報の収集および使用に同意したものとみなされます。</p>
       <h2>9. 免責事項</h2>
@@ -75,10 +97,13 @@
       <hr>
       <p><strong>お問い合わせ</strong></p>
       <p>本プライバシーポリシーに関するお問い合わせは、以下までご連絡ください。</p>
-      <ul>
-        <li>アプリ名: シン反応機構（Reaction）</li>
-        <li>運営者: takoikatakotako</li>
-        <li>お問い合わせ: <a href="https://docs.google.com/forms/d/e/1FAIpQLSfqxPpkdiG7JW5qIiz0pf0oisne4HIJZiL8nkhmPmgFAlRwCA/viewform?usp=header" target="_blank" rel="noopener">お問い合わせフォーム</a></li>
+        <ul>
+        <li>アプリ名: シン反応機構（Reaction）
+        </li>
+        <li>運営者: takoikatakotako
+        </li>
+        <li>お問い合わせ: <a href="https://docs.google.com/forms/d/e/1FAIpQLSfqxPpkdiG7JW5qIiz0pf0oisne4HIJZiL8nkhmPmgFAlRwCA/viewform?usp=header" target="_blank" rel="noopener">お問い合わせフォーム</a>
+        </li>
       </ul>
       <p class="end">以上</p>
     </main>

@@ -78,6 +78,42 @@ commit には既定で `changesInReviewBehavior=ERROR_IF_IN_REVIEW` を付けて
 内部テストの配信自体は審査を必要としない。審査に出すかどうかは Play Console
 から人が判断する。
 
+### Play API の 403（未解決・2026-10-02 時点）
+
+未審査の変更が残っていない状態で commit すると、Play は変更を自動で審査に
+送ろうとする。この経路で 403 が返る。
+
+```
+403 PERMISSION_DENIED
+To meet Play Console requirements, your app's package name must be registered
+to your verified developer identity.
+```
+
+原因は **Android デベロッパーの確認における署名鍵の未登録**。Play Console の
+確認ページ上は「登録済み」と表示されていても、検出された鍵がすべて登録されて
+いるとは限らない。製品版を審査に送ろうとしたときの事前チェックで、未登録の
+鍵が 1 つ名指しされて判明した。
+
+同じ壁は手動操作でも当たる。「API だから落ちる」のではなく、**審査に出す経路
+だけが弾かれる**。内部テストへの配信は審査を経由しないので、手動・API とも通る。
+
+対処は確認ページで該当の鍵を登録すること。登録後しばらくは「審査中」になる。
+
+鍵は 3 種類あって紛らわしい。
+
+| 鍵 | 誰が持つか | 用途 |
+|---|---|---|
+| アプリ署名鍵 | Google | Play が配信用に署名し直す鍵。取り出せない |
+| アップロード鍵 | SSM（`scripts/android-signing.sh`） | 手元で AAB に署名する鍵 |
+| デベロッパー確認に登録する鍵 | 登録するだけ | 上記とは別にもう 1 つ必要だった |
+
+指紋は Play Console の **Google Play による保護 → Play アプリ署名の管理**
+（アプリ署名鍵・アップロード鍵）と、**Android デベロッパーの確認 → パッケージ名**
+（登録済みの鍵）で確認できる。
+
+これが解消するまで、製品版に出すビルドは Play Console から手動でアップロード
+する。`UPLOAD=1` を付けなければ AAB だけ作れる。
+
 ### Play の認証（鍵ファイルは使わない）
 
 `play-publisher@takoikatakotako-management.iam.gserviceaccount.com` を
@@ -95,6 +131,14 @@ Play Developer API のスコープは `cloud-platform` に含まれないため�
 `generateAccessToken` に scope を明示して取っている。
 
 ### バージョン
+
+**配信用のビルドは `main` から作る。** 採番がコミット数に依存しているため、
+ブランチから配信すると main がこれから使う番号を先に消費してしまう。
+
+実際に壊した。クラッシュボタン入りの確認用ビルドを 667 コミットのブランチから
+`66700` で上げたところ、main は 665 コミットで `66500`、PR をマージしても 667 =
+`66700` にしかならず、`RETRY` は下 2 桁なので `666xx` からは `66700` を超えられ
+なくなった。`ANDROID_VERSION_CODE` を手で指定して抜けるまで尾を引いた。
 
 Play は同じ `versionCode` の再アップロードを受け付けない。スクリプトが
 **コミット数 × 100** から自動で採番するので、普段は意識しなくてよい。
@@ -129,4 +173,29 @@ RETRY=1 AWS_PROFILE=reaction-production ./scripts/android-release.sh
 
 Firebase SDK が ContentProvider で自動初期化するため、アプリ側のコードは不要。
 `mapping` のアップロードは release のみ有効（`app/build.gradle.kts`）。
-今は `isMinifyEnabled = false` なので mapping 自体が生成されない。
+今は `isMinifyEnabled = false` なので mapping 自体が生成されない（#161）。
+
+実機で疎通を確認済み（2026-10-02、Pixel 6a / Android 17）。難読化解除された
+スタックトレースが行番号まで届くところまで見ている。
+
+確認するときは次のログの流れを追う。`adb logcat | grep FirebaseCrashlytics`。
+
+```
+Handling uncaught exception "java.lang.RuntimeException: ..." from thread main
+Persisting fatal event for session <id>
+Finalizing report for session <id>
+Sending report through Google DataTransport: <id>
+Crashlytics report successfully enqueued to DataTransport: <id>
+Deleted report file: .../priority-reports/<id>
+Completed exception processing. Invoking default exception handler.
+```
+
+**次回起動時の `No crash reports are available to be sent.` は失敗ではない。**
+Crashlytics はクラッシュした瞬間に priority-report として送信キューに積み、
+ファイルを削除する。だから再起動時には「送るべき未送信レポートがもう無い」
+状態になる。実際の送信結果は `TRuntime.CctTransportBackend` の行で確認する。
+
+```
+Making request to: https://crashlyticsreports-pa.googleapis.com/v1/firelog/legacy/batchlog
+Status Code: 200
+```

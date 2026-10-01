@@ -80,6 +80,10 @@ SSM に入れたあとは手元から消してよい。
 
 ### ビルド番号
 
+**配信用のビルドは `main` から作る。** 採番がコミット数に依存しているため、
+ブランチから配信すると main がこれから使う番号を先に消費してしまう。Android で
+実際に壊した（`android/README.md` の「バージョン」を参照）。
+
 TestFlight は同じ (`MARKETING_VERSION`, `CFBundleVersion`) の再アップロードを
 受け付けない。`CURRENT_PROJECT_VERSION` は **コミット数 × 100** から自動で
 採番しているので、普段は意識しなくてよい。
@@ -144,3 +148,35 @@ security cms -D -i <profile>.mobileprovision | plutil -p - | head
 の `signingStyle: manual` と `provisioningProfiles`）。
 
 参考: [Apple — Cloud-managed certificates](https://developer.apple.com/help/account/certificates/cloud-managed-certificates)
+
+## App Store へのリリース
+
+TestFlight へのアップロードはここまでのスクリプトで終わる。App Store に出す
+のはその先の別作業で、スクリプト化していない。
+
+1. `MARKETING_VERSION` を上げて main にマージする（`ios/project.yml`）
+2. main から `scripts/ios-release.sh production` で TestFlight に上げる
+3. TestFlight で実機確認する
+4. App Store Connect で新しいバージョンを作り、ビルドとリリースノートを設定する
+5. 審査に送信する
+6. 承認後、**自分で公開ボタンを押す**
+
+リリース方法は手動（`MANUAL`）にしている。承認されても勝手に公開されない。
+
+### App Store Connect API から操作する場合
+
+ブラウザを使わず、TestFlight アップロードと同じ API キーで 4 までは進められる。
+JWT は ES256 で自分で組む（`appstore-connect.sh pull` で `.p8` と ID が手に入る）。
+
+| やること | エンドポイント |
+|---|---|
+| バージョンを作る | `POST /v1/appStoreVersions`（`versionString`, `platform: IOS`, `releaseType: MANUAL`, app との関連付け） |
+| リリースノート | `PATCH /v1/appStoreVersionLocalizations/{id}` の `whatsNew` |
+| ビルドを紐づける | `PATCH /v1/appStoreVersions/{id}/relationships/build` |
+
+ローカライズはバージョンを作ると既存の対応言語ぶん自動で生成される。
+スクリーンショットも前バージョンから引き継がれる（主要言語の ja のみ登録して
+いて、en-US は 0 件。主要言語にあれば審査は通る）。
+
+輸出コンプライアンスは `project.yml` の `ITSAppUsesNonExemptEncryption: false`
+で申告済みなので、アップロードのたびに聞かれることはない。

@@ -64,9 +64,19 @@ Play Developer API v3 を直接叩いている。依存を増やさないため�
 commit するまでは何も公開されない。途中で落ちた場合は edit を破棄するので、
 Play Console に未完了の編集が残らない。
 
-commit には `changesInReviewBehavior=ERROR_IF_IN_REVIEW` を付けている。省略すると
-審査中の変更をキャンセルして再送信する挙動になり、製品版の審査中に内部テストを
-上げると巻き込むため。審査中の場合はエラーで止まる。
+commit には既定で `changesInReviewBehavior=ERROR_IF_IN_REVIEW` を付けている。
+省略すると審査中の変更をキャンセルして再送信する挙動になり、製品版の審査中に
+内部テストを上げると巻き込むため。審査中の場合はエラーで止まる。
+
+ただし Play は、アプリに未審査の変更が残っていると、代わりに
+`changesNotSentForReview=true` を要求してくる。逆に未審査の変更が無い状態で
+これを付けると `must not be set` で 400 になる。どちらかに固定すると
+もう一方の状態で落ちるので、まず `ERROR_IF_IN_REVIEW` で試し、
+`changesNotSentForReview` を要求されたときだけ付けて入れ直している。
+
+`changesNotSentForReview=true` は変更を確定するだけで審査には出さない。
+内部テストの配信自体は審査を必要としない。審査に出すかどうかは Play Console
+から人が判断する。
 
 ### Play の認証（鍵ファイルは使わない）
 

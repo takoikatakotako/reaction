@@ -125,12 +125,37 @@ curl -sS -X PUT "$api/$package/edits/$edit_id/tracks/$track" \
   | python3 -c 'import json,sys; d=json.load(sys.stdin); sys.exit("error: %s" % d) if "error" in d else None'
 
 echo "==> commit"
-# changesInReviewBehavior を省略すると CANCEL_IN_REVIEW_AND_SUBMIT になり、
-# 審査中の変更があるとそれをキャンセルして再送信してしまう。製品版の審査中に
-# 内部テストを上げると巻き込むので、審査中なら止める。
-# この場合 API は edit を無効化せずエラーを返すため、cleanup で破棄できる。
-curl -sS -X POST "$api/$package/edits/$edit_id:commit?changesInReviewBehavior=ERROR_IF_IN_REVIEW" \
-  -H "$auth" -H "Content-Length: 0" \
+# Play は commit に付けるパラメータを、アプリに未審査の変更が残っているか
+# どうかで出し分けてくる。どちらかに固定すると、もう一方の状態で 400 になる。
+#
+#   未審査の変更なし  changesNotSentForReview を付けると must not be set
+#   未審査の変更あり  付けないと「changesNotSentForReview を true にしろ」
+#
+# 実際、プライバシーポリシーの否承認で未審査の変更が残っている間は前者では
+# 通らず、承認後は後者では通らなくなった。両方を試す。
+#
+# 既定は changesInReviewBehavior=ERROR_IF_IN_REVIEW。省略すると
+# CANCEL_IN_REVIEW_AND_SUBMIT が効き、審査中の変更をキャンセルして再送信して
+# しまう。製品版の審査中に内部テストを上げると巻き込むので、審査中なら止める。
+#
+# 「set the query parameter changesNotSentForReview」と言われたときだけ
+# changesNotSentForReview=true で入れ直す。変更を確定するだけで審査には
+# 出さない。内部テストの配信自体は審査を必要としないので、審査に出すか
+# どうかは Play Console から人が判断する。
+#
+# commit が 400 で落ちても edit は無効化されないため、同じ edit で再試行できる。
+commit_edit() {
+  curl -sS -X POST "$api/$package/edits/$edit_id:commit?$1" \
+    -H "$auth" -H "Content-Length: 0"
+}
+
+commit_response="$(commit_edit 'changesInReviewBehavior=ERROR_IF_IN_REVIEW')"
+if printf '%s' "$commit_response" | grep -q 'set the query parameter changesNotSentForReview'; then
+  echo "    未審査の変更が残っているため changesNotSentForReview を付けて再試行"
+  commit_response="$(commit_edit 'changesNotSentForReview=true')"
+fi
+
+printf '%s' "$commit_response" \
   | python3 -c 'import json,sys; d=json.load(sys.stdin); sys.exit("error: %s" % d) if "error" in d else None'
 committed=1
 

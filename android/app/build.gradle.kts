@@ -19,7 +19,7 @@ android {
         // コミット数を渡す。それ以外（手元の動作確認や CI のテスト）は
         // アップロードしないので 1 で構わない。
         versionCode = (System.getenv("ANDROID_VERSION_CODE") ?: "1").toInt()
-        versionName = "1.1.4"
+        versionName = "1.5.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

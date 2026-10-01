@@ -125,11 +125,18 @@ curl -sS -X PUT "$api/$package/edits/$edit_id/tracks/$track" \
   | python3 -c 'import json,sys; d=json.load(sys.stdin); sys.exit("error: %s" % d) if "error" in d else None'
 
 echo "==> commit"
-# changesInReviewBehavior を省略すると CANCEL_IN_REVIEW_AND_SUBMIT になり、
-# 審査中の変更があるとそれをキャンセルして再送信してしまう。製品版の審査中に
-# 内部テストを上げると巻き込むので、審査中なら止める。
-# この場合 API は edit を無効化せずエラーを返すため、cleanup で破棄できる。
-curl -sS -X POST "$api/$package/edits/$edit_id:commit?changesInReviewBehavior=ERROR_IF_IN_REVIEW" \
+# changesNotSentForReview=true で、変更を確定するだけで審査には出さない。
+#
+# 省略すると changesInReviewBehavior の既定（CANCEL_IN_REVIEW_AND_SUBMIT）が
+# 効き、審査中の変更をキャンセルして再送信してしまう。製品版の審査中に
+# 内部テストを上げると巻き込む。
+#
+# また、アプリに未審査の変更が残っていると、このパラメータなしでは
+# Play が 400 を返して commit できない。
+#
+# 内部テストの配信自体は審査を必要としないので、審査に出すかどうかは
+# Play Console から人が判断する。
+curl -sS -X POST "$api/$package/edits/$edit_id:commit?changesNotSentForReview=true" \
   -H "$auth" -H "Content-Length: 0" \
   | python3 -c 'import json,sys; d=json.load(sys.stdin); sys.exit("error: %s" % d) if "error" in d else None'
 committed=1

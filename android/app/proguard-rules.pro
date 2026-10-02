@@ -5,17 +5,20 @@
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# ---- このアプリ固有のルール ----
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Gson はフィールド名をそのまま JSON のキーとして扱う。R8 がフィールドを
+# 改名すると対応が取れなくなり、値がすべて null になる。
+#
+# gson 同梱の consumer ルールが保持するのは @SerializedName を付けた
+# フィールドだけで、このアプリのモデルには付けていないため守られない。
+# API のレスポンスに使うクラスは明示的に名前を保持する。
+#
+# モデルを追加したらここにも足すこと。
+-keep class com.swiswiswift.chemist.Reaction { *; }
+-keep class com.swiswiswift.chemist.ReactionContent { *; }
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Crashlytics のスタックトレースを行番号まで記号化するために必要。
+# mapping のアップロードは app/build.gradle.kts で有効にしている。
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile

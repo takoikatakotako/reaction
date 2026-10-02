@@ -51,11 +51,10 @@ android {
 
         release {
             signingConfig = signingConfigs.findByName("release")
-            isMinifyEnabled = false
+            isMinifyEnabled = true
 
-            // 難読化を有効にしたときに記号化できるよう、mapping を
-            // Crashlytics にアップロードする設定を先に入れておく。
-            // isMinifyEnabled = false の間は mapping が生成されないので何も起きない。
+            // 難読化したスタックトレースを記号化できるよう、mapping を
+            // Crashlytics にアップロードする。
             configure<com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension> {
                 mappingFileUploadEnabled = true
             }

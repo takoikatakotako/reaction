@@ -72,8 +72,15 @@ SwiftPM の依存バージョンは `ios/Package.resolved` で固定している
 
 ### モバイルの配信
 
+**配信用のビルドは必ず `main` から作る。** TestFlight や内部テストへの配信も含む。
+ビルド番号をコミット数から採番しているため、ブランチから配信すると main が
+これから使う番号を先に消費してしまい、採番が破綻する（実際に起きた）。
+PR はマージしてから、`main` を pull してビルドする。
+
 ```bash
 # Android: ビルドから Play 内部テストへのアップロードまで一発
+# ※ デベロッパー確認の鍵未登録で commit が 403 になっていた。鍵は登録済みだが
+#   API 経由は未検証（android/README.md「デベロッパー確認の鍵未登録でブロックされた件」）
 UPLOAD=1 AWS_PROFILE=reaction-production ./scripts/android-release.sh
 
 # AAB を作るだけなら
@@ -91,6 +98,10 @@ cd ios && make archive-development && make export-development  # 開発
 Firebase の設定ファイルはリポジトリに置かず SSM がマスター。
 `scripts/firebase-config.sh pull android` / `pull ios dev|prod` で取得する。
 詳細は `android/README.md` と `ios/README.md`。
+
+ストアへの公開（製品版 / App Store）はどちらも手動操作が要る。Play は
+管理対象の公開がオン、iOS はリリース方法が手動。審査が通っても自分で
+公開ボタンを押すまで出ない。
 
 ### デプロイ
 

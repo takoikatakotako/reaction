@@ -78,6 +78,70 @@ commit には既定で `changesInReviewBehavior=ERROR_IF_IN_REVIEW` を付けて
 内部テストの配信自体は審査を必要としない。審査に出すかどうかは Play Console
 から人が判断する。
 
+### デベロッパー確認の鍵未登録でブロックされた件（2026-10-02）
+
+Android デベロッパーの確認で、このパッケージの署名証明書のフィンガープリントが
+1 つ未登録になっていた。これにより**審査に出す操作**が通らなくなっていた。
+
+#### 何が通って何が通らなかったか
+
+回避策の有無が操作ごとに違うので分けて書く。
+
+| 操作 | 審査を伴うか | 鍵の登録前 |
+|---|---|---|
+| AAB のアップロード | 伴わない | 手動・API とも通る |
+| 内部テストに公開 | 伴わない | **Console からは通る**。API は下記のとおり通らない |
+| 製品版を審査に送信 | 伴う | **通らない**。Console からでも送信ボタンが無効 |
+
+API だけ内部テストでも落ちたのは、未審査の変更が残っていない状態だと commit が
+変更を自動で審査に送ろうとするため。つまり落ちているのは「API だから」ではなく
+「審査に出す経路に入るから」で、Console の内部テスト公開は審査を経由しないので
+通っていた。
+
+API で返っていたエラー。
+
+```
+403 PERMISSION_DENIED
+To meet Play Console requirements, your app's package name must be registered
+to your verified developer identity.
+```
+
+製品版を審査に送る直前の事前チェックでは、未登録のフィンガープリントが名指しで
+表示されて原因が判明した。確認ページ上の表示は「登録済み」だったので、
+**ページが「登録済み」でも、検出されたフィンガープリントがすべて登録済みとは
+限らない**。
+
+#### 登録するもの
+
+登録するのは秘密鍵ではなく**公開鍵証明書の SHA-256 フィンガープリント**。
+1 つのパッケージに複数のフィンガープリントが紐づきうる（Play 外での配布に使う
+鍵も対象）。Play 上の既存アプリでは、対応する秘密鍵で署名した APK の
+アップロードによる所有証明を求められる場合がある。
+
+参考: [パッケージ名の登録](https://support.google.com/googleplay/android-developer/answer/16761053)
+
+このリポジトリで出てくる鍵。
+
+| 鍵 | 誰が持つか | 用途 |
+|---|---|---|
+| アプリ署名鍵 | Google | Play が配信用に署名し直す鍵。秘密鍵は取り出せない |
+| アップロード鍵 | SSM（`scripts/android-signing.sh`） | 手元で AAB に署名する鍵 |
+
+**今回追加登録が必要だったフィンガープリントは、このどちらとも一致しなかった。**
+Play Console 上からは由来を特定できていない（アプリ署名鍵・アップロード鍵の
+指紋は「Google Play による保護 → Play アプリ署名の管理」で確認できるが、
+名指しされた指紋はそのいずれでもなかった）。2021 年に配信していた旧 APK の
+署名鍵ではないかと見ているが、裏は取れていない。
+
+登録自体はフィンガープリントを入力するだけで完了し、所有証明の APK は
+求められなかった。登録直後のステータスは「審査中」。この状態でも製品版の
+審査送信はできるようになった。
+
+#### 現在の状態
+
+製品版 1.5.0 は登録後に審査送信・承認・公開まで完了している。
+**API 経由での配信は登録後に試していない**ため、403 が解消したかは未確認。
+
 ### Play の認証（鍵ファイルは使わない）
 
 `play-publisher@takoikatakotako-management.iam.gserviceaccount.com` を
@@ -95,6 +159,14 @@ Play Developer API のスコープは `cloud-platform` に含まれないため�
 `generateAccessToken` に scope を明示して取っている。
 
 ### バージョン
+
+**配信用のビルドは `main` から作る。** 採番がコミット数に依存しているため、
+ブランチから配信すると main がこれから使う番号を先に消費してしまう。
+
+実際に壊した。クラッシュボタン入りの確認用ビルドを 667 コミットのブランチから
+`66700` で上げたところ、main は 665 コミットで `66500`、PR をマージしても 667 =
+`66700` にしかならず、`RETRY` は下 2 桁なので `666xx` からは `66700` を超えられ
+なくなった。`ANDROID_VERSION_CODE` を手で指定して抜けるまで尾を引いた。
 
 Play は同じ `versionCode` の再アップロードを受け付けない。スクリプトが
 **コミット数 × 100** から自動で採番するので、普段は意識しなくてよい。
@@ -129,4 +201,29 @@ RETRY=1 AWS_PROFILE=reaction-production ./scripts/android-release.sh
 
 Firebase SDK が ContentProvider で自動初期化するため、アプリ側のコードは不要。
 `mapping` のアップロードは release のみ有効（`app/build.gradle.kts`）。
-今は `isMinifyEnabled = false` なので mapping 自体が生成されない。
+今は `isMinifyEnabled = false` なので mapping 自体が生成されない（#161）。
+
+実機で疎通を確認済み（2026-10-02、Pixel 6a / Android 17）。難読化解除された
+スタックトレースが行番号まで届くところまで見ている。
+
+確認するときは次のログの流れを追う。`adb logcat | grep FirebaseCrashlytics`。
+
+```
+Handling uncaught exception "java.lang.RuntimeException: ..." from thread main
+Persisting fatal event for session <id>
+Finalizing report for session <id>
+Sending report through Google DataTransport: <id>
+Crashlytics report successfully enqueued to DataTransport: <id>
+Deleted report file: .../priority-reports/<id>
+Completed exception processing. Invoking default exception handler.
+```
+
+**次回起動時の `No crash reports are available to be sent.` は失敗ではない。**
+Crashlytics はクラッシュした瞬間に priority-report として送信キューに積み、
+ファイルを削除する。だから再起動時には「送るべき未送信レポートがもう無い」
+状態になる。実際の送信結果は `TRuntime.CctTransportBackend` の行で確認する。
+
+```
+Making request to: https://crashlyticsreports-pa.googleapis.com/v1/firelog/legacy/batchlog
+Status Code: 200
+```

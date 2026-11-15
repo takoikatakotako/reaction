@@ -291,10 +291,17 @@ export async function deleteNotice(id: string) {
 }
 
 function validateNotice(notice: entity.AddNotice | entity.EditNotice) {
-  if (!notice.japaneseTitle) {
+  if (notice.platforms.length === 0) {
+    throw new Error('対象OSが選択されていません');
+  }
+  if (notice.languages.length === 0) {
+    throw new Error('対象言語が選択されていません');
+  }
+  // タイトルは対象言語の分だけ必須
+  if (notice.languages.includes('ja') && !notice.japaneseTitle) {
     throw new Error('日本語のタイトルが入力されていません');
   }
-  if (!notice.englishTitle) {
+  if (notice.languages.includes('en') && !notice.englishTitle) {
     throw new Error('英語のタイトルが入力されていません');
   }
   if (!notice.publishedAt) {

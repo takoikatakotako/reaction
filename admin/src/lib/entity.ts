@@ -122,12 +122,17 @@ export type UploadUrlResponse = {
 //////////////////////////////////////////////////////////////
 // Notice
 //////////////////////////////////////////////////////////////
+export type NoticePlatform = 'ios' | 'android';
+export type NoticeLanguage = 'ja' | 'en';
+
 export type Notice = {
   id: string;
   englishTitle: string;
   japaneseTitle: string;
   englishBody: string;
   japaneseBody: string;
+  platforms: NoticePlatform[];
+  languages: NoticeLanguage[];
   publishedAt: string;
 };
 
@@ -140,6 +145,8 @@ export type AddNotice = {
   japaneseTitle: string;
   englishBody: string;
   japaneseBody: string;
+  platforms: NoticePlatform[];
+  languages: NoticeLanguage[];
   publishedAt: string;
 };
 
@@ -149,5 +156,7 @@ export type EditNotice = {
   japaneseTitle: string;
   englishBody: string;
   japaneseBody: string;
+  platforms: NoticePlatform[];
+  languages: NoticeLanguage[];
   publishedAt: string;
 };

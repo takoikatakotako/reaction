@@ -6,7 +6,13 @@ import TextInputField from '../../reaction/common/TextInputField';
 import TextAreaInputField from '../../reaction/common/TextAreaInputField';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
-import { fromDateInputValue, toDateInputValue } from '@/lib/notice';
+import {
+  ALL_NOTICE_LANGUAGES,
+  ALL_NOTICE_PLATFORMS,
+  fromDateInputValue,
+  toDateInputValue,
+} from '@/lib/notice';
+import NoticeTargetFields from '../common/NoticeTargetFields';
 
 export default function EditNotice() {
   const router = useRouter();
@@ -18,6 +24,8 @@ export default function EditNotice() {
   const [japaneseBody, setJapaneseBody] = useState<string>('');
   const [englishBody, setEnglishBody] = useState<string>('');
   const [publishedDate, setPublishedDate] = useState<string>('');
+  const [platforms, setPlatforms] = useState<entity.NoticePlatform[]>([]);
+  const [languages, setLanguages] = useState<entity.NoticeLanguage[]>([]);
 
   useEffect(() => {
     if (!id) return;
@@ -29,6 +37,13 @@ export default function EditNotice() {
         setJapaneseBody(notice.japaneseBody);
         setEnglishBody(notice.englishBody);
         setPublishedDate(toDateInputValue(notice.publishedAt));
+        // API は未設定の旧データも「すべて」に埋めて返すが、念のためここでも補う
+        setPlatforms(
+          notice.platforms?.length ? notice.platforms : ALL_NOTICE_PLATFORMS
+        );
+        setLanguages(
+          notice.languages?.length ? notice.languages : ALL_NOTICE_LANGUAGES
+        );
       } catch (error) {
         alert(`エラーが発生しました:\n${error}`);
       }
@@ -45,6 +60,8 @@ export default function EditNotice() {
         japaneseTitle: japaneseTitle,
         englishBody: englishBody,
         japaneseBody: japaneseBody,
+        platforms: platforms,
+        languages: languages,
         publishedAt: fromDateInputValue(publishedDate),
       };
 
@@ -81,6 +98,13 @@ export default function EditNotice() {
           />
           <hr />
         </div>
+
+        <NoticeTargetFields
+          platforms={platforms}
+          languages={languages}
+          onPlatformsChange={setPlatforms}
+          onLanguagesChange={setLanguages}
+        />
 
         <TextInputField
           label="タイトル(日本語)"

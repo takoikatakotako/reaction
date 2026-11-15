@@ -1,0 +1,5 @@
+<resources>
+    <string name="notice_title">Notices</string>
+    <string name="notice_empty">There are no notices.</string>
+    <string name="notice_error">Failed to load notices.</string>
+</resources>

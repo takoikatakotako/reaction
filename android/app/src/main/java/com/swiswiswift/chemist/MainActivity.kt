@@ -18,6 +18,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val reactionListViewModel = ReactionListViewModel()
+        val noticeListViewModel = NoticeListViewModel()
         enableEdgeToEdge()
         setContent {
             ReactionTheme(darkTheme = false) {
@@ -43,6 +44,23 @@ class MainActivity : ComponentActivity() {
                             ReactionDetail(
                                 navController = navController,
                                 reaction = reaction,
+                            )
+                        }
+
+                        composable("notice") {
+                            NoticeList(navController, noticeListViewModel)
+                        }
+
+                        composable(
+                            "notice/{noticeId}",
+                            arguments = listOf(navArgument("noticeId") {
+                                type = NavType.StringType
+                            })
+                        ) { backStackEntry ->
+                            val noticeId = backStackEntry.arguments?.getString("noticeId").orEmpty()
+                            NoticeDetail(
+                                notice = noticeListViewModel.getNotice(noticeId),
+                                language = noticeListViewModel.language,
                             )
                         }
                     }

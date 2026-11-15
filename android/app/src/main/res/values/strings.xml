@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">反応機構</string>
+    <!-- アプリ名は英語環境でも変えない -->
+    <string name="app_name" translatable="false">反応機構</string>
+    <string name="notice_title">お知らせ</string>
+    <string name="notice_empty">お知らせはありません。</string>
+    <string name="notice_error">お知らせを取得できませんでした。</string>
 </resources>

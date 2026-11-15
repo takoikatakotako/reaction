@@ -53,7 +53,8 @@ enum Fixtures {
         japaneseTitle: String? = "メンテナンスのお知らせ",
         englishBody: String? = "We will perform maintenance.",
         japaneseBody: String? = "メンテナンスを行います。",
-        publishedAt: String? = "2026-09-24T00:00:00Z"
+        publishedAt: String? = "2026-09-24T00:00:00Z",
+        languages: [String]? = ["ja", "en"]
     ) -> Notice {
         Notice(
             id: id,
@@ -61,7 +62,8 @@ enum Fixtures {
             japaneseTitle: japaneseTitle,
             englishBody: englishBody,
             japaneseBody: japaneseBody,
-            publishedAt: publishedAt
+            publishedAt: publishedAt,
+            languages: languages
         )
     }
 }

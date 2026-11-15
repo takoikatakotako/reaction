@@ -107,7 +107,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.swiswiswift.reaction.development
         REACTIONS_ENDPOINT: https://reaction-development.swiswiswift.com/resource/reaction/list.json
         QUESTIONS_ENDPOINT: https://reaction-development.swiswiswift.com/resource/question/list.json
-        NOTICES_ENDPOINT: https://reaction-development.swiswiswift.com/resource/notice/list.json
+        NOTICES_ENDPOINT: https://reaction-development.swiswiswift.com/resource/notice/ios.json
     info:
       path: Reaction/Info/Info.plist
       properties:
@@ -140,7 +140,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.example.junpei.chemi
         REACTIONS_ENDPOINT: https://reaction-production.swiswiswift.com/resource/reaction/list.json
         QUESTIONS_ENDPOINT: https://reaction-production.swiswiswift.com/resource/question/list.json
-        NOTICES_ENDPOINT: https://reaction-production.swiswiswift.com/resource/notice/list.json
+        NOTICES_ENDPOINT: https://reaction-production.swiswiswift.com/resource/notice/ios.json
     info:
       path: Reaction/Info/Info.plist
       properties:

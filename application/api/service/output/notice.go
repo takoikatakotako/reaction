@@ -6,5 +6,7 @@ type Notice struct {
 	JapaneseTitle string
 	EnglishBody   string
 	JapaneseBody  string
+	Platforms     []string
+	Languages     []string
 	PublishedAt   string
 }

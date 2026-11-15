@@ -39,6 +39,8 @@ func (n *Notice) AddNotice(in input.AddNotice) error {
 		JapaneseTitle: in.JapaneseTitle,
 		EnglishBody:   in.EnglishBody,
 		JapaneseBody:  in.JapaneseBody,
+		Platforms:     in.Platforms,
+		Languages:     in.Languages,
 		PublishedAt:   in.PublishedAt,
 	}
 	notice.SetCreatedAt(now)
@@ -60,6 +62,8 @@ func (n *Notice) EditNotice(in input.EditNotice) error {
 		JapaneseTitle: in.JapaneseTitle,
 		EnglishBody:   in.EnglishBody,
 		JapaneseBody:  in.JapaneseBody,
+		Platforms:     in.Platforms,
+		Languages:     in.Languages,
 		PublishedAt:   in.PublishedAt,
 		CreatedAt:     current.CreatedAt,
 	}

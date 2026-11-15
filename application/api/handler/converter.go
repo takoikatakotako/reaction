@@ -70,6 +70,8 @@ func convertToResponseNotice(notice output.Notice) response.Notice {
 		JapaneseTitle: notice.JapaneseTitle,
 		EnglishBody:   notice.EnglishBody,
 		JapaneseBody:  notice.JapaneseBody,
+		Platforms:     notice.Platforms,
+		Languages:     notice.Languages,
 		PublishedAt:   notice.PublishedAt,
 	}
 }

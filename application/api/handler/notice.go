@@ -59,6 +59,8 @@ func (n *Notice) AddNoticePost(c echo.Context) error {
 		JapaneseTitle: req.JapaneseTitle,
 		EnglishBody:   req.EnglishBody,
 		JapaneseBody:  req.JapaneseBody,
+		Platforms:     req.Platforms,
+		Languages:     req.Languages,
 		PublishedAt:   req.PublishedAt,
 	}
 	if err := n.Service.AddNotice(in); err != nil {
@@ -90,6 +92,8 @@ func (n *Notice) EditNoticePost(c echo.Context) error {
 		JapaneseTitle: req.JapaneseTitle,
 		EnglishBody:   req.EnglishBody,
 		JapaneseBody:  req.JapaneseBody,
+		Platforms:     req.Platforms,
+		Languages:     req.Languages,
 		PublishedAt:   req.PublishedAt,
 	}
 	if err := n.Service.EditNotice(in); err != nil {

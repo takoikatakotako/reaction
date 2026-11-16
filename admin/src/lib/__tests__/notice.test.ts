@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import {
+  NOTICE_LANGUAGES,
+  NOTICE_PLATFORMS,
   formatPublishedAt,
+  formatTargets,
+  toggleTarget,
   fromDateInputValue,
   toDateInputValue,
   todayDateInputValue,
@@ -84,5 +88,37 @@ describe('todayDateInputValue', () => {
     expect(todayDateInputValue(new Date(2027, 0, 1, 0, 1, 0))).toBe(
       '2027-01-01'
     );
+  });
+});
+
+describe('toggleTarget', () => {
+  it('チェックで追加し、定義順にそろえる', () => {
+    expect(toggleTarget(['android'], 'ios', true, NOTICE_PLATFORMS)).toEqual([
+      'ios',
+      'android',
+    ]);
+  });
+
+  it('チェックを外すと取り除く', () => {
+    expect(
+      toggleTarget(['ios', 'android'], 'ios', false, NOTICE_PLATFORMS)
+    ).toEqual(['android']);
+  });
+
+  it('同じ値を重ねて追加しない', () => {
+    expect(toggleTarget(['ja'], 'ja', true, NOTICE_LANGUAGES)).toEqual(['ja']);
+  });
+});
+
+describe('formatTargets', () => {
+  it('ラベルを定義順に / でつなぐ', () => {
+    expect(formatTargets(['android', 'ios'], NOTICE_PLATFORMS)).toBe(
+      'iOS / Android'
+    );
+    expect(formatTargets(['en'], NOTICE_LANGUAGES)).toBe('英語');
+  });
+
+  it('未設定なら空文字', () => {
+    expect(formatTargets(undefined, NOTICE_PLATFORMS)).toBe('');
   });
 });

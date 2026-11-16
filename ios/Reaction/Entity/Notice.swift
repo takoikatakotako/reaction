@@ -12,6 +12,18 @@ struct Notice: Identifiable, Decodable, Hashable {
     let englishBody: String?
     let japaneseBody: String?
     let publishedAt: String?
+    // 対象言語（"ja" / "en"）。項目追加前の JSON には無いので、nil や空はすべての言語が対象
+    let languages: [String]?
+
+    /// 表示言語の設定がこのお知らせの対象か。表示言語の判定は getDisplayTitle と同じく
+    /// "ja" で始まれば日本語、それ以外は英語とみなす。
+    func isTarget(identifier: String) -> Bool {
+        guard let languages, !languages.isEmpty else {
+            return true
+        }
+        let language = identifier.starts(with: "ja") ? "ja" : "en"
+        return languages.contains(language)
+    }
 
     // 反応機構名と同じ言語設定に準拠する
     func getDisplayTitle(identifier: String) -> String {

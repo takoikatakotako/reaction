@@ -17,6 +17,8 @@
 # モデルを追加したらここにも足すこと。
 -keep class com.swiswiswift.chemist.Reaction { *; }
 -keep class com.swiswiswift.chemist.ReactionContent { *; }
+-keep class com.swiswiswift.chemist.NoticesResponse { *; }
+-keep class com.swiswiswift.chemist.Notice { *; }
 
 # Crashlytics のスタックトレースを行番号まで記号化するために必要。
 # mapping のアップロードは app/build.gradle.kts で有効にしている。

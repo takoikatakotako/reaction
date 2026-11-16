@@ -6,7 +6,13 @@ import TextInputField from '../../reaction/common/TextInputField';
 import TextAreaInputField from '../../reaction/common/TextAreaInputField';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
-import { fromDateInputValue, todayDateInputValue } from '@/lib/notice';
+import {
+  ALL_NOTICE_LANGUAGES,
+  ALL_NOTICE_PLATFORMS,
+  fromDateInputValue,
+  todayDateInputValue,
+} from '@/lib/notice';
+import NoticeTargetFields from '../common/NoticeTargetFields';
 
 export default function NewNoticePage() {
   const router = useRouter();
@@ -15,6 +21,11 @@ export default function NewNoticePage() {
   const [englishTitle, setEnglishTitle] = useState<string>('');
   const [japaneseBody, setJapaneseBody] = useState<string>('');
   const [englishBody, setEnglishBody] = useState<string>('');
+  // 既定はすべての OS・言語
+  const [platforms, setPlatforms] =
+    useState<entity.NoticePlatform[]>(ALL_NOTICE_PLATFORMS);
+  const [languages, setLanguages] =
+    useState<entity.NoticeLanguage[]>(ALL_NOTICE_LANGUAGES);
   // 既定は今日（ブラウザのローカル日付基準）
   const [publishedDate, setPublishedDate] = useState<string>(
     todayDateInputValue()
@@ -27,6 +38,8 @@ export default function NewNoticePage() {
         japaneseTitle: japaneseTitle,
         englishBody: englishBody,
         japaneseBody: japaneseBody,
+        platforms: platforms,
+        languages: languages,
         publishedAt: fromDateInputValue(publishedDate),
       };
 
@@ -53,6 +66,13 @@ export default function NewNoticePage() {
           />
           <hr />
         </div>
+
+        <NoticeTargetFields
+          platforms={platforms}
+          languages={languages}
+          onPlatformsChange={setPlatforms}
+          onLanguagesChange={setLanguages}
+        />
 
         <TextInputField
           label="タイトル(日本語)"

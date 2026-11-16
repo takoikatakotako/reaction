@@ -10,6 +10,8 @@ const baseNotice: AddNotice = {
   japaneseTitle: 'メンテナンスのお知らせ',
   englishBody: 'We will perform maintenance.',
   japaneseBody: 'メンテナンスを行います。',
+  platforms: ['ios', 'android'],
+  languages: ['ja', 'en'],
   publishedAt: '2026-09-24T00:00:00Z',
 };
 
@@ -36,6 +38,47 @@ describe('addNotice', () => {
     await expect(
       service.addNotice({ ...baseNotice, publishedAt: '' })
     ).rejects.toThrow('公開日が入力されていません');
+    expect(repository.addNotice).not.toHaveBeenCalled();
+  });
+
+  it('対象OSが空なら例外を投げる', async () => {
+    await expect(
+      service.addNotice({ ...baseNotice, platforms: [] })
+    ).rejects.toThrow('対象OSが選択されていません');
+    expect(repository.addNotice).not.toHaveBeenCalled();
+  });
+
+  it('対象言語が空なら例外を投げる', async () => {
+    await expect(
+      service.addNotice({ ...baseNotice, languages: [] })
+    ).rejects.toThrow('対象言語が選択されていません');
+    expect(repository.addNotice).not.toHaveBeenCalled();
+  });
+
+  it('日本語だけが対象なら英語タイトルは空でよい', async () => {
+    const notice: AddNotice = {
+      ...baseNotice,
+      languages: ['ja'],
+      englishTitle: '',
+    };
+    await service.addNotice(notice);
+    expect(repository.addNotice).toHaveBeenCalledWith(notice);
+  });
+
+  it('英語だけが対象なら日本語タイトルは空でよい', async () => {
+    const notice: AddNotice = {
+      ...baseNotice,
+      languages: ['en'],
+      japaneseTitle: '',
+    };
+    await service.addNotice(notice);
+    expect(repository.addNotice).toHaveBeenCalledWith(notice);
+  });
+
+  it('対象言語のタイトルが空なら例外を投げる', async () => {
+    await expect(
+      service.addNotice({ ...baseNotice, languages: ['en'], englishTitle: '' })
+    ).rejects.toThrow('英語のタイトルが入力されていません');
     expect(repository.addNotice).not.toHaveBeenCalled();
   });
 

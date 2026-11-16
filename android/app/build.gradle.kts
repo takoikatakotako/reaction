@@ -43,6 +43,12 @@ android {
 
     buildTypes {
         debug {
+            // お知らせの配信元。手元の動作確認は開発環境を見る
+            buildConfigField(
+                "String",
+                "NOTICE_BASE_URL",
+                "\"https://reaction-development.swiswiswift.com/resource/notice/\""
+            )
             // デバッグビルドは記号化不要なのでアップロードしない（ビルドを速くする）
             configure<com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension> {
                 mappingFileUploadEnabled = false
@@ -50,6 +56,11 @@ android {
         }
 
         release {
+            buildConfigField(
+                "String",
+                "NOTICE_BASE_URL",
+                "\"https://reaction-production.swiswiswift.com/resource/notice/\""
+            )
             signingConfig = signingConfigs.findByName("release")
             isMinifyEnabled = true
 
@@ -75,6 +86,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     packaging {
         resources {
@@ -109,6 +121,7 @@ dependencies {
     implementation(libs.material)
 
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

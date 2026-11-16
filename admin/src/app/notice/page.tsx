@@ -4,7 +4,12 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import * as service from '@/lib/service';
 import * as entity from '@/lib/entity';
-import { formatPublishedAt } from '@/lib/notice';
+import {
+  NOTICE_LANGUAGES,
+  NOTICE_PLATFORMS,
+  formatPublishedAt,
+  formatTargets,
+} from '@/lib/notice';
 
 export default function NoticePage() {
   const [notices, setNotices] = useState<entity.Notice[]>([]);
@@ -42,10 +47,15 @@ export default function NoticePage() {
         <div className="reaction-content" key={notice.id}>
           <Link href={`/notice/edit?id=${notice.id}`}>
             <h2>
-              {formatPublishedAt(notice.publishedAt)} - {notice.japaneseTitle}
+              {formatPublishedAt(notice.publishedAt)} -{' '}
+              {notice.japaneseTitle || notice.englishTitle}
             </h2>
           </Link>
-          <p>{notice.japaneseBody}</p>
+          <p>
+            対象OS: {formatTargets(notice.platforms, NOTICE_PLATFORMS)} ／
+            対象言語: {formatTargets(notice.languages, NOTICE_LANGUAGES)}
+          </p>
+          <p>{notice.japaneseBody || notice.englishBody}</p>
           <hr />
         </div>
       ))}

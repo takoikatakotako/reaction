@@ -1,5 +1,6 @@
 package com.swiswiswift.chemist
 
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -13,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBar(title: String = "") {
+fun TopBar(title: String = "", actions: @Composable RowScope.() -> Unit = {}) {
     CenterAlignedTopAppBar(
         title = {
             Text(
@@ -23,7 +24,7 @@ fun TopBar(title: String = "") {
                 color = Color.White
             )
         },
-        actions = {},
+        actions = actions,
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = colorResource(R.color.app_main)
         )

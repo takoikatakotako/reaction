@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
@@ -15,9 +16,12 @@ import androidx.navigation.navArgument
 import com.swiswiswift.chemist.ui.theme.ReactionTheme
 
 class MainActivity : ComponentActivity() {
+    // 画面回転などで Activity が作り直されても、取得済みのお知らせを保持する
+    private val reactionListViewModel: ReactionListViewModel by viewModels()
+    private val noticeListViewModel: NoticeListViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val reactionListViewModel = ReactionListViewModel()
         enableEdgeToEdge()
         setContent {
             ReactionTheme(darkTheme = false) {
@@ -38,12 +42,25 @@ class MainActivity : ComponentActivity() {
                                 type = NavType.StringType
                             })
                         ) { backStackEntry ->
-                            val reactionName = backStackEntry.arguments?.getString("reactionName")!!
-                            val reaction: Reaction? = reactionListViewModel.getReaction(reactionName)
+                            val reactionName = backStackEntry.arguments?.getString("reactionName").orEmpty()
                             ReactionDetail(
-                                navController = navController,
-                                reaction = reaction,
+                                directoryName = reactionName,
+                                viewModel = reactionListViewModel,
                             )
+                        }
+
+                        composable("notice") {
+                            NoticeList(navController, noticeListViewModel)
+                        }
+
+                        composable(
+                            "notice/{noticeId}",
+                            arguments = listOf(navArgument("noticeId") {
+                                type = NavType.StringType
+                            })
+                        ) { backStackEntry ->
+                            val noticeId = backStackEntry.arguments?.getString("noticeId").orEmpty()
+                            NoticeDetail(noticeId, noticeListViewModel)
                         }
                     }
                 }

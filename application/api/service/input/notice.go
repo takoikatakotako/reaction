@@ -9,6 +9,8 @@ type AddNotice struct {
 	JapaneseTitle string
 	EnglishBody   string
 	JapaneseBody  string
+	Platforms     []string
+	Languages     []string
 	PublishedAt   string
 }
 
@@ -18,6 +20,8 @@ type EditNotice struct {
 	JapaneseTitle string
 	EnglishBody   string
 	JapaneseBody  string
+	Platforms     []string
+	Languages     []string
 	PublishedAt   string
 }
 

@@ -143,6 +143,8 @@ func convertToOutputNotice(notice database.Notice) output.Notice {
 		JapaneseTitle: notice.JapaneseTitle,
 		EnglishBody:   notice.EnglishBody,
 		JapaneseBody:  notice.JapaneseBody,
+		Platforms:     notice.TargetPlatforms(),
+		Languages:     notice.TargetLanguages(),
 		PublishedAt:   notice.PublishedAt,
 	}
 }
@@ -162,6 +164,8 @@ func convertToFileNotice(notice database.Notice) file.Notice {
 		JapaneseTitle: notice.JapaneseTitle,
 		EnglishBody:   notice.EnglishBody,
 		JapaneseBody:  notice.JapaneseBody,
+		Platforms:     notice.TargetPlatforms(),
+		Languages:     notice.TargetLanguages(),
 		PublishedAt:   notice.PublishedAt,
 	}
 }

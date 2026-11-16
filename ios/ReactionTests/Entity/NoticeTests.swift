@@ -35,6 +35,44 @@ final class NoticeTests: XCTestCase {
         XCTAssertNil(notice.publishedAt)
     }
 
+    func testDecodeJSONWithTargets() throws {
+        let json = Data("""
+        {"notices": [{"id": "n1", "platforms": ["ios"], "languages": ["ja"]}]}
+        """.utf8)
+
+        let response = try JSONDecoder().decode(NoticesResponse.self, from: json)
+        let notice = try XCTUnwrap(response.notices.first)
+        XCTAssertEqual(notice.languages, ["ja"])
+    }
+
+    func testIsTargetForAllLanguages() {
+        let notice = Fixtures.notice(languages: ["ja", "en"])
+        XCTAssertTrue(notice.isTarget(identifier: "ja"))
+        XCTAssertTrue(notice.isTarget(identifier: "en"))
+    }
+
+    func testIsTargetForJapaneseOnly() {
+        let notice = Fixtures.notice(languages: ["ja"])
+        XCTAssertTrue(notice.isTarget(identifier: "ja"))
+        XCTAssertTrue(notice.isTarget(identifier: "ja-JP"))
+        XCTAssertFalse(notice.isTarget(identifier: "en"))
+        // 不明な言語は英語として扱う
+        XCTAssertFalse(notice.isTarget(identifier: "fr"))
+    }
+
+    func testIsTargetForEnglishOnly() {
+        let notice = Fixtures.notice(languages: ["en"])
+        XCTAssertFalse(notice.isTarget(identifier: "ja"))
+        XCTAssertTrue(notice.isTarget(identifier: "en"))
+        XCTAssertTrue(notice.isTarget(identifier: "fr"))
+    }
+
+    // 項目追加前の JSON（languages 無し）はすべての言語が対象
+    func testIsTargetWhenLanguagesMissing() {
+        XCTAssertTrue(Fixtures.notice(languages: nil).isTarget(identifier: "en"))
+        XCTAssertTrue(Fixtures.notice(languages: []).isTarget(identifier: "ja"))
+    }
+
     func testGetDisplayTitleFollowsLanguageIdentifier() {
         let notice = Fixtures.notice()
         XCTAssertEqual(notice.getDisplayTitle(identifier: "ja"), "メンテナンスのお知らせ")

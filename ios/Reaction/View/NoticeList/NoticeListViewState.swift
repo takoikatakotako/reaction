@@ -20,9 +20,10 @@ final class NoticeListViewState: ObservableObject {
     func onAppear() {
         Task {
             do {
+                // 対象 OS の絞り込みは配信側（ios.json）で済んでいるので、ここでは言語だけ見る
                 let fetched = try await noticeRepository.fetchNotices(
                     noticesEndpoint: EnvironmentVariable.shared.noticesEndpoint
-                )
+                ).filter { $0.isTarget(identifier: reactionMechanismIdentifier) }
                 if fetched != notices {
                     notices = fetched
                 }

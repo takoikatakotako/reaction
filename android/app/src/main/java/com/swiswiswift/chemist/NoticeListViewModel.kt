@@ -24,6 +24,7 @@ class NoticeListViewModel(
 
     fun fetchNotices() {
         viewModelScope.launch {
+            isFetching = true
             try {
                 // 対象 OS の絞り込みは配信側（android.json）で済んでいるので、ここでは言語だけ見る
                 notices = noticeService.getNotices().notices.orEmpty().filter { it.isTarget(language) }

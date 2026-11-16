@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
@@ -15,10 +16,12 @@ import androidx.navigation.navArgument
 import com.swiswiswift.chemist.ui.theme.ReactionTheme
 
 class MainActivity : ComponentActivity() {
+    // 画面回転などで Activity が作り直されても、取得済みのお知らせを保持する
+    private val noticeListViewModel: NoticeListViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val reactionListViewModel = ReactionListViewModel()
-        val noticeListViewModel = NoticeListViewModel()
         enableEdgeToEdge()
         setContent {
             ReactionTheme(darkTheme = false) {
@@ -58,10 +61,7 @@ class MainActivity : ComponentActivity() {
                             })
                         ) { backStackEntry ->
                             val noticeId = backStackEntry.arguments?.getString("noticeId").orEmpty()
-                            NoticeDetail(
-                                notice = noticeListViewModel.getNotice(noticeId),
-                                language = noticeListViewModel.language,
-                            )
+                            NoticeDetail(noticeId, noticeListViewModel)
                         }
                     }
                 }

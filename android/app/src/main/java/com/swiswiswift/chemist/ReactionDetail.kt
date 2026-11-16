@@ -12,7 +12,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import java.net.URI
 
@@ -24,7 +23,17 @@ import androidx.compose.ui.platform.LocalContext
 
 
 @Composable
-fun ReactionDetail(navController: NavController, reaction: Reaction?) {
+fun ReactionDetail(directoryName: String, viewModel: ReactionListViewModel) {
+    // プロセスが作り直されて詳細画面だけ復元された場合は、一覧を経由しないので
+    // 反応機構を持っていない。その場合はここで取得し直す。
+    LaunchedEffect(directoryName) {
+        if (viewModel.getReaction(directoryName) == null) {
+            viewModel.getReactions()
+        }
+    }
+
+    val reaction = viewModel.getReaction(directoryName)
+
     Scaffold(
         topBar = {
             TopBar(reaction?.english ?: "")
@@ -180,7 +189,8 @@ fun ReactionDetail(navController: NavController, reaction: Reaction?) {
                         .padding(8.dp)
                         .fillMaxSize()
                 ) {
-                    Text("Loading")
+                    // 取得し直しても見つからなければ、読み込み中のまま止めずに知らせる
+                    Text(if (viewModel.isFetching) "Loading" else "Failed to load the reaction.")
                 }
             }
         }

@@ -23,8 +23,10 @@ import androidx.compose.ui.unit.sp
 fun NoticeDetail(noticeId: String, viewModel: NoticeListViewModel) {
     // プロセスが作り直されて詳細画面だけ復元された場合は、一覧を経由しないので
     // お知らせを持っていない。その場合はここで取得し直す。
+    // 取得済みだが現在の言語の対象外（端末の言語を変えた場合など）なら、
+    // 取得し直しても結果は同じなので取りに行かずにエラーを出す。
     LaunchedEffect(noticeId) {
-        if (viewModel.getNotice(noticeId) == null) {
+        if (!viewModel.hasFetched(noticeId)) {
             viewModel.fetchNotices()
         }
     }

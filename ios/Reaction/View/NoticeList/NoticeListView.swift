@@ -16,13 +16,13 @@ struct NoticeListView: View {
                     NavigationLink {
                         NoticeDetailView(
                             notice: notice,
-                            identifier: viewState.reactionMechanismIdentifier
+                            identifier: viewState.languageIdentifier
                         )
                     } label: {
                         VStack(alignment: .leading, spacing: 4) {
                             CommonText(text: notice.displayDate, font: Font.system(size: 12))
                                 .foregroundStyle(.secondary)
-                            Text(notice.getDisplayTitle(identifier: viewState.reactionMechanismIdentifier))
+                            Text(notice.getDisplayTitle(identifier: viewState.languageIdentifier))
                                 .font(Font.system(size: 16))
                         }
                         .padding(.vertical, 4)

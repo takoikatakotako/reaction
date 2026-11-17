@@ -25,7 +25,7 @@ struct Notice: Identifiable, Decodable, Hashable {
         return languages.contains(language)
     }
 
-    // 反応機構名と同じ言語設定に準拠する
+    // identifier はアプリの表示言語（"ja" で始まれば日本語、それ以外は英語）
     func getDisplayTitle(identifier: String) -> String {
         if identifier.starts(with: "ja") {
             return japaneseTitle ?? ""

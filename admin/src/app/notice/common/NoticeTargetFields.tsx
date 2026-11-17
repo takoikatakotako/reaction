@@ -23,8 +23,19 @@ function CheckboxGroup<T extends string>({
     <div className="reaction-edit-content">
       <p>{label}</p>
       {options.map((option) => (
-        <label key={option.value} style={{ marginRight: '16px' }}>
+        // .reaction-edit-content の label は block、input は幅 100% になっているため、
+        // チェックボックスとラベルが縦に離れてしまう。ここだけ横並びに戻す
+        <label
+          key={option.value}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            marginRight: '24px',
+          }}
+        >
           <input
+            style={{ width: 'auto' }}
             type="checkbox"
             name={name}
             value={option.value}

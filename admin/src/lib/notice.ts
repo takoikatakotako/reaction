@@ -10,6 +10,16 @@ export const NOTICE_LANGUAGES: { value: NoticeLanguage; label: string }[] = [
   { value: 'en', label: '英語' },
 ];
 
+// 追加・編集画面の入力欄に出す記入例
+export const NOTICE_PLACEHOLDERS = {
+  japaneseTitle: '例: メンテナンスのお知らせ',
+  japaneseBody:
+    '例: いつもReactionをご利用いただきありがとうございます。\n\n〇月〇日にメンテナンスを行います。',
+  englishTitle: 'e.g. Scheduled maintenance',
+  englishBody:
+    'e.g. Thank you for using Reaction.\n\nWe will perform maintenance on ...',
+};
+
 export const ALL_NOTICE_PLATFORMS: NoticePlatform[] = NOTICE_PLATFORMS.map(
   (p) => p.value
 );

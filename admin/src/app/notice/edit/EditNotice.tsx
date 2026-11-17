@@ -9,6 +9,7 @@ import * as entity from '@/lib/entity';
 import {
   ALL_NOTICE_LANGUAGES,
   ALL_NOTICE_PLATFORMS,
+  NOTICE_PLACEHOLDERS,
   fromDateInputValue,
   toDateInputValue,
 } from '@/lib/notice';
@@ -109,6 +110,7 @@ export default function EditNotice() {
         <TextInputField
           label="タイトル(日本語)"
           name="japaneseTitle"
+          placeholder={NOTICE_PLACEHOLDERS.japaneseTitle}
           value={japaneseTitle}
           onChange={(e) => setJapaneseTitle(e.target.value)}
         />
@@ -116,6 +118,7 @@ export default function EditNotice() {
         <TextAreaInputField
           label="本文(日本語)"
           name="japaneseBody"
+          placeholder={NOTICE_PLACEHOLDERS.japaneseBody}
           value={japaneseBody}
           onChange={(e) => setJapaneseBody(e.target.value)}
         />
@@ -123,6 +126,7 @@ export default function EditNotice() {
         <TextInputField
           label="タイトル(英語)"
           name="englishTitle"
+          placeholder={NOTICE_PLACEHOLDERS.englishTitle}
           value={englishTitle}
           onChange={(e) => setEnglishTitle(e.target.value)}
         />
@@ -130,6 +134,7 @@ export default function EditNotice() {
         <TextAreaInputField
           label="本文(英語)"
           name="englishBody"
+          placeholder={NOTICE_PLACEHOLDERS.englishBody}
           value={englishBody}
           onChange={(e) => setEnglishBody(e.target.value)}
         />

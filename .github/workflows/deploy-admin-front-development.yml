@@ -2,6 +2,20 @@ name: Deploy Admin Front Development
 
 on:
   workflow_dispatch:
+  # main にマージされたら開発環境へ自動でデプロイする（本番は手動のまま）
+  push:
+    branches:
+      - main
+    paths:
+      - admin/**
+      - .github/workflows/deploy-admin-front-development.yml
+      - .github/workflows/aws_config/**
+
+# 連続でマージされても同時に S3 へ反映しない。
+# 実行中のデプロイは止めずに待ち、待機中のものは最新の 1 件だけ残す
+concurrency:
+  group: deploy-admin-front-development
+  cancel-in-progress: false
 
 env:
   AWS_ROLE_ARN: arn:aws:iam::392961483375:role/reaction-github-action-role

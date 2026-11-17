@@ -105,7 +105,10 @@ Firebase の設定ファイルはリポジトリに置かず SSM がマスター
 
 ### デプロイ
 
-管理画面:
+開発環境の API・管理画面は、`main` にマージされると GitHub Actions で自動デプロイされる
+（`application/**` / `admin/**` に変更があるときだけ）。本番は手動で workflow を実行する。
+
+手元からデプロイする場合の管理画面:
 ```bash
 cd admin
 make build-development && make deploy-development   # 開発環境
@@ -133,8 +136,8 @@ make build-production && make deploy-production     # 本番環境
 - `test-admin-api.yml` - APIテスト (PR時自動実行)
 - `test-admin-front.yml` - フロントエンドテスト (PR時自動実行)
 - `test-terraform.yml` - Terraformフォーマットチェック
-- `deploy-admin-api-*.yml` - APIデプロイ
-- `deploy-admin-front-*.yml` - フロントデプロイ
+- `deploy-admin-api-*.yml` - APIデプロイ（development は main への push で自動、production は手動）
+- `deploy-admin-front-*.yml` - フロントデプロイ（同上）
 - `sync-dynamodb-dev-to-prod.yml` - DynamoDBデータ同期
 - `sync-s3-resource-dev-to-prod.yml` - S3リソース同期
 

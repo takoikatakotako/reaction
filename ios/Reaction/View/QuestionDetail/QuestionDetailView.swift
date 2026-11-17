@@ -22,7 +22,7 @@ struct QuestionDetailView: View {
 
                     // Question
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Problem")
+                        Text(String(localized: "question-detail-problem"))
                             .font(Font.system(size: 16).bold())
                         ForEach(viewState.question.problemImageUrls, id: \.self) { imageUrlString in
                             if let imageUrl = URL(string: imageUrlString) {
@@ -34,7 +34,7 @@ struct QuestionDetailView: View {
                     if viewState.showSolution {
                         // Solution
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Solution")
+                            Text(String(localized: "question-detail-solution"))
                                 .font(Font.system(size: 16).bold())
                             ForEach(viewState.question.solutionImageUrls, id: \.self) { imageUrlString in
                                 if let imageUrl = URL(string: imageUrlString) {
@@ -46,7 +46,7 @@ struct QuestionDetailView: View {
                         if !viewState.question.references.isEmpty {
                             // Reference
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Reference")
+                                Text(String(localized: "question-detail-reference"))
                                     .font(Font.system(size: 16).bold())
                                 ForEach(viewState.question.references, id: \.self) { reference in
                                     if let referenceUrl = URL(string: reference) {
@@ -63,7 +63,7 @@ struct QuestionDetailView: View {
                         Button {
                             viewState.showSolutionTapped()
                         } label: {
-                            Text("Show Solution")
+                            Text(String(localized: "question-detail-show-solution"))
                                 .font(Font.system(size: 18).bold())
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 14)

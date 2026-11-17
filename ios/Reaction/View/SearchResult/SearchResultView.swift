@@ -47,7 +47,7 @@ struct SearchResultView: View {
         .alert(String(localized: "subscription-purchase-complete"), isPresented: $viewModel.completeAlert, actions: {
             Button(String(localized: "common-close"), role: .cancel) {}
         }, message: {
-            Text(String(localized: "subscription-complete"))
+            Text(String(localized: "subscription-purchase-complete-thank-you"))
         })
         .alert(String(localized: "common-error"), isPresented: $viewModel.errorAlert, actions: {
             Button(String(localized: "common-close"), role: .cancel) {}

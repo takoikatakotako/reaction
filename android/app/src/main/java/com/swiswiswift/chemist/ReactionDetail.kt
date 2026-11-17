@@ -20,6 +20,7 @@ import android.net.Uri
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 
 
 @Composable
@@ -59,7 +60,7 @@ fun ReactionDetail(directoryName: String, viewModel: ReactionListViewModel) {
                         if (reaction.generalFormulas.isNotEmpty()) {
                             item {
                                 Text(
-                                    "General Formula",
+                                    stringResource(R.string.reaction_detail_general_formula),
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -81,7 +82,7 @@ fun ReactionDetail(directoryName: String, viewModel: ReactionListViewModel) {
                         if (reaction.mechanisms.isNotEmpty()) {
                             item {
                                 Text(
-                                    "Mechanism",
+                                    stringResource(R.string.reaction_detail_mechanism),
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -103,7 +104,7 @@ fun ReactionDetail(directoryName: String, viewModel: ReactionListViewModel) {
                         if (reaction.examples.isNotEmpty()) {
                             item {
                                 Text(
-                                    "Example",
+                                    stringResource(R.string.reaction_detail_example),
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -125,7 +126,7 @@ fun ReactionDetail(directoryName: String, viewModel: ReactionListViewModel) {
                         if (reaction.supplements.isNotEmpty()) {
                             item {
                                 Text(
-                                    "Supplements",
+                                    stringResource(R.string.reaction_detail_supplement),
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -147,7 +148,7 @@ fun ReactionDetail(directoryName: String, viewModel: ReactionListViewModel) {
                         if (reaction.youtubeLinks.isNotEmpty()) {
                             item {
                                 Text(
-                                    "Youtube",
+                                    stringResource(R.string.reaction_detail_youtube),
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -190,7 +191,7 @@ fun ReactionDetail(directoryName: String, viewModel: ReactionListViewModel) {
                         .fillMaxSize()
                 ) {
                     // 取得し直しても見つからなければ、読み込み中のまま止めずに知らせる
-                    Text(if (viewModel.isFetching) "Loading" else "Failed to load the reaction.")
+                    Text(stringResource(if (viewModel.isFetching) R.string.common_loading else R.string.reaction_detail_error))
                 }
             }
         }

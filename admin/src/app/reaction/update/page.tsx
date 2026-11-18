@@ -28,7 +28,9 @@ export default function UpdatePage() {
     <main className="wrapper">
       <h1>データ更新</h1>
 
-      <p>更新ボタンを押すと、反応機構・学習問題・お知らせのデータが更新されます。</p>
+      <p>
+        更新ボタンを押すと、反応機構・学習問題・お知らせのデータが更新されます。
+      </p>
 
       <form>
         <button

@@ -49,6 +49,10 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
+                        composable("setting") {
+                            Setting(navController)
+                        }
+
                         composable("notice") {
                             NoticeList(navController, noticeListViewModel)
                         }

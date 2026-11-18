@@ -35,10 +35,10 @@ final class SearchViewState: ObservableObject {
                     check: true,
                     thirdCategories: [
                         ThirdCategory(
-                            name: "Carboxilic Acid",
-                            englishName: "Carboxilic Acid",
+                            name: "Carboxylic Acid",
+                            englishName: "Carboxylic Acid",
                             japaneseName: "カルボン酸",
-                            tag: "Carbonyl-Carboxylic_Carboxilic-Acid",
+                            tag: "Carbonyl-Carboxylic_Acid_Derivative-Carboxylic_Acid",
                             check: true
                         ),
                         ThirdCategory(
@@ -133,7 +133,7 @@ final class SearchViewState: ObservableObject {
             name: "Aromatic Ring",
             englishName: "Aromatic Ring",
             japaneseName: "芳香環",
-            tag: "Aromtic_Ring",
+            tag: "Aromatic_Ring",
             check: true,
             secondCategories: [
                 SecondCategory(

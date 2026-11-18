@@ -1,4 +1,18 @@
 <resources>
+    <string name="reaction_list_title">Reaction Mechanisms</string>
+    <string name="reaction_detail_general_formula">General Formula</string>
+    <string name="reaction_detail_mechanism">Mechanism</string>
+    <string name="reaction_detail_example">Example</string>
+    <string name="reaction_detail_supplement">Supplement</string>
+    <string name="reaction_detail_youtube">Movie</string>
+    <string name="reaction_detail_error">Failed to load the reaction mechanism.</string>
+    <string name="common_loading">Loading…</string>
+    <string name="setting_title">Settings</string>
+    <string name="setting_app_info">App Info</string>
+    <string name="setting_contact">Contact Us</string>
+    <string name="setting_terms">Terms of Use</string>
+    <string name="setting_privacy_policy">Privacy Policy</string>
+    <string name="setting_version">Version</string>
     <string name="notice_title">Notices</string>
     <string name="notice_empty">There are no notices.</string>
     <string name="notice_error">Failed to load notices.</string>

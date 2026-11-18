@@ -766,6 +766,23 @@
         }
       }
     },
+    "setting-contact": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contact Us"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お問い合わせ"
+          }
+        }
+      }
+    },
     "setting-developer-info": {
       "extractionState": "manual",
       "localizations": {

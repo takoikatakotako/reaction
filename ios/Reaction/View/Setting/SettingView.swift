@@ -78,6 +78,19 @@ struct SettingView: View {
                     } label: {
                         CommonText(text: String(localized: "setting-license"), font: Font.system(size: 14))
                     }
+                    Button(action: {
+                        if let url = URL(string: Config.contactFormUrl) {
+                            UIApplication.shared.open(url)
+                        }
+                    }, label: {
+                        HStack {
+                            CommonText(text: String(localized: "setting-contact"), font: Font.system(size: 14))
+
+                            Spacer()
+                            Image(systemName: "square.and.arrow.up")
+                                .padding(.trailing, 8)
+                        }
+                    })
                 }
 
             }
@@ -108,7 +121,7 @@ struct SettingView: View {
 
                 Button(String(localized: "common-close")) {}
             }, message: {
-                CommonText(text: String(localized: "setting-select-reaction-mechanism-language"), font: Font.system(size: 14))
+                CommonText(text: String(localized: "setting-do-you-want-to-display-thumbnails?"), font: Font.system(size: 14))
             })
             .listStyle(.grouped)
             .navigationTitle(String(localized: "common-setting"))

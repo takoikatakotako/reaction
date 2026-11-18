@@ -9,6 +9,12 @@
     <string name="reaction_detail_youtube">動画</string>
     <string name="reaction_detail_error">反応機構を取得できませんでした。</string>
     <string name="common_loading">読み込み中…</string>
+    <string name="setting_title">設定</string>
+    <string name="setting_app_info">アプリ情報</string>
+    <string name="setting_contact">お問い合わせ</string>
+    <string name="setting_terms">利用規約</string>
+    <string name="setting_privacy_policy">プライバシーポリシー</string>
+    <string name="setting_version">バージョン</string>
     <string name="notice_title">お知らせ</string>
     <string name="notice_empty">お知らせはありません。</string>
     <string name="notice_error">お知らせを取得できませんでした。</string>

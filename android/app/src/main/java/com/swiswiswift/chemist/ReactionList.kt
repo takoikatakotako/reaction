@@ -25,8 +25,8 @@ fun ReactionList(navController: NavController, reactionListViewModel: ReactionLi
     Scaffold(
         topBar = {
             TopBar(stringResource(R.string.reaction_list_title)) {
-                TextButton(onClick = { navController.navigate("notice") }) {
-                    Text(stringResource(R.string.notice_title), color = Color.White)
+                TextButton(onClick = { navController.navigate("setting") }) {
+                    Text(stringResource(R.string.setting_title), color = Color.White)
                 }
             }
         },

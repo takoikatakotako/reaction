@@ -63,6 +63,7 @@ android {
             )
             signingConfig = signingConfigs.findByName("release")
             isMinifyEnabled = true
+            isShrinkResources = true
 
             // 難読化したスタックトレースを記号化できるよう、mapping を
             // Crashlytics にアップロードする。

@@ -16,11 +16,11 @@ import coil3.compose.AsyncImage
 import java.net.URI
 
 import android.content.Intent
-import android.net.Uri
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.core.net.toUri
 
 
 @Composable
@@ -171,7 +171,7 @@ fun ReactionDetail(directoryName: String, viewModel: ReactionListViewModel) {
                                             onClick = {
                                                 val browserIntent = Intent(
                                                     Intent.ACTION_VIEW,
-                                                    Uri.parse(youtubeLink)
+                                                    youtubeLink.toUri()
                                                 )
                                                 context.startActivity(browserIntent)
                                             }

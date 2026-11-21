@@ -1,6 +1,6 @@
 <resources>
     <!-- アプリ名は英語環境でも変えない -->
-    <string name="app_name" translatable="false">反応機構</string>
+    <string name="app_name" translatable="false">シン反応機構</string>
     <string name="reaction_list_title">反応機構一覧</string>
     <string name="reaction_detail_general_formula">一般式</string>
     <string name="reaction_detail_mechanism">反応機構</string>

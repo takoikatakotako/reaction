@@ -113,7 +113,7 @@ targets:
       properties:
         Appearance: Light
         ITSAppUsesNonExemptEncryption: false
-        CFBundleDisplayName: Reaction
+        CFBundleDisplayName: シン反応機構
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleShortVersionString: $(MARKETING_VERSION)
         UILaunchScreen:
@@ -146,7 +146,7 @@ targets:
       properties:
         Appearance: Light
         ITSAppUsesNonExemptEncryption: false
-        CFBundleDisplayName: Reaction
+        CFBundleDisplayName: シン反応機構
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleShortVersionString: $(MARKETING_VERSION)
         UILaunchScreen:

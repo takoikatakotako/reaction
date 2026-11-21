@@ -105,7 +105,7 @@ struct SettingView: View {
                         CommonText(text: String(localized: "setting-license"), font: Font.system(size: 14))
                     }
                     Button(action: {
-                        if let url = URL(string: Config.contactFormUrl) {
+                        if let url = viewState.contactFormURL {
                             UIApplication.shared.open(url)
                         }
                     }, label: {

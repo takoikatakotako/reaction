@@ -9,4 +9,4 @@ const val PRIVACY_POLICY_URL = "https://chemist.swiswiswift.com/privacy.html"
 
 // 利用規約・プライバシーポリシーと同じお問い合わせフォーム
 const val CONTACT_FORM_URL =
-    "https://docs.google.com/forms/d/e/1FAIpQLSfqxPpkdiG7JW5qIiz0pf0oisne4HIJZiL8nkhmPmgFAlRwCA/viewform?usp=header"
+    "https://docs.google.com/forms/d/e/1FAIpQLSckMT89daG9mXLGJJ7DAMWqsql2opnOo25Amm5kuCR4ZuwOvg/viewform"

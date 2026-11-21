@@ -868,6 +868,23 @@
         }
       }
     },
+    "setting-privacy-policy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーポリシー"
+          }
+        }
+      }
+    },
     "setting-reactant" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -949,6 +966,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "表示"
+          }
+        }
+      }
+    },
+    "setting-terms" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用規約"
           }
         }
       }

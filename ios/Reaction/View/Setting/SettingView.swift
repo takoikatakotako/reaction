@@ -73,6 +73,32 @@ struct SettingView: View {
                         Spacer()
                         Text(viewState.appVersion)
                     }
+                    Button(action: {
+                        if let url = URL(string: Config.termsUrl) {
+                            UIApplication.shared.open(url)
+                        }
+                    }, label: {
+                        HStack {
+                            CommonText(text: String(localized: "setting-terms"), font: Font.system(size: 14))
+
+                            Spacer()
+                            Image(systemName: "square.and.arrow.up")
+                                .padding(.trailing, 8)
+                        }
+                    })
+                    Button(action: {
+                        if let url = URL(string: Config.privacyPolicyUrl) {
+                            UIApplication.shared.open(url)
+                        }
+                    }, label: {
+                        HStack {
+                            CommonText(text: String(localized: "setting-privacy-policy"), font: Font.system(size: 14))
+
+                            Spacer()
+                            Image(systemName: "square.and.arrow.up")
+                                .padding(.trailing, 8)
+                        }
+                    })
                     NavigationLink {
                         LicenseListView()
                     } label: {

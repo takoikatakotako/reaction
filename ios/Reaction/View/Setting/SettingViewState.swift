@@ -16,6 +16,26 @@ final class SettingViewState: ObservableObject {
         return "\(version) (\(build))"
     }
 
+    /// 例: "iPhone17,3 / iOS 26.1"
+    var deviceDescription: String {
+        "\(Self.modelIdentifier) / \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
+    }
+
+    var contactFormURL: URL? {
+        Config.contactFormURL(device: deviceDescription, appVersion: appVersion)
+    }
+
+    private static var modelIdentifier: String {
+        if let simulatorModel = ProcessInfo.processInfo.environment["SIMULATOR_MODEL_IDENTIFIER"] {
+            return simulatorModel
+        }
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        return withUnsafeBytes(of: &systemInfo.machine) { buffer in
+            String(bytes: buffer.prefix(while: { $0 != 0 }), encoding: .utf8) ?? ""
+        }
+    }
+
     func onAppear() {
         // 反応機構の言語
         let reactionMechanismLanguage = userDefaultRepository.reactionMechanismLanguage

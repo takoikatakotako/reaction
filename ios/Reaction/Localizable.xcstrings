@@ -1,1111 +1,1111 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "common-cancel": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "common-cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "キャンセル"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
           }
         }
       }
     },
-    "common-close": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Close"
+    "common-close" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "とじる"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "とじる"
           }
         }
       }
     },
-    "common-english": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "English"
+    "common-english" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "英語"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英語"
           }
         }
       }
     },
-    "common-error": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error"
+    "common-error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "エラー"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エラー"
           }
         }
       }
     },
-    "common-error-message": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Failed to load data. Please try again later."
+    "common-error-message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load data. Please try again later."
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "データの読み込みに失敗しました。時間をおいて再度お試しください。"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データの読み込みに失敗しました。時間をおいて再度お試しください。"
           }
         }
       }
     },
-    "common-example": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Example"
+    "common-example" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Example"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "例"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例"
           }
         }
       }
     },
-    "common-general-formula": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "General Formula"
+    "common-general-formula" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General Formula"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一般式"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般式"
           }
         }
       }
     },
-    "common-hidden": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hidden"
+    "common-hidden" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "非表示"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "非表示"
           }
         }
       }
     },
-    "common-info": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Info"
+    "common-info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "情報"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "情報"
           }
         }
       }
     },
-    "common-japanese": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Japanese"
+    "common-japanese" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Japanese"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "日本語"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語"
           }
         }
       }
     },
-    "common-list": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "List"
+    "common-list" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "List"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一覧"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一覧"
           }
         }
       }
     },
-    "common-movie": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Movie"
+    "common-movie" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movie"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "動画"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "動画"
           }
         }
       }
     },
-    "common-no": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No"
+    "common-no" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "いいえ"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "いいえ"
           }
         }
       }
     },
-    "common-open": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open"
+    "common-open" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "開く"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開く"
           }
         }
       }
     },
-    "common-reaction-mechanism": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reaction Mechanism"
+    "common-reaction-mechanism" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reaction Mechanism"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "反応機構"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反応機構"
           }
         }
       }
     },
-    "common-search": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search"
+    "common-search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "検索"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索"
           }
         }
       }
     },
-    "common-setting": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Settings"
+    "common-setting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "設定"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
           }
         }
       }
     },
-    "common-study": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Study"
+    "common-study" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Study"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "学習"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学習"
           }
         }
       }
     },
-    "common-supplement": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Supplement"
+    "common-supplement" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supplement"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "補足"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "補足"
           }
         }
       }
     },
-    "common-visible": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Visible"
+    "common-visible" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visible"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "表示"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示"
           }
         }
       }
     },
-    "common-yes": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yes"
+    "common-yes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "はい"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "はい"
           }
         }
       }
     },
-    "developer-general-manager": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "General Manager"
+    "developer-general-manager" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General Manager"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "総監督"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "総監督"
           }
         }
       }
     },
-    "developer-programmer": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Programmer"
+    "developer-programmer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programmer"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "プログラマー"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プログラマー"
           }
         }
       }
     },
-    "developer-supervisor": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Question Supervisor"
+    "developer-supervisor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Question Supervisor"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "問題監修"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題監修"
           }
         }
       }
     },
-    "developer-title": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Developer"
+    "developer-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "開発者"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発者"
           }
         }
       }
     },
-    "list-title": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reaction Mechanisms"
+    "list-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reaction Mechanisms"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "反応機構一覧"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反応機構一覧"
           }
         }
       }
     },
-    "notice-empty": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "There are no notices."
+    "notice-empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are no notices."
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "お知らせはありません。"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お知らせはありません。"
           }
         }
       }
     },
-    "notice-fetch-error": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Failed to load notices."
+    "notice-fetch-error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load notices."
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "お知らせの取得に失敗しました。"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お知らせの取得に失敗しました。"
           }
         }
       }
     },
-    "notice-title": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notices"
+    "notice-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notices"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "お知らせ"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お知らせ"
           }
         }
       }
     },
-    "question-detail-open-reference-title": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open this link?"
+    "question-detail-open-reference-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open this link?"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "このリンクを開きますか？"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このリンクを開きますか？"
           }
         }
       }
     },
-    "question-detail-problem": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Problem"
+    "question-detail-problem" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problem"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "問題"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題"
           }
         }
       }
     },
-    "question-detail-reference": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reference"
+    "question-detail-reference" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reference"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "参考文献"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "参考文献"
           }
         }
       }
     },
-    "question-detail-show-solution": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show Solution"
+    "question-detail-show-solution" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Solution"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "解答を表示"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解答を表示"
           }
         }
       }
     },
-    "question-detail-solution": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Solution"
+    "question-detail-solution" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solution"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "解答"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解答"
           }
         }
       }
     },
-    "search-product": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Product"
+    "search-product" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Product"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "生成物"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "生成物"
           }
         }
       }
     },
-    "search-result-search-product": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search Product"
+    "search-result-search-product" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Product"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "生成物で検索"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "生成物で検索"
           }
         }
       }
     },
-    "search-result-search-reactant": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search Reactant"
+    "search-result-search-reactant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Reactant"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "反応物で検索"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反応物で検索"
           }
         }
       }
     },
-    "search-search-for-checked-items": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search checked items"
+    "search-search-for-checked-items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search checked items"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "チェックした項目を検索"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チェックした項目を検索"
           }
         }
       }
     },
-    "search-search-for-exclude-checked-items": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search excluding checked items"
+    "search-search-for-exclude-checked-items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search excluding checked items"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "チェックした項目を除いて検索"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チェックした項目を除いて検索"
           }
         }
       }
     },
-    "search-title": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search"
+    "search-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "検索"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索"
           }
         }
       }
     },
-    "setting-app-info": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Info"
+    "setting-app-info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Info"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "アプリ情報"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリ情報"
           }
         }
       }
     },
-    "setting-app-language": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Language"
+    "setting-app-language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Language"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "アプリの言語"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリの言語"
           }
         }
       }
     },
-    "setting-app-setting": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Settings"
+    "setting-app-setting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Settings"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "アプリ設定"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリ設定"
           }
         }
       }
     },
-    "setting-clear-cache": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clear Cache"
+    "setting-clear-cache" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Cache"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "キャッシュ削除"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャッシュ削除"
           }
         }
       }
     },
-    "setting-clear-cache-complete": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clear Cache Complete!"
+    "setting-clear-cache-complete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Cache Complete!"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "キャッシュ削除完了！"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャッシュ削除完了！"
           }
         }
       }
     },
-    "setting-contact": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Contact Us"
+    "setting-contact" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact Us"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "お問い合わせ"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お問い合わせ"
           }
         }
       }
     },
-    "setting-developer-info": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Developer Info"
+    "setting-developer-info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer Info"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "開発情報"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発情報"
           }
         }
       }
     },
-    "setting-do-you-want-to-display-thumbnails?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Do you want to display thumbnails?"
+    "setting-do-you-want-to-display-thumbnails?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to display thumbnails?"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "サムネイルを表示しますか？"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サムネイルを表示しますか？"
           }
         }
       }
     },
-    "setting-github": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub"
+    "setting-github" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
           }
         }
       }
     },
-    "setting-hidden": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hidden"
+    "setting-hidden" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "非表示"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "非表示"
           }
         }
       }
     },
-    "setting-license": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "License"
+    "setting-license" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "License"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ライセンス"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライセンス"
           }
         }
       }
     },
-    "setting-reactant": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reactant"
+    "setting-reactant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reactant"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "反応物"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反応物"
           }
         }
       }
     },
-    "setting-reaction-mechanism-language": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reaction Mechanism Language"
+    "setting-reaction-mechanism-language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reaction Mechanism Language"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "反応機構の言語"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反応機構の言語"
           }
         }
       }
     },
-    "setting-reset": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset"
+    "setting-reset" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "リセット"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リセット"
           }
         }
       }
     },
-    "setting-select-reaction-mechanism-language": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Select the reaction mechanism language."
+    "setting-select-reaction-mechanism-language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select the reaction mechanism language."
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "反応機構の言語を選択してください。"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反応機構の言語を選択してください。"
           }
         }
       }
     },
-    "setting-show": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show"
+    "setting-show" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "表示"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示"
           }
         }
       }
     },
-    "setting-thumbnail": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thumbnail"
+    "setting-thumbnail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thumbnail"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "サムネイル"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サムネイル"
           }
         }
       }
     },
-    "setting-version": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Version"
+    "setting-version" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "バージョン"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バージョン"
           }
         }
       }
     },
-    "subscription-buy-paid-plan": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Buy a paid plan"
+    "subscription-buy-paid-plan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy a paid plan"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "有料プランを購入"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有料プランを購入"
           }
         }
       }
     },
-    "subscription-failed": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Failed to purchase or restore the paid plan."
+    "subscription-failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to purchase or restore the paid plan."
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "有料プランの購入または復元に失敗しました。"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有料プランの購入または復元に失敗しました。"
           }
         }
       }
     },
-    "subscription-need-subscription": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "To view detailed reaction mechanisms, you need to purchase a paid plan."
+    "subscription-need-subscription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To view detailed reaction mechanisms, you need to purchase a paid plan."
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "詳細な反応機構を確認するためには有料プランの購入が必要です。"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "詳細な反応機構を確認するためには有料プランの購入が必要です。"
           }
         }
       }
     },
-    "subscription-paid-plan": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Paid Plan"
+    "subscription-paid-plan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paid Plan"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "有料プラン"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有料プラン"
           }
         }
       }
     },
-    "subscription-purchase-complete": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Purchase Complete"
+    "subscription-purchase-complete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase Complete"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "購入完了"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入完了"
           }
         }
       }
     },
-    "subscription-purchase-complete-thank-you": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your purchase has been completed. Thank you very much."
+    "subscription-purchase-complete-thank-you" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your purchase has been completed. Thank you very much."
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "購入が完了しました。ありがとうございました。"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入が完了しました。ありがとうございました。"
           }
         }
       }
     },
-    "subscription-restore-purchase": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restore purchase"
+    "subscription-restore-purchase" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore purchase"
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "購入を復元"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入を復元"
           }
         }
       }
     }
   },
-  "version": "1.1"
+  "version" : "1.1"
 }

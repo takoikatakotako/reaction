@@ -7,7 +7,7 @@ struct SearchView: View {
         NavigationStack {
             ZStack(alignment: .bottom) {
                 ScrollView(showsIndicators: false) {
-                    Picker(selection: $viewState.searchType, label: Text("")) {
+                    Picker(selection: $viewState.searchType, label: Text(verbatim: "")) {
                         Text(String(localized: "setting-reactant")).tag(0)
                         Text(String(localized: "search-product")).tag(1)
                     }

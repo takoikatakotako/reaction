@@ -1,5 +1,6 @@
 package com.swiswiswift.chemist
 
+import android.os.Build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +25,7 @@ import androidx.navigation.NavController
 @Composable
 fun Setting(navController: NavController) {
     val uriHandler = LocalUriHandler.current
+    val appVersion = "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
 
     Scaffold(
         topBar = {
@@ -43,7 +45,13 @@ fun Setting(navController: NavController) {
 
             SettingSectionHeader(stringResource(R.string.setting_app_info))
             SettingRow(stringResource(R.string.setting_contact)) {
-                uriHandler.openUri(CONTACT_FORM_URL)
+                uriHandler.openUri(
+                    contactFormUrl(
+                        // 例: "Google Pixel 9 / Android 16"
+                        device = "${Build.MANUFACTURER} ${Build.MODEL} / Android ${Build.VERSION.RELEASE}",
+                        appVersion = appVersion,
+                    ),
+                )
             }
             SettingRow(stringResource(R.string.setting_terms)) {
                 uriHandler.openUri(TERMS_URL)
@@ -53,7 +61,7 @@ fun Setting(navController: NavController) {
             }
             SettingRow(
                 title = stringResource(R.string.setting_version),
-                value = "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
+                value = appVersion,
             )
         }
     }

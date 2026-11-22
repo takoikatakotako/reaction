@@ -79,8 +79,6 @@ PR はマージしてから、`main` を pull してビルドする。
 
 ```bash
 # Android: ビルドから Play 内部テストへのアップロードまで一発
-# ※ デベロッパー確認の鍵未登録で commit が 403 になっていた。鍵は登録済みだが
-#   API 経由は未検証（android/README.md「デベロッパー確認の鍵未登録でブロックされた件」）
 UPLOAD=1 AWS_PROFILE=reaction-production ./scripts/android-release.sh
 
 # AAB を作るだけなら

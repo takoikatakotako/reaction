@@ -51,22 +51,6 @@ struct SettingView: View {
                     }
                 }
 
-                Section(String(localized: "setting-developer-info")) {
-                    Button(action: {
-                        if let url = URL(string: Config.githubRepositoryUrl) {
-                            UIApplication.shared.open(url)
-                        }
-                    }, label: {
-                        HStack {
-                            CommonText(text: String(localized: "setting-github"), font: Font.system(size: 14))
-
-                            Spacer()
-                            Image(systemName: "square.and.arrow.up")
-                                .padding(.trailing, 8)
-                        }
-                    })
-                }
-
                 Section(String(localized: "setting-app-info")) {
                     HStack {
                         CommonText(text: String(localized: "setting-version"), font: Font.system(size: 14))
@@ -111,6 +95,22 @@ struct SettingView: View {
                     }, label: {
                         HStack {
                             CommonText(text: String(localized: "setting-contact"), font: Font.system(size: 14))
+
+                            Spacer()
+                            Image(systemName: "square.and.arrow.up")
+                                .padding(.trailing, 8)
+                        }
+                    })
+                }
+
+                Section(String(localized: "setting-developer-info")) {
+                    Button(action: {
+                        if let url = URL(string: Config.githubRepositoryUrl) {
+                            UIApplication.shared.open(url)
+                        }
+                    }, label: {
+                        HStack {
+                            CommonText(text: String(localized: "setting-github"), font: Font.system(size: 14))
 
                             Spacer()
                             Image(systemName: "square.and.arrow.up")

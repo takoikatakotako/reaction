@@ -138,8 +138,6 @@ make build-production && make deploy-production     # 本番環境
 - `test-terraform.yml` - Terraformフォーマットチェック
 - `deploy-admin-api-*.yml` - APIデプロイ（development は main への push で自動、production は手動）
 - `deploy-admin-front-*.yml` - フロントデプロイ（同上）
-- `sync-dynamodb-dev-to-prod.yml` - DynamoDBデータ同期
-- `sync-s3-resource-dev-to-prod.yml` - S3リソース同期
 
 ## コーディング規約
 

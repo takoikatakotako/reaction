@@ -13,6 +13,7 @@ final class UserDefaultRepository {
     let keyReactionMechanismLanguage = "KEY_REACTION_MECHANISM_LANGUAGE"
     let keyShowThumbnail = "KEY_SHOW_THUMBNAIL"
     let keyEnableDetailAbility = "KEY_ENABLE_DETAILE_ABILITY"
+    let keyDidSyncLegacyPurchase = "KEY_DID_SYNC_LEGACY_PURCHASE"
 
     var reactionMechanismLanguage: String {
         userDefaults.object(forKey: keyReactionMechanismLanguage) as? String ?? "en"
@@ -24,6 +25,11 @@ final class UserDefaultRepository {
 
     var enableDetailAbility: Bool {
         userDefaults.object(forKey: keyEnableDetailAbility) as? Bool ?? false
+    }
+
+    // 旧買い切りの購入を RevenueCat に送ったか（一度だけ送るため）
+    var didSyncLegacyPurchase: Bool {
+        userDefaults.bool(forKey: keyDidSyncLegacyPurchase)
     }
 
     func initialize() {
@@ -46,5 +52,9 @@ final class UserDefaultRepository {
 
     func setEnableDetailAbility(_ enableDetailAbility: Bool) {
         userDefaults.setValue(enableDetailAbility, forKey: keyEnableDetailAbility)
+    }
+
+    func setDidSyncLegacyPurchase(_ didSync: Bool) {
+        userDefaults.setValue(didSync, forKey: keyDidSyncLegacyPurchase)
     }
 }

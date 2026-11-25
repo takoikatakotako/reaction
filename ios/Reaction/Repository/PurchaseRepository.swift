@@ -2,6 +2,14 @@ import Foundation
 import RevenueCat
 import StoreKit
 
+/// 有料プランの状態（設定の「有料プラン」画面で表示する）
+enum PremiumPlan: Equatable {
+    case notSubscribed
+    case subscribed(expirationDate: Date?, willRenew: Bool, isTrial: Bool)
+    /// 有料プラン提供前の買い切り購入者
+    case legacyPurchase
+}
+
 /// 課金（RevenueCat）まわり
 ///
 /// 特典の有無は RevenueCat のエンタイトルメント `premium` で判定する。
@@ -52,6 +60,43 @@ final class PurchaseRepository {
         let enabled = isPremium || hasLegacyPurchase
         userDefaultRepository.setEnableDetailAbility(enabled)
         return enabled
+    }
+
+    /// 現在の有料プランの状態を取得する。あわせて特典フラグも更新する
+    func fetchPremiumPlan() async throws -> PremiumPlan {
+        guard Purchases.isConfigured else {
+            return .notSubscribed
+        }
+        let customerInfo = try await Purchases.shared.customerInfo()
+        await updateEnableDetailAbility(customerInfo: customerInfo)
+        return await premiumPlan(customerInfo: customerInfo)
+    }
+
+    /// 購入を復元し、復元後の有料プランの状態を返す
+    func restorePurchases() async throws -> PremiumPlan {
+        guard Purchases.isConfigured else {
+            return .notSubscribed
+        }
+        let customerInfo = try await Purchases.shared.restorePurchases()
+        await updateEnableDetailAbility(customerInfo: customerInfo)
+        return await premiumPlan(customerInfo: customerInfo)
+    }
+
+    private func premiumPlan(customerInfo: CustomerInfo) async -> PremiumPlan {
+        if let entitlement = customerInfo.entitlements[Self.entitlementId], entitlement.isActive {
+            if entitlement.productIdentifier == Self.legacyProductId {
+                return .legacyPurchase
+            }
+            return .subscribed(
+                expirationDate: entitlement.expirationDate,
+                willRenew: entitlement.willRenew,
+                isTrial: entitlement.periodType == .trial
+            )
+        }
+        if await hasLegacyPurchaseOnDevice() {
+            return .legacyPurchase
+        }
+        return .notSubscribed
     }
 
     /// 端末の StoreKit に旧買い切りの購入が残っているか。

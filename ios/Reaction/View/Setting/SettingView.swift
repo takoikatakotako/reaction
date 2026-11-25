@@ -7,6 +7,14 @@ struct SettingView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section(String(localized: "setting-premium-plan")) {
+                    NavigationLink {
+                        PremiumPlanView(viewState: PremiumPlanViewState())
+                    } label: {
+                        CommonText(text: String(localized: "setting-premium-plan"), font: Font.system(size: 14))
+                    }
+                }
+
                 Section(String(localized: "notice-title")) {
                     NavigationLink {
                         NoticeListView(viewState: NoticeListViewState())

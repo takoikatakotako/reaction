@@ -34,21 +34,52 @@ final class PurchaseRepository {
         Purchases.configure(withAPIKey: apiKey)
     }
 
-    /// RevenueCat の状態が変わるたびに特典フラグを更新し続ける。
-    /// 起動直後にも現在の状態（キャッシュ）が 1 回流れてくる。
+    /// 起動時に特典フラグを再評価し、その後は RevenueCat の状態が変わるたびに更新し続ける。
     func observeCustomerInfo() async {
         guard Purchases.isConfigured else {
             return
         }
+        await reevaluateOnLaunch()
         for await customerInfo in Purchases.shared.customerInfoStream {
             await updateEnableDetailAbility(customerInfo: customerInfo)
         }
     }
 
+    /// 起動時の再評価。
+    ///
+    /// customerInfoStream はコールドスタート時の通信に失敗すると値を流さないため、
+    /// それだけに頼るとオフラインで使い続けた端末で期限切れ後もフラグが true のまま残る。
+    /// 保存済みの CustomerInfo（なければ取得）で判定し、それも取れない場合は
+    /// 自前で保存している有効期限で判定する。
+    private func reevaluateOnLaunch() async {
+        do {
+            let customerInfo = try await Purchases.shared.customerInfo()
+            await updateEnableDetailAbility(customerInfo: customerInfo)
+        } catch {
+            await revokeIfStoredExpirationPassed()
+        }
+    }
+
+    /// CustomerInfo を取得できないときの最後の砦。保存済みの有効期限が過ぎていれば特典を外す
+    private func revokeIfStoredExpirationPassed() async {
+        guard userDefaultRepository.enableDetailAbility,
+              let expirationDate = userDefaultRepository.premiumExpirationDate,
+              expirationDate < Date() else {
+            return
+        }
+        // 旧買い切りの購入者は期限がないので外さない
+        guard await !hasLegacyPurchaseOnDevice() else {
+            return
+        }
+        userDefaultRepository.setEnableDetailAbility(false)
+        userDefaultRepository.setPremiumExpirationDate(nil)
+    }
+
     /// 購入や復元の直後など、手元にある CustomerInfo で特典フラグを更新する
     @discardableResult
     func updateEnableDetailAbility(customerInfo: CustomerInfo) async -> Bool {
-        let isPremium = customerInfo.entitlements[Self.entitlementId]?.isActive == true
+        let entitlement = customerInfo.entitlements[Self.entitlementId]
+        let isPremium = entitlement?.isActive == true
         let hasLegacyPurchase = await hasLegacyPurchaseOnDevice()
 
         if hasLegacyPurchase && !isPremium {
@@ -59,15 +90,18 @@ final class PurchaseRepository {
 
         let enabled = isPremium || hasLegacyPurchase
         userDefaultRepository.setEnableDetailAbility(enabled)
+        // オフライン時の判定用に有効期限を残す（買い切りなど期限がない場合は nil）
+        userDefaultRepository.setPremiumExpirationDate(isPremium ? entitlement?.expirationDate : nil)
         return enabled
     }
 
-    /// 現在の有料プランの状態を取得する。あわせて特典フラグも更新する
-    func fetchPremiumPlan() async throws -> PremiumPlan {
+    /// 現在の有料プランの状態を取得する。あわせて特典フラグも更新する。
+    /// 購入や解約の直後は `.fetchCurrent` を渡してキャッシュではなく最新を取る
+    func fetchPremiumPlan(fetchPolicy: CacheFetchPolicy = .cachedOrFetched) async throws -> PremiumPlan {
         guard Purchases.isConfigured else {
             return .notSubscribed
         }
-        let customerInfo = try await Purchases.shared.customerInfo()
+        let customerInfo = try await Purchases.shared.customerInfo(fetchPolicy: fetchPolicy)
         await updateEnableDetailAbility(customerInfo: customerInfo)
         return await premiumPlan(customerInfo: customerInfo)
     }
@@ -82,7 +116,7 @@ final class PurchaseRepository {
         return await premiumPlan(customerInfo: customerInfo)
     }
 
-    private func premiumPlan(customerInfo: CustomerInfo) async -> PremiumPlan {
+    func premiumPlan(customerInfo: CustomerInfo) async -> PremiumPlan {
         if let entitlement = customerInfo.entitlements[Self.entitlementId], entitlement.isActive {
             if entitlement.productIdentifier == Self.legacyProductId {
                 return .legacyPurchase

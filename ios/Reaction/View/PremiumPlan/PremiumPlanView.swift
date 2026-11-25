@@ -86,6 +86,9 @@ struct PremiumPlanView: View {
         .onAppear {
             viewState.onAppear()
         }
+        .onDisappear {
+            viewState.onDisappear()
+        }
         .sheet(isPresented: $viewState.showingPaywall, onDismiss: {
             viewState.paywallDismissed()
         }) {

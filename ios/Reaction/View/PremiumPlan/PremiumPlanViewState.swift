@@ -1,4 +1,5 @@
 import SwiftUI
+import RevenueCat
 
 @MainActor
 final class PremiumPlanViewState: ObservableObject {
@@ -16,6 +17,7 @@ final class PremiumPlanViewState: ObservableObject {
     @Published var restoreResult: RestoreResult?
 
     private let purchaseRepository = PurchaseRepository()
+    private var observeTask: Task<Void, Never>?
 
     var isNotSubscribed: Bool {
         plan == .notSubscribed
@@ -58,6 +60,24 @@ final class PremiumPlanViewState: ObservableObject {
         Task {
             await reload()
         }
+        // 画面を開いている間に届いた CustomerInfo の更新（購入・解約の反映など）も表示に反映する
+        observeTask?.cancel()
+        observeTask = Task { [weak self] in
+            guard Purchases.isConfigured else {
+                return
+            }
+            for await customerInfo in Purchases.shared.customerInfoStream {
+                guard let self else {
+                    return
+                }
+                self.plan = await self.purchaseRepository.premiumPlan(customerInfo: customerInfo)
+            }
+        }
+    }
+
+    func onDisappear() {
+        observeTask?.cancel()
+        observeTask = nil
     }
 
     func restore() {
@@ -76,21 +96,25 @@ final class PremiumPlanViewState: ObservableObject {
 
     func paywallDismissed() {
         Task {
-            await reload()
+            await reload(fetchPolicy: .fetchCurrent)
         }
     }
 
+    /// 管理シートで解約した直後はキャッシュが古いので、最新を取り直す
     func manageSubscriptionsDismissed() {
         Task {
-            await reload()
+            await reload(fetchPolicy: .fetchCurrent)
         }
     }
 
-    private func reload() async {
+    private func reload(fetchPolicy: CacheFetchPolicy = .cachedOrFetched) async {
         do {
-            plan = try await purchaseRepository.fetchPremiumPlan()
+            plan = try await purchaseRepository.fetchPremiumPlan(fetchPolicy: fetchPolicy)
         } catch {
-            plan = nil
+            // 最新の取り直し（.fetchCurrent）に失敗した場合は、表示中のプランを消さずに残す
+            if fetchPolicy != .fetchCurrent {
+                plan = nil
+            }
         }
     }
 }

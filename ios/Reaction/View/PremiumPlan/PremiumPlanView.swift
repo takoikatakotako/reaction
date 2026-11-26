@@ -66,10 +66,11 @@ struct PremiumPlanView: View {
                 .disabled(viewState.isProcessing)
 
                 Section {
-                    Text(String(localized: "premium-plan-how-to-cancel-body"))
-                        .font(.system(size: 14))
-                } header: {
-                    Text(String(localized: "premium-plan-how-to-cancel"))
+                    NavigationLink {
+                        CancelGuideView()
+                    } label: {
+                        CommonText(text: String(localized: "premium-plan-how-to-cancel"), font: Font.system(size: 14))
+                    }
                 }
             }
             .listStyle(.grouped)

@@ -1,6 +1,125 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "cancel-guide-in-app" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel in the App"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリから解約する"
+          }
+        }
+      }
+    },
+    "cancel-guide-in-app-steps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Tap \"Manage Subscription\" below.\n2. Choose シン反応機構 and tap \"Cancel Subscription\" (\"Cancel Free Trial\" during the free trial)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 下の「サブスクリプションを管理」をタップします。\n2. 「シン反応機構」を選び、「サブスクリプションをキャンセル」をタップします（無料お試し中は「無料トライアルをキャンセル」）。"
+          }
+        }
+      }
+    },
+    "cancel-guide-notes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ご注意"
+          }
+        }
+      }
+    },
+    "cancel-guide-notes-body" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Deleting the app does not cancel your subscription.\n• Cancel at least 24 hours before the free trial ends to avoid being charged.\n• To avoid being charged for the next period, cancel at least 24 hours before the current period ends.\n• After canceling, you can keep using Premium until the end of the current period. We do not offer refunds for the remaining period.\n• Refund requests are handled by Apple."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "・アプリを削除しても解約にはなりません。\n・無料お試し期間が終わる 24 時間前までに解約すれば、料金はかかりません。\n・次の期間の料金の発生を避けるには、現在の期間が終わる 24 時間前までに解約してください。\n・解約しても、現在の期間が終わるまでは有料プランを利用できます。期間の途中で解約した場合の返金は行っておりません。\n・返金のご希望は Apple が受け付けています。"
+          }
+        }
+      }
+    },
+    "cancel-guide-settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel in the Settings App"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone の「設定」から解約する"
+          }
+        }
+      }
+    },
+    "cancel-guide-settings-footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can cancel this way even after deleting the app. The screens may differ depending on your iOS version."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリを削除したあとでも、こちらから解約できます。画面の表示は iOS のバージョンによって異なる場合があります。"
+          }
+        }
+      }
+    },
+    "cancel-guide-settings-steps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Open the Settings app and tap your name at the top.\n2. Tap \"Subscriptions\".\n3. Choose シン反応機構 and tap \"Cancel Subscription\"."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 「設定」アプリを開き、いちばん上のご自身の名前をタップします。\n2. 「サブスクリプション」をタップします。\n3. 「シン反応機構」を選び、「サブスクリプションをキャンセル」をタップします。"
+          }
+        }
+      }
+    },
     "common-cancel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -609,23 +728,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "解約方法"
-          }
-        }
-      }
-    },
-    "premium-plan-how-to-cancel-body" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You can cancel from the Settings app: tap your name (Apple Account) > Subscriptions > シン反応機構. You can also open it from \"Manage Subscription\" above.\n\nDeleting the app does not cancel your subscription. After canceling, you can keep using Premium until the end of the current period. To avoid being charged, cancel at least 24 hours before the free trial or current period ends."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「設定」アプリで、ご自身の名前（Apple アカウント）→「サブスクリプション」→「シン反応機構」から解約できます。加入中は、上の「サブスクリプションを管理」からも開けます。\n\nアプリを削除しても解約にはなりません。解約後も、現在の期間が終わるまでは有料プランを利用できます。料金の発生を避けるには、無料お試しや現在の期間が終わる24時間前までに解約してください。"
           }
         }
       }

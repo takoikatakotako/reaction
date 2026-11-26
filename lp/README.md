@@ -10,7 +10,6 @@
 index.html          ランディングページ
 privacy.html        プライバシーポリシー（生成物）
 terms.html          利用規約（生成物）
-cancel.html         有料プランの解約方法（生成物）
 legal/*.md          法務ページの原本
 tools/build-legal.py
 css/style.css       ランディングページ用

@@ -143,25 +143,3 @@ a {
     font-size: 1.4rem;
   }
 }
-
-/* ------------------------------------------------------------------ */
-/* スクリーンショット（解約方法など）                                  */
-/* ------------------------------------------------------------------ */
-
-.document .shot {
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.document .shot img {
-  width: 100%;
-  max-width: 280px;
-  height: auto;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-}
-
-.document .shot figcaption {
-  font-size: 0.85rem;
-  color: var(--muted);
-}

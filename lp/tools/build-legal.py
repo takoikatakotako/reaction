@@ -47,10 +47,7 @@ TEMPLATE = """<!DOCTYPE html>
 
 
 def inline(text):
-    """強調とリンクだけ対応する。法務文書に必要なのはこれだけ。
-
-    画像は 1 行まるごと `![説明](パス)` の行だけ対応する（convert 側で扱う）。
-    """
+    """強調とリンクだけ対応する。法務文書に必要なのはこれだけ。"""
     text = html.escape(text, quote=False)
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
 
@@ -122,20 +119,11 @@ def convert(md):
         stripped = line.strip()
         indent = len(line) - len(line.lstrip())
 
-        image = re.match(r"^!\[(.*?)\]\((.+?)\)$", stripped)
         ordered = re.match(r"^\s*\d+\. (.*)$", line)
         bullet = re.match(r"^\s*- (.*)$", line)
 
         if not stripped:
             close_lists()
-        elif image:
-            close_lists()
-            alt = html.escape(image.group(1), quote=True)
-            src = html.escape(image.group(2), quote=True)
-            out.append(
-                f'      <figure class="shot"><img src="{src}" alt="{alt}" loading="lazy">'
-                f"<figcaption>{alt}</figcaption></figure>"
-            )
         elif ordered:
             add_item(indent, "ol", ordered.group(1))
         elif bullet:
@@ -164,7 +152,6 @@ def main():
     pages = {
         "privacy": ("プライバシーポリシー", "シン反応機構が取得する情報とその取扱いについて。"),
         "terms": ("利用規約", "シン反応機構の利用条件について。"),
-        "cancel": ("有料プランの解約方法", "シン反応機構の有料プランを解約する方法。"),
     }
 
     if not SRC.is_dir():

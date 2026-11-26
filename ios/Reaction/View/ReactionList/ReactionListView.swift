@@ -69,26 +69,17 @@ struct ReactionListView: View {
             .navigationDestination(item: $viewState.destination) { item in
                 ReactionDetailView(reactionMechanism: item)
             }
-            .alert(String(localized: "subscription-paid-plan"), isPresented: $viewState.billingAlert, actions: {
-                Button(String(localized: "subscription-buy-paid-plan"), role: .none) {
-                    viewState.purchase()
-                }
-                Button(String(localized: "subscription-restore-purchase"), role: .none) {
-                    viewState.restore()
-                }
-                Button(String(localized: "common-cancel"), role: .cancel) {}
-            }, message: {
-                Text(String(localized: "subscription-need-subscription"))
-            })
+            .sheet(isPresented: $viewState.showingPaywall, onDismiss: {
+                viewState.paywallDismissed()
+            }) {
+                PremiumPaywallView(onUnlocked: {
+                    viewState.paywallUnlocked()
+                })
+            }
             .alert(String(localized: "subscription-purchase-complete"), isPresented: $viewState.completeAlert, actions: {
                 Button(String(localized: "common-close"), role: .cancel) {}
             }, message: {
                 Text(String(localized: "subscription-purchase-complete-thank-you"))
-            })
-            .alert(String(localized: "common-error"), isPresented: $viewState.errorAlert, actions: {
-                Button(String(localized: "common-close"), role: .cancel) {}
-            }, message: {
-                Text(String(localized: "subscription-failed"))
             })
             .sheet(item: $viewState.sheet) { (item: ReactionListViewSheet) in
                 switch item {

@@ -1,5 +1,4 @@
 import SwiftUI
-import StoreKit
 
 @MainActor
 final class SearchResultViewState: ObservableObject {
@@ -7,10 +6,10 @@ final class SearchResultViewState: ObservableObject {
     @Published var selectJapanese: Bool = true
     @Published var isFetching = true
     @Published var reactionMechanisms: [ReactionMechanism] = []
-    @Published var billingAlert = false
+    @Published var showingPaywall = false
     @Published var completeAlert = false
-    @Published var errorAlert = false
     @Published var destination: ReactionMechanism?
+    private var unlockedInPaywall = false
 
     private let reactionRepository = ReactionMechanismRepository()
     private let userDefaultsRepository = UserDefaultRepository()
@@ -59,110 +58,26 @@ final class SearchResultViewState: ObservableObject {
 
     func tapped(reactionMechanism: ReactionMechanism) {
         guard userDefaultsRepository.enableDetailAbility else {
-            // 未課金なのでアラートを表示
-            billingAlert = true
+            // 未課金なので購入画面を表示
+            showingPaywall = true
             return
         }
 
         destination = reactionMechanism
     }
 
-    func purchase() {
-        isFetching = true
-        Task {
-            do {
-                let productIdList = ["detail_available"]
-                let products: [Product] = try await Product.products(for: productIdList)
-                guard let product = products.first else {
-                    isFetching = false
-                    errorAlert = true
-                    return
-                }
-                let transaction = try await purchase(product: product)
-                userDefaultsRepository.setEnableDetailAbility(true)
-                await transaction.finish()
-                isFetching = false
-                completeAlert = true
-            } catch {
-                isFetching = false
-                errorAlert = true
-            }
-        }
+    /// 購入画面で特典が有効になったとき
+    func paywallUnlocked() {
+        unlockedInPaywall = true
     }
 
-    func restore() {
-        isFetching = true
-        Task {
-            do {
-                try await AppStore.sync()
-
-                var validSubscription: StoreKit.Transaction?
-                for await verificationResult in Transaction.currentEntitlements {
-                    if case .verified(let transaction) = verificationResult,
-                       transaction.productType == .autoRenewable && !transaction.isUpgraded {
-                        validSubscription = transaction
-                    }
-                }
-
-                guard validSubscription?.productID == nil else {
-                    // リストア対象じゃない場合
-                    errorAlert = true
-                    return
-                }
-
-                // 特典を付与
-                userDefaultsRepository.setEnableDetailAbility(true)
-                isFetching = false
-                completeAlert = true
-            } catch {
-                isFetching = false
-                errorAlert = true
-            }
+    /// 購入画面が閉じたとき。閉じ終わってからアラートを出さないと表示されないため、ここで出す
+    func paywallDismissed() {
+        guard unlockedInPaywall else {
+            return
         }
-    }
-
-    //    private func fetchProducts() async throws -> Product? {
-    //        let productIdList = ["detail_available"]
-    //        let products: [Product] = try await Product.products(for: productIdList)
-    //        guard let product = products.first else {
-    //            return nil
-    //        }
-    //        return product
-    //    }
-
-    private func purchase(product: Product) async throws -> StoreKit.Transaction {
-        // Product.PurchaseResultの取得
-        let purchaseResult: Product.PurchaseResult
-        do {
-            purchaseResult = try await product.purchase()
-        } catch Product.PurchaseError.productUnavailable {
-            throw SubscribeError.productUnavailable
-        } catch Product.PurchaseError.purchaseNotAllowed {
-            throw SubscribeError.purchaseNotAllowed
-        } catch {
-            throw SubscribeError.otherError
-        }
-
-        // VerificationResultの取得
-        let verificationResult: VerificationResult<StoreKit.Transaction>
-        switch purchaseResult {
-        case .success(let result):
-            verificationResult = result
-        case .userCancelled:
-            throw SubscribeError.userCancelled
-        case .pending:
-            throw SubscribeError.pending
-        @unknown default:
-            throw SubscribeError.otherError
-        }
-
-        // Transactionの取得
-        switch verificationResult {
-        case .verified(let transaction):
-            return transaction
-        case .unverified:
-            throw SubscribeError.failedVerification
-        }
+        unlockedInPaywall = false
+        completeAlert = true
     }
 
     private func getTags() -> [String] {

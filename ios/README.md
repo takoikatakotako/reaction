@@ -149,6 +149,25 @@ security cms -D -i <profile>.mobileprovision | plutil -p - | head
 
 参考: [Apple — Cloud-managed certificates](https://developer.apple.com/help/account/certificates/cloud-managed-certificates)
 
+## 課金（RevenueCat）
+
+有料プランは自動更新サブスクで、購入・復元・特典の判定は RevenueCat に任せている。
+アプリは「エンタイトルメント `premium` が有効か」だけを見る（`PurchaseRepository`）。
+購入画面は RevenueCatUI の `PaywallView` で、中身は RevenueCat の管理画面で編集する。
+
+| | 本番 | 開発 |
+|---|---|---|
+| App Store Connect の製品 ID | `premium_monthly` | `dev_premium_monthly` |
+| サブスクリプショングループ | Premium | Premium |
+
+- 製品 ID はアカウント全体で一意なので、開発は `dev_` を付けて分けている
+- RevenueCat はプロジェクト「シン反応機構」に本番・開発の 2 アプリを登録し、
+  エンタイトルメント `premium` とオファリング `default`（パッケージ `$rc_monthly`）を共有している
+- 旧買い切り（非消耗型 `detail_available`）も `premium` に紐付けている。RevenueCat に未登録の
+  購入者もいるため、端末の StoreKit の購入履歴でも判定し、一度だけ `syncPurchases` で送る
+- API キーは公開 SDK キーなので `project.yml` の `REVENUECAT_API_KEY` に直接置いている
+- TestFlight で入れたアプリの購入は自動で Sandbox 扱いになる。無料お試しは Apple ID ごとに 1 回だけ
+
 ## App Store へのリリース
 
 TestFlight へのアップロードはここまでのスクリプトで終わる。App Store に出す

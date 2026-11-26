@@ -52,23 +52,6 @@
         }
       }
     },
-    "common-error" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "エラー"
-          }
-        }
-      }
-    },
     "common-error-message" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -494,6 +477,397 @@
         }
       }
     },
+    "premium-plan-available-until" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available until"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用できる期限"
+          }
+        }
+      }
+    },
+    "premium-plan-current" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Plan"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在のプラン"
+          }
+        }
+      }
+    },
+    "premium-plan-description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See the full details of every reaction mechanism."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべての反応機構の詳細を見られるようになります。"
+          }
+        }
+      }
+    },
+    "premium-plan-feature-all" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full details of every reaction mechanism"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべての反応機構の詳細を閲覧"
+          }
+        }
+      }
+    },
+    "premium-plan-feature-figures" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General formulas, mechanisms, examples and notes as figures"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般式・反応機構・反応例・補足を図で確認"
+          }
+        }
+      }
+    },
+    "premium-plan-feature-fullscreen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoom in with landscape full-screen view"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "横向きの全画面で拡大表示"
+          }
+        }
+      }
+    },
+    "premium-plan-features" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What You Get"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "できること"
+          }
+        }
+      }
+    },
+    "premium-plan-how-to-cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to Cancel"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解約方法"
+          }
+        }
+      }
+    },
+    "premium-plan-how-to-cancel-body" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can cancel from the Settings app: tap your name (Apple Account) > Subscriptions > シン反応機構. You can also open it from \"Manage Subscription\" above.\n\nDeleting the app does not cancel your subscription. After canceling, you can keep using Premium until the end of the current period. To avoid being charged, cancel at least 24 hours before the free trial or current period ends."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「設定」アプリで、ご自身の名前（Apple アカウント）→「サブスクリプション」→「シン反応機構」から解約できます。加入中は、上の「サブスクリプションを管理」からも開けます。\n\nアプリを削除しても解約にはなりません。解約後も、現在の期間が終わるまでは有料プランを利用できます。料金の発生を避けるには、無料お試しや現在の期間が終わる24時間前までに解約してください。"
+          }
+        }
+      }
+    },
+    "premium-plan-legacy-note" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thank you for your one-time purchase. You can continue to use all features for the time being."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "買い切りでご購入いただいた方は、当面の間そのままご利用いただけます。"
+          }
+        }
+      }
+    },
+    "premium-plan-manage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Subscription"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サブスクリプションを管理"
+          }
+        }
+      }
+    },
+    "premium-plan-renews-on" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renews on"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次回更新日"
+          }
+        }
+      }
+    },
+    "premium-plan-restore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore Purchases"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入を復元"
+          }
+        }
+      }
+    },
+    "premium-plan-restore-complete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your purchases have been restored."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入を復元しました。"
+          }
+        }
+      }
+    },
+    "premium-plan-restore-failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to restore purchases. Please try again later."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入の復元に失敗しました。時間をおいてもう一度お試しください。"
+          }
+        }
+      }
+    },
+    "premium-plan-restore-not-found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No purchases to restore were found."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復元できる購入が見つかりませんでした。"
+          }
+        }
+      }
+    },
+    "premium-plan-status" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状態"
+          }
+        }
+      }
+    },
+    "premium-plan-status-legacy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchased (one-time)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "買い切り購入済み"
+          }
+        }
+      }
+    },
+    "premium-plan-status-not-subscribed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not subscribed"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未加入"
+          }
+        }
+      }
+    },
+    "premium-plan-status-subscribed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subscribed"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加入中"
+          }
+        }
+      }
+    },
+    "premium-plan-status-trial" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free trial"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無料お試し中"
+          }
+        }
+      }
+    },
+    "premium-plan-subscribe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subscribe to Premium"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有料プランに登録"
+          }
+        }
+      }
+    },
+    "premium-plan-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium (Monthly)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プレミアム（月額）"
+          }
+        }
+      }
+    },
     "question-detail-open-reference-title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -868,6 +1242,23 @@
         }
       }
     },
+    "setting-premium-plan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium Plan"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有料プラン"
+          }
+        }
+      }
+    },
     "setting-privacy-policy" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1021,74 +1412,6 @@
         }
       }
     },
-    "subscription-buy-paid-plan" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Buy a paid plan"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "有料プランを購入"
-          }
-        }
-      }
-    },
-    "subscription-failed" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Failed to purchase or restore the paid plan."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "有料プランの購入または復元に失敗しました。"
-          }
-        }
-      }
-    },
-    "subscription-need-subscription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To view detailed reaction mechanisms, you need to purchase a paid plan."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "詳細な反応機構を確認するためには有料プランの購入が必要です。"
-          }
-        }
-      }
-    },
-    "subscription-paid-plan" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paid Plan"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "有料プラン"
-          }
-        }
-      }
-    },
     "subscription-purchase-complete" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1119,23 +1442,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "購入が完了しました。ありがとうございました。"
-          }
-        }
-      }
-    },
-    "subscription-restore-purchase" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restore purchase"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "購入を復元"
           }
         }
       }

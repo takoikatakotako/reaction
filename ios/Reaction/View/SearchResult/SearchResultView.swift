@@ -33,26 +33,17 @@ struct SearchResultView: View {
         .navigationDestination(item: $viewModel.destination) { item in
             ReactionDetailView(reactionMechanism: item)
         }
-        .alert(String(localized: "subscription-paid-plan"), isPresented: $viewModel.billingAlert, actions: {
-            Button(String(localized: "subscription-buy-paid-plan"), role: .none) {
-                viewModel.purchase()
-            }
-            Button(String(localized: "subscription-restore-purchase"), role: .none) {
-                viewModel.restore()
-            }
-            Button(String(localized: "common-cancel"), role: .cancel) {}
-        }, message: {
-            Text(String(localized: "subscription-need-subscription"))
-        })
+        .sheet(isPresented: $viewModel.showingPaywall, onDismiss: {
+            viewModel.paywallDismissed()
+        }) {
+            PremiumPaywallView(onUnlocked: {
+                viewModel.paywallUnlocked()
+            })
+        }
         .alert(String(localized: "subscription-purchase-complete"), isPresented: $viewModel.completeAlert, actions: {
             Button(String(localized: "common-close"), role: .cancel) {}
         }, message: {
             Text(String(localized: "subscription-purchase-complete-thank-you"))
-        })
-        .alert(String(localized: "common-error"), isPresented: $viewModel.errorAlert, actions: {
-            Button(String(localized: "common-close"), role: .cancel) {}
-        }, message: {
-            Text(String(localized: "subscription-failed"))
         })
         .navigationTitle(viewModel.navigationTitle)
     }

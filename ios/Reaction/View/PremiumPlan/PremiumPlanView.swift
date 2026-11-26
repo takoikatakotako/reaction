@@ -67,7 +67,9 @@ struct PremiumPlanView: View {
 
                 Section {
                     NavigationLink {
-                        CancelGuideView()
+                        CancelGuideView(onManageSubscriptionsDismissed: {
+                            viewState.manageSubscriptionsDismissed()
+                        })
                     } label: {
                         CommonText(text: String(localized: "premium-plan-how-to-cancel"), font: Font.system(size: 14))
                     }

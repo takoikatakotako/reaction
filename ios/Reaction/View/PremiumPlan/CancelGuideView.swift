@@ -6,6 +6,9 @@ import StoreKit
 /// アプリ内（サブスクリプションの管理画面）と、iPhone の「設定」アプリからの解約手順を案内する。
 /// 「設定」アプリのサブスクリプション画面を直接開く公開 API はないため、そちらは手順の文章だけにしている。
 struct CancelGuideView: View {
+    /// 管理シートを閉じたとき。解約直後は CustomerInfo のキャッシュが古いので、親画面で最新を取り直す
+    let onManageSubscriptionsDismissed: () -> Void
+
     @State private var showingManageSubscriptions = false
 
     var body: some View {
@@ -44,6 +47,11 @@ struct CancelGuideView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .manageSubscriptionsSheet(isPresented: $showingManageSubscriptions)
+        .onChange(of: showingManageSubscriptions) { _, isShowing in
+            if !isShowing {
+                onManageSubscriptionsDismissed()
+            }
+        }
         .navigationTitle(String(localized: "premium-plan-how-to-cancel"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -65,6 +73,6 @@ struct CancelGuideView: View {
 
 #Preview {
     NavigationStack {
-        CancelGuideView()
+        CancelGuideView(onManageSubscriptionsDismissed: {})
     }
 }
